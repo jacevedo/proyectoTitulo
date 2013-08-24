@@ -1,5 +1,5 @@
 drop database if exists sfh;
-create database dfh character set utf8 collate utf8_general_ci;
+create database sfh character set utf8 collate utf8_general_ci;
 use sfh;
 
 /*==============================================================*/
