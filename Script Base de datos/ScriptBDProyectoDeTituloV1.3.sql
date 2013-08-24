@@ -1080,6 +1080,14 @@ INSERT INTO `abono` (`ID_ABONO`, `ID_TRATAMIENTO_DENTAL`, `FECHA_DE_ABONO`, `MON
 INSERT INTO `abono` (`ID_ABONO`, `ID_TRATAMIENTO_DENTAL`, `FECHA_DE_ABONO`, `MONTO`) VALUES ('4', '4', '2013-08-19', '9000');
 
 INSERT INTO  `areainsumo` (`ID_AREA_INSUMO` ,`NOMBRE_AREA` ,`DESCRIPCION_AREA`) VALUES (NULL ,  'Oficina',  'Insumos de Oficina');
-INSERT INTO  `areainsumo` (`ID_AREA_INSUMO` ,`NOMBRE_AREA` ,`DESCRIPCION_AREA`) VALUES (NULL ,  'esterilizacion',  'Insumos de esterilizacion');
+INSERT INTO  `areainsumo` (`ID_AREA_INSUMO` ,`NOMBRE_AREA` ,`DESCRIPCION_AREA`) VALUES (NULL ,  'Esterilizacion',  'Insumos de Esterilizacion');
 INSERT INTO  `areainsumo` (`ID_AREA_INSUMO` ,`NOMBRE_AREA` ,`DESCRIPCION_AREA`) VALUES (NULL ,  'Jeringas',  'Jeringas para usar datos');
-INSERT INTO  `areainsumo` (`ID_AREA_INSUMO` ,`NOMBRE_AREA` ,`DESCRIPCION_AREA`) VALUES (NULL ,  'Medicamentes',  'Medicamentos de los pacientes');
+INSERT INTO  `areainsumo` (`ID_AREA_INSUMO` ,`NOMBRE_AREA` ,`DESCRIPCION_AREA`) VALUES (NULL ,  'Medicamentos',  'Medicamentos de los pacientes');
+
+INSERT INTO `piezadental` (`ID_PIEZA`, `ID_TRATAMIENTO_DENTAL`, `ID_ORDEN_LABORATORIO`, `ID_TIPO_PIEZA`, `NOMBRE_PIEZA`, `DESCRIPCION_PIEZA`, `PERIODO_PIEZA`) VALUES ('1', '4', '1', '14', 'Primer Molar Superior Izquierdo', 'Primer Molar Superior Izquierdo', '1');
+
+
+
+
+
+
