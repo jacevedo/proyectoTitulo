@@ -29,7 +29,7 @@ create table accesos
 /*==============================================================*/
 create table areainsumo
 (
-   ID_AREA_INSUMO       int not null,
+   ID_AREA_INSUMO       int not null auto_increment,
    NOMBRE_AREA          varchar(50),
    DESCRIPCION_AREA     text,
    primary key (ID_AREA_INSUMO)
@@ -1070,5 +1070,9 @@ INSERT INTO `fichadental` (`ID_FICHA`, `ID_PACIENTE`, `ID_PRESUPUESTO`, `ID_ODON
 INSERT INTO `fichadental` (`ID_FICHA`, `ID_PACIENTE`, `ID_PRESUPUESTO`, `ID_ODONTOLOGO`, `FECH_INGRESO`, `ANAMNESIS`) VALUES ('4', '4', '4', '4', '2013-08-12', 'Diabetes');
 
 
+INSERT INTO  `areainsumo` (`ID_AREA_INSUMO` ,`NOMBRE_AREA` ,`DESCRIPCION_AREA`) VALUES (NULL ,  'Oficina',  'Insumos de Oficina');
+INSERT INTO  `areainsumo` (`ID_AREA_INSUMO` ,`NOMBRE_AREA` ,`DESCRIPCION_AREA`) VALUES (NULL ,  'esterilizacion',  'Insumos de esterilizacion');
+INSERT INTO  `areainsumo` (`ID_AREA_INSUMO` ,`NOMBRE_AREA` ,`DESCRIPCION_AREA`) VALUES (NULL ,  'Jeringas',  'Jeringas para usar datos');
+INSERT INTO  `areainsumo` (`ID_AREA_INSUMO` ,`NOMBRE_AREA` ,`DESCRIPCION_AREA`) VALUES (NULL ,  'Medicamentes',  'Medicamentos de los pacientes');
 
 
