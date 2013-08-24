@@ -1,12 +1,11 @@
-use SFH;
-
-
-
+drop database if exists sfh;
+create database dfh character set utf8 collate utf8_general_ci;
+use sfh;
 
 /*==============================================================*/
 /* Table: ABONO                                                 */
 /*==============================================================*/
-create table  ABONO
+create table abono
 (
    ID_ABONO             int not null,
    ID_TRATAMIENTO_DENTAL int,
@@ -18,7 +17,7 @@ create table  ABONO
 /*==============================================================*/
 /* Table: ACCESOS                                               */
 /*==============================================================*/
-create table ACCESOS
+create table accesos
 (
    COD_ACCESO           int not null,
    DESCRIPCION_ACCESO   varchar(50),
@@ -28,7 +27,7 @@ create table ACCESOS
 /*==============================================================*/
 /* Table: AREAINSUMO                                            */
 /*==============================================================*/
-create table AREAINSUMO
+create table areainsumo
 (
    ID_AREA_INSUMO       int not null,
    NOMBRE_AREA          varchar(50),
@@ -39,7 +38,7 @@ create table AREAINSUMO
 /*==============================================================*/
 /* Table: CITA                                                  */
 /*==============================================================*/
-create table CITA
+create table cita
 (
    ID_CITA              int not null,
    ID_ODONTOLOGO        int,
@@ -53,7 +52,7 @@ create table CITA
 /*==============================================================*/
 /* Table: COMUNA                                                */
 /*==============================================================*/
-create table COMUNA
+create table comuna
 (
    ID_COMUNA            int not null,
    ID_REGION            int,
@@ -64,7 +63,7 @@ create table COMUNA
 /*==============================================================*/
 /* Table: DATOSDECONTACTO                                       */
 /*==============================================================*/
-create table DATOSDECONTACTO
+create table datosdecontacto
 (
    ID_PERSONA           int not null,
    ID_COMUNA            int,
@@ -79,7 +78,7 @@ create table DATOSDECONTACTO
 /*==============================================================*/
 /* Table: FICHADENTAL                                           */
 /*==============================================================*/
-create table FICHADENTAL
+create table fichadental
 (
    ID_FICHA             int not null,
    ID_PACIENTE          int,
@@ -93,7 +92,7 @@ create table FICHADENTAL
 /*==============================================================*/
 /* Table: FUNCIONARIO                                           */
 /*==============================================================*/
-create table FUNCIONARIO
+create table funcionario
 (
    ID_FUNCIONARIO       int not null,
    ID_PERSONA           int,
@@ -104,7 +103,7 @@ create table FUNCIONARIO
 /*==============================================================*/
 /* Table: GASTOS                                                */
 /*==============================================================*/
-create table GASTOS
+create table gastos
 (
    ID_GASTOS            int not null,
    ID_PERSONA           int,
@@ -116,7 +115,7 @@ create table GASTOS
 /*==============================================================*/
 /* Table: INIDICADORES_ECONOMICOS                               */
 /*==============================================================*/
-create table INIDICADORES_ECONOMICOS
+create table  inidicadoreseconomicos
 (
    ID_INIDICADOR        int not null,
    NOMBRE_INDICADOR     varchar(100),
@@ -128,7 +127,7 @@ create table INIDICADORES_ECONOMICOS
 /*==============================================================*/
 /* Table: INSUMOS                                               */
 /*==============================================================*/
-create table INSUMOS
+create table  insumos
 (
    ID_INSUMO            int not null,
    ID_AREA_INSUMO       int,
@@ -143,7 +142,7 @@ create table INSUMOS
 /*==============================================================*/
 /* Table: LISTA_PRECIOS                                         */
 /*==============================================================*/
-create table LISTA_PRECIOS
+create table listaprecios
 (
    ID_PRECIOS           int not null auto_increment,
    COMENTARIO           text,
@@ -154,7 +153,7 @@ create table LISTA_PRECIOS
 /*==============================================================*/
 /* Table: ODONTOLOGO                                            */
 /*==============================================================*/
-create table ODONTOLOGO
+create table odontologo
 (
    ID_ODONTOLOGO        int not null auto_increment,
    ID_PERSONA           int not null,
@@ -165,7 +164,7 @@ create table ODONTOLOGO
 /*==============================================================*/
 /* Table: ORDEN_DE_LABORATORIO                                  */
 /*==============================================================*/
-create table ORDEN_DE_LABORATORIO
+create table ordendelaboratorio
 (
    ID_ORDEN_LABORATORIO int not null auto_increment,
    CLINICA              varchar(80),
@@ -182,7 +181,7 @@ create table ORDEN_DE_LABORATORIO
 /*==============================================================*/
 /* Table: PACIENTE                                              */
 /*==============================================================*/
-create table PACIENTE
+create table paciente
 (
    ID_PACIENTE          int not null,
    ID_PERSONA           int,
@@ -193,7 +192,7 @@ create table PACIENTE
 /*==============================================================*/
 /* Table: PASS                                                  */
 /*==============================================================*/
-create table PASS
+create table pass
 (
    ID_PERSONA           int not null,
    PASS                 text,
@@ -204,7 +203,7 @@ create table PASS
 /*==============================================================*/
 /* Table: PERFIL                                                */
 /*==============================================================*/
-create table PERFIL
+create table perfil
 (
    ID_PERFIL            int not null,
    NOM_PERFIL           varchar(40),
@@ -214,7 +213,7 @@ create table PERFIL
 /*==============================================================*/
 /* Table: PERMISOS                                              */
 /*==============================================================*/
-create table PERMISOS
+create table permisos
 (
    ID_PERFIL            int not null,
    COD_ACCESO           int,
@@ -224,7 +223,7 @@ create table PERMISOS
 /*==============================================================*/
 /* Table: PERSONA                                               */
 /*==============================================================*/
-create table PERSONA
+create table persona
 (
    ID_PERSONA           int  auto_increment,
    ID_PERFIL            int not null,
@@ -240,7 +239,7 @@ create table PERSONA
 /*==============================================================*/
 /* Table: PIEZADENTAL                                           */
 /*==============================================================*/
-create table PIEZADENTAL
+create table piezadental
 (
    ID_PIEZA             int not null,
    ID_TRATAMIENTO_DENTAL int,
@@ -255,7 +254,7 @@ create table PIEZADENTAL
 /*==============================================================*/
 /* Table: PRESUPUESTO                                           */
 /*==============================================================*/
-create table PRESUPUESTO
+create table presupuesto
 (
    ID_PRESUPUESTO       int not null,
    VALORTOTAL           int,
@@ -265,7 +264,7 @@ create table PRESUPUESTO
 /*==============================================================*/
 /* Table: REGION                                                */
 /*==============================================================*/
-create table REGION
+create table region
 (
    ID_REGION            int not null,
    NOM_REGION           varchar(50),
@@ -276,7 +275,7 @@ create table REGION
 /*==============================================================*/
 /* Table: REPORTE                                               */
 /*==============================================================*/
-create table REPORTE
+create table reporte
 (
    ID_REPORTE           int not null,
    ID_PERSONA           int,
@@ -288,7 +287,7 @@ create table REPORTE
 /*==============================================================*/
 /* Table: TIPODEPIEZA                                           */
 /*==============================================================*/
-create table TIPODEPIEZA
+create table tipodepieza
 (
    ID_TIPO_PIEZA        int not null,
    NOMBRE_CIENTIFICO_PIEZA varchar(100),
@@ -299,7 +298,7 @@ create table TIPODEPIEZA
 /*==============================================================*/
 /* Table: TRATAMIENTODENTAL                                     */
 /*==============================================================*/
-create table TRATAMIENTODENTAL
+create table tratamientodental
 (
    ID_TRATAMIENTO_DENTAL int not null,
    ID_FICHA             int,
@@ -313,7 +312,7 @@ create table TRATAMIENTODENTAL
 /*==============================================================*/
 /* Table: VERSION                                               */
 /*==============================================================*/
-create table VERSION
+create table version
 (
    ID_VERSION           int not null,
    NOM_VERSION          varchar(50),
@@ -321,83 +320,83 @@ create table VERSION
    primary key (ID_VERSION)
 );
 
-alter table ABONO add constraint FK_ABONO_TRATAMIENTO foreign key (ID_TRATAMIENTO_DENTAL)
-      references TRATAMIENTODENTAL (ID_TRATAMIENTO_DENTAL) on delete restrict on update restrict;
+alter table abono add constraint FK_ABONO_TRATAMIENTO foreign key (ID_TRATAMIENTO_DENTAL)
+      references tratamientodental (ID_TRATAMIENTO_DENTAL) on delete restrict on update restrict;
 
-alter table CITA add constraint FK_CITA_ODONTOLOGO foreign key (ID_ODONTOLOGO)
-      references ODONTOLOGO (ID_ODONTOLOGO) on delete restrict on update restrict;
+alter table cita add constraint FK_CITA_ODONTOLOGO foreign key (ID_ODONTOLOGO)
+      references odontologo (ID_ODONTOLOGO) on delete restrict on update restrict;
 
-alter table CITA add constraint FK_CITA_PACIENTE foreign key (ID_PACIENTE)
-      references PACIENTE (ID_PACIENTE) on delete restrict on update restrict;
+alter table cita add constraint FK_CITA_PACIENTE foreign key (ID_PACIENTE)
+      references paciente (ID_PACIENTE) on delete restrict on update restrict;
 
-alter table COMUNA add constraint FK_COMUNA_REGION foreign key (ID_REGION)
-      references REGION (ID_REGION) on delete restrict on update restrict;
+alter table comuna add constraint FK_COMUNA_REGION foreign key (ID_REGION)
+      references region (ID_REGION) on delete restrict on update restrict;
 
-alter table DATOSDECONTACTO add constraint FK_CONTACTO_COMUNA foreign key (ID_COMUNA)
-      references COMUNA (ID_COMUNA) on delete restrict on update restrict;
+alter table datosdecontacto add constraint FK_CONTACTO_COMUNA foreign key (ID_COMUNA)
+      references comuna (ID_COMUNA) on delete restrict on update restrict;
 
-alter table DATOSDECONTACTO add constraint FK_CONTACTO_PERSONA foreign key (ID_PERSONA)
-      references PERSONA (ID_PERSONA) on delete restrict on update restrict;
+alter table datosdecontacto add constraint FK_CONTACTO_PERSONA foreign key (ID_PERSONA)
+      references persona (ID_PERSONA) on delete restrict on update restrict;
 
-alter table FICHADENTAL add constraint FK_FICHA_ODONTOLOGO foreign key (ID_ODONTOLOGO)
-      references ODONTOLOGO (ID_ODONTOLOGO) on delete restrict on update restrict;
+alter table fichadental add constraint FK_FICHA_ODONTOLOGO foreign key (ID_ODONTOLOGO)
+      references odontologo (ID_ODONTOLOGO) on delete restrict on update restrict;
 
-alter table FICHADENTAL add constraint FK_FICHA_PACIENTE foreign key (ID_PACIENTE)
-      references PACIENTE (ID_PACIENTE) on delete restrict on update restrict;
+alter table fichadental add constraint FK_FICHA_PACIENTE foreign key (ID_PACIENTE)
+      references paciente (ID_PACIENTE) on delete restrict on update restrict;
 
-alter table FICHADENTAL add constraint FK_FICHA_PRESUPUESTO foreign key (ID_PRESUPUESTO)
-      references PRESUPUESTO (ID_PRESUPUESTO) on delete restrict on update restrict;
+alter table fichadental add constraint FK_FICHA_PRESUPUESTO foreign key (ID_PRESUPUESTO)
+      references presupuesto (ID_PRESUPUESTO) on delete restrict on update restrict;
 
-alter table FUNCIONARIO add constraint FK_FUNCIONARIO_PERSONA foreign key (ID_PERSONA)
-      references PERSONA (ID_PERSONA) on delete restrict on update restrict;
+alter table funcionario add constraint FK_FUNCIONARIO_PERSONA foreign key (ID_PERSONA)
+      references persona (ID_PERSONA) on delete restrict on update restrict;
 
-alter table GASTOS add constraint FK_GASTOS_PERSONA foreign key (ID_PERSONA)
-      references PERSONA (ID_PERSONA) on delete restrict on update restrict;
+alter table gastos add constraint FK_GASTOS_PERSONA foreign key (ID_PERSONA)
+      references persona (ID_PERSONA) on delete restrict on update restrict;
 
-alter table INSUMOS add constraint FK_INSUMOS_AREAINSUMO foreign key (ID_AREA_INSUMO)
-      references AREAINSUMO (ID_AREA_INSUMO) on delete restrict on update restrict;
+alter table insumos add constraint FK_INSUMOS_AREAINSUMO foreign key (ID_AREA_INSUMO)
+      references areainsumo (ID_AREA_INSUMO) on delete restrict on update restrict;
 
-alter table INSUMOS add constraint FK_INSUMOS_GASTOS foreign key (ID_GASTOS)
-      references GASTOS (ID_GASTOS) on delete restrict on update restrict;
+alter table insumos add constraint FK_INSUMOS_GASTOS foreign key (ID_GASTOS)
+      references gastos (ID_GASTOS) on delete restrict on update restrict;
 
-alter table ODONTOLOGO add constraint FK_MEDICO_PERSONA foreign key (ID_PERSONA)
-      references PERSONA (ID_PERSONA) on delete restrict on update restrict;
+alter table odontologo add constraint FK_MEDICO_PERSONA foreign key (ID_PERSONA)
+      references persona (ID_PERSONA) on delete restrict on update restrict;
 
-alter table PACIENTE add constraint FK_PACIENTE_PERSONA foreign key (ID_PERSONA)
-      references PERSONA (ID_PERSONA) on delete restrict on update restrict;
+alter table paciente add constraint FK_PACIENTE_PERSONA foreign key (ID_PERSONA)
+      references persona (ID_PERSONA) on delete restrict on update restrict;
 
-alter table PASS add constraint FK_PASS_PERSONA foreign key (ID_PERSONA)
-      references PERSONA (ID_PERSONA) on delete restrict on update restrict;
+alter table pass add constraint FK_PASS_PERSONA foreign key (ID_PERSONA)
+      references persona (ID_PERSONA) on delete restrict on update restrict;
 
-alter table PERMISOS add constraint FK_PERMISOS_ACCESOS foreign key (COD_ACCESO)
-      references ACCESOS (COD_ACCESO) on delete restrict on update restrict;
+alter table permisos add constraint FK_PERMISOS_ACCESOS foreign key (COD_ACCESO)
+      references accesos (COD_ACCESO) on delete restrict on update restrict;
 
-alter table PERMISOS add constraint FK_PERMISOS_PERFIL foreign key (ID_PERFIL)
-      references PERFIL (ID_PERFIL) on delete restrict on update restrict;
+alter table permisos add constraint FK_PERMISOS_PERFIL foreign key (ID_PERFIL)
+      references perfil (ID_PERFIL) on delete restrict on update restrict;
 
-alter table PERSONA add constraint FK_PERSONA_PERFIL foreign key (ID_PERFIL)
-      references PERFIL (ID_PERFIL) on delete restrict on update restrict;
+alter table persona add constraint FK_PERSONA_PERFIL foreign key (ID_PERFIL)
+      references perfil (ID_PERFIL) on delete restrict on update restrict;
 
-alter table PIEZADENTAL add constraint FK_PIEZA_DENTAL foreign key (ID_TRATAMIENTO_DENTAL)
-      references TRATAMIENTODENTAL (ID_TRATAMIENTO_DENTAL) on delete restrict on update restrict;
+alter table piezadental add constraint FK_PIEZA_DENTAL foreign key (ID_TRATAMIENTO_DENTAL)
+      references tratamientodental (ID_TRATAMIENTO_DENTAL) on delete restrict on update restrict;
 
-alter table PIEZADENTAL add constraint FK_PIEZA_ORDEN foreign key (ID_ORDEN_LABORATORIO)
-      references ORDEN_DE_LABORATORIO (ID_ORDEN_LABORATORIO) on delete restrict on update restrict;
+alter table piezadental add constraint FK_PIEZA_ORDEN foreign key (ID_ORDEN_LABORATORIO)
+      references ordendelaboratorio (ID_ORDEN_LABORATORIO) on delete restrict on update restrict;
 
-alter table PIEZADENTAL add constraint FK_PIEZA_TIPOPIEZA foreign key (ID_TIPO_PIEZA)
-      references TIPODEPIEZA (ID_TIPO_PIEZA) on delete restrict on update restrict;
+alter table piezadental add constraint FK_PIEZA_TIPOPIEZA foreign key (ID_TIPO_PIEZA)
+      references tipodepieza (ID_TIPO_PIEZA) on delete restrict on update restrict;
 
-alter table REPORTE add constraint FK_REPORTE_PERSONA foreign key (ID_PERSONA)
-      references PERSONA (ID_PERSONA) on delete restrict on update restrict;
+alter table reporte add constraint FK_REPORTE_PERSONA foreign key (ID_PERSONA)
+      references persona (ID_PERSONA) on delete restrict on update restrict;
 
-alter table TRATAMIENTODENTAL add constraint FK_TRATAMIENTO_FICHA foreign key (ID_FICHA)
-      references FICHADENTAL (ID_FICHA) on delete restrict on update restrict;
+alter table tratamientodental add constraint FK_TRATAMIENTO_FICHA foreign key (ID_FICHA)
+      references fichadental (ID_FICHA) on delete restrict on update restrict;
 	  
 	  
 /*==============================================================*/
 /* Index: INDEX_ABONO_1                                         */
 /*==============================================================*/
-create index INDEX_ABONO_1 on ABONO
+create index INDEX_ABONO_1 on abono
 (
    ID_TRATAMIENTO_DENTAL
 );
@@ -405,7 +404,7 @@ create index INDEX_ABONO_1 on ABONO
 /*==============================================================*/
 /* Index: INDEX_CITA_1                                          */
 /*==============================================================*/
-create index INDEX_CITA_1 on CITA
+create index INDEX_CITA_1 on cita
 (
    ID_ODONTOLOGO
 );
@@ -413,7 +412,7 @@ create index INDEX_CITA_1 on CITA
 /*==============================================================*/
 /* Index: INDEX_CITA_2                                          */
 /*==============================================================*/
-create index INDEX_CITA_2 on CITA
+create index INDEX_CITA_2 on cita
 (
    ID_PACIENTE
 );
@@ -421,7 +420,7 @@ create index INDEX_CITA_2 on CITA
 /*==============================================================*/
 /* Index: INDEX_COMUNA_1                                        */
 /*==============================================================*/
-create index INDEX_COMUNA_1 on COMUNA
+create index INDEX_COMUNA_1 on comuna
 (
    ID_REGION
 );
@@ -429,7 +428,7 @@ create index INDEX_COMUNA_1 on COMUNA
 /*==============================================================*/
 /* Index: INDEX_DATOSDECONTACTO_1                               */
 /*==============================================================*/
-create index INDEX_DATOSDECONTACTO_1 on DATOSDECONTACTO
+create index INDEX_DATOSDECONTACTO_1 on datosdecontacto
 (
    ID_COMUNA
 );
@@ -437,7 +436,7 @@ create index INDEX_DATOSDECONTACTO_1 on DATOSDECONTACTO
 /*==============================================================*/
 /* Index: INDEX_FICHADENTAL_1                                   */
 /*==============================================================*/
-create index INDEX_FICHADENTAL_1 on FICHADENTAL
+create index INDEX_FICHADENTAL_1 on fichadental
 (
    ID_PACIENTE
 );
@@ -445,7 +444,7 @@ create index INDEX_FICHADENTAL_1 on FICHADENTAL
 /*==============================================================*/
 /* Index: INDEX_FICHADENTAL_2                                   */
 /*==============================================================*/
-create index INDEX_FICHADENTAL_2 on FICHADENTAL
+create index INDEX_FICHADENTAL_2 on fichadental
 (
    ID_PRESUPUESTO
 );
@@ -453,7 +452,7 @@ create index INDEX_FICHADENTAL_2 on FICHADENTAL
 /*==============================================================*/
 /* Index: INDEX_FICHADENTAL_3                                   */
 /*==============================================================*/
-create index INDEX_FICHADENTAL_3 on FICHADENTAL
+create index INDEX_FICHADENTAL_3 on fichadental
 (
    ID_ODONTOLOGO
 );
@@ -461,7 +460,7 @@ create index INDEX_FICHADENTAL_3 on FICHADENTAL
 /*==============================================================*/
 /* Index: INDEX_FUNCIONARIO_1                                   */
 /*==============================================================*/
-create index INDEX_FUNCIONARIO_1 on FUNCIONARIO
+create index INDEX_FUNCIONARIO_1 on funcionario
 (
    ID_PERSONA
 );
@@ -469,7 +468,7 @@ create index INDEX_FUNCIONARIO_1 on FUNCIONARIO
 /*==============================================================*/
 /* Index: INDEX_GASTOS_1                                        */
 /*==============================================================*/
-create index INDEX_GASTOS_1 on GASTOS
+create index INDEX_GASTOS_1 on gastos
 (
    ID_PERSONA
 );
@@ -477,7 +476,7 @@ create index INDEX_GASTOS_1 on GASTOS
 /*==============================================================*/
 /* Index: INDEX_INSUMOS_1                                       */
 /*==============================================================*/
-create index INDEX_INSUMOS_1 on INSUMOS
+create index INDEX_INSUMOS_1 on insumos
 (
    ID_AREA_INSUMO
 );
@@ -485,7 +484,7 @@ create index INDEX_INSUMOS_1 on INSUMOS
 /*==============================================================*/
 /* Index: INDEX_INSUMOS_2                                       */
 /*==============================================================*/
-create index INDEX_INSUMOS_2 on INSUMOS
+create index INDEX_INSUMOS_2 on insumos
 (
    ID_GASTOS
 );
@@ -493,7 +492,7 @@ create index INDEX_INSUMOS_2 on INSUMOS
 /*==============================================================*/
 /* Index: INDEX_ODONTOLOGO_1                                    */
 /*==============================================================*/
-create index INDEX_ODONTOLOGO_1 on ODONTOLOGO
+create index INDEX_ODONTOLOGO_1 on odontologo
 (
    ID_PERSONA
 );
@@ -501,7 +500,7 @@ create index INDEX_ODONTOLOGO_1 on ODONTOLOGO
 /*==============================================================*/
 /* Index: INDEX_PACIENTE_1                                      */
 /*==============================================================*/
-create index INDEX_PACIENTE_1 on PACIENTE
+create index INDEX_PACIENTE_1 on paciente
 (
    ID_PERSONA
 );
@@ -509,7 +508,7 @@ create index INDEX_PACIENTE_1 on PACIENTE
 /*==============================================================*/
 /* Index: INDEX_PERMISOS_1                                      */
 /*==============================================================*/
-create index INDEX_PERMISOS_1 on PERMISOS
+create index INDEX_PERMISOS_1 on permisos
 (
    COD_ACCESO
 );
@@ -517,7 +516,7 @@ create index INDEX_PERMISOS_1 on PERMISOS
 /*==============================================================*/
 /* Index: INDEX_PERSONA_1                                       */
 /*==============================================================*/
-create index INDEX_PERSONA_1 on PERSONA
+create index INDEX_PERSONA_1 on persona
 (
    ID_PERFIL
 );
@@ -525,7 +524,7 @@ create index INDEX_PERSONA_1 on PERSONA
 /*==============================================================*/
 /* Index: INDEX_PIEZADENTAL_1                                   */
 /*==============================================================*/
-create index INDEX_PIEZADENTAL_1 on PIEZADENTAL
+create index INDEX_PIEZADENTAL_1 on piezadental
 (
    ID_TRATAMIENTO_DENTAL
 );
@@ -533,7 +532,7 @@ create index INDEX_PIEZADENTAL_1 on PIEZADENTAL
 /*==============================================================*/
 /* Index: INDEX_PIEZADENTAL_2                                   */
 /*==============================================================*/
-create index INDEX_PIEZADENTAL_2 on PIEZADENTAL
+create index INDEX_PIEZADENTAL_2 on piezadental
 (
    ID_ORDEN_LABORATORIO
 );
@@ -541,7 +540,7 @@ create index INDEX_PIEZADENTAL_2 on PIEZADENTAL
 /*==============================================================*/
 /* Index: INDEX_PIEZADENTAL_3                                   */
 /*==============================================================*/
-create index INDEX_PIEZADENTAL_3 on PIEZADENTAL
+create index INDEX_PIEZADENTAL_3 on piezadental
 (
    ID_TIPO_PIEZA
 );
@@ -549,7 +548,7 @@ create index INDEX_PIEZADENTAL_3 on PIEZADENTAL
 /*==============================================================*/
 /* Index: INDEX_REPORTE_1                                       */
 /*==============================================================*/
-create index INDEX_REPORTE_1 on REPORTE
+create index INDEX_REPORTE_1 on reporte
 (
    ID_PERSONA
 );
@@ -557,7 +556,7 @@ create index INDEX_REPORTE_1 on REPORTE
 /*==============================================================*/
 /* Index: INDEX_TRATAMIENODENTAL_1                              */
 /*==============================================================*/
-create index INDEX_TRATAMIENODENTAL_1 on TRATAMIENTODENTAL
+create index INDEX_TRATAMIENODENTAL_1 on tratamientodental
 (
    ID_FICHA
 );
@@ -592,10 +591,10 @@ INSERT INTO `permisos`(`ID_PERFIL`, `COD_ACCESO`) VALUES (2,706);
 INSERT INTO `permisos`(`ID_PERFIL`, `COD_ACCESO`) VALUES (3,705);
 INSERT INTO `permisos`(`ID_PERFIL`, `COD_ACCESO`) VALUES (4,704);
 
-INSERT INTO `PERFIL` (`ID_PERFIL` ,`NOM_PERFIL`) VALUES (1,'Administrador');
-INSERT INTO `PERFIL` (`ID_PERFIL` ,`NOM_PERFIL`) VALUES (2,'Doctor');
-INSERT INTO `PERFIL` (`ID_PERFIL` ,`NOM_PERFIL`) VALUES (3,'Asistente');
-INSERT INTO `PERFIL` (`ID_PERFIL` ,`NOM_PERFIL`) VALUES (4,'Paciente');
+INSERT INTO  `perfil` (`ID_PERFIL` ,`NOM_PERFIL`) VALUES (1,'Administrador');
+INSERT INTO  `perfil` (`ID_PERFIL` ,`NOM_PERFIL`) VALUES (2,'Doctor');
+INSERT INTO  `perfil` (`ID_PERFIL` ,`NOM_PERFIL`) VALUES (3,'Asistente');
+INSERT INTO  `perfil` (`ID_PERFIL` ,`NOM_PERFIL`) VALUES (4,'Paciente');
 
 INSERT INTO `persona` (`ID_PERSONA`, `ID_PERFIL`, `RUT`, `DV`, `NOMBRE`, `APELLIDO_PATERNO`, `APELLIDO_MATERNO`, `FECHA_NAC`) VALUES (NULL, '1', '17231233', '2', 'Ada', 'Tatus', 'Boren', '1991-08-06');
 INSERT INTO `persona` (`ID_PERSONA`, `ID_PERFIL`, `RUT`, `DV`, `NOMBRE`, `APELLIDO_PATERNO`, `APELLIDO_MATERNO`, `FECHA_NAC`) VALUES (NULL, '2', '12323123', '3', 'Juan', 'Peres', 'Peres', '1992-08-11');
@@ -629,37 +628,37 @@ INSERT INTO  `gastos` (`ID_GASTOS` ,`ID_PERSONA` ,`MONTO_GASTOS` ,`DESCUENTO_GAS
 INSERT INTO  `gastos` (`ID_GASTOS` ,`ID_PERSONA` ,`MONTO_GASTOS` ,`DESCUENTO_GASTOS`) VALUES ('1',  '1',  '30000',  '40000');
 INSERT INTO  `gastos` (`ID_GASTOS` ,`ID_PERSONA` ,`MONTO_GASTOS` ,`DESCUENTO_GASTOS`) VALUES('2',  '1', '40000',  '30000');
 
-insert into `LISTA_PRECIOS` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null, "Examen Inicial,Plan De Tratamiento Y Presupuesto",21750);
-insert into `LISTA_PRECIOS` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Control Y Examen Periodico De Rigor",14500);
-insert into `LISTA_PRECIOS` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Interconsulta Con Informe Escrito 1 Sesion",29000);
-insert into `LISTA_PRECIOS` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Urgencia. Tratamiento Inicial 1 Sesion",14500);
-insert into `LISTA_PRECIOS` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Urgencia A Domicilio Id. Anterior",29000);
-insert into `LISTA_PRECIOS` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Urgencia En Hospital Id. Anterior",29000);
-insert into `LISTA_PRECIOS` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Estudio Preliminar Clinico, Rx Y Modelos",29000);
-insert into `LISTA_PRECIOS` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Informes Periciales 1 Hora Profesional",43500);
-insert into `LISTA_PRECIOS` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Consultorias Y Estudio Profesional: 1 Hora",43500);
-insert into `LISTA_PRECIOS` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Higiene O Profilaxis En Adultos",29000);
-insert into `LISTA_PRECIOS` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Higiene O Profilaxis En Niños",14500);
-insert into `LISTA_PRECIOS` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Instrucción Y Control Higiene Oral Adultos",14500);
-insert into `LISTA_PRECIOS` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Instrucción Y Control Higiene Oral Niños",14500);
-insert into `LISTA_PRECIOS` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Aplicación De Fluor En Colutorios (trat)",14500);
-insert into `LISTA_PRECIOS` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Aplicación Fluor Gel Total Niños Y Adultos",14500);
-insert into `LISTA_PRECIOS` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Aplicación Fluor Total Silano  ID",72500);
-insert into `LISTA_PRECIOS` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Aplicación Sellante Pieza Temp. Fotocurado",14500);
-insert into `LISTA_PRECIOS` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Aplicación Sellante Pieza Def. Fotocurado",21700);
-insert into `LISTA_PRECIOS` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Mantenedor Espacio Fijo",58000);
-insert into `LISTA_PRECIOS` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Mantenedor De Espacio Removible",58000);
-insert into `LISTA_PRECIOS` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Consulta Y Examen Maxilofacial",29000);
-insert into `LISTA_PRECIOS` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Interconsulta E Informe",43500);
-insert into `LISTA_PRECIOS` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Controles De La Especialidad",29000);
-insert into `LISTA_PRECIOS` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Interconsulta (junta De Especialistas)",58000);
-insert into `LISTA_PRECIOS` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Recargo Por Tratamiento Fuera Del Lugar Habitual",58000);
-insert into `LISTA_PRECIOS` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Exodoncia Simple",43500);
-insert into `LISTA_PRECIOS` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Exodoncia A Colgajo",58000);
-insert into `LISTA_PRECIOS` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Exodoncia De Incluidos",116000);
-insert into `LISTA_PRECIOS` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Exodoncia De 4 Terceros Molares Incluidos",290000);
+insert into `listaprecios` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null, "Examen Inicial,Plan De Tratamiento Y Presupuesto",21750);
+insert into `listaprecios` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Control Y Examen Periodico De Rigor",14500);
+insert into `listaprecios` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Interconsulta Con Informe Escrito 1 Sesion",29000);
+insert into `listaprecios` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Urgencia. Tratamiento Inicial 1 Sesion",14500);
+insert into `listaprecios` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Urgencia A Domicilio Id. Anterior",29000);
+insert into `listaprecios` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Urgencia En Hospital Id. Anterior",29000);
+insert into `listaprecios` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Estudio Preliminar Clinico, Rx Y Modelos",29000);
+insert into `listaprecios` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Informes Periciales 1 Hora Profesional",43500);
+insert into `listaprecios` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Consultorias Y Estudio Profesional: 1 Hora",43500);
+insert into `listaprecios` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Higiene O Profilaxis En Adultos",29000);
+insert into `listaprecios` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Higiene O Profilaxis En Niños",14500);
+insert into `listaprecios` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Instrucción Y Control Higiene Oral Adultos",14500);
+insert into `listaprecios` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Instrucción Y Control Higiene Oral Niños",14500);
+insert into `listaprecios` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Aplicación De Fluor En Colutorios (trat)",14500);
+insert into `listaprecios` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Aplicación Fluor Gel Total Niños Y Adultos",14500);
+insert into `listaprecios` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Aplicación Fluor Total Silano  ID",72500);
+insert into `listaprecios` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Aplicación Sellante Pieza Temp. Fotocurado",14500);
+insert into `listaprecios` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Aplicación Sellante Pieza Def. Fotocurado",21700);
+insert into `listaprecios` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Mantenedor Espacio Fijo",58000);
+insert into `listaprecios` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Mantenedor De Espacio Removible",58000);
+insert into `listaprecios` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Consulta Y Examen Maxilofacial",29000);
+insert into `listaprecios` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Interconsulta E Informe",43500);
+insert into `listaprecios` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Controles De La Especialidad",29000);
+insert into `listaprecios` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Interconsulta (junta De Especialistas)",58000);
+insert into `listaprecios` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Recargo Por Tratamiento Fuera Del Lugar Habitual",58000);
+insert into `listaprecios` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Exodoncia Simple",43500);
+insert into `listaprecios` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Exodoncia A Colgajo",58000);
+insert into `listaprecios` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Exodoncia De Incluidos",116000);
+insert into `listaprecios` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Exodoncia De 4 Terceros Molares Incluidos",290000);
 
-INSERT INTO  `SFH`.`ORDEN_DE_LABORATORIO` (`ID_ORDEN_LABORATORIO` ,`CLINICA` ,`BD` ,`BI` ,`PD` ,`PI` ,`FECHA_ENTREGA` ,`HORA_ENTREGA` ,`COLOR`) VALUES (NULL ,  'San Clemente',  'BD',  'BI',  'PD',  'PI',  '2013-08-26',  '13:00',  'BLANCO');
+INSERT INTO  `ordendelaboratorio` (`ID_ORDEN_LABORATORIO` ,`CLINICA` ,`BD` ,`BI` ,`PD` ,`PI` ,`FECHA_ENTREGA` ,`HORA_ENTREGA` ,`COLOR`) VALUES (NULL ,  'San Clemente',  'BD',  'BI',  'PD',  'PI',  '2013-08-26',  '13:00',  'BLANCO');
 
 
 INSERT INTO `funcionario` (`ID_FUNCIONARIO` ,`ID_PERSONA` ,`PUESTO_DE_TRABAJO`) VALUES ('1', '2', 'Dentista');
@@ -678,43 +677,43 @@ INSERT INTO `odontologo` (`ID_ODONTOLOGO`, `ID_PERSONA`, `ESPECIALIDAD`) VALUES 
 INSERT INTO `odontologo` (`ID_ODONTOLOGO`, `ID_PERSONA`, `ESPECIALIDAD`) VALUES ('4', '14', 'Ortodoncia');
 
 
-INSERT INTO `PRESUPUESTO` (`ID_PRESUPUESTO`, `VALORTOTAL`) VALUES ('1', '25000');
-INSERT INTO `PRESUPUESTO` (`ID_PRESUPUESTO`, `VALORTOTAL`) VALUES ('2', '50000');
-INSERT INTO `PRESUPUESTO` (`ID_PRESUPUESTO`, `VALORTOTAL`) VALUES ('3', '15000');
-INSERT INTO `PRESUPUESTO` (`ID_PRESUPUESTO`, `VALORTOTAL`) VALUES ('4', '32000');
+INSERT INTO `presupuesto` (`ID_PRESUPUESTO`, `VALORTOTAL`) VALUES ('1', '25000');
+INSERT INTO `presupuesto` (`ID_PRESUPUESTO`, `VALORTOTAL`) VALUES ('2', '50000');
+INSERT INTO `presupuesto` (`ID_PRESUPUESTO`, `VALORTOTAL`) VALUES ('3', '15000');
+INSERT INTO `presupuesto` (`ID_PRESUPUESTO`, `VALORTOTAL`) VALUES ('4', '32000');
 
-INSERT INTO `TIPODEPIEZA` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('1', 'Tercer Molar Superior Derecho', 'Tercer Molar Superior Derecho');
-INSERT INTO `TIPODEPIEZA` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('2', 'Segundo Molar Superior Derecho', 'Segundo Molar Superior Derecho');
-INSERT INTO `TIPODEPIEZA` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('3', 'Primer Molar Superior Derecho', 'Primer Molar Superior Derecho');
-INSERT INTO `TIPODEPIEZA` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('4', 'Segundo Premolar Superior Derecho', 'Segundo Premolar Superior Derecho');
-INSERT INTO `TIPODEPIEZA` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('5', 'Primer Premolar Superior Derecho', 'Primer Premolar Superior Derecho');
-INSERT INTO `TIPODEPIEZA` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('6', 'Canino Superior Derecho', 'Canino Superior Derecho');
-INSERT INTO `TIPODEPIEZA` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('7', 'Incisivo Lateral Superior Derecho', 'Incisivo Lateral Superior Derecho');
-INSERT INTO `TIPODEPIEZA` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('8', 'Incisivo Central Superior Derecho', 'Incisivo Central Superior Derecho');
-INSERT INTO `TIPODEPIEZA` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('9', 'Incisivo Central Superior Izquierdo', 'Incisivo Central Superior Izquierdo');
-INSERT INTO `TIPODEPIEZA` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('10', 'Incisivo Lateral Superior Izquierdo', 'Incisivo Lateral Superior Izquierdo');
-INSERT INTO `TIPODEPIEZA` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('11', 'Canino Superior Izquierdo', 'Canino Superior Izquierdo');
-INSERT INTO `TIPODEPIEZA` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('12', 'Primer Premolar Superior Izquierdo', 'Primer Premolar Superior Izquierdo');
-INSERT INTO `TIPODEPIEZA` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('13', 'Segundo Premolar Superior Izquierdo', 'Segundo Premolar Superior Izquierdo');
-INSERT INTO `TIPODEPIEZA` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('14', 'Primer Molar Superior Izquierdo', 'Primer Molar Superior Izquierdo');
-INSERT INTO `TIPODEPIEZA` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('15', 'Segundo Molar Superior Izquierdo', 'Segundo Molar Superior Izquierdo');
-INSERT INTO `TIPODEPIEZA` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('16', 'Tercer Molar Superior Izquierdo', 'Tercer Molar Superior Izquierdo');
-INSERT INTO `TIPODEPIEZA` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('17', 'Tercer Molar Inferior Derecho', 'Tercer Molar Inferior Derecho');
-INSERT INTO `TIPODEPIEZA` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('18', 'Segundo Molar Inferior Derecho', 'Segundo Molar Inferior Derecho');
-INSERT INTO `TIPODEPIEZA` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('19', 'Primer Molar Inferior Derecho', 'Primer Molar Inferior Derecho');
-INSERT INTO `TIPODEPIEZA` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('20', 'Segundo Premolar Inferior Derecho', 'Segundo Premolar Inferior Derecho');
-INSERT INTO `TIPODEPIEZA` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('21', 'Primer Premolar Inferior Derecho', 'Primer Premolar Inferior Derecho');
-INSERT INTO `TIPODEPIEZA` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('22', 'Canino Inferior Derecho', 'Canino Inferior Derecho');
-INSERT INTO `TIPODEPIEZA` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('23', 'Incisivo Lateral Inferior Derecho', 'Incisivo Lateral Inferior Derecho');
-INSERT INTO `TIPODEPIEZA` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('24', 'Incisivo Central Inferior Derecho', 'Incisivo Central Inferior Derecho');
-INSERT INTO `TIPODEPIEZA` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('25', 'Incisivo Central Inferior Izquierdo', 'Incisivo Central Inferior Izquierdo');
-INSERT INTO `TIPODEPIEZA` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('26', 'Incisivo Lateral Inferior Izquierdo', 'Incisivo Lateral Inferior Izquierdo');
-INSERT INTO `TIPODEPIEZA` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('27', 'Canino Inferior Izquierdo', 'Canino Inferior Izquierdo');
-INSERT INTO `TIPODEPIEZA` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('28', 'Primer Premolar Inferior Izquierdo', 'Primer Premolar Inferior Izquierdo');
-INSERT INTO `TIPODEPIEZA` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('29', 'Segundo Premolar Inferior Izquierdo', 'Segundo Premolar Inferior Izquierdo');
-INSERT INTO `TIPODEPIEZA` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('30', 'Primer Molar Inferior Izquierdo', 'Primer Molar Inferior Izquierdo');
-INSERT INTO `TIPODEPIEZA` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('31', 'Segundo Molar Inferior Izquierdo', 'Segundo Molar Inferior Izquierdo');
-INSERT INTO `TIPODEPIEZA` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('32', 'Tercer Molar Inferior Izquierdo', 'Tercer Molar Inferior Izquierdo');
+INSERT INTO `tipodepieza` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('1', 'Tercer Molar Superior Derecho', 'Tercer Molar Superior Derecho');
+INSERT INTO `tipodepieza` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('2', 'Segundo Molar Superior Derecho', 'Segundo Molar Superior Derecho');
+INSERT INTO `tipodepieza` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('3', 'Primer Molar Superior Derecho', 'Primer Molar Superior Derecho');
+INSERT INTO `tipodepieza` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('4', 'Segundo Premolar Superior Derecho', 'Segundo Premolar Superior Derecho');
+INSERT INTO `tipodepieza` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('5', 'Primer Premolar Superior Derecho', 'Primer Premolar Superior Derecho');
+INSERT INTO `tipodepieza` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('6', 'Canino Superior Derecho', 'Canino Superior Derecho');
+INSERT INTO `tipodepieza` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('7', 'Incisivo Lateral Superior Derecho', 'Incisivo Lateral Superior Derecho');
+INSERT INTO `tipodepieza` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('8', 'Incisivo Central Superior Derecho', 'Incisivo Central Superior Derecho');
+INSERT INTO `tipodepieza` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('9', 'Incisivo Central Superior Izquierdo', 'Incisivo Central Superior Izquierdo');
+INSERT INTO `tipodepieza` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('10', 'Incisivo Lateral Superior Izquierdo', 'Incisivo Lateral Superior Izquierdo');
+INSERT INTO `tipodepieza` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('11', 'Canino Superior Izquierdo', 'Canino Superior Izquierdo');
+INSERT INTO `tipodepieza` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('12', 'Primer Premolar Superior Izquierdo', 'Primer Premolar Superior Izquierdo');
+INSERT INTO `tipodepieza` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('13', 'Segundo Premolar Superior Izquierdo', 'Segundo Premolar Superior Izquierdo');
+INSERT INTO `tipodepieza` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('14', 'Primer Molar Superior Izquierdo', 'Primer Molar Superior Izquierdo');
+INSERT INTO `tipodepieza` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('15', 'Segundo Molar Superior Izquierdo', 'Segundo Molar Superior Izquierdo');
+INSERT INTO `tipodepieza` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('16', 'Tercer Molar Superior Izquierdo', 'Tercer Molar Superior Izquierdo');
+INSERT INTO `tipodepieza` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('17', 'Tercer Molar Inferior Derecho', 'Tercer Molar Inferior Derecho');
+INSERT INTO `tipodepieza` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('18', 'Segundo Molar Inferior Derecho', 'Segundo Molar Inferior Derecho');
+INSERT INTO `tipodepieza` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('19', 'Primer Molar Inferior Derecho', 'Primer Molar Inferior Derecho');
+INSERT INTO `tipodepieza` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('20', 'Segundo Premolar Inferior Derecho', 'Segundo Premolar Inferior Derecho');
+INSERT INTO `tipodepieza` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('21', 'Primer Premolar Inferior Derecho', 'Primer Premolar Inferior Derecho');
+INSERT INTO `tipodepieza` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('22', 'Canino Inferior Derecho', 'Canino Inferior Derecho');
+INSERT INTO `tipodepieza` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('23', 'Incisivo Lateral Inferior Derecho', 'Incisivo Lateral Inferior Derecho');
+INSERT INTO `tipodepieza` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('24', 'Incisivo Central Inferior Derecho', 'Incisivo Central Inferior Derecho');
+INSERT INTO `tipodepieza` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('25', 'Incisivo Central Inferior Izquierdo', 'Incisivo Central Inferior Izquierdo');
+INSERT INTO `tipodepieza` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('26', 'Incisivo Lateral Inferior Izquierdo', 'Incisivo Lateral Inferior Izquierdo');
+INSERT INTO `tipodepieza` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('27', 'Canino Inferior Izquierdo', 'Canino Inferior Izquierdo');
+INSERT INTO `tipodepieza` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('28', 'Primer Premolar Inferior Izquierdo', 'Primer Premolar Inferior Izquierdo');
+INSERT INTO `tipodepieza` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('29', 'Segundo Premolar Inferior Izquierdo', 'Segundo Premolar Inferior Izquierdo');
+INSERT INTO `tipodepieza` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('30', 'Primer Molar Inferior Izquierdo', 'Primer Molar Inferior Izquierdo');
+INSERT INTO `tipodepieza` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('31', 'Segundo Molar Inferior Izquierdo', 'Segundo Molar Inferior Izquierdo');
+INSERT INTO `tipodepieza` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('32', 'Tercer Molar Inferior Izquierdo', 'Tercer Molar Inferior Izquierdo');
 
 INSERT INTO `fichadental` (`ID_FICHA`, `ID_PACIENTE`, `ID_PRESUPUESTO`, `ID_ODONTOLOGO`, `FECH_INGRESO`, `ANAMNESIS`) VALUES ('1', '1', '1', '1', '2013-05-06', 'Hipertension');
 INSERT INTO `fichadental` (`ID_FICHA`, `ID_PACIENTE`, `ID_PRESUPUESTO`, `ID_ODONTOLOGO`, `FECH_INGRESO`, `ANAMNESIS`) VALUES ('2', '2', '2', '2', '2013-06-17', 'Diabetes');
