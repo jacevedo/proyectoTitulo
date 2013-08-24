@@ -586,15 +586,15 @@ para manejar los módulos asociados a la administración de pacientes.');
 INSERT INTO `accesos`(`COD_ACCESO`, `DESCRIPCION_ACCESO`) VALUES (704,'Usuario Paciente: Posee las credenciales necesarias 
 para acceder al modulo para pacientes de la clínica.');
 
-INSERT INTO `permisos`(`ID_PERFIL`, `COD_ACCESO`) VALUES (1,707);
-INSERT INTO `permisos`(`ID_PERFIL`, `COD_ACCESO`) VALUES (2,706);
-INSERT INTO `permisos`(`ID_PERFIL`, `COD_ACCESO`) VALUES (3,705);
-INSERT INTO `permisos`(`ID_PERFIL`, `COD_ACCESO`) VALUES (4,704);
-
 INSERT INTO  `perfil` (`ID_PERFIL` ,`NOM_PERFIL`) VALUES (1,'Administrador');
 INSERT INTO  `perfil` (`ID_PERFIL` ,`NOM_PERFIL`) VALUES (2,'Doctor');
 INSERT INTO  `perfil` (`ID_PERFIL` ,`NOM_PERFIL`) VALUES (3,'Asistente');
 INSERT INTO  `perfil` (`ID_PERFIL` ,`NOM_PERFIL`) VALUES (4,'Paciente');
+
+INSERT INTO `permisos`(`ID_PERFIL`, `COD_ACCESO`) VALUES (1,707);
+INSERT INTO `permisos`(`ID_PERFIL`, `COD_ACCESO`) VALUES (2,706);
+INSERT INTO `permisos`(`ID_PERFIL`, `COD_ACCESO`) VALUES (3,705);
+INSERT INTO `permisos`(`ID_PERFIL`, `COD_ACCESO`) VALUES (4,704);
 
 INSERT INTO `persona` (`ID_PERSONA`, `ID_PERFIL`, `RUT`, `DV`, `NOMBRE`, `APELLIDO_PATERNO`, `APELLIDO_MATERNO`, `FECHA_NAC`) VALUES (NULL, '1', '17231233', '2', 'Ada', 'Tatus', 'Boren', '1991-08-06');
 INSERT INTO `persona` (`ID_PERSONA`, `ID_PERFIL`, `RUT`, `DV`, `NOMBRE`, `APELLIDO_PATERNO`, `APELLIDO_MATERNO`, `FECHA_NAC`) VALUES (NULL, '2', '12323123', '3', 'Juan', 'Peres', 'Peres', '1992-08-11');
@@ -973,9 +973,9 @@ INSERT INTO `comuna` (`ID_COMUNA`, `ID_REGION`, `NOM_COMUNA`) VALUES
 (346, 13, 'Peñaflor');
 
 
-INSERT INTO  `gastos` (`ID_GASTOS` ,`ID_PERSONA` ,`MONTO_GASTOS` ,`DESCUENTO_GASTOS`) VALUES('0',  '1', '40000',  '30000');
-INSERT INTO  `gastos` (`ID_GASTOS` ,`ID_PERSONA` ,`MONTO_GASTOS` ,`DESCUENTO_GASTOS`) VALUES ('1',  '1',  '30000',  '40000');
-INSERT INTO  `gastos` (`ID_GASTOS` ,`ID_PERSONA` ,`MONTO_GASTOS` ,`DESCUENTO_GASTOS`) VALUES('2',  '1', '40000',  '30000');
+INSERT INTO  `gastos` (`ID_GASTOS` ,`ID_PERSONA` ,`MONTO_GASTOS` ,`DESCUENTO_GASTOS`) VALUES ('1', '1', '40000', '30000');
+INSERT INTO  `gastos` (`ID_GASTOS` ,`ID_PERSONA` ,`MONTO_GASTOS` ,`DESCUENTO_GASTOS`) VALUES ('2', '1', '30000', '40000');
+INSERT INTO  `gastos` (`ID_GASTOS` ,`ID_PERSONA` ,`MONTO_GASTOS` ,`DESCUENTO_GASTOS`) VALUES ('3', '1', '40000', '30000');
 
 insert into `listaprecios` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null, "Examen Inicial,Plan De Tratamiento Y Presupuesto",21750);
 insert into `listaprecios` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Control Y Examen Periodico De Rigor",14500);
@@ -1022,8 +1022,8 @@ INSERT INTO `paciente` (`ID_PACIENTE`, `ID_PERSONA`, `FECHA_INGRESO`) VALUES ('4
 
 INSERT INTO `odontologo` (`ID_ODONTOLOGO`, `ID_PERSONA`, `ESPECIALIDAD`) VALUES ('1', '2', 'Endodoncia');
 INSERT INTO `odontologo` (`ID_ODONTOLOGO`, `ID_PERSONA`, `ESPECIALIDAD`) VALUES ('2', '5', 'Ortodoncia');
-INSERT INTO `odontologo` (`ID_ODONTOLOGO`, `ID_PERSONA`, `ESPECIALIDAD`) VALUES ('3', '13', 'Prostodoncia');
-INSERT INTO `odontologo` (`ID_ODONTOLOGO`, `ID_PERSONA`, `ESPECIALIDAD`) VALUES ('4', '14', 'Ortodoncia');
+INSERT INTO `odontologo` (`ID_ODONTOLOGO`, `ID_PERSONA`, `ESPECIALIDAD`) VALUES ('3', '10', 'Prostodoncia');
+INSERT INTO `odontologo` (`ID_ODONTOLOGO`, `ID_PERSONA`, `ESPECIALIDAD`) VALUES ('4', '11', 'Ortodoncia');
 
 
 INSERT INTO `presupuesto` (`ID_PRESUPUESTO`, `VALORTOTAL`) VALUES ('1', '25000');
