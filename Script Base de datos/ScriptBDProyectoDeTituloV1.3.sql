@@ -183,7 +183,7 @@ create table ordendelaboratorio
 /*==============================================================*/
 create table paciente
 (
-   ID_PACIENTE          int not null,
+   ID_PACIENTE          int not null auto_increment,
    ID_PERSONA           int,
    FECHA_INGRESO        date,
    primary key (ID_PACIENTE)
@@ -1029,10 +1029,10 @@ INSERT INTO `funcionario` (`ID_FUNCIONARIO` ,`ID_PERSONA` ,`PUESTO_DE_TRABAJO`) 
 INSERT INTO `funcionario` (`ID_FUNCIONARIO`, `ID_PERSONA`, `PUESTO_DE_TRABAJO`) VALUES ('3', '5', 'Dentista');
 INSERT INTO `funcionario` (`ID_FUNCIONARIO`, `ID_PERSONA`, `PUESTO_DE_TRABAJO`) VALUES ('4', '6', 'Asistente Dental');
 
-INSERT INTO `paciente` (`ID_PACIENTE`, `ID_PERSONA`, `FECHA_INGRESO`) VALUES ('1', '4', '2013-04-01');
-INSERT INTO `paciente` (`ID_PACIENTE`, `ID_PERSONA`, `FECHA_INGRESO`) VALUES ('2', '7', '2013-05-16');
-INSERT INTO `paciente` (`ID_PACIENTE`, `ID_PERSONA`, `FECHA_INGRESO`) VALUES ('3', '8', '2013-07-01');
-INSERT INTO `paciente` (`ID_PACIENTE`, `ID_PERSONA`, `FECHA_INGRESO`) VALUES ('4', '9', '2013-08-11');
+INSERT INTO `paciente` (`ID_PACIENTE`, `ID_PERSONA`, `FECHA_INGRESO`) VALUES (null, '4', '2013-04-01');
+INSERT INTO `paciente` (`ID_PACIENTE`, `ID_PERSONA`, `FECHA_INGRESO`) VALUES (null, '7', '2013-05-16');
+INSERT INTO `paciente` (`ID_PACIENTE`, `ID_PERSONA`, `FECHA_INGRESO`) VALUES (null, '8', '2013-07-01');
+INSERT INTO `paciente` (`ID_PACIENTE`, `ID_PERSONA`, `FECHA_INGRESO`) VALUES (null, '9', '2013-08-11');
 
 INSERT INTO `odontologo` (`ID_ODONTOLOGO`, `ID_PERSONA`, `ESPECIALIDAD`) VALUES ('1', '2', 'Endodoncia');
 INSERT INTO `odontologo` (`ID_ODONTOLOGO`, `ID_PERSONA`, `ESPECIALIDAD`) VALUES ('2', '5', 'Ortodoncia');
