@@ -50,6 +50,48 @@ drop table if exists TRATAMIENTODENTAL;
 
 drop table if exists VERSION;
 
+drop index INDEX_ABONO_1 on ABONO;
+
+drop index INDEX_CITA_2 on CITA;
+
+drop index INDEX_CITA_1 on CITA;
+
+drop index INDEX_COMUNA_1 on COMUNA;
+
+drop index INDEX_DATOSDECONTACTO_1 on DATOSDECONTACTO;
+
+drop index INDEX_FICHADENTAL_3 on FICHADENTAL;
+
+drop index INDEX_FICHADENTAL_2 on FICHADENTAL;
+
+drop index INDEX_FICHADENTAL_1 on FICHADENTAL;
+
+drop index INDEX_FUNCIONARIO_1 on FUNCIONARIO;
+
+drop index INDEX_GASTOS_1 on GASTOS;
+
+drop index INDEX_INSUMOS_2 on INSUMOS;
+
+drop index INDEX_INSUMOS_1 on INSUMOS;
+
+drop index INDEX_ODONTOLOGO_1 on ODONTOLOGO;
+
+drop index INDEX_PACIENTE_1 on PACIENTE;
+
+drop index INDEX_PERMISOS_1 on PERMISOS;
+
+drop index INDEX_PERSONA_1 on PERSONA;
+
+drop index INDEX_PIEZADENTAL_3 on PIEZADENTAL;
+
+drop index INDEX_PIEZADENTAL_2 on PIEZADENTAL;
+
+drop index INDEX_PIEZADENTAL_1 on PIEZADENTAL;
+
+drop index INDEX_REPORTE_1 on REPORTE;
+
+drop index INDEX_TRATAMIENODENTAL_1 on TRATAMIENTODENTAL;
+
 drop database if exists SFH;
 
 create database SFH character set utf8 collate utf8_general_ci;
@@ -445,3 +487,175 @@ alter table REPORTE add constraint FK_REPORTE_PERSONA foreign key (ID_PERSONA)
 
 alter table TRATAMIENTODENTAL add constraint FK_TRATAMIENTO_FICHA foreign key (ID_FICHA)
       references FICHADENTAL (ID_FICHA) on delete restrict on update restrict;
+	  
+	  
+/*==============================================================*/
+/* Index: INDEX_ABONO_1                                         */
+/*==============================================================*/
+create index INDEX_ABONO_1 on ABONO
+(
+   ID_TRATAMIENTO_DENTAL
+);
+
+/*==============================================================*/
+/* Index: INDEX_CITA_1                                          */
+/*==============================================================*/
+create index INDEX_CITA_1 on CITA
+(
+   ID_ODONTOLOGO
+);
+
+/*==============================================================*/
+/* Index: INDEX_CITA_2                                          */
+/*==============================================================*/
+create index INDEX_CITA_2 on CITA
+(
+   ID_PACIENTE
+);
+
+/*==============================================================*/
+/* Index: INDEX_COMUNA_1                                        */
+/*==============================================================*/
+create index INDEX_COMUNA_1 on COMUNA
+(
+   ID_REGION
+);
+
+/*==============================================================*/
+/* Index: INDEX_DATOSDECONTACTO_1                               */
+/*==============================================================*/
+create index INDEX_DATOSDECONTACTO_1 on DATOSDECONTACTO
+(
+   ID_COMUNA
+);
+
+/*==============================================================*/
+/* Index: INDEX_FICHADENTAL_1                                   */
+/*==============================================================*/
+create index INDEX_FICHADENTAL_1 on FICHADENTAL
+(
+   ID_PACIENTE
+);
+
+/*==============================================================*/
+/* Index: INDEX_FICHADENTAL_2                                   */
+/*==============================================================*/
+create index INDEX_FICHADENTAL_2 on FICHADENTAL
+(
+   ID_PRESUPUESTO
+);
+
+/*==============================================================*/
+/* Index: INDEX_FICHADENTAL_3                                   */
+/*==============================================================*/
+create index INDEX_FICHADENTAL_3 on FICHADENTAL
+(
+   ID_ODONTOLOGO
+);
+
+/*==============================================================*/
+/* Index: INDEX_FUNCIONARIO_1                                   */
+/*==============================================================*/
+create index INDEX_FUNCIONARIO_1 on FUNCIONARIO
+(
+   ID_PERSONA
+);
+
+/*==============================================================*/
+/* Index: INDEX_GASTOS_1                                        */
+/*==============================================================*/
+create index INDEX_GASTOS_1 on GASTOS
+(
+   ID_PERSONA
+);
+
+/*==============================================================*/
+/* Index: INDEX_INSUMOS_1                                       */
+/*==============================================================*/
+create index INDEX_INSUMOS_1 on INSUMOS
+(
+   ID_AREA_INSUMO
+);
+
+/*==============================================================*/
+/* Index: INDEX_INSUMOS_2                                       */
+/*==============================================================*/
+create index INDEX_INSUMOS_2 on INSUMOS
+(
+   ID_GASTOS
+);
+
+/*==============================================================*/
+/* Index: INDEX_ODONTOLOGO_1                                    */
+/*==============================================================*/
+create index INDEX_ODONTOLOGO_1 on ODONTOLOGO
+(
+   ID_PERSONA
+);
+
+/*==============================================================*/
+/* Index: INDEX_PACIENTE_1                                      */
+/*==============================================================*/
+create index INDEX_PACIENTE_1 on PACIENTE
+(
+   ID_PERSONA
+);
+
+/*==============================================================*/
+/* Index: INDEX_PERMISOS_1                                      */
+/*==============================================================*/
+create index INDEX_PERMISOS_1 on PERMISOS
+(
+   COD_ACCESO
+);
+
+/*==============================================================*/
+/* Index: INDEX_PERSONA_1                                       */
+/*==============================================================*/
+create index INDEX_PERSONA_1 on PERSONA
+(
+   ID_PERFIL
+);
+
+/*==============================================================*/
+/* Index: INDEX_PIEZADENTAL_1                                   */
+/*==============================================================*/
+create index INDEX_PIEZADENTAL_1 on PIEZADENTAL
+(
+   ID_TRATAMIENTO_DENTAL
+);
+
+/*==============================================================*/
+/* Index: INDEX_PIEZADENTAL_2                                   */
+/*==============================================================*/
+create index INDEX_PIEZADENTAL_2 on PIEZADENTAL
+(
+   ID_ORDEN_LABORATORIO
+);
+
+/*==============================================================*/
+/* Index: INDEX_PIEZADENTAL_3                                   */
+/*==============================================================*/
+create index INDEX_PIEZADENTAL_3 on PIEZADENTAL
+(
+   ID_TIPO_PIEZA
+);
+
+/*==============================================================*/
+/* Index: INDEX_REPORTE_1                                       */
+/*==============================================================*/
+create index INDEX_REPORTE_1 on REPORTE
+(
+   ID_PERSONA
+);
+
+/*==============================================================*/
+/* Index: INDEX_TRATAMIENODENTAL_1                              */
+/*==============================================================*/
+create index INDEX_TRATAMIENODENTAL_1 on TRATAMIENTODENTAL
+(
+   ID_FICHA
+);
+
+	  
+	  
