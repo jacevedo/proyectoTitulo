@@ -29,7 +29,7 @@ create table accesos
 /*==============================================================*/
 create table areainsumo
 (
-   ID_AREA_INSUMO       int not null,
+   ID_AREA_INSUMO       int not null auto_increment,
    NOMBRE_AREA          varchar(50),
    DESCRIPCION_AREA     text,
    primary key (ID_AREA_INSUMO)
@@ -1078,3 +1078,8 @@ INSERT INTO `abono` (`ID_ABONO`, `ID_TRATAMIENTO_DENTAL`, `FECHA_DE_ABONO`, `MON
 INSERT INTO `abono` (`ID_ABONO`, `ID_TRATAMIENTO_DENTAL`, `FECHA_DE_ABONO`, `MONTO`) VALUES ('2', '2', '2013-06-24', '10000');
 INSERT INTO `abono` (`ID_ABONO`, `ID_TRATAMIENTO_DENTAL`, `FECHA_DE_ABONO`, `MONTO`) VALUES ('3', '3', '2013-07-08', '10000');
 INSERT INTO `abono` (`ID_ABONO`, `ID_TRATAMIENTO_DENTAL`, `FECHA_DE_ABONO`, `MONTO`) VALUES ('4', '4', '2013-08-19', '9000');
+
+INSERT INTO  `areainsumo` (`ID_AREA_INSUMO` ,`NOMBRE_AREA` ,`DESCRIPCION_AREA`) VALUES (NULL ,  'Oficina',  'Insumos de Oficina');
+INSERT INTO  `areainsumo` (`ID_AREA_INSUMO` ,`NOMBRE_AREA` ,`DESCRIPCION_AREA`) VALUES (NULL ,  'esterilizacion',  'Insumos de esterilizacion');
+INSERT INTO  `areainsumo` (`ID_AREA_INSUMO` ,`NOMBRE_AREA` ,`DESCRIPCION_AREA`) VALUES (NULL ,  'Jeringas',  'Jeringas para usar datos');
+INSERT INTO  `areainsumo` (`ID_AREA_INSUMO` ,`NOMBRE_AREA` ,`DESCRIPCION_AREA`) VALUES (NULL ,  'Medicamentes',  'Medicamentos de los pacientes');
