@@ -652,7 +652,7 @@ insert into `listaprecios` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,
 insert into `listaprecios` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Exodoncia De Incluidos",116000);
 insert into `listaprecios` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Exodoncia De 4 Terceros Molares Incluidos",290000);
 
-INSERT INTO  `SFH`.`ORDEN_DE_LABORATORIO` (`ID_ORDEN_LABORATORIO` ,`CLINICA` ,`BD` ,`BI` ,`PD` ,`PI` ,`FECHA_ENTREGA` ,`HORA_ENTREGA` ,`COLOR`) VALUES (NULL ,  'San Clemente',  'BD',  'BI',  'PD',  'PI',  '2013-08-26',  '13:00',  'BLANCO');
+INSERT INTO  `ordendelaboratorio` (`ID_ORDEN_LABORATORIO` ,`CLINICA` ,`BD` ,`BI` ,`PD` ,`PI` ,`FECHA_ENTREGA` ,`HORA_ENTREGA` ,`COLOR`) VALUES (NULL ,  'San Clemente',  'BD',  'BI',  'PD',  'PI',  '2013-08-26',  '13:00',  'BLANCO');
 
 
 INSERT INTO `funcionario` (`ID_FUNCIONARIO` ,`ID_PERSONA` ,`PUESTO_DE_TRABAJO`) VALUES ('1', '2', 'Dentista');
@@ -671,41 +671,41 @@ INSERT INTO `odontologo` (`ID_ODONTOLOGO`, `ID_PERSONA`, `ESPECIALIDAD`) VALUES 
 INSERT INTO `odontologo` (`ID_ODONTOLOGO`, `ID_PERSONA`, `ESPECIALIDAD`) VALUES ('4', '14', 'Ortodoncia');
 
 
-INSERT INTO `PRESUPUESTO` (`ID_PRESUPUESTO`, `VALORTOTAL`) VALUES ('1', '25000');
-INSERT INTO `PRESUPUESTO` (`ID_PRESUPUESTO`, `VALORTOTAL`) VALUES ('2', '50000');
-INSERT INTO `PRESUPUESTO` (`ID_PRESUPUESTO`, `VALORTOTAL`) VALUES ('3', '15000');
-INSERT INTO `PRESUPUESTO` (`ID_PRESUPUESTO`, `VALORTOTAL`) VALUES ('4', '32000');
+INSERT INTO `presupuesto` (`ID_PRESUPUESTO`, `VALORTOTAL`) VALUES ('1', '25000');
+INSERT INTO `presupuesto` (`ID_PRESUPUESTO`, `VALORTOTAL`) VALUES ('2', '50000');
+INSERT INTO `presupuesto` (`ID_PRESUPUESTO`, `VALORTOTAL`) VALUES ('3', '15000');
+INSERT INTO `presupuesto` (`ID_PRESUPUESTO`, `VALORTOTAL`) VALUES ('4', '32000');
 
-INSERT INTO `TIPODEPIEZA` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('1', 'Tercer Molar Superior Derecho', 'Tercer Molar Superior Derecho');
-INSERT INTO `TIPODEPIEZA` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('2', 'Segundo Molar Superior Derecho', 'Segundo Molar Superior Derecho');
-INSERT INTO `TIPODEPIEZA` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('3', 'Primer Molar Superior Derecho', 'Primer Molar Superior Derecho');
-INSERT INTO `TIPODEPIEZA` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('4', 'Segundo Premolar Superior Derecho', 'Segundo Premolar Superior Derecho');
-INSERT INTO `TIPODEPIEZA` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('5', 'Primer Premolar Superior Derecho', 'Primer Premolar Superior Derecho');
-INSERT INTO `TIPODEPIEZA` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('6', 'Canino Superior Derecho', 'Canino Superior Derecho');
-INSERT INTO `TIPODEPIEZA` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('7', 'Incisivo Lateral Superior Derecho', 'Incisivo Lateral Superior Derecho');
-INSERT INTO `TIPODEPIEZA` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('8', 'Incisivo Central Superior Derecho', 'Incisivo Central Superior Derecho');
-INSERT INTO `TIPODEPIEZA` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('9', 'Incisivo Central Superior Izquierdo', 'Incisivo Central Superior Izquierdo');
-INSERT INTO `TIPODEPIEZA` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('10', 'Incisivo Lateral Superior Izquierdo', 'Incisivo Lateral Superior Izquierdo');
-INSERT INTO `TIPODEPIEZA` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('11', 'Canino Superior Izquierdo', 'Canino Superior Izquierdo');
-INSERT INTO `TIPODEPIEZA` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('12', 'Primer Premolar Superior Izquierdo', 'Primer Premolar Superior Izquierdo');
-INSERT INTO `TIPODEPIEZA` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('13', 'Segundo Premolar Superior Izquierdo', 'Segundo Premolar Superior Izquierdo');
-INSERT INTO `TIPODEPIEZA` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('14', 'Primer Molar Superior Izquierdo', 'Primer Molar Superior Izquierdo');
-INSERT INTO `TIPODEPIEZA` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('15', 'Segundo Molar Superior Izquierdo', 'Segundo Molar Superior Izquierdo');
-INSERT INTO `TIPODEPIEZA` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('16', 'Tercer Molar Superior Izquierdo', 'Tercer Molar Superior Izquierdo');
-INSERT INTO `TIPODEPIEZA` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('17', 'Tercer Molar Inferior Derecho', 'Tercer Molar Inferior Derecho');
-INSERT INTO `TIPODEPIEZA` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('18', 'Segundo Molar Inferior Derecho', 'Segundo Molar Inferior Derecho');
-INSERT INTO `TIPODEPIEZA` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('19', 'Primer Molar Inferior Derecho', 'Primer Molar Inferior Derecho');
-INSERT INTO `TIPODEPIEZA` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('20', 'Segundo Premolar Inferior Derecho', 'Segundo Premolar Inferior Derecho');
-INSERT INTO `TIPODEPIEZA` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('21', 'Primer Premolar Inferior Derecho', 'Primer Premolar Inferior Derecho');
-INSERT INTO `TIPODEPIEZA` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('22', 'Canino Inferior Derecho', 'Canino Inferior Derecho');
-INSERT INTO `TIPODEPIEZA` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('23', 'Incisivo Lateral Inferior Derecho', 'Incisivo Lateral Inferior Derecho');
-INSERT INTO `TIPODEPIEZA` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('24', 'Incisivo Central Inferior Derecho', 'Incisivo Central Inferior Derecho');
-INSERT INTO `TIPODEPIEZA` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('25', 'Incisivo Central Inferior Izquierdo', 'Incisivo Central Inferior Izquierdo');
-INSERT INTO `TIPODEPIEZA` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('26', 'Incisivo Lateral Inferior Izquierdo', 'Incisivo Lateral Inferior Izquierdo');
-INSERT INTO `TIPODEPIEZA` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('27', 'Canino Inferior Izquierdo', 'Canino Inferior Izquierdo');
-INSERT INTO `TIPODEPIEZA` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('28', 'Primer Premolar Inferior Izquierdo', 'Primer Premolar Inferior Izquierdo');
-INSERT INTO `TIPODEPIEZA` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('29', 'Segundo Premolar Inferior Izquierdo', 'Segundo Premolar Inferior Izquierdo');
-INSERT INTO `TIPODEPIEZA` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('30', 'Primer Molar Inferior Izquierdo', 'Primer Molar Inferior Izquierdo');
-INSERT INTO `TIPODEPIEZA` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('31', 'Segundo Molar Inferior Izquierdo', 'Segundo Molar Inferior Izquierdo');
-INSERT INTO `TIPODEPIEZA` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('32', 'Tercer Molar Inferior Izquierdo', 'Tercer Molar Inferior Izquierdo');
+INSERT INTO `tipodepieza` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('1', 'Tercer Molar Superior Derecho', 'Tercer Molar Superior Derecho');
+INSERT INTO `tipodepieza` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('2', 'Segundo Molar Superior Derecho', 'Segundo Molar Superior Derecho');
+INSERT INTO `tipodepieza` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('3', 'Primer Molar Superior Derecho', 'Primer Molar Superior Derecho');
+INSERT INTO `tipodepieza` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('4', 'Segundo Premolar Superior Derecho', 'Segundo Premolar Superior Derecho');
+INSERT INTO `tipodepieza` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('5', 'Primer Premolar Superior Derecho', 'Primer Premolar Superior Derecho');
+INSERT INTO `tipodepieza` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('6', 'Canino Superior Derecho', 'Canino Superior Derecho');
+INSERT INTO `tipodepieza` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('7', 'Incisivo Lateral Superior Derecho', 'Incisivo Lateral Superior Derecho');
+INSERT INTO `tipodepieza` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('8', 'Incisivo Central Superior Derecho', 'Incisivo Central Superior Derecho');
+INSERT INTO `tipodepieza` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('9', 'Incisivo Central Superior Izquierdo', 'Incisivo Central Superior Izquierdo');
+INSERT INTO `tipodepieza` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('10', 'Incisivo Lateral Superior Izquierdo', 'Incisivo Lateral Superior Izquierdo');
+INSERT INTO `tipodepieza` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('11', 'Canino Superior Izquierdo', 'Canino Superior Izquierdo');
+INSERT INTO `tipodepieza` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('12', 'Primer Premolar Superior Izquierdo', 'Primer Premolar Superior Izquierdo');
+INSERT INTO `tipodepieza` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('13', 'Segundo Premolar Superior Izquierdo', 'Segundo Premolar Superior Izquierdo');
+INSERT INTO `tipodepieza` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('14', 'Primer Molar Superior Izquierdo', 'Primer Molar Superior Izquierdo');
+INSERT INTO `tipodepieza` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('15', 'Segundo Molar Superior Izquierdo', 'Segundo Molar Superior Izquierdo');
+INSERT INTO `tipodepieza` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('16', 'Tercer Molar Superior Izquierdo', 'Tercer Molar Superior Izquierdo');
+INSERT INTO `tipodepieza` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('17', 'Tercer Molar Inferior Derecho', 'Tercer Molar Inferior Derecho');
+INSERT INTO `tipodepieza` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('18', 'Segundo Molar Inferior Derecho', 'Segundo Molar Inferior Derecho');
+INSERT INTO `tipodepieza` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('19', 'Primer Molar Inferior Derecho', 'Primer Molar Inferior Derecho');
+INSERT INTO `tipodepieza` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('20', 'Segundo Premolar Inferior Derecho', 'Segundo Premolar Inferior Derecho');
+INSERT INTO `tipodepieza` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('21', 'Primer Premolar Inferior Derecho', 'Primer Premolar Inferior Derecho');
+INSERT INTO `tipodepieza` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('22', 'Canino Inferior Derecho', 'Canino Inferior Derecho');
+INSERT INTO `tipodepieza` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('23', 'Incisivo Lateral Inferior Derecho', 'Incisivo Lateral Inferior Derecho');
+INSERT INTO `tipodepieza` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('24', 'Incisivo Central Inferior Derecho', 'Incisivo Central Inferior Derecho');
+INSERT INTO `tipodepieza` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('25', 'Incisivo Central Inferior Izquierdo', 'Incisivo Central Inferior Izquierdo');
+INSERT INTO `tipodepieza` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('26', 'Incisivo Lateral Inferior Izquierdo', 'Incisivo Lateral Inferior Izquierdo');
+INSERT INTO `tipodepieza` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('27', 'Canino Inferior Izquierdo', 'Canino Inferior Izquierdo');
+INSERT INTO `tipodepieza` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('28', 'Primer Premolar Inferior Izquierdo', 'Primer Premolar Inferior Izquierdo');
+INSERT INTO `tipodepieza` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('29', 'Segundo Premolar Inferior Izquierdo', 'Segundo Premolar Inferior Izquierdo');
+INSERT INTO `tipodepieza` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('30', 'Primer Molar Inferior Izquierdo', 'Primer Molar Inferior Izquierdo');
+INSERT INTO `tipodepieza` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('31', 'Segundo Molar Inferior Izquierdo', 'Segundo Molar Inferior Izquierdo');
+INSERT INTO `tipodepieza` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES ('32', 'Tercer Molar Inferior Izquierdo', 'Tercer Molar Inferior Izquierdo');
 
