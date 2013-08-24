@@ -321,7 +321,7 @@ create table PERMISOS
 /*==============================================================*/
 create table PERSONA
 (
-   ID_PERSONA           int not null,
+   ID_PERSONA           int  auto_increment,
    ID_PERFIL            int,
    RUT                  varchar(11),
    DV                   varchar(1),
@@ -657,5 +657,46 @@ create index INDEX_TRATAMIENODENTAL_1 on TRATAMIENTODENTAL
    ID_FICHA
 );
 
-	  
+
+/*==============================================================*/
+/* POBLAMIENTO DE DATOS SFH VERSION                             */
+/*==============================================================*/
+
+
+INSERT INTO `version`(`ID_VERSION`, `NOM_VERSION`, `COMENTARIO`) VALUES (1,'SFH - Sistema de toma de horas y fichas medicas v 1.0 Alfa','
+SFH - Primera versión de desarrollo.');
+
+INSERT INTO `inidicadores_economicos`(`ID_INIDICADOR`, `NOMBRE_INDICADOR`, `VALOR_EN_PESOS`, `UNIDAD_DE_MEDIDA`) VALUES (1,'UF',23.007,'Pesos Chilenos');
+INSERT INTO `inidicadores_economicos`(`ID_INIDICADOR`, `NOMBRE_INDICADOR`, `VALOR_EN_PESOS`, `UNIDAD_DE_MEDIDA`) VALUES (2,'DOLAR OBSERVADO($)',510,'Pesos Chilenos');
+INSERT INTO `inidicadores_economicos`(`ID_INIDICADOR`, `NOMBRE_INDICADOR`, `VALOR_EN_PESOS`, `UNIDAD_DE_MEDIDA`) VALUES (3,'UTM',40.326,'Pesos Chilenos');
+INSERT INTO `inidicadores_economicos`(`ID_INIDICADOR`, `NOMBRE_INDICADOR`, `VALOR_EN_PESOS`, `UNIDAD_DE_MEDIDA`) VALUES (4,'YEN JAPONES',5,'Pesos Chilenos');
+INSERT INTO `inidicadores_economicos`(`ID_INIDICADOR`, `NOMBRE_INDICADOR`, `VALOR_EN_PESOS`, `UNIDAD_DE_MEDIDA`) VALUES (5,'EURO',613,'Pesos Chilenos');
+
+INSERT INTO `persona`(`ID_PERSONA`, `ID_PERFIL`, `RUT`, `DV`, `NOMBRE`, `APELLIDO_PATERNO`, `APELLIDO_MATERNO`, `FECHA_NAC`) 
+VALUES (,[value-2],[value-3],[value-4],[value-5],[value-6],[value-7],[);
+
+
+
+
+INSERT INTO `perfil`(`ID_PERFIL`, `NOM_PERFIL`) VALUES (1,'Administrador');
+INSERT INTO `perfil`(`ID_PERFIL`, `NOM_PERFIL`) VALUES (2,'Doctor');
+INSERT INTO `perfil`(`ID_PERFIL`, `NOM_PERFIL`) VALUES (3,'Asistente');
+INSERT INTO `perfil`(`ID_PERFIL`, `NOM_PERFIL`) VALUES (4,'Paciente');
+
+INSERT INTO `accesos`(`COD_ACCESO`, `DESCRIPCION_ACCESO`) VALUES (707,'Usuario administrador: Posee las credenciales necesarias 
+para manejar cada uno de los módulos que posee SFH. 
+Advertencia: Solo el encargado de este sistema debe poseer este perfil.');
+INSERT INTO `accesos`(`COD_ACCESO`, `DESCRIPCION_ACCESO`) VALUES (706,'Usuario Doctor: Posee las credenciales necesarias para 
+manejar cada uno de los módulos asociados a la clínica y pacientes.');
+INSERT INTO `accesos`(`COD_ACCESO`, `DESCRIPCION_ACCESO`) VALUES (705,'Usuario Asistente: Posee las credenciales necesarias 
+para manejar los módulos asociados a la administración de pacientes.');
+INSERT INTO `accesos`(`COD_ACCESO`, `DESCRIPCION_ACCESO`) VALUES (704,'Usuario Paciente: Posee las credenciales necesarias 
+para acceder al modulo para pacientes de la clínica.');
+
+INSERT INTO `permisos`(`ID_PERFIL`, `COD_ACCESO`) VALUES (1,707);
+INSERT INTO `permisos`(`ID_PERFIL`, `COD_ACCESO`) VALUES (2,706);
+INSERT INTO `permisos`(`ID_PERFIL`, `COD_ACCESO`) VALUES (3,705);
+INSERT INTO `permisos`(`ID_PERFIL`, `COD_ACCESO`) VALUES (4,704);
+
+
 	  
