@@ -1,12 +1,11 @@
-use SFH;
-
-
-
+drop database if exists sfh;
+create database dfh character set utf8 collate utf8_general_ci;
+use sfh;
 
 /*==============================================================*/
 /* Table: ABONO                                                 */
 /*==============================================================*/
-create table  ABONO
+create table abono
 (
    ID_ABONO             int not null,
    ID_TRATAMIENTO_DENTAL int,
@@ -18,7 +17,7 @@ create table  ABONO
 /*==============================================================*/
 /* Table: ACCESOS                                               */
 /*==============================================================*/
-create table ACCESOS
+create table accesos
 (
    COD_ACCESO           int not null,
    DESCRIPCION_ACCESO   varchar(50),
@@ -28,7 +27,7 @@ create table ACCESOS
 /*==============================================================*/
 /* Table: AREAINSUMO                                            */
 /*==============================================================*/
-create table AREAINSUMO
+create table areainsumo
 (
    ID_AREA_INSUMO       int not null,
    NOMBRE_AREA          varchar(50),
@@ -39,7 +38,7 @@ create table AREAINSUMO
 /*==============================================================*/
 /* Table: CITA                                                  */
 /*==============================================================*/
-create table CITA
+create table cita
 (
    ID_CITA              int not null,
    ID_ODONTOLOGO        int,
@@ -53,7 +52,7 @@ create table CITA
 /*==============================================================*/
 /* Table: COMUNA                                                */
 /*==============================================================*/
-create table COMUNA
+create table comuna
 (
    ID_COMUNA            int not null,
    ID_REGION            int,
@@ -64,7 +63,7 @@ create table COMUNA
 /*==============================================================*/
 /* Table: DATOSDECONTACTO                                       */
 /*==============================================================*/
-create table DATOSDECONTACTO
+create table datosdecontacto
 (
    ID_PERSONA           int not null,
    ID_COMUNA            int,
@@ -79,7 +78,7 @@ create table DATOSDECONTACTO
 /*==============================================================*/
 /* Table: FICHADENTAL                                           */
 /*==============================================================*/
-create table FICHADENTAL
+create table fichadental
 (
    ID_FICHA             int not null,
    ID_PACIENTE          int,
@@ -93,7 +92,7 @@ create table FICHADENTAL
 /*==============================================================*/
 /* Table: FUNCIONARIO                                           */
 /*==============================================================*/
-create table FUNCIONARIO
+create table funcionario
 (
    ID_FUNCIONARIO       int not null,
    ID_PERSONA           int,
@@ -104,7 +103,7 @@ create table FUNCIONARIO
 /*==============================================================*/
 /* Table: GASTOS                                                */
 /*==============================================================*/
-create table GASTOS
+create table gastos
 (
    ID_GASTOS            int not null,
    ID_PERSONA           int,
@@ -116,7 +115,7 @@ create table GASTOS
 /*==============================================================*/
 /* Table: INIDICADORES_ECONOMICOS                               */
 /*==============================================================*/
-create table INIDICADORES_ECONOMICOS
+create table  inidicadoreseconomicos
 (
    ID_INIDICADOR        int not null,
    NOMBRE_INDICADOR     varchar(100),
@@ -128,7 +127,7 @@ create table INIDICADORES_ECONOMICOS
 /*==============================================================*/
 /* Table: INSUMOS                                               */
 /*==============================================================*/
-create table INSUMOS
+create table  insumos
 (
    ID_INSUMO            int not null,
    ID_AREA_INSUMO       int,
@@ -143,7 +142,7 @@ create table INSUMOS
 /*==============================================================*/
 /* Table: LISTA_PRECIOS                                         */
 /*==============================================================*/
-create table LISTA_PRECIOS
+create table listaprecios
 (
    ID_PRECIOS           int not null auto_increment,
    COMENTARIO           text,
@@ -154,7 +153,7 @@ create table LISTA_PRECIOS
 /*==============================================================*/
 /* Table: ODONTOLOGO                                            */
 /*==============================================================*/
-create table ODONTOLOGO
+create table odontologo
 (
    ID_ODONTOLOGO        int not null auto_increment,
    ID_PERSONA           int not null,
