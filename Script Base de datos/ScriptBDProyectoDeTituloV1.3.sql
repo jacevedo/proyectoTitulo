@@ -577,17 +577,6 @@ INSERT INTO `inidicadores_economicos`(`ID_INIDICADOR`, `NOMBRE_INDICADOR`, `VALO
 INSERT INTO `inidicadores_economicos`(`ID_INIDICADOR`, `NOMBRE_INDICADOR`, `VALOR_EN_PESOS`, `UNIDAD_DE_MEDIDA`) VALUES (4,'YEN JAPONES',5,'Pesos Chilenos');
 INSERT INTO `inidicadores_economicos`(`ID_INIDICADOR`, `NOMBRE_INDICADOR`, `VALOR_EN_PESOS`, `UNIDAD_DE_MEDIDA`) VALUES (5,'EURO',613,'Pesos Chilenos');
 
-INSERT INTO `persona`(`ID_PERSONA`, `ID_PERFIL`, `RUT`, `DV`, `NOMBRE`, `APELLIDO_PATERNO`, `APELLIDO_MATERNO`, `FECHA_NAC`) 
-VALUES (,[value-2],[value-3],[value-4],[value-5],[value-6],[value-7],[);
-
-
-
-
-INSERT INTO `perfil`(`ID_PERFIL`, `NOM_PERFIL`) VALUES (1,'Administrador');
-INSERT INTO `perfil`(`ID_PERFIL`, `NOM_PERFIL`) VALUES (2,'Doctor');
-INSERT INTO `perfil`(`ID_PERFIL`, `NOM_PERFIL`) VALUES (3,'Asistente');
-INSERT INTO `perfil`(`ID_PERFIL`, `NOM_PERFIL`) VALUES (4,'Paciente');
-
 INSERT INTO `accesos`(`COD_ACCESO`, `DESCRIPCION_ACCESO`) VALUES (707,'Usuario administrador: Posee las credenciales necesarias 
 para manejar cada uno de los módulos que posee SFH. 
 Advertencia: Solo el encargado de este sistema debe poseer este perfil.');
@@ -613,6 +602,7 @@ INSERT INTO `persona` (`ID_PERSONA`, `ID_PERFIL`, `RUT`, `DV`, `NOMBRE`, `APELLI
 INSERT INTO `persona` (`ID_PERSONA`, `ID_PERFIL`, `RUT`, `DV`, `NOMBRE`, `APELLIDO_PATERNO`, `APELLIDO_MATERNO`, `FECHA_NAC`) VALUES (NULL, '2', '12323123', '3', 'Juan', 'Peres', 'Peres', '1992-08-11');
 INSERT INTO `persona` (`ID_PERSONA`, `ID_PERFIL`, `RUT`, `DV`, `NOMBRE`, `APELLIDO_PATERNO`, `APELLIDO_MATERNO`, `FECHA_NAC`) VALUES (NULL, '3', '9878987', '4', 'Nicolas', 'Palma', 'Silva', '1987-05-27');
 INSERT INTO `persona` (`ID_PERSONA`, `ID_PERFIL`, `RUT`, `DV`, `NOMBRE`, `APELLIDO_PATERNO`, `APELLIDO_MATERNO`, `FECHA_NAC`) VALUES (NULL, '4', '3272373', '2', 'Jose', 'Muñoz', 'Lopez', '1989-02-03');
+<<<<<<< HEAD
 
 INSERT INTO `region` (`ID_REGION`,`NOM_REGION`,`NUM_REGION_ROMANO`) VALUES (1,'REGIÓN DE TARAPACÁ','I');
 INSERT INTO `region` (`ID_REGION`,`NOM_REGION`,`NUM_REGION_ROMANO`) VALUES (2,'REGIÓN DE ANTOFAGASTA','II');
@@ -667,5 +657,29 @@ insert into `LISTA_PRECIOS` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null
 INSERT INTO  `SFH`.`ORDEN_DE_LABORATORIO` (`ID_ORDEN_LABORATORIO` ,`CLINICA` ,`BD` ,`BI` ,`PD` ,`PI` ,`FECHA_ENTREGA` ,`HORA_ENTREGA` ,`COLOR`) VALUES (NULL ,  'San Clemente',  'BD',  'BI',  'PD',  'PI',  '2013-08-26',  '13:00',  'BLANCO');
 
 
+=======
+INSERT INTO `persona` (`ID_PERSONA`, `ID_PERFIL`, `RUT`, `DV`, `NOMBRE`, `APELLIDO_PATERNO`, `APELLIDO_MATERNO`, `FECHA_NAC`) VALUES (NULL, '2', '17901230', '2', 'Viviana', 'Garrido', 'Sanchez', '1988-02-08');
+INSERT INTO `persona` (`ID_PERSONA`, `ID_PERFIL`, `RUT`, `DV`, `NOMBRE`, `APELLIDO_PATERNO`, `APELLIDO_MATERNO`, `FECHA_NAC`) VALUES (NULL, '3', '17899006', '3', 'Lilia', 'Madrid', 'Sepulveda', '1988-01-09');
+INSERT INTO `persona` (`ID_PERSONA`, `ID_PERFIL`, `RUT`, `DV`, `NOMBRE`, `APELLIDO_PATERNO`, `APELLIDO_MATERNO`, `FECHA_NAC`) VALUES (NULL, '4', '16009332', '8', 'Lissete', 'Salcedo', 'Taiba', '1987-12-08');
+INSERT INTO `persona` (`ID_PERSONA`, `ID_PERFIL`, `RUT`, `DV`, `NOMBRE`, `APELLIDO_PATERNO`, `APELLIDO_MATERNO`, `FECHA_NAC`) VALUES (NULL, '4', '6336666', 'k', 'Patricia', 'Sanchez', 'Pavez', '1959-09-08');
+INSERT INTO `persona` (`ID_PERSONA`, `ID_PERFIL`, `RUT`, `DV`, `NOMBRE`, `APELLIDO_PATERNO`, `APELLIDO_MATERNO`, `FECHA_NAC`) VALUES (NULL, '4', '18992457', 'k', 'Daniela', 'Paredes', 'Chamorro', '1988-04-29');
+INSERT INTO `persona` (`ID_PERSONA`, `ID_PERFIL`, `RUT`, `DV`, `NOMBRE`, `APELLIDO_PATERNO`, `APELLIDO_MATERNO`, `FECHA_NAC`) VALUES (NULL, '2', '15725009', '0', 'Camila', 'Carrizo', 'Pacheco', '1983-05-19');
+INSERT INTO `persona` (`ID_PERSONA`, `ID_PERFIL`, `RUT`, `DV`, `NOMBRE`, `APELLIDO_PATERNO`, `APELLIDO_MATERNO`, `FECHA_NAC`) VALUES (NULL, '2', '19746228', '7', 'Pedro', 'Lopez', 'Moya', '1993-12-04');
+
+INSERT INTO `funcionario` (`ID_FUNCIONARIO` ,`ID_PERSONA` ,`PUESTO_DE_TRABAJO`) VALUES ('1', '2', 'Dentista');
+INSERT INTO `funcionario` (`ID_FUNCIONARIO` ,`ID_PERSONA` ,`PUESTO_DE_TRABAJO`) VALUES ('2', '3', 'Asistente Dental');
+INSERT INTO `funcionario` (`ID_FUNCIONARIO`, `ID_PERSONA`, `PUESTO_DE_TRABAJO`) VALUES ('3', '5', 'Dentista');
+INSERT INTO `funcionario` (`ID_FUNCIONARIO`, `ID_PERSONA`, `PUESTO_DE_TRABAJO`) VALUES ('4', '6', 'Asistente Dental');
+
+INSERT INTO `paciente` (`ID_PACIENTE`, `ID_PERSONA`, `FECHA_INGRESO`) VALUES ('1', '4', '2013-04-01');
+INSERT INTO `paciente` (`ID_PACIENTE`, `ID_PERSONA`, `FECHA_INGRESO`) VALUES ('2', '7', '2013-05-16');
+INSERT INTO `paciente` (`ID_PACIENTE`, `ID_PERSONA`, `FECHA_INGRESO`) VALUES ('3', '8', '2013-07-01');
+INSERT INTO `paciente` (`ID_PACIENTE`, `ID_PERSONA`, `FECHA_INGRESO`) VALUES ('4', '9', '2013-08-11');
+
+INSERT INTO `odontologo` (`ID_ODONTOLOGO`, `ID_PERSONA`, `ESPECIALIDAD`) VALUES ('1', '2', 'Endodoncia');
+INSERT INTO `odontologo` (`ID_ODONTOLOGO`, `ID_PERSONA`, `ESPECIALIDAD`) VALUES ('2', '5', 'Ortodoncia');
+INSERT INTO `odontologo` (`ID_ODONTOLOGO`, `ID_PERSONA`, `ESPECIALIDAD`) VALUES ('3', '13', 'Prostodoncia');
+INSERT INTO `odontologo` (`ID_ODONTOLOGO`, `ID_PERSONA`, `ESPECIALIDAD`) VALUES ('4', '14', 'Ortodoncia');
+>>>>>>> 86e7da34b9c2d05754aa02df01cc4261ed927cae
 
 
