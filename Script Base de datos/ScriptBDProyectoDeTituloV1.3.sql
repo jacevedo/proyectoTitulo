@@ -40,11 +40,11 @@ create table areainsumo
 /*==============================================================*/
 create table cita
 (
-   ID_CITA              int not null,
+   ID_CITA              int not null auto_increment,
    ID_ODONTOLOGO        int,
    ID_PACIENTE          int,
-   HORA_DE_INICIO       datetime,
-   HORA_DE_TERMINO      datetime,
+   HORA_DE_INICIO       time,
+   HORA_DE_TERMINO      time,
    FECHA                date,
    primary key (ID_CITA)
 );
@@ -1084,11 +1084,14 @@ INSERT INTO  `areainsumo` (`ID_AREA_INSUMO` ,`NOMBRE_AREA` ,`DESCRIPCION_AREA`) 
 INSERT INTO  `areainsumo` (`ID_AREA_INSUMO` ,`NOMBRE_AREA` ,`DESCRIPCION_AREA`) VALUES (NULL ,  'Jeringas',  'Jeringas para usar datos');
 INSERT INTO  `areainsumo` (`ID_AREA_INSUMO` ,`NOMBRE_AREA` ,`DESCRIPCION_AREA`) VALUES (NULL ,  'Medicamentes',  'Medicamentos de los pacientes');
 
-
-
 INSERT INTO  `datosdecontacto` (`ID_PERSONA` ,`ID_COMUNA` ,`FONO_FIJO` ,`FONO_CELULAR` ,`DIRECCION` ,`MAIL` ,`F_INGRESO`) VALUES ('1',  '2',  '+567685932',  '+343849482',  'antonio varas 666',  'varas@varas.cl',  '2013-08-02');
 INSERT INTO  `datosdecontacto` (`ID_PERSONA` ,`ID_COMUNA` ,`FONO_FIJO` ,`FONO_CELULAR` ,`DIRECCION` ,`MAIL` ,`F_INGRESO`) VALUES ('2',  '4',  '+568798754',  '+458374838',  'San Martin 33',  'martin@martin.cl',  '2013-08-23'); 
 INSERT INTO  `datosdecontacto` (`ID_PERSONA` ,`ID_COMUNA` ,`FONO_FIJO` ,`FONO_CELULAR` ,`DIRECCION` ,`MAIL` ,`F_INGRESO`) VALUES ('3',  '10',  '+45432321232',  '+43234398743',  'san paolo 33',  'paolo@paolo.cl',  '2013-08-16');
 INSERT INTO  `datosdecontacto` (`ID_PERSONA` ,`ID_COMUNA` ,`FONO_FIJO` ,`FONO_CELULAR` ,`DIRECCION` ,`MAIL` ,`F_INGRESO`) VALUES ('4',  '21',  '+432939321',  '+56983728393',  'sebastian cerrano 332',  'sebastian@sebastian.cl',  '2013-08-15');
 
-
+INSERT INTO  `cita` (`ID_CITA` ,`ID_ODONTOLOGO` ,`ID_PACIENTE` ,`HORA_DE_INICIO` ,`HORA_DE_TERMINO` ,`FECHA`) VALUES (NULL ,  '1',  '3',  '12:00:00',  '13:00:00',  '2013-08-25');
+INSERT INTO  `cita` (`ID_CITA` ,`ID_ODONTOLOGO` ,`ID_PACIENTE` ,`HORA_DE_INICIO` ,`HORA_DE_TERMINO` ,`FECHA`) VALUES (NULL ,  '2',  '2',  '13:00:00',  '14:00:00',  '2013-08-25');
+INSERT INTO  `cita` (`ID_CITA` ,`ID_ODONTOLOGO` ,`ID_PACIENTE` ,`HORA_DE_INICIO` ,`HORA_DE_TERMINO` ,`FECHA`) VALUES (NULL ,  '1',  '3',  '13:00:00',  '14:00:00',  '2013-08-25');
+INSERT INTO  `cita` (`ID_CITA` ,`ID_ODONTOLOGO` ,`ID_PACIENTE` ,`HORA_DE_INICIO` ,`HORA_DE_TERMINO` ,`FECHA`) VALUES (NULL ,  '3',  '4',  '13:00:00',  '14:00:00',  '2013-08-25');
+INSERT INTO  `cita` (`ID_CITA` ,`ID_ODONTOLOGO` ,`ID_PACIENTE` ,`HORA_DE_INICIO` ,`HORA_DE_TERMINO` ,`FECHA`) VALUES (NULL ,  '2',  '1',  '14:00:00',  '15:00:00',  '2013-08-25');
+INSERT INTO  `cita` (`ID_CITA` ,`ID_ODONTOLOGO` ,`ID_PACIENTE` ,`HORA_DE_INICIO` ,`HORA_DE_TERMINO` ,`FECHA`) VALUES (NULL ,  '3',  '2',  '14:00:00',  '15:00:00',  '2013-08-25');
