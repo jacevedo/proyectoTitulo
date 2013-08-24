@@ -570,11 +570,11 @@ create index INDEX_TRATAMIENODENTAL_1 on tratamientodental
 INSERT INTO `version`(`ID_VERSION`, `NOM_VERSION`, `COMENTARIO`) VALUES (1,'SFH - Sistema de toma de horas y fichas medicas v 1.0 Alfa','
 SFH - Primera versión de desarrollo.');
 
-INSERT INTO `inidicadores_economicos`(`ID_INIDICADOR`, `NOMBRE_INDICADOR`, `VALOR_EN_PESOS`, `UNIDAD_DE_MEDIDA`) VALUES (1,'UF',23.007,'Pesos Chilenos');
-INSERT INTO `inidicadores_economicos`(`ID_INIDICADOR`, `NOMBRE_INDICADOR`, `VALOR_EN_PESOS`, `UNIDAD_DE_MEDIDA`) VALUES (2,'DOLAR OBSERVADO($)',510,'Pesos Chilenos');
-INSERT INTO `inidicadores_economicos`(`ID_INIDICADOR`, `NOMBRE_INDICADOR`, `VALOR_EN_PESOS`, `UNIDAD_DE_MEDIDA`) VALUES (3,'UTM',40.326,'Pesos Chilenos');
-INSERT INTO `inidicadores_economicos`(`ID_INIDICADOR`, `NOMBRE_INDICADOR`, `VALOR_EN_PESOS`, `UNIDAD_DE_MEDIDA`) VALUES (4,'YEN JAPONES',5,'Pesos Chilenos');
-INSERT INTO `inidicadores_economicos`(`ID_INIDICADOR`, `NOMBRE_INDICADOR`, `VALOR_EN_PESOS`, `UNIDAD_DE_MEDIDA`) VALUES (5,'EURO',613,'Pesos Chilenos');
+INSERT INTO `inidicadoreseconomicos`(`ID_INIDICADOR`, `NOMBRE_INDICADOR`, `VALOR_EN_PESOS`, `UNIDAD_DE_MEDIDA`) VALUES (1,'UF',23.007,'Pesos Chilenos');
+INSERT INTO `inidicadoreseconomicos`(`ID_INIDICADOR`, `NOMBRE_INDICADOR`, `VALOR_EN_PESOS`, `UNIDAD_DE_MEDIDA`) VALUES (2,'DOLAR OBSERVADO($)',510,'Pesos Chilenos');
+INSERT INTO `inidicadoreseconomicos`(`ID_INIDICADOR`, `NOMBRE_INDICADOR`, `VALOR_EN_PESOS`, `UNIDAD_DE_MEDIDA`) VALUES (3,'UTM',40.326,'Pesos Chilenos');
+INSERT INTO `inidicadoreseconomicos`(`ID_INIDICADOR`, `NOMBRE_INDICADOR`, `VALOR_EN_PESOS`, `UNIDAD_DE_MEDIDA`) VALUES (4,'YEN JAPONES',5,'Pesos Chilenos');
+INSERT INTO `inidicadoreseconomicos`(`ID_INIDICADOR`, `NOMBRE_INDICADOR`, `VALOR_EN_PESOS`, `UNIDAD_DE_MEDIDA`) VALUES (5,'EURO',613,'Pesos Chilenos');
 
 INSERT INTO `accesos`(`COD_ACCESO`, `DESCRIPCION_ACCESO`) VALUES (707,'Usuario administrador: Posee las credenciales necesarias 
 para manejar cada uno de los módulos que posee SFH. 
