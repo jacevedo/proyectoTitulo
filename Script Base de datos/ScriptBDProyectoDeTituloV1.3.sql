@@ -577,17 +577,6 @@ INSERT INTO `inidicadores_economicos`(`ID_INIDICADOR`, `NOMBRE_INDICADOR`, `VALO
 INSERT INTO `inidicadores_economicos`(`ID_INIDICADOR`, `NOMBRE_INDICADOR`, `VALOR_EN_PESOS`, `UNIDAD_DE_MEDIDA`) VALUES (4,'YEN JAPONES',5,'Pesos Chilenos');
 INSERT INTO `inidicadores_economicos`(`ID_INIDICADOR`, `NOMBRE_INDICADOR`, `VALOR_EN_PESOS`, `UNIDAD_DE_MEDIDA`) VALUES (5,'EURO',613,'Pesos Chilenos');
 
-INSERT INTO `persona`(`ID_PERSONA`, `ID_PERFIL`, `RUT`, `DV`, `NOMBRE`, `APELLIDO_PATERNO`, `APELLIDO_MATERNO`, `FECHA_NAC`) 
-VALUES (,[value-2],[value-3],[value-4],[value-5],[value-6],[value-7],[);
-
-
-
-
-INSERT INTO `perfil`(`ID_PERFIL`, `NOM_PERFIL`) VALUES (1,'Administrador');
-INSERT INTO `perfil`(`ID_PERFIL`, `NOM_PERFIL`) VALUES (2,'Doctor');
-INSERT INTO `perfil`(`ID_PERFIL`, `NOM_PERFIL`) VALUES (3,'Asistente');
-INSERT INTO `perfil`(`ID_PERFIL`, `NOM_PERFIL`) VALUES (4,'Paciente');
-
 INSERT INTO `accesos`(`COD_ACCESO`, `DESCRIPCION_ACCESO`) VALUES (707,'Usuario administrador: Posee las credenciales necesarias 
 para manejar cada uno de los módulos que posee SFH. 
 Advertencia: Solo el encargado de este sistema debe poseer este perfil.');
@@ -603,16 +592,21 @@ INSERT INTO `permisos`(`ID_PERFIL`, `COD_ACCESO`) VALUES (2,706);
 INSERT INTO `permisos`(`ID_PERFIL`, `COD_ACCESO`) VALUES (3,705);
 INSERT INTO `permisos`(`ID_PERFIL`, `COD_ACCESO`) VALUES (4,704);
 
-INSERT INTO  `PERFIL` (`ID_PERFIL` ,`NOM_PERFIL`) VALUES (0,'Administrador');
-INSERT INTO  `PERFIL` (`ID_PERFIL` ,`NOM_PERFIL`) VALUES (1,'Doctor');
-INSERT INTO  `PERFIL` (`ID_PERFIL` ,`NOM_PERFIL`) VALUES (2,'Asistente');
-INSERT INTO  `PERFIL` (`ID_PERFIL` ,`NOM_PERFIL`) VALUES (3,'Paciente');
+INSERT INTO  `PERFIL` (`ID_PERFIL` ,`NOM_PERFIL`) VALUES (1,'Administrador');
+INSERT INTO  `PERFIL` (`ID_PERFIL` ,`NOM_PERFIL`) VALUES (2,'Doctor');
+INSERT INTO  `PERFIL` (`ID_PERFIL` ,`NOM_PERFIL`) VALUES (3,'Asistente');
+INSERT INTO  `PERFIL` (`ID_PERFIL` ,`NOM_PERFIL`) VALUES (4,'Paciente');
 
 
-INSERT INTO `persona` (`ID_PERSONA`, `ID_PERFIL`, `RUT`, `DV`, `NOMBRE`, `APELLIDO_PATERNO`, `APELLIDO_MATERNO`, `FECHA_NAC`) VALUES (NULL, '0', '17231233', '2', 'Ada', 'Tatus', 'Boren', '1991-08-06');
-INSERT INTO `persona` (`ID_PERSONA`, `ID_PERFIL`, `RUT`, `DV`, `NOMBRE`, `APELLIDO_PATERNO`, `APELLIDO_MATERNO`, `FECHA_NAC`) VALUES (NULL, '1', '12323123', '3', 'Juan', 'Peres', 'Peres', '1992-08-11');
-INSERT INTO `persona` (`ID_PERSONA`, `ID_PERFIL`, `RUT`, `DV`, `NOMBRE`, `APELLIDO_PATERNO`, `APELLIDO_MATERNO`, `FECHA_NAC`) VALUES (NULL, '2', '9878987', '4', 'Nicolas', 'Palma', 'Silva', '1987-05-27');
-INSERT INTO `persona` (`ID_PERSONA`, `ID_PERFIL`, `RUT`, `DV`, `NOMBRE`, `APELLIDO_PATERNO`, `APELLIDO_MATERNO`, `FECHA_NAC`) VALUES (NULL, '3', '3272373', '2', 'Jose', 'Muñoz', 'Lopez', '1989-02-03');
+INSERT INTO `persona` (`ID_PERSONA`, `ID_PERFIL`, `RUT`, `DV`, `NOMBRE`, `APELLIDO_PATERNO`, `APELLIDO_MATERNO`, `FECHA_NAC`) VALUES (NULL, '1', '17231233', '2', 'Ada', 'Tatus', 'Boren', '1991-08-06');
+INSERT INTO `persona` (`ID_PERSONA`, `ID_PERFIL`, `RUT`, `DV`, `NOMBRE`, `APELLIDO_PATERNO`, `APELLIDO_MATERNO`, `FECHA_NAC`) VALUES (NULL, '2', '12323123', '3', 'Juan', 'Peres', 'Peres', '1992-08-11');
+INSERT INTO `persona` (`ID_PERSONA`, `ID_PERFIL`, `RUT`, `DV`, `NOMBRE`, `APELLIDO_PATERNO`, `APELLIDO_MATERNO`, `FECHA_NAC`) VALUES (NULL, '3', '9878987', '4', 'Nicolas', 'Palma', 'Silva', '1987-05-27');
+INSERT INTO `persona` (`ID_PERSONA`, `ID_PERFIL`, `RUT`, `DV`, `NOMBRE`, `APELLIDO_PATERNO`, `APELLIDO_MATERNO`, `FECHA_NAC`) VALUES (NULL, '4', '3272373', '2', 'Jose', 'Muñoz', 'Lopez', '1989-02-03');
+INSERT INTO `persona` (`ID_PERSONA`, `ID_PERFIL`, `RUT`, `DV`, `NOMBRE`, `APELLIDO_PATERNO`, `APELLIDO_MATERNO`, `FECHA_NAC`) VALUES (NULL, '2', '17901230', '2', 'Viviana', 'Garrido', 'Sanchez', '1988-02-08');
+INSERT INTO `persona` (`ID_PERSONA`, `ID_PERFIL`, `RUT`, `DV`, `NOMBRE`, `APELLIDO_PATERNO`, `APELLIDO_MATERNO`, `FECHA_NAC`) VALUES (NULL, '3', '17899006', '3', 'Lilia', 'Madrid', 'Sepulveda', '1988-01-09');
+
+INSERT INTO  `funcionario` (`ID_FUNCIONARIO` ,`ID_PERSONA` ,`PUESTO_DE_TRABAJO`) VALUES ('1',  '2',  'Dentista');
+INSERT INTO  `funcionario` (`ID_FUNCIONARIO` ,`ID_PERSONA` ,`PUESTO_DE_TRABAJO`) VALUES ('2',  '3',  'Asistente Dental');
 
 
 
