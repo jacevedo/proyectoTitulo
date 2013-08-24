@@ -145,7 +145,7 @@ create table INSUMOS
 /*==============================================================*/
 create table LISTA_PRECIOS
 (
-   ID_PRECIOS           int not null,
+   ID_PRECIOS           int not null auto_increment,
    COMENTARIO           text,
    VALOR_NETO           int,
    primary key (ID_PRECIOS)
@@ -156,8 +156,8 @@ create table LISTA_PRECIOS
 /*==============================================================*/
 create table ODONTOLOGO
 (
-   ID_ODONTOLOGO        int not null,
-   ID_PERSONA           int,
+   ID_ODONTOLOGO        int not null auto_increment,
+   ID_PERSONA           int not null,
    ESPECIALIDAD         varchar(50),
    primary key (ID_ODONTOLOGO)
 );
@@ -167,7 +167,7 @@ create table ODONTOLOGO
 /*==============================================================*/
 create table ORDEN_DE_LABORATORIO
 (
-   ID_ORDEN_LABORATORIO int not null,
+   ID_ORDEN_LABORATORIO int not null auto_increment,
    CLINICA              varchar(80),
    BD                   varchar(50),
    BI                   varchar(50),
@@ -603,16 +603,69 @@ INSERT INTO `permisos`(`ID_PERFIL`, `COD_ACCESO`) VALUES (2,706);
 INSERT INTO `permisos`(`ID_PERFIL`, `COD_ACCESO`) VALUES (3,705);
 INSERT INTO `permisos`(`ID_PERFIL`, `COD_ACCESO`) VALUES (4,704);
 
-INSERT INTO  `PERFIL` (`ID_PERFIL` ,`NOM_PERFIL`) VALUES (0,'Administrador');
-INSERT INTO  `PERFIL` (`ID_PERFIL` ,`NOM_PERFIL`) VALUES (1,'Doctor');
-INSERT INTO  `PERFIL` (`ID_PERFIL` ,`NOM_PERFIL`) VALUES (2,'Asistente');
-INSERT INTO  `PERFIL` (`ID_PERFIL` ,`NOM_PERFIL`) VALUES (3,'Paciente');
+INSERT INTO  `PERFIL` (`ID_PERFIL` ,`NOM_PERFIL`) VALUES (1,'Administrador');
+INSERT INTO  `PERFIL` (`ID_PERFIL` ,`NOM_PERFIL`) VALUES (2,'Doctor');
+INSERT INTO  `PERFIL` (`ID_PERFIL` ,`NOM_PERFIL`) VALUES (3,'Asistente');
+INSERT INTO  `PERFIL` (`ID_PERFIL` ,`NOM_PERFIL`) VALUES (4,'Paciente');
 
 
-INSERT INTO `persona` (`ID_PERSONA`, `ID_PERFIL`, `RUT`, `DV`, `NOMBRE`, `APELLIDO_PATERNO`, `APELLIDO_MATERNO`, `FECHA_NAC`) VALUES (NULL, '0', '17231233', '2', 'Ada', 'Tatus', 'Boren', '1991-08-06');
-INSERT INTO `persona` (`ID_PERSONA`, `ID_PERFIL`, `RUT`, `DV`, `NOMBRE`, `APELLIDO_PATERNO`, `APELLIDO_MATERNO`, `FECHA_NAC`) VALUES (NULL, '1', '12323123', '3', 'Juan', 'Peres', 'Peres', '1992-08-11');
-INSERT INTO `persona` (`ID_PERSONA`, `ID_PERFIL`, `RUT`, `DV`, `NOMBRE`, `APELLIDO_PATERNO`, `APELLIDO_MATERNO`, `FECHA_NAC`) VALUES (NULL, '2', '9878987', '4', 'Nicolas', 'Palma', 'Silva', '1987-05-27');
-INSERT INTO `persona` (`ID_PERSONA`, `ID_PERFIL`, `RUT`, `DV`, `NOMBRE`, `APELLIDO_PATERNO`, `APELLIDO_MATERNO`, `FECHA_NAC`) VALUES (NULL, '3', '3272373', '2', 'Jose', 'Muñoz', 'Lopez', '1989-02-03');
+INSERT INTO `persona` (`ID_PERSONA`, `ID_PERFIL`, `RUT`, `DV`, `NOMBRE`, `APELLIDO_PATERNO`, `APELLIDO_MATERNO`, `FECHA_NAC`) VALUES (NULL, '1', '17231233', '2', 'Ada', 'Tatus', 'Boren', '1991-08-06');
+INSERT INTO `persona` (`ID_PERSONA`, `ID_PERFIL`, `RUT`, `DV`, `NOMBRE`, `APELLIDO_PATERNO`, `APELLIDO_MATERNO`, `FECHA_NAC`) VALUES (NULL, '2', '12323123', '3', 'Juan', 'Peres', 'Peres', '1992-08-11');
+INSERT INTO `persona` (`ID_PERSONA`, `ID_PERFIL`, `RUT`, `DV`, `NOMBRE`, `APELLIDO_PATERNO`, `APELLIDO_MATERNO`, `FECHA_NAC`) VALUES (NULL, '3', '9878987', '4', 'Nicolas', 'Palma', 'Silva', '1987-05-27');
+INSERT INTO `persona` (`ID_PERSONA`, `ID_PERFIL`, `RUT`, `DV`, `NOMBRE`, `APELLIDO_PATERNO`, `APELLIDO_MATERNO`, `FECHA_NAC`) VALUES (NULL, '4', '3272373', '2', 'Jose', 'Muñoz', 'Lopez', '1989-02-03');
+
+INSERT INTO `region` (`ID_REGION`,`NOM_REGION`,`NUM_REGION_ROMANO`) VALUES (1,'REGIÓN DE TARAPACÁ','I');
+INSERT INTO `region` (`ID_REGION`,`NOM_REGION`,`NUM_REGION_ROMANO`) VALUES (2,'REGIÓN DE ANTOFAGASTA','II');
+INSERT INTO `region` (`ID_REGION`,`NOM_REGION`,`NUM_REGION_ROMANO`) VALUES (3,'REGIÓN DE ATACAMA','III');
+INSERT INTO `region` (`ID_REGION`,`NOM_REGION`,`NUM_REGION_ROMANO`) VALUES (4,'REGIÓN DE COQUIMBO','IV');
+INSERT INTO `region` (`ID_REGION`,`NOM_REGION`,`NUM_REGION_ROMANO`) VALUES (5,'REGIÓN DE VALPARAISO','V');
+INSERT INTO `region` (`ID_REGION`,`NOM_REGION`,`NUM_REGION_ROMANO`) VALUES (6,'REGIÓN DEL LIBERTADOR GENERAL BERNARDO O\'HIGGINS','VI');
+INSERT INTO `region` (`ID_REGION`,`NOM_REGION`,`NUM_REGION_ROMANO`) VALUES (7,'REGIÓN DEL MAULE','VII');
+INSERT INTO `region` (`ID_REGION`,`NOM_REGION`,`NUM_REGION_ROMANO`) VALUES (8,'REGIÓN DEL BÍO - BÍO','VIII');
+INSERT INTO `region` (`ID_REGION`,`NOM_REGION`,`NUM_REGION_ROMANO`) VALUES (9,'REGIÓN DE LA ARAUCANÍA','IX');
+INSERT INTO `region` (`ID_REGION`,`NOM_REGION`,`NUM_REGION_ROMANO`) VALUES (10,'REGIÓN DE LOS LAGOS','X');
+INSERT INTO `region` (`ID_REGION`,`NOM_REGION`,`NUM_REGION_ROMANO`) VALUES (11,'REGIÓN AYSÉN DEL GENERAL CARLOS IBÁÑEZ DEL CAMPO','XI');
+INSERT INTO `region` (`ID_REGION`,`NOM_REGION`,`NUM_REGION_ROMANO`) VALUES (12,'REGIÓN DE MAGALLANES Y LA ANTÁRTICA CHILENA ','XII');
+INSERT INTO `region` (`ID_REGION`,`NOM_REGION`,`NUM_REGION_ROMANO`) VALUES (13,'REGIÓN METROPOLITANA','XIII');
+INSERT INTO `region` (`ID_REGION`,`NOM_REGION`,`NUM_REGION_ROMANO`) VALUES (14,'REGION DE LOS RÍOS','XIV');
+INSERT INTO `region` (`ID_REGION`,`NOM_REGION`,`NUM_REGION_ROMANO`) VALUES (15,'REGIÓN DE ARICA Y PARINACOTA','XV');
+
+INSERT INTO  `gastos` (`ID_GASTOS` ,`ID_PERSONA` ,`MONTO_GASTOS` ,`DESCUENTO_GASTOS`) VALUES('0',  '1', '40000',  '30000');
+INSERT INTO  `gastos` (`ID_GASTOS` ,`ID_PERSONA` ,`MONTO_GASTOS` ,`DESCUENTO_GASTOS`) VALUES ('1',  '1',  '30000',  '40000');
+INSERT INTO  `gastos` (`ID_GASTOS` ,`ID_PERSONA` ,`MONTO_GASTOS` ,`DESCUENTO_GASTOS`) VALUES('2',  '1', '40000',  '30000');
+
+insert into `LISTA_PRECIOS` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null, "Examen Inicial,Plan De Tratamiento Y Presupuesto",21750);
+insert into `LISTA_PRECIOS` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Control Y Examen Periodico De Rigor",14500);
+insert into `LISTA_PRECIOS` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Interconsulta Con Informe Escrito 1 Sesion",29000);
+insert into `LISTA_PRECIOS` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Urgencia. Tratamiento Inicial 1 Sesion",14500);
+insert into `LISTA_PRECIOS` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Urgencia A Domicilio Id. Anterior",29000);
+insert into `LISTA_PRECIOS` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Urgencia En Hospital Id. Anterior",29000);
+insert into `LISTA_PRECIOS` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Estudio Preliminar Clinico, Rx Y Modelos",29000);
+insert into `LISTA_PRECIOS` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Informes Periciales 1 Hora Profesional",43500);
+insert into `LISTA_PRECIOS` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Consultorias Y Estudio Profesional: 1 Hora",43500);
+insert into `LISTA_PRECIOS` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Higiene O Profilaxis En Adultos",29000);
+insert into `LISTA_PRECIOS` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Higiene O Profilaxis En Niños",14500);
+insert into `LISTA_PRECIOS` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Instrucción Y Control Higiene Oral Adultos",14500);
+insert into `LISTA_PRECIOS` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Instrucción Y Control Higiene Oral Niños",14500);
+insert into `LISTA_PRECIOS` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Aplicación De Fluor En Colutorios (trat)",14500);
+insert into `LISTA_PRECIOS` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Aplicación Fluor Gel Total Niños Y Adultos",14500);
+insert into `LISTA_PRECIOS` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Aplicación Fluor Total Silano  ID",72500);
+insert into `LISTA_PRECIOS` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Aplicación Sellante Pieza Temp. Fotocurado",14500);
+insert into `LISTA_PRECIOS` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Aplicación Sellante Pieza Def. Fotocurado",21700);
+insert into `LISTA_PRECIOS` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Mantenedor Espacio Fijo",58000);
+insert into `LISTA_PRECIOS` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Mantenedor De Espacio Removible",58000);
+insert into `LISTA_PRECIOS` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Consulta Y Examen Maxilofacial",29000);
+insert into `LISTA_PRECIOS` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Interconsulta E Informe",43500);
+insert into `LISTA_PRECIOS` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Controles De La Especialidad",29000);
+insert into `LISTA_PRECIOS` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Interconsulta (junta De Especialistas)",58000);
+insert into `LISTA_PRECIOS` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Recargo Por Tratamiento Fuera Del Lugar Habitual",58000);
+insert into `LISTA_PRECIOS` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Exodoncia Simple",43500);
+insert into `LISTA_PRECIOS` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Exodoncia A Colgajo",58000);
+insert into `LISTA_PRECIOS` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Exodoncia De Incluidos",116000);
+insert into `LISTA_PRECIOS` (`ID_PRECIOS`,`COMENTARIO`,`VALOR_NETO`) values(null,"Exodoncia De 4 Terceros Molares Incluidos",290000);
+
+INSERT INTO  `SFH`.`ORDEN_DE_LABORATORIO` (`ID_ORDEN_LABORATORIO` ,`CLINICA` ,`BD` ,`BI` ,`PD` ,`PI` ,`FECHA_ENTREGA` ,`HORA_ENTREGA` ,`COLOR`) VALUES (NULL ,  'San Clemente',  'BD',  'BI',  'PD',  'PI',  '2013-08-26',  '13:00',  'BLANCO');
+
 
 
 
