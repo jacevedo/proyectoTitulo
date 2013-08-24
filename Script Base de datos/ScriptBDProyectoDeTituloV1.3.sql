@@ -1091,4 +1091,7 @@ INSERT INTO  `datosdecontacto` (`ID_PERSONA` ,`ID_COMUNA` ,`FONO_FIJO` ,`FONO_CE
 INSERT INTO  `datosdecontacto` (`ID_PERSONA` ,`ID_COMUNA` ,`FONO_FIJO` ,`FONO_CELULAR` ,`DIRECCION` ,`MAIL` ,`F_INGRESO`) VALUES ('3',  '10',  '+45432321232',  '+43234398743',  'san paolo 33',  'paolo@paolo.cl',  '2013-08-16');
 INSERT INTO  `datosdecontacto` (`ID_PERSONA` ,`ID_COMUNA` ,`FONO_FIJO` ,`FONO_CELULAR` ,`DIRECCION` ,`MAIL` ,`F_INGRESO`) VALUES ('4',  '21',  '+432939321',  '+56983728393',  'sebastian cerrano 332',  'sebastian@sebastian.cl',  '2013-08-15');
 
+INSERT INTO `insumos` (`ID_INSUMO`, `ID_AREA_INSUMO`, `ID_GASTOS`, `NOMBRE_INSUMO`, `CANTIDAD`, `DESCRIPCION_INSUMO`, `UNIDAD_DE_MEDIDA`) VALUES ('1', '3', '1', 'Jeringas', '3', 'Compra de Jeringas', 'Unidad');
+INSERT INTO `insumos` (`ID_INSUMO`, `ID_AREA_INSUMO`, `ID_GASTOS`, `NOMBRE_INSUMO`, `CANTIDAD`, `DESCRIPCION_INSUMO`, `UNIDAD_DE_MEDIDA`) VALUES ('2', '4', '2', 'Antibioticos', '100', 'Compra Antibioticos', 'Caja');
+INSERT INTO `insumos` (`ID_INSUMO`, `ID_AREA_INSUMO`, `ID_GASTOS`, `NOMBRE_INSUMO`, `CANTIDAD`, `DESCRIPCION_INSUMO`, `UNIDAD_DE_MEDIDA`) VALUES ('3', '1', '3', 'Hojas impresion', '20', 'Comrpa hojas de impresion', 'Resma');
 
