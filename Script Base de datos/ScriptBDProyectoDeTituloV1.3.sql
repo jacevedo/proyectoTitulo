@@ -67,8 +67,8 @@ create table datosdecontacto
 (
    ID_PERSONA           int not null,
    ID_COMUNA            int,
-   FONO_FIJO            varchar(10),
-   FONO_CELULAR         varchar(10),
+   FONO_FIJO            varchar(15),
+   FONO_CELULAR         varchar(15),
    DIRECCION            varchar(50),
    MAIL                 varchar(50),
    F_INGRESO            date,
@@ -1082,12 +1082,13 @@ INSERT INTO `abono` (`ID_ABONO`, `ID_TRATAMIENTO_DENTAL`, `FECHA_DE_ABONO`, `MON
 INSERT INTO  `areainsumo` (`ID_AREA_INSUMO` ,`NOMBRE_AREA` ,`DESCRIPCION_AREA`) VALUES (NULL ,  'Oficina',  'Insumos de Oficina');
 INSERT INTO  `areainsumo` (`ID_AREA_INSUMO` ,`NOMBRE_AREA` ,`DESCRIPCION_AREA`) VALUES (NULL ,  'Esterilizacion',  'Insumos de Esterilizacion');
 INSERT INTO  `areainsumo` (`ID_AREA_INSUMO` ,`NOMBRE_AREA` ,`DESCRIPCION_AREA`) VALUES (NULL ,  'Jeringas',  'Jeringas para usar datos');
-INSERT INTO  `areainsumo` (`ID_AREA_INSUMO` ,`NOMBRE_AREA` ,`DESCRIPCION_AREA`) VALUES (NULL ,  'Medicamentos',  'Medicamentos de los pacientes');
+INSERT INTO  `areainsumo` (`ID_AREA_INSUMO` ,`NOMBRE_AREA` ,`DESCRIPCION_AREA`) VALUES (NULL ,  'Medicamentes',  'Medicamentos de los pacientes');
 
 INSERT INTO `piezadental` (`ID_PIEZA`, `ID_TRATAMIENTO_DENTAL`, `ID_ORDEN_LABORATORIO`, `ID_TIPO_PIEZA`, `NOMBRE_PIEZA`, `DESCRIPCION_PIEZA`, `PERIODO_PIEZA`) VALUES ('1', '4', '1', '14', 'Primer Molar Superior Izquierdo', 'Primer Molar Superior Izquierdo', '1');
 
-
-
-
+INSERT INTO  `datosdecontacto` (`ID_PERSONA` ,`ID_COMUNA` ,`FONO_FIJO` ,`FONO_CELULAR` ,`DIRECCION` ,`MAIL` ,`F_INGRESO`) VALUES ('1',  '2',  '+567685932',  '+343849482',  'antonio varas 666',  'varas@varas.cl',  '2013-08-02');
+INSERT INTO  `datosdecontacto` (`ID_PERSONA` ,`ID_COMUNA` ,`FONO_FIJO` ,`FONO_CELULAR` ,`DIRECCION` ,`MAIL` ,`F_INGRESO`) VALUES ('2',  '4',  '+568798754',  '+458374838',  'San Martin 33',  'martin@martin.cl',  '2013-08-23'); 
+INSERT INTO  `datosdecontacto` (`ID_PERSONA` ,`ID_COMUNA` ,`FONO_FIJO` ,`FONO_CELULAR` ,`DIRECCION` ,`MAIL` ,`F_INGRESO`) VALUES ('3',  '10',  '+45432321232',  '+43234398743',  'san paolo 33',  'paolo@paolo.cl',  '2013-08-16');
+INSERT INTO  `datosdecontacto` (`ID_PERSONA` ,`ID_COMUNA` ,`FONO_FIJO` ,`FONO_CELULAR` ,`DIRECCION` ,`MAIL` ,`F_INGRESO`) VALUES ('4',  '21',  '+432939321',  '+56983728393',  'sebastian cerrano 332',  'sebastian@sebastian.cl',  '2013-08-15');
 
 
