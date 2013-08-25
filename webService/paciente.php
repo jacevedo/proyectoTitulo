@@ -8,7 +8,7 @@ require_once '../pojos/paciente.php';
 $datos = $controladora->listarPacientes(); 
 echo(json_encode($datos));*/
 $paciente = new Paciente();
-$paciente->initClass(3, 8, '2013-02-02');
+$paciente->initClass(2, 8, '2013-02-02');
 
 $controladora = new ControladoraPaciente();
 echo ($controladora->eliminarPaciente($paciente));
