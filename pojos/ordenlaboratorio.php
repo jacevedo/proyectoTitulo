@@ -1,5 +1,5 @@
 <?php
-public class OrdenLaboratorio
+class OrdenLaboratorio
 {
 	public $idOrdenLaboratorio;
 	public $clinica;
@@ -11,7 +11,7 @@ public class OrdenLaboratorio
 	public $horaEntrega;
 	public $color;
 
-	public initClass($idOrdenLaboratorio, $clinica, $bd, $bi, $pd, $pi, $fechaEntrega, $horaEntrega, $color)
+	function initClass($idOrdenLaboratorio, $clinica, $bd, $bi, $pd, $pi, $fechaEntrega, $horaEntrega, $color)
 	{
 		$this->idOrdenLaboratorio = $idOrdenLaboratorio;
 		$this->clinica = $clinica;

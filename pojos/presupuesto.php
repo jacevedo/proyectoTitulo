@@ -1,10 +1,10 @@
 <?php
-public class Presupuesto
+class Presupuesto
 {
 	public $idPresupuesto;
 	public $valotTotal;
 
-	public initClass($idPresupuesto, $valorTotal)
+	function initClass($idPresupuesto, $valorTotal)
 	{
 		$this->idPresupuesto = $idPresupuesto;
 		$this->valorTotal = $valorTotal;

@@ -5,7 +5,7 @@ class Paciente
 	public $idPersona;
 	public $fechaIngreso;
 
-	public function initClass($idPaciente, $idPersona, $fechaIngreso)
+	 function initClass($idPaciente, $idPersona, $fechaIngreso)
 	{
 		$this->idPaciente = $idPaciente;
 		$this->idPersona = $idPersona;

@@ -1,11 +1,11 @@
 <?php
-public class version 
+class version 
 {
 	public $idVersion;
 	public $nomVersion;
 	public $comentario;
 
-	public initClass($idVersion, $nomVersion, $comentario)
+	function initClass($idVersion, $nomVersion, $comentario)
 	{
 		$this->idVersion = $idVersion;
 		$this->nomVersion = $nomVersion;

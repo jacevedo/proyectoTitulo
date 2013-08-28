@@ -1,5 +1,5 @@
 <?php
-public class Persona
+ class Persona
 {
 	public $idPersona;
 	public $idPerfil;
@@ -10,7 +10,7 @@ public class Persona
 	public $apellidoMaterno;
 	public $fechaNacimiento;
 
-	public initClass($idPersona, $idPerfil, $rut, $dv, $nombre, $apellidoPaterno, $apellidoMaterno, $fechaNacimiento)
+	function initClass($idPersona, $idPerfil, $rut, $dv, $nombre, $apellidoPaterno, $apellidoMaterno, $fechaNacimiento)
 	{
 		$this->idPersona = $idPersona;
 		$this->idPerfil = $idPerfil;

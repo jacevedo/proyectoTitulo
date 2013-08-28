@@ -1,12 +1,12 @@
 <?php
-public class Reporte
+class Reporte
 {
 	public $idReporte;
 	public $idPersona;
 	public $fechaCreacion;
 	public $tipoReporte;
 
-	public initClass($idReporte, $idPersona, $fechaCreacion, $tipoReporte)
+	function initClass($idReporte, $idPersona, $fechaCreacion, $tipoReporte)
 	{
 		$this->idReporte = $idReporte;
 		$this->idPersona = $idPersona;

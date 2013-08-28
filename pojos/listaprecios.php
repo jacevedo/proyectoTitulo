@@ -1,11 +1,11 @@
 <?php
-public class ListaPrecios
+class ListaPrecios
 {
 	public $idPrecios;
 	public $comentario;
 	public $valorNeto;
 
-	public initClass($idPrecios, $comentario, $valorNeto)
+	function initClass($idPrecios, $comentario, $valorNeto)
 	{
 		$this->idPrecios = $idPrecios;
 		$this->comentario = $comentario;

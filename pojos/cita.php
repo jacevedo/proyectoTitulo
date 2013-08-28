@@ -1,5 +1,5 @@
 <?php
-public class Cita
+class Cita
 {
 	public $idCita;
 	public $idOdontologo;
@@ -8,7 +8,7 @@ public class Cita
 	public $horaTermino;
 	public $fecha;
 
-	public initClass($idCita, $idOdontologo, $idPaciente, $horaInicio, $horaTermino, $fecha)
+	function initClass($idCita, $idOdontologo, $idPaciente, $horaInicio, $horaTermino, $fecha)
 	{
 		$this->idCita = $idCita;
 		$this->idOdontologo = $idOdontologo;

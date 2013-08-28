@@ -1,5 +1,5 @@
 <?php
-public class DatosContactos
+class DatosContactos
 {
 	public $idPersona;
 	public $idComuna;
@@ -9,7 +9,7 @@ public class DatosContactos
 	public $mail;
 	public $fechaIngreso;
 
-	public initClass($idPersona, $idComuna, $fonoFijo, $fonoCelular, $direccion, $mail, $fechaIngreso)
+	function initClass($idPersona, $idComuna, $fonoFijo, $fonoCelular, $direccion, $mail, $fechaIngreso)
 	{
 		$this->idPersona = $idPersona;
 		$this->idComuna = $idComuna;
