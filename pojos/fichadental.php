@@ -3,7 +3,6 @@ class FichaDental
 {
 	public $idFicha;
 	public $idPaciente;
-	public $idPresupuesto;
 	public $idOdontologo;
 	public $fechaIngreso;
 	public $anamnesis;
