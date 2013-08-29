@@ -1,4 +1,6 @@
 <?php
+require_once '../bdmysql/MySqlCon.php'; 
+
 class ControladoraAsistente
 {
 	function CrearAsistente($idAsistente, $persona, $puestoTrabajo)
