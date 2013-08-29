@@ -7,7 +7,7 @@ use sfh;
 /*==============================================================*/
 create table abono
 (
-   ID_ABONO             int not null,
+   ID_ABONO             int not null auto_increment,
    ID_TRATAMIENTO_DENTAL int,
    FECHA_DE_ABONO       date,
    MONTO                int,
@@ -80,7 +80,7 @@ create table datosdecontacto
 /*==============================================================*/
 create table fichadental
 (
-   ID_FICHA             int not null,
+   ID_FICHA             int not null auto_increment,
    ID_PACIENTE          int,
    ID_PRESUPUESTO       int,
    ID_ODONTOLOGO        int,
@@ -256,7 +256,7 @@ create table piezadental
 /*==============================================================*/
 create table presupuesto
 (
-   ID_PRESUPUESTO       int not null,
+   ID_PRESUPUESTO       int not null auto_increment,
    VALORTOTAL           int,
    primary key (ID_PRESUPUESTO)
 );
