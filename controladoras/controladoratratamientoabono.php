@@ -269,7 +269,7 @@ class ControladoraTratamientoAbono
 		try
 		{
 			$this->SqlQuery = '';
-			$this->SqlQuery = "SELECT a.`ID_ABONO`, a.`ID_TRATAMIENTO_DENTAL`, a.`FECHA_DE_ABONO`, a.`MONTO` FROM `abono` a, `tratamientodental` d, `fichadental` f WHERE a.`ID_TRATAMIENTO_DENTAL` = d.`ID_TRATAMIENTO_DENTAL` AND d.`ID_FICHA` = f.`ID_FICHA` AND f.`ID_PACIENTE` =?";
+			$this->SqlQuery = "SELECT a.* FROM abono a, tratamientodental d, fichadental f WHERE a.ID_TRATAMIENTO_DENTAL = d.ID_TRATAMIENTO_DENTAL AND d.ID_FICHA = f.ID_FICHA AND f.ID_PACIENTE =?";
 		   	$sentencia=$conexion->prepare($this->SqlQuery);
 		   	$sentencia->bind_param("i", $tratamiento);
         	if($sentencia->execute())

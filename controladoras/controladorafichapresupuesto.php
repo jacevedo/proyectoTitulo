@@ -14,7 +14,7 @@ class ContrladoraFichaPresupuesto
 	{
 
 	}
-	function insertarPresupuesto(Presupuesto $presupuesto)
+	public function insertarPresupuesto(Presupuesto $presupuesto)
 	{
 		$conexion = new MySqlCon();
 		$idFicha = $presupuesto->idFicha;
@@ -42,7 +42,7 @@ class ContrladoraFichaPresupuesto
          throw new $e("Error al Registrar Odontologo");
         }
 	}
-	function insertarFicha(Ficha $ficha)
+	public function insertarFicha(Ficha $ficha)
 	{
 		$conexion = new MySqlCon();
 		$idPaciente = $ficha->idPaciente;
@@ -73,7 +73,7 @@ class ContrladoraFichaPresupuesto
          throw new $e("Error al Registrar Odontologo");
         }
 	}
-	function modificarPresupuesto(Presupuesto $presupuesto)
+	public function modificarPresupuesto(Presupuesto $presupuesto)
 	{
 		$conexion = new MySqlCon();
 		$idPresupuesto = $presupuesto->idPresupuesto;
@@ -102,7 +102,7 @@ class ContrladoraFichaPresupuesto
          throw new $e("Error al Actualizar Usuarios");
         }
 	}
-	function modificarFicha(Ficha $ficha)
+	public function modificarFicha(Ficha $ficha)
 	{
 
 		$conexion = new MySqlCon();
@@ -138,7 +138,7 @@ class ContrladoraFichaPresupuesto
 	{
 
 	}
-	function buscarPresupuestoPorId($idPresupuesto)
+	public function buscarPresupuestoPorId($idPresupuesto)
 	{
 		$conexion = new MySqlCon();
 		$this->datos ='';
@@ -169,7 +169,7 @@ class ContrladoraFichaPresupuesto
         }
         return $this->datos;	
 	}
-	function buscarFichaPorId($idFicha)
+	public function buscarFichaPorId($idFicha)
 	{
 		$conexion = new MySqlCon();
 		$this->datos ='';
@@ -200,7 +200,7 @@ class ContrladoraFichaPresupuesto
         }
         return $this->datos;
 	}
-	function buscarFichaPorIdPersona($idPersona)
+	public function buscarFichaPorIdPersona($idPersona)
 	{
 		$conexion = new MySqlCon();
 		$this->datos ='';
@@ -231,7 +231,7 @@ class ContrladoraFichaPresupuesto
         }
         return $this->datos;
 	}
-	function buscarPresupuestoPorIdPersona($idPersona)
+	public function buscarPresupuestoPorIdPersona($idPersona)
 	{
 		$conexion = new MySqlCon();
 		$this->datos ='';
@@ -262,7 +262,7 @@ class ContrladoraFichaPresupuesto
         }
         return $this->datos;
 	}
-	function listarPresupuesto()
+	public function listarPresupuesto()
 	{
 		$conexion = new MySqlCon();
 		$this->datos ='';
@@ -292,7 +292,7 @@ class ContrladoraFichaPresupuesto
         }
         return $this->datos;
 	}
-	function listarFicha()
+	public function listarFicha()
 	{
 		$conexion = new MySqlCon();
 		$this->datos ='';

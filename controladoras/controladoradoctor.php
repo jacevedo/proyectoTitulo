@@ -9,7 +9,7 @@ require_once '../pojos/persona.php';
 
 	}
 
-	function InsertarDoctor(Odontologo $doctor)
+	public function insertarDoctor(Odontologo $doctor)
 	{
 		$conexion = new MySqlCon();
 		$idPersona = $doctor->idPersona;
@@ -39,7 +39,7 @@ require_once '../pojos/persona.php';
 
 	}
 
-	function ModificarDoctor(Odontologo $doctor)
+	public function modificarDoctor(Odontologo $doctor)
 	{
 		$conexion = new MySqlCon();
 		$idOdontologo = $doctor->idOdontologo;
@@ -69,7 +69,7 @@ require_once '../pojos/persona.php';
         }
 	}
 
-	function ListarDoctores()
+	public function listarDoctores()
 	{
 		$conexion = new MySqlCon();
 		$this->datos ='';
@@ -98,34 +98,6 @@ require_once '../pojos/persona.php';
         	throw new $e("Error al listar pacientes");
         }
         return $this->datos;
-	}
-
-	function EliminarDoctor(Odontologo $doctor)
-	{
-		$conexion = new MySqlCon();
-		try 
-		{  
-			$idOdontologo = $doctor->idOdontologo;
-        	$this->SqlQuery='';
-        	$this->SqlQuery='DELETE FROM `odontologo` WHERE `ID_ODONTOLOGO` = ?';
-        	$sentencia=$conexion->prepare($this->SqlQuery); 
-        	$sentencia->bind_param('i',$idPaciente);
-			if($sentencia->execute())
-			{
-        		$conexion->close();
-				return true;
-			}
-			else
-			{
-				$conexion->close();
-        		return false;
-         	}
-        }
-    	catch(Exception $e)
-    	{
-        	return false;
-        	throw new $e("Error al Eliminar Odontologo");
-        }
 	}
 }
 ?>

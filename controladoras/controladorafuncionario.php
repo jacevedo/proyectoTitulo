@@ -8,7 +8,7 @@ class ControladoraFuncionario
 	{
 
 	}
-	function insertarFuncionario(Funcionario $funcionario)
+	public function insertarFuncionario(Funcionario $funcionario)
 	{
 		$conexion = new MySqlCon();
 	
@@ -39,7 +39,7 @@ class ControladoraFuncionario
 			throw new $e("Error al ingresar orden.");
 		}
 	}
-	function modificarFuncionario(Funcionario $funcionario)
+	public function modificarFuncionario(Funcionario $funcionario)
 	{
 		$conexion = new MySqlCon();
 		$idFuncionario = $funcionario->idFuncionario;
@@ -70,34 +70,7 @@ class ControladoraFuncionario
         }
 
 	}
-	function eliminarFuncionario(Funcionario $funcionario)
-	{
-		$conexion = new MySqlCon();
-		try 
-		{  
-			$idFuncionario = $funcionario->idFuncionario;
-        	$this->SqlQuery='';
-        	$this->SqlQuery='DELETE FROM `funcionario` WHERE `ID_FUNCIONARIO` = ?';
-        	$sentencia=$conexion->prepare($this->SqlQuery); 
-        	$sentencia->bind_param('i',$idFuncionario);
-			if($sentencia->execute())
-			{
-        		$conexion->close();
-				return true;
-			}
-			else
-			{
-				$conexion->close();
-        		return false;
-         	}
-        }
-    	catch(Exception $e)
-    	{
-        	return false;
-        	throw new $e("Error al Eliminar Usuario");
-        }
-	}
-	function listarFuncionario()
+	public function listarFuncionario()
 	{
 		$conexion = new MySqlCon();
 		$this->datos ='';

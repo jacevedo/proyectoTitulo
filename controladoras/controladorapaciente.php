@@ -99,33 +99,6 @@ class ControladoraPaciente
          throw new $e("Error al Actualizar Usuarios");
         }
 	}
-	public function eliminarPaciente(Paciente $paciente)
-	{
-        $conexion = new MySqlCon();
-		try 
-		{  
-			$idPaciente = $paciente->idPaciente;
-        	$this->SqlQuery='';
-        	$this->SqlQuery='DELETE FROM `paciente` WHERE `ID_PACIENTE` = ?';
-        	$sentencia=$conexion->prepare($this->SqlQuery); 
-        	$sentencia->bind_param('i',$idPaciente);
-			if($sentencia->execute())
-			{
-        		$conexion->close();
-				return true;
-			}
-			else
-			{
-				$conexion->close();
-        		return false;
-         	}
-        }
-    	catch(Exception $e)
-    	{
-        	return false;
-        	throw new $e("Error al Eliminar Usuario");
-        }
-	}
 }
 
 ?>
