@@ -12,7 +12,7 @@ require_once '../pojos/persona.php';
 	function InsertarDoctor(Odontologo $doctor)
 	{
 		$conexion = new MySqlCon();
-		$idPersona = $doctor->idOdontologo;
+		$idPersona = $doctor->idPersona;
 		$especialidad = $doctor->especialidad;
 		try 
 	   	{ 	 
@@ -23,7 +23,7 @@ require_once '../pojos/persona.php';
 	      	if($sentencia->execute())
 	      	{
 	        	$conexion->close();
-				return true;
+				return $sentencia->insert_id;
 			}
 			else
 			{

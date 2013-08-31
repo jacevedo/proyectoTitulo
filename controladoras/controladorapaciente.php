@@ -25,7 +25,7 @@ class ControladoraPaciente
 	      	if($sentencia->execute())
 	      	{
 	        	$conexion->close();
-				return true;
+				return $sentencia->insert_id;
 			}
 			else
 			{

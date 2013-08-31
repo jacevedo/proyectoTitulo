@@ -14,7 +14,7 @@ class ControladoraPersonaRegionComuna
 
 	}
 	
-	public function insertarPersona(Persona $persona)
+	function insertarPersona(Persona $persona)
 	{
 		$conexion = new MySqlCon();
 		$idPersona = $persona->idPersona;
@@ -29,13 +29,13 @@ class ControladoraPersonaRegionComuna
 		try
 		{
 			$this->SqlQuery='';
-	        $this->SqlQuery='INSERT INTO `persona` (`ID_PERSONA`,`ID_PERFIL`,`RUT`,`DV`,`NOMBRE`,`APELLIDO_PATERNO`,`APELLIDO_MATERNO`,`FECHA_NAC`) (null,?,?,?,?,?,?,?);';
+	        $this->SqlQuery='INSERT INTO `persona` (`ID_PERSONA`,`ID_PERFIL`,`RUT`,`DV`,`NOMBRE`,`APELLIDO_PATERNO`,`APELLIDO_MATERNO`,`FECHA_NAC`) VALUES (null,?,?,?,?,?,?,?);';
 	        $sentencia=$conexion->prepare($this->SqlQuery);
-	        $sentencia->bind_param('iissssss',$idPersona,$idPerfil,$rut,$dv,$nombre,$apellidoP,$apellidoM,$fechaNac);
+	        $sentencia->bind_param('iisssss',$idPerfil,$rut,$dv,$nombre,$apellidoP,$apellidoM,$fechaNac);
 	      	if($sentencia->execute())
 	      	{
 	        	$conexion->close();
-				return true;
+				return $sentencia->insert_id;
 			}
 			else
 			{
