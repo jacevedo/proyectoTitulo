@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?php 
 require_once '../bdmysql/MySqlCon.php'; 
 require_once '../pojos/persona.php';
@@ -212,18 +211,4 @@ class ControladoraPersonaRegionComuna
 		return $this->datos;
 	}
 }
-=======
-<?php 
-class ControladoraPersonaRegionComuna
-{
-	function CrearPersona()
-	{
-
-	}
-	function ListarPersonas()
-	{
-
-	}
-}
->>>>>>> 4f5aa118ab62e93b200f2ef3730a8376e8d6a757
 ?>

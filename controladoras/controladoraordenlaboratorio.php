@@ -1,4 +1,7 @@
+<<<<<<< HEAD
  HEAD
+=======
+>>>>>>> 1c3afec08499775f7cd7f0320a8dd63648bb08cd
 <?php
 require_once '../bdmysql/MySqlCon.php'; 
 require_once '../pojos/persona.php';
@@ -92,4 +95,8 @@ class ControladoraOrdenLaboratorio
 		
 	}
 }
+<<<<<<< HEAD
 ?>
+=======
+?>
+>>>>>>> 1c3afec08499775f7cd7f0320a8dd63648bb08cd
