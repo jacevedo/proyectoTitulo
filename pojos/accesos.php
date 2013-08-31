@@ -1,11 +1,11 @@
 <?php
 
-public class Accesos
+class Accesos
 {
 	public $codAcceso;
 	public $descripcionAcceso;
 
-	public initClass($codAcceso, $descripcionAcceso)
+	function initClass($codAcceso, $descripcionAcceso)
 	{
 		$this->codAcceso = $codAcceso;
 		$this->descripcionAcceso = $descripcionAcceso;

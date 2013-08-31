@@ -1,5 +1,5 @@
 <?php
-public class Insumos
+class Insumos
 {
 	public $idInsumos;
 	public $idAreaInsumo;
@@ -9,7 +9,7 @@ public class Insumos
 	public $descripcionInsumo;
 	public $unidadMedida;
 
-	public initClass($idInsumos, $idAreaInsumo, $idGastos, $nomInsumos, 
+	function initClass($idInsumos, $idAreaInsumo, $idGastos, $nomInsumos, 
 		$cantidad, $descripcionInsumo, $unidadMedida)
 	{
 		$this->idInsumos = $idInsumos;

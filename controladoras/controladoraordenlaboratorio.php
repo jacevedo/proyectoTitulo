@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 require_once '../bdmysql/MySqlCon.php'; 
 require_once '../pojos/persona.php';
@@ -91,4 +92,29 @@ class ControladoraOrdenLaboratorio
 		
 	}
 }
+=======
+<?php
+class ControladoraOrdenLaboratorio
+{
+	function CrearOrden($orden)
+	{
+
+	}
+
+	function InsertarOrden($orden)
+	{
+
+	}
+
+	function ModificarOrden($orden)
+	{
+
+	}
+
+	function ModificarEstadoOrden($orden)
+	{
+		
+	}
+}
+>>>>>>> 4f5aa118ab62e93b200f2ef3730a8376e8d6a757
 ?>

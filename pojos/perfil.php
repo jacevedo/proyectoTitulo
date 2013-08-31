@@ -1,11 +1,10 @@
 <?php
-
-public class Perfil
+class Perfil
 {
 	public $idPerfil;
 	public $nomPerfil;
 
-	public initClass($idPerfil,$nomPerfil)
+	function initClass($idPerfil,$nomPerfil)
 	{
 		$this->$idPerfil = $idPerfil;
 		$this->nomPerfil = $nomPerfil;

@@ -1,11 +1,11 @@
 <?php
-public class Paciente
+class Paciente
 {
 	public $idPaciente;
 	public $idPersona;
 	public $fechaIngreso;
 
-	public initClass($idPaciente, $idPersona, $fechaIngreso)
+	 function initClass($idPaciente, $idPersona, $fechaIngreso)
 	{
 		$this->idPaciente = $idPaciente;
 		$this->idPersona = $idPersona;

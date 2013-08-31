@@ -1,14 +1,13 @@
 <?php
-public class FichaDental
+class FichaDental
 {
 	public $idFicha;
 	public $idPaciente;
-	public $idPresupuesto;
 	public $idOdontologo;
 	public $fechaIngreso;
 	public $anamnesis;
 
-	public initClass($idFicha, $idPaciente, $idPresupuesto, $idOdontologo, $fechaIngreso, $anamnesis)
+	function initClass($idFicha, $idPaciente, $idPresupuesto, $idOdontologo, $fechaIngreso, $anamnesis)
 	{
 		$this->idFicha = $idFicha;
 		$this->idPaciente = $idPaciente;

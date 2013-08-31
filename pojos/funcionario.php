@@ -1,11 +1,11 @@
 <?php
-public class Funcionario
+class Funcionario
 {
 	public $idFuncionario;
 	public $idPersona;
 	public $puestoTrabajo;
 
-	public initClass($idFuncionario, $idPersona, $puestoTrabajo)
+	function initClass($idFuncionario, $idPersona, $puestoTrabajo)
 	{
 		$this->idFuncionario = $idFuncionario;
 		$this->idPersona = $idPersona;

@@ -1,11 +1,11 @@
 <?php
 
-public class Permisos
+class Permisos
 {
 	public $idPerfil;
 	public $codAcceso;
 
-	public initClass($idPerfil,$codAcceso)
+	function initClass($idPerfil,$codAcceso)
 	{
 		$this->idPerfil = $idPerfil;
 		$this->codAcceso = $codAcceso;

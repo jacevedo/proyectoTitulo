@@ -1,13 +1,13 @@
 <?php
 
-public class Abono
+class Abono
 {
 	public $idAbono;
 	public $idTratamientoDental;
 	public $fechaAbono;
 	public $monto;
 
-	public initClass($idAbono,$idTratamientoDental,$fechaAbono,$monto)
+	function initClass($idAbono,$idTratamientoDental,$fechaAbono,$monto)
 	{
 		$this->idAbono = $idAbono;
 		$this->idTratamientoDental = $idTratamientoDental;

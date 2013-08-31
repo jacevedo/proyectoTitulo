@@ -1,5 +1,5 @@
 <?php
-public class PiezaDental
+class PiezaDental
 {
 	public $idPieza;
 	public $idTratamientoDental;
@@ -9,7 +9,7 @@ public class PiezaDental
 	public $descripcionPieza;
 	public $periodoPieza;
 
-	public initClass($idPieza, $idTratamientoDental, $idOrdenLaboratorio, $idTipoPieza, $nombrePieza
+	function initClass($idPieza, $idTratamientoDental, $idOrdenLaboratorio, $idTipoPieza, $nombrePieza
 					 $descripcionPieza, $periodoPieza)
 	{
 		$this->idPieza = $idPieza;

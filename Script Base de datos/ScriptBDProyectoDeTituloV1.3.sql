@@ -7,7 +7,7 @@ use sfh;
 /*==============================================================*/
 create table abono
 (
-   ID_ABONO             int not null,
+   ID_ABONO             int not null auto_increment,
    ID_TRATAMIENTO_DENTAL int,
    FECHA_DE_ABONO       date,
    MONTO                int,
@@ -80,7 +80,7 @@ create table datosdecontacto
 /*==============================================================*/
 create table fichadental
 (
-   ID_FICHA             int not null,
+   ID_FICHA             int not null auto_increment,
    ID_PACIENTE          int,
    ID_PRESUPUESTO       int,
    ID_ODONTOLOGO        int,
@@ -183,7 +183,7 @@ create table ordendelaboratorio
 /*==============================================================*/
 create table paciente
 (
-   ID_PACIENTE          int not null,
+   ID_PACIENTE          int not null auto_increment,
    ID_PERSONA           int,
    FECHA_INGRESO        date,
    primary key (ID_PACIENTE)
@@ -256,7 +256,7 @@ create table piezadental
 /*==============================================================*/
 create table presupuesto
 (
-   ID_PRESUPUESTO       int not null,
+   ID_PRESUPUESTO       int not null auto_increment,
    VALORTOTAL           int,
    primary key (ID_PRESUPUESTO)
 );
@@ -608,17 +608,17 @@ INSERT INTO `persona` (`ID_PERSONA`, `ID_PERFIL`, `RUT`, `DV`, `NOMBRE`, `APELLI
 INSERT INTO `persona` (`ID_PERSONA`, `ID_PERFIL`, `RUT`, `DV`, `NOMBRE`, `APELLIDO_PATERNO`, `APELLIDO_MATERNO`, `FECHA_NAC`) VALUES (NULL, '2', '15725009', '0', 'Camila', 'Carrizo', 'Pacheco', '1983-05-19');
 INSERT INTO `persona` (`ID_PERSONA`, `ID_PERFIL`, `RUT`, `DV`, `NOMBRE`, `APELLIDO_PATERNO`, `APELLIDO_MATERNO`, `FECHA_NAC`) VALUES (NULL, '2', '19746228', '7', 'Pedro', 'Lopez', 'Moya', '1993-12-04');
 
-INSERT INTO `pass`(`ID_PERSONA`, `PASS`, `FECHA_CADUCIDAD`) VALUES (1,'Tatus.2013',2014-08-01);
-INSERT INTO `pass`(`ID_PERSONA`, `PASS`, `FECHA_CADUCIDAD`) VALUES (2,'Peres.2013',2014-08-01);
-INSERT INTO `pass`(`ID_PERSONA`, `PASS`, `FECHA_CADUCIDAD`) VALUES (3,'Palma.2013',2014-08-01);
-INSERT INTO `pass`(`ID_PERSONA`, `PASS`, `FECHA_CADUCIDAD`) VALUES (4,'Muñoz.2013',2014-08-01);
-INSERT INTO `pass`(`ID_PERSONA`, `PASS`, `FECHA_CADUCIDAD`) VALUES (5,'Garrido.2013',2013-08-01);
-INSERT INTO `pass`(`ID_PERSONA`, `PASS`, `FECHA_CADUCIDAD`) VALUES (6,'Madrid.2013',2014-08-01);
-INSERT INTO `pass`(`ID_PERSONA`, `PASS`, `FECHA_CADUCIDAD`) VALUES (7,'Salcedo.2013',2013-08-01);
-INSERT INTO `pass`(`ID_PERSONA`, `PASS`, `FECHA_CADUCIDAD`) VALUES (8,'Sanchez.2013',2014-08-01);
-INSERT INTO `pass`(`ID_PERSONA`, `PASS`, `FECHA_CADUCIDAD`) VALUES (9,'Paredes.2013',2013-08-01);
-INSERT INTO `pass`(`ID_PERSONA`, `PASS`, `FECHA_CADUCIDAD`) VALUES (10,'Carrizo.2013',2013-08-01);
-INSERT INTO `pass`(`ID_PERSONA`, `PASS`, `FECHA_CADUCIDAD`) VALUES (11,'Lopez.2013',2013-08-01);
+INSERT INTO `pass`(`ID_PERSONA`, `PASS`, `FECHA_CADUCIDAD`) VALUES (1,'Tatus.2013',DATE('2014-08-01'));
+INSERT INTO `pass`(`ID_PERSONA`, `PASS`, `FECHA_CADUCIDAD`) VALUES (2,'Peres.2013',DATE('2014-08-01'));
+INSERT INTO `pass`(`ID_PERSONA`, `PASS`, `FECHA_CADUCIDAD`) VALUES (3,'Palma.2013',DATE('2014-08-01'));
+INSERT INTO `pass`(`ID_PERSONA`, `PASS`, `FECHA_CADUCIDAD`) VALUES (4,'Muñoz.2013',DATE('2014-08-01'));
+INSERT INTO `pass`(`ID_PERSONA`, `PASS`, `FECHA_CADUCIDAD`) VALUES (5,'Garrido.2013',DATE('2013-08-01'));
+INSERT INTO `pass`(`ID_PERSONA`, `PASS`, `FECHA_CADUCIDAD`) VALUES (6,'Madrid.2013',DATE('2014-08-01'));
+INSERT INTO `pass`(`ID_PERSONA`, `PASS`, `FECHA_CADUCIDAD`) VALUES (7,'Salcedo.2013',DATE('2013-08-01'));
+INSERT INTO `pass`(`ID_PERSONA`, `PASS`, `FECHA_CADUCIDAD`) VALUES (8,'Sanchez.2013',DATE('2014-08-01'));
+INSERT INTO `pass`(`ID_PERSONA`, `PASS`, `FECHA_CADUCIDAD`) VALUES (9,'Paredes.2013',DATE('2013-08-01'));
+INSERT INTO `pass`(`ID_PERSONA`, `PASS`, `FECHA_CADUCIDAD`) VALUES (10,'Carrizo.2013',DATE('2013-08-01'));
+INSERT INTO `pass`(`ID_PERSONA`, `PASS`, `FECHA_CADUCIDAD`) VALUES (11,'Lopez.2013',DATE('2013-08-01'));
 
 
 
@@ -1029,10 +1029,10 @@ INSERT INTO `funcionario` (`ID_FUNCIONARIO` ,`ID_PERSONA` ,`PUESTO_DE_TRABAJO`) 
 INSERT INTO `funcionario` (`ID_FUNCIONARIO`, `ID_PERSONA`, `PUESTO_DE_TRABAJO`) VALUES ('3', '5', 'Dentista');
 INSERT INTO `funcionario` (`ID_FUNCIONARIO`, `ID_PERSONA`, `PUESTO_DE_TRABAJO`) VALUES ('4', '6', 'Asistente Dental');
 
-INSERT INTO `paciente` (`ID_PACIENTE`, `ID_PERSONA`, `FECHA_INGRESO`) VALUES ('1', '4', '2013-04-01');
-INSERT INTO `paciente` (`ID_PACIENTE`, `ID_PERSONA`, `FECHA_INGRESO`) VALUES ('2', '7', '2013-05-16');
-INSERT INTO `paciente` (`ID_PACIENTE`, `ID_PERSONA`, `FECHA_INGRESO`) VALUES ('3', '8', '2013-07-01');
-INSERT INTO `paciente` (`ID_PACIENTE`, `ID_PERSONA`, `FECHA_INGRESO`) VALUES ('4', '9', '2013-08-11');
+INSERT INTO `paciente` (`ID_PACIENTE`, `ID_PERSONA`, `FECHA_INGRESO`) VALUES (null, '4', '2013-04-01');
+INSERT INTO `paciente` (`ID_PACIENTE`, `ID_PERSONA`, `FECHA_INGRESO`) VALUES (null, '7', '2013-05-16');
+INSERT INTO `paciente` (`ID_PACIENTE`, `ID_PERSONA`, `FECHA_INGRESO`) VALUES (null, '8', '2013-07-01');
+INSERT INTO `paciente` (`ID_PACIENTE`, `ID_PERSONA`, `FECHA_INGRESO`) VALUES (null, '9', '2013-08-11');
 
 INSERT INTO `odontologo` (`ID_ODONTOLOGO`, `ID_PERSONA`, `ESPECIALIDAD`) VALUES ('1', '2', 'Endodoncia');
 INSERT INTO `odontologo` (`ID_ODONTOLOGO`, `ID_PERSONA`, `ESPECIALIDAD`) VALUES ('2', '5', 'Ortodoncia');

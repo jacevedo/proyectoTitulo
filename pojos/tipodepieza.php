@@ -1,11 +1,11 @@
 <?php
-public class TipoDePieza
+class TipoDePieza
 {
 	public $idTipoPieza;
 	public $nombreCientificoPieza;
 	public $descripcion;
 
-	public initClass($idTipoPieza, $nombreCientificoPieza, $descripcion)
+	function initClass($idTipoPieza, $nombreCientificoPieza, $descripcion)
 	{
 		$this->idTipoPieza = $idTipoPieza;
 		$this->nombreCientificoPieza = $nombreCientificoPieza;

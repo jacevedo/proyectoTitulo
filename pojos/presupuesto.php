@@ -1,11 +1,13 @@
 <?php
-public class Presupuesto
+class Presupuesto
 {
 	public $idPresupuesto;
 	public $valotTotal;
+	public $idFicha;
 
-	public initClass($idPresupuesto, $valorTotal)
+	function initClass($idPresupuesto, $idFicha, $valorTotal)
 	{
+		$this->idFicha = $idFicha;
 		$this->idPresupuesto = $idPresupuesto;
 		$this->valorTotal = $valorTotal;
 	}

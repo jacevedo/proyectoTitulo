@@ -1,11 +1,11 @@
 <?php
-public class Region
+class Region
 {
 	public $idRegion;
 	public $nombreRegion;
 	public $numeroRegionRomano;
 
-	public initClass($idRegion, $nombreRegion, $numeroRegionRomano)
+	function initClass($idRegion, $nombreRegion, $numeroRegionRomano)
 	{
 		$this->idRegion = $idRegion;
 		$this->nombreRegion = $nombreRegion;
