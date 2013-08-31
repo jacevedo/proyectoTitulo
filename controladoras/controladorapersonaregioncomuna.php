@@ -50,7 +50,7 @@ class ControladoraPersonaRegionComuna
 		}
 	}
 
-	public function modificarPersona(Persona $persona)
+	function modificarPersona(Persona $persona)
 	{
 		$conexion = new MySqlCon();
 		$idPersona = $persona->idPersona;
@@ -71,7 +71,7 @@ class ControladoraPersonaRegionComuna
 	      	if($sentencia->execute())
 	      	{
 	        	$conexion->close();
-				return "Ok";
+				return "Modificado";
 			}
 			else
 			{

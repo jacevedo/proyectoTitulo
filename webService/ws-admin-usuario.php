@@ -38,7 +38,7 @@ $opcion = $data->{'indice'};
 switch ($opcion) 
 {
 	case 1:
-		//json Persona {"indice":1,"idPerfil":1,"rut":17897359,"dv":2,"nombre":"ada","appPaterno":"wonk","appMaterno":"asturias","fechaNac":"1991-12-12"}
+		//json Insertar Persona {"indice":1,"idPerfil":1,"rut":17897359,"dv":2,"nombre":"ada","appPaterno":"wonk","appMaterno":"asturias","fechaNac":"1991-12-12"}
 		$idPerfil = $data->{'idPerfil'};
 		$rut = $data->{'rut'};
 		$dv = $data->{'dv'};
@@ -54,7 +54,7 @@ switch ($opcion)
 		echo(json_encode($arreglo));
 	break;
 	case 2:
-		//json Odontologo {"indice":2,"idPersona":1,"especialidad":"Cirugia"}
+		//json Insertar Odontologo {"indice":2,"idPersona":1,"especialidad":"Cirugia"}
 		$idPersona = $data->{'idPersona'};
 		$especialidad = $data->{'especialidad'};
 		$odontologo = new Odontologo();
@@ -65,7 +65,7 @@ switch ($opcion)
 		
 	break;
 	case 3:
-		//json Paciente {"indice":3,"idPersona":1,"fechaIngreso":"2013-04-12"}
+		//json Insertar Paciente {"indice":3,"idPersona":1,"fechaIngreso":"2013-04-12"}
 		$idPersona = $data->{"idPersona"};
 		$fechaIngreso = $data->{"fechaIngreso"};
 		$paciente = new Paciente();
@@ -75,7 +75,7 @@ switch ($opcion)
 		echo(json_encode($arreglo));
 	break;
 	case 4:
-		//json Paciente {"indice":4,"idPersona":1,"puestoTrabajo":"Administrador"}
+		//json Insertar Funcionario {"indice":4,"idPersona":1,"puestoTrabajo":"Administrador"}
 		$idPersona = $data->{"idPersona"};
 		$puestoTrabajo = $data->{"puestoTrabajo"};
 		$funcionario = new Funcionario();
@@ -85,7 +85,20 @@ switch ($opcion)
 		echo(json_encode($arreglo));
 	break;
 	case 5:
-	
+		//json Modificar Persona {"indice":5,"idPersona":20,"idPerfil":1,"rut":11111111,"dv":2,"nombre":"ada","appPaterno":"wonk","appMaterno":"asturias","fechaNac":"1991-12-12"}
+		$idPersona = $data->{'idPersona'};
+		$idPerfil = $data->{'idPerfil'};
+		$rut = $data->{'rut'};
+		$dv = $data->{'dv'};
+		$nombre = $data->{'nombre'};
+		$appPateno = $data->{'appPaterno'};
+		$appMaterno = $data->{'appMaterno'};
+		$fechaNac = $data->{'fechaNac'};
+		$persona = new Persona();
+		$controladoraPersona = new ControladoraPersonaRegionComuna();
+		$persona->initClass($idPersona, $idPerfil, $rut, $dv, $nombre, $appPateno, $appMaterno, $fechaNac);
+		$arreglo["resultado"] = $controladoraPersona->modificarPersona($persona);	
+		echo (json_encode($arreglo));
 	break;
 	case 6:
 	
