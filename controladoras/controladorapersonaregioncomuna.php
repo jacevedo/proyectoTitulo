@@ -9,7 +9,7 @@ class ControladoraPersonaRegionComuna
 	private $SqlQuery;
 	private $datos;
 	
-	public function crearPersona()
+	function crearPersona()
 	{
 
 	}
@@ -115,9 +115,98 @@ class ControladoraPersonaRegionComuna
 		}
 		return $this->datos;
 	}
-	
-	function deshabilitarPersona()
+
+	public function listarPersonaPorPerfil($perfil)
 	{
+		$conexion = new MySqlCon();
+		$this->datos = '';
+		try
+		{
+			$this->SqlQuery = '';
+			$this->SqlQuery = "SELECT * FROM `persona` WHERE `ID_PERFIL` = ?";
+		   	$sentencia=$conexion->prepare($this->SqlQuery);
+		   	$sentencia->bind_param('i', $perfil);
+        	if($sentencia->execute())
+        	{
+        		$sentencia->bind_result($idPersona, $idPerfil, $rut, $dv, $nombre, $apellidoPaterno, $apellidoMaterno, $fechaNacimiento);					
+				$indice=0;     
+				while($sentencia->fetch())
+				{
+					$persona = new Persona();
+					$persona->initClass($idPersona, $idPerfil, $rut, $dv, $nombre, $apellidoPaterno, $apellidoMaterno, $fechaNacimiento);
+					$this->datos[$indice] = $persona;
+					$indice++;
+				}
+      		}
+       		$conexion->close();
+		}
+		catch(Exception $e)
+		{
+			throw new $e("Error al listar personas");
+		}
+		return $this->datos;
+	}
+
+	public function buscarPorRut($rutB, $dvB)
+	{
+		$conexion = new MySqlCon();
+		$this->datos = '';
+		try
+		{
+			$this->SqlQuery = '';
+			$this->SqlQuery = "SELECT * FROM `persona` WHERE `RUT` = ? AND `DV` = ?";
+		   	$sentencia=$conexion->prepare($this->SqlQuery);
+		   	$sentencia->bind_param('ss', $rutB, $dvB);
+        	if($sentencia->execute())
+        	{
+        		$sentencia->bind_result($idPersona, $idPerfil, $rut, $dv, $nombre, $apellidoPaterno, $apellidoMaterno, $fechaNacimiento);					
+				$indice=0;     
+				while($sentencia->fetch())
+				{
+					$persona = new Persona();
+					$persona->initClass($idPersona, $idPerfil, $rut, $dv, $nombre, $apellidoPaterno, $apellidoMaterno, $fechaNacimiento);
+					$this->datos[$indice] = $persona;
+					$indice++;
+				}
+      		}
+       		$conexion->close();
+		}
+		catch(Exception $e)
+		{
+			throw new $e("Error al buscar persona");
+		}
+		return $this->datos;
+	}
+
+	public function buscarPorNombre($nombrePersona, $apellidoPersona)
+	{
+		$conexion = new MySqlCon();
+		$this->datos = '';
+		try
+		{
+			$this->SqlQuery = '';
+			$this->SqlQuery = "SELECT * FROM `persona` WHERE `NOMBRE` LIKE '%?%' OR `APELLIDO_PATERNO` LIKE '%?%'";
+		   	$sentencia=$conexion->prepare($this->SqlQuery);
+		   	$sentencia->bind_param('ss', $nombrePersona, $apellidoPersona);
+        	if($sentencia->execute())
+        	{
+        		$sentencia->bind_result($idPersona, $idPerfil, $rut, $dv, $nombre, $apellidoPaterno, $apellidoMaterno, $fechaNacimiento);					
+				$indice=0;     
+				while($sentencia->fetch())
+				{
+					$persona = new Persona();
+					$persona->initClass($idPersona, $idPerfil, $rut, $dv, $nombre, $apellidoPaterno, $apellidoMaterno, $fechaNacimiento);
+					$this->datos[$indice] = $persona;
+					$indice++;
+				}
+      		}
+       		$conexion->close();
+		}
+		catch(Exception $e)
+		{
+			throw new $e("Error al buscar persona");
+		}
+		return $this->datos;
 	}
 	
 	public function listarRegion()
