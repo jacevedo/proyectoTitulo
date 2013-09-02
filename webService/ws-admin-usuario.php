@@ -26,7 +26,8 @@ require_once '../controladoras/controladorafuncionario.php';
 * 11.- desabilitar Funcionario
 * 12.- Listar Personas
 * 13.- Listar Paciente
-* 14.- Listar Funcionario
+* 14.- Listar Odontologo
+* 15.- Listar Funcionario
 */
 
 
@@ -101,13 +102,37 @@ switch ($opcion)
 		echo (json_encode($arreglo));
 	break;
 	case 6:
-	
+		//json Modificar Odontologo {"indice":6,"idOdontologo":2,idPersona":1,"especialidad":"Cirugia"}
+		$idOdontologo = $data->{'idOdontologo'};
+		$idPersona = $data->{'idPersona'};
+		$especialidad = $data->{'especialidad'};
+		$odontologo = new Odontologo();
+		$controladoraOdontologo = new ControladoraDoctor();
+		$odontologo->initClass($idOdontologo, $idPersona, $especialidad);
+		$arreglo["resultado"] = $controladoraOdontologo->modificarDoctor($odontologo);
+		echo(json_encode($arreglo));
 	break;
 	case 7:
-	
+		//json Modificar Paciente {"indice":3,"idPaciente":1,"idPersona":1,"fechaIngreso":"2013-04-12"}
+		$idPaciente = $data->{"idPaciente"};
+		$idPersona = $data->{"idPersona"};
+		$fechaIngreso = $data->{"fechaIngreso"};
+		$paciente = new Paciente();
+		$controladoraPaciente  = new ControladoraPaciente();
+		$paciente->initClass($idPaciente, $idPersona, $fechaIngreso);
+		$arreglo["resultado"] = $controladoraPaciente->modificarPacientes($paciente);
+		echo(json_encode($arreglo));
 	break;
 	case 8:
-	
+		//json Modificar Funcionario {"indice":4,"idFuncionario":2,"idPersona":1,"puestoTrabajo":"Administrador"}
+		$idFuncionario = $data->{"idFuncionario"};
+		$idPersona = $data->{"idPersona"};
+		$puestoTrabajo = $data->{"puestoTrabajo"};
+		$funcionario = new Funcionario();
+		$controladoraFuncionario = new ControladoraFuncionario();
+		$funcionario->initClass($idFuncionario, $idPersona, $puestoTrabajo);
+		$arreglo["resultado"] = $controladoraFuncionario->insertarFuncionario($funcionario);
+		echo(json_encode($arreglo));
 	break;
 	case 9:
 	
@@ -119,13 +144,24 @@ switch ($opcion)
 	
 	break;
 	case 12:
-	
+		//json ListarPersonas {"indice":12}
+		$controladoraPersona = new ControladoraPersonaRegionComuna();
+		echo(json_encode($controladoraPersona->listarPersonas()));
 	break;
 	case 13:
-	
+		//json ListarPaciente{"indice":13}
+		$controladoraPaciente = new ControladoraPaciente();
+		echo(json_encode($controladoraPaciente->listarPacientes()));
 	break;
 	case 14:
-	
+		//json ListarOdontologo {"indice":14}
+		$controladoraOdontologo = new ControladoraDoctor();
+		echo(json_encode($controladoraOdontologo->listarDoctores()));
+	break;
+	case 15:
+		//json ListarFuncionario {"indice":15}
+		$controladoraFuncionario = new ControladoraFuncionario();
+		echo(json_encode($controladoraFuncionario->listarFuncionario()));
 	break;
 }
  
