@@ -14,14 +14,15 @@ class ControladoraFuncionario
 	
 		$idPersona = $funcionario->idPersona;
 		$puestoTrabajo = $funcionario->puestoTrabajo;
+		$funcionarioHabilitado = $funcionario->funcionarioHabilitado;
 		
 		
 		try
 		{
 			$this->SqlQuery='';
-	        $this->SqlQuery='INSERT INTO `funcionario` (`ID_FUNCIONARIO` ,`ID_PERSONA` ,`PUESTO_DE_TRABAJO`) VALUES (null, ?, ?);';
+	        $this->SqlQuery='INSERT INTO `funcionario` (`ID_FUNCIONARIO`,`ID_PERSONA`,`PUESTO_DE_TRABAJO`,`FUNCIONARIO_HABILITADO`) VALUES (null, ?, ?,?);';
 	        $sentencia=$conexion->prepare($this->SqlQuery);
-	        $sentencia->bind_param('is',$idPersona, $puestoTrabajo);
+	        $sentencia->bind_param('isi',$idPersona, $puestoTrabajo,$funcionarioHabilitado);
 	      	if($sentencia->execute())
 	      	{
 	        	$conexion->close();
@@ -55,12 +56,12 @@ class ControladoraFuncionario
 	      	if($sentencia->execute())
 	      	{
 	        	$conexion->close();
-				return true;
+				return "Funcionario Modificado";
 			}
 			else
 			{
 				$conexion->close();
-	        	return false;
+	        	return "Error no se modifico el funcionario";
 	        }
         }
     	catch(Exception $e)
@@ -69,6 +70,35 @@ class ControladoraFuncionario
          throw new $e("Error al Actualizar Usuarios");
         }
 
+	}
+	public function desabilitarFuncionario(Funcionario $funcionario)
+	{
+		$conexion = new MySqlCon();
+		$idFuncionario = $funcionario->idFuncionario;
+		$funcionarioHabilitado = $funcionario->funcionarioHabilitado;
+		
+		try 
+	   	{ 	 
+	        $this->SqlQuery='';
+	        $this->SqlQuery='UPDATE `funcionario` SET `FUNCIONARIO_HABILITADO` = ? WHERE `ID_FUNCIONARIO` = ?';
+	        $sentencia=$conexion->prepare($this->SqlQuery);
+	        $sentencia->bind_param('ii',$funcionarioHabilitado,$idPaciente);
+	      	if($sentencia->execute())
+	      	{
+	        	$conexion->close();
+				return "Funcionario Desabilitado";
+			}
+			else
+			{
+				$conexion->close();
+	        	return "Error, no se desabilito el funcionario";
+	        }
+        }
+    	catch(Exception $e)
+    	{
+         return false;
+         throw new $e("Error al Actualizar Usuarios");
+        }
 	}
 	public function listarFuncionario()
 	{
