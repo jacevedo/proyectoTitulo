@@ -81,13 +81,13 @@ class ControladoraFuncionario
 		   	$sentencia=$conexion->prepare($this->SqlQuery);
         	if($sentencia->execute())
         	{
-        		$sentencia->bind_result($idFuncionario,$idPersona,$puestoTrabajo);					
+        		$sentencia->bind_result($idFuncionario,$idPersona,$puestoTrabajo,$funcionarioHabilitado);					
 				$indice=0;     
 				while($sentencia->fetch())
 				{
 					$funcionario = new Funcionario();
-					$funcionario->initClass($idFuncionario,$idPersona,$puestoTrabajo);
-        			$this->datos[$indice] = $paciente;
+					$funcionario->initClass($idFuncionario,$idPersona,$puestoTrabajo,$funcionarioHabilitado);
+        			$this->datos[$indice] = $funcionario;
         			$indice++;
 				}
       		}

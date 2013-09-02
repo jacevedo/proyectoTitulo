@@ -50,12 +50,12 @@ class ControladoraPaciente
 		   	$sentencia=$conexion->prepare($this->SqlQuery);
         	if($sentencia->execute())
         	{
-        		$sentencia->bind_result($idPaciente,$idPersona,$fechaIngreso);					
+        		$sentencia->bind_result($idPaciente,$idPersona,$fechaIngreso,$habilitadoPaciente);					
 				$indice=0;     
 				while($sentencia->fetch())
 				{
 					$paciente = new Paciente();
-					$paciente->initClass($idPaciente,$idPersona,$fechaIngreso);
+					$paciente->initClass($idPaciente,$idPersona,$fechaIngreso,$habilitadoPaciente);
         			$this->datos[$indice] = $paciente;
         			
         			$indice++;
@@ -85,7 +85,7 @@ class ControladoraPaciente
 	      	if($sentencia->execute())
 	      	{
 	        	$conexion->close();
-				return $idPersona." ".$fechaIngreso." ".$idPaciente;
+				return "Modificado";
 			}
 			else
 			{

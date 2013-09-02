@@ -1,6 +1,6 @@
 <?php
 require_once '../bdmysql/MySqlCon.php'; 
-require_once '../pojos/paciente.php';
+require_once '../pojos/odontologo.php';
 require_once '../pojos/persona.php';
  class ControladoraDoctor
 {
@@ -54,12 +54,12 @@ require_once '../pojos/persona.php';
 	      	if($sentencia->execute())
 	      	{
 	        	$conexion->close();
-				return true;
+				return "modificado";
 			}
 			else
 			{
 				$conexion->close();
-	        	return false;
+	        	return "No modificado";
 	        }
         }
     	catch(Exception $e)
@@ -80,12 +80,12 @@ require_once '../pojos/persona.php';
 		   	$sentencia=$conexion->prepare($this->SqlQuery);
         	if($sentencia->execute())
         	{
-        		$sentencia->bind_result($idOdontologo,$idPersona,$especialidad);					
+        		$sentencia->bind_result($idOdontologo,$idPersona,$especialidad,$odontologoHabilitado);					
 				$indice=0;     
 				while($sentencia->fetch())
 				{
 					$doctor = new Odontologo();
-					$doctor->initClass($idOdontologo,$idPersona,$especialidad);
+					$doctor->initClass($idOdontologo,$idPersona,$especialidad,$odontologoHabilitado);
         			$this->datos[$indice] = $doctor;
         			
         			$indice++;
