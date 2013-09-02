@@ -5,54 +5,54 @@ use sfh;
 /*==============================================================*/
 /* Table: ABONO                                                 */
 /*==============================================================*/
-create table ABONO
+create table abono
 (
    ID_ABONO             int not null auto_increment,
-   ID_TRATAMIENTO_DENTAL int,
-   FECHA_DE_ABONO       date,
-   MONTO                int,
+   ID_TRATAMIENTO_DENTAL int not null,
+   FECHA_DE_ABONO       date not null,
+   MONTO                int not null,
    primary key (ID_ABONO)
 );
 
 /*==============================================================*/
 /* Table: ACCESOS                                               */
 /*==============================================================*/
-create table ACCESOS
+create table accesos
 (
    COD_ACCESO           int not null,
-   DESCRIPCION_ACCESO   varchar(50),
+   DESCRIPCION_ACCESO   varchar(50) not null,
    primary key (COD_ACCESO)
 );
 
 /*==============================================================*/
 /* Table: AREAINSUMO                                            */
 /*==============================================================*/
-create table AREAINSUMO
+create table areainsumo
 (
    ID_AREA_INSUMO       int not null auto_increment,
-   NOMBRE_AREA          varchar(50),
-   DESCRIPCION_AREA     text,
+   NOMBRE_AREA          varchar(50) not null,
+   DESCRIPCION_AREA     text not null,
    primary key (ID_AREA_INSUMO)
 );
 
 /*==============================================================*/
 /* Table: CITA                                                  */
 /*==============================================================*/
-create table CITA
+create table cita
 (
    ID_CITA              int not null auto_increment,
-   ID_ODONTOLOGO        int,
-   ID_PACIENTE          int,
-   HORA_DE_INICIO       datetime,
-   HORA_DE_TERMINO      datetime,
-   FECHA                date,
+   ID_ODONTOLOGO        int not null,
+   ID_PACIENTE          int not null,
+   HORA_DE_INICIO       datetime not null,
+   HORA_DE_TERMINO      datetime not null,
+   FECHA                date not null,
    primary key (ID_CITA)
 );
 
 /*==============================================================*/
 /* Table: COMUNA                                                */
 /*==============================================================*/
-create table COMUNA
+create table comuna
 (
    ID_COMUNA            int not null,
    ID_REGION            int,
@@ -63,13 +63,13 @@ create table COMUNA
 /*==============================================================*/
 /* Table: DATOSDECONTACTO                                       */
 /*==============================================================*/
-create table DATOSDECONTACTO
+create table datosdecontacto
 (
    ID_PERSONA           int not null,
-   ID_COMUNA            int,
+   ID_COMUNA            int not null,
    FONO_FIJO            varchar(10),
    FONO_CELULAR         varchar(10),
-   DIRECCION            varchar(50),
+   DIRECCION            varchar(50) not null,
    MAIL                 varchar(50),
    F_INGRESO            date,
    primary key (ID_PERSONA)
@@ -78,7 +78,7 @@ create table DATOSDECONTACTO
 /*==============================================================*/
 /* Table: FICHADENTAL                                           */
 /*==============================================================*/
-create table FICHADENTAL
+create table fichadental
 (
    ID_FICHA             int not null auto_increment,
    ID_PACIENTE          int,
@@ -91,7 +91,7 @@ create table FICHADENTAL
 /*==============================================================*/
 /* Table: FUNCIONARIO                                           */
 /*==============================================================*/
-create table FUNCIONARIO
+create table funcionario
 (
    ID_FUNCIONARIO       int not null auto_increment,
    ID_PERSONA           int,
@@ -103,7 +103,7 @@ create table FUNCIONARIO
 /*==============================================================*/
 /* Table: GASTOS                                                */
 /*==============================================================*/
-create table GASTOS
+create table gastos
 (
    ID_GASTOS            int not null auto_increment,
    ID_PERSONA           int,
@@ -115,7 +115,7 @@ create table GASTOS
 /*==============================================================*/
 /* Table: INIDICADORESECONOMICOS                               */
 /*==============================================================*/
-create table INIDICADORESECONOMICOS
+create table inidicadoreseconomicos
 (
    ID_INIDICADOR        int not null auto_increment,
    NOMBRE_INDICADOR     varchar(100),
@@ -127,13 +127,13 @@ create table INIDICADORESECONOMICOS
 /*==============================================================*/
 /* Table: INSUMOS                                               */
 /*==============================================================*/
-create table INSUMOS
+create table insumos
 (
    ID_INSUMO            int not null auto_increment,
-   ID_AREA_INSUMO       int,
+   ID_AREA_INSUMO       int not null,
    ID_GASTOS            int,
-   NOMBRE_INSUMO        varchar(50),
-   CANTIDAD             float,
+   NOMBRE_INSUMO        varchar(50) not null,
+   CANTIDAD             float not null, 
    DESCRIPCION_INSUMO   text,
    UNIDAD_DE_MEDIDA_INSUMO varchar(20),
    primary key (ID_INSUMO)
@@ -142,7 +142,7 @@ create table INSUMOS
 /*==============================================================*/
 /* Table: LISTAPRECIOS                                         */
 /*==============================================================*/
-create table LISTAPRECIOS
+create table listaprecios
 (
    ID_PRECIOS           int not null auto_increment,
    COMENTARIO           text,
@@ -153,7 +153,7 @@ create table LISTAPRECIOS
 /*==============================================================*/
 /* Table: ODONTOLOGO                                            */
 /*==============================================================*/
-create table ODONTOLOGO
+create table odontologo
 (
    ID_ODONTOLOGO        int not null auto_increment,
    ID_PERSONA           int,
@@ -165,25 +165,25 @@ create table ODONTOLOGO
 /*==============================================================*/
 /* Table: ORDEN_DE_LABORATORIO                                  */
 /*==============================================================*/
-create table ORDENDELABORATORIO
+create table ordendelaboratorio
 (
    ID_ORDEN_LABORATORIO int not null auto_increment,
-   CLINICA              varchar(80),
-   BD                   varchar(50),
-   BI                   varchar(50),
-   PD                   varchar(50),
-   PI                   varchar(50),
+   CLINICA              varchar(80) not null,
+   BD                   varchar(50) not null,
+   BI                   varchar(50) not null,
+   PD                   varchar(50) not null,
+   PI                   varchar(50) not null,
    FECHA_ENTREGA        date,
    HORA_ENTREGA         time,
-   COLOR                varchar(60),
-   ESTADO               varchar(60),
+   COLOR                varchar(60) not null,
+   ESTADO               varchar(60) not null,
    primary key (ID_ORDEN_LABORATORIO)
 );
 
 /*==============================================================*/
 /* Table: PACIENTE                                              */
 /*==============================================================*/
-create table PACIENTE
+create table paciente
 (
    ID_PACIENTE          int not null auto_increment,
    ID_PERSONA           int,
@@ -195,7 +195,7 @@ create table PACIENTE
 /*==============================================================*/
 /* Table: PASS                                                  */
 /*==============================================================*/
-create table PASS
+create table pass
 (
    ID_PERSONA           int not null,
    PASS                 text,
@@ -206,7 +206,7 @@ create table PASS
 /*==============================================================*/
 /* Table: PERFIL                                                */
 /*==============================================================*/
-create table PERFIL
+create table perfil
 (
    ID_PERFIL            int not null,
    NOM_PERFIL           varchar(40),
@@ -216,7 +216,7 @@ create table PERFIL
 /*==============================================================*/
 /* Table: PERMISOS                                              */
 /*==============================================================*/
-create table PERMISOS
+create table permisos
 (
    ID_PERFIL            int not null,
    COD_ACCESO           int,
@@ -226,13 +226,13 @@ create table PERMISOS
 /*==============================================================*/
 /* Table: PERSONA                                               */
 /*==============================================================*/
-create table PERSONA
+create table persona
 (
    ID_PERSONA           int not null auto_increment,
    ID_PERFIL            int,
-   RUT                  varchar(11),
-   DV                   varchar(1),
-   NOMBRE               varchar(50),
+   RUT                  varchar(11) not null,
+   DV                   varchar(1) not null,
+   NOMBRE               varchar(50) not null,
    APELLIDO_PATERNO     varchar(50),
    APELLIDO_MATERNO     varchar(50),
    FECHA_NAC            date,
@@ -242,13 +242,13 @@ create table PERSONA
 /*==============================================================*/
 /* Table: PIEZADENTAL                                           */
 /*==============================================================*/
-create table PIEZADENTAL
+create table piezadental
 (
    ID_PIEZA             int not null,
    ID_TRATAMIENTO_DENTAL int,
    ID_ORDEN_LABORATORIO int,
    ID_TIPO_PIEZA        int,
-   NOMBRE_PIEZA         varchar(50),
+   NOMBRE_PIEZA         varchar(50) not null,
    DESCRIPCION_PIEZA    text,
    PERIODO_PIEZA        int,
    primary key (ID_PIEZA)
@@ -257,7 +257,7 @@ create table PIEZADENTAL
 /*==============================================================*/
 /* Table: PRESUPUESTO                                           */
 /*==============================================================*/
-create table PRESUPUESTO
+create table presupuesto
 (
    ID_PRESUPUESTO       int not null,
    ID_FICHA             int,
@@ -268,7 +268,7 @@ create table PRESUPUESTO
 /*==============================================================*/
 /* Table: REGION                                                */
 /*==============================================================*/
-create table REGION
+create table region
 (
    ID_REGION            int not null,
    NOM_REGION           varchar(50),
@@ -279,11 +279,11 @@ create table REGION
 /*==============================================================*/
 /* Table: REPORTE                                               */
 /*==============================================================*/
-create table REPORTE
+create table reporte
 (
    ID_REPORTE           int not null auto_increment,
-   ID_PERSONA           int,
-   F_CREACION           date,
+   ID_PERSONA           int not null,
+   F_CREACION           date not null,
    TIPO_REPORTE         varchar(50),
    primary key (ID_REPORTE)
 );
@@ -293,10 +293,10 @@ create table REPORTE
 /* nombre cientifico = numero o letra de nomenclatura			*/
 /* Descripcion (Adulto, niño y nomenclatura)					*/
 /*==============================================================*/
-create table TIPODEPIEZA
+create table tipodepieza
 (
    ID_TIPO_PIEZA        int not null auto_increment,
-   NOMBRE_CIENTIFICO_PIEZA varchar(100),
+   NOMBRE_CIENTIFICO_PIEZA varchar(100) not null,
    DESCRIPCION          text,
    primary key (ID_TIPO_PIEZA)
 );
@@ -304,12 +304,12 @@ create table TIPODEPIEZA
 /*==============================================================*/
 /* Table: TRATAMIENTODENTAL                                     */
 /*==============================================================*/
-create table TRATAMIENTODENTAL
+create table tratamientodental
 (
    ID_TRATAMIENTO_DENTAL int not null auto_increment,
-   ID_FICHA             int,
-   FECH_CREACION        date,
-   TRATAMIENTO          text,
+   ID_FICHA             int not null,
+   FECH_CREACION        date not null,
+   TRATAMIENTO          text not null,
    FECHA_SEGUIMIENTO    date,
    VALOR_TOTAL          int,
    primary key (ID_TRATAMIENTO_DENTAL)
@@ -318,91 +318,91 @@ create table TRATAMIENTODENTAL
 /*==============================================================*/
 /* Table: VERSION                                               */
 /*==============================================================*/
-create table VERSION
+create table version
 (
    ID_VERSION           int not null,
    NOM_VERSION          varchar(50),
-   COMENTARIO_VERSION   text,
+   COMENTARIO_VERSION   text not null,
    primary key (ID_VERSION)
 );
 
-alter table ABONO add constraint FK_ABONO_TRATAMIENTO foreign key (ID_TRATAMIENTO_DENTAL)
-      references TRATAMIENTODENTAL (ID_TRATAMIENTO_DENTAL) on delete restrict on update restrict;
+alter table abono add constraint FK_ABONO_TRATAMIENTO foreign key (ID_TRATAMIENTO_DENTAL)
+      references tratamientodental (ID_TRATAMIENTO_DENTAL) on delete restrict on update restrict;
 
-alter table CITA add constraint FK_CITA_ODONTOLOGO foreign key (ID_ODONTOLOGO)
-      references ODONTOLOGO (ID_ODONTOLOGO) on delete restrict on update restrict;
+alter table cita add constraint FK_CITA_ODONTOLOGO foreign key (ID_ODONTOLOGO)
+      references odontologo (ID_ODONTOLOGO) on delete restrict on update restrict;
 
-alter table CITA add constraint FK_CITA_PACIENTE foreign key (ID_PACIENTE)
-      references PACIENTE (ID_PACIENTE) on delete restrict on update restrict;
+alter table cita add constraint FK_CITA_PACIENTE foreign key (ID_PACIENTE)
+      references paciente (ID_PACIENTE) on delete restrict on update restrict;
 
-alter table COMUNA add constraint FK_COMUNA_REGION foreign key (ID_REGION)
-      references REGION (ID_REGION) on delete restrict on update restrict;
+alter table comuna add constraint FK_COMUNA_REGION foreign key (ID_REGION)
+      references region (ID_REGION) on delete restrict on update restrict;
 
-alter table DATOSDECONTACTO add constraint FK_CONTACTO_COMUNA foreign key (ID_COMUNA)
-      references COMUNA (ID_COMUNA) on delete restrict on update restrict;
+alter table datosdecontacto add constraint FK_CONTACTO_COMUNA foreign key (ID_COMUNA)
+      references comuna (ID_COMUNA) on delete restrict on update restrict;
 
-alter table DATOSDECONTACTO add constraint FK_CONTACTO_PERSONA foreign key (ID_PERSONA)
-      references PERSONA (ID_PERSONA) on delete restrict on update restrict;
+alter table datosdecontacto add constraint FK_CONTACTO_PERSONA foreign key (ID_PERSONA)
+      references persona (ID_PERSONA) on delete restrict on update restrict;
 
-alter table FICHADENTAL add constraint FK_FICHA_ODONTOLOGO foreign key (ID_ODONTOLOGO)
-      references ODONTOLOGO (ID_ODONTOLOGO) on delete restrict on update restrict;
+alter table fichadental add constraint FK_FICHA_ODONTOLOGO foreign key (ID_ODONTOLOGO)
+      references odontologo (ID_ODONTOLOGO) on delete restrict on update restrict;
 
-alter table FICHADENTAL add constraint FK_FICHA_PACIENTE foreign key (ID_PACIENTE)
-      references PACIENTE (ID_PACIENTE) on delete restrict on update restrict;
+alter table fichadental add constraint FK_FICHA_PACIENTE foreign key (ID_PACIENTE)
+      references paciente (ID_PACIENTE) on delete restrict on update restrict;
 
-alter table FUNCIONARIO add constraint FK_FUNCIONARIO_PERSONA foreign key (ID_PERSONA)
-      references PERSONA (ID_PERSONA) on delete restrict on update restrict;
+alter table funcionario add constraint FK_FUNCIONARIO_PERSONA foreign key (ID_PERSONA)
+      references persona (ID_PERSONA) on delete restrict on update restrict;
 
-alter table GASTOS add constraint FK_GASTOS_PERSONA foreign key (ID_PERSONA)
-      references PERSONA (ID_PERSONA) on delete restrict on update restrict;
+alter table gastos add constraint FK_GASTOS_PERSONA foreign key (ID_PERSONA)
+      references persona (ID_PERSONA) on delete restrict on update restrict;
 
-alter table INSUMOS add constraint FK_INSUMOS_AREAINSUMO foreign key (ID_AREA_INSUMO)
-      references AREAINSUMO (ID_AREA_INSUMO) on delete restrict on update restrict;
+alter table insumos add constraint FK_INSUMOS_AREAINSUMO foreign key (ID_AREA_INSUMO)
+      references areainsumo (ID_AREA_INSUMO) on delete restrict on update restrict;
 
-alter table INSUMOS add constraint FK_INSUMOS_GASTOS foreign key (ID_GASTOS)
-      references GASTOS (ID_GASTOS) on delete restrict on update restrict;
+alter table insumos add constraint FK_INSUMOS_GASTOS foreign key (ID_GASTOS)
+      references gastos (ID_GASTOS) on delete restrict on update restrict;
 
-alter table ODONTOLOGO add constraint FK_MEDICO_PERSONA foreign key (ID_PERSONA)
-      references PERSONA (ID_PERSONA) on delete restrict on update restrict;
+alter table odontologo add constraint FK_MEDICO_PERSONA foreign key (ID_PERSONA)
+      references persona (ID_PERSONA) on delete restrict on update restrict;
 
-alter table PACIENTE add constraint FK_PACIENTE_PERSONA foreign key (ID_PERSONA)
-      references PERSONA (ID_PERSONA) on delete restrict on update restrict;
+alter table paciente add constraint FK_PACIENTE_PERSONA foreign key (ID_PERSONA)
+      references persona (ID_PERSONA) on delete restrict on update restrict;
 
-alter table PASS add constraint FK_PASS_PERSONA foreign key (ID_PERSONA)
-      references PERSONA (ID_PERSONA) on delete restrict on update restrict;
+alter table pass add constraint FK_PASS_PERSONA foreign key (ID_PERSONA)
+      references persona (ID_PERSONA) on delete restrict on update restrict;
 
-alter table PERMISOS add constraint FK_PERMISOS_ACCESOS foreign key (COD_ACCESO)
-      references ACCESOS (COD_ACCESO) on delete restrict on update restrict;
+alter table permisos add constraint FK_PERMISOS_ACCESOS foreign key (COD_ACCESO)
+      references accesos (COD_ACCESO) on delete restrict on update restrict;
 
-alter table PERMISOS add constraint FK_PERMISOS_PERFIL foreign key (ID_PERFIL)
-      references PERFIL (ID_PERFIL) on delete restrict on update restrict;
+alter table permisos add constraint FK_PERMISOS_PERFIL foreign key (ID_PERFIL)
+      references perfil (ID_PERFIL) on delete restrict on update restrict;
 
-alter table PERSONA add constraint FK_PERSONA_PERFIL foreign key (ID_PERFIL)
-      references PERFIL (ID_PERFIL) on delete restrict on update restrict;
+alter table persona add constraint FK_PERSONA_PERFIL foreign key (ID_PERFIL)
+      references perfil (ID_PERFIL) on delete restrict on update restrict;
 
-alter table PIEZADENTAL add constraint FK_PIEZA_DENTAL foreign key (ID_TRATAMIENTO_DENTAL)
-      references TRATAMIENTODENTAL (ID_TRATAMIENTO_DENTAL) on delete restrict on update restrict;
+alter table piezadental add constraint FK_PIEZA_DENTAL foreign key (ID_TRATAMIENTO_DENTAL)
+      references tratamientodental (ID_TRATAMIENTO_DENTAL) on delete restrict on update restrict;
 
-alter table PIEZADENTAL add constraint FK_PIEZA_ORDEN foreign key (ID_ORDEN_LABORATORIO)
-      references ORDENDELABORATORIO (ID_ORDEN_LABORATORIO) on delete restrict on update restrict;
+alter table piezadental add constraint FK_PIEZA_ORDEN foreign key (ID_ORDEN_LABORATORIO)
+      references ordendelaboratorio (ID_ORDEN_LABORATORIO) on delete restrict on update restrict;
 
-alter table PIEZADENTAL add constraint FK_PIEZA_TIPOPIEZA foreign key (ID_TIPO_PIEZA)
-      references TIPODEPIEZA (ID_TIPO_PIEZA) on delete restrict on update restrict;
+alter table piezadental add constraint FK_PIEZA_TIPOPIEZA foreign key (ID_TIPO_PIEZA)
+      references tipodepieza (ID_TIPO_PIEZA) on delete restrict on update restrict;
 
-alter table PRESUPUESTO add constraint FK_PRESUPUESTO_FICHA foreign key (ID_FICHA)
-      references FICHADENTAL (ID_FICHA) on delete restrict on update restrict;
+alter table presupuesto add constraint FK_PRESUPUESTO_FICHA foreign key (ID_FICHA)
+      references fichadental (ID_FICHA) on delete restrict on update restrict;
 
-alter table REPORTE add constraint FK_REPORTE_PERSONA foreign key (ID_PERSONA)
-      references PERSONA (ID_PERSONA) on delete restrict on update restrict;
+alter table reporte add constraint FK_REPORTE_PERSONA foreign key (ID_PERSONA)
+      references persona (ID_PERSONA) on delete restrict on update restrict;
 
-alter table TRATAMIENTODENTAL add constraint FK_TRATAMIENTO_FICHA foreign key (ID_FICHA)
-      references FICHADENTAL (ID_FICHA) on delete restrict on update restrict;
+alter table tratamientodental add constraint FK_TRATAMIENTO_FICHA foreign key (ID_FICHA)
+      references fichadental (ID_FICHA) on delete restrict on update restrict;
 	  
 
 /*==============================================================*/
 /* Index: INDEX_ABONO_1                                         */
 /*==============================================================*/
-create index INDEX_ABONO_1 on ABONO
+create index INDEX_ABONO_1 on abono
 (
    ID_TRATAMIENTO_DENTAL
 );
@@ -410,7 +410,7 @@ create index INDEX_ABONO_1 on ABONO
 /*==============================================================*/
 /* Index: INDEX_CITA_1                                          */
 /*==============================================================*/
-create index INDEX_CITA_1 on CITA
+create index INDEX_CITA_1 on cita
 (
    ID_ODONTOLOGO
 );
@@ -418,7 +418,7 @@ create index INDEX_CITA_1 on CITA
 /*==============================================================*/
 /* Index: INDEX_CITA_2                                          */
 /*==============================================================*/
-create index INDEX_CITA_2 on CITA
+create index INDEX_CITA_2 on cita
 (
    ID_PACIENTE
 );
@@ -426,7 +426,7 @@ create index INDEX_CITA_2 on CITA
 /*==============================================================*/
 /* Index: INDEX_COMUNA_1                                        */
 /*==============================================================*/
-create index INDEX_COMUNA_1 on COMUNA
+create index INDEX_COMUNA_1 on comuna
 (
    ID_REGION
 );
@@ -434,7 +434,7 @@ create index INDEX_COMUNA_1 on COMUNA
 /*==============================================================*/
 /* Index: INDEX_DATOSDECONTACTO_1                               */
 /*==============================================================*/
-create index INDEX_DATOSDECONTACTO_1 on DATOSDECONTACTO
+create index INDEX_DATOSDECONTACTO_1 on datosdecontacto
 (
    ID_COMUNA
 );
@@ -442,7 +442,7 @@ create index INDEX_DATOSDECONTACTO_1 on DATOSDECONTACTO
 /*==============================================================*/
 /* Index: INDEX_FICHADENTAL_1                                   */
 /*==============================================================*/
-create index INDEX_FICHADENTAL_1 on FICHADENTAL
+create index INDEX_FICHADENTAL_1 on fichadental
 (
    ID_PACIENTE
 );
@@ -450,7 +450,7 @@ create index INDEX_FICHADENTAL_1 on FICHADENTAL
 /*==============================================================*/
 /* Index: INDEX_FICHADENTAL_3                                   */
 /*==============================================================*/
-create index INDEX_FICHADENTAL_3 on FICHADENTAL
+create index INDEX_FICHADENTAL_3 on fichadental
 (
    ID_ODONTOLOGO
 );
@@ -458,7 +458,7 @@ create index INDEX_FICHADENTAL_3 on FICHADENTAL
 /*==============================================================*/
 /* Index: INDEX_FUNCIONARIO_1                                   */
 /*==============================================================*/
-create index INDEX_FUNCIONARIO_1 on FUNCIONARIO
+create index INDEX_FUNCIONARIO_1 on funcionario
 (
    ID_PERSONA
 );
@@ -466,7 +466,7 @@ create index INDEX_FUNCIONARIO_1 on FUNCIONARIO
 /*==============================================================*/
 /* Index: INDEX_GASTOS_1                                        */
 /*==============================================================*/
-create index INDEX_GASTOS_1 on GASTOS
+create index INDEX_GASTOS_1 on gastos
 (
    ID_PERSONA
 );
@@ -474,7 +474,7 @@ create index INDEX_GASTOS_1 on GASTOS
 /*==============================================================*/
 /* Index: INDEX_INSUMOS_1                                       */
 /*==============================================================*/
-create index INDEX_INSUMOS_1 on INSUMOS
+create index INDEX_INSUMOS_1 on insumos
 (
    ID_AREA_INSUMO
 );
@@ -482,7 +482,7 @@ create index INDEX_INSUMOS_1 on INSUMOS
 /*==============================================================*/
 /* Index: INDEX_INSUMOS_2                                       */
 /*==============================================================*/
-create index INDEX_INSUMOS_2 on INSUMOS
+create index INDEX_INSUMOS_2 on insumos
 (
    ID_GASTOS
 );
@@ -490,7 +490,7 @@ create index INDEX_INSUMOS_2 on INSUMOS
 /*==============================================================*/
 /* Index: INDEX_ODONTOLOGO_1                                    */
 /*==============================================================*/
-create index INDEX_ODONTOLOGO_1 on ODONTOLOGO
+create index INDEX_ODONTOLOGO_1 on odontologo
 (
    ID_PERSONA
 );
@@ -498,7 +498,7 @@ create index INDEX_ODONTOLOGO_1 on ODONTOLOGO
 /*==============================================================*/
 /* Index: INDEX_PACIENTE_1                                      */
 /*==============================================================*/
-create index INDEX_PACIENTE_1 on PACIENTE
+create index INDEX_PACIENTE_1 on paciente
 (
    ID_PERSONA
 );
@@ -506,7 +506,7 @@ create index INDEX_PACIENTE_1 on PACIENTE
 /*==============================================================*/
 /* Index: INDEX_PERMISOS_1                                      */
 /*==============================================================*/
-create index INDEX_PERMISOS_1 on PERMISOS
+create index INDEX_PERMISOS_1 on permisos
 (
    COD_ACCESO
 );
@@ -514,7 +514,7 @@ create index INDEX_PERMISOS_1 on PERMISOS
 /*==============================================================*/
 /* Index: INDEX_PERSONA_1                                       */
 /*==============================================================*/
-create index INDEX_PERSONA_1 on PERSONA
+create index INDEX_PERSONA_1 on persona
 (
    ID_PERFIL
 );
@@ -522,7 +522,7 @@ create index INDEX_PERSONA_1 on PERSONA
 /*==============================================================*/
 /* Index: INDEX_PIEZADENTAL_1                                   */
 /*==============================================================*/
-create index INDEX_PIEZADENTAL_1 on PIEZADENTAL
+create index INDEX_PIEZADENTAL_1 on piezadental
 (
    ID_TRATAMIENTO_DENTAL
 );
@@ -530,7 +530,7 @@ create index INDEX_PIEZADENTAL_1 on PIEZADENTAL
 /*==============================================================*/
 /* Index: INDEX_PIEZADENTAL_2                                   */
 /*==============================================================*/
-create index INDEX_PIEZADENTAL_2 on PIEZADENTAL
+create index INDEX_PIEZADENTAL_2 on piezadental
 (
    ID_ORDEN_LABORATORIO
 );
@@ -538,7 +538,7 @@ create index INDEX_PIEZADENTAL_2 on PIEZADENTAL
 /*==============================================================*/
 /* Index: INDEX_PIEZADENTAL_3                                   */
 /*==============================================================*/
-create index INDEX_PIEZADENTAL_3 on PIEZADENTAL
+create index INDEX_PIEZADENTAL_3 on piezadental
 (
    ID_TIPO_PIEZA
 );
@@ -546,7 +546,7 @@ create index INDEX_PIEZADENTAL_3 on PIEZADENTAL
 /*==============================================================*/
 /* Index: INDEX_PRESUPUESTO_1                                   */
 /*==============================================================*/
-create index INDEX_PRESUPUESTO_1 on PRESUPUESTO
+create index INDEX_PRESUPUESTO_1 on presupuesto
 (
    ID_FICHA
 );
@@ -554,7 +554,7 @@ create index INDEX_PRESUPUESTO_1 on PRESUPUESTO
 /*==============================================================*/
 /* Index: INDEX_REPORTE_1                                       */
 /*==============================================================*/
-create index INDEX_REPORTE_1 on REPORTE
+create index INDEX_REPORTE_1 on reporte
 (
    ID_PERSONA
 );
@@ -562,7 +562,7 @@ create index INDEX_REPORTE_1 on REPORTE
 /*==============================================================*/
 /* Index: INDEX_TRATAMIENODENTAL_1                              */
 /*==============================================================*/
-create index INDEX_TRATAMIENODENTAL_1 on TRATAMIENTODENTAL
+create index INDEX_TRATAMIENODENTAL_1 on tratamientodental
 (
    ID_FICHA
 );
