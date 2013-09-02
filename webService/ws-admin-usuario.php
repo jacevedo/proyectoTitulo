@@ -76,12 +76,13 @@ switch ($opcion)
 		echo(json_encode($arreglo));
 	break;
 	case 4:
-		//json Insertar Funcionario {"indice":4,"idPersona":1,"puestoTrabajo":"Administrador"}
+		//json Insertar Funcionario {"indice":4,"idPersona":1,"puestoTrabajo":"Administrador","habilitado":1}
 		$idPersona = $data->{"idPersona"};
 		$puestoTrabajo = $data->{"puestoTrabajo"};
+		$funcionarioHabilitado = $data->{"habilitado"};
 		$funcionario = new Funcionario();
 		$controladoraFuncionario = new ControladoraFuncionario();
-		$funcionario->initClass(0, $idPersona, $puestoTrabajo);
+		$funcionario->initClass(0, $idPersona, $puestoTrabajo,$funcionarioHabilitado);
 		$arreglo["idFuncionarioInsertado"] = $controladoraFuncionario->insertarFuncionario($funcionario);
 		echo(json_encode($arreglo));
 	break;
@@ -130,7 +131,7 @@ switch ($opcion)
 		$puestoTrabajo = $data->{"puestoTrabajo"};
 		$funcionario = new Funcionario();
 		$controladoraFuncionario = new ControladoraFuncionario();
-		$funcionario->initClass($idFuncionario, $idPersona, $puestoTrabajo);
+		$funcionario->initClass($idFuncionario, $idPersona, $puestoTrabajo,1);
 		$arreglo["resultado"] = $controladoraFuncionario->insertarFuncionario($funcionario);
 		echo(json_encode($arreglo));
 	break;
@@ -141,7 +142,14 @@ switch ($opcion)
 	
 	break;
 	case 11:
-	
+		//json Desabilitar Funcionario {"indice":11,"idFuncionario":2,"isDesabilitado":1}
+		$idFuncionario = $data->{"idFuncionario"};
+		$funcionarioHabilitado = $data->{"habilitado"};
+		$funcionario = new Funcionario();
+		$controladoraFuncionario = new ControladoraFuncionario();
+		$funcionario->initClass($idFuncionario, "", "",$funcionarioHabilitado);
+		$arreglo["resultado"] = $controladoraFuncionario->desabilitarFuncionario($funcionario);
+		echo(json_encode($arreglo));
 	break;
 	case 12:
 		//json ListarPersonas {"indice":12}
