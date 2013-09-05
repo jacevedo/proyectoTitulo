@@ -201,9 +201,9 @@ class ControladoraFuncionario
 		try
 		{
 			$this->SqlQuery = '';
-			$this->SqlQuery = "SELECT pe.ID_PERSONA, pe.ID_PERFIL, fun.ID_FUNCIONARIO, pe.RUT, pe.DV, pe.NOMBRE, pe.APELLIDO_PATERNO, pe.APELLIDO_MATERNO,".
-								" pe.FECHA_NAC, fun.PUESTO_DE_TRABAJO, fun.FUNCIONARIO_HABILITADO FROM funcionario fun, persona pe".
-								" WHERE fun.ID_PERSONA = pe.ID_PERSONA";
+			$this->SqlQuery = 'SELECT pe.ID_PERSONA, pe.ID_PERFIL, fun.ID_FUNCIONARIO, pe.RUT, pe.DV, pe.NOMBRE, pe.APELLIDO_PATERNO, pe.APELLIDO_MATERNO,'.
+								' pe.FECHA_NAC, fun.PUESTO_DE_TRABAJO, fun.FUNCIONARIO_HABILITADO FROM funcionario fun, persona pe'.
+								' WHERE fun.ID_PERSONA = pe.ID_PERSONA';
 		   	$sentencia=$conexion->prepare($this->SqlQuery);
         	if($sentencia->execute())
         	{
