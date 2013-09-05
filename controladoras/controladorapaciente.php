@@ -53,7 +53,7 @@ class ControladoraPaciente
 		   	$sentencia=$conexion->prepare($this->SqlQuery);
         	if($sentencia->execute())
         	{
-        		$sentencia->bind_resulti($idPersona, $idPerfil, $idPaciente, $rut, $dv, $nombre, $apellidoPaterno, $apellidoMaterno, $fechaNacimiento, $fechaIngreso, $habilitadoPaciente)				
+        		$sentencia->bind_result($idPersona, $idPerfil, $idPaciente, $rut, $dv, $nombre, $apellidoPaterno, $apellidoMaterno, $fechaNacimiento, $fechaIngreso, $habilitadoPaciente);				
 				$indice=0;     
 				while($sentencia->fetch())
 				{
@@ -101,6 +101,10 @@ class ControladoraPaciente
         	throw new $e("Error al listar pacientes");
         }
         return $this->datos;
+    }
+    public function buscarPersonaPorRut($rut)
+    {
+
     }
 
 	public function modificarPacientes(Paciente $pacientes)

@@ -22,7 +22,7 @@ class Funcionario extends Persona
 		$this->puestoTrabajo = $puestoTrabajo;
 		$this->funcionarioHabilitado = $funcionarioHabilitado;
 	}
-	function initClassPacientePersona(Persona $persona, $idFuncionario,$idPersona,$puestoTrabajo, $funcionarioHabilitado)
+	function initClassFuncionarioPersona(Persona $persona, $idFuncionario,$idPersona,$puestoTrabajo, $funcionarioHabilitado)
 	{
 		parent::initClassPersona($persona);
 		$this->idFuncionario = $idFuncionario;

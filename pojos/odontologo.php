@@ -25,10 +25,10 @@ class Odontologo extends Persona
 	function initClassDatosCompletos($idPersona, $idPerfil, $idOdontologo, $rut, $dv, $nombre, $apellidoPaterno, $apellidoMaterno, $fechaNacimiento, $especialidad,$odontologoHabilitado)
 	{
 		parent::initClass($idPersona, $idPerfil, $rut, $dv, $nombre, $apellidoPaterno, $apellidoMaterno, $fechaNacimiento);
-		$this->idPaciente = $idPaciente;
+		$this->idOdontologo = $idOdontologo;
 		$this->idPersona = $idPersona;
-		$this->fechaIngreso = $fechaIngreso;
-		$this->habilitadoPaciente = $habilitadoPaciente;
+		$this->especialidad = $especialidad;
+		$this->odontologoHabilitado = $odontologoHabilitado;
 	}
 }
 ?>

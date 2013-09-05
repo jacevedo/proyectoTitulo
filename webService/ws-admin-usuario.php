@@ -29,8 +29,8 @@ require_once '../controladoras/controladorafuncionario.php';
 * 14.- Listar Odontologo
 * 15.- Listar Funcionario
 * 16.- Listar Pacientes Herencia
-* 16.- Listar Odontologo Herencia
-* 16.- Listar Funcionario Herencia
+* 17.- Listar Odontologo Herencia
+* 18.- Listar Funcionario Herencia
 */
 
 
@@ -187,7 +187,7 @@ switch ($opcion)
 	case 18:
 		//json Listar Funcionaro Herencia {"indice":16}
 		$controladoraFuncionario = new ControladoraFuncionario();
-		echo(json_encode($controladoraFuncionario->listarPacientesPersona()));
+		echo(json_encode($controladoraFuncionario->listarFuncionarioHerencia()));
 	break;
 }
  
