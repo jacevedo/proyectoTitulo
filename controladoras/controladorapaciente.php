@@ -1,6 +1,7 @@
 <?php
 require_once '../bdmysql/MySqlCon.php'; 
 require_once '../pojos/paciente.php';
+require_once '../pojos/persona.php';
 
 class ControladoraPaciente
 {
@@ -38,6 +39,38 @@ class ControladoraPaciente
          return false;
          throw new $e("Error al Registrar Usuarios");
         }
+	}
+	public function listarPacientesPersona()
+	{
+		$conexion = new MySqlCon();
+		$this->datos ='';
+		try
+		{
+			$this->SqlQuery = '';
+			$this->SqlQuery = "SELECT pe.ID_PERSONA, pe.ID_PERFIL, pa.ID_PACIENTE, pe.RUT, pe.DV, pe.NOMBRE, pe.APELLIDO_PATERNO,".
+								" pe.APELLIDO_MATERNO, pe.FECHA_NAC, pa.FECHA_INGRESO, pa.HABILITADO_PACIENTE FROM paciente pa, persona pe ".
+								"WHERE pa.ID_PERSONA = pe.ID_PERSONA";
+		   	$sentencia=$conexion->prepare($this->SqlQuery);
+        	if($sentencia->execute())
+        	{
+        		$sentencia->bind_resulti($idPersona, $idPerfil, $idPaciente, $rut, $dv, $nombre, $apellidoPaterno, $apellidoMaterno, $fechaNacimiento, $fechaIngreso, $habilitadoPaciente)				
+				$indice=0;     
+				while($sentencia->fetch())
+				{
+					$paciente = new Paciente();
+					$paciente->initClassDatosCompletos($idPersona, $idPerfil, $idPaciente, $rut, $dv, $nombre, $apellidoPaterno, $apellidoMaterno, $fechaNacimiento, $fechaIngreso, $habilitadoPaciente);
+        			$this->datos[$indice] = $paciente;
+        			
+        			$indice++;
+				}
+      		}
+       		$conexion->close();
+    	}
+    	catch(Exception $e)
+    	{
+        	throw new $e("Error al listar pacientes");
+        }
+        return $this->datos;
 	}
 	public function listarPacientes()
 	{

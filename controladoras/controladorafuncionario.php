@@ -100,6 +100,71 @@ class ControladoraFuncionario
          throw new $e("Error al Actualizar Usuarios");
         }
 	}
+	public function buscarFuncioinarioPorCargo($cargo)
+	{
+		
+	}
+	public function buscarFuncionarioPorRut($rut)
+	{
+		$conexion = new MySqlCon();
+		$this->datos ='';
+		try
+		{
+			$this->SqlQuery = '';
+			$this->SqlQuery = "SELECT fu.* FROM funcionario fu, persona pe WHERE fu.ID_PERSONA = pe.ID_PERSONA AND pe.RUT =?";
+		   	$sentencia=$conexion->prepare($this->SqlQuery);
+		   	 $sentencia->bind_param('i',$rut);
+        	if($sentencia->execute())
+        	{
+        		$sentencia->bind_result($idPersona, $idPerfil, $idFuncionario, $rut, $dv, $nombre, $apellidoPaterno, $apellidoMaterno, $fechaNacimiento, $puestoTrabajo, $funcionarioHabilitado);				
+				$indice=0;     
+				while($sentencia->fetch())
+				{
+					$funcionario = new Funcionario();
+					$funcionario->initClassDatosCompletos($idPersona, $idPerfil, $idFuncionario, $rut, $dv, $nombre, $apellidoPaterno, $apellidoMaterno, $fechaNacimiento, $puestoTrabajo, $funcionarioHabilitado);
+        			$this->datos[$indice] = $funcionario;
+        			$indice++;
+				}
+      		}
+       		$conexion->close();
+    	}
+    	catch(Exception $e)
+    	{
+        	throw new $e("Error al listar pacientes");
+        }
+        return $this->datos;
+		
+	}
+	public function buscarFuncionarioPorId($id)
+	{
+		$conexion = new MySqlCon();
+		$this->datos ='';
+		try
+		{
+			$this->SqlQuery = '';
+			$this->SqlQuery = "SELECT * FROM `funcionario` WHERE `ID_FUNCIONARIO` = ?'";
+		   	$sentencia=$conexion->prepare($this->SqlQuery);
+		   	 $sentencia->bind_param('i',$id);
+        	if($sentencia->execute())
+        	{
+        		$sentencia->bind_result($idFuncionario,$idPersona,$puestoTrabajo,$funcionarioHabilitado);					
+				$indice=0;     
+				while($sentencia->fetch())
+				{
+					$funcionario = new Funcionario();
+					$funcionario->initClass($idFuncionario,$idPersona,$puestoTrabajo,$funcionarioHabilitado);
+        			$this->datos[$indice] = $funcionario;
+        			$indice++;
+				}
+      		}
+       		$conexion->close();
+    	}
+    	catch(Exception $e)
+    	{
+        	throw new $e("Error al listar pacientes");
+        }
+        return $this->datos;
+	}
 	public function listarFuncionario()
 	{
 		$conexion = new MySqlCon();
@@ -117,6 +182,37 @@ class ControladoraFuncionario
 				{
 					$funcionario = new Funcionario();
 					$funcionario->initClass($idFuncionario,$idPersona,$puestoTrabajo,$funcionarioHabilitado);
+        			$this->datos[$indice] = $funcionario;
+        			$indice++;
+				}
+      		}
+       		$conexion->close();
+    	}
+    	catch(Exception $e)
+    	{
+        	throw new $e("Error al listar pacientes");
+        }
+        return $this->datos;
+	}
+	public function listarFuncionarioHerencia()
+	{
+		$conexion = new MySqlCon();
+		$this->datos ='';
+		try
+		{
+			$this->SqlQuery = '';
+			$this->SqlQuery = "SELECT pe.ID_PERSONA, pe.ID_PERFIL, fun.ID_FUNCIONARIO, pe.RUT, pe.DV, pe.NOMBRE, pe.APELLIDO_PATERNO, pe.APELLIDO_MATERNO,".
+								" pe.FECHA_NAC, fun.PUESTO_DE_TRABAJO, fun.FUNCIONARIO_HABILITADO FROM funcionario fun, persona pe".
+								" WHERE fun.ID_PERSONA = pe.ID_PERSONA";
+		   	$sentencia=$conexion->prepare($this->SqlQuery);
+        	if($sentencia->execute())
+        	{
+        		$sentencia->bind_result($idPersona, $idPerfil, $idFuncionario, $rut, $dv, $nombre, $apellidoPaterno, $apellidoMaterno, $fechaNacimiento, $puestoTrabajo, $funcionarioHabilitado);				
+				$indice=0;     
+				while($sentencia->fetch())
+				{
+					$funcionario = new Funcionario();
+					$funcionario->initClassDatosCompletos($idPersona, $idPerfil, $idFuncionario, $rut, $dv, $nombre, $apellidoPaterno, $apellidoMaterno, $fechaNacimiento, $puestoTrabajo, $funcionarioHabilitado);
         			$this->datos[$indice] = $funcionario;
         			$indice++;
 				}

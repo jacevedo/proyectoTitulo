@@ -39,6 +39,38 @@ require_once '../pojos/persona.php';
 
 	}
 
+	public function listarDoctoresPersona()
+	{
+		$conexion = new MySqlCon();
+		$this->datos ='';
+		try
+		{
+			$this->SqlQuery = '';
+			$this->SqlQuery = "SELECT pe.ID_PERSONA, pe.ID_PERFIL, od.ID_ODONTOLOGO, pe.RUT, pe.DV, pe.NOMBRE, pe.APELLIDO_PATERNO,".
+								"pe.APELLIDO_MATERNO, pe.FECHA_NAC, od.ESPECIALIDAD, od.ODONTOLOGO_HABILITADO FROM odontologo od, persona pe ".
+								"WHERE od.ID_PERSONA = pe.ID_PERSONA";
+		   	$sentencia=$conexion->prepare($this->SqlQuery);
+        	if($sentencia->execute())
+        	{
+        		$sentencia->initClassDatosCompletos($idPersona, $idPerfil, $idOdontologo, $rut, $dv, $nombre, $apellidoPaterno, $apellidoMaterno, $fechaNacimiento, $especialidad,$odontologoHabilitado);
+				$indice=0;     
+				while($sentencia->fetch())
+				{
+					$doctor = new Odontologo();
+					$doctor->initClass($idOdontologo,$idPersona,$especialidad,$odontologoHabilitado);
+        			$this->datos[$indice] = $doctor;
+        			
+        			$indice++;
+				}
+      		}
+       		$conexion->close();
+    	}
+    	catch(Exception $e)
+    	{
+        	throw new $e("Error al listar pacientes");
+        }
+        return $this->datos;
+	}
 	public function modificarDoctor(Odontologo $doctor)
 	{
 		$conexion = new MySqlCon();

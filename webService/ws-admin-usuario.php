@@ -28,6 +28,9 @@ require_once '../controladoras/controladorafuncionario.php';
 * 13.- Listar Paciente
 * 14.- Listar Odontologo
 * 15.- Listar Funcionario
+* 16.- Listar Pacientes Herencia
+* 16.- Listar Odontologo Herencia
+* 16.- Listar Funcionario Herencia
 */
 
 
@@ -170,6 +173,21 @@ switch ($opcion)
 		//json ListarFuncionario {"indice":15}
 		$controladoraFuncionario = new ControladoraFuncionario();
 		echo(json_encode($controladoraFuncionario->listarFuncionario()));
+	break;
+	case 16:
+		//json Paciente Herencia {"indice":16}
+		$controladoraPaciente = new ControladoraPaciente();
+		echo(json_encode($controladoraPaciente->listarPacientesPersona()));
+	break;
+	case 17:
+		//json Listar Odontologo Herencia {"indice":17}
+		$controladoraOdontologo = new ControladoraDoctor();
+		echo(json_encode($controladoraOdontologo->listarDoctoresPersona()));
+	break;
+	case 18:
+		//json Listar Funcionaro Herencia {"indice":16}
+		$controladoraFuncionario = new ControladoraFuncionario();
+		echo(json_encode($controladoraFuncionario->listarPacientesPersona()));
 	break;
 }
  

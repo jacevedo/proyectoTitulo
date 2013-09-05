@@ -21,5 +21,16 @@
 		$this->apellidoMaterno = $apellidoMaterno;
 		$this->fechaNacimiento = $fechaNacimiento;
 	}
+	function initClassPersona(Persona $persona)
+	{
+		$this->idPersona = $persona->idPersona;
+		$this->idPerfil = $persona->idPerfil;
+		$this->rut = $persona->rut;
+		$this->dv = $persona->dv;
+		$this->nombre = $persona->nombre;
+		$this->apellidoPaterno = $persona->apellidoPaterno;
+		$this->apellidoMaterno = $persona->apellidoMaterno;
+		$this->fechaNacimiento = $persona->fechaNacimiento;
+	}
 }
 ?>
