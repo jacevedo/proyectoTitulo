@@ -58,12 +58,13 @@ switch ($opcion)
 		echo(json_encode($arreglo));
 	break;
 	case 2:
-		//json Insertar Odontologo {"indice":2,"idPersona":1,"especialidad":"Cirugia"}
+		//json Insertar Odontologo {"indice":2,"idPersona":1,"especialidad":"Cirugia",habilitado:1}
 		$idPersona = $data->{'idPersona'};
 		$especialidad = $data->{'especialidad'};
+		$habilitado = $data->{'habilitado'};
 		$odontologo = new Odontologo();
 		$controladoraOdontologo = new ControladoraDoctor();
-		$odontologo->initClass(0, $idPersona, $especialidad);
+		$odontologo->initClass(0, $idPersona, $especialidad,$habilitado);
 		$arreglo["idOdontologoInsertado"] = $controladoraOdontologo->InsertarDoctor($odontologo);
 		echo(json_encode($arreglo));
 		

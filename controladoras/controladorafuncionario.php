@@ -104,6 +104,7 @@ class ControladoraFuncionario
 	{
 		
 	}
+	
 	public function buscarFuncionarioPorRut($rut)
 	{
 		$conexion = new MySqlCon();
@@ -111,17 +112,20 @@ class ControladoraFuncionario
 		try
 		{
 			$this->SqlQuery = '';
-			$this->SqlQuery = "SELECT fu.* FROM funcionario fu, persona pe WHERE fu.ID_PERSONA = pe.ID_PERSONA AND pe.RUT =?";
+			$this->SqlQuery = "SELECT fu.ID_FUNCIONARIO, fu.ID_PERSONA, pe.ID_PERFIL, fu.PUESTO_DE_TRABAJO, fu.FUNCIONARIO_HABILITADO, pe.RUT, pe.DV, pe.NOMBRE, pe.APELLIDO_PATERNO, pe.APELLIDO_MATERNO, pe.FECHA_NAC
+FROM funcionario fu, persona pe
+WHERE fu.ID_PERSONA = pe.ID_PERSONA
+AND pe.RUT = ?";
 		   	$sentencia=$conexion->prepare($this->SqlQuery);
 		   	 $sentencia->bind_param('i',$rut);
         	if($sentencia->execute())
         	{
-        		$sentencia->bind_result($idPersona, $idPerfil, $idFuncionario, $rut, $dv, $nombre, $apellidoPaterno, $apellidoMaterno, $fechaNacimiento, $puestoTrabajo, $funcionarioHabilitado);				
+        		$sentencia->bind_result($idFuncionario, $idPersona, $idPerfil, $puestoTrabajo, $habilitado, $rut, $dv, $nombre, $appPaterno, $appMaterno, $fechaNacimiento);				
 				$indice=0;     
 				while($sentencia->fetch())
 				{
 					$funcionario = new Funcionario();
-					$funcionario->initClassDatosCompletos($idPersona, $idPerfil, $idFuncionario, $rut, $dv, $nombre, $apellidoPaterno, $apellidoMaterno, $fechaNacimiento, $puestoTrabajo, $funcionarioHabilitado);
+					$funcionario->initClassDatosCompletos($idPersona, $idPerfil, $idFuncionario, $rut, $dv, $nombre, $appPaterno, $appMaterno, $fechaNacimiento, $puestoTrabajo, $habilitado);
         			$this->datos[$indice] = $funcionario;
         			$indice++;
 				}

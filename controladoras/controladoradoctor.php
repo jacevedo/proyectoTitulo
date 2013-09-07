@@ -14,12 +14,13 @@ require_once '../pojos/persona.php';
 		$conexion = new MySqlCon();
 		$idPersona = $doctor->idPersona;
 		$especialidad = $doctor->especialidad;
+		$habilitado  = $doctor->odontologoHabilitado;
 		try 
 	   	{ 	 
 	        $this->SqlQuery='';
-	        $this->SqlQuery='INSERT INTO  `odontologo` (`ID_ODONTOLOGO` ,`ID_PERSONA` ,`ESPECIALIDAD`) VALUES (NULL ,  ?,  ?);';
+	        $this->SqlQuery='INSERT INTO  `odontologo` (`ID_ODONTOLOGO` ,`ID_PERSONA` ,`ESPECIALIDAD`,`ODONTOLOGO_HABILITADO`) VALUES (NULL ,  ?,  ?, ?);';
 	        $sentencia=$conexion->prepare($this->SqlQuery);
-	        $sentencia->bind_param('is',$idPersona,$especialidad);
+	        $sentencia->bind_param('isi',$idPersona,$especialidad,$habilitado);
 	      	if($sentencia->execute())
 	      	{
 	        	$conexion->close();
