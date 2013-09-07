@@ -84,20 +84,20 @@ switch ($opcion)
 		
 	break;
 	case 7:
-		//json Buscar Odontologo Por Rut {"indice":7,"rut":3272373}
+		//json Buscar Odontologo Por Rut {"indice":7,"rut":15725009}
 		$rut = $data->{'rut'};
-		$controladoraPaciente = new ControladoraPaciente();
-		echo(json_encode($controladoraPaciente->buscarPacientePorRut($rut)));
+		$controladoraOdontologo = new ControladoraDoctor();
+		echo(json_encode($controladoraOdontologo->buscarOdontologoPorRut($rut)));
 		
 	break;
 	case 8:
-		//json Buscar Odontologo Por Nombre Apellido {"indice":8,"nombre":"Jose","apellido":"Muñoz"}
+		//json Buscar Odontologo Por Nombre Apellido {"indice":8,"nombre":"Camila","apellido":"Carrizo"}
 		$nombre = $data->{'nombre'};
 		$apellido = $data->{'apellido'};
 		if($nombre!="" && $apellido !="")
 		{
-			$controladoraPaciente = new ControladoraPaciente();
-			echo(json_encode($controladoraPaciente->buscarPacientePorNombre($nombre, $apellido)));
+			$controladoraOdontologo = new ControladoraDoctor();
+			echo(json_encode($controladoraOdontologo->buscarOdontologoPorNombreApellido($nombre, $apellido)));
 		}
 		
 	break;

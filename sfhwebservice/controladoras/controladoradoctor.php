@@ -74,7 +74,32 @@ require_once '../pojos/persona.php';
 	}
 	public function habilitarDesabilitarOdontologo(Odontologo $doctor)
 	{
+		$conexion = new MySqlCon();
+		$idOdontologo = $doctor->idOdontologo;
+		$habilitado = $doctor->odontologoHabilitado;
 		
+		try 
+	   	{ 	 
+	        $this->SqlQuery='';
+	        $this->SqlQuery='UPDATE odontologo SET ODONTOLOGO_HABILITADO = ? WHERE ID_ODONTOLOGO = ?';
+	        $sentencia=$conexion->prepare($this->SqlQuery);
+	        $sentencia->bind_param('ii',$habilitado,$idOdontologo);
+	      	if($sentencia->execute())
+	      	{
+	        	$conexion->close();
+				return "Modificado";
+			}
+			else
+			{
+				$conexion->close();
+	        	return "no modifique";
+	        }
+        }
+    	catch(Exception $e)
+    	{
+         return false;
+         throw new $e("Error al Actualizar Usuarios");
+        }
 	}
 	public function modificarDoctor(Odontologo $doctor)
 	{
@@ -136,5 +161,67 @@ require_once '../pojos/persona.php';
         }
         return $this->datos;
 	}
+	public function buscarOdontologoPorNombreApellido($nombre, $appPaterno)
+	{
+		$conexion = new MySqlCon();
+		$this->datos ='';
+		try
+		{
+			$this->SqlQuery = '';
+			$this->SqlQuery = "SELECT od.ID_ODONTOLOGO, od.ID_PERSONA, pe.ID_PERFIL, od.ESPECIALIDAD, od.ODONTOLOGO_HABILITADO, pe.RUT, pe.DV, pe.NOMBRE, pe.APELLIDO_PATERNO, pe.APELLIDO_MATERNO, pe.FECHA_NAC FROM odontologo od, persona pe WHERE pe.NOMBRE LIKE ? AND pe.APELLIDO_PATERNO LIKE ? AND od.ID_PERSONA = pe.ID_PERSONA";
+			$sentencia=$conexion->prepare($this->SqlQuery);
+		   	$nombreParam = "%".$nombre."%";
+		   	$appPaternoParam = "%".$appPaterno."%";
+		   	$sentencia->bind_param('ss',$nombreParam,$appPaternoParam);
+        	if($sentencia->execute())
+        	{
+        		$sentencia->bind_result($idOdontologo, $idPersona, $idPerfil, $especialidad, $habilitado, $rut, $dv, $nombre, $appPaterno, $appMaterno, $fechaNacimiento);				
+				$indice=0;     
+				while($sentencia->fetch())
+				{
+					$odontologo = new Odontologo();
+					$odontologo->initClassDatosCompletos($idPersona, $idPerfil, $idOdontologo, $rut, $dv, $nombre, $appPaterno, $appMaterno, $fechaNacimiento, $especialidad,$habilitado);
+        			$this->datos[$indice] = $odontologo;
+        			$indice++;
+				}
+      		}
+       		$conexion->close();
+    	}
+    	catch(Exception $e)
+    	{
+        	throw new $e("Error al listar pacientes");
+        }
+        return $this->datos;
+	}
+	public function buscarOdontologoPorRut($rut)
+	{
+		$conexion = new MySqlCon();
+		$this->datos ='';
+		try
+		{
+			$this->SqlQuery = '';
+			$this->SqlQuery = "SELECT od.ID_ODONTOLOGO, od.ID_PERSONA, pe.ID_PERFIL, od.ESPECIALIDAD, od.ODONTOLOGO_HABILITADO, pe.RUT, pe.DV, pe.NOMBRE, pe.APELLIDO_PATERNO, pe.APELLIDO_MATERNO, pe.FECHA_NAC FROM odontologo od, persona pe WHERE od.ID_PERSONA = pe.ID_PERSONA AND pe.RUT=?";
+		    $sentencia = $conexion->prepare($this->SqlQuery);
+		   	$sentencia->bind_param('i',$rut);
+        	if($sentencia->execute())
+        	{
+        		$sentencia->bind_result($idOdontologo, $idPersona, $idPerfil, $especialidad, $habilitado, $rut, $dv, $nombre, $appPaterno, $appMaterno, $fechaNacimiento);				
+				$indice=0;     
+				while($sentencia->fetch())
+				{
+					$odontologo = new Odontologo();
+					$odontologo->initClassDatosCompletos($idPersona, $idPerfil, $idOdontologo, $rut, $dv, $nombre, $appPaterno, $appMaterno, $fechaNacimiento, $especialidad,$habilitado);
+        			$this->datos[$indice] = $odontologo;
+        			$indice++;
+				}
+      		}
+       		$conexion->close();
+    	}
+    	catch(Exception $e)
+    	{
+        	throw new $e("Error al listar pacientes");
+        }
+        return $this->datos;
+ 	}
 }
 ?>

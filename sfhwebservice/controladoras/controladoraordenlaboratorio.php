@@ -24,13 +24,14 @@ class ControladoraOrdenLaboratorio
 		$fechaEntrega = $orden->fechaEntrega;
 		$horaEntrega = $orden->horaEntrega;
 		$color = $orden->color;
+		$estado = $orden->estado;
 		
 		try
 		{
 			$this->SqlQuery='';
-	        $this->SqlQuery='INSERT INTO `ordendelaboratorio`(`ID_ORDEN_LABORATORIO`,`CLINICA`,`BD`,`BI`,`PD`,`PI`,`FECHA_ENTREGA`,`HORA_ENTREGA`,`COLOR`) VALUES (null,?,?,?,?,?,?,?,?);';
+	        $this->SqlQuery='INSERT INTO `ordendelaboratorio`(`ID_ORDEN_LABORATORIO`,`CLINICA`,`BD`,`BI`,`PD`,`PI`,`FECHA_ENTREGA`,`HORA_ENTREGA`,`COLOR`,`ESTADO`) VALUES (null,?,?,?,?,?,?,?,?,?);';
 	        $sentencia=$conexion->prepare($this->SqlQuery);
-	        $sentencia->bind_param('issssssss',$idOrdenLaboratorio, $clinica, $bd, $bi, $pd, $pi, $fechaEntrega, $horaEntrega, $color);
+	        $sentencia->bind_param('issssssss',$idOrdenLaboratorio, $clinica, $bd, $bi, $pd, $pi, $fechaEntrega, $horaEntrega, $color, $estado);
 	      	if($sentencia->execute())
 	      	{
 	        	$conexion->close();
@@ -88,7 +89,32 @@ class ControladoraOrdenLaboratorio
 
 	function modificarEstadoOrden(Orden $orden)
 	{
+		$conexion = new MySqlCon();
+		$idOrdenLaboratorio = $orden->idOrdenLaboratorio;
+		$estado = $orden->estado;
 		
+		try
+		{
+			$this->SqlQuery='';
+	        $this->SqlQuery='UPDATE `ordendelaboratorio` SET `ESTADO`=?,WHERE `ID_ORDEN_LABORATORIO`=?;';
+	        $sentencia=$conexion->prepare($this->SqlQuery);
+	        $sentencia->bind_param('si',$estado, $idOrdenLaboratorio);
+	      	if($sentencia->execute())
+	      	{
+	        	$conexion->close();
+				return "Ok";
+			}
+			else
+			{
+				$conexion->close();
+	        	return "No se modificó la orden.";
+	        }
+		}
+		catch(Exception $e)
+		{
+			return false;
+			throw new $e("Error al modificar orden.");
+		}
 	}
 
 	public function listarOrdenes()

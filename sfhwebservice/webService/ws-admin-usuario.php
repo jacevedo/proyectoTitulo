@@ -141,7 +141,7 @@ switch ($opcion)
 		echo(json_encode($arreglo));
 	break;
 	case 9:
-		//json ListarPaciente{"indice":9,"idPaciente":1,"habilitado":1}
+		//json desabilitarHabilitarPaciente {"indice":9,"idPaciente":1,"habilitado":1}
 		$paciente = new Paciente();
 		$paciente->idPaciente = $data->{"idPaciente"};
 		$paciente->habilitadoPaciente = $data->{"habilitado"};
@@ -149,7 +149,12 @@ switch ($opcion)
 		echo(json_encode($controladoraPaciente->habilitarDesabilitarPaciente($paciente)));
 	break;
 	case 10:
-	
+		//json desabilitarHabilitarOdontologo {"indice":10,"idOdontologo":1,"habilitado":1}
+		$odontologo = new Odontologo();
+		$odontologo->idOdontologo = $data->{"idOdontologo"};
+		$odontologo->odontologoHabilitado = $data->{"habilitado"};
+		$controladoraOdontologo = new ControladoraDoctor();
+		echo(json_encode($controladoraOdontologo->habilitarDesabilitarOdontologo($odontologo)));
 	break;
 	case 11:
 		//json Desabilitar Funcionario {"indice":11,"idFuncionario":2,"isDesabilitado":0}

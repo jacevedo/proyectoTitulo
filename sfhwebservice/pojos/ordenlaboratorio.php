@@ -10,8 +10,9 @@ class OrdenLaboratorio
 	public $fechaEntrega;
 	public $horaEntrega;
 	public $color;
+	public $estado;
 
-	function initClass($idOrdenLaboratorio, $clinica, $bd, $bi, $pd, $pi, $fechaEntrega, $horaEntrega, $color)
+	function initClass($idOrdenLaboratorio, $clinica, $bd, $bi, $pd, $pi, $fechaEntrega, $horaEntrega, $color, $estado)
 	{
 		$this->idOrdenLaboratorio = $idOrdenLaboratorio;
 		$this->clinica = $clinica;
@@ -22,6 +23,7 @@ class OrdenLaboratorio
 		$this->fechaEntrega = $fechaEntrega;
 		$this->horaEntrega = $horaEntrega;
 		$this->color = $color;
+		$this->estado = $estado;
 	}
 }
 ?>
