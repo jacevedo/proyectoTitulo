@@ -49,6 +49,7 @@ class ControladoraFichaPresupuesto
 		$idOdontologo = $ficha->idOdontologo;
 		$fechaIngreso = $ficha->fechaIngreso;
 		$anamnesis = $ficha->anamnesis;
+		$habilitada
 		try 
 	   	{ 	 
 	        $this->SqlQuery='';
@@ -181,7 +182,7 @@ class ControladoraFichaPresupuesto
 		   	$sentencia->bind_param('i',$idFicha);
         	if($sentencia->execute())
         	{
-        		$sentencia->bind_result($idFicha, $idPaciente, $idPresupuesto, $idOdontologo, $fechaIngreso, $anamnesis);					
+        		$sentencia->bind_result($idFicha, $idPaciente, $idOdontologo, $fechaIngreso, $anamnesis,$habilitado);					
 				$indice=0;     
 				while($sentencia->fetch())
 				{

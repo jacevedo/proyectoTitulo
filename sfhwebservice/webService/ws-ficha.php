@@ -9,6 +9,7 @@ require_once '../controladoras/controladorafichapresupuesto.php';
 *Opciones:
 * 1.- insertar Ficha Dental
 * 2.- Modificar Ficha Dental
+* 3.- Buscar Ficha Por ID
 */
 
 
@@ -31,7 +32,7 @@ switch ($opcion)
 		$arreglo["idFichaInsertada"] = $controladoraFicha->insertarFicha($fichaDental);
 		echo(json_encode($arreglo));
 	break;
-	case 1:
+	case 2:
 		//json Modificar Ficha {"indice":2,"idFicha":1,"idPaciente":1,"idOdontologo":1,"fechaIngreso":"1991-12-12","anamnesis":"Penisilina"}
 		$idFicha = $data->{'idFicha'};
 		$idPaciente = $data->{'idPaciente'};
@@ -43,6 +44,12 @@ switch ($opcion)
 		$controladoraFicha = new ControladoraFichaPresupuesto();
 		$arreglo["Resultado"] = $controladoraFicha->modificarFicha($fichaDental);
 		echo(json_encode($arreglo));
+	break;
+	case 3:
+		//json Modificar Ficha {"indice":3,"idFicha":1}
+		$idFicha = $data->{'idFicha'};
+		$controladoraFicha = new ControladoraFichaPresupuesto();
+		echo(json_encode($controladoraFicha->buscarFichaPorId($idFicha)));
 	break;
 
 }
