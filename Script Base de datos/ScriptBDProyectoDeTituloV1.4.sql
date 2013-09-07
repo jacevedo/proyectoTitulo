@@ -72,6 +72,7 @@ create table datosdecontacto
    DIRECCION            varchar(50) not null,
    MAIL                 varchar(50),
    F_INGRESO            date,
+   HABILITADO_FICHA     int,
    primary key (ID_PERSONA)
 );
 
