@@ -1,36 +1,14 @@
 <?php
 
-require_once '../pojos/persona.php';
-require_once '../pojos/odontologo.php';
-require_once '../pojos/paciente.php';
-require_once '../pojos/funcionario.php';
-require_once '../controladoras/controladorapersonaregioncomuna.php';
-require_once '../controladoras/controladoradoctor.php';
-require_once '../controladoras/controladorapaciente.php';
-require_once '../controladoras/controladorafuncionario.php';
+require_once '../pojos/fichadental.php';
+require_once '../controladoras/controladorafichapresupuesto.php';
 
 /*
 *Contiene la opciones para insertar, listar y modificar
 *Personas, Ododntologos, Funcionario, Pacientes
 *Opciones:
-* 1.- insertar Persona
-* 2.- insertar Odontologo
-* 3.- insertar Paciente
-* 4.- insertar Funcionario
-* 5.- modificarPersona
-* 6.- modificar Odontologo
-* 7.- modificar Paciente
-* 8.- modificar Funcionario
-* 9.- desabilitar Paciente
-* 10 .- desabilitar Odontologo
-* 11.- desabilitar Funcionario
-* 12.- Listar Personas
-* 13.- Listar Paciente
-* 14.- Listar Odontologo
-* 15.- Listar Funcionario
-* 16.- Listar Pacientes Herencia
-* 17.- Listar Odontologo Herencia
-* 18.- Listar Funcionario Herencia
+* 1.- insertar Ficha Dental
+* 2.- Modificar Ficha Dental
 */
 
 
@@ -41,7 +19,32 @@ $opcion = $data->{'indice'};
 
 switch ($opcion) 
 {
-	
+	case 1:
+		//json Insertar Ficha {"indice":1,"idPaciente":1,"idOdontologo":1,"fechaIngreso":"1991-12-12","anamnesis":"Penisilina"}
+		$idPaciente = $data->{'idPaciente'};
+		$idOdontologo = $data->{'idOdontologo'};
+		$fechaIngreso = $data->{'fechaIngreso'};
+		$anamnesis = $data->{'anamnesis'};
+		$fichaDental = new FichaDental();
+		$fichaDental->initClass(0, $idPaciente, $idOdontologo, $fechaIngreso, $anamnesis);
+		$controladoraFicha = new ControladoraFichaPresupuesto();
+		$arreglo["idFichaInsertada"] = $controladoraFicha->insertarFicha($fichaDental);
+		echo(json_encode($arreglo));
+	break;
+	case 1:
+		//json Modificar Ficha {"indice":2,"idFicha":1,"idPaciente":1,"idOdontologo":1,"fechaIngreso":"1991-12-12","anamnesis":"Penisilina"}
+		$idFicha = $data->{'idFicha'};
+		$idPaciente = $data->{'idPaciente'};
+		$idOdontologo = $data->{'idOdontologo'};
+		$fechaIngreso = $data->{'fechaIngreso'};
+		$anamnesis = $data->{'anamnesis'};
+		$fichaDental = new FichaDental();
+		$fichaDental->initClass($idFicha, $idPaciente, $idOdontologo, $fechaIngreso, $anamnesis);
+		$controladoraFicha = new ControladoraFichaPresupuesto();
+		$arreglo["Resultado"] = $controladoraFicha->modificarFicha($fichaDental);
+		echo(json_encode($arreglo));
+	break;
+
 }
  
 ?>

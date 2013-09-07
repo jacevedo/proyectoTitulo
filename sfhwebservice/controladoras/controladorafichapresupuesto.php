@@ -4,7 +4,7 @@ require_once '../pojos/fichadental.php';
 require_once '../pojos/presupuesto.php';
 
 
-class ContrladoraFichaPresupuesto
+class ControladoraFichaPresupuesto
 {
 	function crearFicha($idFicha, $fechaCreacion, $idPaciente, $Anamnesis)
 	{
@@ -28,7 +28,7 @@ class ContrladoraFichaPresupuesto
 	      	if($sentencia->execute())
 	      	{
 	        	$conexion->close();
-				return true;
+				return $sentencia->insert_id;
 			}
 			else
 			{
@@ -42,7 +42,7 @@ class ContrladoraFichaPresupuesto
          throw new $e("Error al Registrar Odontologo");
         }
 	}
-	public function insertarFicha(Ficha $ficha)
+	public function insertarFicha(FichaDental $ficha)
 	{
 		$conexion = new MySqlCon();
 		$idPaciente = $ficha->idPaciente;
@@ -59,7 +59,7 @@ class ContrladoraFichaPresupuesto
 	      	if($sentencia->execute())
 	      	{
 	        	$conexion->close();
-				return true;
+				return $sentencia->insert_id;
 			}
 			else
 			{
@@ -102,7 +102,7 @@ class ContrladoraFichaPresupuesto
          throw new $e("Error al Actualizar Usuarios");
         }
 	}
-	public function modificarFicha(Ficha $ficha)
+	public function modificarFicha(FichaDental $ficha)
 	{
 
 		$conexion = new MySqlCon();
@@ -120,18 +120,18 @@ class ContrladoraFichaPresupuesto
 	      	if($sentencia->execute())
 	      	{
 	        	$conexion->close();
-				return true;
+				return "Modificado";
 			}
 			else
 			{
 				$conexion->close();
-	        	return false;
+	        	return "No Modificado";
 	        }
         }
     	catch(Exception $e)
     	{
-         return false;
-         throw new $e("Error al Actualizar Usuarios");
+	         return false;
+	         throw new $e("Error al Actualizar Usuarios");
         }
 	}
 	function desabilitarPresupuesto($presupuesto)
@@ -216,7 +216,7 @@ class ContrladoraFichaPresupuesto
 				$indice=0;     
 				while($sentencia->fetch())
 				{
-					$ficha = new Ficha();
+					$ficha = new FichaDental();
 					$ficha->initClass($idFicha, $idPaciente, $idPresupuesto, $idOdontologo, $fechaIngreso, $anamnesis);
         			$this->datos[$indice] = $presupuesto;
         			
@@ -307,7 +307,7 @@ class ContrladoraFichaPresupuesto
 				$indice=0;     
 				while($sentencia->fetch())
 				{
-					$ficha = new Ficha();
+					$ficha = new FichaDental();
 					$ficha->initClass($idFicha, $idPaciente, $idPresupuesto, $idOdontologo, $fechaIngreso, $anamnesis);
         			$this->datos[$indice] = $ficha;
         			
