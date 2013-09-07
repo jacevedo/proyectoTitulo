@@ -261,9 +261,10 @@ create table piezadental
 /*==============================================================*/
 create table presupuesto
 (
-   ID_PRESUPUESTO       int not null,
+   ID_PRESUPUESTO       int not null auto_increment,
    ID_FICHA             int,
    VALORTOTAL           int,
+   FECHA_PRESUPUESTO    date not null,
    primary key (ID_PRESUPUESTO)
 );
 

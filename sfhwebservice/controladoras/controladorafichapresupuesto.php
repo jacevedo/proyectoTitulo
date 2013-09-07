@@ -18,13 +18,14 @@ class ControladoraFichaPresupuesto
 	{
 		$conexion = new MySqlCon();
 		$idFicha = $presupuesto->idFicha;
-		$ValorTotal = $presupuesto->ValorTotal;
+		$ValorTotal = $presupuesto->valorTotal;
+		$fechaIngreso = $presupuesto->fechaPresupuesto;
 		try 
 	   	{ 	 
 	        $this->SqlQuery='';
-	        $this->SqlQuery='INSERT INTO `presupuesto` (`ID_PRESUPUESTO` ,`ID_FICHA` ,`VALORTOTAL`) VALUES (NULL ,  ?, ?);';
+	        $this->SqlQuery='INSERT INTO `presupuesto` (`ID_PRESUPUESTO` ,`ID_FICHA` ,`VALORTOTAL`,`FECHA_PRESUPUESTO`) VALUES (NULL ,  ?, ?, ?);';
 	        $sentencia=$conexion->prepare($this->SqlQuery);
-	        $sentencia->bind_param('ii',$idFicha,$ValorTotal);
+	        $sentencia->bind_param('iis',$idFicha,$ValorTotal);
 	      	if($sentencia->execute())
 	      	{
 	        	$conexion->close();
@@ -49,14 +50,14 @@ class ControladoraFichaPresupuesto
 		$idOdontologo = $ficha->idOdontologo;
 		$fechaIngreso = $ficha->fechaIngreso;
 		$anamnesis = $ficha->anamnesis;
-		$habilitada
+		$habilitada = $ficha->habilitada;
 		try 
 	   	{ 	 
 	        $this->SqlQuery='';
-	        $this->SqlQuery='INSERT INTO `fichadental` (`ID_FICHA`,`ID_PACIENTE`,`ID_ODONTOLOGO`,`FECH_INGRESO`,`ANAMNESIS`)
-	         VALUES (NULL , ?,  ?, ?,  ?);';
+	        $this->SqlQuery='INSERT INTO `fichadental` (`ID_FICHA`,`ID_PACIENTE`,`ID_ODONTOLOGO`,`FECH_INGRESO`,`ANAMNESIS`,`HABILITADO_FICHA`)
+	         VALUES (NULL , ?,  ?, ?,  ?,?);';
 	        $sentencia=$conexion->prepare($this->SqlQuery);
-	        $sentencia->bind_param('iiss',$idPaciente,$idOdontologo,$fechaIngreso,$anamnesis);
+	        $sentencia->bind_param('iissi',$idPaciente,$idOdontologo,$fechaIngreso,$anamnesis,$habilitada);
 	      	if($sentencia->execute())
 	      	{
 	        	$conexion->close();
@@ -89,12 +90,12 @@ class ControladoraFichaPresupuesto
 	      	if($sentencia->execute())
 	      	{
 	        	$conexion->close();
-				return true;
+				return "Modificado";
 			}
 			else
 			{
 				$conexion->close();
-	        	return false;
+	        	return "No Modificado";
 	        }
         }
     	catch(Exception $e)
@@ -172,6 +173,7 @@ class ControladoraFichaPresupuesto
 	}
 	public function buscarFichaPorId($idFicha)
 	{
+
 		$conexion = new MySqlCon();
 		$this->datos ='';
 		try
@@ -186,9 +188,9 @@ class ControladoraFichaPresupuesto
 				$indice=0;     
 				while($sentencia->fetch())
 				{
-					$ficha = new Ficha();
-					$ficha->initClass($idFicha, $idPaciente, $idPresupuesto, $idOdontologo, $fechaIngreso, $anamnesis);
-        			$this->datos[$indice] = $presupuesto;
+					$ficha = new FichaDental();
+					$ficha->initClass($idFicha, $idPaciente, $idOdontologo, $fechaIngreso, $anamnesis,$habilitado);	
+        			$this->datos[$indice] = $ficha;
         			
         			$indice++;
 				}
@@ -213,13 +215,13 @@ class ControladoraFichaPresupuesto
 		   	$sentencia->bind_param('i',$idPersona);
         	if($sentencia->execute())
         	{
-        		$sentencia->bind_result($idFicha, $idPaciente, $idPresupuesto, $idOdontologo, $fechaIngreso, $anamnesis);					
+        		$sentencia->bind_result($idFicha, $idPaciente, $idOdontologo, $fechaIngreso, $anamnesis,$habilitado);				
 				$indice=0;     
 				while($sentencia->fetch())
 				{
 					$ficha = new FichaDental();
-					$ficha->initClass($idFicha, $idPaciente, $idPresupuesto, $idOdontologo, $fechaIngreso, $anamnesis);
-        			$this->datos[$indice] = $presupuesto;
+					$ficha->initClass($idFicha, $idPaciente, $idOdontologo, $fechaIngreso, $anamnesis,$habilitado);	
+        			$this->datos[$indice] = $ficha;
         			
         			$indice++;
 				}
@@ -304,12 +306,12 @@ class ControladoraFichaPresupuesto
 		   	$sentencia=$conexion->prepare($this->SqlQuery);
         	if($sentencia->execute())
         	{
-        		$sentencia->bind_result($idFicha, $idPaciente, $idPresupuesto, $idOdontologo, $fechaIngreso, $anamnesis);					
+        		$sentencia->bind_result($idFicha, $idPaciente, $idOdontologo, $fechaIngreso, $anamnesis, $habilitado);					
 				$indice=0;     
 				while($sentencia->fetch())
 				{
 					$ficha = new FichaDental();
-					$ficha->initClass($idFicha, $idPaciente, $idPresupuesto, $idOdontologo, $fechaIngreso, $anamnesis);
+					$ficha->initClass($idFicha, $idPaciente, $idOdontologo, $fechaIngreso, $anamnesis ,$habilitado);
         			$this->datos[$indice] = $ficha;
         			
         			$indice++;
@@ -324,9 +326,31 @@ class ControladoraFichaPresupuesto
         return $this->datos;
 	}
 
-	function desabilitarFicha($ficha)
+	function desabilitarFicha($idFicha, $habilitado)
 	{
-
+		$conexion = new MySqlCon();
+		try 
+	   	{ 	 
+	        $this->SqlQuery='';
+	        $this->SqlQuery='UPDATE `fichadental` SET `HABILITADO_FICHA` = ? WHERE `ID_FICHA` = ?';
+	        $sentencia=$conexion->prepare($this->SqlQuery);
+	        $sentencia->bind_param('ii',$habilitado,$idFicha);
+	      	if($sentencia->execute())
+	      	{
+	        	$conexion->close();
+				return "Modificado";
+			}
+			else
+			{
+				$conexion->close();
+	        	return "No Modificado";
+	        }
+        }
+    	catch(Exception $e)
+    	{
+	         return false;
+	         throw new $e("Error al Actualizar Usuarios");
+        }
 	}
 	
 }
