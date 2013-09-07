@@ -17,12 +17,13 @@ class ControladoraPaciente
 		$conexion = new MySqlCon();
 		$idPersona = $paciente->idPersona;
 		$fechaIngreso = $paciente->fechaIngreso;
+		$habilitado = $paciente->habilitadoPaciente;
 		try 
 	   	{ 	 
 	        $this->SqlQuery='';
-	        $this->SqlQuery='INSERT INTO `paciente` (`ID_PACIENTE` ,`ID_PERSONA` ,`FECHA_INGRESO`) VALUES (null,  ?,  ?);';
+	        $this->SqlQuery='INSERT INTO `paciente` (`ID_PACIENTE` ,`ID_PERSONA` ,`FECHA_INGRESO`,`HABILITADO_PACIENTE`) VALUES (null,  ?,  ?, ?);';
 	        $sentencia=$conexion->prepare($this->SqlQuery);
-	        $sentencia->bind_param('is',$idPersona,$fechaIngreso);
+	        $sentencia->bind_param('isi',$idPersona,$fechaIngreso,$habilitadoPaciente);
 	      	if($sentencia->execute())
 	      	{
 	        	$conexion->close();

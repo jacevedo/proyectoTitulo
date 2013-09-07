@@ -58,7 +58,7 @@ switch ($opcion)
 		echo(json_encode($arreglo));
 	break;
 	case 2:
-		//json Insertar Odontologo {"indice":2,"idPersona":1,"especialidad":"Cirugia",habilitado:1}
+		//json Insertar Odontologo {"indice":2,"idPersona":1,"especialidad":"Cirugia","habilitado":1}
 		$idPersona = $data->{'idPersona'};
 		$especialidad = $data->{'especialidad'};
 		$habilitado = $data->{'habilitado'};
@@ -70,12 +70,13 @@ switch ($opcion)
 		
 	break;
 	case 3:
-		//json Insertar Paciente {"indice":3,"idPersona":1,"fechaIngreso":"2013-04-12"}
+		//json Insertar Paciente {"indice":3,"idPersona":1,"fechaIngreso":"2013-04-12","habilitado":1}
 		$idPersona = $data->{"idPersona"};
 		$fechaIngreso = $data->{"fechaIngreso"};
+		$habilitado = $data->{"habilitado"};
 		$paciente = new Paciente();
 		$controladoraPaciente  = new ControladoraPaciente();
-		$paciente->initClass(0, $idPersona, $fechaIngreso);
+		$paciente->initClass(0, $idPersona, $fechaIngreso,$habilitado);
 		$arreglo["idPacienteInsertado"] = $controladoraPaciente->insertarPaciente($paciente);
 		echo(json_encode($arreglo));
 	break;
@@ -146,7 +147,7 @@ switch ($opcion)
 	
 	break;
 	case 11:
-		//json Desabilitar Funcionario {"indice":11,"idFuncionario":2,"isDesabilitado":1}
+		//json Desabilitar Funcionario {"indice":11,"idFuncionario":2,"isDesabilitado":0}
 		$idFuncionario = $data->{"idFuncionario"};
 		$funcionarioHabilitado = $data->{"habilitado"};
 		$funcionario = new Funcionario();

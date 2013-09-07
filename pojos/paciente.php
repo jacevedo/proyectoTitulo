@@ -24,7 +24,7 @@ class Paciente extends Persona
 		$this->fechaIngreso = $fechaIngreso;
 		$this->habilitadoPaciente = $habilitadoPaciente;
 	}
-	function initClass($idPersona, $fechaIngreso, $habilitadoPaciente)
+	function initClass($idPaciente,$idPersona, $fechaIngreso, $habilitadoPaciente)
 	{
 		$this->idPaciente = $idPaciente;
 		$this->idPersona = $idPersona;
