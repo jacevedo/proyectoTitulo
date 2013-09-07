@@ -72,6 +72,10 @@ require_once '../pojos/persona.php';
         }
         return $this->datos;
 	}
+	public function habilitarDesabilitarOdontologo(Odontologo $doctor)
+	{
+		
+	}
 	public function modificarDoctor(Odontologo $doctor)
 	{
 		$conexion = new MySqlCon();

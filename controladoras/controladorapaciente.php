@@ -105,6 +105,36 @@ class ControladoraPaciente
     }
     public function buscarPacientePorRut($rut)
     {
+    	$conexion = new MySqlCon();
+		$this->datos ='';
+		try
+		{
+			$this->SqlQuery = '';
+			$this->SqlQuery = "SELECT pa.ID_PACIENTE, pa.ID_PERSONA, pe.ID_PERFIL, pa.FECHA_INGRESO, pa.HABILITADO_PACIENTE, pe.RUT, pe.DV, pe.NOMBRE, pe.APELLIDO_PATERNO, pe.APELLIDO_MATERNO, pe.FECHA_NAC
+FROM paciente pa, persona pe
+WHERE pa.ID_PERSONA = pe.ID_PERSONA
+AND pe.RUT= ?";
+		   	$sentencia=$conexion->prepare($this->SqlQuery);
+		   	 $sentencia->bind_param('i',$rut);
+        	if($sentencia->execute())
+        	{
+        		$sentencia->bind_result($idPaciente, $idPersona, $idPerfil, $fechaIngreso, $habilitado, $rut, $dv, $nombre, $appPaterno, $appMaterno, $fechaNacimiento);				
+				$indice=0;     
+				while($sentencia->fetch())
+				{
+					$paciente = new Paciente();
+					$paciente->initClassDatosCompletos($idPersona, $idPerfil, $idPaciente, $rut, $dv, $nombre, $appPaterno, $appMaterno, $fechaNacimiento, $fechaIngreso, $habilitado);
+        			$this->datos[$indice] = $paciente;
+        			$indice++;
+				}
+      		}
+       		$conexion->close();
+    	}
+    	catch(Exception $e)
+    	{
+        	throw new $e("Error al listar pacientes");
+        }
+        return $this->datos;
 
     }
 
@@ -165,6 +195,38 @@ class ControladoraPaciente
          return false;
          throw new $e("Error al Actualizar Usuarios");
         }
+	}
+	public function buscarPacientePorNombre($nombre, $apellido)
+	{
+		$conexion = new MySqlCon();
+		$this->datos ='';
+		try
+		{
+			$this->SqlQuery = '';
+			$this->SqlQuery = "SELECT pa.ID_PACIENTE, pa.ID_PERSONA, pe.ID_PERFIL, pa.FECHA_INGRESO, pa.HABILITADO_PACIENTE, pe.RUT, pe.DV, pe.NOMBRE, pe.APELLIDO_PATERNO, pe.APELLIDO_MATERNO, pe.FECHA_NAC FROM paciente pa, persona pe  WHERE pe.NOMBRE LIKE ? AND pe.APELLIDO_PATERNO LIKE ? AND pa.ID_PERSONA = pe.ID_PERSONA";
+			$sentencia=$conexion->prepare($this->SqlQuery);
+		   	$nombreParam = "%".$nombre."%";
+		   	$appPaternoParam = "%".$appPaterno."%";
+		   	$sentencia->bind_param('ss',$nombreParam,$appPaternoParam);
+        	if($sentencia->execute())
+        	{
+        		$sentencia->bind_result($idFuncionario, $idPersona, $idPerfil, $puestoTrabajo, $habilitado, $rut, $dv, $nombre, $appPaterno, $appMaterno, $fechaNacimiento);				
+				$indice=0;     
+				while($sentencia->fetch())
+				{
+					$funcionario = new Funcionario();
+					$funcionario->initClassDatosCompletos($idPersona, $idPerfil, $idFuncionario, $rut, $dv, $nombre, $appPaterno, $appMaterno, $fechaNacimiento, $puestoTrabajo, $habilitado);
+        			$this->datos[$indice] = $funcionario;
+        			$indice++;
+				}
+      		}
+       		$conexion->close();
+    	}
+    	catch(Exception $e)
+    	{
+        	throw new $e("Error al listar pacientes");
+        }
+        return $this->datos;
 	}
 }
 
