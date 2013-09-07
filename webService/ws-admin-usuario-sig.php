@@ -16,6 +16,11 @@ require_once '../controladoras/controladorafuncionario.php';
 * 1.- Buscar Persona Por Rut
 * 2.- Buscar Persona Por Nombre
 * 3.- Buscar Funcionario Por Rut
+* 4.- Buscar Funcionario Por Nombre Apellido
+* 5.- Buscar Paciente Por Rut
+* 6.- Buscar Paciente Por Nombre Apellido
+* 7.- Buscar Odontologo Por Rut
+* 8.- Buscar Odontologo Por Nombre Apellido
 */
 
 
@@ -42,10 +47,18 @@ switch ($opcion)
 		
 	break;
 	case 3:
-		//json Buscar Funcionario Por Rut {"indice":3,"rut":12323123}
+		//json Buscar Funcionario Por Rut {"indice":3,"rut":9878987}
 		$rut = $data->{'rut'};
 		$controladorafuncionario = new ControladoraFuncionario();
 		echo(json_encode($controladorafuncionario->buscarFuncionarioPorRut($rut)));
+		
+	break;
+	case 4:
+		//json Buscar Funcionario Por Rut {"indice":4,"nombre":"Nicolas","apellido":"Palma"}
+		$nombre = $data->{'nombre'};
+		$apellido = $data->{'apellido'};
+		$controladorafuncionario = new ControladoraFuncionario();
+		echo(json_encode($controladorafuncionario->buscarFuncionarioPorNombre($nombre, $apellido)));
 		
 	break;
 }

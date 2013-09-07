@@ -100,10 +100,12 @@ class ControladoraFuncionario
          throw new $e("Error al Actualizar Usuarios");
         }
 	}
-	public function buscarFuncioinarioPorCargo($cargo)
-	{
+
+	//Posible metodo para mejorar busquedas (admin, asistente, etc)
+	//public function buscarFuncioinarioPorCargo($cargo)
+	//{
 		
-	}
+	//}
 	
 	public function buscarFuncionarioPorRut($rut)
 	{
@@ -115,9 +117,43 @@ class ControladoraFuncionario
 			$this->SqlQuery = "SELECT fu.ID_FUNCIONARIO, fu.ID_PERSONA, pe.ID_PERFIL, fu.PUESTO_DE_TRABAJO, fu.FUNCIONARIO_HABILITADO, pe.RUT, pe.DV, pe.NOMBRE, pe.APELLIDO_PATERNO, pe.APELLIDO_MATERNO, pe.FECHA_NAC
 FROM funcionario fu, persona pe
 WHERE fu.ID_PERSONA = pe.ID_PERSONA
-AND pe.RUT = ?";
+AND pe.RUT= ?";
 		   	$sentencia=$conexion->prepare($this->SqlQuery);
 		   	 $sentencia->bind_param('i',$rut);
+        	if($sentencia->execute())
+        	{
+        		$sentencia->bind_result($idFuncionario, $idPersona, $idPerfil, $puestoTrabajo, $habilitado, $rut, $dv, $nombre, $appPaterno, $appMaterno, $fechaNacimiento);				
+				$indice=0;     
+				while($sentencia->fetch())
+				{
+					$funcionario = new Funcionario();
+					$funcionario->initClassDatosCompletos($idPersona, $idPerfil, $idFuncionario, $rut, $dv, $nombre, $appPaterno, $appMaterno, $fechaNacimiento, $puestoTrabajo, $habilitado);
+        			$this->datos[$indice] = $funcionario;
+        			$indice++;
+				}
+      		}
+       		$conexion->close();
+    	}
+    	catch(Exception $e)
+    	{
+        	throw new $e("Error al listar pacientes");
+        }
+        return $this->datos;
+		
+	}
+
+	public function buscarFuncionarioPorNombre($nombre, $appPaterno)
+	{
+		$conexion = new MySqlCon();
+		$this->datos ='';
+		try
+		{
+			$this->SqlQuery = '';
+			$this->SqlQuery = "SELECT fu.ID_FUNCIONARIO, fu.ID_PERSONA, pe.ID_PERFIL, fu.PUESTO_DE_TRABAJO, fu.FUNCIONARIO_HABILITADO, pe.RUT, pe.DV, pe.NOMBRE, pe.APELLIDO_PATERNO, pe.APELLIDO_MATERNO, pe.FECHA_NAC FROM funcionario fu, persona pe WHERE pe.NOMBRE LIKE ? AND pe.APELLIDO_PATERNO LIKE ? AND fu.ID_PERSONA = pe.ID_PERSONA";
+		   	$sentencia=$conexion->prepare($this->SqlQuery);
+		   	$nombreParam = "%".$nombre."%";
+		   	$appPaternoParam = "%".$appPaterno."%";
+		   	$sentencia->bind_param('ss',$nombreParam,$appPaternoParam);
         	if($sentencia->execute())
         	{
         		$sentencia->bind_result($idFuncionario, $idPersona, $idPerfil, $puestoTrabajo, $habilitado, $rut, $dv, $nombre, $appPaterno, $appMaterno, $fechaNacimiento);				

@@ -103,7 +103,7 @@ class ControladoraPaciente
         }
         return $this->datos;
     }
-    public function buscarPersonaPorRut($rut)
+    public function buscarPacientePorRut($rut)
     {
 
     }
@@ -120,6 +120,35 @@ class ControladoraPaciente
 	        $this->SqlQuery='UPDATE `paciente` SET `ID_PERSONA` = ?, `FECHA_INGRESO` = ? WHERE `ID_PACIENTE` = ?';
 	        $sentencia=$conexion->prepare($this->SqlQuery);
 	        $sentencia->bind_param('isi',$idPersona,$fechaIngreso,$idPaciente);
+	      	if($sentencia->execute())
+	      	{
+	        	$conexion->close();
+				return "Modificado";
+			}
+			else
+			{
+				$conexion->close();
+	        	return "no modifique";
+	        }
+        }
+    	catch(Exception $e)
+    	{
+         return false;
+         throw new $e("Error al Actualizar Usuarios");
+        }
+	}
+	public function habilitarDesabilitarPaciente(Paciente $paciente)
+	{
+		$conexion = new MySqlCon();
+		$idPaciente = $paciente->idPaciente;
+		$habilitado = $paciente->habilitadoPaciente;
+		
+		try 
+	   	{ 	 
+	        $this->SqlQuery='';
+	        $this->SqlQuery='UPDATE paciente SET HABILITADO_PACIENTE = ? WHERE ID_PACIENTE = ?';
+	        $sentencia=$conexion->prepare($this->SqlQuery);
+	        $sentencia->bind_param('ii',$habilitado,$idPaciente);
 	      	if($sentencia->execute())
 	      	{
 	        	$conexion->close();
