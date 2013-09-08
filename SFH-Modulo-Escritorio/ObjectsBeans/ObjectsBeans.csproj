@@ -55,6 +55,7 @@
     <Compile Include="Listadeprecio.cs" />
     <Compile Include="Odontologo.cs" />
     <Compile Include="Ordendelaboratorio.cs" />
+    <Compile Include="Paciente.cs" />
     <Compile Include="Pass.cs" />
     <Compile Include="Perfil.cs" />
     <Compile Include="Permisos.cs" />

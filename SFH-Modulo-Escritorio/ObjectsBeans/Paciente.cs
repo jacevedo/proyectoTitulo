@@ -5,27 +5,22 @@ using System.Text;
 
 namespace ObjectsBeans
 {
-   public class Fichadental
+    public class Paciente : Persona
     {
         #region Campos
-        private int idFicha;
         private int idPaciente;
-        private int idOdontologo;
+        private int idPersonaPaciente;
         private DateTime fechaIngreso;
-        private string anamnesis;
+        private EstadoPersona habilitadoPaciente;
         #endregion
 
-        #region Constructor
-        public Fichadental() { }
-        #endregion
-
-        #region Propiedad
-
-        public int IdFicha
-        {
-            get { return idFicha; }
-            set { idFicha = value; }
+        #region Constructores
+        public Paciente() { }
+        public Paciente(int _idpersona) : base(_idpersona) { 
         }
+        #endregion
+
+        #region Propiedades
 
         public int IdPaciente
         {
@@ -33,10 +28,10 @@ namespace ObjectsBeans
             set { idPaciente = value; }
         }
 
-        public int IdOdontologo
+        public int IdPersonaPaciente
         {
-            get { return idOdontologo; }
-            set { idOdontologo = value; }
+            get { return idPersonaPaciente; }
+            set { idPersonaPaciente = value; }
         }
 
         public DateTime FechaIngreso
@@ -45,10 +40,10 @@ namespace ObjectsBeans
             set { fechaIngreso = value; }
         }
 
-        public string Anamnesis
+        public EstadoPersona HabilitadoPaciente
         {
-            get { return anamnesis; }
-            set { anamnesis = value; }
+            get { return habilitadoPaciente; }
+            set { habilitadoPaciente = value; }
         }
         #endregion
     }

@@ -28,12 +28,11 @@ namespace SFH_Software
         {
             //Muetra pantalla si esta repetida
           
-           Random r = new Random();
-           string key = "";
+            Random r = new Random();
+            string key = "";
            try
            {
-
-               for (int x = 0; pantallas.Length > x; x++)
+               for (int x = 0; pantallas.Length > x ; x++)
                {
                    if (pantallas[x] != nombre)
                    {

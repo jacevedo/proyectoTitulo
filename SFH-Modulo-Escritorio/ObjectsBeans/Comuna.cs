@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ObjectsBeans
 {
-    class Comuna
+    public class Comuna
     {
         #region Campos
         private int idComuna;

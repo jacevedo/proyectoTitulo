@@ -17,7 +17,7 @@ namespace ObjectsBeans
        }
        #endregion
 
-       #region Propiedad
+       #region Propiedades
        public int CodAcceso
        {
            get { return codAcceso; }

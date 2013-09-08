@@ -2,7 +2,7 @@
 class Presupuesto
 {
 	public $idPresupuesto;
-	public $valotTotal;
+	public $valorTotal;
 	public $idFicha;
 	public $fechaPresupuesto;
 

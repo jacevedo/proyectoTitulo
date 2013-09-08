@@ -5,15 +5,37 @@ using System.Text;
 
 namespace ObjectsBeans
 {
-    class Region
+   public class Region
     {
         #region Campos
+        private int idRegion;
+        private string nombreRegion;
+        private string numeroRegionRomano;
         #endregion
 
         #region Constructor
+        public Region() { }
         #endregion
 
-        #region Propiedad
+        #region Propiedades
+
+        public int IdRegion
+        {
+            get { return idRegion; }
+            set { idRegion = value; }
+        }
+
+        public string NombreRegion
+        {
+            get { return nombreRegion; }
+            set { nombreRegion = value; }
+        }
+
+        public string NumeroRegionRomano
+        {
+            get { return numeroRegionRomano; }
+            set { numeroRegionRomano = value; }
+        }
         #endregion
     }
 }
