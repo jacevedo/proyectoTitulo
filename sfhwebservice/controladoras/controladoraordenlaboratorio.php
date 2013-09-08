@@ -12,7 +12,7 @@ class ControladoraOrdenLaboratorio
 
 	}
 
-	public function insertarOrden(Orden $orden)
+	public function insertarOrden(OrdenLaboratorio $orden)
 	{
 		$conexion = new MySqlCon();
 		$idOrdenLaboratorio = $orden->idOrdenLaboratorio;
@@ -31,11 +31,11 @@ class ControladoraOrdenLaboratorio
 			$this->SqlQuery='';
 	        $this->SqlQuery='INSERT INTO `ordendelaboratorio`(`ID_ORDEN_LABORATORIO`,`CLINICA`,`BD`,`BI`,`PD`,`PI`,`FECHA_ENTREGA`,`HORA_ENTREGA`,`COLOR`,`ESTADO`) VALUES (null,?,?,?,?,?,?,?,?,?);';
 	        $sentencia=$conexion->prepare($this->SqlQuery);
-	        $sentencia->bind_param('issssssss',$idOrdenLaboratorio, $clinica, $bd, $bi, $pd, $pi, $fechaEntrega, $horaEntrega, $color, $estado);
+	        $sentencia->bind_param('sssssssss', $clinica, $bd, $bi, $pd, $pi, $fechaEntrega, $horaEntrega, $color, $estado);
 	      	if($sentencia->execute())
 	      	{
 	        	$conexion->close();
-				return true;
+				return $sentencia->insert_id;;
 			}
 			else
 			{
@@ -50,7 +50,7 @@ class ControladoraOrdenLaboratorio
 		}
 	}
 
-	public function modificarOrden(Orden $orden)
+	public function modificarOrden(OrdenLaboratorio $orden)
 	{
 		$conexion = new MySqlCon();
 		$idOrdenLaboratorio = $orden->idOrdenLaboratorio;
@@ -87,22 +87,23 @@ class ControladoraOrdenLaboratorio
 		}
 	}
 
-	function modificarEstadoOrden(Orden $orden)
+	function modificarEstadoOrden(OrdenLaboratorio $orden)
 	{
 		$conexion = new MySqlCon();
 		$idOrdenLaboratorio = $orden->idOrdenLaboratorio;
 		$estado = $orden->estado;
-		
+		echo($idOrdenLaboratorio);
+		echo($estado);
 		try
 		{
 			$this->SqlQuery='';
-	        $this->SqlQuery='UPDATE `ordendelaboratorio` SET `ESTADO`=?,WHERE `ID_ORDEN_LABORATORIO`=?;';
+	        $this->SqlQuery='UPDATE `ordendelaboratorio` SET `ESTADO`=? WHERE `ID_ORDEN_LABORATORIO`=?;';
 	        $sentencia=$conexion->prepare($this->SqlQuery);
 	        $sentencia->bind_param('si',$estado, $idOrdenLaboratorio);
 	      	if($sentencia->execute())
 	      	{
 	        	$conexion->close();
-				return "Ok";
+				return "Ok" .$idOrdenLaboratorio;
 			}
 			else
 			{
@@ -128,12 +129,12 @@ class ControladoraOrdenLaboratorio
 		   	$sentencia=$conexion->prepare($this->SqlQuery);
         	if($sentencia->execute())
         	{
-        		$sentencia->bind_result($idOrdenLaboratorio, $clinica, $bd, $bi, $pd, $pi, $fechaEntrega, $horaEntrega, $color);					
+        		$sentencia->bind_result($idOrdenLaboratorio, $clinica, $bd, $bi, $pd, $pi, $fechaEntrega, $horaEntrega, $color, $estado);					
 				$indice=0;     
 				while($sentencia->fetch())
 				{
 					$orden = new OrdenLaboratorio();
-					$orden->initClass($idOrdenLaboratorio, $clinica, $bd, $bi, $pd, $pi, $fechaEntrega, $horaEntrega, $color);
+					$orden->initClass($idOrdenLaboratorio, $clinica, $bd, $bi, $pd, $pi, $fechaEntrega, $horaEntrega, $color, $estado);
 					$this->datos[$indice] = $orden;
 					$indice++;
 				}
@@ -159,12 +160,12 @@ class ControladoraOrdenLaboratorio
 		   	$sentencia->bind_param('i', $id);
         	if($sentencia->execute())
         	{
-        		$sentencia->bind_result($idOrdenLaboratorio, $clinica, $bd, $bi, $pd, $pi, $fechaEntrega, $horaEntrega, $color);					
+        		$sentencia->bind_result($idOrdenLaboratorio, $clinica, $bd, $bi, $pd, $pi, $fechaEntrega, $horaEntrega, $color, $estado);					
 				$indice=0;     
 				while($sentencia->fetch())
 				{
 					$orden = new OrdenLaboratorio();
-					$orden->initClass($idOrdenLaboratorio, $clinica, $bd, $bi, $pd, $pi, $fechaEntrega, $horaEntrega, $color);
+					$orden->initClass($idOrdenLaboratorio, $clinica, $bd, $bi, $pd, $pi, $fechaEntrega, $horaEntrega, $color, $estado);
 					$this->datos[$indice] = $orden;
 					$indice++;
 				}
@@ -190,12 +191,12 @@ class ControladoraOrdenLaboratorio
 		   	$sentencia->bind_param('s', $nombreClinica);
         	if($sentencia->execute())
         	{
-        		$sentencia->bind_result($idOrdenLaboratorio, $clinica, $bd, $bi, $pd, $pi, $fechaEntrega, $horaEntrega, $color);					
+        		$sentencia->bind_result($idOrdenLaboratorio, $clinica, $bd, $bi, $pd, $pi, $fechaEntrega, $horaEntrega, $color, $estado);					
 				$indice=0;     
 				while($sentencia->fetch())
 				{
 					$orden = new OrdenLaboratorio();
-					$orden->initClass($idOrdenLaboratorio, $clinica, $bd, $bi, $pd, $pi, $fechaEntrega, $horaEntrega, $color);
+					$orden->initClass($idOrdenLaboratorio, $clinica, $bd, $bi, $pd, $pi, $fechaEntrega, $horaEntrega, $color, $estado);
 					$this->datos[$indice] = $orden;
 					$indice++;
 				}
@@ -221,12 +222,12 @@ class ControladoraOrdenLaboratorio
 		   	$sentencia->bind_param('s', $fecha);
         	if($sentencia->execute())
         	{
-        		$sentencia->bind_result($idOrdenLaboratorio, $clinica, $bd, $bi, $pd, $pi, $fechaEntrega, $horaEntrega, $color);					
+        		$sentencia->bind_result($idOrdenLaboratorio, $clinica, $bd, $bi, $pd, $pi, $fechaEntrega, $horaEntrega, $color, $estado);					
 				$indice=0;     
 				while($sentencia->fetch())
 				{
 					$orden = new OrdenLaboratorio();
-					$orden->initClass($idOrdenLaboratorio, $clinica, $bd, $bi, $pd, $pi, $fechaEntrega, $horaEntrega, $color);
+					$orden->initClass($idOrdenLaboratorio, $clinica, $bd, $bi, $pd, $pi, $fechaEntrega, $horaEntrega, $color, $estado);
 					$this->datos[$indice] = $orden;
 					$indice++;
 				}
