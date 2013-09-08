@@ -92,26 +92,34 @@ switch ($opcion)
 		echo(json_encode($arreglo));
 	break;
 	case 8:
-		//json Modificar Presupuesto {"indice":8,"idPresupuesto":1,"idFicha":3,"valorTotal":10000}
+		//json Modificar Presupuesto {"indice":8,"idPresupuesto":1,"idFicha":3,"valorTotal":10000,"fechaPresupuesto":"1991-12-12"}
 		$idPresupuesto = $data->{"idPresupuesto"};
 		$idFicha = $data->{"idFicha"};
 		$valorTotal = $data->{"valorTotal"};
+		$fechaPresupuesto = $data->{"fechaPresupuesto"};
 		$presupuesto = new Presupuesto();
-		$presupuesto->initClass($idPresupuesto, $idFicha, $valorTotal);
+		$presupuesto->initClass($idPresupuesto, $idFicha, $valorTotal,$fechaPresupuesto);
 		$controladoraPresupuesto = new ControladoraFichaPresupuesto();
-		$arreglo["idPresupuestoInsertado"] = $controladoraPresupuesto->modificarPresupuesto($presupuesto);
+		$arreglo["modificado"] = $controladoraPresupuesto->modificarPresupuesto($presupuesto);
 		echo(json_encode($arreglo));
 	break;
 	case 9:
-		//json Modificar Presupuesto {"indice":8,"idPresupuesto":1,"idFicha":3,"valorTotal":10000}
+		//json buscar Presupuesto por id {"indice":9,"idPresupuesto":1}
 		$idPresupuesto = $data->{"idPresupuesto"};
-		$idFicha = $data->{"idFicha"};
-		$valorTotal = $data->{"valorTotal"};
-		$presupuesto = new Presupuesto();
-		$presupuesto->initClass($idPresupuesto, $idFicha, $valorTotal);
 		$controladoraPresupuesto = new ControladoraFichaPresupuesto();
-		$arreglo["idPresupuestoInsertado"] = $controladoraPresupuesto->modificarPresupuesto($presupuesto);
-		echo(json_encode($arreglo));
+		echo(json_encode($controladoraPresupuesto->buscarPresupuestoPorId($idPresupuesto)));
+	break;
+	case 10:
+		//json buscar Presupuesto por id Paciente {"indice":10,"idPaciente":3}
+		$idPaciente = $data->{"idPaciente"};
+		$controladoraPresupuesto = new ControladoraFichaPresupuesto();
+		echo(json_encode($controladoraPresupuesto->buscarPresupuestoPorIdPersona($idPaciente)));
+	break;
+	case 11:
+		//json Listar Presupuestos {"indice":11}
+		$idPaciente = $data->{"idPaciente"};
+		$controladoraPresupuesto = new ControladoraFichaPresupuesto();
+		echo(json_encode($controladoraPresupuesto->listarPresupuesto()));
 	break;
 
 }

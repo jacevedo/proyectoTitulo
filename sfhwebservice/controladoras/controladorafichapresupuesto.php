@@ -25,7 +25,7 @@ class ControladoraFichaPresupuesto
 	        $this->SqlQuery='';
 	        $this->SqlQuery='INSERT INTO `presupuesto` (`ID_PRESUPUESTO` ,`ID_FICHA` ,`VALORTOTAL`,`FECHA_PRESUPUESTO`) VALUES (NULL ,  ?, ?, ?);';
 	        $sentencia=$conexion->prepare($this->SqlQuery);
-	        $sentencia->bind_param('iis',$idFicha,$ValorTotal);
+	        $sentencia->bind_param('iis',$idFicha,$ValorTotal,$fechaIngreso);
 	      	if($sentencia->execute())
 	      	{
 	        	$conexion->close();
@@ -81,12 +81,13 @@ class ControladoraFichaPresupuesto
 		$idPresupuesto = $presupuesto->idPresupuesto;
 		$idFicha = $presupuesto->idFicha;
 		$valorTotal = $presupuesto->valorTotal;
+		$fechaPresupuesto = $presupuesto->fechaPresupuesto;
 		try 
 	   	{ 	 
 	        $this->SqlQuery='';
-	        $this->SqlQuery='UPDATE `presupuesto` SET `ID_FICHA` = ?, `VALORTOTAL` = ? WHERE `ID_PRESUPUESTO` = ?';
+	        $this->SqlQuery='UPDATE `presupuesto` SET `ID_FICHA` = ?, `VALORTOTAL` = ?, `FECHA_PRESUPUESTO` = ? WHERE `ID_PRESUPUESTO` = ?';
 	        $sentencia=$conexion->prepare($this->SqlQuery);
-	        $sentencia->bind_param('iii',$idFicha,$valorTotal,$idPresupuesto);
+	        $sentencia->bind_param('iisi',$idFicha,$valorTotal,$fechaPresupuesto,$idPresupuesto);
 	      	if($sentencia->execute())
 	      	{
 	        	$conexion->close();
@@ -152,12 +153,12 @@ class ControladoraFichaPresupuesto
 		   	$sentencia->bind_param('i',$idPresupuesto);
         	if($sentencia->execute())
         	{
-        		$sentencia->bind_result($idPresupuesto, $idFicha, $valorTotal);					
+        		$sentencia->bind_result($idPresupuesto, $idFicha, $valorTotal,$fechaPresupuesto);					
 				$indice=0;     
 				while($sentencia->fetch())
 				{
 					$presupuesto = new Presupuesto();
-					$presupuesto->initClass($idPresupuesto, $idFicha, $valorTotal);
+					$presupuesto->initClass($idPresupuesto, $idFicha, $valorTotal,$fechaPresupuesto);
         			$this->datos[$indice] = $presupuesto;
         			
         			$indice++;
@@ -246,12 +247,12 @@ class ControladoraFichaPresupuesto
 		   	$sentencia->bind_param('i',$idPersona);
         	if($sentencia->execute())
         	{
-        		$sentencia->bind_result($idPresupuesto, $idFicha, $valorTotal);					
+        		$sentencia->bind_result($idPresupuesto, $idFicha, $valorTotal,$fechaPresupuesto);					
 				$indice=0;     
 				while($sentencia->fetch())
 				{
 					$presupuesto = new Presupuesto();
-					$presupuesto->initClass($idPresupuesto, $idFicha, $valorTotal);
+					$presupuesto->initClass($idPresupuesto, $idFicha, $valorTotal,$fechaPresupuesto);
         			$this->datos[$indice] = $presupuesto;
         			
         			$indice++;
@@ -276,12 +277,12 @@ class ControladoraFichaPresupuesto
 		   	$sentencia=$conexion->prepare($this->SqlQuery);
         	if($sentencia->execute())
         	{
-        		$sentencia->bind_result($idPresupuesto, $idFicha, $valorTotal);					
+        		$sentencia->bind_result($idPresupuesto, $idFicha, $valorTotal,$fechaPresupuesto);					
 				$indice=0;     
 				while($sentencia->fetch())
 				{
 					$presupuesto = new Presupuesto();
-					$presupuesto->initClass($idPresupuesto, $idFicha, $valorTotal);
+					$presupuesto->initClass($idPresupuesto, $idFicha, $valorTotal,$fechaPresupuesto);
         			$this->datos[$indice] = $presupuesto;
         			
         			$indice++;
