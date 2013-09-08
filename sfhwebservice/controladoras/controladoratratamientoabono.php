@@ -23,11 +23,11 @@ class ControladoraTratamientoAbono
 			$this->SqlQuery='';
 	        $this->SqlQuery='INSERT INTO `tratamientodental`(`ID_TRATAMIENTO_DENTAL`,`ID_FICHA`,`FECH_CREACION`,`TRATAMIENTO`,`FECHA_SEGUIMIENTO`,`VALOR_TOTAL`) VALUES (null,?,?,?,?,?);';
 	        $sentencia=$conexion->prepare($this->SqlQuery);
-	        $sentencia->bind_param('iisssi',$idTratamientoDental, $idFicha, $fechaCreacion, $tratamiento, $fechaSeguimiento, $valorTotal);
+	        $sentencia->bind_param('isssi', $idFicha, $fechaCreacion, $tratamiento, $fechaSeguimiento, $valorTotal);
 	      	if($sentencia->execute())
 	      	{
 	        	$conexion->close();
-				return true;
+				return $sentencia->insert_id;
 			}
 			else
 			{
@@ -55,11 +55,11 @@ class ControladoraTratamientoAbono
 			$this->SqlQuery='';
 	        $this->SqlQuery='INSERT INTO `abono`(`ID_ABONO`,`ID_TRATAMIENTO_DENTAL`,`FECHA_DE_ABONO`,`MONTO`) VALUES (null,?,?,?);';
 	        $sentencia=$conexion->prepare($this->SqlQuery);
-	        $sentencia->bind_param('iisi',$idAbono, $idTratamientoDental, $fechaAbono, $monto);
+	        $sentencia->bind_param('isi', $idTratamientoDental, $fechaAbono, $monto);
 	      	if($sentencia->execute())
 	      	{
 	        	$conexion->close();
-				return true;
+				return $sentencia->insert_id;
 			}
 			else
 			{
@@ -93,12 +93,12 @@ class ControladoraTratamientoAbono
 	      	if($sentencia->execute())
 	      	{
 	        	$conexion->close();
-				return "Ok";
+				return "Modificado";
 			}
 			else
 			{
 				$conexion->close();
-	        	return "No se modificó tratamiento.";
+	        	return "No Modificado";
 	        }
 		}
 		catch(Exception $e)
@@ -125,12 +125,12 @@ class ControladoraTratamientoAbono
 	      	if($sentencia->execute())
 	      	{
 	        	$conexion->close();
-				return "Ok";
+				return "Modificado";
 			}
 			else
 			{
 				$conexion->close();
-	        	return "No se modificó abono.";
+	        	return "No Modificado";
 	        }
 		}
 		catch(Exception $e)

@@ -1,6 +1,7 @@
 <?php
 
 require_once '../pojos/fichadental.php';
+require_once '../pojos/presupuesto.php';
 require_once '../controladoras/controladorafichapresupuesto.php';
 
 /*
