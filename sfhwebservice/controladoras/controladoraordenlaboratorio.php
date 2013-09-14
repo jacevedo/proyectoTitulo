@@ -25,7 +25,6 @@ class ControladoraOrdenLaboratorio
 		$horaEntrega = $orden->horaEntrega;
 		$color = $orden->color;
 		$estado = $orden->estado;
-		
 		try
 		{
 			$this->SqlQuery='';
@@ -103,7 +102,7 @@ class ControladoraOrdenLaboratorio
 	      	if($sentencia->execute())
 	      	{
 	        	$conexion->close();
-				return "Ok" .$idOrdenLaboratorio;
+				return "Estado Modificado";
 			}
 			else
 			{

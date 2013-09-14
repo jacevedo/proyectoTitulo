@@ -40,6 +40,7 @@ switch ($opcion)
 		$fichaDental = new FichaDental();
 		$fichaDental->initClass(0, $idPaciente, $idOdontologo, $fechaIngreso, $anamnesis,$habilitada);
 		$controladoraFicha = new ControladoraFichaPresupuesto();
+		$arreglo["code"]=1;
 		$arreglo["idFichaInsertada"] = $controladoraFicha->insertarFicha($fichaDental);
 		echo(json_encode($arreglo));
 	break;
@@ -53,6 +54,7 @@ switch ($opcion)
 		$fichaDental = new FichaDental();
 		$fichaDental->initClass($idFicha, $idPaciente, $idOdontologo, $fechaIngreso, $anamnesis,0);
 		$controladoraFicha = new ControladoraFichaPresupuesto();
+		$arreglo["code"]=2;
 		$arreglo["Resultado"] = $controladoraFicha->modificarFicha($fichaDental);
 		echo(json_encode($arreglo));
 	break;
@@ -60,24 +62,31 @@ switch ($opcion)
 		//json Buscar Ficha Por Id {"indice":3,"idFicha":1}
 		$idFicha = $data->{'idFicha'};
 		$controladoraFicha = new ControladoraFichaPresupuesto();
-		echo(json_encode($controladoraFicha->buscarFichaPorId($idFicha)));
+		$arreglo["code"]=3;
+		$arreglo["FichaPorID"] = $controladoraFicha->buscarFichaPorId($idFicha);
+		echo(json_encode($arreglo));
 	break;
 	case 4:
 		//json Buscar Ficha Por Id Persona {"indice":4,"idPersona":1}
 		$idPersona = $data->{'idPersona'};
 		$controladoraFicha = new ControladoraFichaPresupuesto();
-		echo(json_encode($controladoraFicha->buscarFichaPorIdPersona($idPersona)));
+		$arreglo["code"]=4;
+		$arreglo["FichaIdPersona"] = $controladoraFicha->buscarFichaPorIdPersona($idPersona);
+		echo(json_encode($arreglo));
 	break;
 	case 5:
 		//json Listar Ficha {"indice":5}
 		$controladoraFicha = new ControladoraFichaPresupuesto();
-		echo(json_encode($controladoraFicha->listarFicha()));
+		$arreglo["code"]=5;
+		$arreglo["ListaFicha"] = $controladoraFicha->listarFicha();
+		echo(json_encode($arreglo));
 	break;
 	case 6:
-		//json Listar Ficha {"indice":6,"idFicha":3,"habilitada":1}
+		//json Habilitar desabilitar Ficha {"indice":6,"idFicha":3,"habilitada":1}
 		$idFicha = $data->{"idFicha"};
 		$habilitada = $data->{"habilitada"};
 		$controladoraFicha = new ControladoraFichaPresupuesto();
+		$arreglo["code"]=6;
 		$arreglo["resultado"] = $controladoraFicha->desabilitarFicha($idFicha,$habilitada);
 		echo(json_encode($arreglo));
 	break;
@@ -89,6 +98,7 @@ switch ($opcion)
 		$presupuesto = new Presupuesto();
 		$presupuesto->initClass(0, $idFicha, $valorTotal,$fechaPresupuesto);
 		$controladoraPresupuesto = new ControladoraFichaPresupuesto();
+		$arreglo["code"]=7;
 		$arreglo["idPresupuestoInsertado"] = $controladoraPresupuesto->insertarPresupuesto($presupuesto);
 		echo(json_encode($arreglo));
 	break;
@@ -101,6 +111,7 @@ switch ($opcion)
 		$presupuesto = new Presupuesto();
 		$presupuesto->initClass($idPresupuesto, $idFicha, $valorTotal,$fechaPresupuesto);
 		$controladoraPresupuesto = new ControladoraFichaPresupuesto();
+		$arreglo["code"]=8;
 		$arreglo["modificado"] = $controladoraPresupuesto->modificarPresupuesto($presupuesto);
 		echo(json_encode($arreglo));
 	break;
@@ -108,19 +119,25 @@ switch ($opcion)
 		//json buscar Presupuesto por id {"indice":9,"idPresupuesto":1}
 		$idPresupuesto = $data->{"idPresupuesto"};
 		$controladoraPresupuesto = new ControladoraFichaPresupuesto();
-		echo(json_encode($controladoraPresupuesto->buscarPresupuestoPorId($idPresupuesto)));
+		$arreglo["code"]=9;
+		$arreglo["PresupuestoID"] = $controladoraPresupuesto->buscarPresupuestoPorId($idPresupuesto);
+		echo(json_encode($arreglo));
 	break;
 	case 10:
 		//json buscar Presupuesto por id Paciente {"indice":10,"idPaciente":3}
 		$idPaciente = $data->{"idPaciente"};
 		$controladoraPresupuesto = new ControladoraFichaPresupuesto();
-		echo(json_encode($controladoraPresupuesto->buscarPresupuestoPorIdPersona($idPaciente)));
+		$arreglo["code"]=10;
+		$arreglo["PresupuestoIDPaciente"] = $controladoraPresupuesto->buscarPresupuestoPorIdPersona($idPaciente);
+		echo(json_encode($arreglo));
 	break;
 	case 11:
 		//json Listar Presupuestos {"indice":11}
 		$idPaciente = $data->{"idPaciente"};
 		$controladoraPresupuesto = new ControladoraFichaPresupuesto();
-		echo(json_encode($controladoraPresupuesto->listarPresupuesto()));
+		$arreglo["code"]=11;
+		$arreglo["listarPresupuesto"] = $controladoraPresupuesto->listarPresupuesto();
+		echo(json_encode($arreglo));
 	break;
 
 }

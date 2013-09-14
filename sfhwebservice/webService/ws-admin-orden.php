@@ -38,6 +38,7 @@ switch ($opcion)
 		$orden = new OrdenLaboratorio();
 		$controladoraOrden = new ControladoraOrdenLaboratorio();
 		$orden->initClass(0, $clinica, $bd, $bi, $pd, $pi, $fechaEntrega, $horaEntrega, $color, $estado);
+		$arreglo["code"] =1;
 		$arreglo["idOrdenInsertada"] = $controladoraOrden->insertarOrden($orden);
 		echo(json_encode($arreglo));
 	break;
@@ -56,6 +57,7 @@ switch ($opcion)
 		$orden = new OrdenLaboratorio();
 		$controladoraOrden = new ControladoraOrdenLaboratorio();
 		$orden->initClass($idOrden, $clinica, $bd, $bi, $pd, $pi, $fechaEntrega, $horaEntrega, $color, "Recibida");
+		$arreglo["code"] = 2;
 		$arreglo["resultado"] = $controladoraOrden->modificarOrden($orden);
 		echo(json_encode($arreglo));
 	break;
@@ -68,30 +70,40 @@ switch ($opcion)
 		$orden->estado = $estado;
 		
 		$controladoraOrden = new ControladoraOrdenLaboratorio();
-		echo(json_encode($controladoraOrden->modificarEstadoOrden($orden)));
+		$arreglo["code"] = 3;
+		$arreglo["ModificadoEstado"] = $controladoraOrden->modificarEstadoOrden($orden);
+		echo(json_encode($arreglo));
 	break;
 	case 4:
 		//json Listar Orden {"indice":4}
 		$controladoraOrden = new ControladoraOrdenLaboratorio();
-		echo(json_encode($controladoraOrden->listarOrdenes()));
+		$arreglo["code"] = 4;
+		$arreglo["ListadoOrden"] = $controladoraOrden->listarOrdenes();
+		echo(json_encode($arreglo));
 	break;
 	case 5:
 		//json Buscar Orden Por Id {"indice":5,"idOrden":1}
 		$idOrden = $data->{'idOrden'};
 		$controladoraOrden = new ControladoraOrdenLaboratorio();
-		echo(json_encode($controladoraOrden->buscarOrdenPorId($idOrden)));
+		$arreglo["code"] = 5;
+		$arreglo["OrdenPorId"] = $controladoraOrden->buscarOrdenPorId($idOrden);
+		echo(json_encode($arreglo));
 	break;
 	case 6:
 		//json Buscar Orden Por Clinica {"indice":6,"clinica":"Santa Ana"}
 		$clinica = $data->{'clinica'};
 		$controladoraOrden = new ControladoraOrdenLaboratorio();
-		echo(json_encode($controladoraOrden->buscarOrdenPorClinica($clinica)));
+		$arreglo["code"] = 6;
+		$arreglo["ordenPorNombreClinica"] = $controladoraOrden->buscarOrdenPorClinica($clinica);
+		echo(json_encode($arreglo));
 	break;
 	case 7:
 		//json Buscar Orden Por Fecha Entrega {"indice":7,"fechaEntrega":"2013-10-26"}
 		$fechaEntrega = $data->{'fechaEntrega'};
 		$controladoraOrden = new ControladoraOrdenLaboratorio();
-		echo(json_encode($controladoraOrden->buscarOrdenPorFechaEntrega($fechaEntrega)));
+		$arreglo["code"] = 7;
+		$arreglo["ordenPorFechaEntrega"] = $controladoraOrden->buscarOrdenPorFechaEntrega($fechaEntrega);
+		echo(json_encode($arreglo));
 	break;
 }
 

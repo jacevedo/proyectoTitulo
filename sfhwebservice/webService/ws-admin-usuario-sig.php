@@ -35,14 +35,18 @@ switch ($opcion)
 		//json Buscar Persona Por Rut {"indice":1,"rut":17897359,"dv":2}
 		$rut = $data->{'rut'};
 		$dv = $data->{'dv'};
-		$controladoraPersona = new ControladoraPersonaRegionComuna();		
-		echo(json_encode($controladoraPersona->buscarPorRut($rut, $dv)));
+		$controladoraPersona = new ControladoraPersonaRegionComuna();	
+		$arreglo["code"] = 1;
+		$arreglo["listaPersonaRut"] = $controladoraPersona->buscarPorRut($rut, $dv);	
+		echo(json_encode($arreglo));
 	break;
 	case 2:
 		//json Buscar Persona Por Nombre {"indice":2,"nomPersona":"Jaime","appPersona":"Acevedo"}
 		$nomPersona = $data->{'nomPersona'};
 		$appPersona = $data->{'appPersona'};
 		$controladoraPersona = new ControladoraPersonaRegionComuna();
+		$arreglo["code"] = 2;
+		$arreglo["busquedaPersonaNombre"] = $controladorafuncionario->buscarFuncionarioPorRut($rut);
 		echo(json_encode($controladoraPersona->buscarPorNombre($nomPersona, $appPersona)));
 		
 	break;
@@ -50,7 +54,9 @@ switch ($opcion)
 		//json Buscar Funcionario Por Rut {"indice":3,"rut":9878987}
 		$rut = $data->{'rut'};
 		$controladorafuncionario = new ControladoraFuncionario();
-		echo(json_encode($controladorafuncionario->buscarFuncionarioPorRut($rut)));
+		$arreglo["code"] = 3;
+		$arreglo["listaFuncionarioRut"] = $controladorafuncionario->buscarFuncionarioPorRut($rut);
+		echo(json_encode($arreglo));
 		
 	break;
 	case 4:
@@ -60,16 +66,20 @@ switch ($opcion)
 		if($nombre!="" && $apellido !="")
 		{
 			$controladorafuncionario = new ControladoraFuncionario();
-			echo(json_encode($controladorafuncionario->buscarFuncionarioPorNombre($nombre, $apellido)));
+			$arreglo["code"] = 4;
+			$arreglo["buscarFuncionarioNombre"] = $controladorafuncionario->buscarFuncionarioPorNombre($nombre, $apellido);
+			echo(json_encode($arreglo));
 		}
 		
 	break;
 	case 5:
-		//json Buscar Paciente Por Rut {"indice":5,"rut":3272373}
+		//json Buscar Paciente Por Rut {"indice":5,"rut":17231233}
 		$rut = $data->{'rut'};
 		
 		$controladoraPaciente = new ControladoraPaciente();
-		echo(json_encode($controladoraPaciente->buscarPacientePorRut($rut)));
+		$arreglo["code"] = 5;
+		$arreglo["buscarPacienteRut"] = $controladoraPaciente->buscarPacientePorRut($rut);
+		echo(json_encode($arreglo));
 		
 	break;
 	case 6:
@@ -79,7 +89,9 @@ switch ($opcion)
 		if($nombre!="" && $apellido !="")
 		{
 			$controladoraPaciente = new ControladoraPaciente();
-			echo(json_encode($controladoraPaciente->buscarPacientePorNombre($nombre, $apellido)));
+			$arreglo["code"] = 6;
+			$arreglo["buscarPacienteNombre"] = $controladoraPaciente->buscarPacientePorNombre($nombre, $apellido);
+			echo(json_encode($arreglo));
 		}
 		
 	break;
@@ -87,7 +99,9 @@ switch ($opcion)
 		//json Buscar Odontologo Por Rut {"indice":7,"rut":15725009}
 		$rut = $data->{'rut'};
 		$controladoraOdontologo = new ControladoraDoctor();
-		echo(json_encode($controladoraOdontologo->buscarOdontologoPorRut($rut)));
+		$arreglo["code"] = 7;
+		$arreglo["buscarOdontologoRut"] = $controladoraOdontologo->buscarOdontologoPorRut($rut);
+		echo(json_encode($arreglo));
 		
 	break;
 	case 8:
@@ -97,7 +111,9 @@ switch ($opcion)
 		if($nombre!="" && $apellido !="")
 		{
 			$controladoraOdontologo = new ControladoraDoctor();
-			echo(json_encode($controladoraOdontologo->buscarOdontologoPorNombreApellido($nombre, $apellido)));
+			$arreglo["code"] = 8;
+			$arreglo["buscarOdontologoNombre"] = $controladoraOdontologo->buscarOdontologoPorNombreApellido($nombre, $apellido);
+			echo(json_encode($arreglo));
 		}
 		
 	break;

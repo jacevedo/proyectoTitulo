@@ -214,7 +214,7 @@ AND pe.RUT= ?";
 				$indice=0;     
 				while($sentencia->fetch())
 				{
-					$funcionario = new Funcionario();
+					$funcionario = new Paciente();
 					$funcionario->initClassDatosCompletos($idPersona, $idPerfil, $idFuncionario, $rut, $dv, $nombre, $appPaterno, $appMaterno, $fechaNacimiento, $puestoTrabajo, $habilitado);
         			$this->datos[$indice] = $funcionario;
         			$indice++;

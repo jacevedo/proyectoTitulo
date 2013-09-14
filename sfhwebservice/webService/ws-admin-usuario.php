@@ -31,6 +31,7 @@ require_once '../controladoras/controladorafuncionario.php';
 * 16.- Listar Pacientes Herencia
 * 17.- Listar Odontologo Herencia
 * 18.- Listar Funcionario Herencia
+* Para habilitado 0, desabilitado 1
 */
 
 
@@ -53,7 +54,9 @@ switch ($opcion)
 		$persona = new Persona();
 		$controladoraPersona = new ControladoraPersonaRegionComuna();
 		$persona->initClass(0, $idPerfil, $rut, $dv, $nombre, $appPateno, $appMaterno, $fechaNac);
+		$arreglo["code"] = 1;
 		$arreglo["idPersonaInsertada"] = $controladoraPersona->insertarPersona($persona);	
+
 		//Retorna {"idPersonaInsertada":id};	
 		echo(json_encode($arreglo));
 	break;
@@ -65,6 +68,7 @@ switch ($opcion)
 		$odontologo = new Odontologo();
 		$controladoraOdontologo = new ControladoraDoctor();
 		$odontologo->initClass(0, $idPersona, $especialidad,$habilitado);
+		$arreglo["code"] = 2;
 		$arreglo["idOdontologoInsertado"] = $controladoraOdontologo->InsertarDoctor($odontologo);
 		echo(json_encode($arreglo));
 		
@@ -77,6 +81,7 @@ switch ($opcion)
 		$paciente = new Paciente();
 		$controladoraPaciente  = new ControladoraPaciente();
 		$paciente->initClass(0, $idPersona, $fechaIngreso,$habilitado);
+		$arreglo["code"] = 3;
 		$arreglo["idPacienteInsertado"] = $controladoraPaciente->insertarPaciente($paciente);
 		echo(json_encode($arreglo));
 	break;
@@ -88,6 +93,7 @@ switch ($opcion)
 		$funcionario = new Funcionario();
 		$controladoraFuncionario = new ControladoraFuncionario();
 		$funcionario->initClass(0, $idPersona, $puestoTrabajo,$funcionarioHabilitado);
+		$arreglo["code"] = 4;
 		$arreglo["idFuncionarioInsertado"] = $controladoraFuncionario->insertarFuncionario($funcionario);
 		echo(json_encode($arreglo));
 	break;
@@ -104,40 +110,44 @@ switch ($opcion)
 		$persona = new Persona();
 		$controladoraPersona = new ControladoraPersonaRegionComuna();
 		$persona->initClass($idPersona, $idPerfil, $rut, $dv, $nombre, $appPateno, $appMaterno, $fechaNac);
+		$arreglo["code"] = 5;
 		$arreglo["resultado"] = $controladoraPersona->modificarPersona($persona);	
 		echo (json_encode($arreglo));
 	break;
 	case 6:
-		//json Modificar Odontologo {"indice":6,"idOdontologo":2,idPersona":1,"especialidad":"Cirugia"}
+		//json Modificar Odontologo {"indice":6,"idOdontologo":2,"idPersona":1,"especialidad":"Cirugia"}
 		$idOdontologo = $data->{'idOdontologo'};
 		$idPersona = $data->{'idPersona'};
 		$especialidad = $data->{'especialidad'};
 		$odontologo = new Odontologo();
 		$controladoraOdontologo = new ControladoraDoctor();
-		$odontologo->initClass($idOdontologo, $idPersona, $especialidad);
+		$odontologo->initClass($idOdontologo, $idPersona, $especialidad,0);
+		$arreglo["code"] = 6;
 		$arreglo["resultado"] = $controladoraOdontologo->modificarDoctor($odontologo);
 		echo(json_encode($arreglo));
 	break;
 	case 7:
-		//json Modificar Paciente {"indice":3,"idPaciente":1,"idPersona":1,"fechaIngreso":"2013-04-12"}
+		//json Modificar Paciente {"indice":7,"idPaciente":1,"idPersona":1,"fechaIngreso":"2013-04-12"}
 		$idPaciente = $data->{"idPaciente"};
 		$idPersona = $data->{"idPersona"};
 		$fechaIngreso = $data->{"fechaIngreso"};
 		$paciente = new Paciente();
 		$controladoraPaciente  = new ControladoraPaciente();
-		$paciente->initClass($idPaciente, $idPersona, $fechaIngreso);
+		$paciente->initClass($idPaciente, $idPersona, $fechaIngreso,0);
+		$arreglo["code"] = 7;
 		$arreglo["resultado"] = $controladoraPaciente->modificarPacientes($paciente);
 		echo(json_encode($arreglo));
 	break;
 	case 8:
-		//json Modificar Funcionario {"indice":4,"idFuncionario":2,"idPersona":1,"puestoTrabajo":"Administrador"}
+		//json Modificar Funcionario {"indice":8,"idFuncionario":2,"idPersona":1,"puestoTrabajo":"Administrador"}
 		$idFuncionario = $data->{"idFuncionario"};
 		$idPersona = $data->{"idPersona"};
 		$puestoTrabajo = $data->{"puestoTrabajo"};
 		$funcionario = new Funcionario();
 		$controladoraFuncionario = new ControladoraFuncionario();
 		$funcionario->initClass($idFuncionario, $idPersona, $puestoTrabajo,1);
-		$arreglo["resultado"] = $controladoraFuncionario->insertarFuncionario($funcionario);
+		$arreglo["code"] = 8;
+		$arreglo["resultado"] = $controladoraFuncionario->modificarFuncionario($funcionario);
 		echo(json_encode($arreglo));
 	break;
 	case 9:
@@ -146,7 +156,9 @@ switch ($opcion)
 		$paciente->idPaciente = $data->{"idPaciente"};
 		$paciente->habilitadoPaciente = $data->{"habilitado"};
 		$controladoraPaciente = new ControladoraPaciente();
-		echo(json_encode($controladoraPaciente->habilitarDesabilitarPaciente($paciente)));
+		$arreglo["code"] = 9;
+		$arreglo["resutadoHabilitar"] = $controladoraPaciente->habilitarDesabilitarPaciente($paciente);
+		echo(json_encode($arreglo));
 	break;
 	case 10:
 		//json desabilitarHabilitarOdontologo {"indice":10,"idOdontologo":1,"habilitado":1}
@@ -154,7 +166,9 @@ switch ($opcion)
 		$odontologo->idOdontologo = $data->{"idOdontologo"};
 		$odontologo->odontologoHabilitado = $data->{"habilitado"};
 		$controladoraOdontologo = new ControladoraDoctor();
-		echo(json_encode($controladoraOdontologo->habilitarDesabilitarOdontologo($odontologo)));
+		$arreglo["code"] = 10;
+		$arreglo["resutadoHabilitar"] = $controladoraOdontologo->habilitarDesabilitarOdontologo($odontologo);
+		echo(json_encode($arreglo));
 	break;
 	case 11:
 		//json Desabilitar Funcionario {"indice":11,"idFuncionario":2,"isDesabilitado":0}
@@ -163,43 +177,58 @@ switch ($opcion)
 		$funcionario = new Funcionario();
 		$controladoraFuncionario = new ControladoraFuncionario();
 		$funcionario->initClass($idFuncionario, "", "",$funcionarioHabilitado);
-		$arreglo["resultado"] = $controladoraFuncionario->desabilitarFuncionario($funcionario);
+		$arreglo["code"] = 11;
+		$arreglo["resutadoHabilitar"] = $controladoraFuncionario->desabilitarFuncionario($funcionario);
 		echo(json_encode($arreglo));
 	break;
 	case 12:
 		//json ListarPersonas {"indice":12}
 		$controladoraPersona = new ControladoraPersonaRegionComuna();
-		echo(json_encode($controladoraPersona->listarPersonas()));
+		$arreglo["code"] = 12;
+		$arreglo["listaPersonas"] = $controladoraPersona->listarPersonas();
+		echo(json_encode($arreglo));
 	break;
 	case 13:
 		//json ListarPaciente{"indice":13}
 		$controladoraPaciente = new ControladoraPaciente();
-		echo(json_encode($controladoraPaciente->listarPacientes()));
+		$arreglo["code"] = 13;
+		$arreglo["listaPacientes"] = $controladoraPaciente->listarPacientes();
+		echo(json_encode($arreglo));
 	break;
 	case 14:
 		//json ListarOdontologo {"indice":14}
 		$controladoraOdontologo = new ControladoraDoctor();
-		echo(json_encode($controladoraOdontologo->listarDoctores()));
+		$arreglo["code"] = 14;
+		$arreglo["listaOdontologos"] = $controladoraOdontologo->listarDoctores();
+		echo(json_encode($arreglo));
 	break;
 	case 15:
 		//json ListarFuncionario {"indice":15}
 		$controladoraFuncionario = new ControladoraFuncionario();
-		echo(json_encode($controladoraFuncionario->listarFuncionario()));
+		$arreglo["code"] = 15;
+		$arreglo["listaFuncionarios"] = $controladoraFuncionario->listarFuncionario();
+		echo(json_encode($arreglo));
 	break;
 	case 16:
 		//json Paciente Herencia {"indice":16}
 		$controladoraPaciente = new ControladoraPaciente();
-		echo(json_encode($controladoraPaciente->listarPacientesPersona()));
+		$arreglo["code"] = 16;
+		$arreglo["listaPacienteHerencia"] = $controladoraPaciente->listarPacientesPersona();
+		echo(json_encode($arreglo));
 	break;
 	case 17:
 		//json Listar Odontologo Herencia {"indice":17}
 		$controladoraOdontologo = new ControladoraDoctor();
-		echo(json_encode($controladoraOdontologo->listarDoctoresPersona()));
+		$arreglo["code"] = 17;
+		$arreglo["listaOdontologoHerencia"] = $controladoraOdontologo->listarDoctoresPersona();
+		echo(json_encode($arreglo));
 	break;
 	case 18:
-		//json Listar Funcionaro Herencia {"indice":16}
+		//json Listar Funcionaro Herencia {"indice":18}
 		$controladoraFuncionario = new ControladoraFuncionario();
-		echo(json_encode($controladoraFuncionario->listarFuncionarioHerencia()));
+		$arreglo["code"] = 18;
+		$arreglo["listaOdontologoHerencia"] = $controladoraFuncionario->listarFuncionarioHerencia();
+		echo(json_encode($arreglo));
 	break;
 }
  

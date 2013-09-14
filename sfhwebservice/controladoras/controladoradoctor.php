@@ -53,12 +53,12 @@ require_once '../pojos/persona.php';
 		   	$sentencia=$conexion->prepare($this->SqlQuery);
         	if($sentencia->execute())
         	{
-        		$sentencia->initClassDatosCompletos($idPersona, $idPerfil, $idOdontologo, $rut, $dv, $nombre, $apellidoPaterno, $apellidoMaterno, $fechaNacimiento, $especialidad,$odontologoHabilitado);
+        		$sentencia->bind_result($idPersona, $idPerfil, $idOdontologo, $rut, $dv, $nombre, $apellidoPaterno, $apellidoMaterno, $fechaNacimiento, $especialidad,$odontologoHabilitado);
 				$indice=0;     
 				while($sentencia->fetch())
 				{
 					$doctor = new Odontologo();
-					$doctor->initClass($idOdontologo,$idPersona,$especialidad,$odontologoHabilitado);
+					$doctor->initClassDatosCompletos($idPersona, $idPerfil, $idOdontologo, $rut, $dv, $nombre, $apellidoPaterno, $apellidoMaterno, $fechaNacimiento, $especialidad,$odontologoHabilitado);
         			$this->datos[$indice] = $doctor;
         			
         			$indice++;
