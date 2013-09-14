@@ -1,0 +1,9 @@
+C:\Users\David\Desktop\EjemploConsumoRest\EjemploConsumoRest\bin\Release\EjemploConsumoRest.exe
+C:\Users\David\Desktop\EjemploConsumoRest\EjemploConsumoRest\bin\Release\EjemploConsumoRest.pdb
+C:\Users\David\Desktop\EjemploConsumoRest\EjemploConsumoRest\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Users\David\Desktop\EjemploConsumoRest\EjemploConsumoRest\obj\x86\Release\EjemploConsumoRest.Form1.resources
+C:\Users\David\Desktop\EjemploConsumoRest\EjemploConsumoRest\obj\x86\Release\EjemploConsumoRest.Properties.Resources.resources
+C:\Users\David\Desktop\EjemploConsumoRest\EjemploConsumoRest\obj\x86\Release\ResGen.read.1.tlog
+C:\Users\David\Desktop\EjemploConsumoRest\EjemploConsumoRest\obj\x86\Release\ResGen.write.1.tlog
+C:\Users\David\Desktop\EjemploConsumoRest\EjemploConsumoRest\obj\x86\Release\EjemploConsumoRest.exe
+C:\Users\David\Desktop\EjemploConsumoRest\EjemploConsumoRest\obj\x86\Release\EjemploConsumoRest.pdb

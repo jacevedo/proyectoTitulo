@@ -1,0 +1,29 @@
+c:\users\francisco\documents\visual studio 2010\Projects\EjemploConsumoRest\EjemploConsumoRest\bin\Debug\EjemploConsumoRest.exe
+c:\users\francisco\documents\visual studio 2010\Projects\EjemploConsumoRest\EjemploConsumoRest\bin\Debug\EjemploConsumoRest.pdb
+c:\users\francisco\documents\visual studio 2010\Projects\EjemploConsumoRest\EjemploConsumoRest\obj\x86\Debug\ResolveAssemblyReference.cache
+c:\users\francisco\documents\visual studio 2010\Projects\EjemploConsumoRest\EjemploConsumoRest\obj\x86\Debug\EjemploConsumoRest.Form1.resources
+c:\users\francisco\documents\visual studio 2010\Projects\EjemploConsumoRest\EjemploConsumoRest\obj\x86\Debug\EjemploConsumoRest.Properties.Resources.resources
+c:\users\francisco\documents\visual studio 2010\Projects\EjemploConsumoRest\EjemploConsumoRest\obj\x86\Debug\ResGen.read.1.tlog
+c:\users\francisco\documents\visual studio 2010\Projects\EjemploConsumoRest\EjemploConsumoRest\obj\x86\Debug\ResGen.write.1.tlog
+c:\users\francisco\documents\visual studio 2010\Projects\EjemploConsumoRest\EjemploConsumoRest\obj\x86\Debug\EjemploConsumoRest.exe
+c:\users\francisco\documents\visual studio 2010\Projects\EjemploConsumoRest\EjemploConsumoRest\obj\x86\Debug\EjemploConsumoRest.pdb
+C:\Users\Citt-David\Desktop\EjemploConsumoRest\EjemploConsumoRest\obj\x86\Debug\EjemploConsumoRest.exe
+C:\Users\Citt-David\Desktop\EjemploConsumoRest\EjemploConsumoRest\obj\x86\Debug\EjemploConsumoRest.pdb
+C:\Users\Citt-David\Desktop\EjemploConsumoRest\EjemploConsumoRest\bin\Debug\EjemploConsumoRest.exe
+C:\Users\Citt-David\Desktop\EjemploConsumoRest\EjemploConsumoRest\bin\Debug\EjemploConsumoRest.pdb
+C:\Users\Citt-David\Desktop\EjemploConsumoRest\EjemploConsumoRest\obj\x86\Debug\EjemploConsumoRest.csprojResolveAssemblyReference.cache
+C:\Users\Citt-David\Desktop\EjemploConsumoRest\EjemploConsumoRest\obj\x86\Debug\EjemploConsumoRest.Form1.resources
+C:\Users\Citt-David\Desktop\EjemploConsumoRest\EjemploConsumoRest\obj\x86\Debug\EjemploConsumoRest.Properties.Resources.resources
+C:\Users\Citt-David\Desktop\EjemploConsumoRest\EjemploConsumoRest\obj\x86\Debug\EjemploConsumoRest.csproj.GenerateResource.Cache
+C:\Users\David\Desktop\EjemploConsumoRest\EjemploConsumoRest\obj\x86\Debug\EjemploConsumoRest.exe
+C:\Users\David\Desktop\EjemploConsumoRest\EjemploConsumoRest\obj\x86\Debug\EjemploConsumoRest.pdb
+C:\Users\David\Desktop\EjemploConsumoRest\EjemploConsumoRest\bin\Debug\EjemploConsumoRest.exe
+C:\Users\David\Desktop\EjemploConsumoRest\EjemploConsumoRest\bin\Debug\EjemploConsumoRest.pdb
+C:\Users\David\Desktop\EjemploConsumoRest\EjemploConsumoRest\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\David\Desktop\EjemploConsumoRest\EjemploConsumoRest\obj\x86\Debug\EjemploConsumoRest.Form1.resources
+C:\Users\David\Desktop\EjemploConsumoRest\EjemploConsumoRest\obj\x86\Debug\EjemploConsumoRest.Properties.Resources.resources
+C:\Users\David\Desktop\EjemploConsumoRest\EjemploConsumoRest\obj\x86\Debug\ResGen.read.1.tlog
+C:\Users\David\Desktop\EjemploConsumoRest\EjemploConsumoRest\obj\x86\Debug\ResGen.write.1.tlog
+C:\Users\David\Desktop\EjemploConsumoRest\EjemploConsumoRest\bin\Debug\Newtonsoft.Json.dll
+C:\Users\David\Desktop\EjemploConsumoRest\EjemploConsumoRest\bin\Debug\Newtonsoft.Json.pdb
+C:\Users\David\Desktop\EjemploConsumoRest\EjemploConsumoRest\bin\Debug\Newtonsoft.Json.xml
