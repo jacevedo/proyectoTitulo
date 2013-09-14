@@ -7,7 +7,7 @@ class Funcionario extends Persona
 	public $puestoTrabajo;
 	public $funcionarioHabilitado;
 
-	function initClass($idFuncionario, $idPersona, $puestoTrabajo,$funcionarioHabilitado)
+	function initClassFuncionario($idFuncionario, $idPersona, $puestoTrabajo,$funcionarioHabilitado)
 	{
 		$this->idFuncionario = $idFuncionario;
 		$this->idPersona = $idPersona;

@@ -192,7 +192,7 @@ AND pe.RUT= ?";
 				while($sentencia->fetch())
 				{
 					$funcionario = new Funcionario();
-					$funcionario->initClass($idFuncionario,$idPersona,$puestoTrabajo,$funcionarioHabilitado);
+					$funcionario->initClassFuncionario($idFuncionario,$idPersona,$puestoTrabajo,$funcionarioHabilitado);
         			$this->datos[$indice] = $funcionario;
         			$indice++;
 				}
@@ -221,7 +221,7 @@ AND pe.RUT= ?";
 				while($sentencia->fetch())
 				{
 					$funcionario = new Funcionario();
-					$funcionario->initClass($idFuncionario,$idPersona,$puestoTrabajo,$funcionarioHabilitado);
+					$funcionario->initClassFuncionario($idFuncionario,$idPersona,$puestoTrabajo,$funcionarioHabilitado);
         			$this->datos[$indice] = $funcionario;
         			$indice++;
 				}

@@ -7,7 +7,7 @@ class Odontologo extends Persona
 	public $especialidad;
 	public $odontologoHabilitado;
 
-	function initClass($idOdontologo, $idPersona, $especialidad,$odontologoHabilitado)
+	function initClassOdontologo($idOdontologo, $idPersona, $especialidad,$odontologoHabilitado)
 	{
 		$this->idOdontologo = $idOdontologo;
 		$this->idPersona = $idPersona;

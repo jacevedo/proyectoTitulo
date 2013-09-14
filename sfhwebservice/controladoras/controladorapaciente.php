@@ -89,7 +89,7 @@ class ControladoraPaciente
 				while($sentencia->fetch())
 				{
 					$paciente = new Paciente();
-					$paciente->initClass($idPaciente,$idPersona,$fechaIngreso,$habilitadoPaciente);
+					$paciente->initClassPaciente($idPaciente,$idPersona,$fechaIngreso,$habilitadoPaciente);
         			$this->datos[$indice] = $paciente;
         			
         			$indice++;

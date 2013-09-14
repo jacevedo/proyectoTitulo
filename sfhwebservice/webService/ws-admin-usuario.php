@@ -67,7 +67,7 @@ switch ($opcion)
 		$habilitado = $data->{'habilitado'};
 		$odontologo = new Odontologo();
 		$controladoraOdontologo = new ControladoraDoctor();
-		$odontologo->initClass(0, $idPersona, $especialidad,$habilitado);
+		$odontologo->initClassOdontologo(0, $idPersona, $especialidad,$habilitado);
 		$arreglo["code"] = 2;
 		$arreglo["idOdontologoInsertado"] = $controladoraOdontologo->InsertarDoctor($odontologo);
 		echo(json_encode($arreglo));
@@ -80,7 +80,7 @@ switch ($opcion)
 		$habilitado = $data->{"habilitado"};
 		$paciente = new Paciente();
 		$controladoraPaciente  = new ControladoraPaciente();
-		$paciente->initClass(0, $idPersona, $fechaIngreso,$habilitado);
+		$paciente->initClassPaciente(0, $idPersona, $fechaIngreso,$habilitado);
 		$arreglo["code"] = 3;
 		$arreglo["idPacienteInsertado"] = $controladoraPaciente->insertarPaciente($paciente);
 		echo(json_encode($arreglo));
@@ -92,7 +92,7 @@ switch ($opcion)
 		$funcionarioHabilitado = $data->{"habilitado"};
 		$funcionario = new Funcionario();
 		$controladoraFuncionario = new ControladoraFuncionario();
-		$funcionario->initClass(0, $idPersona, $puestoTrabajo,$funcionarioHabilitado);
+		$funcionario->initClassFuncionario(0, $idPersona, $puestoTrabajo,$funcionarioHabilitado);
 		$arreglo["code"] = 4;
 		$arreglo["idFuncionarioInsertado"] = $controladoraFuncionario->insertarFuncionario($funcionario);
 		echo(json_encode($arreglo));
@@ -121,7 +121,7 @@ switch ($opcion)
 		$especialidad = $data->{'especialidad'};
 		$odontologo = new Odontologo();
 		$controladoraOdontologo = new ControladoraDoctor();
-		$odontologo->initClass($idOdontologo, $idPersona, $especialidad,0);
+		$odontologo->initClassOdontologo($idOdontologo, $idPersona, $especialidad,0);
 		$arreglo["code"] = 6;
 		$arreglo["resultado"] = $controladoraOdontologo->modificarDoctor($odontologo);
 		echo(json_encode($arreglo));
@@ -133,7 +133,7 @@ switch ($opcion)
 		$fechaIngreso = $data->{"fechaIngreso"};
 		$paciente = new Paciente();
 		$controladoraPaciente  = new ControladoraPaciente();
-		$paciente->initClass($idPaciente, $idPersona, $fechaIngreso,0);
+		$paciente->initClassPaciente($idPaciente, $idPersona, $fechaIngreso,0);
 		$arreglo["code"] = 7;
 		$arreglo["resultado"] = $controladoraPaciente->modificarPacientes($paciente);
 		echo(json_encode($arreglo));
@@ -145,7 +145,7 @@ switch ($opcion)
 		$puestoTrabajo = $data->{"puestoTrabajo"};
 		$funcionario = new Funcionario();
 		$controladoraFuncionario = new ControladoraFuncionario();
-		$funcionario->initClass($idFuncionario, $idPersona, $puestoTrabajo,1);
+		$funcionario->initClassFuncionario($idFuncionario, $idPersona, $puestoTrabajo,1);
 		$arreglo["code"] = 8;
 		$arreglo["resultado"] = $controladoraFuncionario->modificarFuncionario($funcionario);
 		echo(json_encode($arreglo));
@@ -176,7 +176,7 @@ switch ($opcion)
 		$funcionarioHabilitado = $data->{"habilitado"};
 		$funcionario = new Funcionario();
 		$controladoraFuncionario = new ControladoraFuncionario();
-		$funcionario->initClass($idFuncionario, "", "",$funcionarioHabilitado);
+		$funcionario->initClassFuncionario($idFuncionario, "", "",$funcionarioHabilitado);
 		$arreglo["code"] = 11;
 		$arreglo["resutadoHabilitar"] = $controladoraFuncionario->desabilitarFuncionario($funcionario);
 		echo(json_encode($arreglo));

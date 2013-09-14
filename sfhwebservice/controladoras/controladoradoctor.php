@@ -147,7 +147,7 @@ require_once '../pojos/persona.php';
 				while($sentencia->fetch())
 				{
 					$doctor = new Odontologo();
-					$doctor->initClass($idOdontologo,$idPersona,$especialidad,$odontologoHabilitado);
+					$doctor->initClassOdontologo($idOdontologo,$idPersona,$especialidad,$odontologoHabilitado);
         			$this->datos[$indice] = $doctor;
         			
         			$indice++;
