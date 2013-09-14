@@ -52,7 +52,7 @@ INSERT INTO `abono` (`ID_ABONO`, `ID_TRATAMIENTO_DENTAL`, `FECHA_DE_ABONO`, `MON
 -- Estructura de tabla para la tabla `ACCESOS`
 --
 
-CREATE TABLE IF NOT EXISTS `ACCESOS` (
+CREATE TABLE IF NOT EXISTS `accesos` (
   `COD_ACCESO` int(11) NOT NULL,
   `DESCRIPCION_ACCESO` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`COD_ACCESO`)
@@ -62,7 +62,7 @@ CREATE TABLE IF NOT EXISTS `ACCESOS` (
 -- Volcar la base de datos para la tabla `ACCESOS`
 --
 
-INSERT INTO `ACCESOS` (`COD_ACCESO`, `DESCRIPCION_ACCESO`) VALUES
+INSERT INTO `accesos` (`COD_ACCESO`, `DESCRIPCION_ACCESO`) VALUES
 (707, 'Usuario administrador: Posee las credenciales nece'),
 (706, 'Usuario Doctor: Posee las credenciales necesarias '),
 (705, 'Usuario Asistente: Posee las credenciales necesari'),
@@ -74,7 +74,7 @@ INSERT INTO `ACCESOS` (`COD_ACCESO`, `DESCRIPCION_ACCESO`) VALUES
 -- Estructura de tabla para la tabla `AREAINSUMO`
 --
 
-CREATE TABLE IF NOT EXISTS `AREAINSUMO` (
+CREATE TABLE IF NOT EXISTS `areainsumo` (
   `ID_AREA_INSUMO` int(11) NOT NULL AUTO_INCREMENT,
   `NOMBRE_AREA` varchar(50) DEFAULT NULL,
   `DESCRIPCION_AREA` text,
@@ -85,7 +85,7 @@ CREATE TABLE IF NOT EXISTS `AREAINSUMO` (
 -- Volcar la base de datos para la tabla `AREAINSUMO`
 --
 
-INSERT INTO `AREAINSUMO` (`ID_AREA_INSUMO`, `NOMBRE_AREA`, `DESCRIPCION_AREA`) VALUES
+INSERT INTO `areainsumo` (`ID_AREA_INSUMO`, `NOMBRE_AREA`, `DESCRIPCION_AREA`) VALUES
 (1, 'Oficina', 'Insumos de Oficina'),
 (2, 'Esterilizacion', 'Insumos de Esterilizacion'),
 (3, 'Jeringas', 'Jeringas para usar datos'),
@@ -604,7 +604,7 @@ INSERT INTO `gastos` (`ID_GASTOS`, `ID_PERSONA`, `MONTO_GASTOS`, `DESCUENTO_GAST
 -- Estructura de tabla para la tabla `INIDICADORESECONOMICOS`
 --
 
-CREATE TABLE IF NOT EXISTS `INIDICADORESECONOMICOS` (
+CREATE TABLE IF NOT EXISTS `inidicadoreseconomicos` (
   `ID_INIDICADOR` int(11) NOT NULL AUTO_INCREMENT,
   `NOMBRE_INDICADOR` varchar(100) DEFAULT NULL,
   `VALOR_EN_PESOS` int(11) DEFAULT NULL,
@@ -616,7 +616,7 @@ CREATE TABLE IF NOT EXISTS `INIDICADORESECONOMICOS` (
 -- Volcar la base de datos para la tabla `INIDICADORESECONOMICOS`
 --
 
-INSERT INTO `INIDICADORESECONOMICOS` (`ID_INIDICADOR`, `NOMBRE_INDICADOR`, `VALOR_EN_PESOS`, `UNIDAD_DE_MEDIDA`) VALUES
+INSERT INTO `inidicadoreseconomicos` (`ID_INIDICADOR`, `NOMBRE_INDICADOR`, `VALOR_EN_PESOS`, `UNIDAD_DE_MEDIDA`) VALUES
 (1, 'UF', 23, 'Pesos Chilenos'),
 (2, 'DOLAR OBSERVADO($)', 510, 'Pesos Chilenos'),
 (3, 'UTM', 40, 'Pesos Chilenos'),
@@ -657,7 +657,7 @@ INSERT INTO `insumos` (`ID_INSUMO`, `ID_AREA_INSUMO`, `ID_GASTOS`, `NOMBRE_INSUM
 -- Estructura de tabla para la tabla `LISTAPRECIOS`
 --
 
-CREATE TABLE IF NOT EXISTS `LISTAPRECIOS` (
+CREATE TABLE IF NOT EXISTS `listaprecios` (
   `ID_PRECIOS` int(11) NOT NULL AUTO_INCREMENT,
   `COMENTARIO` text,
   `VALOR_NETO` int(11) DEFAULT NULL,
@@ -668,7 +668,7 @@ CREATE TABLE IF NOT EXISTS `LISTAPRECIOS` (
 -- Volcar la base de datos para la tabla `LISTAPRECIOS`
 --
 
-INSERT INTO `LISTAPRECIOS` (`ID_PRECIOS`, `COMENTARIO`, `VALOR_NETO`) VALUES
+INSERT INTO `listaprecios` (`ID_PRECIOS`, `COMENTARIO`, `VALOR_NETO`) VALUES
 (1, 'Examen Inicial,Plan De Tratamiento Y Presupuesto', 21750),
 (2, 'Control Y Examen Periodico De Rigor', 14500),
 (3, 'Interconsulta Con Informe Escrito 1 Sesion', 29000),
@@ -735,7 +735,7 @@ INSERT INTO `odontologo` (`ID_ODONTOLOGO`, `ID_PERSONA`, `ESPECIALIDAD`, `ODONTO
 -- Estructura de tabla para la tabla `ORDENDELABORATORIO`
 --
 
-CREATE TABLE IF NOT EXISTS `ORDENDELABORATORIO` (
+CREATE TABLE IF NOT EXISTS `ordendelaboratorio` (
   `ID_ORDEN_LABORATORIO` int(11) NOT NULL AUTO_INCREMENT,
   `CLINICA` varchar(80) DEFAULT NULL,
   `BD` varchar(50) DEFAULT NULL,
@@ -753,7 +753,7 @@ CREATE TABLE IF NOT EXISTS `ORDENDELABORATORIO` (
 -- Volcar la base de datos para la tabla `ORDENDELABORATORIO`
 --
 
-INSERT INTO `ORDENDELABORATORIO` (`ID_ORDEN_LABORATORIO`, `CLINICA`, `BD`, `BI`, `PD`, `PI`, `FECHA_ENTREGA`, `HORA_ENTREGA`, `COLOR`, `ESTADO`) VALUES
+INSERT INTO `ordendelaboratorio` (`ID_ORDEN_LABORATORIO`, `CLINICA`, `BD`, `BI`, `PD`, `PI`, `FECHA_ENTREGA`, `HORA_ENTREGA`, `COLOR`, `ESTADO`) VALUES
 (1, 'Santa Ana', '10', '11', '20', '21', '2013-10-26', '14:00:00', 'Blanco', 'Rechazada'),
 (2, 'Santa-Ana', '10', '11', '20', '21', '2013-09-26', '16:00:00', 'Blanco', 'Recibida'),
 (3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
@@ -793,7 +793,7 @@ INSERT INTO `paciente` (`ID_PACIENTE`, `ID_PERSONA`, `FECHA_INGRESO`, `HABILITAD
 -- Estructura de tabla para la tabla `PASS`
 --
 
-CREATE TABLE IF NOT EXISTS `PASS` (
+CREATE TABLE IF NOT EXISTS `pass` (
   `ID_PERSONA` int(11) NOT NULL,
   `PASS` text,
   `FECHA_CADUCIDAD` date DEFAULT NULL,
@@ -804,7 +804,7 @@ CREATE TABLE IF NOT EXISTS `PASS` (
 -- Volcar la base de datos para la tabla `PASS`
 --
 
-INSERT INTO `PASS` (`ID_PERSONA`, `PASS`, `FECHA_CADUCIDAD`) VALUES
+INSERT INTO `pass` (`ID_PERSONA`, `PASS`, `FECHA_CADUCIDAD`) VALUES
 (1, 'Tatus.2013', '2014-08-01'),
 (2, 'Peres.2013', '2014-08-01'),
 (3, 'Palma.2013', '2014-08-01'),
@@ -823,7 +823,7 @@ INSERT INTO `PASS` (`ID_PERSONA`, `PASS`, `FECHA_CADUCIDAD`) VALUES
 -- Estructura de tabla para la tabla `PERFIL`
 --
 
-CREATE TABLE IF NOT EXISTS `PERFIL` (
+CREATE TABLE IF NOT EXISTS `perfil` (
   `ID_PERFIL` int(11) NOT NULL,
   `NOM_PERFIL` varchar(40) DEFAULT NULL,
   PRIMARY KEY (`ID_PERFIL`)
@@ -833,7 +833,7 @@ CREATE TABLE IF NOT EXISTS `PERFIL` (
 -- Volcar la base de datos para la tabla `PERFIL`
 --
 
-INSERT INTO `PERFIL` (`ID_PERFIL`, `NOM_PERFIL`) VALUES
+INSERT INTO `perfil` (`ID_PERFIL`, `NOM_PERFIL`) VALUES
 (1, 'Administrador'),
 (2, 'Doctor'),
 (3, 'Asistente'),
@@ -964,7 +964,7 @@ INSERT INTO `presupuesto` (`ID_PRESUPUESTO`, `ID_FICHA`, `VALORTOTAL`, `FECHA_PR
 -- Estructura de tabla para la tabla `REGION`
 --
 
-CREATE TABLE IF NOT EXISTS `REGION` (
+CREATE TABLE IF NOT EXISTS `region` (
   `ID_REGION` int(11) NOT NULL,
   `NOM_REGION` varchar(50) DEFAULT NULL,
   `NUM_REGION_ROMANO` varchar(4) DEFAULT NULL,
@@ -975,7 +975,7 @@ CREATE TABLE IF NOT EXISTS `REGION` (
 -- Volcar la base de datos para la tabla `REGION`
 --
 
-INSERT INTO `REGION` (`ID_REGION`, `NOM_REGION`, `NUM_REGION_ROMANO`) VALUES
+INSERT INTO `region` (`ID_REGION`, `NOM_REGION`, `NUM_REGION_ROMANO`) VALUES
 (15, 'REGIÓN DE ARICA Y PARINACOTA', 'XV'),
 (1, 'REGIÓN DE TARAPACÁ', 'I'),
 (2, 'REGIÓN DE ANTOFAGASTA', 'II'),
@@ -1018,7 +1018,7 @@ CREATE TABLE IF NOT EXISTS `reporte` (
 -- Estructura de tabla para la tabla `TIPODEPIEZA`
 --
 
-CREATE TABLE IF NOT EXISTS `TIPODEPIEZA` (
+CREATE TABLE IF NOT EXISTS `tipodepieza` (
   `ID_TIPO_PIEZA` int(11) NOT NULL AUTO_INCREMENT,
   `NOMBRE_CIENTIFICO_PIEZA` varchar(100) DEFAULT NULL,
   `DESCRIPCION` text,
@@ -1029,7 +1029,7 @@ CREATE TABLE IF NOT EXISTS `TIPODEPIEZA` (
 -- Volcar la base de datos para la tabla `TIPODEPIEZA`
 --
 
-INSERT INTO `TIPODEPIEZA` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES
+INSERT INTO `tipodepieza` (`ID_TIPO_PIEZA`, `NOMBRE_CIENTIFICO_PIEZA`, `DESCRIPCION`) VALUES
 (1, 'Tercer Molar Superior Derecho', 'Tercer Molar Superior Derecho'),
 (2, 'Segundo Molar Superior Derecho', 'Segundo Molar Superior Derecho'),
 (3, 'Primer Molar Superior Derecho', 'Primer Molar Superior Derecho'),
@@ -1100,7 +1100,7 @@ INSERT INTO `tratamientodental` (`ID_TRATAMIENTO_DENTAL`, `ID_FICHA`, `FECH_CREA
 -- Estructura de tabla para la tabla `VERSION`
 --
 
-CREATE TABLE IF NOT EXISTS `VERSION` (
+CREATE TABLE IF NOT EXISTS `version` (
   `ID_VERSION` int(11) NOT NULL,
   `NOM_VERSION` varchar(50) DEFAULT NULL,
   `COMENTARIO_VERSION` text,
@@ -1111,5 +1111,5 @@ CREATE TABLE IF NOT EXISTS `VERSION` (
 -- Volcar la base de datos para la tabla `VERSION`
 --
 
-INSERT INTO `VERSION` (`ID_VERSION`, `NOM_VERSION`, `COMENTARIO_VERSION`) VALUES
+INSERT INTO `version` (`ID_VERSION`, `NOM_VERSION`, `COMENTARIO_VERSION`) VALUES
 (1, 'SFH - Sistema de toma de horas y fichas medicas v ', '\r\nSFH - Primera versión de desarrollo.');
