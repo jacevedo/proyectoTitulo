@@ -38,7 +38,7 @@ namespace EjemploConsumoRest
 
             
             // Create a request using a URL that can receive a post. 
-            WebRequest request = WebRequest.Create("http://192.168.1.216/proyectoTitulo/sfhwebservice/webService/ws-admin-usuario.php");
+            WebRequest request = WebRequest.Create("http://192.168.191.136/sfhwebservice/webService/ws-admin-usuario.php");
             // Set the Method property of the request to POST.
             request.Method = "POST";
             // Create POST data and convert it to a byte array.

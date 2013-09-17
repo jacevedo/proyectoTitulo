@@ -16,6 +16,20 @@ namespace SFH_Software
             InitializeComponent();
         }
 
+        private void groupBox3_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridCarrera_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
       
     }
 }
