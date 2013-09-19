@@ -1,0 +1,8 @@
+C:\Users\Citt-David\Documents\GitHub\proyectoTitulo\JSON.NET\Source\Src\Newtonsoft.Json\bin\Debug\Net35\Newtonsoft.Json.xml
+C:\Users\Citt-David\Documents\GitHub\proyectoTitulo\JSON.NET\Source\Src\Newtonsoft.Json\bin\Debug\Net35\Newtonsoft.Json.dll
+C:\Users\Citt-David\Documents\GitHub\proyectoTitulo\JSON.NET\Source\Src\Newtonsoft.Json\bin\Debug\Net35\Newtonsoft.Json.pdb
+C:\Users\Citt-David\Documents\GitHub\proyectoTitulo\JSON.NET\Source\Src\Newtonsoft.Json\bin\Debug\Net35\Newtonsoft.Json.dll.CodeAnalysisLog.xml
+C:\Users\Citt-David\Documents\GitHub\proyectoTitulo\JSON.NET\Source\Src\Newtonsoft.Json\bin\Debug\Net35\Newtonsoft.Json.dll.lastcodeanalysissucceeded
+C:\Users\Citt-David\Documents\GitHub\proyectoTitulo\JSON.NET\Source\Src\Newtonsoft.Json\obj\Debug\Newtonsoft.Json.Net35.csprojResolveAssemblyReference.cache
+C:\Users\Citt-David\Documents\GitHub\proyectoTitulo\JSON.NET\Source\Src\Newtonsoft.Json\obj\Debug\Newtonsoft.Json.dll
+C:\Users\Citt-David\Documents\GitHub\proyectoTitulo\JSON.NET\Source\Src\Newtonsoft.Json\obj\Debug\Newtonsoft.Json.pdb

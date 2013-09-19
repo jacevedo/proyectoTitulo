@@ -13,6 +13,7 @@ namespace ObjectsBeans
         private int idOdontologo;
         private DateTime fechaIngreso;
         private string anamnesis;
+        private int habilitada;
         #endregion
 
         #region Constructor
@@ -49,6 +50,12 @@ namespace ObjectsBeans
         {
             get { return anamnesis; }
             set { anamnesis = value; }
+        }
+
+        public int Habilitada
+        {
+            get { return habilitada; }
+            set { habilitada = value; }
         }
         #endregion
     }

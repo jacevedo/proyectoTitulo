@@ -35,8 +35,14 @@ namespace EjemploConsumoRest
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+           this.listarPersona();
             
+            
+        }
+
+        public List<Persona> listarPersona() {
+
+
             // Create a request using a URL that can receive a post. 
             WebRequest request = WebRequest.Create("http://192.168.191.136/sfhwebservice/webService/ws-admin-usuario.php");
             // Set the Method property of the request to POST.
@@ -67,29 +73,26 @@ namespace EjemploConsumoRest
             // Display the content.
             //Console.WriteLine(responseFromServer);
             // Clean up the streams.
-           //String x = RESTHeper.RESTHeper.ClearJSON(responseFromServer);
-           //List<Persona> lstEstudiante = x.DeserializarJsonTo<List<Persona>>();
-           //dgvEstudiantes.DataSource = lstEstudiante;
+            //String x = RESTHeper.RESTHeper.ClearJSON(responseFromServer);
+            //List<Persona> lstEstudiante = x.DeserializarJsonTo<List<Persona>>();
+            //dgvEstudiantes.DataSource = lstEstudiante;
             //reader.Close();
-           // dataStream.Close();
-           // response.Close();
-            var jobject =  JObject.Parse(responseFromServer);
+            // dataStream.Close();
+            // response.Close();
+            var jobject = JObject.Parse(responseFromServer);
             var token = jobject.SelectToken("listaPersonas").ToList();
             List<Persona> lista = new List<Persona>();
             MessageBox.Show(token.Count.ToString(), "--.---");
             foreach (var item in token)
             {
 
-                MessageBox.Show(item.SelectToken("nombre").ToString(), "--.---");
+                //MessageBox.Show(item.SelectToken("nombre").ToString(), "--.---");
                 Persona per = JsonConvert.DeserializeObject<Persona>(item.ToString());
                 lista.Add(per);
+                this.dataGridView1.DataSource = lista;
             }
-
            
-            
-        
+            return lista;
         }
-
-
     }
 }
