@@ -35,11 +35,12 @@ switch ($opcion)
 		$tratamientoDental = new TratamientoDental();
 		$tratamientoDental->initClass(0, $idFicha, $fechaCreacion,$tratamiento, $fechaSeguimiento,$valorTotal);
 		$controladoraFicha = new ControladoraTratamientoAbono();
+		$arreglo["code"]=1;
 		$arreglo["idTratamientoInsertada"] = $controladoraFicha->insertarTratamiento($tratamientoDental);
 		echo(json_encode($arreglo));
 	break;
 	case 2:
-		//json Insertar Tratamiento Dental {"indice":2,"idTratamientoDental":1,"idFicha":1,"fechaCreacion":"1991-12-12","tratamiento":"extraccion","fechaSeguimiento":"1991-12-12","valorTotal":100000}
+		//json Modificar Tratamiento Dental {"indice":2,"idTratamientoDental":1,"idFicha":1,"fechaCreacion":"1991-12-12","tratamiento":"extraccion","fechaSeguimiento":"1991-12-12","valorTotal":100000}
 		$idTratamientoDental = $data->{"idTratamientoDental"};
 		$idFicha = $data->{'idFicha'};
 		$fechaCreacion = $data->{'fechaCreacion'};
@@ -49,6 +50,7 @@ switch ($opcion)
 		$tratamientoDental = new TratamientoDental();
 		$tratamientoDental->initClass($idTratamientoDental, $idFicha, $fechaCreacion,$tratamiento, $fechaSeguimiento,$valorTotal);
 		$controladoraFicha = new ControladoraTratamientoAbono();
+		$arreglo["code"]=2;
 		$arreglo["Resultado"] = $controladoraFicha->modificarTratamiento($tratamientoDental);
 		echo(json_encode($arreglo));
 	break;
@@ -61,7 +63,9 @@ switch ($opcion)
 		//json Listar Tratamiento Dental {"indice":4,"idFicha":3}
 		$ficha = $data->{"idFicha"};
 		$controladoraFicha = new ControladoraTratamientoAbono();
-		echo(json_encode($controladoraFicha->listarTratamientoPorFicha($ficha)));
+		$arreglo["code"]=4;
+		$arreglo["listadoTratamiento"]=$controladoraFicha->listarTratamientoPorFicha($ficha);
+		echo(json_encode($arreglo));
 	break;
 	case 5:
 		//json Insertar Abono {"indice":5,"idTratamientoDental":3,"fechaAbono":"1991-12-12","monto":1000}
@@ -71,6 +75,7 @@ switch ($opcion)
 		$abono = new Abono();
 		$abono->initClass(0,$idTratamientoDental,$fechaAbono,$monto);
 		$controladoraFicha = new ControladoraTratamientoAbono();
+		$arreglo["code"] = 5;
 		$arreglo["idAbonoInsertado"] = $controladoraFicha->instertarAbono($abono);
 		echo(json_encode($arreglo));
 	break;
@@ -83,6 +88,7 @@ switch ($opcion)
 		$abono = new Abono();
 		$abono->initClass($idAbono,$idTratamientoDental,$fechaAbono,$monto);
 		$controladoraFicha = new ControladoraTratamientoAbono();
+		$arreglo["code"]=6;
 		$arreglo["Resultado"] = $controladoraFicha->modificarAbono($abono);
 		echo(json_encode($arreglo));
 	break;
@@ -95,7 +101,9 @@ switch ($opcion)
 		//json Listar Abono Por Id tratamiento {"indice":8,"idTratamiento":3}
 		$idTratamiento = $data->{"idTratamiento"};
 		$controladoraAbono = new ControladoraTratamientoAbono();
-		echo(json_encode($controladoraAbono->listarAbonosPorTratamiento($idTratamiento)));
+		$arreglo["code"]=8;
+		$arreglo["listaAbono"]=$controladoraAbono->listarAbonosPorTratamiento($idTratamiento);
+		echo(json_encode($arreglo));
 	break;
 	case 9:
 		//json Total Abono Por Id Paciente {"indice":9,"idPaciente":3}

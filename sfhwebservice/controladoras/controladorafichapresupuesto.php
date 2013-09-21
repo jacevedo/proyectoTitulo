@@ -342,9 +342,8 @@ class ControladoraFichaPresupuesto
 				while($sentencia->fetch())
 				{
 					$ficha = new FichaDental();
-					$ficha->initClass($idFicha, $nomPaciente." ".$appPaciente, $nomOdontologo." " .$appOdontologo, $fechaIngreso, $anamnesis ,$habilitado);
-        			$this->datos[$indice] = $ficha;
-        			
+					$ficha->initClassConNombres($idFicha, $idPaciente, $idOdontologo, $fechaIngreso, $anamnesis,$habilitado,$nomPaciente." ".$appPaciente,$nomOdontologo." " .$appOdontologo);
+        			$this->datos[$indice] = $ficha;        			
         			$indice++;
 				}
       		}
