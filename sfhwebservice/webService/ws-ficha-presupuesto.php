@@ -19,7 +19,8 @@ require_once '../controladoras/controladorafichapresupuesto.php';
 * 8.- modificar Presupuesto
 * 9.- buscar por id
 * 10.- buscar por id persona
-* 11.- listar
+* 11.- listar Presupuestos
+* 12.- Listar Ficha con nombres
 */
 
 
