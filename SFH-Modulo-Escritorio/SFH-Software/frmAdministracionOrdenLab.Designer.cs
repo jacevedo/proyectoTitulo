@@ -60,6 +60,8 @@
             this.button2 = new System.Windows.Forms.Button();
             this.btnAdminCli = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridCarrera)).BeginInit();
@@ -80,6 +82,8 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.label10);
+            this.groupBox3.Controls.Add(this.label11);
             this.groupBox3.Controls.Add(this.dataGridCarrera);
             this.groupBox3.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.groupBox3.Location = new System.Drawing.Point(102, 241);
@@ -104,19 +108,19 @@
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.InfoText;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.WhiteSmoke;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridCarrera.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridCarrera.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.dataGridCarrera.Location = new System.Drawing.Point(16, 19);
+            this.dataGridCarrera.Location = new System.Drawing.Point(16, 53);
             this.dataGridCarrera.Name = "dataGridCarrera";
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(200)))), ((int)(((byte)(226)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
             this.dataGridCarrera.RowsDefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridCarrera.Size = new System.Drawing.Size(744, 273);
+            this.dataGridCarrera.Size = new System.Drawing.Size(744, 239);
             this.dataGridCarrera.TabIndex = 1;
             // 
             // Column1
@@ -342,6 +346,28 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "Administración de orden de laboratorio";
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.White;
+            this.label10.Location = new System.Drawing.Point(375, 16);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(107, 23);
+            this.label10.TabIndex = 12;
+            this.label10.Text = "Andres Armijo";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.White;
+            this.label11.Location = new System.Drawing.Point(214, 16);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(156, 23);
+            this.label11.TabIndex = 11;
+            this.label11.Text = "Listado de Ordenes :";
+            // 
             // frmAdministracionOrdenLab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -355,6 +381,7 @@
             this.Text = "AdministracionOrdenLab";
             this.groupBox1.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridCarrera)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
@@ -394,5 +421,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewButtonColumn btnEditarCarrera;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
     }
 }

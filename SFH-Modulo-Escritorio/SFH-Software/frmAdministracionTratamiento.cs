@@ -15,5 +15,20 @@ namespace SFH_Software
         {
             InitializeComponent();
         }
+
+        private void frmAdministracionTratamiento_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox3_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

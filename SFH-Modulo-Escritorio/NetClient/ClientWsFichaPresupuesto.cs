@@ -39,7 +39,7 @@ namespace NetClient
             List<Fichadental> list = new List<Fichadental>();
             
             try{
-                String result = netclient.NetPost("http://192.168.191.136/sfhwebservice/webService/ws-ficha-presupuesto.php", "send={\"indice\":5}");
+                String result = netclient.NetPost("http://192.168.191.136/sfhwebservice/webService/ws-ficha-presupuesto.php", "send={\"indice\":}");
                 var jobject = JObject.Parse(result);
                 var token = jobject.SelectToken("ListaFicha").ToList();
                 foreach (var item in token)

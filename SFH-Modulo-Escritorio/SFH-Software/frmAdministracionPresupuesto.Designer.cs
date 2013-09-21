@@ -30,42 +30,35 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAdministracionPresupuesto));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.dataGridCarrera = new System.Windows.Forms.DataGridView();
-            this.Rut = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnEditarCarrera = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.btnEliminarCarrera = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.id_presupuesto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idficha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.paciente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.valortotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.editar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.textBox7 = new System.Windows.Forms.TextBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.btnAdminCli = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.groupBox1.SuspendLayout();
-            this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridCarrera)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox2.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.groupBox4);
             this.groupBox1.Controls.Add(this.groupBox3);
             this.groupBox1.Controls.Add(this.groupBox2);
             this.groupBox1.ForeColor = System.Drawing.Color.White;
@@ -76,183 +69,137 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Administración de presupuesto dental";
             // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.textBox1);
-            this.groupBox4.Controls.Add(this.label7);
-            this.groupBox4.Controls.Add(this.button1);
-            this.groupBox4.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.groupBox4.Location = new System.Drawing.Point(6, 19);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(429, 196);
-            this.groupBox4.TabIndex = 16;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Búsqueda de pacientes";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(124, 54);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(201, 20);
-            this.textBox1.TabIndex = 23;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(37, 54);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(69, 13);
-            this.label7.TabIndex = 16;
-            this.label7.Text = "Rut Paciente";
-            // 
-            // button1
-            // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(93)))), ((int)(((byte)(129)))));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(198, 97);
-            this.button1.Margin = new System.Windows.Forms.Padding(1);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(127, 36);
-            this.button1.TabIndex = 13;
-            this.button1.Text = "Buscar";
-            this.button1.UseVisualStyleBackColor = false;
-            // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.dataGridCarrera);
+            this.groupBox3.Controls.Add(this.label6);
+            this.groupBox3.Controls.Add(this.label5);
+            this.groupBox3.Controls.Add(this.dataGridView1);
             this.groupBox3.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.groupBox3.Location = new System.Drawing.Point(6, 221);
+            this.groupBox3.Location = new System.Drawing.Point(18, 221);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(998, 352);
+            this.groupBox3.Size = new System.Drawing.Size(974, 352);
             this.groupBox3.TabIndex = 15;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Listado de fichas medicas";
+            this.groupBox3.Text = "Listado de presupuesto";
             // 
-            // dataGridCarrera
+            // label6
             // 
-            this.dataGridCarrera.AllowUserToOrderColumns = true;
-            this.dataGridCarrera.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridCarrera.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Rut,
-            this.Nombre,
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4,
-            this.Column5,
-            this.Column6,
-            this.btnEditarCarrera,
-            this.btnEliminarCarrera});
-            this.dataGridCarrera.GridColor = System.Drawing.SystemColors.ActiveCaption;
-            this.dataGridCarrera.Location = new System.Drawing.Point(12, 19);
-            this.dataGridCarrera.Name = "dataGridCarrera";
-            this.dataGridCarrera.Size = new System.Drawing.Size(980, 327);
-            this.dataGridCarrera.TabIndex = 2;
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(507, 27);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(90, 23);
+            this.label6.TabIndex = 8;
+            this.label6.Text = "Juan Perez";
             // 
-            // Rut
+            // label5
             // 
-            this.Rut.HeaderText = "Rut";
-            this.Rut.Name = "Rut";
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(298, 27);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(209, 23);
+            this.label5.TabIndex = 7;
+            this.label5.Text = "Listado presupuesto dental :";
             // 
-            // Nombre
+            // dataGridView1
             // 
-            this.Nombre.HeaderText = "Nombre";
-            this.Nombre.Name = "Nombre";
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.id_presupuesto,
+            this.idficha,
+            this.paciente,
+            this.valortotal,
+            this.fecha,
+            this.editar});
+            this.dataGridView1.Location = new System.Drawing.Point(6, 70);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(962, 276);
+            this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // Column1
+            // id_presupuesto
             // 
-            this.Column1.HeaderText = "Fecha de Nacimiento";
-            this.Column1.Name = "Column1";
+            this.id_presupuesto.HeaderText = "N-Presupuesto";
+            this.id_presupuesto.Name = "id_presupuesto";
             // 
-            // Column2
+            // idficha
             // 
-            this.Column2.HeaderText = "Dirección";
-            this.Column2.Name = "Column2";
+            this.idficha.HeaderText = "Id ficha";
+            this.idficha.Name = "idficha";
             // 
-            // Column3
+            // paciente
             // 
-            this.Column3.HeaderText = "Comuna";
-            this.Column3.Name = "Column3";
+            this.paciente.HeaderText = "Nombre paciente";
+            this.paciente.Name = "paciente";
             // 
-            // Column4
+            // valortotal
             // 
-            this.Column4.HeaderText = "Teléfono fijo";
-            this.Column4.Name = "Column4";
+            this.valortotal.HeaderText = "Valor total";
+            this.valortotal.Name = "valortotal";
             // 
-            // Column5
+            // fecha
             // 
-            this.Column5.HeaderText = "Teléfono celular";
-            this.Column5.Name = "Column5";
+            this.fecha.HeaderText = "Fecha Presupuesto";
+            this.fecha.Name = "fecha";
             // 
-            // Column6
+            // editar
             // 
-            this.Column6.HeaderText = "Correo";
-            this.Column6.Name = "Column6";
-            // 
-            // btnEditarCarrera
-            // 
-            this.btnEditarCarrera.HeaderText = "Editar Ficha";
-            this.btnEditarCarrera.Name = "btnEditarCarrera";
-            // 
-            // btnEliminarCarrera
-            // 
-            this.btnEliminarCarrera.HeaderText = "Desactiva";
-            this.btnEliminarCarrera.Name = "btnEliminarCarrera";
+            this.editar.HeaderText = "Editar Presupuestos";
+            this.editar.Name = "editar";
+            this.editar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.editar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.groupBox4);
             this.groupBox2.Controls.Add(this.textBox7);
-            this.groupBox2.Controls.Add(this.comboBox2);
             this.groupBox2.Controls.Add(this.comboBox1);
-            this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.button2);
             this.groupBox2.Controls.Add(this.btnAdminCli);
             this.groupBox2.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.groupBox2.Location = new System.Drawing.Point(454, 19);
+            this.groupBox2.Location = new System.Drawing.Point(18, 19);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(429, 196);
+            this.groupBox2.Size = new System.Drawing.Size(974, 196);
             this.groupBox2.TabIndex = 14;
             this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Crear presupuesto";
+            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.monthCalendar1);
+            this.groupBox4.ForeColor = System.Drawing.Color.White;
+            this.groupBox4.Location = new System.Drawing.Point(639, 10);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(270, 180);
+            this.groupBox4.TabIndex = 24;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Fecha de Creación";
             // 
             // textBox7
             // 
-            this.textBox7.Location = new System.Drawing.Point(174, 106);
+            this.textBox7.Location = new System.Drawing.Point(398, 95);
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(201, 20);
             this.textBox7.TabIndex = 23;
             // 
-            // comboBox2
-            // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(174, 71);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(201, 21);
-            this.comboBox2.TabIndex = 20;
-            // 
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(174, 37);
+            this.comboBox1.Location = new System.Drawing.Point(398, 56);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(201, 21);
             this.comboBox1.TabIndex = 19;
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(36, 71);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(63, 13);
-            this.label4.TabIndex = 18;
-            this.label4.Text = "Tratamiento";
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(36, 109);
+            this.label2.Location = new System.Drawing.Point(262, 98);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(118, 13);
             this.label2.TabIndex = 17;
@@ -261,18 +208,18 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(36, 37);
+            this.label1.Location = new System.Drawing.Point(262, 56);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(67, 13);
+            this.label1.Size = new System.Drawing.Size(93, 13);
             this.label1.TabIndex = 16;
-            this.label1.Text = "Pieza Dental";
+            this.label1.Text = "Ficha de Paciente";
             // 
             // button2
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(93)))), ((int)(((byte)(129)))));
             this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(248, 144);
+            this.button2.Location = new System.Drawing.Point(472, 145);
             this.button2.Margin = new System.Windows.Forms.Padding(1);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(127, 36);
@@ -285,7 +232,7 @@
             this.btnAdminCli.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnAdminCli.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(93)))), ((int)(((byte)(129)))));
             this.btnAdminCli.ForeColor = System.Drawing.Color.White;
-            this.btnAdminCli.Location = new System.Drawing.Point(39, 144);
+            this.btnAdminCli.Location = new System.Drawing.Point(265, 145);
             this.btnAdminCli.Margin = new System.Windows.Forms.Padding(1);
             this.btnAdminCli.Name = "btnAdminCli";
             this.btnAdminCli.Size = new System.Drawing.Size(129, 36);
@@ -304,6 +251,12 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "Administración de presupuesto dental";
             // 
+            // monthCalendar1
+            // 
+            this.monthCalendar1.Location = new System.Drawing.Point(21, 15);
+            this.monthCalendar1.Name = "monthCalendar1";
+            this.monthCalendar1.TabIndex = 0;
+            // 
             // frmAdministracionPresupuesto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -316,12 +269,12 @@
             this.Name = "frmAdministracionPresupuesto";
             this.Text = "AdministracionPresupuesto";
             this.groupBox1.ResumeLayout(false);
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
             this.groupBox3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridCarrera)).EndInit();
+            this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -337,25 +290,19 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btnAdminCli;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DataGridView dataGridCarrera;
-        private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Rut;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewButtonColumn btnEditarCarrera;
-        private System.Windows.Forms.DataGridViewButtonColumn btnEliminarCarrera;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id_presupuesto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idficha;
+        private System.Windows.Forms.DataGridViewTextBoxColumn paciente;
+        private System.Windows.Forms.DataGridViewTextBoxColumn valortotal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fecha;
+        private System.Windows.Forms.DataGridViewButtonColumn editar;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.MonthCalendar monthCalendar1;
 
 
     }
