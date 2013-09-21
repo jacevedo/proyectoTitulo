@@ -326,6 +326,36 @@ class ControladoraFichaPresupuesto
         }
         return $this->datos;
 	}
+	public function listarFichaNombres()
+	{
+		$conexion = new MySqlCon();
+		$this->datos ='';
+		try
+		{
+			$this->SqlQuery = '';
+			$this->SqlQuery = "Select fi.ID_FICHA, fi.id_paciente, fi.id_odontologo, fi.fech_ingreso, fi.ANAMNESIS, fi.HABILITADO_FICHA, pa.id_persona as IDPERSONA, od.id_persona as idOdontologo,(select nombre from persona pe where pe.id_persona = IDPERSONA) as nomPersonas,(select nombre from persona pe where pe.id_persona = idOdontologo) as nomOdontologo, (select APELLIDO_PATERNO from persona pe where pe.id_persona = idOdontologo) as appOdontologo,(select APELLIDO_PATERNO from persona pe where pe.id_persona = IDPERSONA) as appPaciente from fichadental fi, paciente pa, odontologo od where fi.ID_ODONTOLOGO = od.ID_ODONTOLOGO and fi.id_paciente = pa.id_paciente";
+		   	$sentencia=$conexion->prepare($this->SqlQuery);
+        	if($sentencia->execute())
+        	{
+        		$sentencia->bind_result($idFicha, $idPaciente, $idOdontologo, $fechaIngreso, $anamnesis, $habilitado, $idPacientePersona, $idOdontologoPersona, $nomPaciente,$nomOdontologo,$appOdontologo,$appPaciente	);					
+				$indice=0;     
+				while($sentencia->fetch())
+				{
+					$ficha = new FichaDental();
+					$ficha->initClass($idFicha, $nomPaciente." ".$appPaciente, $nomOdontologo." " .$appOdontologo, $fechaIngreso, $anamnesis ,$habilitado);
+        			$this->datos[$indice] = $ficha;
+        			
+        			$indice++;
+				}
+      		}
+       		$conexion->close();
+    	}
+    	catch(Exception $e)
+    	{
+        	throw new $e("Error al listar pacientes");
+        }
+        return $this->datos;
+	}
 
 	function desabilitarFicha($idFicha, $habilitado)
 	{

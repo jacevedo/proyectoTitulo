@@ -139,7 +139,12 @@ switch ($opcion)
 		$arreglo["listarPresupuesto"] = $controladoraPresupuesto->listarPresupuesto();
 		echo(json_encode($arreglo));
 	break;
-
+	case 12:
+		//json Listar Ficha {"indice":12}
+		$controladoraFicha = new ControladoraFichaPresupuesto();
+		$arreglo["code"]=5;
+		$arreglo["ListaFicha"] = $controladoraFicha->listarFichaNombres();
+		echo(json_encode($arreglo));
 }
  
 ?>
