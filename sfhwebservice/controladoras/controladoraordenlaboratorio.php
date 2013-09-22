@@ -16,11 +16,15 @@ class ControladoraOrdenLaboratorio
 	{
 		$conexion = new MySqlCon();
 		$idOrdenLaboratorio = $orden->idOrdenLaboratorio;
+		$idOdontologo = $orden->idOdontologo;
+		$idPaciente = $orden->idPaciente;
+		$numOrden = $orden->numOrden;
 		$clinica = $orden->clinica;
 		$bd = $orden->bd;
 		$bi = $orden->bi;
 		$pd = $orden->pd;
 		$pi = $orden->pi;
+		$fechaCreacion = $orden->fechaCreacion;
 		$fechaEntrega = $orden->fechaEntrega;
 		$horaEntrega = $orden->horaEntrega;
 		$color = $orden->color;
@@ -28,9 +32,9 @@ class ControladoraOrdenLaboratorio
 		try
 		{
 			$this->SqlQuery='';
-	        $this->SqlQuery='INSERT INTO `ordendelaboratorio`(`ID_ORDEN_LABORATORIO`,`CLINICA`,`BD`,`BI`,`PD`,`PI`,`FECHA_ENTREGA`,`HORA_ENTREGA`,`COLOR`,`ESTADO`) VALUES (null,?,?,?,?,?,?,?,?,?);';
-	        $sentencia=$conexion->prepare($this->SqlQuery);
-	        $sentencia->bind_param('sssssssss', $clinica, $bd, $bi, $pd, $pi, $fechaEntrega, $horaEntrega, $color, $estado);
+	        $this->SqlQuery="INSERT INTO ORDENDELABORATORIO (ID_ORDEN_LABORATORIO,ID_ODONTOLOGO,ID_PACIENTE,N_FICHA_LABORATORIO,CLINICA,BD,BI,PD,PI,FECHA_CREACION,FECHA_ENTREGA,HORA_ENTREGA,COLOR,ESTADO) VALUES (NULL,?,?,?,?,?,?,?,?,?,?,?,?,?);";
+			$sentencia=$conexion->prepare($this->SqlQuery);
+	        $sentencia->bind_param('iiissssssssss', $idOdontologo,$idPaciente,$numOrden,$clinica,$bd,$bi,$pd,$pi,$fechaCreacion,$fechaEntrega,$horaEntrega,$color,$estado);
 	      	if($sentencia->execute())
 	      	{
 	        	$conexion->close();
@@ -53,11 +57,16 @@ class ControladoraOrdenLaboratorio
 	{
 		$conexion = new MySqlCon();
 		$idOrdenLaboratorio = $orden->idOrdenLaboratorio;
+		$idOrdenLaboratorio = $orden->idOrdenLaboratorio;
+		$idOdontologo = $orden->idOdontologo;
+		$idPaciente = $orden->idPaciente;
+		$numOrden = $orden->numOrden;
 		$clinica = $orden->clinica;
 		$bd = $orden->bd;
 		$bi = $orden->bi;
 		$pd = $orden->pd;
 		$pi = $orden->pi;
+		$fechaCreacion = $orden->fechaCreacion;
 		$fechaEntrega = $orden->fechaEntrega;
 		$horaEntrega = $orden->horaEntrega;
 		$color = $orden->color;
@@ -65,9 +74,9 @@ class ControladoraOrdenLaboratorio
 		try
 		{
 			$this->SqlQuery='';
-	        $this->SqlQuery='UPDATE `ordendelaboratorio` SET `CLINICA`=?,`BD`=?,`BI`=?,`PD`=?,`PI`=?,`FECHA_ENTREGA`=?,`HORA_ENTREGA`=?,`COLOR`=? WHERE `ID_ORDEN_LABORATORIO`=?;';
+	        $this->SqlQuery='UPDATE ordendelaboratorio SET ID_ODONTOLOGO=?,ID_PACIENTE=?,N_FICHA_LABORATORIO=?,	 CLINICA=?,BD=?,BI=?,PD=?,PI=?,FECHA_CREACION=? ,FECHA_ENTREGA=?,HORA_ENTREGA=?,COLOR=? WHERE ID_ORDEN_LABORATORIO=?;';
 	        $sentencia=$conexion->prepare($this->SqlQuery);
-	        $sentencia->bind_param('ssssssssi',$clinica, $bd, $bi, $pd, $pi, $fechaEntrega, $horaEntrega, $color, $idOrdenLaboratorio);
+	        $sentencia->bind_param('iiisssssssssi',$idOdontologo,$idPaciente,$numOrden, $clinica, $bd, $bi, $pd, $pi,$fechaCreacion,$fechaEntrega, $horaEntrega, $color, $idOrdenLaboratorio);
 	      	if($sentencia->execute())
 	      	{
 	        	$conexion->close();
@@ -124,16 +133,17 @@ class ControladoraOrdenLaboratorio
 		try
 		{
 			$this->SqlQuery = '';
-			$this->SqlQuery = "SELECT * FROM `ordendelaboratorio`";
+			$this->SqlQuery = "SELECT orden.ID_ORDEN_LABORATORIO,orden.ID_ODONTOLOGO,orden.ID_PACIENTE,orden.N_FICHA_LABORATORIO,orden.CLINICA,orden.BD,orden.BI,orden.PD,orden.PI,orden.FECHA_CREACION,orden.FECHA_ENTREGA,orden.HORA_ENTREGA,orden.COLOR,orden.ESTADO, pa.ID_PERSONA as IDPERSONAPACIENTE, od.ID_PERSONA as IDPERSONAODONTOLOGO, (select nombre from persona where id_persona = IDPERSONAPACIENTE) as NOMPERSONAPACIENTE,(select APELLIDO_PATERNO from persona where id_persona = IDPERSONAPACIENTE) as AppPERSONAPACIENTE, (select nombre from persona where id_persona = IDPERSONAODONTOLOGO) as NOMPERSONAODONTOLOGO, (select APELLIDO_PATERNO from persona where id_persona = IDPERSONAODONTOLOGO) as AppPeRSONAODONTOLOGO FROM ordendelaboratorio orden, paciente pa, odontologo od WHERE orden.ID_PACIENTE = pa.ID_PACIENTE and orden.ID_ODONTOLOGO = od.ID_ODONTOLOGO";
 		   	$sentencia=$conexion->prepare($this->SqlQuery);
         	if($sentencia->execute())
         	{
-        		$sentencia->bind_result($idOrdenLaboratorio, $clinica, $bd, $bi, $pd, $pi, $fechaEntrega, $horaEntrega, $color, $estado);					
+        		$sentencia->bind_result($idOrdenLaboratorio, $idOdontologo, $idPaciente,$numFicha, $clinica, $bd, $bi, $pd, $pi, $fechaCreacion, $fechaEntrega, $horaEntrega, $color, $estado, $idPersonaPaciente, $idPersonaOdontologo, $nomPersonaPaciente, $appPersonaPaciente , $nomPersonaOdontologo,$appPersonaOdontologo);					
 				$indice=0;     
 				while($sentencia->fetch())
 				{
 					$orden = new OrdenLaboratorio();
-					$orden->initClass($idOrdenLaboratorio, $clinica, $bd, $bi, $pd, $pi, $fechaEntrega, $horaEntrega, $color, $estado);
+					$orden->initClass($idOrdenLaboratorio, $idOdontologo,$idPaciente, $numFicha,$clinica, $bd, $bi, $pd, $pi,$fechaCreacion, $fechaEntrega, $horaEntrega, $color, 
+						$estado,$nomPersonaPaciente ." ". $appPersonaPaciente,$nomPersonaOdontologo." ".$appPersonaOdontologo);
 					$this->datos[$indice] = $orden;
 					$indice++;
 				}

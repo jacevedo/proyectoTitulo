@@ -223,5 +223,35 @@ require_once '../pojos/persona.php';
         }
         return $this->datos;
  	}
+ 	public function listarOdontologoIdNombre()
+ 	{
+ 		$conexion = new MySqlCon();
+		$this->datos ='';
+		try
+		{
+			$this->SqlQuery = '';
+			$this->SqlQuery = "SELECT od.id_odontologo, per.nombre, per.APELLIDO_PATERNO FROM odontologo od, persona per WHERE od.id_persona = per.id_persona";
+			$sentencia=$conexion->prepare($this->SqlQuery);
+        	if($sentencia->execute())
+        	{
+        		$sentencia->bind_result($idPersona, $nomPersona, $appPersona);				
+				$indice=0;     
+				while($sentencia->fetch())
+				{
+					$datosPersona["idOdontologo"] = $idPersona;
+					$datosPersona["nomPersona"] = $nomPersona;
+					$datosPersona["appPersona"] = $appPersona;
+        			$this->datos[$indice] = $datosPersona;
+        			$indice++;
+				}
+      		}
+       		$conexion->close();
+    	}
+    	catch(Exception $e)
+    	{
+        	throw new $e("Error al listar pacientes");
+        }
+        return $this->datos;
+ 	}
 }
 ?>

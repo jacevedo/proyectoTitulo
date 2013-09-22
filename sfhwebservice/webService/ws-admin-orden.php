@@ -24,12 +24,41 @@ $opcion = $data->{'indice'};
 switch ($opcion) 
 {
 	case 1:
-		//json Insertar Orden {"indice":1,"clinica":"Santa Ana","bd":"10","bi":"11","pd":"20","pi":"21","fechaEntrega":"2013-09-26","horaEntrega":"16:00","color":"Blanco","estado":"Recibida"}
+		//json Insertar Orden {"indice":1,"idOdontologo":1,"idPaciente":1,"numOrden":123123,"clinica":"Santa Ana","bd":"10","bi":"11","pd":"20","pi":"21","fechaCreacion":"2013-09-26","fechaEntrega":"2013-09-26","horaEntrega":"16:00","color":"Blanco","estado":"Recibida"}
+		$idOdontologo = $data->{"idOdontologo"};
+		$idPaciente = $data->{"idPaciente"};
+		$numOrden = $data->{"numOrden"};
 		$clinica = $data->{'clinica'};
 		$bd = $data->{'bd'};
 		$bi = $data->{'bi'};
 		$pd = $data->{'pd'};
 		$pi = $data->{'pi'};
+		$fechaCreacion = $data->{"fechaCreacion"};
+		$fechaEntrega = $data->{'fechaEntrega'};
+		$horaEntrega = $data->{'horaEntrega'};
+		$color = $data->{'color'};
+		$estado = $data->{'estado'};
+
+
+		$orden = new OrdenLaboratorio();
+		$controladoraOrden = new ControladoraOrdenLaboratorio();
+		$orden->initClass(0, $idOdontologo,$idPaciente, $numOrden,$clinica, $bd, $bi, $pd, $pi,$fechaCreacion, $fechaEntrega, $horaEntrega, $color, $estado,"","");
+		$arreglo["code"] =1;
+		$arreglo["idOrdenInsertada"] = $controladoraOrden->insertarOrden($orden);
+		echo(json_encode($arreglo));
+	break;
+	case 2:
+		//json Modificar Orden {"indice":2,"idOrden":5,"idOdontologo":3,"idPaciente":2,"numOrden":1,"clinica":"Santa","bd":"10","bi":"11","pd":"20","pi":"21","fechaCreacion":"2013-08-26","fechaEntrega":"2013-09-26","horaEntrega":"16:00","color":"Blanco","estado":"Recibida"}
+		$idOrden = $data->{'idOrden'};
+		$idOdontologo = $data->{"idOdontologo"};
+		$idPaciente = $data->{"idPaciente"};
+		$numOrden = $data->{"numOrden"};
+		$clinica = $data->{'clinica'};
+		$bd = $data->{'bd'};
+		$bi = $data->{'bi'};
+		$pd = $data->{'pd'};
+		$pi = $data->{'pi'};
+		$fechaCreacion = $data->{"fechaCreacion"};
 		$fechaEntrega = $data->{'fechaEntrega'};
 		$horaEntrega = $data->{'horaEntrega'};
 		$color = $data->{'color'};
@@ -37,26 +66,7 @@ switch ($opcion)
 
 		$orden = new OrdenLaboratorio();
 		$controladoraOrden = new ControladoraOrdenLaboratorio();
-		$orden->initClass(0, $clinica, $bd, $bi, $pd, $pi, $fechaEntrega, $horaEntrega, $color, $estado);
-		$arreglo["code"] =1;
-		$arreglo["idOrdenInsertada"] = $controladoraOrden->insertarOrden($orden);
-		echo(json_encode($arreglo));
-	break;
-	case 2:
-		//json Modificar Orden {"indice":2,"idOrden":1,"clinica":"Santa Ana","bd":"10","bi":"11","pd":"20","pi":"21","fechaEntrega":"2013-10-26","horaEntrega":"14:00","color":"Blanco"}
-		$idOrden = $data->{'idOrden'};
-		$clinica = $data->{'clinica'};
-		$bd = $data->{'bd'};
-		$bi = $data->{'bi'};
-		$pd = $data->{'pd'};
-		$pi = $data->{'pi'};
-		$fechaEntrega = $data->{'fechaEntrega'};
-		$horaEntrega = $data->{'horaEntrega'};
-		$color = $data->{'color'};
-
-		$orden = new OrdenLaboratorio();
-		$controladoraOrden = new ControladoraOrdenLaboratorio();
-		$orden->initClass($idOrden, $clinica, $bd, $bi, $pd, $pi, $fechaEntrega, $horaEntrega, $color, "Recibida");
+		$orden->initClass($idOrden, $idOdontologo,$idPaciente, $numOrden,$clinica, $bd, $bi, $pd, $pi,$fechaCreacion, $fechaEntrega, $horaEntrega, $color, $estado,"","");
 		$arreglo["code"] = 2;
 		$arreglo["resultado"] = $controladoraOrden->modificarOrden($orden);
 		echo(json_encode($arreglo));

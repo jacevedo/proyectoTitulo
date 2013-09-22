@@ -228,6 +228,36 @@ AND pe.RUT= ?";
         }
         return $this->datos;
 	}
+	public function listarPacientesNomID()
+	{
+		$conexion = new MySqlCon();
+		$this->datos ='';
+		try
+		{
+			$this->SqlQuery = '';
+			$this->SqlQuery = "SELECT pa.id_paciente, per.nombre, per.APELLIDO_PATERNO FROM paciente pa, persona per WHERE pa.id_persona = per.id_persona";
+			$sentencia=$conexion->prepare($this->SqlQuery);
+        	if($sentencia->execute())
+        	{
+        		$sentencia->bind_result($idPersona, $nomPersona, $appPersona);				
+				$indice=0;     
+				while($sentencia->fetch())
+				{
+					$datosPersona["idPaciente"] = $idPersona;
+					$datosPersona["nomPersona"] = $nomPersona;
+					$datosPersona["appPersona"] = $appPersona;
+        			$this->datos[$indice] = $datosPersona;
+        			$indice++;
+				}
+      		}
+       		$conexion->close();
+    	}
+    	catch(Exception $e)
+    	{
+        	throw new $e("Error al listar pacientes");
+        }
+        return $this->datos;
+	}
 }
 
 ?>
