@@ -63,6 +63,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmAbonos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAbonos.Designer.cs">
+      <DependentUpon>frmAbonos.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmAdministracionDeInsumos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -131,6 +137,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmAbonos.resx">
+      <DependentUpon>frmAbonos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmAcerca.resx">
       <DependentUpon>frmAcerca.cs</DependentUpon>
     </EmbeddedResource>

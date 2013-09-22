@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClientWsFichaPresupuesto.cs" />
+    <Compile Include="ClientWsTratamientoAbono.cs" />
     <Compile Include="CoreNetClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -200,6 +200,36 @@ class ControladoraTratamientoAbono
 		}
 		return $this->datos;
 	}
+	public function listarTratamientoPorFichaConTotalAbono($ficha)
+	{
+		$conexion = new MySqlCon();
+		$this->datos = '';
+		try
+		{
+			$this->SqlQuery = '';
+			$this->SqlQuery = "SELECT ID_TRATAMIENTO_DENTAL as idTratamiento,ID_FICHA,FECH_CREACION,TRATAMIENTO,FECHA_SEGUIMIENTO,VALOR_TOTAL, (select SUM(MONTO)from abono where ID_TRATAMIENTO_DENTAL	 = idTratamiento) FROM tratamientodental WHERE ID_FICHA = ?";
+		   	$sentencia=$conexion->prepare($this->SqlQuery);
+		   	$sentencia->bind_param("i", $ficha);
+        	if($sentencia->execute())
+        	{
+        		$sentencia->bind_result($idTratamientoDental, $idFicha, $fechaCreacion, $tratamiento, $fechaSeguimiento, $valorTotal,$TotalAbono);					
+				$indice=0;     
+				while($sentencia->fetch())
+				{
+					$tratamientoDental = new TratamientoDental();
+					$tratamientoDental->initClassAbono($idTratamientoDental, $idFicha, $fechaCreacion, $tratamiento, $fechaSeguimiento, $valorTotal,$TotalAbono);
+					$this->datos[$indice] = $tratamientoDental;
+					$indice++;
+				}
+      		}
+       		$conexion->close();
+		}
+		catch(Exception $e)
+		{
+			throw new $e("Error al listar tratamientos.");
+		}
+		return $this->datos;
+	}
 
 	public function listarAbonos()
 	{
@@ -291,6 +321,32 @@ class ControladoraTratamientoAbono
 			throw new $e("Error al listar total de abonos.");
 		}
 		return $this->datos;
+	}
+	public function eliminarAbono($idAbono)
+	{
+		$conexion = new MySqlCon();
+		$this->datos = '';
+		try
+		{
+			$this->SqlQuery = '';
+			$this->SqlQuery = "DELETE FROM abono WHERE ID_ABONO = ?";
+		   	$sentencia=$conexion->prepare($this->SqlQuery);
+		   	$sentencia->bind_param("i", $idAbono);
+        	if($sentencia->execute())
+        	{
+        		$conexion->close();
+        		return "Eliminado";
+      		}
+      		else
+      		{
+       			$conexion->close();
+       			return "Error";
+       		}
+		}
+		catch(Exception $e)
+		{
+			throw new $e("Error al listar total de abonos.");
+		}
 	}
 }
 ?>

@@ -8,6 +8,7 @@ class TratamientoDental
 	public $tratamiento;
 	public $fechaSeguimiento;
 	public $valorTotal;
+	public $totalAbono;
 
 	function initClass($idTratamientoDental, $idFicha, $fechaCreacion,$tratamiento,
 					 $fechaSeguimiento,$valorTotal)
@@ -18,6 +19,17 @@ class TratamientoDental
 		$this->tratamiento = $tratamiento;
 		$this->fechaSeguimiento = $fechaSeguimiento;
 		$this->valorTotal = $valorTotal;
+	}
+	function initClassAbono($idTratamientoDental, $idFicha, $fechaCreacion,$tratamiento,
+					 $fechaSeguimiento,$valorTotal,$totalAbono)
+	{
+		$this->idTratamientoDental = $idTratamientoDental;
+		$this->idFicha = $idFicha;
+		$this->fechaCreacion = $fechaCreacion;
+		$this->tratamiento = $tratamiento;
+		$this->fechaSeguimiento = $fechaSeguimiento;
+		$this->valorTotal = $valorTotal;
+		$this->totalAbono = $totalAbono;
 	}
 }
 ?>
