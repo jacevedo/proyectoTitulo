@@ -190,6 +190,14 @@ class ControladoraFichaPresupuesto
 				while($sentencia->fetch())
 				{
 					$ficha = new FichaDental();
+					if($habilitado == 0)
+					{
+						$habilitado = "desabilitado";
+					}
+					if ($habilitado==1)
+					{
+						$habilitado = "habilitado";
+					}
 					$ficha->initClassConNombres($idFicha, $idPaciente, $idOdontologo, $fechaIngreso, $anamnesis,$habilitado,$nomPaciente." ".$appPaciente,$nomOdontologo." " .$appOdontologo);
         			$this->datos[$indice] = $ficha;
         			
@@ -220,7 +228,16 @@ class ControladoraFichaPresupuesto
 				$indice=0;     
 				while($sentencia->fetch())
 				{
+
 					$ficha = new FichaDental();
+					if($habilitado == 0)
+					{
+						$habilitado = "desabilitado";
+					}
+					if ($habilitado==1)
+					{
+						$habilitado = "habilitado";
+					}
 					$ficha->initClassConNombres($idFicha, $idPaciente, $idOdontologo, $fechaIngreso, $anamnesis,$habilitado,$nomPaciente." ".$appPaciente,$nomOdontologo." " .$appOdontologo);
         			$this->datos[$indice] = $ficha;
         			
