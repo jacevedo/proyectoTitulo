@@ -180,17 +180,17 @@ class ControladoraFichaPresupuesto
 		try
 		{
 			$this->SqlQuery = '';
-			$this->SqlQuery = "SELECT * FROM fichadental WHERE ID_FICHA=?";
+			$this->SqlQuery = "SELECT fi.ID_FICHA, fi.id_paciente, fi.id_odontologo, fi.fech_ingreso, fi.ANAMNESIS, fi.HABILITADO_FICHA, pa.id_persona as IDPERSONA, od.id_persona as idOdontologo,(select nombre from persona pe where pe.id_persona = IDPERSONA) as nomPersonas,(select nombre from persona pe where pe.id_persona = idOdontologo) as nomOdontologo, (select APELLIDO_PATERNO from persona pe where pe.id_persona = idOdontologo) as appOdontologo,(select APELLIDO_PATERNO from persona pe where pe.id_persona = IDPERSONA) as appPaciente from fichadental fi, paciente pa, odontologo od where fi.ID_ODONTOLOGO = od.ID_ODONTOLOGO and fi.id_paciente = pa.id_paciente and ID_FICHA=?";
 		   	$sentencia=$conexion->prepare($this->SqlQuery);
 		   	$sentencia->bind_param('i',$idFicha);
         	if($sentencia->execute())
         	{
-        		$sentencia->bind_result($idFicha, $idPaciente, $idOdontologo, $fechaIngreso, $anamnesis,$habilitado);					
+        		$sentencia->bind_result($idFicha, $idPaciente, $idOdontologo, $fechaIngreso, $anamnesis, $habilitado, $idPacientePersona, $idOdontologoPersona, $nomPaciente,$nomOdontologo,$appOdontologo,$appPaciente	);					
 				$indice=0;     
 				while($sentencia->fetch())
 				{
 					$ficha = new FichaDental();
-					$ficha->initClass($idFicha, $idPaciente, $idOdontologo, $fechaIngreso, $anamnesis,$habilitado);	
+					$ficha->initClassConNombres($idFicha, $idPaciente, $idOdontologo, $fechaIngreso, $anamnesis,$habilitado,$nomPaciente." ".$appPaciente,$nomOdontologo." " .$appOdontologo);
         			$this->datos[$indice] = $ficha;
         			
         			$indice++;
@@ -211,17 +211,17 @@ class ControladoraFichaPresupuesto
 		try
 		{
 			$this->SqlQuery = '';
-			$this->SqlQuery = "SELECT * FROM fichadental WHERE ID_PACIENTE=?";
+			$this->SqlQuery = "SELECT fi.ID_FICHA, fi.id_paciente, fi.id_odontologo, fi.fech_ingreso, fi.ANAMNESIS, fi.HABILITADO_FICHA, pa.id_persona as IDPERSONA, od.id_persona as idOdontologo,(select nombre from persona pe where pe.id_persona = IDPERSONA) as nomPersonas,(select nombre from persona pe where pe.id_persona = idOdontologo) as nomOdontologo, (select APELLIDO_PATERNO from persona pe where pe.id_persona = idOdontologo) as appOdontologo,(select APELLIDO_PATERNO from persona pe where pe.id_persona = IDPERSONA) as appPaciente from fichadental fi, paciente pa, odontologo od where fi.ID_ODONTOLOGO = od.ID_ODONTOLOGO and  fi.ID_PACIENTE=? and fi.id_paciente = pa.id_paciente";
 		   	$sentencia=$conexion->prepare($this->SqlQuery);
 		   	$sentencia->bind_param('i',$idPersona);
         	if($sentencia->execute())
         	{
-        		$sentencia->bind_result($idFicha, $idPaciente, $idOdontologo, $fechaIngreso, $anamnesis,$habilitado);				
+        		$sentencia->bind_result($idFicha, $idPaciente, $idOdontologo, $fechaIngreso, $anamnesis, $habilitado, $idPacientePersona, $idOdontologoPersona, $nomPaciente,$nomOdontologo,$appOdontologo,$appPaciente	);					
 				$indice=0;     
 				while($sentencia->fetch())
 				{
 					$ficha = new FichaDental();
-					$ficha->initClass($idFicha, $idPaciente, $idOdontologo, $fechaIngreso, $anamnesis,$habilitado);	
+					$ficha->initClassConNombres($idFicha, $idPaciente, $idOdontologo, $fechaIngreso, $anamnesis,$habilitado,$nomPaciente." ".$appPaciente,$nomOdontologo." " .$appOdontologo);
         			$this->datos[$indice] = $ficha;
         			
         			$indice++;
