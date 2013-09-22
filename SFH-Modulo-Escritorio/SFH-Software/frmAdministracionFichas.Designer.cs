@@ -28,19 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAdministracionFichas));
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.idficha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idpaciente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idOdontologo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.anamnesis = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.paciente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.odontologo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmbxestado = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.editar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.presupuesto = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.orden = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.tratamiento = new System.Windows.Forms.DataGridViewButtonColumn();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnBuscar = new System.Windows.Forms.Button();
             this.cmbxBuscar = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtBuscar = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
@@ -58,18 +69,6 @@
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.tratamientodentalBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.idficha = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.paciente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.odontologo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fechadeingreso = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.anamnesis = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cmbxestado = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.editar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.presupuesto = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.orden = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.tratamiento = new System.Windows.Forms.DataGridViewButtonColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -79,7 +78,6 @@
             this.groupBox7.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tratamientodentalBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label3
@@ -110,52 +108,127 @@
             this.groupBox3.Controls.Add(this.dataGridView1);
             this.groupBox3.Controls.Add(this.groupBox4);
             this.groupBox3.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.groupBox3.Location = new System.Drawing.Point(48, 325);
+            this.groupBox3.Location = new System.Drawing.Point(39, 325);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(1150, 418);
+            this.groupBox3.Size = new System.Drawing.Size(1159, 418);
             this.groupBox3.TabIndex = 15;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Listado de fichas medicas";
             // 
             // dataGridView1
             // 
-            this.dataGridView1.AllowUserToOrderColumns = true;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idficha,
-            this.paciente,
-            this.odontologo,
-            this.fechadeingreso,
+            this.idpaciente,
+            this.idOdontologo,
+            this.fecha,
             this.anamnesis,
             this.estado,
+            this.paciente,
+            this.odontologo,
             this.cmbxestado,
             this.editar,
             this.presupuesto,
             this.orden,
             this.tratamiento});
-            this.dataGridView1.Location = new System.Drawing.Point(6, 91);
-            this.dataGridView1.Name = "dataGridView1";
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridView1.Size = new System.Drawing.Size(1138, 321);
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridView1.Location = new System.Drawing.Point(6, 102);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(1147, 310);
             this.dataGridView1.TabIndex = 3;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // idficha
+            // 
+            this.idficha.DataPropertyName = "IdFicha";
+            this.idficha.HeaderText = "Numero de ficha";
+            this.idficha.Name = "idficha";
+            // 
+            // idpaciente
+            // 
+            this.idpaciente.DataPropertyName = "IdPaciente";
+            this.idpaciente.HeaderText = "IdPaciente";
+            this.idpaciente.Name = "idpaciente";
+            this.idpaciente.Visible = false;
+            // 
+            // idOdontologo
+            // 
+            this.idOdontologo.DataPropertyName = "IdOdontologo";
+            this.idOdontologo.HeaderText = "IdOdontologo";
+            this.idOdontologo.Name = "idOdontologo";
+            this.idOdontologo.Visible = false;
+            // 
+            // fecha
+            // 
+            this.fecha.DataPropertyName = "FechaIngreso";
+            this.fecha.HeaderText = "Fecha de Ingreso";
+            this.fecha.Name = "fecha";
+            // 
+            // anamnesis
+            // 
+            this.anamnesis.DataPropertyName = "Anamnesis";
+            this.anamnesis.HeaderText = "Anamnesis";
+            this.anamnesis.Name = "anamnesis";
+            // 
+            // estado
+            // 
+            this.estado.DataPropertyName = "Habilitada";
+            this.estado.HeaderText = "Estado Actual";
+            this.estado.Name = "estado";
+            // 
+            // paciente
+            // 
+            this.paciente.DataPropertyName = "NombrePaciente";
+            this.paciente.HeaderText = "Nombre Paciente";
+            this.paciente.Name = "paciente";
+            // 
+            // odontologo
+            // 
+            this.odontologo.DataPropertyName = "NombreOdontologo";
+            this.odontologo.HeaderText = "Nombre Odontologo";
+            this.odontologo.Name = "odontologo";
+            // 
+            // cmbxestado
+            // 
+            this.cmbxestado.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
+            this.cmbxestado.HeaderText = "Seleccionar Estado";
+            this.cmbxestado.Name = "cmbxestado";
+            this.cmbxestado.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.cmbxestado.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // editar
+            // 
+            this.editar.HeaderText = "Editar Ficha Dental";
+            this.editar.Name = "editar";
+            // 
+            // presupuesto
+            // 
+            this.presupuesto.HeaderText = "Ver presupuesto";
+            this.presupuesto.Name = "presupuesto";
+            // 
+            // orden
+            // 
+            this.orden.HeaderText = "Ver Orden Dental";
+            this.orden.Name = "orden";
+            // 
+            // tratamiento
+            // 
+            this.tratamiento.HeaderText = "Ver Tratamiento";
+            this.tratamiento.Name = "tratamiento";
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.button2);
+            this.groupBox4.Controls.Add(this.btnBuscar);
             this.groupBox4.Controls.Add(this.cmbxBuscar);
             this.groupBox4.Controls.Add(this.label9);
-            this.groupBox4.Controls.Add(this.textBox1);
+            this.groupBox4.Controls.Add(this.txtBuscar);
             this.groupBox4.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.groupBox4.Location = new System.Drawing.Point(275, 19);
             this.groupBox4.Name = "groupBox4";
@@ -164,18 +237,19 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Búsqueda de fichas";
             // 
-            // button2
+            // btnBuscar
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(93)))), ((int)(((byte)(129)))));
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(467, 17);
-            this.button2.Margin = new System.Windows.Forms.Padding(1);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(127, 36);
-            this.button2.TabIndex = 58;
-            this.button2.Text = "Buscar";
-            this.button2.UseVisualStyleBackColor = false;
+            this.btnBuscar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(93)))), ((int)(((byte)(129)))));
+            this.btnBuscar.ForeColor = System.Drawing.Color.White;
+            this.btnBuscar.Location = new System.Drawing.Point(467, 17);
+            this.btnBuscar.Margin = new System.Windows.Forms.Padding(1);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(127, 36);
+            this.btnBuscar.TabIndex = 58;
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.UseVisualStyleBackColor = false;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // cmbxBuscar
             // 
@@ -194,12 +268,12 @@
             this.label9.TabIndex = 56;
             this.label9.Text = "Buscar Por";
             // 
-            // textBox1
+            // txtBuscar
             // 
-            this.textBox1.Location = new System.Drawing.Point(277, 26);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(170, 20);
-            this.textBox1.TabIndex = 2;
+            this.txtBuscar.Location = new System.Drawing.Point(277, 26);
+            this.txtBuscar.Name = "txtBuscar";
+            this.txtBuscar.Size = new System.Drawing.Size(170, 20);
+            this.txtBuscar.TabIndex = 2;
             // 
             // groupBox2
             // 
@@ -210,9 +284,9 @@
             this.groupBox2.Controls.Add(this.groupBox6);
             this.groupBox2.Controls.Add(this.groupBox5);
             this.groupBox2.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.groupBox2.Location = new System.Drawing.Point(48, 19);
+            this.groupBox2.Location = new System.Drawing.Point(39, 19);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1150, 300);
+            this.groupBox2.Size = new System.Drawing.Size(1159, 300);
             this.groupBox2.TabIndex = 14;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Ingreso de ficha dental ";
@@ -222,7 +296,7 @@
             this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(93)))), ((int)(((byte)(129)))));
             this.btnCancelar.ForeColor = System.Drawing.Color.White;
-            this.btnCancelar.Location = new System.Drawing.Point(850, 242);
+            this.btnCancelar.Location = new System.Drawing.Point(875, 242);
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(1);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(127, 36);
@@ -235,7 +309,7 @@
             this.btnGuardar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnGuardar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(93)))), ((int)(((byte)(129)))));
             this.btnGuardar.ForeColor = System.Drawing.Color.White;
-            this.btnGuardar.Location = new System.Drawing.Point(990, 242);
+            this.btnGuardar.Location = new System.Drawing.Point(1026, 242);
             this.btnGuardar.Margin = new System.Windows.Forms.Padding(1);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(127, 36);
@@ -341,7 +415,7 @@
             // 
             this.groupBox6.Controls.Add(this.monthCalendar1);
             this.groupBox6.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.groupBox6.Location = new System.Drawing.Point(866, 19);
+            this.groupBox6.Location = new System.Drawing.Point(875, 19);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(278, 204);
             this.groupBox6.TabIndex = 1;
@@ -358,7 +432,7 @@
             // 
             this.groupBox5.Controls.Add(this.textBox2);
             this.groupBox5.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.groupBox5.Location = new System.Drawing.Point(544, 19);
+            this.groupBox5.Location = new System.Drawing.Point(553, 19);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(316, 204);
             this.groupBox5.TabIndex = 0;
@@ -373,87 +447,6 @@
             this.textBox2.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBox2.Size = new System.Drawing.Size(302, 162);
             this.textBox2.TabIndex = 0;
-            // 
-            // tratamientodentalBindingSource
-            // 
-            this.tratamientodentalBindingSource.DataSource = typeof(ObjectsBeans.Tratamientodental);
-            // 
-            // idficha
-            // 
-            this.idficha.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.idficha.DataPropertyName = "Idficha";
-            this.idficha.HeaderText = "Numero de ficha";
-            this.idficha.Name = "idficha";
-            this.idficha.Width = 80;
-            // 
-            // paciente
-            // 
-            this.paciente.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.paciente.DataPropertyName = "IdPaciente";
-            this.paciente.HeaderText = "Paciente";
-            this.paciente.Name = "paciente";
-            this.paciente.Width = 74;
-            // 
-            // odontologo
-            // 
-            this.odontologo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.odontologo.DataPropertyName = "IdOdontologo";
-            this.odontologo.HeaderText = "Odontólogo";
-            this.odontologo.Name = "odontologo";
-            this.odontologo.Width = 87;
-            // 
-            // fechadeingreso
-            // 
-            this.fechadeingreso.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.fechadeingreso.DataPropertyName = "FechaIngreso";
-            this.fechadeingreso.HeaderText = "Fecha de ingreso";
-            this.fechadeingreso.Name = "fechadeingreso";
-            this.fechadeingreso.Width = 105;
-            // 
-            // anamnesis
-            // 
-            this.anamnesis.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.anamnesis.DataPropertyName = "Anamnesis";
-            this.anamnesis.HeaderText = "Anamnesis";
-            this.anamnesis.Name = "anamnesis";
-            this.anamnesis.Width = 83;
-            // 
-            // estado
-            // 
-            this.estado.DataPropertyName = "Habilitado";
-            this.estado.HeaderText = "Estado actual";
-            this.estado.Name = "estado";
-            // 
-            // cmbxestado
-            // 
-            this.cmbxestado.HeaderText = "Seleccionar estado";
-            this.cmbxestado.Name = "cmbxestado";
-            this.cmbxestado.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.cmbxestado.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // editar
-            // 
-            this.editar.HeaderText = "Editar ficha dental";
-            this.editar.Name = "editar";
-            // 
-            // presupuesto
-            // 
-            this.presupuesto.HeaderText = "Ver Presupuesto";
-            this.presupuesto.Name = "presupuesto";
-            // 
-            // orden
-            // 
-            this.orden.HeaderText = "Ver Orden Dental";
-            this.orden.Name = "orden";
-            this.orden.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.orden.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // tratamiento
-            // 
-            this.tratamiento.HeaderText = "Ver Tratamiento";
-            this.tratamiento.Name = "tratamiento";
-            this.tratamiento.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.tratamiento.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // frmAdministracionFichas
             // 
@@ -481,7 +474,6 @@
             this.groupBox6.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tratamientodentalBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -493,11 +485,11 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtBuscar;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.ComboBox cmbxBuscar;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.MonthCalendar monthCalendar1;
@@ -511,17 +503,18 @@
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.BindingSource tratamientodentalBindingSource;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnGuardar;
+        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn idficha;
-        private System.Windows.Forms.DataGridViewTextBoxColumn paciente;
-        private System.Windows.Forms.DataGridViewTextBoxColumn odontologo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fechadeingreso;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idpaciente;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idOdontologo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fecha;
         private System.Windows.Forms.DataGridViewTextBoxColumn anamnesis;
         private System.Windows.Forms.DataGridViewTextBoxColumn estado;
+        private System.Windows.Forms.DataGridViewTextBoxColumn paciente;
+        private System.Windows.Forms.DataGridViewTextBoxColumn odontologo;
         private System.Windows.Forms.DataGridViewComboBoxColumn cmbxestado;
         private System.Windows.Forms.DataGridViewButtonColumn editar;
         private System.Windows.Forms.DataGridViewButtonColumn presupuesto;

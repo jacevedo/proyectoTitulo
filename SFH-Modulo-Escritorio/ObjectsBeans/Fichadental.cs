@@ -14,6 +14,9 @@ namespace ObjectsBeans
         private DateTime fechaIngreso;
         private string anamnesis;
         private int habilitada;
+        private string nombrePaciente;
+        private string nombreOdontologo;
+ 
         #endregion
 
         #region Constructor
@@ -57,6 +60,19 @@ namespace ObjectsBeans
             get { return habilitada; }
             set { habilitada = value; }
         }
+        public string NombrePaciente
+        {
+            get { return nombrePaciente; }
+            set { nombrePaciente = value; }
+        }
+
+
+        public string NombreOdontologo
+        {
+            get { return nombreOdontologo; }
+            set { nombreOdontologo = value; }
+        }
+       
         #endregion
     }
 }

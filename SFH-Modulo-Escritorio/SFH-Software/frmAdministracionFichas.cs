@@ -14,6 +14,7 @@ namespace SFH_Software
     {
         #region Campos
         ClientWsFichaPresupuesto client_fichas = new ClientWsFichaPresupuesto();
+        List<Fichadental> result = new List<Fichadental>();
         #endregion
 
         #region Metodos
@@ -21,6 +22,8 @@ namespace SFH_Software
             this.cmbxestado.Items.Clear();
             this.cmbxestado.Items.Insert(Convert.ToInt32(EstadoPersona.DESHABILITADO), "Deshabilitado");
             this.cmbxestado.Items.Insert(Convert.ToInt32(EstadoPersona.HABILITADO), "Habilitado");
+
+            //this.cmbxestado.
         }
         private void PoblarComboBusqueda() {
             this.cmbxBuscar.Items.Clear();
@@ -66,6 +69,45 @@ namespace SFH_Software
         {
 
         }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            
+            switch (this.cmbxBuscar.SelectedIndex)
+            {
+                case 0:
+                    MessageBox.Show("Debes seleccionar una opción de búsqueda", "SFH Administración de Clínica - Administración de Fichas Dentales", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    break;
+                case 1:
+                    MessageBox.Show("El sistema sfh está realizando su búsqueda", "SFH Administración de Clínica - Administración de Fichas Dentales", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.result = this.client_fichas.BuscarFichasPorId(int.Parse(txtBuscar.Text.ToString()));
+                  
+                    if (result.Count.Equals(0))
+                    {
+                        MessageBox.Show("Esta búsqueda no ha arrojado resultados", "SFH Administración de Clínica - Administración de Fichas Dentales", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
+                    else
+                    {
+                        dataGridView1.DataSource = this.result;
+                    }
+                    break;
+                case 2:
+                    MessageBox.Show("El sistema sfh está realizando su búsqueda", "SFH Administración de Clínica - Administración de Fichas Dentales", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.result = this.client_fichas.BuscarFichasPorIdPersona(int.Parse(txtBuscar.Text.ToString()));
+                  
+                    if (result.Count.Equals(0))
+                    {
+                        MessageBox.Show("Esta búsqueda no ha arrojado resultados", "SFH Administración de Clínica - Administración de Fichas Dentales", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
+                    else
+                    {
+                        dataGridView1.DataSource = this.result;
+                    }
+                    break;
+            }
+        }
+
+       
 
        
 
