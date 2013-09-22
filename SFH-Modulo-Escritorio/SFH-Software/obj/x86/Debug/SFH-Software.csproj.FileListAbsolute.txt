@@ -107,6 +107,7 @@ C:\Users\JAIME\Desktop\SFH-Modulo-Escritorio\SFH-Software\bin\Debug\ObjectsBeans
 C:\Users\JAIME\Desktop\SFH-Modulo-Escritorio\SFH-Software\bin\Debug\Newtonsoft.Json.pdb
 C:\Users\JAIME\Desktop\SFH-Modulo-Escritorio\SFH-Software\bin\Debug\Newtonsoft.Json.xml
 C:\Users\JAIME\Desktop\SFH-Modulo-Escritorio\SFH-Software\obj\x86\Debug\SFH-Software.csprojResolveAssemblyReference.cache
+C:\Users\JAIME\Desktop\SFH-Modulo-Escritorio\SFH-Software\obj\x86\Debug\SFH_Software.frmAbonos.resources
 C:\Users\JAIME\Desktop\SFH-Modulo-Escritorio\SFH-Software\obj\x86\Debug\SFH_Software.frmAcerca.resources
 C:\Users\JAIME\Desktop\SFH-Modulo-Escritorio\SFH-Software\obj\x86\Debug\SFH_Software.frmAdministracionDeInsumos.resources
 C:\Users\JAIME\Desktop\SFH-Modulo-Escritorio\SFH-Software\obj\x86\Debug\SFH_Software.frmAdministracionDeReporteria.resources
@@ -122,4 +123,3 @@ C:\Users\JAIME\Desktop\SFH-Modulo-Escritorio\SFH-Software\obj\x86\Debug\SFH_Soft
 C:\Users\JAIME\Desktop\SFH-Modulo-Escritorio\SFH-Software\obj\x86\Debug\SFH-Software.csproj.GenerateResource.Cache
 C:\Users\JAIME\Desktop\SFH-Modulo-Escritorio\SFH-Software\obj\x86\Debug\SFH-Software.exe
 C:\Users\JAIME\Desktop\SFH-Modulo-Escritorio\SFH-Software\obj\x86\Debug\SFH-Software.pdb
-C:\Users\JAIME\Desktop\SFH-Modulo-Escritorio\SFH-Software\obj\x86\Debug\SFH_Software.frmAbonos.resources

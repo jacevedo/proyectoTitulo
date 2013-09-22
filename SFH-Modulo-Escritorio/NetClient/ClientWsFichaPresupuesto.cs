@@ -33,7 +33,7 @@ namespace NetClient
     {
         #region Campos
         CoreNetClient netclient = new CoreNetClient();
-        private static  String ipServer = "http://192.168.191.136/";
+        private static String ipServer = "http://192.168.0.21/";
         private string jsonParam;
         #endregion
 
@@ -49,7 +49,7 @@ namespace NetClient
             List<Fichadental> list = new List<Fichadental>();
             try{
                 this.JsonParam = "send={\"indice\":12}";
-                String result = netclient.NetPost(ipServer + "sfhwebservice/webService/ws-ficha-presupuesto.php", this.JsonParam);
+                String result = netclient.NetPost(ipServer + "proyectoTitulo/sfhwebservice/webService/ws-ficha-presupuesto.php", this.JsonParam);
                 var jobject = JObject.Parse(result);
                 var token = jobject.SelectToken("ListaFicha").ToList();
                 foreach (var item in token)
@@ -61,7 +61,7 @@ namespace NetClient
                     ficha.NombreOdontologo = item.SelectToken("idOdontologo").ToString();
                     ficha.FechaIngreso = Convert.ToDateTime(item.SelectToken("fechaIngreso").ToString());
                     ficha.Anamnesis = item.SelectToken("anamnesis").ToString();
-                    ficha.Habilitada = Convert.ToInt32(item.SelectToken("habilitada").ToString());
+                    ficha.Habilitada = 0;
                     list.Add(ficha);
                 }
 
@@ -80,7 +80,7 @@ namespace NetClient
             try
             {
                 this.JsonParam = "send={\"indice\":3,\"idFicha\":" + numFicha + "}";
-                String result = netclient.NetPost(ipServer + "sfhwebservice/webService/ws-ficha-presupuesto.php", this.JsonParam);
+                String result = netclient.NetPost(ipServer + "proyectoTitulo/sfhwebservice/webService/ws-ficha-presupuesto.php", this.JsonParam);
                 var jobject = JObject.Parse(result);
                 var token = jobject.SelectToken("FichaPorID").ToList();
                 foreach (var item in token)
@@ -111,7 +111,7 @@ namespace NetClient
             try
             {
                 this.JsonParam = "send={\"indice\":4,\"idPersona\":" + param + "}";
-                String result = netclient.NetPost(ipServer + "sfhwebservice/webService/ws-ficha-presupuesto.php", this.JsonParam);
+                String result = netclient.NetPost(ipServer + "proyectoTitulo/sfhwebservice/webService/ws-ficha-presupuesto.php", this.JsonParam);
                 var jobject = JObject.Parse(result);
                 var token = jobject.SelectToken("FichaIdPersona").ToList();
                 foreach (var item in token)
@@ -143,7 +143,7 @@ namespace NetClient
             this.JsonParam = "send={\"indice\":1,\"idPaciente\":\"" + ficha.IdPaciente + "\", \"idOdontologo\":\"" + ficha.IdOdontologo + "\",\"fechaIngreso\":\"" + ficha.FechaIngreso + "\",\"anamnesis\":\"" + ficha.Anamnesis + "\",\"habilitada\":" + ficha.Anamnesis + "}";
             try
             {
-                String result = netclient.NetPost(ipServer + "sfhwebservice/webService/ws-ficha-presupuesto.php", this.JsonParam);
+                String result = netclient.NetPost(ipServer + "proyectoTitulo/sfhwebservice/webService/ws-ficha-presupuesto.php", this.JsonParam);
                 var jobject = JObject.Parse(result);
                 //{"code":1,"idFichaInsertada":8}
                 fichaInsertada = jobject.SelectToken("idTratamientoInsertada").ToString();
@@ -162,7 +162,7 @@ namespace NetClient
             this.JsonParam = "send={\"indice\":2,\"idFicha\":" + ficha.IdFicha + ",\"idPaciente\":" + ficha.IdPaciente + ",\"idOdontologo\":\"" + ficha.IdOdontologo + "\",\"fechaIngreso\":\"" + ficha.FechaIngreso + "\",\"anamnesis\":\"" + ficha.Anamnesis + "}";
             try
             {
-                String result = netclient.NetPost(ipServer + "sfhwebservice/webService/ws-ficha-presupuesto.php", this.JsonParam);
+                String result = netclient.NetPost(ipServer + "proyectoTitulo/sfhwebservice/webService/ws-ficha-presupuesto.php", this.JsonParam);
                 var jobject = JObject.Parse(result);
                 //{"code":1,"idTratamientoInsertada":10}
                 fichaModificada = jobject.SelectToken("Resultado").ToString();

@@ -19,6 +19,7 @@ require_once '../controladoras/controladoraordenlaboratorio.php';
 
 $jsonRecibido = $_REQUEST["send"];
 $data = json_decode($jsonRecibido);
+//echo($jsonRecibido);
 $opcion = $data->{'indice'};
 
 switch ($opcion) 

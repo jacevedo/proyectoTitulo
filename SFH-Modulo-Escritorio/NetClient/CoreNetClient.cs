@@ -33,10 +33,9 @@ namespace NetClient
                 dataStream.Close();
                 response.Close();
             }
-            catch{
-                
+            catch
+            {               
                 throw new Exception("Error: No se ha podido establecer la comunicación con el servidor");
-            
             }
             return request_post;
         }
