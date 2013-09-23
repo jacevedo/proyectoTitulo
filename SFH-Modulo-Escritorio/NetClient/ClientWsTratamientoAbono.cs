@@ -23,7 +23,7 @@ namespace NetClient
     {
         #region Campos
         CoreNetClient netclient = new CoreNetClient();
-        string ipServer = "192.168.1.216";
+        string ipServer = "192.168.137.111";
         #endregion
         
         public List<Tratamientodental> ListarTratamientoIdFicha(int idFicha)

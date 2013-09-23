@@ -14,7 +14,7 @@ namespace NetClient
     {
         #region Campos
         CoreNetClient netclient = new CoreNetClient();
-        private static String ipServer = "http://192.168.1.216/";
+        private static String ipServer = "http://192.168.137.111/";
         private string jsonParam;
         #endregion
 

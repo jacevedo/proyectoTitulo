@@ -33,7 +33,7 @@ namespace NetClient
     {
         #region Campos
         CoreNetClient netclient = new CoreNetClient();
-        private static String ipServer = "http://192.168.1.216/";
+        private static String ipServer = "http://192.168.137.111/";
         private string jsonParam;
         #endregion
 
@@ -44,12 +44,13 @@ namespace NetClient
             set { jsonParam = value; }
         }
         #endregion
+   #region ListarFichas
 
         public List<Fichadental> ListarFichas() { 
-            List<Fichadental> list = new List<Fichadental>();
-            try{
+          List<Fichadental> list = new List<Fichadental>();
+          try{
                 this.JsonParam = "send={\"indice\":12}";
-                String result = netclient.NetPost(ipServer + "proyectoTitulo/sfhwebservice/webService/ws-ficha-presupuesto.php", this.JsonParam);
+                String result = netclient.NetPost(ipServer + "sfhwebservice/webService/ws-ficha-presupuesto.php", this.JsonParam);
                 var jobject = JObject.Parse(result);
                 var token = jobject.SelectToken("ListaFicha").ToList();
                 foreach (var item in token)
@@ -67,22 +68,21 @@ namespace NetClient
                     list.Add(ficha);
                 }
 
-               }
-
+              }
                catch(Exception e){
                     throw new Exception(e + "| Error al Listar Fichas");
                }
                  return list;
         }
+        #endregion
 
+        #region BuscarFichasPorId
         public List<Fichadental> BuscarFichasPorId(int numFicha) {
-
             List<Fichadental> list = new List<Fichadental>();
-
             try
             {
                 this.JsonParam = "send={\"indice\":3,\"idFicha\":" + numFicha + "}";
-                String result = netclient.NetPost(ipServer + "proyectoTitulo/sfhwebservice/webService/ws-ficha-presupuesto.php", this.JsonParam);
+                String result = netclient.NetPost(ipServer + "sfhwebservice/webService/ws-ficha-presupuesto.php", this.JsonParam);
                 var jobject = JObject.Parse(result);
                 var token = jobject.SelectToken("FichaPorID").ToList();
                 foreach (var item in token)
@@ -108,14 +108,16 @@ namespace NetClient
             }
             return list;
         }
+        #endregion
 
+        #region BuscarFichasPorIdPersona
         public List<Fichadental> BuscarFichasPorIdPersona(int param)
         {
             List<Fichadental> list = new List<Fichadental>();
             try
             {
                 this.JsonParam = "send={\"indice\":4,\"idPersona\":" + param + "}";
-                String result = netclient.NetPost(ipServer + "proyectoTitulo/sfhwebservice/webService/ws-ficha-presupuesto.php", this.JsonParam);
+                String result = netclient.NetPost(ipServer + "sfhwebservice/webService/ws-ficha-presupuesto.php", this.JsonParam);
                 var jobject = JObject.Parse(result);
                 var token = jobject.SelectToken("FichaIdPersona").ToList();
                 foreach (var item in token)
@@ -134,41 +136,46 @@ namespace NetClient
                 }
 
             }
-
             catch (Exception e)
             {
                 throw new Exception(e + "| Error al Listar Fichas");
             }
             return list;
         }
+        #endregion
 
+        #region InsertarFichaDental
         public string InsertarFichaDental(Fichadental ficha)
         {
             string fichaInsertada = string.Empty;
+            string fechaAEnviar = ficha.FechaIngreso.Year + "-" + ficha.FechaIngreso.Month + "-" + ficha.FechaIngreso.Day;
             //{"indice":1,"idPaciente":1,"idOdontologo":1,"fechaIngreso":"1991-12-12","anamnesis":"Penisilina","habilitada":0}
-            this.JsonParam = "send={\"indice\":1,\"idPaciente\":\"" + ficha.IdPaciente + "\", \"idOdontologo\":\"" + ficha.IdOdontologo + "\",\"fechaIngreso\":\"" + ficha.FechaIngreso + "\",\"anamnesis\":\"" + ficha.Anamnesis + "\",\"habilitada\":" + ficha.Anamnesis + "}";
+            this.JsonParam = "send={\"indice\":1,\"idPaciente\":" + ficha.IdPaciente + ", \"idOdontologo\":" + ficha.IdOdontologo + ",\"fechaIngreso\":\"" + fechaAEnviar + "\",\"anamnesis\":\"" + ficha.Anamnesis + "\",\"habilitada\":" + ficha.EstadoPaciente + "}";
             try
             {
-                String result = netclient.NetPost(ipServer + "proyectoTitulo/sfhwebservice/webService/ws-ficha-presupuesto.php", this.JsonParam);
+                String result = netclient.NetPost(ipServer + "sfhwebservice/webService/ws-ficha-presupuesto.php", this.JsonParam);
                 var jobject = JObject.Parse(result);
                 //{"code":1,"idFichaInsertada":8}
                 fichaInsertada = jobject.SelectToken("idFichaInsertada").ToString();
             }
             catch (Exception e)
             {
-                throw new Exception(e + "| Error al Listar Fichas");
+                throw new Exception(e + "| Error al insertar Fichas");
             }
             return fichaInsertada;
         }
+        #endregion
 
+        #region ModificarFichaDental
         public string ModificarFichaDental(Fichadental ficha)
         {
             string fichaModificada = string.Empty;
+            string fechaAEnviar = ficha.FechaIngreso.Year + "-" + ficha.FechaIngreso.Month + "-" + ficha.FechaIngreso.Day;
             //{"indice":2,"idFicha":1,"idPaciente":1,"idOdontologo":1,"fechaIngreso":"1991-12-12","anamnesis":"Penisilina"}
-            this.JsonParam = "send={\"indice\":2,\"idFicha\":" + ficha.IdFicha + ",\"idPaciente\":" + ficha.IdPaciente + ",\"idOdontologo\":\"" + ficha.IdOdontologo + "\",\"fechaIngreso\":\"" + ficha.FechaIngreso + "\",\"anamnesis\":\"" + ficha.Anamnesis + "}";
+            this.JsonParam = "send={\"indice\":2,\"idFicha\":" + ficha.IdFicha + ",\"idPaciente\":" + ficha.IdPaciente + ",\"idOdontologo\":" + ficha.IdOdontologo + ",\"fechaIngreso\":\"" + fechaAEnviar + "\",\"anamnesis\":\"" + ficha.Anamnesis + "\"}";
             try
             {
-                String result = netclient.NetPost(ipServer + "proyectoTitulo/sfhwebservice/webService/ws-ficha-presupuesto.php", this.JsonParam);
+                String result = netclient.NetPost(ipServer + "sfhwebservice/webService/ws-ficha-presupuesto.php", this.JsonParam);
                 var jobject = JObject.Parse(result);
                 //{"code":1,"idTratamientoInsertada":10}
                 fichaModificada = jobject.SelectToken("Resultado").ToString();
@@ -179,13 +186,15 @@ namespace NetClient
             }
             return fichaModificada;
         }
+        #endregion
+
         public string CambiarEstadoFicha(Fichadental ficha) {
             string fichaModificada = string.Empty;
             //{"indice":6,"idFicha":3,"habilitada":1}
             this.JsonParam = "send={\"indice\":6,\"idFicha\":" + ficha.IdFicha + ",\"habilitada\":" + ficha.EstadoPaciente + "}";
             try
             {
-                String result = netclient.NetPost(ipServer + "proyectoTitulo/sfhwebservice/webService/ws-ficha-presupuesto.php", this.JsonParam);
+                String result = netclient.NetPost(ipServer + "sfhwebservice/webService/ws-ficha-presupuesto.php", this.JsonParam);
                 var jobject = JObject.Parse(result);
                //{"code":6,"resultado":"Modificado"}
                 fichaModificada = jobject.SelectToken("resultado").ToString();
@@ -196,6 +205,8 @@ namespace NetClient
             }
             return fichaModificada;
         }
+
+        
 
         
         public List<Presupuesto> listadoPresupuestoPorPaciente(int idPaciente)
