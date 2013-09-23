@@ -42,6 +42,8 @@
             this.btnEliminar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.abonoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lblIdTratamiento = new System.Windows.Forms.Label();
+            this.lblIdAbono = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.calendarAbono = new System.Windows.Forms.MonthCalendar();
             this.btnGuardarAbono = new System.Windows.Forms.Button();
@@ -49,9 +51,8 @@
             this.txtMonto = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.lblNumTratamiento = new System.Windows.Forms.Label();
-            this.lblIdAbono = new System.Windows.Forms.Label();
-            this.lblIdTratamiento = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GrillaAbonos)).BeginInit();
@@ -65,9 +66,9 @@
             this.groupBox1.Controls.Add(this.groupBox3);
             this.groupBox1.Controls.Add(this.groupBox2);
             this.groupBox1.ForeColor = System.Drawing.Color.White;
-            this.groupBox1.Location = new System.Drawing.Point(6, 12);
+            this.groupBox1.Location = new System.Drawing.Point(36, 64);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(701, 477);
+            this.groupBox1.Size = new System.Drawing.Size(1136, 477);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Administracion Abonos";
@@ -77,7 +78,7 @@
             // 
             this.groupBox3.Controls.Add(this.GrillaAbonos);
             this.groupBox3.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.groupBox3.Location = new System.Drawing.Point(12, 250);
+            this.groupBox3.Location = new System.Drawing.Point(233, 261);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(683, 206);
             this.groupBox3.TabIndex = 1;
@@ -99,7 +100,7 @@
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
@@ -168,12 +169,30 @@
             this.groupBox2.Controls.Add(this.lblNumTratamiento);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.groupBox2.Location = new System.Drawing.Point(11, 19);
+            this.groupBox2.Location = new System.Drawing.Point(232, 19);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(684, 225);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Datos Abono";
+            // 
+            // lblIdTratamiento
+            // 
+            this.lblIdTratamiento.AutoSize = true;
+            this.lblIdTratamiento.Location = new System.Drawing.Point(135, 165);
+            this.lblIdTratamiento.Name = "lblIdTratamiento";
+            this.lblIdTratamiento.Size = new System.Drawing.Size(0, 13);
+            this.lblIdTratamiento.TabIndex = 18;
+            this.lblIdTratamiento.Visible = false;
+            // 
+            // lblIdAbono
+            // 
+            this.lblIdAbono.AutoSize = true;
+            this.lblIdAbono.Location = new System.Drawing.Point(19, 165);
+            this.lblIdAbono.Name = "lblIdAbono";
+            this.lblIdAbono.Size = new System.Drawing.Size(0, 13);
+            this.lblIdAbono.TabIndex = 17;
+            this.lblIdAbono.Visible = false;
             // 
             // groupBox4
             // 
@@ -243,24 +262,6 @@
             this.lblNumTratamiento.Size = new System.Drawing.Size(0, 13);
             this.lblNumTratamiento.TabIndex = 1;
             // 
-            // lblIdAbono
-            // 
-            this.lblIdAbono.AutoSize = true;
-            this.lblIdAbono.Location = new System.Drawing.Point(19, 165);
-            this.lblIdAbono.Name = "lblIdAbono";
-            this.lblIdAbono.Size = new System.Drawing.Size(0, 13);
-            this.lblIdAbono.TabIndex = 17;
-            this.lblIdAbono.Visible = false;
-            // 
-            // lblIdTratamiento
-            // 
-            this.lblIdTratamiento.AutoSize = true;
-            this.lblIdTratamiento.Location = new System.Drawing.Point(135, 165);
-            this.lblIdTratamiento.Name = "lblIdTratamiento";
-            this.lblIdTratamiento.Size = new System.Drawing.Size(0, 13);
-            this.lblIdTratamiento.TabIndex = 18;
-            this.lblIdTratamiento.Visible = false;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -270,12 +271,24 @@
             this.label1.TabIndex = 0;
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(524, 19);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(274, 23);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Administración de Abonos Monetarios";
+            // 
             // frmAbonos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(200)))), ((int)(((byte)(226)))));
-            this.ClientSize = new System.Drawing.Size(708, 501);
+            this.ClientSize = new System.Drawing.Size(1208, 553);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.groupBox1);
             this.ForeColor = System.Drawing.Color.White;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -289,6 +302,7 @@
             this.groupBox2.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -315,5 +329,6 @@
         private System.Windows.Forms.Label lblIdTratamiento;
         private System.Windows.Forms.Label lblIdAbono;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label3;
     }
 }
