@@ -5,6 +5,7 @@ class Presupuesto
 	public $valorTotal;
 	public $idFicha;
 	public $fechaPresupuesto;
+	public $idPersona;
 
 	function initClass($idPresupuesto, $idFicha, $valorTotal,$fechaPresupuesto)
 	{
@@ -12,6 +13,14 @@ class Presupuesto
 		$this->idPresupuesto = $idPresupuesto;
 		$this->valorTotal = $valorTotal;
 		$this->fechaPresupuesto = $fechaPresupuesto;
+	}
+	function initClassIdPersona($idPresupuesto, $idFicha, $valorTotal,$fechaPresupuesto,$idPersona)
+	{
+		$this->idFicha = $idFicha;
+		$this->idPresupuesto = $idPresupuesto;
+		$this->valorTotal = $valorTotal;
+		$this->fechaPresupuesto = $fechaPresupuesto;
+		$this->idPersona = $idPersona;
 	}
 }
 ?>

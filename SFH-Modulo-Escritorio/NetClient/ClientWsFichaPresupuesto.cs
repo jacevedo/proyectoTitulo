@@ -173,5 +173,119 @@ namespace NetClient
             }
             return fichaModificada;
         }
+        public List<Presupuesto> listadoPresupuestoPorPaciente(int idPaciente)
+        {
+            List<Presupuesto> listaPresupuesto = new List<Presupuesto>();
+            //{"indice":10,"idPaciente":3}
+            this.JsonParam = "send={\"indice\":10,\"idPaciente\":" +idPaciente + "}";
+            try
+            {
+                String result = netclient.NetPost(ipServer + "proyectoTitulo/sfhwebservice/webService/ws-ficha-presupuesto.php", this.JsonParam);
+                var jobject = JObject.Parse(result);
+                //{"code":1,"idTratamientoInsertada":10}
+                var token = jobject.SelectToken("PresupuestoIDPaciente").ToList();
+                foreach (var item in token)
+                {
+                    Presupuesto presupuesto = new Presupuesto();
+                    //{"code":4,"FichaIdPersona":[{"idFicha":4,"idPaciente":4,"idOdontologo":4,"fechaIngreso":"2013-08-12","anamnesis":"Diabetes","habilitada":0}]}
+                    presupuesto.IdPresupuesto = Convert.ToInt32(item.SelectToken("idPresupuesto").ToString());
+                    presupuesto.ValorTotal = Convert.ToInt32(item.SelectToken("valorTotal").ToString());
+                    presupuesto.FechaPresupuesto = Convert.ToDateTime(item.SelectToken("fechaPresupuesto").ToString());
+                    presupuesto.IdFicha = Convert.ToInt32(item.SelectToken("idFicha").ToString());
+                    presupuesto.IdPaciente = Convert.ToInt32(item.SelectToken("idPersona").ToString());
+                    listaPresupuesto.Add(presupuesto);
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e + "| Error al Listar Fichas");
+            }
+            return listaPresupuesto;
+        }
+        public List<Presupuesto> listadoPresupuestoPorFicha(int idFicha)
+        {
+            List<Presupuesto> listaPresupuesto = new List<Presupuesto>();
+            //{"indice":10,"idPaciente":3}
+            this.JsonParam = "send={\"indice\":14,\"idFicha\":" + idFicha + "}";
+            try
+            {
+                String result = netclient.NetPost(ipServer + "proyectoTitulo/sfhwebservice/webService/ws-ficha-presupuesto.php", this.JsonParam);
+                var jobject = JObject.Parse(result);
+                //{"code":1,"idTratamientoInsertada":10}
+                var token = jobject.SelectToken("PresupuestoIDPaciente").ToList();
+                foreach (var item in token)
+                {
+                    Presupuesto presupuesto = new Presupuesto();
+                    //{"code":4,"FichaIdPersona":[{"idFicha":4,"idPaciente":4,"idOdontologo":4,"fechaIngreso":"2013-08-12","anamnesis":"Diabetes","habilitada":0}]}
+                    presupuesto.IdPresupuesto = Convert.ToInt32(item.SelectToken("idPresupuesto").ToString());
+                    presupuesto.ValorTotal = Convert.ToInt32(item.SelectToken("valorTotal").ToString());
+                    presupuesto.FechaPresupuesto = Convert.ToDateTime(item.SelectToken("fechaPresupuesto").ToString());
+                    presupuesto.IdFicha = Convert.ToInt32(item.SelectToken("idFicha").ToString());
+                    //presupuesto.IdPaciente = Convert.ToInt32(item.SelectToken("idPersona").ToString());
+                    listaPresupuesto.Add(presupuesto);
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e + "| Error al Listar Fichas");
+            }
+            return listaPresupuesto;
+        }
+        public List<Persona> listaPersonaFichaNombre()
+        {
+            List<Persona> listaPersona = new List<Persona>();
+            try
+            {
+                String result = netclient.NetPost( ipServer + "/proyectoTitulo/sfhwebservice/webService/ws-ficha-presupuesto.php", "send={\"indice\":13}");
+                var jobject = JObject.Parse(result);
+                var token = jobject.SelectToken("PresupuestoIDPaciente").ToList();
+                foreach (var item in token)
+                {
+                    Persona personaFake = new Persona();
+                    personaFake.IdPersona = Convert.ToInt32(item.SelectToken("idFicha").ToString());
+                    personaFake.Nombre = item.SelectToken("nomPersona").ToString() + " " + item.SelectToken("appPersona").ToString();
+                    listaPersona.Add(personaFake);
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e + "| Error al Listar Fichas");
+            }
+            return listaPersona;
+        }
+        public string insertarPresupuesto(Presupuesto presupuesto)
+        {
+            //{"indice":7,"idFicha":3,"valorTotal":10000,"fechaPresupuesto":"1991-12-12"}
+            try
+            {
+                string fecha = presupuesto.FechaPresupuesto.Year + "-" + presupuesto.FechaPresupuesto.Month + "-" + presupuesto.FechaPresupuesto.Day;
+                String result = netclient.NetPost(ipServer + "/proyectoTitulo/sfhwebservice/webService/ws-ficha-presupuesto.php", "send={\"indice\":7,\"idFicha\":"+presupuesto.IdFicha+",\"valorTotal\":"+presupuesto.ValorTotal+",\"fechaPresupuesto\":\""+fecha+"\"}");
+                var jobject = JObject.Parse(result);
+                var token = jobject.SelectToken("idPresupuestoInsertado").ToString();
+                return token;
+            }
+            catch (Exception e)
+            {
+                    
+            }
+            return "";
+        }
+        public string modificarPresupuesto(Presupuesto presupuesto)
+        {
+            //{"indice":8,"idPresupuesto":1,"idFicha":3,"valorTotal":10000,"fechaPresupuesto":"1991-12-12"}
+            try
+            {
+                string fecha = presupuesto.FechaPresupuesto.Year + "-" + presupuesto.FechaPresupuesto.Month + "-" + presupuesto.FechaPresupuesto.Day;
+                String result = netclient.NetPost(ipServer + "/proyectoTitulo/sfhwebservice/webService/ws-ficha-presupuesto.php", "send={\"indice\":8,\"idFicha\":" + presupuesto.IdFicha + ",\"idPresupuesto\":"+presupuesto.IdPresupuesto+",\"valorTotal\":" + presupuesto.ValorTotal + ",\"fechaPresupuesto\":\"" + fecha + "\"}");
+                var jobject = JObject.Parse(result);
+                var token = jobject.SelectToken("modificado").ToString();
+                return token;
+            }
+            catch (Exception e)
+            {
+
+            }
+            return "";
+        }
     }
 }

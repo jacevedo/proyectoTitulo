@@ -184,6 +184,7 @@
     </Compile>
     <None Include="Properties\DataSources\ObjectsBeans.Ordendelaboratorio.datasource" />
     <None Include="Properties\DataSources\ObjectsBeans.Persona.datasource" />
+    <None Include="Properties\DataSources\ObjectsBeans.Presupuesto.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

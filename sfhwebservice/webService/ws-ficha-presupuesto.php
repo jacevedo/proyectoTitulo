@@ -143,9 +143,26 @@ switch ($opcion)
 	case 12:
 		//json Listar Ficha {"indice":12}
 		$controladoraFicha = new ControladoraFichaPresupuesto();
-		$arreglo["code"]=5;
+		$arreglo["code"]=12;
 		$arreglo["ListaFicha"] = $controladoraFicha->listarFichaNombres();
 		echo(json_encode($arreglo));
+		break;
+	case 13:
+		//json Listar Ficha con nombre Y apellido Paciente {"indice":13}
+		$idPaciente = $data->{"idPaciente"};
+		$controladoraPresupuesto = new ControladoraFichaPresupuesto();
+		$arreglo["code"]=13;
+		$arreglo["PresupuestoIDPaciente"] = $controladoraPresupuesto->listaPersonaFicha();
+		echo(json_encode($arreglo));
+		break;
+	case 14:
+		//json buscar Presupuesto por id Ficha {"indice":14,"idFicha":3}
+		$idFicha = $data->{"idFicha"};
+		$controladoraPresupuesto = new ControladoraFichaPresupuesto();
+		$arreglo["code"]=14;
+		$arreglo["PresupuestoIDPaciente"] = $controladoraPresupuesto->buscarPresupuestoIdFicha($idFicha);
+		echo(json_encode($arreglo));
+	break;
 }
  
 ?>

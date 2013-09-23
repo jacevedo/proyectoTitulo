@@ -259,17 +259,17 @@ class ControladoraFichaPresupuesto
 		try
 		{
 			$this->SqlQuery = '';
-			$this->SqlQuery = "SELECT pe.* FROM presupuesto pe, fichadental fi WHERE fi.ID_PACIENTE=? AND fi.ID_FICHA = pe.ID_FICHA ";
+			$this->SqlQuery = "SELECT pe.*, fi.ID_PACIENTE FROM presupuesto pe, fichadental fi WHERE fi.ID_PACIENTE=? AND fi.ID_FICHA = pe.ID_FICHA ";
 		   	$sentencia=$conexion->prepare($this->SqlQuery);
 		   	$sentencia->bind_param('i',$idPersona);
         	if($sentencia->execute())
         	{
-        		$sentencia->bind_result($idPresupuesto, $idFicha, $valorTotal,$fechaPresupuesto);					
+        		$sentencia->bind_result($idPresupuesto, $idFicha, $valorTotal,$fechaPresupuesto,$idPaciente);					
 				$indice=0;     
 				while($sentencia->fetch())
 				{
 					$presupuesto = new Presupuesto();
-					$presupuesto->initClass($idPresupuesto, $idFicha, $valorTotal,$fechaPresupuesto);
+					$presupuesto->initClassIdPersona($idPresupuesto, $idFicha, $valorTotal,$fechaPresupuesto,$idPaciente);
         			$this->datos[$indice] = $presupuesto;
         			
         			$indice++;
@@ -407,6 +407,68 @@ class ControladoraFichaPresupuesto
 	         return false;
 	         throw new $e("Error al Actualizar Usuarios");
         }
+	}
+	function listaPersonaFicha()
+	{
+		$conexion = new MySqlCon();
+		$this->datos ='';
+		try
+		{
+			$this->SqlQuery = '';
+			$this->SqlQuery = "Select fi.ID_FICHA, pe.NOMBRE, pe.APELLIDO_PATERNO from fichaDental fi, paciente pa, persona pe where fi.ID_PACIENTE = pa.ID_PACIENTE and pa.ID_PERSONA = pe.ID_PERSONA";
+			$sentencia=$conexion->prepare($this->SqlQuery);
+        	if($sentencia->execute())
+        	{
+        		$sentencia->bind_result($idFicha, $nomPersona, $appPersona);				
+				$indice=0;     
+				while($sentencia->fetch())
+				{
+					$datosPersona["idFicha"] = $idFicha;
+					$datosPersona["nomPersona"] = $nomPersona;
+					$datosPersona["appPersona"] = $appPersona;
+        			$this->datos[$indice] = $datosPersona;
+        			$indice++;
+				}
+      		}
+       		$conexion->close();
+    	}
+    	catch(Exception $e)
+    	{
+        	throw new $e("Error al listar pacientes");
+        }
+        return $this->datos;
+	}
+	function buscarPresupuestoIdFicha($idFichaPaciente)
+	{
+
+		$conexion = new MySqlCon();
+		$this->datos ='';
+		try
+		{
+			$this->SqlQuery = '';
+			$this->SqlQuery = "SELECT pe.* FROM presupuesto pe WHERE pe.ID_FICHA  = ?";
+		   	$sentencia=$conexion->prepare($this->SqlQuery);
+		   	$sentencia->bind_param('i',$idFichaPaciente);
+        	if($sentencia->execute())
+        	{
+        		$sentencia->bind_result($idPresupuesto, $idFicha, $valorTotal,$fechaPresupuesto);					
+				$indice=0;     
+				while($sentencia->fetch())
+				{
+					$presupuesto = new Presupuesto();
+					$presupuesto->initClass($idPresupuesto, $idFicha, $valorTotal,$fechaPresupuesto);
+        			$this->datos[$indice] = $presupuesto;
+        			
+        			$indice++;
+				}
+      		}
+       		$conexion->close();
+    	}
+    	catch(Exception $e)
+    	{
+        	throw new $e("Error al listar pacientes");
+        }
+        return $this->datos;
 	}
 	
 }

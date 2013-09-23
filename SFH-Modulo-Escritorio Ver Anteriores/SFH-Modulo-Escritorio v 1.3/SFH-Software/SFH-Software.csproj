@@ -1,0 +1,210 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{36784777-40A2-4B21-A0B6-D48FBD42CC8C}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SFH_Software</RootNamespace>
+    <AssemblyName>SFH-Software</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>
+    </ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MdiTabControl">
+      <HintPath>Tabcontrol\MdiTabControl.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="NetClient">
+      <HintPath>..\NetClient\bin\Debug\NetClient.dll</HintPath>
+    </Reference>
+    <Reference Include="ObjectsBeans">
+      <HintPath>..\ObjectsBeans\bin\Debug\ObjectsBeans.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="frmAbonos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAbonos.Designer.cs">
+      <DependentUpon>frmAbonos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAdministracionDeInsumos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAdministracionDeInsumos.Designer.cs">
+      <DependentUpon>frmAdministracionDeInsumos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAdministracionDeReporteria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAdministracionDeReporteria.Designer.cs">
+      <DependentUpon>frmAdministracionDeReporteria.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAdministracionListasDePrecios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAdministracionListasDePrecios.Designer.cs">
+      <DependentUpon>frmAdministracionListasDePrecios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAdministracionOrdenLab.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAdministracionOrdenLab.Designer.cs">
+      <DependentUpon>frmAdministracionOrdenLab.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAdministracionPresupuesto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAdministracionPresupuesto.Designer.cs">
+      <DependentUpon>frmAdministracionPresupuesto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAdministracionTratamiento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAdministracionTratamiento.Designer.cs">
+      <DependentUpon>frmAdministracionTratamiento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAdministracionUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAdministracionUsuarios.Designer.cs">
+      <DependentUpon>frmAdministracionUsuarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAcerca.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAcerca.Designer.cs">
+      <DependentUpon>frmAcerca.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAdministracionFichas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAdministracionFichas.Designer.cs">
+      <DependentUpon>frmAdministracionFichas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMenu.Designer.cs">
+      <DependentUpon>frmMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmAbonos.resx">
+      <DependentUpon>frmAbonos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAcerca.resx">
+      <DependentUpon>frmAcerca.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAdministracionDeInsumos.resx">
+      <DependentUpon>frmAdministracionDeInsumos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAdministracionDeReporteria.resx">
+      <DependentUpon>frmAdministracionDeReporteria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAdministracionFichas.resx">
+      <DependentUpon>frmAdministracionFichas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAdministracionListasDePrecios.resx">
+      <DependentUpon>frmAdministracionListasDePrecios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAdministracionOrdenLab.resx">
+      <DependentUpon>frmAdministracionOrdenLab.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAdministracionPresupuesto.resx">
+      <DependentUpon>frmAdministracionPresupuesto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAdministracionTratamiento.resx">
+      <DependentUpon>frmAdministracionTratamiento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAdministracionUsuarios.resx">
+      <DependentUpon>frmAdministracionUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMenu.resx">
+      <DependentUpon>frmMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\DataSources\ObjectsBeans.Ordendelaboratorio.datasource" />
+    <None Include="Properties\DataSources\ObjectsBeans.Persona.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="imagenes\ico_diente.jpg" />
+    <Content Include="imagenes\logo.png" />
+    <Content Include="imagenes\logo.png.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

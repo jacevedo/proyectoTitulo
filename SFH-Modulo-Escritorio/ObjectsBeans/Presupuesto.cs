@@ -9,6 +9,7 @@ namespace ObjectsBeans
     {
         #region Campos
         private int idPresupuesto;
+        private int idPaciente;
         private int valorTotal;
         private int idFicha;
         private DateTime fechaPresupuesto;
@@ -24,6 +25,12 @@ namespace ObjectsBeans
         {
             get { return idPresupuesto; }
             set { idPresupuesto = value; }
+        }
+
+        public int IdPaciente
+        {
+            get { return idPaciente; }
+            set { idPaciente = value; }
         }
 
         public int ValorTotal
