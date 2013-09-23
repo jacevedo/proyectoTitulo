@@ -16,17 +16,19 @@ namespace SFH_Software
         List<Tratamientodental> listaTratamiento = new List<Tratamientodental>();
         ClientWsTratamientoAbono clienteTratamiento =  new ClientWsTratamientoAbono();
         int idFicha = 3;
+        frmMenu menu;
         public frmAdministracionTratamiento(int idFicha)
         {
             InitializeComponent();
             this.idFicha = idFicha;
             this.Load+=frmAdministracionTratamiento_Load;
         }
-        public frmAdministracionTratamiento()
+        public frmAdministracionTratamiento(frmMenu menu)
         {
             InitializeComponent();
             
             this.Load += frmAdministracionTratamiento_Load;
+            this.menu = menu;
         }
 
         private void frmAdministracionTratamiento_Load(object sender, EventArgs e)
@@ -108,8 +110,9 @@ namespace SFH_Software
             if (e.ColumnIndex == 8)
             {
                 Tratamientodental tratamiento = GridTratamiento.Rows[e.RowIndex].DataBoundItem as Tratamientodental;
-                frmAbonos abono = new frmAbonos(tratamiento.IdTratamientoDental);
-                abono.ShowDialog();
+                //frmAbonos abono = new frmAbonos(tratamiento.IdTratamientoDental);
+                //abono.ShowDialog();
+                menu.MostrarForm("Administración de abonos monetarios", new frmAbonos(tratamiento.IdTratamientoDental));
             }
         }
 

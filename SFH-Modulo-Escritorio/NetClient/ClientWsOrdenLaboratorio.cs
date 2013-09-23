@@ -11,7 +11,7 @@ namespace NetClient
     {
         #region Campos
         CoreNetClient netclient = new CoreNetClient();
-        string ipServer = "192.168.0.21";
+        string ipServer = "192.168.1.216";
         #endregion
 
         public List<Ordendelaboratorio> ListarOrdenLaboratorio()

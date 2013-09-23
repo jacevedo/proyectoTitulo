@@ -33,7 +33,7 @@ namespace NetClient
     {
         #region Campos
         CoreNetClient netclient = new CoreNetClient();
-        private static String ipServer = "http://192.168.0.21/";
+        private static String ipServer = "http://192.168.1.216/";
         private string jsonParam;
         #endregion
 
@@ -55,13 +55,15 @@ namespace NetClient
                 foreach (var item in token)
                 {
                     Fichadental ficha = new Fichadental();
-                    //"idFicha":1,"idPaciente":"Ada Tatus","idOdontologo":" ","fechaIngreso":"1991-12-12","anamnesis":"Penisilina","habilitada":0},
+                    //{"idFicha":1,"idPaciente":1,"idOdontologo":3,"fechaIngreso":"1991-12-12","anamnesis":"Penisilina","habilitada":"desabilitado","nomPaciente":"Ada Tatus","nomOdontologo":"Camila Carrizo"}
                     ficha.IdFicha = Convert.ToInt32(item.SelectToken("idFicha").ToString());
-                    ficha.NombrePaciente = item.SelectToken("idPaciente").ToString();
-                    ficha.NombreOdontologo = item.SelectToken("idOdontologo").ToString();
+                    ficha.IdPaciente = Convert.ToInt32(item.SelectToken("idPaciente").ToString());
+                    ficha.IdOdontologo = Convert.ToInt32(item.SelectToken("idOdontologo").ToString());
                     ficha.FechaIngreso = Convert.ToDateTime(item.SelectToken("fechaIngreso").ToString());
                     ficha.Anamnesis = item.SelectToken("anamnesis").ToString();
-                    ficha.Habilitada = 0;
+                    ficha.Habilitada = item.SelectToken("habilitada").ToString();
+                    ficha.NombrePaciente = item.SelectToken("nomPaciente").ToString();
+                    ficha.NombreOdontologo = item.SelectToken("nomOdontologo").ToString();
                     list.Add(ficha);
                 }
 
@@ -86,13 +88,15 @@ namespace NetClient
                 foreach (var item in token)
                 {
                     Fichadental ficha = new Fichadental();
-                    //"idFicha":1,"idPaciente":"Ada Tatus","idOdontologo":" ","fechaIngreso":"1991-12-12","anamnesis":"Penisilina","habilitada":0},
+                    //{"idFicha":1,"idPaciente":1,"idOdontologo":3,"fechaIngreso":"1991-12-12","anamnesis":"Penisilina","habilitada":"desabilitado","nomPaciente":"Ada Tatus","nomOdontologo":"Camila Carrizo"}
                     ficha.IdFicha = Convert.ToInt32(item.SelectToken("idFicha").ToString());
-                    ficha.NombrePaciente = item.SelectToken("idPaciente").ToString();
-                    ficha.NombreOdontologo = item.SelectToken("idOdontologo").ToString();
+                    ficha.IdPaciente = Convert.ToInt32(item.SelectToken("idPaciente").ToString());
+                    ficha.IdOdontologo = Convert.ToInt32(item.SelectToken("idOdontologo").ToString());
                     ficha.FechaIngreso = Convert.ToDateTime(item.SelectToken("fechaIngreso").ToString());
                     ficha.Anamnesis = item.SelectToken("anamnesis").ToString();
-                    ficha.Habilitada = Convert.ToInt32(item.SelectToken("habilitada").ToString());
+                    ficha.Habilitada = item.SelectToken("habilitada").ToString();
+                    ficha.NombrePaciente = item.SelectToken("nomPaciente").ToString();
+                    ficha.NombreOdontologo = item.SelectToken("nomOdontologo").ToString();
                     list.Add(ficha);
                 }
 
@@ -117,13 +121,15 @@ namespace NetClient
                 foreach (var item in token)
                 {
                     Fichadental ficha = new Fichadental();
-                    //{"code":4,"FichaIdPersona":[{"idFicha":4,"idPaciente":4,"idOdontologo":4,"fechaIngreso":"2013-08-12","anamnesis":"Diabetes","habilitada":0}]}
+                    //{"idFicha":1,"idPaciente":1,"idOdontologo":3,"fechaIngreso":"1991-12-12","anamnesis":"Penisilina","habilitada":"desabilitado","nomPaciente":"Ada Tatus","nomOdontologo":"Camila Carrizo"}
                     ficha.IdFicha = Convert.ToInt32(item.SelectToken("idFicha").ToString());
-                    ficha.NombrePaciente = item.SelectToken("idPaciente").ToString();
-                    ficha.NombreOdontologo = item.SelectToken("idOdontologo").ToString();
+                    ficha.IdPaciente = Convert.ToInt32(item.SelectToken("idPaciente").ToString());
+                    ficha.IdOdontologo = Convert.ToInt32(item.SelectToken("idOdontologo").ToString());
                     ficha.FechaIngreso = Convert.ToDateTime(item.SelectToken("fechaIngreso").ToString());
                     ficha.Anamnesis = item.SelectToken("anamnesis").ToString();
-                    ficha.Habilitada = Convert.ToInt32(item.SelectToken("habilitada").ToString());
+                    ficha.Habilitada = item.SelectToken("habilitada").ToString();
+                    ficha.NombrePaciente = item.SelectToken("nomPaciente").ToString();
+                    ficha.NombreOdontologo = item.SelectToken("nomOdontologo").ToString();
                     list.Add(ficha);
                 }
 
@@ -146,7 +152,7 @@ namespace NetClient
                 String result = netclient.NetPost(ipServer + "proyectoTitulo/sfhwebservice/webService/ws-ficha-presupuesto.php", this.JsonParam);
                 var jobject = JObject.Parse(result);
                 //{"code":1,"idFichaInsertada":8}
-                fichaInsertada = jobject.SelectToken("idTratamientoInsertada").ToString();
+                fichaInsertada = jobject.SelectToken("idFichaInsertada").ToString();
             }
             catch (Exception e)
             {
@@ -173,6 +179,25 @@ namespace NetClient
             }
             return fichaModificada;
         }
+        public string CambiarEstadoFicha(Fichadental ficha) {
+            string fichaModificada = string.Empty;
+            //{"indice":6,"idFicha":3,"habilitada":1}
+            this.JsonParam = "send={\"indice\":6,\"idFicha\":" + ficha.IdFicha + ",\"habilitada\":" + ficha.EstadoPaciente + "}";
+            try
+            {
+                String result = netclient.NetPost(ipServer + "proyectoTitulo/sfhwebservice/webService/ws-ficha-presupuesto.php", this.JsonParam);
+                var jobject = JObject.Parse(result);
+               //{"code":6,"resultado":"Modificado"}
+                fichaModificada = jobject.SelectToken("resultado").ToString();
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e + "| Error al Listar Fichas");
+            }
+            return fichaModificada;
+        }
+
+        
         public List<Presupuesto> listadoPresupuestoPorPaciente(int idPaciente)
         {
             List<Presupuesto> listaPresupuesto = new List<Presupuesto>();

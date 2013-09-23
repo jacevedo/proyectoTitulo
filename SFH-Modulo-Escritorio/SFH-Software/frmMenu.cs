@@ -16,7 +16,6 @@ namespace SFH_Software
         #region Campos
         private static int i;
         string[] pantallas = new string[100];
-        frmAdministracionFichas admin = new frmAdministracionFichas();
         frmAcerca acer = new frmAcerca();
         #endregion
 
@@ -24,7 +23,7 @@ namespace SFH_Software
         #endregion
 
         #region Metodos
-        private void MostrarForm(string nombre, Form frm)
+        public void MostrarForm(string nombre, Form frm)
         {
             //Muetra pantalla si esta repetida
           
@@ -100,7 +99,7 @@ namespace SFH_Software
             {
 
                 case "Administración de ficha dental":
-                    frmAdministracionFichas fich = new frmAdministracionFichas();
+                    frmAdministracionFichas fich = new frmAdministracionFichas(this);
                     this.MostrarForm(e.Node.Text.ToString(),fich);
                     break;
                 case "Administración de presupuesto dental":
@@ -112,7 +111,7 @@ namespace SFH_Software
                     this.MostrarForm(e.Node.Text.ToString(), orden);
                     break;
                 case "Administración de tratamiento dental":
-                    frmAdministracionTratamiento trata = new frmAdministracionTratamiento();
+                    frmAdministracionTratamiento trata = new frmAdministracionTratamiento(this);
                     this.MostrarForm(e.Node.Text.ToString(), trata);
                     break;
                 case "Administración de insumos":
@@ -153,7 +152,7 @@ namespace SFH_Software
         private void administraciónDeFichaDentalToolStripMenuItem_Click(object sender, EventArgs e)
         {
                
-                   frmAdministracionFichas fich = new frmAdministracionFichas();
+                   frmAdministracionFichas fich = new frmAdministracionFichas(this);
                    this.MostrarForm("Administración de ficha dental", fich);
                 
         }
@@ -177,7 +176,7 @@ namespace SFH_Software
         private void administraciónDeTratamientoDentalToolStripMenuItem_Click(object sender, EventArgs e)
         {
             
-                    frmAdministracionTratamiento trata = new frmAdministracionTratamiento();
+                    frmAdministracionTratamiento trata = new frmAdministracionTratamiento(this);
                     this.MostrarForm( "Administración de tratamiento dental", trata);
                     
         }

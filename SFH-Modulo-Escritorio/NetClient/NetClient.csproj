@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClientWsAdminUsuario.cs" />
     <Compile Include="ClientWsFichaPresupuesto.cs" />
     <Compile Include="ClientWsOrdenLaboratorio.cs" />
     <Compile Include="ClientWsTratamientoAbono.cs" />

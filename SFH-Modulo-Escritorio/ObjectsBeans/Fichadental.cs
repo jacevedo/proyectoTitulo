@@ -13,7 +13,8 @@ namespace ObjectsBeans
         private int idOdontologo;
         private DateTime fechaIngreso;
         private string anamnesis;
-        private int habilitada;
+        private string habilitada;
+        private int estadoPaciente;
         private string nombrePaciente;
         private string nombreOdontologo;
  
@@ -55,7 +56,7 @@ namespace ObjectsBeans
             set { anamnesis = value; }
         }
 
-        public int Habilitada
+        public string Habilitada
         {
             get { return habilitada; }
             set { habilitada = value; }
@@ -72,7 +73,12 @@ namespace ObjectsBeans
             get { return nombreOdontologo; }
             set { nombreOdontologo = value; }
         }
-       
+
+        public int EstadoPaciente
+        {
+            get { return estadoPaciente; }
+            set { estadoPaciente = value; }
+        }
         #endregion
     }
 }
