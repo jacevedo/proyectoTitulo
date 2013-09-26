@@ -71,5 +71,16 @@ switch ($opcion)
 		$arreglo["Eliminado"] = $controladoraLstPrecios->eliminarPrecio($idPrecio);
 		echo(json_encode($arreglo));
 	break;
-
+	case 6:
+	break;
+	case 7:
+	break;
+	case 8:
+	break;
+	case 9:
+	break;
+	case 10:
+	break;
+	case 11:
+	break;
 }

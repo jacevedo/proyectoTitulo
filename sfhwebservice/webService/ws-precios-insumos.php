@@ -12,6 +12,12 @@ require_once '../controladoras/controladoralistapreciosdentales.php';
 * 3.- Listar precios
 * 4.- Listar Precios Por Nombre
 * 5.- Eliminar Precios
+* 6.- Insertar Insumo 
+* 7.- Modificar Insumo
+* 8.- Listar Insumos 
+* 9.- Listar Insumos Por Area
+* 10.- Listar Insumos Por Gastos
+* 11.- Listar Insumos Por Nombre
 */
 $jsonRecibido = $_REQUEST["send"];
 $data = json_decode($jsonRecibido);
@@ -64,6 +70,10 @@ switch ($opcion)
 		$arreglo["code"]=5;
 		$arreglo["Eliminado"] = $controladoraLstPrecios->eliminarPrecio($idPrecio);
 		echo(json_encode($arreglo));
+	break;
+	case 6:
+		//jsom Insertar Insumo {"indice":6,
+}
 	break;
 
 }
