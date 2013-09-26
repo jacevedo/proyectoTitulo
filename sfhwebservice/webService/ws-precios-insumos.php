@@ -12,12 +12,6 @@ require_once '../controladoras/controladoralistapreciosdentales.php';
 * 3.- Listar precios
 * 4.- Listar Precios Por Nombre
 * 5.- Eliminar Precios
-* 6.- insertar Insumo
-* 7.- modificar Insumo
-* 8.- Listar Insumos
-* 9.- Listar Por Area
-* 10.- Listar por gasto
-* 11.- Listar por Nombre
 */
 $jsonRecibido = $_REQUEST["send"];
 $data = json_decode($jsonRecibido);
