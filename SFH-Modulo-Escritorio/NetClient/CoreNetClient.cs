@@ -10,8 +10,9 @@ namespace NetClient
 {
     public class CoreNetClient
     {
-        public String NetPost(String url,String paramdata) {
+        public String NetPost(String nom_page,String paramdata) {
             String request_post = string.Empty;
+            String url = "http://192.168.191.136/sfhwebservice/webService/" + nom_page;
             try {
                 
                 WebRequest request = WebRequest.Create(url);

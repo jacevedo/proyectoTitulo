@@ -14,7 +14,6 @@ namespace NetClient
     {
         #region Campos
         CoreNetClient netclient = new CoreNetClient();
-        private static String ipServer = "http://192.168.137.111/";
         private string jsonParam;
         #endregion
 
@@ -36,7 +35,7 @@ namespace NetClient
             try
             {
                 this.JsonParam = "send={\"indice\":9}";
-                String result = netclient.NetPost(ipServer + "proyectoTitulo/sfhwebservice/webService/ws-admin-usuario-sig.php", this.JsonParam);
+                String result = netclient.NetPost("ws-admin-usuario-sig.php", this.JsonParam);
                 var jobject = JObject.Parse(result);
                 var token = jobject.SelectToken("listaPersonas").ToList();
                 foreach (var item in token)
@@ -64,7 +63,7 @@ namespace NetClient
             try
             {
                 this.JsonParam = "send={\"indice\":10}";
-                String result = netclient.NetPost(ipServer + "proyectoTitulo/sfhwebservice/webService/ws-admin-usuario-sig.php", this.JsonParam);
+                String result = netclient.NetPost("ws-admin-usuario-sig.php", this.JsonParam);
                 var jobject = JObject.Parse(result);
                 var token = jobject.SelectToken("listaPersonas").ToList();
                 foreach (var item in token)

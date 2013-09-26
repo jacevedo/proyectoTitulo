@@ -23,7 +23,6 @@ namespace NetClient
     {
         #region Campos
         CoreNetClient netclient = new CoreNetClient();
-        string ipServer = "192.168.137.111";
         #endregion
         
         public List<Tratamientodental> ListarTratamientoIdFicha(int idFicha)
@@ -32,7 +31,7 @@ namespace NetClient
 
             try
             {
-                String result = netclient.NetPost("http://"+ipServer+"/proyectoTitulo/sfhwebservice/webService/ws-tratamiento-abono.php", "send={\"indice\":10,\"idFicha\":"+idFicha+"}");
+                String result = netclient.NetPost("ws-tratamiento-abono.php", "send={\"indice\":10,\"idFicha\":"+idFicha+"}");
                 var jobject = JObject.Parse(result);
                 var token = jobject.SelectToken("listadoTratamiento").ToList();
                 foreach (var item in token)
@@ -72,7 +71,7 @@ namespace NetClient
             string jsonAEnviar = "send={\"indice\":1,\"idFicha\":\"" + tratamiento.IdFicha + "\", \"fechaCreacion\":\""+fechaCreacionEnviar+"\",\"tratamiento\":\""+tratamiento.Tratamiento+"\",\"fechaSeguimiento\":\""+fechaCreacionSeguimiento+"\",\"valorTotal\":"+tratamiento.ValorTotal+"}";
             try
             {
-                String result = netclient.NetPost("http://" + ipServer + "/proyectoTitulo/sfhwebservice/webService/ws-tratamiento-abono.php", jsonAEnviar);
+                String result = netclient.NetPost("ws-tratamiento-abono.php", jsonAEnviar);
                 var jobject = JObject.Parse(result);
                 //{"code":1,"idTratamientoInsertada":10}
                 return Convert.ToInt32(jobject.SelectToken("idTratamientoInsertada").ToString());
@@ -90,7 +89,7 @@ namespace NetClient
             string jsonAEnviar = "send={\"indice\":2,\"idTratamientoDental\":" + tratamiento.IdTratamientoDental + ",\"idFicha\":" + tratamiento.IdFicha + ",\"fechaCreacion\":\"" + fechaCreacionEnviar + "\",\"tratamiento\":\"" + tratamiento.Tratamiento + "\",\"fechaSeguimiento\":\"" + fechaCreacionSeguimiento + "\",\"valorTotal\":" + tratamiento.ValorTotal + "}";
             try
             {
-                String result = netclient.NetPost("http://"+ipServer+"/proyectoTitulo/sfhwebservice/webService/ws-tratamiento-abono.php", jsonAEnviar);
+                String result = netclient.NetPost("ws-tratamiento-abono.php", jsonAEnviar);
                 var jobject = JObject.Parse(result);
                 //{"code":1,"idTratamientoInsertada":10}
                 return jobject.SelectToken("Resultado").ToString();
@@ -107,7 +106,7 @@ namespace NetClient
             string jsonAEnviar = "send={\"indice\":8,\"idTratamiento\":"+idTratamiento+"}";
             try
             {
-                String result = netclient.NetPost("http://"+ipServer+"/proyectoTitulo/sfhwebservice/webService/ws-tratamiento-abono.php",jsonAEnviar);
+                String result = netclient.NetPost("ws-tratamiento-abono.php",jsonAEnviar);
                 var jobject = JObject.Parse(result);
                 var token = jobject.SelectToken("listaAbono").ToList();
                 foreach (var item in token)
@@ -136,7 +135,7 @@ namespace NetClient
             try
             {
                 
-                String result = netclient.NetPost("http://"+ipServer+"/proyectoTitulo/sfhwebservice/webService/ws-tratamiento-abono.php", jsonAEnviar);
+                String result = netclient.NetPost("ws-tratamiento-abono.php", jsonAEnviar);
                 var jobject = JObject.Parse(result);
                 //{"code":1,"idTratamientoInsertada":10}
                 return Convert.ToInt32(jobject.SelectToken("idAbonoInsertado").ToString());
@@ -153,7 +152,7 @@ namespace NetClient
             string jsonAEnviar = "send={\"indice\":6,\"idAbono\":" + abono.IdAbono + ",\"idTratamientoDental\":" + abono.IdTratamientoDental + ",\"fechaAbono\":\"" + fechaAEnviar + "\",\"monto\":" + abono.Monto + "}";
             try
             {
-                String result = netclient.NetPost("http://"+ipServer+"/proyectoTitulo/sfhwebservice/webService/ws-tratamiento-abono.php", jsonAEnviar);
+                String result = netclient.NetPost("ws-tratamiento-abono.php", jsonAEnviar);
                 var jobject = JObject.Parse(result);
                 //{"code":1,"idTratamientoInsertada":10}
                 return jobject.SelectToken("Resultado").ToString();
@@ -169,7 +168,7 @@ namespace NetClient
             string jsonAEnviar = "send={\"indice\":11,\"idAbono\":"+abono.IdAbono+"}";
             try
             {
-                String result = netclient.NetPost("http://" + ipServer + "/proyectoTitulo/sfhwebservice/webService/ws-tratamiento-abono.php", jsonAEnviar);
+                String result = netclient.NetPost("ws-tratamiento-abono.php", jsonAEnviar);
                 var jobject = JObject.Parse(result);
                 //{"code":11,"eliminado":"eliminado"}
                 return jobject.SelectToken("eliminado").ToString();

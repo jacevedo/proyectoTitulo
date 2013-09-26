@@ -11,7 +11,6 @@ namespace NetClient
     {
         #region Campos
         CoreNetClient netclient = new CoreNetClient();
-        string ipServer = "192.168.137.111";
         #endregion
 
         public List<Ordendelaboratorio> ListarOrdenLaboratorio()
@@ -19,7 +18,7 @@ namespace NetClient
             List<Ordendelaboratorio> list = new List<Ordendelaboratorio>();
             try
             {
-                String result = netclient.NetPost("http://" + ipServer + "/proyectoTitulo/sfhwebservice/webService/ws-admin-orden.php", "send={\"indice\":4}");
+                String result = netclient.NetPost("ws-admin-orden.php", "send={\"indice\":4}");
                 var jobject = JObject.Parse(result);
                 var token = jobject.SelectToken("ListadoOrden").ToList();
                 foreach (var item in token)
@@ -63,12 +62,13 @@ namespace NetClient
             string jsonAEnviar = "send={\"indice\":1,\"idOdontologo\":" + orden.IdOdontologo + ",\"idPaciente\":" + orden.IdPaciente + ",\"numOrden\":" + orden.NumeroOrden + ",\"clinica\":\"" + orden.Clinica + "\",\"bd\":\"" + orden.Bd + "\",\"bi\":\"" + orden.Bi + "\",\"pd\":\"" + orden.Pd + "\",\"pi\":\"" + orden.Pi + "\",\"fechaCreacion\":\"" + fechaCreacionEnviar + "\",\"fechaEntrega\":\"" + fechaRecepcionEnviar + "\",\"horaEntrega\":\"" + orden.HoraEntrega + "\",\"color\":\"" + orden.Color + "\",\"estado\":\"" + orden.Estadodeorden + "\"}";
             try
             {
-                String result = netclient.NetPost("http://" + ipServer + "/proyectoTitulo/sfhwebservice/webService/ws-admin-orden.php", jsonAEnviar);
+                String result = netclient.NetPost("ws-admin-orden.php", jsonAEnviar);
                 var jobject = JObject.Parse(result);
                 return jobject.SelectToken("idOrdenInsertada").ToString();
             }
             catch(Exception e)
             {
+
             }
 
             return "";
@@ -84,7 +84,7 @@ namespace NetClient
             //string jsonAEnviar = "{\"indice\":4}";
             try
             {
-                String result = netclient.NetPost("http://" + ipServer + "/proyectoTitulo/sfhwebservice/webService/ws-admin-orden.php", jsonAEnviar);
+                String result = netclient.NetPost("ws-admin-orden.php", jsonAEnviar);
                 var jobject = JObject.Parse(result);
                 return jobject.SelectToken("resultado").ToString();
             }
@@ -98,7 +98,7 @@ namespace NetClient
             List<Persona>listaPersona = new List<Persona>();
             try
             {
-                String result = netclient.NetPost("http://" + ipServer + "/proyectoTitulo/sfhwebservice/webService/ws-admin-usuario-sig.php", "send={\"indice\":9}");
+                String result = netclient.NetPost("ws-admin-usuario-sig.php", "send={\"indice\":9}");
                 var jobject = JObject.Parse(result);
                 var token = jobject.SelectToken("listaPersonas").ToList();
                 foreach (var item in token)
@@ -120,7 +120,7 @@ namespace NetClient
             List<Persona> listaPersona = new List<Persona>();
             try
             {
-                String result = netclient.NetPost("http://" + ipServer + "/proyectoTitulo/sfhwebservice/webService/ws-admin-usuario-sig.php", "send={\"indice\":10}");
+                String result = netclient.NetPost("ws-admin-usuario-sig.php", "send={\"indice\":10}");
                 var jobject = JObject.Parse(result);
                 var token = jobject.SelectToken("listaPersonas").ToList();
                 foreach (var item in token)
