@@ -2,6 +2,7 @@
 require_once '../bdmysql/MySqlCon.php'; 
 require_once '../pojos/listaprecios.php';
 require_once '../pojos/insumos.php';
+require_once '../pojos/areainsumo.php';
 
 class ControladoraListaPreciosDentales
 {
@@ -272,7 +273,7 @@ class ControladoraListaPreciosDentales
 			$this->SqlQuery = "DELETE FROM insumos WHERE ID_INSUMO = ?";
 			$sentencia = $conexion->prepare($this->SqlQuery);
 			$sentencia->bind_param("i",$id);
-			if($sentencia->execute())
+			if($sentencia->affected_rows)
 	      	{
 	        	$conexion->close();
 				return "Eliminado";
@@ -414,6 +415,129 @@ class ControladoraListaPreciosDentales
     	catch(Exception $e)
     	{
         	throw new $e("Error al listar insumos");
+        }
+        return $this->datos;
+	}
+	function insertarAreaInsumo(AreaInsumo $area)
+	{
+		$conexion = new MySqlCon();
+		$this->datos = '';
+
+		$nombreArea = $area->nombreArea;
+		$descripcionArea = $area->descripcionArea;
+
+		try
+		{
+			$this->SqlQuery = '';
+			$this->SqlQuery = "INSERT INTO areainsumo(ID_AREA_INSUMO, NOMBRE_AREA, ".
+				"DESCRIPCION_AREA) VALUES(null, ?, ?)";
+			$sentencia = $conexion->prepare($this->SqlQuery);
+			$sentencia->bind_param("ss",$nombreArea, $descripcionArea);
+			if($sentencia->execute())
+			{
+				$conexion->close();
+				return $sentencia->insert_id;
+			}
+			else
+			{
+				$conexion->close();
+				return false;
+			}
+		}
+		catch(Exception $e)
+		{
+			return false;
+			throw new  $e("Error al ingresar el área de insumo.");
+		}
+	}
+	function modificarAreaInsumo(AreaInsumo $area)
+	{
+		$conexion = new MySqlCon();
+		$this->datos = '';
+
+		$idAreaInsumo = $area->idAreaInsumo;
+		$nombreArea = $area->nombreArea;
+		$descripcionArea = $area->descripcionArea;
+
+		try
+		{
+			$this->SqlQuery = '';
+			$this->SqlQuery = "UPDATE areainsumo SET NOMBRE_AREA = ?, DESCRIPCION_AREA = ? ".
+			"WHERE ID_AREA_INSUMO = ?";
+			$sentencia = $conexion->prepare($this->SqlQuery);
+			$sentencia->bind_param("ssi",$nombreArea, $descripcionArea, $idAreaInsumo);
+			if($sentencia->execute())
+	      	{
+	        	$conexion->close();
+				return "Modificado";
+			}
+			else
+			{
+				$conexion->close();
+	        	return "Error";
+	        }
+		}
+		catch(Exception $e)
+		{
+			return false;
+			throw new  $e("Error al modificar el área de insumo.");
+		}
+	}
+	function eliminarAreaInsumo($id)
+	{
+		$conexion = new MySqlCon();
+		$this->datos = '';
+
+		try
+		{
+			$this->SqlQuery = '';
+			$this->SqlQuery = "DELETE FROM areainsumo WHERE ID_AREA_INSUMO = ?";
+			$sentencia = $conexion->prepare($this->SqlQuery);
+			$sentencia->bind_param("i", $id);
+			if($sentencia->affected_rows)
+	      	{
+	        	$conexion->close();
+				return "Eliminado";
+			}
+			else
+			{
+				$conexion->close();
+	        	return "Error";
+	        }
+		}
+		catch(Exception $e)
+		{
+			return false;
+			throw new  $e("Error al eliminar el área de insumo.");
+		}
+	}
+	function listarAreaInsumos()
+	{
+		$conexion = new MySqlCon();
+		$this->datos = '';
+		try
+		{
+			$this->SqlQuery = '';
+			$this->SqlQuery = "SELECT ID_AREA_INSUMO, NOMBRE_AREA, DESCRIPCION_AREA FROM areainsumo";
+		   	$sentencia=$conexion->prepare($this->SqlQuery);
+        	if($sentencia->execute())
+        	{
+        		$sentencia->bind_result($idAreaInsumo, $nombreArea, $descripcionArea);				
+				$indice = 0;     
+
+				while($sentencia->fetch())
+				{
+					$areaInsumo = new AreaInsumo();
+					$areaInsumo->initClass($idAreaInsumo, $nombreArea, $descripcionArea);
+					$this->datos[$indice] = $areaInsumo;
+        			$indice++;
+				}
+      		}
+       		$conexion->close();
+    	}
+    	catch(Exception $e)
+    	{
+        	throw new $e("Error al listar área insumos");
         }
         return $this->datos;
 	}
