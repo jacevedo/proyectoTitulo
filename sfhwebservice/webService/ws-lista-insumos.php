@@ -11,6 +11,7 @@ require_once '../controladoras/controladoralistapreciosdentales.php';
 * 2.- Modificar Precio
 * 3.- Listar precios
 * 4.- Listar Precios Por Nombre
+* 5.- Eliminar Precios
 */
 $jsonRecibido = $_REQUEST["send"];
 $data = json_decode($jsonRecibido);
@@ -46,6 +47,22 @@ switch ($opcion)
 		$controladoraLstPrecios = new ControladoraListaPreciosDentales();
 		$arreglo["code"]=3;
 		$arreglo["listaPrecios"] = $controladoraLstPrecios->listarPrecios();
+		echo(json_encode($arreglo));
+	break;
+	case 4:
+		//json Listar Precios Nombre {"indice":4,"nombre":"Urgencia"}
+		$nombre = $data->{"nombre"};
+		$controladoraLstPrecios = new ControladoraListaPreciosDentales();
+		$arreglo["code"]=4;
+		$arreglo["listaPrecios"]=$controladoraLstPrecios->listarPreciosNombre($nombre);
+		echo(json_encode($arreglo));
+	break;
+	case 5:
+		//json Listar Precios {"indice":5,idPrecio":100}
+		$idPrecio = $data->{"idPrecio"};
+		$controladoraLstPrecios = new ControladoraListaPreciosDentales();
+		$arreglo["code"]=5;
+		$arreglo["Eliminado"] = $controladoraLstPrecios->eliminarPrecio($idPrecio);
 		echo(json_encode($arreglo));
 	break;
 
