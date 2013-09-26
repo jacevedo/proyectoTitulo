@@ -57,7 +57,7 @@ class ControladoraListaPreciosDentales
 		{
 			$this->SqlQuery = '';
 			$this->SqlQuery = "SELECT ID_PRECIOS, COMENTARIO, VALOR_NETO ".
-								"FROM LISTAPRECIOS";
+								"FROM listaprecios";
 
 		   	$sentencia=$conexion->prepare($this->SqlQuery);
 
@@ -95,7 +95,7 @@ class ControladoraListaPreciosDentales
 		try 
 	   	{ 	 
 	        $this->SqlQuery='';
-	        $this->SqlQuery="UPDATE LISTAPRECIOS SET COMENTARIO = ?, VALOR_NETO = ?".
+	        $this->SqlQuery="UPDATE listaprecios SET COMENTARIO = ?, VALOR_NETO = ?".
 	        				" WHERE ID_PRECIOS = ?";
 	        $sentencia=$conexion->prepare($this->SqlQuery);
 	        $sentencia->bind_param("sii",$comentario,$valorNeto,$idPrecio);
@@ -137,7 +137,7 @@ class ControladoraListaPreciosDentales
 		try 
 	   	{ 	 
 	        $this->SqlQuery='';
-	        $this->SqlQuery="INSERT INTO LISTAPRECIOS (ID_PRECIOS,COMENTARIO, ".
+	        $this->SqlQuery="INSERT INTO listaprecios (ID_PRECIOS,COMENTARIO, ".
 	        				"VALOR_NETO) VALUES (null,  ?,  ?)";
 	        $sentencia=$conexion->prepare($this->SqlQuery);
 	        $sentencia->bind_param("si",$comentario,$valorNeto);
@@ -165,7 +165,7 @@ class ControladoraListaPreciosDentales
 		try 
 	   	{ 	 
 	        $this->SqlQuery='';
-	        $this->SqlQuery="DELETE FROM LISTAPRECIOS WHERE ID_PRECIOS = ?";
+	        $this->SqlQuery="DELETE FROM listaprecios WHERE ID_PRECIOS = ?";
 	        $sentencia=$conexion->prepare($this->SqlQuery);
 	        $sentencia->bind_param("i",$idPrecio);
 	      	if($sentencia->execute())
