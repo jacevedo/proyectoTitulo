@@ -81,7 +81,7 @@ require_once '../pojos/persona.php';
 		try 
 	   	{ 	 
 	        $this->SqlQuery='';
-	        $this->SqlQuery='UPDATE odontologo SET ODONTOLOGO_HABILITADO = ? WHERE ID_ODONTOLOGO = ?';
+	        $this->SqlQuery='UPDATE `odontologo` SET ODONTOLOGO_HABILITADO = ? WHERE ID_ODONTOLOGO = ?';
 	        $sentencia=$conexion->prepare($this->SqlQuery);
 	        $sentencia->bind_param('ii',$habilitado,$idOdontologo);
 	      	if($sentencia->execute())

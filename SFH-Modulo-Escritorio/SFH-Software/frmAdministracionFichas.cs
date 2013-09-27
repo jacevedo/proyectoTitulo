@@ -191,7 +191,8 @@ namespace SFH_Software
                     this.ModidificarFicha(e);
                     break;
                 case 2:
-                    menu.MostrarForm("Administración de presupuesto dental",  new frmAdministracionPresupuesto());
+                    Fichadental ficha = datagridFicha.Rows[e.RowIndex].DataBoundItem as Fichadental;
+                    menu.MostrarForm("Administración de presupuesto dental",  new frmAdministracionPresupuesto(ficha.IdFicha,ficha.NombrePaciente));
                     break;
                 case 3:
                     menu.MostrarForm("Administración de orden de laboratorio", new frmAdministracionOrdenLab());

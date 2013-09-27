@@ -13,38 +13,31 @@ namespace SFH_Software
 {
     public partial class frmAdministracionPresupuesto : Form
     {
+        #region campos
         ClientWsFichaPresupuesto clientePresupuesto = new ClientWsFichaPresupuesto();
         List<Presupuesto> listaPresupuestos = new List<Presupuesto>();
-        int idFicha=-1;
-        public frmAdministracionPresupuesto()
+        private int idFicha;
+        private string nombre;
+        #endregion
+
+        #region Propiedades
+        public string Nombre
         {
+            get { return nombre; }
+            set { nombre = value; }
+        }
+        public int IdFicha
+        {
+            get { return idFicha; }
+            set { idFicha = value; }
+        }
+        #endregion
+
+        public frmAdministracionPresupuesto(int idFicha, string nombre)
+        {
+            this.IdFicha = idFicha;
+            this.Nombre = nombre;
             InitializeComponent();
-            this.Load += frmAdministracionPresupuesto_Load;
-        }
-        public frmAdministracionPresupuesto(int idFicha)
-        {
-            InitializeComponent();
-            this.Load += frmAdministracionPresupuesto_Load;
-        }
-
-
-        void frmAdministracionPresupuesto_Load(object sender, EventArgs e)
-        {
-            if (idFicha != -1)
-            {
-                listaPresupuestos = clientePresupuesto.listadoPresupuestoPorPaciente(1);
-            }
-            else
-            {
-                listaPresupuestos = clientePresupuesto.listadoPresupuestoPorFicha(idFicha);
-            }
-            cmbPersona.DataSource = clientePresupuesto.listaPersonaFichaNombre();
-            grillaPresupuesto.DataSource = listaPresupuestos;
-        }
-
-        private void groupBox2_Enter(object sender, EventArgs e)
-        {
-
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -60,6 +53,7 @@ namespace SFH_Software
                     calendarioCreacion.SelectionEnd = presupuesto.FechaPresupuesto;
                     lblIdPresupuesto.Text = presupuesto.IdPresupuesto.ToString();
                     btnGuardar.Text = "Modificar";
+                    lblnom.Text = cmbPersona.SelectedText.ToString();
                 }
             }
         }
@@ -84,6 +78,9 @@ namespace SFH_Software
                     presupuesto.FechaPresupuesto = calendarioCreacion.SelectionStart;
                     presupuesto.IdPresupuesto = Convert.ToInt32(clientePresupuesto.insertarPresupuesto(presupuesto));
                     limpiarFormulario();
+                    listaPresupuestos = clientePresupuesto.listadoPresupuestoPorPaciente(presupuesto.IdFicha);
+                    grillaPresupuesto.DataSource = listaPresupuestos;
+                    lblnom.Text = cmbPersona.SelectedText.ToString();
                 }
                 catch (Exception ex)
                 {
@@ -113,6 +110,7 @@ namespace SFH_Software
 
                     }
                     limpiarFormulario();
+                    lblnom.Text = cmbPersona.SelectedText.ToString();
                 }
                 else
                 {
@@ -125,10 +123,34 @@ namespace SFH_Software
 
         private void limpiarFormulario()
         {
-            txtValorTotal.Text = "";
+            txtValorTotal.Text = string.Empty;
             calendarioCreacion.SelectionStart = DateTime.Today;
             calendarioCreacion.SelectionEnd = DateTime.Today;
         }
+
+        private void frmAdministracionPresupuesto_Load_1(object sender, EventArgs e)
+        {
+            cmbPersona.DataSource = clientePresupuesto.listaPersonaFichaNombre();
+            if (idFicha == 1)
+            {
+              
+                listaPresupuestos = clientePresupuesto.listadoPresupuestoPorFicha(Convert.ToInt32(cmbPersona.SelectedValue));
+                lblnom.Text = this.cmbPersona.SelectedText.ToString();
+               
+            }
+            else
+            {
+                listaPresupuestos = null;
+                listaPresupuestos = clientePresupuesto.listadoPresupuestoPorFicha(this.idFicha);
+                grillaPresupuesto.DataSource = null;
+                lblnom.Text = this.Nombre;
+            }
+
+            grillaPresupuesto.DataSource = listaPresupuestos;
+        }
+
+       
+
 
        
     }

@@ -115,9 +115,7 @@ class ControladoraFuncionario
 		{
 			$this->SqlQuery = '';
 			$this->SqlQuery = "SELECT fu.ID_FUNCIONARIO, fu.ID_PERSONA, pe.ID_PERFIL, fu.PUESTO_DE_TRABAJO, fu.FUNCIONARIO_HABILITADO, pe.RUT, pe.DV, pe.NOMBRE, pe.APELLIDO_PATERNO, pe.APELLIDO_MATERNO, pe.FECHA_NAC
-FROM funcionario fu, persona pe
-WHERE fu.ID_PERSONA = pe.ID_PERSONA
-AND pe.RUT= ?";
+                         FROM funcionario fu, persona pe WHERE fu.ID_PERSONA = pe.ID_PERSONA AND pe.RUT= ?";                
 		   	$sentencia=$conexion->prepare($this->SqlQuery);
 		   	 $sentencia->bind_param('i',$rut);
         	if($sentencia->execute())

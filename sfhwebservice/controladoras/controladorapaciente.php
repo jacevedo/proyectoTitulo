@@ -111,9 +111,7 @@ class ControladoraPaciente
 		{
 			$this->SqlQuery = '';
 			$this->SqlQuery = "SELECT pa.ID_PACIENTE, pa.ID_PERSONA, pe.ID_PERFIL, pa.FECHA_INGRESO, pa.HABILITADO_PACIENTE, pe.RUT, pe.DV, pe.NOMBRE, pe.APELLIDO_PATERNO, pe.APELLIDO_MATERNO, pe.FECHA_NAC
-FROM paciente pa, persona pe
-WHERE pa.ID_PERSONA = pe.ID_PERSONA
-AND pe.RUT= ?";
+                         FROM paciente pa, persona pe WHERE pa.ID_PERSONA = pe.ID_PERSONA AND pe.RUT= ?";
 		   	$sentencia=$conexion->prepare($this->SqlQuery);
 		   	 $sentencia->bind_param('i',$rut);
         	if($sentencia->execute())

@@ -103,7 +103,7 @@ namespace SFH_Software
                     this.MostrarForm(e.Node.Text.ToString(),fich);
                     break;
                 case "Administración de presupuesto dental":
-                    frmAdministracionPresupuesto presu = new frmAdministracionPresupuesto();
+                    frmAdministracionPresupuesto presu = new frmAdministracionPresupuesto(1,"Totales");
                     this.MostrarForm(e.Node.Text.ToString(), presu);
                     break;
                 case "Administración de orden de laboratorio":
@@ -159,8 +159,8 @@ namespace SFH_Software
 
         private void administraciónDePresupuestoDentalToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
-                   frmAdministracionPresupuesto presu = new frmAdministracionPresupuesto();
+
+            frmAdministracionPresupuesto presu = new frmAdministracionPresupuesto(1, "Totales");
                    this.MostrarForm("Administración de presupuesto dental", presu);
                   
         }
