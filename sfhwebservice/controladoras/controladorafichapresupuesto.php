@@ -415,7 +415,7 @@ class ControladoraFichaPresupuesto
 		try
 		{
 			$this->SqlQuery = '';
-			$this->SqlQuery = "Select fi.ID_FICHA, pe.NOMBRE, pe.APELLIDO_PATERNO from fichaDental fi, paciente pa, persona pe where fi.ID_PACIENTE = pa.ID_PACIENTE and pa.ID_PERSONA = pe.ID_PERSONA";
+			$this->SqlQuery = "Select fi.ID_FICHA, pe.NOMBRE, pe.APELLIDO_PATERNO from fichadental fi, paciente pa, persona pe where fi.ID_PACIENTE = pa.ID_PACIENTE and pa.ID_PERSONA = pe.ID_PERSONA";
 			$sentencia=$conexion->prepare($this->SqlQuery);
         	if($sentencia->execute())
         	{
