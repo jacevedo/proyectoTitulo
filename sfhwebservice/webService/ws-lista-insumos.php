@@ -72,6 +72,11 @@ switch ($opcion)
 		echo(json_encode($arreglo));
 	break;
 	case 6:
+		//json insertar Insumo {"indice":6,"idAreaInsumo":3,"idGasto":1,
+		//						"nomInsumo":"Jeringas 10 ML", "Cantidad":10,
+		//						"descInsumo": "Compra al por mayor", "unidadMedida":10}
+
+
 	break;
 	case 7:
 	break;
