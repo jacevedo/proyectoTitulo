@@ -32,7 +32,7 @@ class ControladoraOrdenLaboratorio
 		try
 		{
 			$this->SqlQuery='';
-	        $this->SqlQuery="INSERT INTO ORDENDELABORATORIO (ID_ORDEN_LABORATORIO,ID_ODONTOLOGO,ID_PACIENTE,N_FICHA_LABORATORIO,CLINICA,BD,BI,PD,PI,FECHA_CREACION,FECHA_ENTREGA,HORA_ENTREGA,COLOR,ESTADO) VALUES (NULL,?,?,?,?,?,?,?,?,?,?,?,?,?);";
+	        $this->SqlQuery="INSERT INTO ordendelaboratorio (ID_ORDEN_LABORATORIO,ID_ODONTOLOGO,ID_PACIENTE,N_FICHA_LABORATORIO,CLINICA,BD,BI,PD,PI,FECHA_CREACION,FECHA_ENTREGA,HORA_ENTREGA,COLOR,ESTADO) VALUES (NULL,?,?,?,?,?,?,?,?,?,?,?,?,?);";
 			$sentencia=$conexion->prepare($this->SqlQuery);
 	        $sentencia->bind_param('iiissssssssss', $idOdontologo,$idPaciente,$numOrden,$clinica,$bd,$bi,$pd,$pi,$fechaCreacion,$fechaEntrega,$horaEntrega,$color,$estado);
 	      	if($sentencia->execute())
