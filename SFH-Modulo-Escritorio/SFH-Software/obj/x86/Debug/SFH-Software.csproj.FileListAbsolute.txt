@@ -70,7 +70,6 @@ C:\Users\David\Pictures\Documents\GitHub\proyectoTitulo\SFH-Modulo-Escritorio\SF
 C:\Users\David\Pictures\Documents\GitHub\proyectoTitulo\SFH-Modulo-Escritorio\SFH-Software\obj\x86\Debug\SFH_Software.Properties.Resources.resources
 C:\Users\David\Pictures\Documents\GitHub\proyectoTitulo\SFH-Modulo-Escritorio\SFH-Software\obj\x86\Debug\GenerateResource.read.1.tlog
 C:\Users\David\Pictures\Documents\GitHub\proyectoTitulo\SFH-Modulo-Escritorio\SFH-Software\obj\x86\Debug\GenerateResource.write.1.tlog
-C:\Users\Citt-David\Documents\GitHub\proyectoTitulo\SFH-Modulo-Escritorio\SFH-Software\obj\x86\Debug\SFH-Software.csprojResolveAssemblyReference.cache
 C:\Users\Citt-David\Documents\GitHub\proyectoTitulo\SFH-Modulo-Escritorio\SFH-Software\obj\x86\Debug\SFH_Software.frmAcerca.resources
 C:\Users\Citt-David\Documents\GitHub\proyectoTitulo\SFH-Modulo-Escritorio\SFH-Software\obj\x86\Debug\SFH_Software.frmAdministracionDeInsumos.resources
 C:\Users\Citt-David\Documents\GitHub\proyectoTitulo\SFH-Modulo-Escritorio\SFH-Software\obj\x86\Debug\SFH_Software.frmAdministracionDeReporteria.resources

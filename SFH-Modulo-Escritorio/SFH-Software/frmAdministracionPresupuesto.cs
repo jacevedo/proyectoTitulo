@@ -47,23 +47,27 @@ namespace SFH_Software
                 Presupuesto presupuesto = grillaPresupuesto.Rows[e.RowIndex].DataBoundItem as Presupuesto;
                 if (e.ColumnIndex == 5)
                 {
+                    lblnom.Text = cmbPersona.SelectedText;
                     txtValorTotal.Text = presupuesto.ValorTotal.ToString();
                     cmbPersona.SelectedValue = presupuesto.IdFicha;
                     calendarioCreacion.SelectionStart = presupuesto.FechaPresupuesto;
                     calendarioCreacion.SelectionEnd = presupuesto.FechaPresupuesto;
                     lblIdPresupuesto.Text = presupuesto.IdPresupuesto.ToString();
                     btnGuardar.Text = "Modificar";
-                    lblnom.Text = cmbPersona.SelectedText.ToString();
+                    
                 }
             }
         }
 
         private void btnAdminCli_Click(object sender, EventArgs e)
         {
+            this.Nombre = this.cmbPersona.Text;
+            this.lblnom.Text = this.Nombre;
             listaPresupuestos = null;
             listaPresupuestos = clientePresupuesto.listadoPresupuestoPorFicha(Convert.ToInt32(cmbPersona.SelectedValue));
             grillaPresupuesto.DataSource = null;
             grillaPresupuesto.DataSource = listaPresupuestos;
+            
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -80,7 +84,8 @@ namespace SFH_Software
                     limpiarFormulario();
                     listaPresupuestos = clientePresupuesto.listadoPresupuestoPorPaciente(presupuesto.IdFicha);
                     grillaPresupuesto.DataSource = listaPresupuestos;
-                    lblnom.Text = cmbPersona.SelectedText.ToString();
+                    this.Nombre = this.cmbPersona.Text;
+                    this.lblnom.Text = this.Nombre;
                 }
                 catch (Exception ex)
                 {
@@ -109,8 +114,10 @@ namespace SFH_Software
                         }
 
                     }
+                   
                     limpiarFormulario();
-                    lblnom.Text = cmbPersona.SelectedText.ToString();
+                    this.Nombre = this.cmbPersona.Text;
+                    this.lblnom.Text = this.Nombre;
                 }
                 else
                 {
@@ -135,7 +142,8 @@ namespace SFH_Software
             {
               
                 listaPresupuestos = clientePresupuesto.listadoPresupuestoPorFicha(Convert.ToInt32(cmbPersona.SelectedValue));
-                lblnom.Text = this.cmbPersona.SelectedText.ToString();
+                this.Nombre = this.cmbPersona.Text;
+                this.lblnom.Text = this.Nombre;
                
             }
             else
