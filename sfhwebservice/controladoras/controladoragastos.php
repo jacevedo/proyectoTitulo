@@ -200,5 +200,41 @@ class ControladoraGastos
         }
         return $this->datos;
 	}
+	function listarGastoIdConcepto()
+	{
+		$conexion = new MySqlCon();
+		$this->datos ='';
+		try
+		{
+			$this->SqlQuery = '';
+			$this->SqlQuery = "SELECT ga.ID_GASTOS, ga.CONCEPTO_GASTO ".
+							  "  FROM gastos ga";
+
+		   	$sentencia=$conexion->prepare($this->SqlQuery);
+			
+        	if($sentencia->execute())
+        	{
+        		$sentencia->bind_result($id,$concepto);				
+				$indice=0;     
+
+				while($sentencia->fetch())
+				{
+
+					$nomPersonaGasto = 
+					$arreglo["idGasto"]=$id;
+					$arreglo["concepto"]=$concepto;
+					$this->datos[$indice] = $arreglo;
+        			
+        			$indice++;
+				}
+      		}
+       		$conexion->close();
+    	}
+    	catch(Exception $e)
+    	{
+        	throw new $e("Error al listar pacientes");
+        }
+        return $this->datos;
+	}
 }
 ?>

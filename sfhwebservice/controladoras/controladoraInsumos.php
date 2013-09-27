@@ -67,8 +67,16 @@ class ControladoraInsumos
 									$idInsumos);
 			if($sentencia->execute())
 	      	{
-	        	$conexion->close();
-				return "Modificado";
+	      		if($sentencia->affected_rows)
+	      		{
+	        		$conexion->close();
+					return "Modificado";
+				}
+				else
+				{
+					$conexion->close();
+					return "error";
+				}
 			}
 			else
 			{
@@ -93,10 +101,18 @@ class ControladoraInsumos
 			$this->SqlQuery = "DELETE FROM insumos WHERE ID_INSUMO = ?";
 			$sentencia = $conexion->prepare($this->SqlQuery);
 			$sentencia->bind_param("i",$id);
-			if($sentencia->affected_rows)
+			if($sentencia->execute())
 	      	{
-	        	$conexion->close();
-				return "Eliminado";
+	      		if($sentencia->affected_rows)
+	      		{
+		        	$conexion->close();
+					return "Eliminado";
+				}
+				else
+				{
+					$conexion->close();
+					return "Error";
+				}
 			}
 			else
 			{
@@ -117,23 +133,26 @@ class ControladoraInsumos
 		try
 		{
 			$this->SqlQuery = '';
-			$this->SqlQuery = "SELECT ID_INSUMO, ID_AREA_INSUMO, ID_GASTOS,".
-							  " NOMBRE_INSUMO, CANTIDAD, DESCRIPCION_INSUMO,".
-							  " UNIDAD_DE_MEDIDA_INSUMO FROM insumos";
+			$this->SqlQuery = "SELECT ID_INSUMO, ID_AREA_INSUMO as AREAINSUMO,".
+							  " ID_GASTOS as GastosId,NOMBRE_INSUMO, CANTIDAD,".
+							  " DESCRIPCION_INSUMO,UNIDAD_DE_MEDIDA_INSUMO,".
+							  " (select NOMBRE_AREA from areainsumo where AREAINSUMO ".
+							  "= ID_AREA_INSUMO),(select CONCEPTO_GASTO from gastos".
+							  " where GastosId= ID_GASTOS) FROM insumos";
 		   	$sentencia=$conexion->prepare($this->SqlQuery);
         	if($sentencia->execute())
         	{
         		$sentencia->bind_result($idInsumos, $idAreaInsumo, $idGastos, 
         								$nomInsumos, $cantidad, $descripcionInsumo, 
-        								$unidadMedida);				
+        								$unidadMedida,$nomArea,$nomConcepto);				
 				$indice = 0;     
 
 				while($sentencia->fetch())
 				{
 					$insumos = new Insumos();
-					$insumos->initClass($idInsumos, $idAreaInsumo, $idGastos, 
+					$insumos->initClassNombres($idInsumos, $idAreaInsumo, $idGastos, 
 										$nomInsumos, $cantidad, $descripcionInsumo, 
-										$unidadMedida);
+										$unidadMedida,$nomArea,$nomConcepto);
 					$this->datos[$indice] = $insumos;
         			$indice++;
 				}
@@ -153,25 +172,28 @@ class ControladoraInsumos
 		try
 		{
 			$this->SqlQuery = '';
-			$this->SqlQuery = "SELECT ID_INSUMO, ID_AREA_INSUMO, ID_GASTOS,".
-							  " NOMBRE_INSUMO, CANTIDAD,DESCRIPCION_INSUMO,".
-							  " UNIDAD_DE_MEDIDA_INSUMO FROM insumos WHERE".
-							  " ID_AREA_INSUMO = ?";
+			$this->SqlQuery = "SELECT ID_INSUMO, ID_AREA_INSUMO as AREAINSUMO,".
+							  " ID_GASTOS as GastosId ,NOMBRE_INSUMO, CANTIDAD,".
+							  " DESCRIPCION_INSUMO, UNIDAD_DE_MEDIDA_INSUMO,".
+							  " (select NOMBRE_AREA from areainsumo where".
+							  " AREAINSUMO = ID_AREA_INSUMO),(select CONCEPTO_GASTO".
+							  " from gastos where GastosId= ID_GASTOS) FROM insumos".
+							  " WHERE ID_AREA_INSUMO = ?";
 		   	$sentencia=$conexion->prepare($this->SqlQuery);
 		   	$sentencia->bind_param("i",$idArea);
         	if($sentencia->execute())
         	{
         		$sentencia->bind_result($idInsumos, $idAreaInsumo, $idGastos, 
         								$nomInsumos, $cantidad, $descripcionInsumo, 
-        								$unidadMedida);				
+        								$unidadMedida,$nomArea,$nomConcepto);				
 				$indice = 0;     
 
 				while($sentencia->fetch())
 				{
 					$insumos = new Insumos();
-					$insumos->initClass($idInsumos, $idAreaInsumo, $idGastos, 
+					$insumos->initClassNombres($idInsumos, $idAreaInsumo, $idGastos, 
 										$nomInsumos, $cantidad, $descripcionInsumo, 
-										$unidadMedida);
+										$unidadMedida,$nomArea,$nomConcepto);
 					$this->datos[$indice] = $insumos;
         			$indice++;
 				}
@@ -191,9 +213,12 @@ class ControladoraInsumos
 		try
 		{
 			$this->SqlQuery = '';
-			$this->SqlQuery = "SELECT ID_INSUMO, ID_AREA_INSUMO, ID_GASTOS,".
-							  " NOMBRE_INSUMO, CANTIDAD, DESCRIPCION_INSUMO,".
-							  " UNIDAD_DE_MEDIDA_INSUMO FROM insumos WHERE".
+			$this->SqlQuery = "SELECT ID_INSUMO, ID_AREA_INSUMO as AREAINSUMO,".
+							  " ID_GASTOS as GastosId, NOMBRE_INSUMO, CANTIDAD,".
+							  " DESCRIPCION_INSUMO, UNIDAD_DE_MEDIDA_INSUMO,".
+							  " (select NOMBRE_AREA from areainsumo where".
+							  " AREAINSUMO = ID_AREA_INSUMO),(select CONCEPTO_GASTO".
+							  " from gastos where GastosId= ID_GASTOS) FROM insumos WHERE".
 							  " ID_GASTOS = ?";
 		   	$sentencia=$conexion->prepare($this->SqlQuery);
 		   	$sentencia->bind_param("i",$gasto);
@@ -201,15 +226,15 @@ class ControladoraInsumos
         	{
         		$sentencia->bind_result($idInsumos, $idAreaInsumo, $idGastos, 
         								$nomInsumos, $cantidad, $descripcionInsumo, 
-        								$unidadMedida);				
+        								$unidadMedida,$nomArea,$nomConcepto);			
 				$indice = 0;     
 
 				while($sentencia->fetch())
 				{
 					$insumos = new Insumos();
-					$insumos->initClass($idInsumos, $idAreaInsumo, $idGastos, 
+					$insumos->initClassNombres($idInsumos, $idAreaInsumo, $idGastos, 
 										$nomInsumos, $cantidad, $descripcionInsumo, 
-										$unidadMedida);
+										$unidadMedida,$nomArea,$nomConcepto);
 					$this->datos[$indice] = $insumos;
         			$indice++;
 				}
@@ -229,9 +254,12 @@ class ControladoraInsumos
 		try
 		{
 			$this->SqlQuery = '';
-			$this->SqlQuery = "SELECT ID_INSUMO, ID_AREA_INSUMO, ID_GASTOS,".
-							  " NOMBRE_INSUMO, CANTIDAD,DESCRIPCION_INSUMO,".
-							  " UNIDAD_DE_MEDIDA_INSUMO FROM insumos WHERE".
+			$this->SqlQuery = "SELECT ID_INSUMO, ID_AREA_INSUMO as AREAINSUMO,".
+							  " ID_GASTOS as GastosId, NOMBRE_INSUMO, CANTIDAD,".
+							  " DESCRIPCION_INSUMO, UNIDAD_DE_MEDIDA_INSUMO,".
+							  " (select NOMBRE_AREA from areainsumo where".
+							  " AREAINSUMO = ID_AREA_INSUMO),(select CONCEPTO_GASTO".
+							  " from gastos where GastosId= ID_GASTOS) FROM insumos WHERE".
 							  " NOMBRE_INSUMO LIKE ?";
 		   	$sentencia=$conexion->prepare($this->SqlQuery);
 		   	$nombreParam = "%".$nombre."%";
@@ -240,15 +268,15 @@ class ControladoraInsumos
         	{
         		$sentencia->bind_result($idInsumos, $idAreaInsumo, $idGastos, 
         								$nomInsumos, $cantidad, $descripcionInsumo, 
-        								$unidadMedida);				
+        								$unidadMedida,$nomArea,$nomConcepto);		
 				$indice = 0;     
 
 				while($sentencia->fetch())
 				{
 					$insumos = new Insumos();
-					$insumos->initClass($idInsumos, $idAreaInsumo, $idGastos,
+					$insumos->initClassNombres($idInsumos, $idAreaInsumo, $idGastos,
 										$nomInsumos, $cantidad, $descripcionInsumo, 
-										$unidadMedida);
+										$unidadMedida,$nomArea,$nomConcepto);
 					$this->datos[$indice] = $insumos;
         			$indice++;
 				}
@@ -278,18 +306,19 @@ class ControladoraInsumos
 			$sentencia->bind_param("ss",$nombreArea, $descripcionArea);
 			if($sentencia->execute())
 			{
+
 				$conexion->close();
 				return $sentencia->insert_id;
 			}
 			else
 			{
 				$conexion->close();
-				return false;
+				return "error";
 			}
 		}
 		catch(Exception $e)
 		{
-			return false;
+			return "Error";
 			throw new  $e("Error al ingresar el área de insumo.");
 		}
 	}
@@ -311,8 +340,16 @@ class ControladoraInsumos
 			$sentencia->bind_param("ssi",$nombreArea, $descripcionArea, $idAreaInsumo);
 			if($sentencia->execute())
 	      	{
-	        	$conexion->close();
-				return "Modificado";
+	      		if($sentencia->affected_rows)
+	      		{
+	      			$conexion->close();
+					return "Modificado";
+				}
+				else
+				{
+					$conexion->close();
+					return "Error";
+				}
 			}
 			else
 			{
@@ -326,7 +363,7 @@ class ControladoraInsumos
 			throw new  $e("Error al modificar el área de insumo.");
 		}
 	}
-	function eliminarAreaInsumo($id)
+	function eliminarAreaInsumo($idAreaInsumo)
 	{
 		$conexion = new MySqlCon();
 		$this->datos = '';
@@ -336,11 +373,19 @@ class ControladoraInsumos
 			$this->SqlQuery = '';
 			$this->SqlQuery = "DELETE FROM areainsumo WHERE ID_AREA_INSUMO = ?";
 			$sentencia = $conexion->prepare($this->SqlQuery);
-			$sentencia->bind_param("i", $id);
-			if($sentencia->affected_rows)
+			$sentencia->bind_param("i", $idAreaInsumo);
+			if($sentencia->execute())
 	      	{
-	        	$conexion->close();
-				return "Eliminado";
+	      		if($sentencia->affected_rows)
+	      		{
+		      		$conexion->close();
+					return "Eliminado";
+				}
+				else
+				{
+					$conexion->close();
+					return "Error Eliminando";
+				}
 			}
 			else
 			{
@@ -350,7 +395,7 @@ class ControladoraInsumos
 		}
 		catch(Exception $e)
 		{
-			return false;
+			return "Error Exception";
 			throw new  $e("Error al eliminar el área de insumo.");
 		}
 	}
@@ -382,6 +427,68 @@ class ControladoraInsumos
     	catch(Exception $e)
     	{
         	throw new $e("Error al listar área insumos");
+        }
+        return $this->datos;
+	}
+	function listarAreaInsumoIdNombre()
+	{
+		$conexion = new MySqlCon();
+		$this->datos = '';
+		try
+		{
+			$this->SqlQuery = '';
+			$this->SqlQuery = "SELECT ID_AREA_INSUMO, NOMBRE_AREA".
+							  " FROM areainsumo";
+		   	$sentencia=$conexion->prepare($this->SqlQuery);
+        	if($sentencia->execute())
+        	{
+        		$sentencia->bind_result($idAreaInsumo, $nombreArea);				
+				$indice = 0;     
+
+				while($sentencia->fetch())
+				{
+					$arreglo["idAreaInsumo"] = $idAreaInsumo;
+					$arreglo["nombreArea"] = $nombreArea;
+					$this->datos[$indice] = $arreglo;
+        			$indice++;
+				}
+      		}
+       		$conexion->close();
+    	}
+    	catch(Exception $e)
+    	{
+        	throw new $e("Error al listar área insumos");
+        }
+        return $this->datos;
+	}
+	function listaInsumoIdNombre()
+	{
+		$conexion = new MySqlCon();
+		$this->datos = '';
+		try
+		{
+			$this->SqlQuery = '';
+			$this->SqlQuery = "SELECT ID_INSUMO,  NOMBRE_INSUMO".
+							  " FROM insumos";
+		   	$sentencia=$conexion->prepare($this->SqlQuery);
+		   	if($sentencia->execute())
+        	{
+        		$sentencia->bind_result($idInsumos, $nomInsumos);	
+				$indice = 0;     
+
+				while($sentencia->fetch())
+				{
+					$arreglo["idInsumos"]=$idInsumos;
+					$arreglo["nomInsumos"]=$nomInsumos;
+					$this->datos[$indice] = $arreglo;
+        			$indice++;
+				}
+      		}
+       		$conexion->close();
+    	}
+    	catch(Exception $e)
+    	{
+        	throw new $e("Error al listar insumos");
         }
         return $this->datos;
 	}

@@ -1,6 +1,8 @@
 <?php
 require_once '../pojos/listaprecios.php';
 require_once '../controladoras/controladoralistapreciosdentales.php';
+require_once '../pojos/insumos.php';
+require_once '../controladoras/controladoraInsumos.php';
 
 /*
 *Contiene la opciones para insertar, listar y modificar
@@ -53,7 +55,7 @@ switch ($opcion)
 		$controladoraLstPrecios = new ControladoraListaPreciosDentales();
 		$arreglo["code"]=3;
 		$arreglo["listaPrecios"] = $controladoraLstPrecios->listarPrecios();
-		echo(json_encode($arreglo));
+		echo(json_encode($arreglo));Insumos();
 	break;
 	case 4:
 		//json Listar Precios Nombre {"indice":4,"nombre":"Urgencia"}
@@ -72,8 +74,97 @@ switch ($opcion)
 		echo(json_encode($arreglo));
 	break;
 	case 6:
-		//jsom Insertar Insumo {"indice":6,
-}
+		//json insertar Insumo {"indice":6,"idAreaInsumo":3,"idGasto":1,
+		//						"nomInsumo":"Jeringas 10 ML", "Cantidad":10,
+		//						"descInsumo": "Compra al por mayor", "unidadMedida":10}
+		$idAreaInsumo = $data->{"idAreaInsumo"};
+		$idGastos = $data->{"idGasto"};
+		$nomInsumos = $data->{"nomInsumo"};
+		$cantidad = $data->{"Cantidad"};
+		$descInsumo = $data->{"descInsumo"};
+		$unidadMedida = $data->{"unidadMedida"};
+
+		$insumo = new Insumos();
+		$controladoraInsumo = new ControladoraInsumos();
+		$insumo->initClass(0, $idAreaInsumo, $idGastos, $nomInsumos, 
+							$cantidad, $descInsumo, $unidadMedida);
+		$arreglo["code"]=6;
+		$arreglo["idInsertado"] = $controladoraInsumo->insertarInsumos($insumo);
+		echo(json_encode($arreglo));
+
+
+
 	break;
+	case 7:
+		//json modificar Insumo {"indice":7,"idInsumo":2,"idAreaInsumo":3,"idGasto":1,
+		//						"nomInsumo":"Jeringas 15 ML", "Cantidad":10,
+		//						"descInsumo": "Compra al por mayor", "unidadMedida":10}
+		$idInsumo = $data->{"idInsumo"};
+		$idAreaInsumo = $data->{"idAreaInsumo"};
+		$idGastos = $data->{"idGasto"};
+		$nomInsumos = $data->{"nomInsumo"};
+		$cantidad = $data->{"Cantidad"};
+		$descInsumo = $data->{"descInsumo"};
+		$unidadMedida = $data->{"unidadMedida"};
+
+		$insumo = new Insumos();
+		$controladoraInsumo = new ControladoraInsumos();
+		$insumo->initClass($idInsumo, $idAreaInsumo, $idGastos, $nomInsumos, 
+							$cantidad, $descInsumo, $unidadMedida);
+		$arreglo["code"]=7;
+		$arreglo["Modificado"] = $controladoraInsumo->modificarInsumo($insumo);
+		echo(json_encode($arreglo));
+	break;
+	case 8:
+		//json ListarInsumos {"indice":8}
+		$controladoraInsumo = new ControladoraInsumos();
+		$arreglo["code"]=8;
+		$arreglo["Modificado"] = $controladoraInsumo->listarInsumos();
+		echo(json_encode($arreglo));
+	break;
+	case 9:
+		//json ListarInsumos Por Area {"indice":9,"idAreaInsumo":3}
+		$idAreaInsumo = $data->{"idAreaInsumo"};
+		$controladoraInsumo = new ControladoraInsumos();
+		$arreglo["code"]=9;
+		$arreglo["ListaInsumos"] = $controladoraInsumo->
+											listarInsumosPorArea($idAreaInsumo);
+		echo(json_encode($arreglo));
+	break;
+	case 10:
+		//json ListarInsumos Por Gasto {"indice":10,"idGasto":3}
+		$idGasto = $data->{"idGasto"};
+		$controladoraInsumo = new ControladoraInsumos();
+		$arreglo["code"]=10;
+		$arreglo["ListaInsumos"] = $controladoraInsumo->
+													listarInsumosPorGastos($idGasto);
+		echo(json_encode($arreglo));
+	break;
+	case 11:
+		//Listar Insumos Por Nombre {"indice":11,"nomInsumo":"Jeringas"}
+		$nomInsumo = $data->{"nomInsumo"};
+		$controladoraInsumo = new ControladoraInsumos();
+		$arreglo["code"]=11;
+		$arreglo["ListaInsumos"] = $controladoraInsumo->
+													listarInsumosPorNombre($nomInsumo);
+		echo(json_encode($arreglo));
+	break;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }

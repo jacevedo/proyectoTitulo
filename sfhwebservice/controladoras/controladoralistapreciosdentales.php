@@ -189,4 +189,5 @@ class ControladoraListaPreciosDentales
          throw new $e("Error al Registrar Usuarios");
         }
 	}
+}
 ?>
