@@ -20,8 +20,7 @@ $opcion = $data->{'indice'};
 switch ($opcion) 
 {
 	case 1:
-		//json Insertar Gasto {"indice":1,"idPersona":1,"conceptoGasto":"Colacion",
-		//						"montoGasto":2000,"descuentoGasto":0}
+		//json Insertar Gasto {"indice":1,"idPersona":1,"conceptoGasto":"Colacion","montoGasto":2000,"descuentoGasto":0}
 		$idPersona = $data->{"idPersona"};
 		$concepto = $data->{"conceptoGasto"};
 		$monto  = $data->{"montoGasto"};
@@ -34,9 +33,7 @@ switch ($opcion)
 		echo(json_encode($arreglo));
 	break;
 	case 2:
-		//json Modificar Gasto {"indice":2,"idGasto":4,"idPersona":1,
-		//						"conceptoGasto":"Colacion","montoGasto":2000,
-		//						"descuentoGasto":0}
+		//json Modificar Gasto {"indice":2,"idGasto":4,"idPersona":1,"conceptoGasto":"Colacion","montoGasto":2000,"descuentoGasto":0}
 		$idGasto = $data->{"idGasto"}; 
 		$idPersona = $data->{"idPersona"};
 		$concepto = $data->{"conceptoGasto"};

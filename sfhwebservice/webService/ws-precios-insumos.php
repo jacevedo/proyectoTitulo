@@ -55,7 +55,7 @@ switch ($opcion)
 		$controladoraLstPrecios = new ControladoraListaPreciosDentales();
 		$arreglo["code"]=3;
 		$arreglo["listaPrecios"] = $controladoraLstPrecios->listarPrecios();
-		echo(json_encode($arreglo));Insumos();
+		echo(json_encode($arreglo));
 	break;
 	case 4:
 		//json Listar Precios Nombre {"indice":4,"nombre":"Urgencia"}
@@ -74,9 +74,7 @@ switch ($opcion)
 		echo(json_encode($arreglo));
 	break;
 	case 6:
-		//json insertar Insumo {"indice":6,"idAreaInsumo":3,"idGasto":1,
-		//						"nomInsumo":"Jeringas 10 ML", "Cantidad":10,
-		//						"descInsumo": "Compra al por mayor", "unidadMedida":10}
+		//json insertar Insumo {"indice":6,"idAreaInsumo":3,"idGasto":1,"nomInsumo":"Jeringas 10 ML", "Cantidad":10,"descInsumo": "Compra al por mayor", "unidadMedida":10}
 		$idAreaInsumo = $data->{"idAreaInsumo"};
 		$idGastos = $data->{"idGasto"};
 		$nomInsumos = $data->{"nomInsumo"};
@@ -96,9 +94,7 @@ switch ($opcion)
 
 	break;
 	case 7:
-		//json modificar Insumo {"indice":7,"idInsumo":2,"idAreaInsumo":3,"idGasto":1,
-		//						"nomInsumo":"Jeringas 15 ML", "Cantidad":10,
-		//						"descInsumo": "Compra al por mayor", "unidadMedida":10}
+		//json modificar Insumo {"indice":7,"idInsumo":2,"idAreaInsumo":3,"idGasto":1,"nomInsumo":"Jeringas 15 ML", "Cantidad":10,"descInsumo": "Compra al por mayor", "unidadMedida":10}
 		$idInsumo = $data->{"idInsumo"};
 		$idAreaInsumo = $data->{"idAreaInsumo"};
 		$idGastos = $data->{"idGasto"};
@@ -127,8 +123,7 @@ switch ($opcion)
 		$idAreaInsumo = $data->{"idAreaInsumo"};
 		$controladoraInsumo = new ControladoraInsumos();
 		$arreglo["code"]=9;
-		$arreglo["ListaInsumos"] = $controladoraInsumo->
-											listarInsumosPorArea($idAreaInsumo);
+		$arreglo["ListaInsumos"] = $controladoraInsumo->listarInsumosPorArea($idAreaInsumo);
 		echo(json_encode($arreglo));
 	break;
 	case 10:
@@ -136,8 +131,7 @@ switch ($opcion)
 		$idGasto = $data->{"idGasto"};
 		$controladoraInsumo = new ControladoraInsumos();
 		$arreglo["code"]=10;
-		$arreglo["ListaInsumos"] = $controladoraInsumo->
-													listarInsumosPorGastos($idGasto);
+		$arreglo["ListaInsumos"] = $controladoraInsumo->listarInsumosPorGastos($idGasto);
 		echo(json_encode($arreglo));
 	break;
 	case 11:
@@ -145,8 +139,7 @@ switch ($opcion)
 		$nomInsumo = $data->{"nomInsumo"};
 		$controladoraInsumo = new ControladoraInsumos();
 		$arreglo["code"]=11;
-		$arreglo["ListaInsumos"] = $controladoraInsumo->
-													listarInsumosPorNombre($nomInsumo);
+		$arreglo["ListaInsumos"] = $controladoraInsumo->listarInsumosPorNombre($nomInsumo);
 		echo(json_encode($arreglo));
 	break;
 
