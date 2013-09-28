@@ -115,7 +115,7 @@ switch ($opcion)
 		//json ListarInsumos {"indice":8}
 		$controladoraInsumo = new ControladoraInsumos();
 		$arreglo["code"]=8;
-		$arreglo["Modificado"] = $controladoraInsumo->listarInsumos();
+		$arreglo["ListaInsumos"] = $controladoraInsumo->listarInsumos();
 		echo(json_encode($arreglo));
 	break;
 	case 9:
