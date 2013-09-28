@@ -25,24 +25,26 @@ public final class R {
         public static final int logo=0x7f020001;
     }
     public static final class id {
-        public static final int action_settings=0x7f080023;
-        public static final int btnCerrarSesion=0x7f08001d;
-        public static final int btnCrearCuenta=0x7f08001e;
+        public static final int action_settings=0x7f080025;
+        public static final int btnBuscar=0x7f08001a;
+        public static final int btnCerrarSesion=0x7f08001f;
+        public static final int btnCrearCuenta=0x7f080020;
         public static final int btnEditarUsuario=0x7f080016;
         public static final int btnEntrar=0x7f080005;
-        public static final int btnGuardarHora=0x7f080022;
+        public static final int btnGuardarHora=0x7f080024;
         public static final int btnMesActual=0x7f080008;
         public static final int btnMesAnterior=0x7f080007;
         public static final int btnMesSiguiente=0x7f080009;
-        public static final int btnModificarCuenta=0x7f08001b;
+        public static final int btnModificarCuenta=0x7f08001d;
         public static final int btnNuevaCuenta=0x7f080006;
-        public static final int btnTomarHora=0x7f08001c;
-        public static final int btnVerPrecios=0x7f08001a;
+        public static final int btnTomarHora=0x7f08001e;
+        public static final int btnVerPrecios=0x7f08001c;
         public static final int grCalendario=0x7f08000e;
-        public static final int imgLogo=0x7f08001f;
-        public static final int lstPrecios=0x7f080019;
-        public static final int spnDoctores=0x7f080021;
-        public static final int spnHorasDisponibles=0x7f080020;
+        public static final int imgLogo=0x7f080021;
+        public static final int lstPrecios=0x7f08001b;
+        public static final int menuBuscar=0x7f080026;
+        public static final int spnDoctores=0x7f080023;
+        public static final int spnHorasDisponibles=0x7f080022;
         public static final int textView=0x7f080000;
         public static final int textView2=0x7f080001;
         public static final int textView3=0x7f080003;
@@ -52,6 +54,7 @@ public final class R {
         public static final int textView7=0x7f08000a;
         public static final int textView8=0x7f080014;
         public static final int txtApPaterno=0x7f080011;
+        public static final int txtBusqueda=0x7f080019;
         public static final int txtComuna=0x7f080015;
         public static final int txtContrasena=0x7f080004;
         public static final int txtDireccion=0x7f080013;
@@ -76,6 +79,7 @@ public final class R {
     }
     public static final class menu {
         public static final int main=0x7f070000;
+        public static final int menu_lista=0x7f070001;
     }
     public static final class string {
         public static final int action_settings=0x7f050001;
