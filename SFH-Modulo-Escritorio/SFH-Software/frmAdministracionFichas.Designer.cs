@@ -110,9 +110,9 @@
             this.groupBox3.Controls.Add(this.datagridFicha);
             this.groupBox3.Controls.Add(this.groupBox4);
             this.groupBox3.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.groupBox3.Location = new System.Drawing.Point(39, 325);
+            this.groupBox3.Location = new System.Drawing.Point(9, 325);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(1159, 418);
+            this.groupBox3.Size = new System.Drawing.Size(1232, 418);
             this.groupBox3.TabIndex = 15;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Listado de fichas medicas";
@@ -143,11 +143,11 @@
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.datagridFicha.DefaultCellStyle = dataGridViewCellStyle1;
-            this.datagridFicha.Location = new System.Drawing.Point(6, 102);
+            this.datagridFicha.Location = new System.Drawing.Point(6, 82);
             this.datagridFicha.Name = "datagridFicha";
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
             this.datagridFicha.RowsDefaultCellStyle = dataGridViewCellStyle2;
-            this.datagridFicha.Size = new System.Drawing.Size(1147, 310);
+            this.datagridFicha.Size = new System.Drawing.Size(1220, 330);
             this.datagridFicha.TabIndex = 3;
             this.datagridFicha.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datagridFicha_CellContentClick);
             // 
@@ -158,7 +158,7 @@
             this.groupBox4.Controls.Add(this.label9);
             this.groupBox4.Controls.Add(this.txtBuscar);
             this.groupBox4.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.groupBox4.Location = new System.Drawing.Point(275, 19);
+            this.groupBox4.Location = new System.Drawing.Point(275, 10);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(610, 66);
             this.groupBox4.TabIndex = 2;
@@ -212,9 +212,9 @@
             this.groupBox2.Controls.Add(this.groupBox6);
             this.groupBox2.Controls.Add(this.groupBox5);
             this.groupBox2.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.groupBox2.Location = new System.Drawing.Point(39, 19);
+            this.groupBox2.Location = new System.Drawing.Point(9, 19);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1159, 300);
+            this.groupBox2.Size = new System.Drawing.Size(1232, 300);
             this.groupBox2.TabIndex = 14;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Ingreso de ficha dental ";
@@ -406,6 +406,7 @@
             // 
             // anamnesis
             // 
+            this.anamnesis.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.anamnesis.DataPropertyName = "Anamnesis";
             this.anamnesis.HeaderText = "Anamnesis";
             this.anamnesis.Name = "anamnesis";

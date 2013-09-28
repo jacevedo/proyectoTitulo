@@ -123,3 +123,4 @@ C:\Users\JAIME\Desktop\SFH-Modulo-Escritorio\SFH-Software\obj\x86\Debug\SFH-Soft
 C:\Users\JAIME\Desktop\SFH-Modulo-Escritorio\SFH-Software\obj\x86\Debug\SFH-Software.exe
 C:\Users\JAIME\Desktop\SFH-Modulo-Escritorio\SFH-Software\obj\x86\Debug\SFH-Software.pdb
 C:\Users\Citt-David\Documents\GitHub\proyectoTitulo\SFH-Modulo-Escritorio\SFH-Software\obj\x86\Debug\SFH_Software.frmAbonos.resources
+C:\Users\Citt-David\Documents\GitHub\proyectoTitulo\SFH-Modulo-Escritorio\SFH-Software\obj\x86\Debug\SFH-Software.csprojResolveAssemblyReference.cache

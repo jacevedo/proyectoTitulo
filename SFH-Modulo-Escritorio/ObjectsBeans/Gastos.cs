@@ -12,6 +12,7 @@ namespace ObjectsBeans
         private int idPersona;
         private int montoGastos;
         private int descuentoGastos;
+
         #endregion
 
         #region Constructor

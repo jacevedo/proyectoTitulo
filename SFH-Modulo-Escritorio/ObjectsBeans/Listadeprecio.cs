@@ -11,6 +11,9 @@ namespace ObjectsBeans
         private int idPrecios;
         private string comentario;
         private string valorNeto;
+        private string valorIva;
+        private string valortotal;
+
         #endregion
 
         #region Constructor
@@ -36,6 +39,19 @@ namespace ObjectsBeans
             get { return valorNeto; }
             set { valorNeto = value; }
         }
+
+        public string ValorIva
+        {
+            get { return valorIva; }
+            set { valorIva = value; }
+        }
+
+        public string Valortotal
+        {
+            get { return valortotal; }
+            set { valortotal = value; }
+        }
+
         #endregion
     }
 }
