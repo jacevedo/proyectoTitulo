@@ -63,7 +63,7 @@ namespace NetClient
         {
             string precioInsertado = string.Empty;
             //{"indice":1,"Comentario":"Procedimiento","ValorNeto":12000}
-            this.JsonParam = "send={\"indice\":1,\"Comentario\":\"" + precio.Comentario + "\",\"ValorNeto:" + precio.ValorNeto + "}";
+            this.JsonParam = "send={\"indice\":1,\"Comentario\":\"" + precio.Comentario + "\",\"ValorNeto\":" + precio.ValorNeto + "}";
             try
             {
                 String result = netclient.NetPost("ws-precios-insumos.php", this.JsonParam);
@@ -84,7 +84,7 @@ namespace NetClient
         {
             string precioModificado = string.Empty;
             //{"indice":2,"idPrecio":2,"Comentario":"asd","ValorNeto":130}
-            this.JsonParam = "send={\"indice\":2,\"idPrecio\":" + precio.IdPrecios + ",\"Comentario\":\"" + precio.Comentario + "\",\"ValorNeto:" + precio.ValorNeto + "}";
+            this.JsonParam = "send={\"indice\":2,\"idPrecio\":" + precio.IdPrecios + ",\"Comentario\":\"" + precio.Comentario + "\",\"ValorNeto\":" + precio.ValorNeto + "}";
             try
             {
                 String result = netclient.NetPost("ws-precios-insumos.php", this.JsonParam);
@@ -114,7 +114,7 @@ namespace NetClient
                 foreach (var item in token)
                 {
                     Listadeprecio precio = new Listadeprecio();
-                    //{"code":4,"listaPrecios":[{"idPrecios":4,"comentario":"Urgencia. Tratamiento Inicial 1 Sesion","valorNeto":14500,"valorIva":2755,"valorTotal":14500}]}
+                    //send={"code":4,"listaPrecios":[{"idPrecios":4,"comentario":"Urgencia. Tratamiento Inicial 1 Sesion","valorNeto":14500,"valorIva":2755,"valorTotal":14500}]}
                     precio.IdPrecios = Convert.ToInt32(item.SelectToken("idPrecios").ToString());
                     precio.Comentario = item.SelectToken("comentario").ToString();
                     precio.ValorNeto = item.SelectToken("valorNeto").ToString();
@@ -122,9 +122,7 @@ namespace NetClient
                     precio.Valortotal = item.SelectToken("valorTotal").ToString();
                     list.Add(precio);
                 }
-
             }
-
             catch (Exception e)
             {
                 throw new Exception(e + "| Error al Listar Precios");

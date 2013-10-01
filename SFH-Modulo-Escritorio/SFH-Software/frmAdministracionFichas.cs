@@ -202,8 +202,6 @@ namespace SFH_Software
                     break;
             
             }
-
-           
         }
         private void ModificarEstado(DataGridViewCellEventArgs e)
         {
