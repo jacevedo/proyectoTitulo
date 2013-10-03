@@ -50,7 +50,7 @@ switch ($opcion)
 		//json Listar Gastos {"indice":3}
 		$controladoraGastos = new ControladoraGastos();
 		$arreglo["code"]=3;
-		$arreglo["listaPrecios"] = $controladoraGastos->listarGastos();
+		$arreglo["listaGastos"] = $controladoraGastos->listarGastos();
 		echo(json_encode($arreglo));
 	break;
 	case 4:
@@ -58,7 +58,7 @@ switch ($opcion)
 		$idPersona = $data->{"idPersona"};
 		$controladoraGastos = new ControladoraGastos();
 		$arreglo["code"]=4;
-		$arreglo["listaPrecios"] = $controladoraGastos->listarGastosIdPersona($idPersona);
+		$arreglo["listaGastos"] = $controladoraGastos->listarGastosIdPersona($idPersona);
 		echo(json_encode($arreglo));
 	break;
 	case 5:
@@ -66,7 +66,7 @@ switch ($opcion)
 		$idGasto = $data->{"idGasto"};
 		$controladoraGastos = new ControladoraGastos();
 		$arreglo["code"]=5;
-		$arreglo["listaPrecios"] = $controladoraGastos->eliminarGasto($idGasto);
+		$arreglo["listaGastos"] = $controladoraGastos->eliminarGasto($idGasto);
 		echo(json_encode($arreglo));
 	break;
 }
