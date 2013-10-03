@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ObjectsBeans
 {
-   public class Insumos : Gastos
+   public class Insumos 
     {
         /*
          CREATE TABLE IF NOT EXISTS `insumos` (
@@ -26,17 +26,20 @@ namespace ObjectsBeans
         private int idInsumos;
         private int idAreaInsumo;
         private int idGastos_insumo;
+
+
         private string nomInsumos;
         private int cantidad;
         private string descripcionInsumo;
-        private string unidadMedida;
+       
+       private string unidadMedida;
         private string conceptoGasto;
         private string nomAreaInsumo;
         #endregion
 
         #region Constructor
         public Insumos() {}
-        public Insumos(int _idgastos):base(_idgastos) { }
+      
         #endregion
 
         #region Propiedad
@@ -81,7 +84,7 @@ namespace ObjectsBeans
             get { return unidadMedida; }
             set { unidadMedida = value; }
         }
-
+       
         public string ConceptoGasto
         {
             get { return conceptoGasto; }

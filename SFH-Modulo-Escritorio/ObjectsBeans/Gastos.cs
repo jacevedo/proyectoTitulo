@@ -12,7 +12,7 @@ namespace ObjectsBeans
         private int idPersona;
         private int montoGastos;
         private int descuentoGastos;
-
+        private string conceptodeGastos;
         #endregion
 
         #region Constructor
@@ -47,6 +47,12 @@ namespace ObjectsBeans
         {
             get { return descuentoGastos; }
             set { descuentoGastos = value; }
+        }
+
+        public string ConceptodeGastos
+        {
+            get { return conceptodeGastos; }
+            set { conceptodeGastos = value; }
         }
         #endregion
     }

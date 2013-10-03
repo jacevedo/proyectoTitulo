@@ -57,7 +57,6 @@ namespace NetClient
         }
         #endregion
       
-
         #region InsertarPrecio
         public string InsertarPrecio(Listadeprecio precio)
         {
@@ -157,7 +156,7 @@ namespace NetClient
         {
             string precioInsertado = string.Empty;
             //{"indice":6,"idAreaInsumo":3,"idGasto":1,"nomInsumo":"Jeringas 10 ML", "Cantidad":10, "descInsumo": "Compra al por mayor","unidadMedida":10}
-            this.JsonParam = "send={\"indice\":6,\"idAreaInsumo\":"+insumo.IdAreaInsumo+",\"idGasto\":"+ insumo.IdGastos +",\"nomInsumo\":\""+insumo.NomInsumos+"\",\"Cantidad\":\"" +insumo.Cantidad+ "\",\"descInsumo\":\"" +insumo.DescripcionInsumo+"\",\"unidadMedida\":"+insumo.UnidadMedida+"}";
+            this.JsonParam = "send={\"indice\":6,\"idAreaInsumo\":"+insumo.IdAreaInsumo+",\"idGasto\":"+ insumo.IdGastos_insumo +",\"nomInsumo\":\""+insumo.NomInsumos+"\",\"Cantidad\":\"" +insumo.Cantidad+ "\",\"descInsumo\":\"" +insumo.DescripcionInsumo+"\",\"unidadMedida\":"+insumo.UnidadMedida+"}";
             try
             {
                 String result = netclient.NetPost("ws-precios-insumos.php", this.JsonParam);
@@ -178,7 +177,7 @@ namespace NetClient
         {
             string precioModificado = string.Empty;
             //{"indice":7,"idInsumo":2,"idAreaInsumo":3,"idGasto":1,"nomInsumo":"Jeringas 15 ML", "Cantidad":10,"descInsumo": "Compra al por mayor", "unidadMedida":10}
-            this.JsonParam = "send={\"indice\":7,\"idInsumo\":"+insumo.IdInsumos+",\"idAreaInsumo\":" + insumo.IdAreaInsumo + ",\"idGasto\":" + insumo.IdGastos + ",\"nomInsumo\":\"" + insumo.NomInsumos + "\",\"Cantidad\":\"" + insumo.Cantidad + "\",\"descInsumo\":\"" + insumo.DescripcionInsumo + "\",\"unidadMedida\":" + insumo.UnidadMedida + "}";
+            this.JsonParam = "send={\"indice\":7,\"idInsumo\":"+insumo.IdInsumos+",\"idAreaInsumo\":" + insumo.IdAreaInsumo + ",\"idGasto\":" + insumo.IdGastos_insumo + ",\"nomInsumo\":\"" + insumo.NomInsumos + "\",\"Cantidad\":\"" + insumo.Cantidad + "\",\"descInsumo\":\"" + insumo.DescripcionInsumo + "\",\"unidadMedida\":" + insumo.UnidadMedida + "}";
             try
             {
                 String result = netclient.NetPost("ws-precios-insumos.php", this.JsonParam);
@@ -209,8 +208,9 @@ namespace NetClient
                 {
                     Insumos insumo = new Insumos();
                     //{"idInsumos":1,"idAreaInsumo":3,"idGastos":1,"nomInsumos":"Jeringas","cantidad":3,"descripcionInsumo":"Compra de Jeringas","unidadMedida":"Unidad","nomAreaInsumo":"Jeringas","conceptoGasto":""}
-                    insumo.IdInsumos = Convert.ToInt32(item.SelectToken("idAreaInsumo").ToString());
-                    insumo.IdAreaInsumo = Convert.ToInt32(item.SelectToken("idGastos").ToString());
+                    insumo.IdInsumos = Convert.ToInt32(item.SelectToken("idInsumos").ToString());
+                    insumo.IdAreaInsumo = Convert.ToInt32(item.SelectToken("idAreaInsumo").ToString());
+                    insumo.IdGastos_insumo = Convert.ToInt32(item.SelectToken("idGastos").ToString());
                     insumo.NomInsumos = item.SelectToken("nomInsumos").ToString();
                     insumo.Cantidad = Convert.ToInt32(item.SelectToken("cantidad").ToString());
                     insumo.DescripcionInsumo = item.SelectToken("descripcionInsumo").ToString();
@@ -263,7 +263,7 @@ namespace NetClient
         }
         #endregion
 
-        #region ListarInsumosPorId
+        #region ListarInsumosPorId Gatos
 
         public List<Insumos> ListarInsumosPorIdGastos(int idGasto)
         {
@@ -297,7 +297,6 @@ namespace NetClient
             return list;
         }
         #endregion
-
 
         #region ListarInsumosPorNombre
 
