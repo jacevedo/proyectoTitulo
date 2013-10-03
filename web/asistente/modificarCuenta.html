@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<link rel="stylesheet" href="estilos/estiloBase.css">
+		<link rel="stylesheet" href="estilos/estiloModificarPerfil.css">
+		<script type="text/javascript" src="javascript/scriptModificarCuenta.js"></script>
+		<title>SFH</title>
+	</head>
+	<body>
+		<head>
+			<img src="imagenes/logo.png" id="imagenLogo">
+			<h1>SFH: Modificar Cuenta</h1>
+			<div id="menu">
+				<table id="tablaMenu">
+					<tr>
+						<td><a href="perfil.html">Perfil</a></td>
+						<td><a href="crearcuenta.html">Crear Cuenta</a></td>
+						<td><a href="confirmarhora.html">Hora Atencion</a></td>
+						<td><a href="ListaPrecios.html">Lista Precios</a></td>
+						<td><a href="index.html">Logout</a></td>	
+					</tr>
+				</table> 
+			</div>
+		</head>
+		<div id="cuerpo">
+			<div id="logo">
+				<img src="imagenes/logo.png" id="imagenCostado">
+			</div>
+			<div id="contenido">
+				<table id="tablaModificarPerfil">
+					<tr>
+						<td class="tdEncabezado">Contrase&ntilde;a</td>
+						<td><input type="password" class="inputTabla" id="txtContrasena"/></td>
+					</tr>
+					<tr>
+						<td class="tdEncabezado">Nombre</td>
+						<td><input type="text" class="inputTabla" id="txtNombre"/></td>
+					</tr>
+					<tr>
+						<td class="tdEncabezado">Apellido Paterno</td>
+						<td><input type="text" class="inputTabla" id="txtAppPaterno"/></td>
+					</tr>
+					<tr>
+						<td class="tdEncabezado">Apellido Materno</td>
+						<td><input type="text" class="inputTabla" id="txtAppMaterno"/></td>
+					</tr>
+					<tr>
+						<td class="tdEncabezado">Rut</td>
+						<td><input type="text"  id="txtRut"/> - <input type="text" id="txtDv"/></td>
+					</tr>
+					<tr>
+						<td class="tdEncabezado">Fecha de Nacimiento</td>
+						<td><input type="date" id="txtFechaNacimiento"/></td>
+					</tr>
+					<tr>
+						<td class="tdEncabezado">Direccion</td>
+						<td><input type="text"  class="inputTabla" id="txtDireccion"/></td>
+					</tr>
+					<tr>
+						<td class="tdEncabezado">Comuna</td>
+						<td>
+							<select  id="selectComuna">
+								<option value="">--</option>
+								<option value="01">Providencia</option>
+								<option value="02">&Ntilde;u&ntilde;oa</option>
+								<option value="03">Las Condes</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td class="tdEncabezado">Telefono Fijo</td>
+						<td><input type="text" class="inputTabla" id="txtFono"/></td>
+					</tr>
+					<tr>
+						<td class="tdEncabezado">Celular</td>
+						<td><input type="text" class="inputTabla" id="txtCelular"/></td>
+					</tr>
+					<tr>
+						<td colspan=2><button id="btnModificarCuenta">Guardar</button></td>
+					</tr>
+
+					
+				</table>
+			</div>
+		</div>
+	</body>
+</html>

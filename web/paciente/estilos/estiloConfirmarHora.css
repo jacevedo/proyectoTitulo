@@ -1,0 +1,42 @@
+#Contenido
+{
+	margin-left: 35%;
+}
+#btnBuscar
+{
+	width: 8% !important;
+}
+#tablaConfirmarHora
+{
+	border: 1px solid black;
+}
+#tablaConfirmarHora tr td
+{
+	border: 1px solid black;
+}
+#txtBuscar
+{
+	margin-left: 37%;
+	width: 26%;
+}
+.tdNombre
+{
+	width: 30%;
+}
+.tdTelefono
+{
+	width: 20%;
+}
+.tdHora
+{
+	width: 10%;
+}
+.tdDentista
+{
+	width: 29%;
+}
+#btnConfirmarHora
+{
+	width: 60% !important;
+	margin-left: 20% !important;
+}

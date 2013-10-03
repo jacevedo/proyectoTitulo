@@ -1,0 +1,37 @@
+h1
+{
+	display: inline;
+	width: 23%;
+
+}
+header
+{
+	margin-top: 18px;
+}
+
+button
+{
+	width: 50% !important;
+}
+#Contenido
+{
+	margin-left: 33%;
+	width: 46%;
+}
+#tablaContenido
+{
+	width: 95%;
+	border: 1px solid black;	
+}
+#tablaContenido tr td
+{
+	border: 1px solid black;
+}
+#btnCrearCuenta
+{
+	margin-left: 23%;
+}
+.tdIndicador
+{
+	width: 36%;
+}

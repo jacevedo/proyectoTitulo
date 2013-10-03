@@ -43,7 +43,7 @@ switch ($opcion)
 		$gasto->initClass($idGasto,$idPersona,$concepto,$monto,$descuentoGasto,"", "");
 		$controladoraGastos = new ControladoraGastos();
 		$arreglo["code"]=2;
-		$arreglo["idGastoInsertado"] = $controladoraGastos->modificarGasto($gasto);
+		$arreglo["idGastoModificado"] = $controladoraGastos->modificarGasto($gasto);
 		echo(json_encode($arreglo));
 	break;
 	case 3:

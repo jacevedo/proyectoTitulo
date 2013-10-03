@@ -1,0 +1,44 @@
+#Contenido
+{
+	margin-left: 37%;
+
+}
+#txtBuscaTratamiento
+{
+	width: 43%;
+}
+#btnBuscar
+{
+	width: 7% !important;
+	margin-left: 0% !important;
+}
+#tablaListaPrecios
+{
+	width: 50%;
+	border: 1px solid black;
+}
+#tablaListaPrecios tr td
+{
+	border: 1px solid black;
+}
+button
+{
+	width: 65% !important;
+	margin-left: 14% !important;
+}
+#btnBuscar
+{
+	width: 43% !important;
+	margin-left: 0% !important;
+	margin-top: 0% !important;
+}
+#btnAgregarTratamiento
+{
+	width: 43% !important;
+	margin-left: 0% !important;	
+
+}
+#botones
+{
+width: 50%;
+}

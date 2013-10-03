@@ -1,0 +1,24 @@
+body
+{
+	background-color:#ABC8E2;
+}
+#login
+{
+	float: right;
+	margin-right: 30%;
+}
+button
+{
+	background:-webkit-gradient(linear, 0 0, 0 100%, from(#375D81), to(#375D81));
+	background:-webkit-linear-gradient(#375D81) 0%, #375D81 100%);
+	background:-moz-linear-gradient(#375D81) 0%, #375D81 100%);
+	background:-o-linear-gradient(#375D81 0%, #375D81 100%);
+	background:linear-gradient(#375D81) 0%, #375D81 100%);   
+	border:solid 1px #C4D7ED; 
+	border-radius:5px;
+	text-align:center;
+	padding:5px; 
+	color:#333; 
+	width:100%; 
+  	color:white;
+}

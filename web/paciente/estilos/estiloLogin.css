@@ -1,0 +1,39 @@
+
+#login
+{
+	float: right;
+	margin-right: 25%;
+	width: 35%;
+}
+
+
+table
+{
+	width: 65%;
+}
+#txtUsuario
+{
+	width: 100%;
+}
+#txtPass
+{
+	width: 100%;
+}
+
+#titulo
+{
+	margin-top: 0;
+	padding-top: 19px;
+}
+
+#crearCuenta
+{
+	font-size: 14px;
+}
+
+#imagenCostado
+{
+	float: left;
+	width: 20%;
+	margin-left: 10%;
+}

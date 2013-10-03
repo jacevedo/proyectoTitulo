@@ -1,0 +1,42 @@
+#tablaModificarPerfil
+{
+	width: 70%;
+	border: 1px solid black;
+}
+#tablaModificarPerfil tr td
+{
+	border: 1px solid black;
+}
+#contenido
+{
+	margin-left: 35%;
+}
+.tdEncabezado
+{
+	width: 38%;
+}
+button
+{
+	margin-left: 18% !important;
+	width: 60% !important;
+}
+.inputTabla
+{
+	width: 92%;
+}
+#txtRut
+{
+	width: 75%;
+}
+#txtDv
+{
+	width: 10%;
+}
+#selectComuna
+{
+	width: 94%;
+}
+#txtFechaNacimiento
+{
+	width: 92%;
+}

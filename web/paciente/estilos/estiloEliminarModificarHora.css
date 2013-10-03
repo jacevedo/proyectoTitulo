@@ -1,0 +1,33 @@
+#Contenido
+{
+	margin-left: 39%;
+}
+#tablaModificarEliminarHora
+{
+	border: 1px solid black;
+}
+#tablaModificarEliminarHora tr td
+{
+	border: 1px solid black;
+}
+button
+{
+	width: 43%;
+	margin-left: 4%;
+}
+.inputEliminarModficarHora
+{
+	width: 96%;
+}
+#selectDentista
+{
+	width: 98%;
+}
+#txtRut
+{
+	width: 73%;
+}
+#txtDv
+{
+	width: 17%;
+}
