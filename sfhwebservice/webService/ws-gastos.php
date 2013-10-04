@@ -54,7 +54,7 @@ switch ($opcion)
 		echo(json_encode($arreglo));
 	break;
 	case 4:
-		//json Listar Gastos Id Persona {"indice":3,"idPersona":1}
+		//json Listar Gastos Id Persona {"indice":4,"idPersona":1}
 		$idPersona = $data->{"idPersona"};
 		$controladoraGastos = new ControladoraGastos();
 		$arreglo["code"]=4;
