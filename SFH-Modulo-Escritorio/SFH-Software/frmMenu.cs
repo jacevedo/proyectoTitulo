@@ -131,6 +131,14 @@ namespace SFH_Software
                     frmAdministracionDeReporteria report = new frmAdministracionDeReporteria();
                     this.MostrarForm(e.Node.Text.ToString(), report);
                     break;
+                case "Administración de área insumos":
+                    frmAdministracionAreaInsumos areainsumo = new frmAdministracionAreaInsumos();
+                    this.MostrarForm(e.Node.Text.ToString(), areainsumo);
+                    break;
+                case "Administración de gastos":
+                    frmGastos gastos = new frmGastos();
+                    this.MostrarForm(e.Node.Text.ToString(), gastos);
+                    break;
             }
         }
 
@@ -199,14 +207,21 @@ namespace SFH_Software
         private void administraciónDeListasDePreciosPorTratamientoToolStripMenuItem_Click(object sender, EventArgs e)
         {
              
-                    frmAdministracionListasDePrecios listaprecio = new frmAdministracionListasDePrecios();
-                    this.MostrarForm("Administración de listas de precios por tratamiento", listaprecio);
+            frmAdministracionListasDePrecios listaprecio = new frmAdministracionListasDePrecios();
+            this.MostrarForm("Administración de listas de precios por tratamiento", listaprecio);
 
         }
 
-        private void treeViewMenu_AfterSelect(object sender, TreeViewEventArgs e)
+        private void administraciónDeÁreaInsumosToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            frmAdministracionAreaInsumos areaInsumos = new frmAdministracionAreaInsumos();
+            this.MostrarForm("Administración de área insumos ", areaInsumos);
+        }
 
+        private void administraciónDeGatosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmGastos gastos = new frmGastos();
+            this.MostrarForm("Administración de gastos", gastos);
         }
 
     }

@@ -66,7 +66,7 @@ switch ($opcion)
 		$idGasto = $data->{"idGasto"};
 		$controladoraGastos = new ControladoraGastos();
 		$arreglo["code"]=5;
-		$arreglo["listaGastos"] = $controladoraGastos->eliminarGasto($idGasto);
+		$arreglo["Eliminado"] = $controladoraGastos->eliminarGasto($idGasto);
 		echo(json_encode($arreglo));
 	break;
 }

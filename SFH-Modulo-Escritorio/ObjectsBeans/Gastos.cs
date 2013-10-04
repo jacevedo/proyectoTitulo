@@ -13,6 +13,8 @@ namespace ObjectsBeans
         private int montoGastos;
         private int descuentoGastos;
         private string conceptodeGastos;
+        private string nombre;
+        private string apellido;
         #endregion
 
         #region Constructor
@@ -53,6 +55,18 @@ namespace ObjectsBeans
         {
             get { return conceptodeGastos; }
             set { conceptodeGastos = value; }
+        }
+
+        public string Nombre
+        {
+            get { return nombre; }
+            set { nombre = value; }
+        }
+
+        public string Apellido
+        {
+            get { return apellido; }
+            set { apellido = value; }
         }
         #endregion
     }
