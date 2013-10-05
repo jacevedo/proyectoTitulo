@@ -98,7 +98,7 @@ namespace SFH_Software
                 client_precio.InsertarPrecio(precio);
                 dataGridPrecio.DataSource = client_precio.ListarPrecios();
                 this.LimpiarControles();
-                MessageBox.Show("Precio insertada satisfactoriamente", "SFH Administración de Clínica - Administración de Fichas Dentales", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Precio insertado satisfactoriamente", "SFH Administración de Clínica - Administración de Fichas Dentales", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }
             else if (btnNuevo.Text.ToString().Trim() == "Guardar Cambios")

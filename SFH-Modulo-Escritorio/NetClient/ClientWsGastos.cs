@@ -51,7 +51,7 @@ namespace NetClient
         {
             string gastoModificado = string.Empty;
             //{"indice":2,"idGasto":4,"idPersona":1,"conceptoGasto":"Colacionjsjjss","montoGasto":2000,"descuentoGasto":14}
-            this.JsonParam = "send={\"indice\":1,\"idGasto\":"+gasto.IdGastos+",\"idPersona\":"+gasto.IdPersona+",\"conceptoGasto\":\""+gasto.ConceptodeGastos+"\",\"montoGasto\":"+gasto.MontoGastos+",\"descuentoGasto\":"+gasto.DescuentoGastos+ "}";
+            this.JsonParam = "send={\"indice\":2,\"idGasto\":"+gasto.IdGastos+",\"idPersona\":"+gasto.IdPersona+",\"conceptoGasto\":\""+gasto.ConceptodeGastos+" \",\"montoGasto\":"+gasto.MontoGastos+",\"descuentoGasto\":"+gasto.DescuentoGastos+ "}";
             try
             {
                 String result = netclient.NetPost("ws-gastos.php", this.JsonParam);
@@ -105,12 +105,12 @@ namespace NetClient
 
         #region ListarGastos
 
-        public List<Gastos> ListarGastos(int id_gastos)
+        public List<Gastos> ListarGastosporIdpersona(int id_persona)
         {
             List<Gastos> list = new List<Gastos>();
             try
             {
-                this.JsonParam = "send={\"indice\":4,\"idPersona\":"+id_gastos+"}";
+                this.JsonParam = "send={\"indice\":4,\"idPersona\":"+id_persona+"}";
                 String result = netclient.NetPost("ws-gastos.php", this.JsonParam);
                 var jobject = JObject.Parse(result);
                 var token = jobject.SelectToken("listaGastos").ToList();
@@ -138,11 +138,11 @@ namespace NetClient
         #endregion
 
         #region EliminarGasto
-        public string EliminarGasto(int idgasto)
+        public string EliminarGastos(int idgasto)
         {
             string gastoEliminado = string.Empty;
             //{"indice":5,"idPrecio":12}
-            this.JsonParam = "send={\"indice\":5,\"idPrecio\":" + idgasto + "}";
+            this.JsonParam = "send={\"indice\":5,\"idGasto\":" + idgasto + "}";
             try
             {
                 String result = netclient.NetPost("ws-gastos.php", this.JsonParam);

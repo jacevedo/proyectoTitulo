@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -28,6 +29,34 @@ namespace NetClient
         #region Metodos 
        
         #region ListarPacientePersona
+
+        public List<Persona> ListarPersonas()
+        {
+            List<Persona> list = new List<Persona>();
+            try
+            {
+                this.JsonParam = "send={\"indice\":12}";
+                String result = netclient.NetPost("ws-admin-usuario.php", this.JsonParam);
+                var jobject = JObject.Parse(result);
+                var token = jobject.SelectToken("listaPersonas").ToList();
+                foreach (var item in token)
+                {
+                    Persona persona = new Persona();
+                    //{"idPaciente":1,"nomPersona":"Ada","appPersona":"Tatus"}
+                    persona.IdPersona = Convert.ToInt32(item.SelectToken("idPersona").ToString());
+                    persona.Nombre = item.SelectToken("nombre").ToString() + item.SelectToken("apellidoPaterno").ToString();
+                    list.Add(persona);
+                }
+
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e + "| Error al Listar Fichas");
+            }
+            return list;
+        }
+
+
 
         public List<Persona> ListarPacientePersona()
         {

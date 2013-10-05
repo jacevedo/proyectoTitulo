@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAdministracionDeInsumos));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.dataGridInsumos = new System.Windows.Forms.DataGridView();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.cmbxBuscar = new System.Windows.Forms.ComboBox();
@@ -39,9 +41,9 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.cmbxGastos = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cmbxAreaInsumo = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -54,12 +56,24 @@
             this.button2 = new System.Windows.Forms.Button();
             this.btnAdminCli = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.dataGridInsumos = new System.Windows.Forms.DataGridView();
+            this.idinsumos = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idAreaInsumo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idgastosinsumos = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nominsumos = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unidaddemedidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.concepto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombreareainsumo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.editar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.cmbxGastos2 = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridInsumos)).BeginInit();
             this.groupBox4.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridInsumos)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -67,9 +81,9 @@
             this.groupBox1.Controls.Add(this.groupBox3);
             this.groupBox1.Controls.Add(this.groupBox2);
             this.groupBox1.ForeColor = System.Drawing.Color.White;
-            this.groupBox1.Location = new System.Drawing.Point(12, 27);
+            this.groupBox1.Location = new System.Drawing.Point(8, 27);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1255, 832);
+            this.groupBox1.Size = new System.Drawing.Size(1268, 832);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Administración de Insumos";
@@ -79,23 +93,47 @@
             this.groupBox3.Controls.Add(this.dataGridInsumos);
             this.groupBox3.Controls.Add(this.groupBox4);
             this.groupBox3.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.groupBox3.Location = new System.Drawing.Point(21, 338);
+            this.groupBox3.Location = new System.Drawing.Point(16, 338);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(1228, 485);
+            this.groupBox3.Size = new System.Drawing.Size(1243, 485);
             this.groupBox3.TabIndex = 15;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Listado de insumos";
             // 
+            // dataGridInsumos
+            // 
+            this.dataGridInsumos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridInsumos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idinsumos,
+            this.idAreaInsumo,
+            this.idgastosinsumos,
+            this.nominsumos,
+            this.cantidad,
+            this.Descripcion,
+            this.unidaddemedidad,
+            this.concepto,
+            this.nombreareainsumo,
+            this.editar,
+            this.eliminar});
+            this.dataGridInsumos.Location = new System.Drawing.Point(17, 86);
+            this.dataGridInsumos.Name = "dataGridInsumos";
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.dataGridInsumos.RowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridInsumos.Size = new System.Drawing.Size(1205, 393);
+            this.dataGridInsumos.TabIndex = 4;
+            // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.label6);
+            this.groupBox4.Controls.Add(this.cmbxGastos2);
             this.groupBox4.Controls.Add(this.btnBuscar);
             this.groupBox4.Controls.Add(this.cmbxBuscar);
             this.groupBox4.Controls.Add(this.label9);
             this.groupBox4.Controls.Add(this.txtBuscar);
             this.groupBox4.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.groupBox4.Location = new System.Drawing.Point(265, 10);
+            this.groupBox4.Location = new System.Drawing.Point(136, 14);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(610, 66);
+            this.groupBox4.Size = new System.Drawing.Size(905, 66);
             this.groupBox4.TabIndex = 3;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Búsqueda de insumos";
@@ -105,7 +143,7 @@
             this.btnBuscar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(93)))), ((int)(((byte)(129)))));
             this.btnBuscar.ForeColor = System.Drawing.Color.White;
-            this.btnBuscar.Location = new System.Drawing.Point(467, 17);
+            this.btnBuscar.Location = new System.Drawing.Point(745, 17);
             this.btnBuscar.Margin = new System.Windows.Forms.Padding(1);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(127, 36);
@@ -132,7 +170,7 @@
             // 
             // txtBuscar
             // 
-            this.txtBuscar.Location = new System.Drawing.Point(277, 26);
+            this.txtBuscar.Location = new System.Drawing.Point(543, 26);
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(170, 20);
             this.txtBuscar.TabIndex = 2;
@@ -141,9 +179,9 @@
             // 
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.textBox3);
-            this.groupBox2.Controls.Add(this.comboBox2);
+            this.groupBox2.Controls.Add(this.cmbxGastos);
             this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.comboBox1);
+            this.groupBox2.Controls.Add(this.cmbxAreaInsumo);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.textBox2);
             this.groupBox2.Controls.Add(this.label12);
@@ -179,13 +217,13 @@
             this.textBox3.Size = new System.Drawing.Size(215, 20);
             this.textBox3.TabIndex = 42;
             // 
-            // comboBox2
+            // cmbxGastos
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(176, 92);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(215, 21);
-            this.comboBox2.TabIndex = 41;
+            this.cmbxGastos.FormattingEnabled = true;
+            this.cmbxGastos.Location = new System.Drawing.Point(176, 92);
+            this.cmbxGastos.Name = "cmbxGastos";
+            this.cmbxGastos.Size = new System.Drawing.Size(215, 21);
+            this.cmbxGastos.TabIndex = 41;
             // 
             // label4
             // 
@@ -196,13 +234,13 @@
             this.label4.TabIndex = 40;
             this.label4.Text = "Gatos de Insumos";
             // 
-            // comboBox1
+            // cmbxAreaInsumo
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(176, 37);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(215, 21);
-            this.comboBox1.TabIndex = 39;
+            this.cmbxAreaInsumo.FormattingEnabled = true;
+            this.cmbxAreaInsumo.Location = new System.Drawing.Point(176, 37);
+            this.cmbxAreaInsumo.Name = "cmbxAreaInsumo";
+            this.cmbxAreaInsumo.Size = new System.Drawing.Size(215, 21);
+            this.cmbxAreaInsumo.TabIndex = 39;
             // 
             // label1
             // 
@@ -316,13 +354,87 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "Administración de Insumos";
             // 
-            // dataGridInsumos
+            // idinsumos
             // 
-            this.dataGridInsumos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridInsumos.Location = new System.Drawing.Point(17, 86);
-            this.dataGridInsumos.Name = "dataGridInsumos";
-            this.dataGridInsumos.Size = new System.Drawing.Size(1205, 393);
-            this.dataGridInsumos.TabIndex = 4;
+            this.idinsumos.DataPropertyName = "IdInsumos";
+            this.idinsumos.HeaderText = "Id Insumos";
+            this.idinsumos.Name = "idinsumos";
+            // 
+            // idAreaInsumo
+            // 
+            this.idAreaInsumo.DataPropertyName = "IdAreaInsumo";
+            this.idAreaInsumo.HeaderText = "Id area insumo";
+            this.idAreaInsumo.Name = "idAreaInsumo";
+            // 
+            // idgastosinsumos
+            // 
+            this.idgastosinsumos.DataPropertyName = "IdGastos_insumo";
+            this.idgastosinsumos.HeaderText = "IdGastosInsumos";
+            this.idgastosinsumos.Name = "idgastosinsumos";
+            // 
+            // nominsumos
+            // 
+            this.nominsumos.DataPropertyName = "NomInsumos";
+            this.nominsumos.HeaderText = "Nombre Insumos";
+            this.nominsumos.Name = "nominsumos";
+            // 
+            // cantidad
+            // 
+            this.cantidad.DataPropertyName = "Cantidad";
+            this.cantidad.HeaderText = "Cantidad";
+            this.cantidad.Name = "cantidad";
+            // 
+            // Descripcion
+            // 
+            this.Descripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Descripcion.DataPropertyName = "DescripcionInsumo";
+            this.Descripcion.HeaderText = "Descripcion insumos";
+            this.Descripcion.Name = "Descripcion";
+            // 
+            // unidaddemedidad
+            // 
+            this.unidaddemedidad.DataPropertyName = "UnidadMedida";
+            this.unidaddemedidad.HeaderText = "Unidad de medida";
+            this.unidaddemedidad.Name = "unidaddemedidad";
+            // 
+            // concepto
+            // 
+            this.concepto.DataPropertyName = "ConceptoGasto";
+            this.concepto.HeaderText = "Concepto Gastos";
+            this.concepto.Name = "concepto";
+            // 
+            // nombreareainsumo
+            // 
+            this.nombreareainsumo.DataPropertyName = "NomAreaInsumo";
+            this.nombreareainsumo.HeaderText = "Nombre Area Insumo";
+            this.nombreareainsumo.Name = "nombreareainsumo";
+            // 
+            // editar
+            // 
+            this.editar.HeaderText = "Editar Insumo";
+            this.editar.Name = "editar";
+            // 
+            // eliminar
+            // 
+            this.eliminar.HeaderText = "Eliminar insumo";
+            this.eliminar.Name = "eliminar";
+            // 
+            // cmbxGastos2
+            // 
+            this.cmbxGastos2.FormattingEnabled = true;
+            this.cmbxGastos2.Location = new System.Drawing.Point(334, 26);
+            this.cmbxGastos2.Name = "cmbxGastos2";
+            this.cmbxGastos2.Size = new System.Drawing.Size(170, 21);
+            this.cmbxGastos2.TabIndex = 59;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(293, 29);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(35, 13);
+            this.label6.TabIndex = 60;
+            this.label6.Text = "Gasto";
             // 
             // frmAdministracionDeInsumos
             // 
@@ -339,11 +451,11 @@
             this.Load += new System.EventHandler(this.frmAdministracionDeInsumos_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridInsumos)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridInsumos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -366,10 +478,10 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cmbxAreaInsumo;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox cmbxGastos;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Button btnBuscar;
@@ -377,5 +489,18 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtBuscar;
         private System.Windows.Forms.DataGridView dataGridInsumos;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idinsumos;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idAreaInsumo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idgastosinsumos;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nominsumos;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cantidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn unidaddemedidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn concepto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nombreareainsumo;
+        private System.Windows.Forms.DataGridViewButtonColumn editar;
+        private System.Windows.Forms.DataGridViewButtonColumn eliminar;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox cmbxGastos2;
     }
 }
