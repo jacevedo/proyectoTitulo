@@ -47,6 +47,7 @@
             this.descripciondearea = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Editar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Vergastos = new System.Windows.Forms.DataGridViewButtonColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridAreaInsumo)).BeginInit();
@@ -95,7 +96,8 @@
             this.nombreAreaInsumo,
             this.descripciondearea,
             this.Editar,
-            this.Eliminar});
+            this.Eliminar,
+            this.Vergastos});
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -106,7 +108,7 @@
             this.dataGridAreaInsumo.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridAreaInsumo.Location = new System.Drawing.Point(34, 34);
             this.dataGridAreaInsumo.Name = "dataGridAreaInsumo";
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
             this.dataGridAreaInsumo.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridAreaInsumo.Size = new System.Drawing.Size(1197, 390);
             this.dataGridAreaInsumo.TabIndex = 4;
@@ -219,6 +221,13 @@
             this.Eliminar.HeaderText = "Eliminar área de insumos";
             this.Eliminar.Name = "Eliminar";
             // 
+            // Vergastos
+            // 
+            this.Vergastos.HeaderText = "Ver gastos";
+            this.Vergastos.Name = "Vergastos";
+            this.Vergastos.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Vergastos.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
             // frmAdministracionAreaInsumos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -260,5 +269,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn descripciondearea;
         private System.Windows.Forms.DataGridViewButtonColumn Editar;
         private System.Windows.Forms.DataGridViewButtonColumn Eliminar;
+        private System.Windows.Forms.DataGridViewButtonColumn Vergastos;
     }
 }

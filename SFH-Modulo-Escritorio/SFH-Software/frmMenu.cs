@@ -115,7 +115,7 @@ namespace SFH_Software
                     this.MostrarForm(e.Node.Text.ToString(), trata);
                     break;
                 case "Administración de insumos":
-                    frmAdministracionDeInsumos insumo = new frmAdministracionDeInsumos();
+                    frmAdministracionDeInsumos insumo = new frmAdministracionDeInsumos(this);
                     this.MostrarForm(e.Node.Text.ToString(),insumo);
                     break;
                 case "Administración de listas de precios por tratamiento":
@@ -132,11 +132,11 @@ namespace SFH_Software
                     this.MostrarForm(e.Node.Text.ToString(), report);
                     break;
                 case "Administración de área insumos":
-                    frmAdministracionAreaInsumos areainsumo = new frmAdministracionAreaInsumos();
+                    frmAdministracionAreaInsumos areainsumo = new frmAdministracionAreaInsumos(this);
                     this.MostrarForm(e.Node.Text.ToString(), areainsumo);
                     break;
                 case "Administración de gastos":
-                    frmGastos gastos = new frmGastos();
+                    frmGastos gastos = new frmGastos(this);
                     this.MostrarForm(e.Node.Text.ToString(), gastos);
                     break;
             }
@@ -192,7 +192,7 @@ namespace SFH_Software
         private void administraciónDeReportesEInsumosToolStripMenuItem_Click(object sender, EventArgs e)
         {
               
-                    frmAdministracionDeInsumos insumo = new frmAdministracionDeInsumos();
+                    frmAdministracionDeInsumos insumo = new frmAdministracionDeInsumos(this);
                     this.MostrarForm("Administración de reportes e insumos", insumo);
                 
         }
@@ -214,13 +214,13 @@ namespace SFH_Software
 
         private void administraciónDeÁreaInsumosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmAdministracionAreaInsumos areaInsumos = new frmAdministracionAreaInsumos();
+            frmAdministracionAreaInsumos areaInsumos = new frmAdministracionAreaInsumos(this);
             this.MostrarForm("Administración de área insumos ", areaInsumos);
         }
 
         private void administraciónDeGatosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmGastos gastos = new frmGastos();
+            frmGastos gastos = new frmGastos(this);
             this.MostrarForm("Administración de gastos", gastos);
         }
 

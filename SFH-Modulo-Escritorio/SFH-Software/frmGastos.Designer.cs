@@ -33,15 +33,6 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dataGridGastos = new System.Windows.Forms.DataGridView();
-            this.idgastos = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idpersona = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.monto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descuentogasto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.conceptogasto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.editar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.cmbxPersonaBusqueda = new System.Windows.Forms.ComboBox();
@@ -56,8 +47,18 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtMonto = new System.Windows.Forms.TextBox();
             this.btnNuevo = new System.Windows.Forms.Button();
-            this.btnAdminCli = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.idgastos = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idpersona = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.monto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descuentogasto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.conceptogasto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.editar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.verinsumos = new System.Windows.Forms.DataGridViewButtonColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridGastos)).BeginInit();
@@ -101,68 +102,15 @@
             this.nombre,
             this.apellido,
             this.editar,
-            this.eliminar});
+            this.eliminar,
+            this.verinsumos});
             this.dataGridGastos.Location = new System.Drawing.Point(21, 85);
             this.dataGridGastos.Name = "dataGridGastos";
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
             this.dataGridGastos.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridGastos.Size = new System.Drawing.Size(1190, 394);
             this.dataGridGastos.TabIndex = 4;
             this.dataGridGastos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridGastos_CellContentClick);
-            // 
-            // idgastos
-            // 
-            this.idgastos.DataPropertyName = "IdGastos";
-            this.idgastos.HeaderText = "Id Gastos";
-            this.idgastos.Name = "idgastos";
-            // 
-            // idpersona
-            // 
-            this.idpersona.DataPropertyName = "IdPersona";
-            this.idpersona.HeaderText = "Id Persona";
-            this.idpersona.Name = "idpersona";
-            this.idpersona.Visible = false;
-            // 
-            // monto
-            // 
-            this.monto.DataPropertyName = "MontoGastos";
-            this.monto.HeaderText = "Monto gasto";
-            this.monto.Name = "monto";
-            // 
-            // descuentogasto
-            // 
-            this.descuentogasto.DataPropertyName = "DescuentoGastos";
-            this.descuentogasto.HeaderText = "Descuento Gasto";
-            this.descuentogasto.Name = "descuentogasto";
-            // 
-            // conceptogasto
-            // 
-            this.conceptogasto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.conceptogasto.DataPropertyName = "ConceptodeGastos";
-            this.conceptogasto.HeaderText = "Concepto gasto";
-            this.conceptogasto.Name = "conceptogasto";
-            // 
-            // nombre
-            // 
-            this.nombre.DataPropertyName = "Nombre";
-            this.nombre.HeaderText = "Nombre";
-            this.nombre.Name = "nombre";
-            // 
-            // apellido
-            // 
-            this.apellido.DataPropertyName = "Apellido";
-            this.apellido.HeaderText = "Apellido";
-            this.apellido.Name = "apellido";
-            // 
-            // editar
-            // 
-            this.editar.HeaderText = "Editar gastos";
-            this.editar.Name = "editar";
-            // 
-            // eliminar
-            // 
-            this.eliminar.HeaderText = "Eliminar gasto";
-            this.eliminar.Name = "eliminar";
             // 
             // groupBox4
             // 
@@ -219,7 +167,7 @@
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.txtMonto);
             this.groupBox2.Controls.Add(this.btnNuevo);
-            this.groupBox2.Controls.Add(this.btnAdminCli);
+            this.groupBox2.Controls.Add(this.btnCancel);
             this.groupBox2.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.groupBox2.Location = new System.Drawing.Point(20, 19);
             this.groupBox2.Name = "groupBox2";
@@ -308,18 +256,19 @@
             this.btnNuevo.UseVisualStyleBackColor = false;
             this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
-            // btnAdminCli
+            // btnCancel
             // 
-            this.btnAdminCli.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnAdminCli.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(93)))), ((int)(((byte)(129)))));
-            this.btnAdminCli.ForeColor = System.Drawing.Color.White;
-            this.btnAdminCli.Location = new System.Drawing.Point(436, 263);
-            this.btnAdminCli.Margin = new System.Windows.Forms.Padding(1);
-            this.btnAdminCli.Name = "btnAdminCli";
-            this.btnAdminCli.Size = new System.Drawing.Size(129, 36);
-            this.btnAdminCli.TabIndex = 11;
-            this.btnAdminCli.Text = "Cancelar";
-            this.btnAdminCli.UseVisualStyleBackColor = false;
+            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(93)))), ((int)(((byte)(129)))));
+            this.btnCancel.ForeColor = System.Drawing.Color.White;
+            this.btnCancel.Location = new System.Drawing.Point(436, 263);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(1);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(129, 36);
+            this.btnCancel.TabIndex = 11;
+            this.btnCancel.Text = "Cancelar";
+            this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // label3
             // 
@@ -331,6 +280,67 @@
             this.label3.Size = new System.Drawing.Size(185, 23);
             this.label3.TabIndex = 8;
             this.label3.Text = "Administración de gastos";
+            // 
+            // idgastos
+            // 
+            this.idgastos.DataPropertyName = "IdGastos";
+            this.idgastos.HeaderText = "Id Gastos";
+            this.idgastos.Name = "idgastos";
+            // 
+            // idpersona
+            // 
+            this.idpersona.DataPropertyName = "IdPersona";
+            this.idpersona.HeaderText = "Id Persona";
+            this.idpersona.Name = "idpersona";
+            this.idpersona.Visible = false;
+            // 
+            // monto
+            // 
+            this.monto.DataPropertyName = "MontoGastos";
+            this.monto.HeaderText = "Monto gasto";
+            this.monto.Name = "monto";
+            // 
+            // descuentogasto
+            // 
+            this.descuentogasto.DataPropertyName = "DescuentoGastos";
+            this.descuentogasto.HeaderText = "Descuento Gasto";
+            this.descuentogasto.Name = "descuentogasto";
+            // 
+            // conceptogasto
+            // 
+            this.conceptogasto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.conceptogasto.DataPropertyName = "ConceptodeGastos";
+            this.conceptogasto.HeaderText = "Concepto gasto";
+            this.conceptogasto.Name = "conceptogasto";
+            // 
+            // nombre
+            // 
+            this.nombre.DataPropertyName = "Nombre";
+            this.nombre.HeaderText = "Nombre";
+            this.nombre.Name = "nombre";
+            // 
+            // apellido
+            // 
+            this.apellido.DataPropertyName = "Apellido";
+            this.apellido.HeaderText = "Apellido";
+            this.apellido.Name = "apellido";
+            // 
+            // editar
+            // 
+            this.editar.HeaderText = "Editar gastos";
+            this.editar.Name = "editar";
+            // 
+            // eliminar
+            // 
+            this.eliminar.HeaderText = "Eliminar gasto";
+            this.eliminar.Name = "eliminar";
+            // 
+            // verinsumos
+            // 
+            this.verinsumos.HeaderText = "Ver insumos";
+            this.verinsumos.Name = "verinsumos";
+            this.verinsumos.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.verinsumos.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // frmGastos
             // 
@@ -374,7 +384,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtMonto;
         private System.Windows.Forms.Button btnNuevo;
-        private System.Windows.Forms.Button btnAdminCli;
+        private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridView dataGridGastos;
         private System.Windows.Forms.DataGridViewTextBoxColumn idgastos;
@@ -386,5 +396,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn apellido;
         private System.Windows.Forms.DataGridViewButtonColumn editar;
         private System.Windows.Forms.DataGridViewButtonColumn eliminar;
+        private System.Windows.Forms.DataGridViewButtonColumn verinsumos;
     }
 }

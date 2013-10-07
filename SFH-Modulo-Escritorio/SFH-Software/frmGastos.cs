@@ -13,25 +13,26 @@ namespace SFH_Software
 {
     public partial class frmGastos : Form
     {
-        public frmGastos()
-        {
-            InitializeComponent();
-        }
-
         #region Campos
         ClientWsGastos client_gastos = new ClientWsGastos();
         ClientWsAdminUsuario client_users = new ClientWsAdminUsuario();
         List<Gastos> result = new List<Gastos>();
         private int id_gastos;
+        private frmMenu frmMenu;
 
         public int Id_gastos
         {
             get { return id_gastos; }
             set { id_gastos = value; }
         }
-
-        
         #endregion
+
+        public frmGastos(frmMenu frmMenu)
+        {
+            InitializeComponent();
+            this.frmMenu = frmMenu;
+        }
+
         #region Metodos 
         private void PoblarCombosPersona()
         {
@@ -103,6 +104,11 @@ namespace SFH_Software
                         MessageBox.Show("Gasto eliminado del sistema", "SFH Administración de Clínica - Administración de  Gastos", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     break;
+            case 2:
+                   frmAdministracionDeInsumos insumo = new frmAdministracionDeInsumos(frmMenu);
+                    this.frmMenu.MostrarForm("Administración de reportes e insumos", insumo);
+                    break;
+
             }
         }
 
@@ -136,6 +142,13 @@ namespace SFH_Software
 
             }
         }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.LimpiarControles();
+        }
+
+       
 
        
 

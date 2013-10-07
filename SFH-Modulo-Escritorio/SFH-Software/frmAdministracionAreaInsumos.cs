@@ -17,7 +17,7 @@ namespace SFH_Software
         ClientWsAreaInsumoListas client_areainsumo = new ClientWsAreaInsumoListas();
         List<Areainsumo> result = new List<Areainsumo>();
         private int id_area_insumo;
-
+        frmMenu menu;
         public int Id_area_insumo
         {
             get { return id_area_insumo; }
@@ -32,9 +32,10 @@ namespace SFH_Software
             this.btnNuevo.Text = "Ingresar Área insumos";
         }
         #endregion
-        public frmAdministracionAreaInsumos()
+        public frmAdministracionAreaInsumos(frmMenu menu)
         {
             InitializeComponent();
+            this.menu = menu;
         }
 
         private void frmAdministracionAreaInsumos_Load(object sender, EventArgs e)
@@ -61,6 +62,10 @@ namespace SFH_Software
                         this.dataGridAreaInsumo.DataSource = this.client_areainsumo.ListarAreaInsumos();
                         MessageBox.Show("Área insumos eliminada del sistema", "SFH Administración de Clínica - Administración de Área insumos", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
+                    break;
+                case 2:
+                       frmGastos gastos = new frmGastos(this.menu);
+                       this.menu.MostrarForm("Administración de gastos", gastos);
                     break;
             }
         }

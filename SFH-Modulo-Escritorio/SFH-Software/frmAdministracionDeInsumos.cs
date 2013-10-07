@@ -18,6 +18,7 @@ namespace SFH_Software
         ClientWsGastos client_gastos = new ClientWsGastos();
         ClientWsAreaInsumoListas client_areainsumo = new ClientWsAreaInsumoListas();
         List<Insumos> result = new List<Insumos>();
+        frmMenu menu;
         private int id_insumo;
 
         public int Idinsumo
@@ -78,9 +79,10 @@ namespace SFH_Software
         #endregion
 
 
-        public frmAdministracionDeInsumos()
+        public frmAdministracionDeInsumos(frmMenu menu)
         {
             InitializeComponent();
+            this.menu = menu;
         }
 
         private void frmAdministracionDeInsumos_Load(object sender, EventArgs e)
@@ -172,7 +174,7 @@ namespace SFH_Software
                 insumo.DescripcionInsumo = this.txtDescripcion.Text.ToString();
                 this.client_precio.InsertarInsumo(insumo);
                 this.dataGridInsumos.DataSource = this.client_precio.ListarInsumos();
-                //this.LimpiarControles();
+                this.LimpiarControles();
                 MessageBox.Show("Insumo registrado satisfactoriamente", "SFH Administración de Clínica - Administración de Área insumos", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }
@@ -188,10 +190,15 @@ namespace SFH_Software
                 insumo.DescripcionInsumo = this.txtDescripcion.Text.ToString();
                 this.client_precio.ModificarInsumo(insumo);
                 this.dataGridInsumos.DataSource = this.client_precio.ListarInsumos();
-                //this.LimpiarControles();
+                this.LimpiarControles();
                 MessageBox.Show("Insumo modificado satisfactoriamente", "SFH Administración de Clínica - Administración de Área insumos", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.LimpiarControles();
         }
        
     }
