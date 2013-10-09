@@ -2,15 +2,18 @@
 require_once '../pojos/pass.php';
 require_once '../pojos/datoscontacto.php';
 require_once '../controladoras/controladorapass.php';
+require_once '../controladoras/controladoradatoscontacto.php';
 
 /*
 *Contiene la opciones para insertar, listar y modificar
 *Tratamientos y Abonos
 *Opciones:
-*Opciones:
 * 1.- insertar pass
 * 2.- Modificar pass
 * 3.- Listar pass por idPersona
+* 4.- Insertar Datos Contacto
+* 5.- Modificar Datos Contacto
+* 6.- Buscar Datos por idPersona
 */
 
 
@@ -52,6 +55,28 @@ switch ($opcion)
 		$arreglo["code"] = 3;
 		$arreglo["resultado"] =  $controladoraPass->buscarIdPersona($idPersona);
 		echo(json_encode());
+	break;
+	case 4:
+		//json Insertar Pass {"indice":4,"idPersona":17,"idComuna":21,"fonoFijo":"+976509346","fonoCelular":"+56984678325","direccion":"San Martin","mail":"ada@gmail.com","fechaIngreso":"2013-10-09"}
+		$idPersona = $data->{'idPersona'};
+		$idComuna = $data->{'idComuna'};
+		$fonoFijo = $data->{'fonoFijo'};
+		$fonoCelular = $data->{'fonoCelular'};
+		$direccion = $data->{'direccion'};
+		$mail = $data->{'mail'};
+		$fechaIngreso = $data->{'fechaIngreso'};
+
+		$contacto = new DatosContactos();
+		$contacto->initClass($idPersona, $idComuna, $fonoFijo, $fonoCelular, $direccion, $mail, $fechaIngreso);
+		$controladoraDatos = new ControladoraDatosContacto();
+		
+		$arreglo["code"] = 4;
+		$arreglo["Resultado"] = $controladoraDatos->insertarDatosContacto($contacto);
+		echo(json_encode($arreglo));
+	break;
+	case 5:
+	break;
+	case 6:
 	break;
 	
 }
