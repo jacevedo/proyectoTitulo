@@ -1,5 +1,5 @@
 <?php
-require '../phpass-0.3/PasswordHash.php';
+require '../phpass/PasswordHash.php';
 require_once '../controladoras/controladoralogin.php';
 
 /*
@@ -22,7 +22,7 @@ switch ($opcion)
 		$usuario = $data->{'usuario'};
 		$pass = $data->{"pass"};
 		$controladora = new ControladoraLogin();
-		$arreglo["Resultado"] = $controladora->validarUsusario($usuario, $pass);
+		$arreglo = $controladora->validarUsusario($usuario, $pass);
 
 
 		echo(json_encode($arreglo));

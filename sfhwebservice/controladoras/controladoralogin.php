@@ -1,6 +1,5 @@
 <?php
 require_once '../bdmysql/MySqlCon.php'; 
-require '../phpass-0.3/PasswordHash.php';
 require_once '../pojos/session.php';
 
 class ControladoraLogin
@@ -22,10 +21,10 @@ class ControladoraLogin
 		   	$sentencia->bind_param("i",$usuario);
 		   	$sentencia->bind_result($idPersona,$usuarioBD, $passBD,$codAcceso);	
         	$sentencia->execute();
+        	$hasher = new PasswordHash(8, false);	
         	if($sentencia->fetch())
         	{
         		$conexion->close();
-        		$hasher = new PasswordHash(8, false);	
         		if($hasher->CheckPassword($pass, $passBD))
 		        {
 		        	$session = new Session();
@@ -33,7 +32,7 @@ class ControladoraLogin
 		        	$hoy = date("Y-m-d H:i:s",time());
 		        	$keyDesencriptada = $idPersona.$hoy;
 		        	$keyHashada = $hasher->HashPassword($keyDesencriptada);
-		        	$session->initClass(0, $idPersona, $keyHashada,$hoy,null);
+		        	$session->initClass(0, $idPersona, $keyHashada,$hoy,$hoy);
 		        	$datos["key"] = $this->insertSession($session);
 		        	$datos["codAcceso"] = $codAcceso;
 		        	

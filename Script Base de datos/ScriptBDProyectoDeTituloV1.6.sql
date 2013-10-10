@@ -826,17 +826,17 @@ CREATE TABLE IF NOT EXISTS `pass` (
 --
 
 INSERT INTO `pass` (`ID_PERSONA`, `PASS`, `FECHA_CADUCIDAD`) VALUES
-(1, 'Tatus.2013', '2014-08-01'),
-(2, 'Peres.2013', '2014-08-01'),
-(3, 'Palma.2013', '2014-08-01'),
-(4, 'Muñoz.2013', '2014-08-01'),
-(5, 'Garrido.2013', '2013-08-01'),
-(6, 'Madrid.2013', '2014-08-01'),
-(7, 'Salcedo.2013', '2013-08-01'),
-(8, 'Sanchez.2013', '2014-08-01'),
-(9, 'Paredes.2013', '2013-08-01'),
-(10, 'Carrizo.2013', '2013-08-01'),
-(11, 'Lopez.2013', '2013-08-01');
+(1, '$2a$08$sFKDgfoHn8DTh9CGQiBd6e13fXlymaiC/ZRz6MjSlyI8jBcKdyLji', '2014-08-01'),
+(2, '$2a$08$sFKDgfoHn8DTh9CGQiBd6e13fXlymaiC/ZRz6MjSlyI8jBcKdyLji', '2014-08-01'),
+(3, '$2a$08$sFKDgfoHn8DTh9CGQiBd6e13fXlymaiC/ZRz6MjSlyI8jBcKdyLji', '2014-08-01'),
+(4, '$2a$08$sFKDgfoHn8DTh9CGQiBd6e13fXlymaiC/ZRz6MjSlyI8jBcKdyLji', '2014-08-01'),
+(5, '$2a$08$sFKDgfoHn8DTh9CGQiBd6e13fXlymaiC/ZRz6MjSlyI8jBcKdyLji', '2013-08-01'),
+(6, '$2a$08$sFKDgfoHn8DTh9CGQiBd6e13fXlymaiC/ZRz6MjSlyI8jBcKdyLji', '2014-08-01'),
+(7, '$2a$08$sFKDgfoHn8DTh9CGQiBd6e13fXlymaiC/ZRz6MjSlyI8jBcKdyLji', '2013-08-01'),
+(8, '$2a$08$sFKDgfoHn8DTh9CGQiBd6e13fXlymaiC/ZRz6MjSlyI8jBcKdyLji', '2014-08-01'),
+(9, '$2a$08$sFKDgfoHn8DTh9CGQiBd6e13fXlymaiC/ZRz6MjSlyI8jBcKdyLji', '2013-08-01'),
+(10, '$2a$08$sFKDgfoHn8DTh9CGQiBd6e13fXlymaiC/ZRz6MjSlyI8jBcKdyLji', '2013-08-01'),
+(11, '$2a$08$sFKDgfoHn8DTh9CGQiBd6e13fXlymaiC/ZRz6MjSlyI8jBcKdyLji', '2013-08-01');
 
 -- --------------------------------------------------------
 
