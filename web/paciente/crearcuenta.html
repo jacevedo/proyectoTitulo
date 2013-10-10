@@ -3,7 +3,8 @@
 	<head>
 		<link rel="stylesheet" href="estilos/estiloBase.css">
 		<link rel="stylesheet" href="estilos/estiloCrearCuenta.css">
-		<script type="text/javascript" src="javascript/script.js"></script>
+		<script type="text/javascript" src="javascript/JQuery.js"></script>
+		<script type="text/javascript" src="javascript/scriptCrearCuenta.js"></script>
 		<title>SFH</title>
 	</head>
 	<body>
@@ -19,28 +20,20 @@
 			<div id="Contenido">
 				<table id="tablaCrearCuenta">
 					<tr>
-						<td>Usuario</td>
-						<td><input class="textosLargos" type="text" id="txtUsuario"/></td>
-					</tr>
-					<tr>
-						<td>Contrase&ntilde;a</td>
-						<td><input class="textosLargos" type="password" id="txtContrasena"/></td>
-					</tr>
-					<tr>
 						<td>Nombre</td>
-						<td><input class="textosLargos" type="text" id="txtNombre"/></td>
+						<td><input class="textosLargos" type="text" id="txtNombre" value="Lala"/></td>
 					</tr>
 					<tr>
 						<td>Apellido Paterno</td>
-						<td><input class="textosLargos" type="text" id="txtAppPaterno"/></td>
+						<td><input class="textosLargos" type="text" id="txtAppPaterno" value="Lala"/></td>
 					</tr>
 					<tr>
 						<td>Apellido Materno</td>
-						<td><input  class="textosLargos"type="text" id="txtAppMaterno"/></td>
+						<td><input  class="textosLargos"type="text" id="txtAppMaterno" value="Lala"/></td>
 					</tr>
 					<tr>
 						<td>Rut</td>
-						<td><input  type="text" id="txtRut"/> - <input type="text" id="txtDv"/></td>
+						<td><input  type="text" id="txtRut" value="11222333"/> - <input type="text" id="txtDv" value="5"/></td>
 					</tr>
 					<tr>
 						<td>Fecha de Nacimiento</td>
@@ -48,7 +41,7 @@
 					</tr>
 					<tr>
 						<td>Direccion</td>
-						<td><input class="textosLargos" type="text" id="txtDireccion"/></td>
+						<td><input class="textosLargos" type="text" id="txtDireccion" value="Lala"/></td>
 					</tr>
 					<tr>
 						<td>Comuna</td>
@@ -63,11 +56,19 @@
 					</tr>
 					<tr>
 						<td>Telefono Fijo</td>
-						<td><input class="textosLargos" type="text" id="txtFono"/></td>
+						<td><input class="textosLargos" type="text" id="txtFono" value="8888888"/></td>
 					</tr>
 					<tr>
 						<td>Celular</td>
-						<td><input  class="textosLargos"type="text" id="txtCelular"/></td>
+						<td><input  class="textosLargos"type="text" id="txtCelular" value="555555555"/></td>
+					</tr>
+					<tr>
+						<td>Email</td>
+						<td><input  class="textosLargos"type="text" id="txtMail" value="lala@lala.net"/></td>
+					</tr>
+					<tr>
+						<td>Contrase&ntilde;a</td>
+						<td><input class="textosLargos" type="password" id="txtContrasena" value="lalala"/></td>
 					</tr>
 					<tr>
 						<td colspan=2><button id="btnCrearCuenta">Crear Cuenta</button></td>
