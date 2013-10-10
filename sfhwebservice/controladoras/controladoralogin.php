@@ -65,7 +65,7 @@ class ControladoraLogin
 			$this->SqlQuery='';
 	        $this->SqlQuery="INSERT INTO session (ID_SESSION, ID_PERSONA, KEY_SESSION, FECHA_HORA_INGRESO, FECHA_HORA_CADUCIDAD) VALUES (NULL ,?,?,?,?)";
 			$sentencia=$conexion->prepare($this->SqlQuery);
-	        $sentencia->bind_param('isss', $idPersona, $keyHashada,$horaFechaIngreso,$horaFechaIngreso);
+	        $sentencia->bind_param('isss', $idPersona,$keyHashada,$horaFechaIngreso,$horaFechaIngreso);
 	      	if($sentencia->execute())
 	      	{
 	        	$conexion->close();

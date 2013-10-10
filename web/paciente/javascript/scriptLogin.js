@@ -15,8 +15,8 @@ function login()
 	var data = {"send":"{\"indice\":1,\"usuario\":"+usuario+",\"pass\":\""+contrasena+"\"}"};
 
 	$.post(ingresar, data, function(datos){
-		//alert(datos);
-		var obj = $.parseJSON(datos);
+		alert(datos);
+		/*var obj = $.parseJSON(datos);
 		var codigo = obj.codAcceso;
 		if(codigo == 704)
 		{
@@ -25,6 +25,6 @@ function login()
 		else
 		{
 			alert("Usuario y/o Contraseña erroneo.");
-		}
+		}*/
 	});
 }
