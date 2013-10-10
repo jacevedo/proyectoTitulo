@@ -2,13 +2,13 @@
 class Pass
 {
 	public $idPersona;
-	public $pass;
+	public $contrasena;
 	public $fechaCaducidad;
 
-	function initClass($idPersona,$pass,$fechaCaducidad)
+	function initClass($idPersona,$contrasena,$fechaCaducidad)
 	{
 		$this->idPersona = $idPersona;
-		$this->pass = $pass;
+		$this->contrasena = $contrasena;
 		$this->fechaCaducidad = $fechaCaducidad;
 	}
 }

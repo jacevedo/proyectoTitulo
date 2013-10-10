@@ -8,14 +8,15 @@ class ControladoraPass
 	private $SqlQuery;
 	private $datos;
 
-	public function insertarPass(Pass $pass)
+	public function insertarPass(Pass $passObjeto)
 	{
 		$conexion = new MySqlCon();
-		$idPersona = $pass->idPersona;
-		$pass = $pass->pass;
-		$fechaCaducidad = $pass->fechaCaducidad;
+		$idPersona = $passObjeto->idPersona;
+		$password = $passObjeto->contrasena;
+		$fechaCaducidad = $passObjeto->fechaCaducidad;
+		echo($password);
 		$hasher = new PasswordHash(8, false);	
-		$passHash = $hasher->HashPassword($pass);
+		$passHash = $hasher->HashPassword($password);
 		try
 		{
 			$this->SqlQuery='';

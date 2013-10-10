@@ -26,7 +26,7 @@ class ControladoraDatosContacto
 	      	if($sentencia->execute())
 	      	{
 	        	$conexion->close();
-				return $sentencia->insert_id;
+				return "datos Insertados Correctamente";
 			}
 			else
 			{
