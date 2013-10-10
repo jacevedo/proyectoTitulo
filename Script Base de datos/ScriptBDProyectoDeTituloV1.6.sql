@@ -1042,7 +1042,7 @@ CREATE TABLE IF NOT EXISTS `reporte` (
 -- Estructura de tabla para la tabla `Session`
 --
 
-CREATE TABLE IF NOT EXISTS `Session` (
+CREATE TABLE IF NOT EXISTS `session` (
   `ID_SESSION` int(11) NOT NULL AUTO_INCREMENT,
   `ID_PERSONA` int(11) NOT NULL,
   `KEY` text NOT NULL,
