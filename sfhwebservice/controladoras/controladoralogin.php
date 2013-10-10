@@ -25,7 +25,7 @@ class ControladoraLogin
         		$hasher = new PasswordHash(8, false);	
         		if($hasher->CheckPassword($pass, $passBD))
 		        {
-		        	$datos = "Login Correcto";
+		        	$datos = insertSession($idPersona, $usuarioBD, $passBD);
 		        }			
 		        else
 		        {
@@ -42,7 +42,7 @@ class ControladoraLogin
 		}
 		return $datos;
 	}
-
+	function insertSession($idPersona, $usuarioBD, $passBD)
 	
 }
 ?>
