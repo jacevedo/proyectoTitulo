@@ -57,7 +57,7 @@ switch ($opcion)
 		echo(json_encode());
 	break;
 	case 4:
-		//json Insertar Pass {"indice":4,"idPersona":17,"idComuna":21,"fonoFijo":"+976509346","fonoCelular":"+56984678325","direccion":"San Martin","mail":"ada@gmail.com","fechaIngreso":"2013-10-09"}
+		//json Insertar Datos Contacto {"indice":4,"idPersona":17,"idComuna":21,"fonoFijo":"+976509346","fonoCelular":"+56984678325","direccion":"San Martin","mail":"ada@gmail.com","fechaIngreso":"2013-10-09"}
 		$idPersona = $data->{'idPersona'};
 		$idComuna = $data->{'idComuna'};
 		$fonoFijo = $data->{'fonoFijo'};
@@ -75,8 +75,31 @@ switch ($opcion)
 		echo(json_encode($arreglo));
 	break;
 	case 5:
+		//json Modificar Datos Contacto {"indice":5,"idPersona":17,"idComuna":21,"fonoFijo":"+976509346","fonoCelular":"+56984678325","direccion":"San Agustin","mail":"ada@hotmail.com","fechaIngreso":"2013-10-10"}
+		$idPersona = $data->{'idPersona'};
+		$idComuna = $data->{'idComuna'};
+		$fonoFijo = $data->{'fonoFijo'};
+		$fonoCelular = $data->{'fonoCelular'};
+		$direccion = $data->{'direccion'};
+		$mail = $data->{'mail'};
+		$fechaIngreso = $data->{'fechaIngreso'};
+
+		$contacto = new DatosContactos();
+		$contacto->initClass($idPersona, $idComuna, $fonoFijo, $fonoCelular, $direccion, $mail, $fechaIngreso);
+		$controladoraDatos = new ControladoraDatosContacto();
+		
+		$arreglo["code"] = 5;
+		$arreglo["Resultado"] = $controladoraDatos->modificarDatosContacto($contacto);
+		echo(json_encode($arreglo));
 	break;
 	case 6:
+		//json Listar Datos Contacti idPersona {"indice":6,"idPersona":17}
+		$idPersona = $data->{"idPersona"};
+		$controladoraDatos = new ControladoraDatosContacto();
+		
+		$arreglo["code"] = 6;
+		$arreglo["Resultado"] =  $controladoraDatos->buscarPorPersona($idPersona);
+		echo(json_encode());
 	break;
 	
 }
