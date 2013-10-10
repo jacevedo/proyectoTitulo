@@ -1,0 +1,54 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context=".HorasCargadas"
+    android:orientation="vertical"
+    android:background="#ABC8E2">
+
+
+    <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Anterior"
+                android:id="@+id/button"
+                android:layout_gravity="right|center_vertical"
+                android:layout_weight="1"
+                android:background="#375D81"
+                android:textColor="#FFFFFF"/>
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:text="Hoy"
+                android:id="@+id/button2"
+                android:layout_weight="1"
+                android:background="#375D81"
+                android:textColor="#FFFFFF"
+                android:layout_marginLeft="5dp"/>
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:text="Siguiente"
+                android:id="@+id/button3"
+                android:layout_weight="1"
+                android:background="#375D81"
+                android:textColor="#FFFFFF"
+                android:layout_marginLeft="5dp"/>
+    </LinearLayout>
+
+    <ListView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/lstHorasCargadas"
+            />
+</LinearLayout>

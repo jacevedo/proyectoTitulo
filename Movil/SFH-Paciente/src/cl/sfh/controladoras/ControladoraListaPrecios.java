@@ -1,4 +1,4 @@
-package cl.sfh.controlaodas;
+package cl.sfh.controladoras;
 
 import java.util.ArrayList;
 import java.util.List;

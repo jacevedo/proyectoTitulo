@@ -9,12 +9,10 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import cl.sfh.controlaodas.ControladoraListaPrecios;
+import cl.sfh.controladoras.ControladoraListaPrecios;
 import cl.sfh.entidades.ListaPreciosEntidad;
 import cl.sfh.libreria.ItemAdapter;
 
