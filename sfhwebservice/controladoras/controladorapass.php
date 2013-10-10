@@ -1,5 +1,6 @@
 <?php
 require_once '../bdmysql/MySqlCon.php'; 
+require '../phpass-0.3/PasswordHash.php';
 require_once '../pojos/pass.php';
 
 class ControladoraPass
@@ -13,14 +14,14 @@ class ControladoraPass
 		$idPersona = $pass->idPersona;
 		$pass = $pass->pass;
 		$fechaCaducidad = $pass->fechaCaducidad;
-		
-		
+		$hasher = new PasswordHash(8, false);	
+		$passHash = $hasher->HashPassword($pass);
 		try
 		{
 			$this->SqlQuery='';
 	        $this->SqlQuery='INSERT INTO `pass`(`ID_PERSONA`,`PASS`,`FECHA_CADUCIDAD`) VALUES (?,?,?);';
 	        $sentencia=$conexion->prepare($this->SqlQuery);
-	        $sentencia->bind_param('iss', $idPersona, $pass, $fechaCaducidad);
+	        $sentencia->bind_param('iss', $idPersona, $passHash, $fechaCaducidad);
 	      	if($sentencia->execute())
 	      	{
 	        	$conexion->close();

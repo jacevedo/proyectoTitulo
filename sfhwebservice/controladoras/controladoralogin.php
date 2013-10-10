@@ -1,5 +1,6 @@
 <?php
 require_once '../bdmysql/MySqlCon.php'; 
+require '../phpass-0.3/PasswordHash.php';
 require_once '../pojos/session.php';
 
 class ControladoraLogin
@@ -15,11 +16,11 @@ class ControladoraLogin
 		try
 		{
 			$this->SqlQuery = '';
-			$this->SqlQuery = "SELECT per.ID_PERSONA, per.RUT, pa.PASS FROM persona per, pass pa WHERE per.RUT = ? AND per.ID_PERSONA = pa.ID_PERSONA";
+			$this->SqlQuery = "SELECT per.ID_PERSONA, per.RUT, pa.PASS, perm.COD_ACCESO FROM persona per, pass pa, permisos perm WHERE per.RUT = ? AND per.ID_PERSONA = pa.ID_PERSONA AND per.ID_PERFIL = perm.ID_PERFIL";
 			
 		   	$sentencia=$conexion->prepare($this->SqlQuery);
 		   	$sentencia->bind_param("i",$usuario);
-		   	$sentencia->bind_result($idPersona,$usuarioBD, $passBD);	
+		   	$sentencia->bind_result($idPersona,$usuarioBD, $passBD,$codAcceso);	
         	$sentencia->execute();
         	if($sentencia->fetch())
         	{
@@ -33,7 +34,8 @@ class ControladoraLogin
 		        	$keyDesencriptada = $idPersona.$hoy;
 		        	$keyHashada = $hasher->HashPassword($keyDesencriptada);
 		        	$session->initClass(0, $idPersona, $keyHashada,$hoy,null);
-		        	$datos = $this->insertSession($session);
+		        	$datos["key"] = $this->insertSession($session);
+		        	$datos["codAcceso"] = $codAcceso;
 		        	
 
 		        }			
