@@ -125,3 +125,4 @@ C:\Users\Citt-David\Documents\GitHub\proyectoTitulo\SFH-Modulo-Escritorio\SFH-So
 C:\Users\Citt-David\Documents\GitHub\proyectoTitulo\SFH-Modulo-Escritorio\SFH-Software\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Citt-David\Documents\GitHub\proyectoTitulo\SFH-Modulo-Escritorio\SFH-Software\obj\x86\Debug\SFH-Software.exe
 C:\Users\Citt-David\Documents\GitHub\proyectoTitulo\SFH-Modulo-Escritorio\SFH-Software\obj\x86\Debug\SFH-Software.pdb
+C:\Users\Citt-David\Documents\GitHub\proyectoTitulo\SFH-Modulo-Escritorio\SFH-Software\obj\x86\Debug\SFH-Software.csprojResolveAssemblyReference.cache

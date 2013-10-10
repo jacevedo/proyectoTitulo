@@ -227,7 +227,7 @@ switch ($opcion)
 		//json Listar Funcionaro Herencia {"indice":18}
 		$controladoraFuncionario = new ControladoraFuncionario();
 		$arreglo["code"] = 18;
-		$arreglo["listaOdontologoHerencia"] = $controladoraFuncionario->listarFuncionarioHerencia();
+		$arreglo["listaFuncionarioHerencia"] = $controladoraFuncionario->listarFuncionarioHerencia();
 		echo(json_encode($arreglo));
 	break;
 }
