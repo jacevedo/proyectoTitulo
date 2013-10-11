@@ -1,6 +1,6 @@
 <?php
 require_once '../bdmysql/MySqlCon.php'; 
-require '../phpass-0.3/PasswordHash.php';
+require '../phpass/PasswordHash.php';
 require_once '../pojos/pass.php';
 
 class ControladoraPass
