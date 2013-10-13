@@ -1,4 +1,5 @@
 <?php
+require_once '../bdmysql/MySqlCon.php';
 require_once '../pojos/datoscontacto.php';
 
 class ControladoraDatosContacto
