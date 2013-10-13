@@ -45,15 +45,17 @@ class ControladoraPass
 	{
 		$conexion = new MySqlCon();
 		$idPersona = $pass->idPersona;
-		$pass = $pass->pass;
+		$password = $pass->pass;
 		$fechaCaducidad = $pass->fechaCaducidad;
+		$hasher = new PasswordHash(8, false);	
+		$passHash = $hasher->HashPassword($password);
 		
 		try
 		{
 			$this->SqlQuery='';
 	        $this->SqlQuery='UPDATE pass SET PASS=?,FECHA_CADUCIDAD=? WHERE ID_PERSONA=?;';
 	        $sentencia=$conexion->prepare($this->SqlQuery);
-	        $sentencia->bind_param('ssi', $pass, $fechaCaducidad, $idPersona);
+	        $sentencia->bind_param('ssi', $passHash, $fechaCaducidad, $idPersona);
 	      	if($sentencia->execute())
 	      	{
 	        	$conexion->close();
