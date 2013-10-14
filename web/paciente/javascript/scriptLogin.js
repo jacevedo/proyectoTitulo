@@ -17,13 +17,15 @@ function login()
 	$.post(ingresar, data, function(datos){
 		var obj = $.parseJSON(datos);
 		var codigo = obj.codAcceso;
+		//usuario, key, cod acceso
 		if(codigo == 704)
 		{
 			//alert("OK");
+			window.location.href="perfil.php?user="+usuario;
 		}
 		else
 		{
-			alert("Usuario y/o Contraseña erroneo.");
+			alert("Usuario y/o Contrase&ntilde;a erroneo.");
 		}
 	});
 }
