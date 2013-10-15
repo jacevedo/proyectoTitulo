@@ -1,4 +1,7 @@
 <?php
+session_start();
+$_SESSION['key'] = $_REQUEST['key'];
+$_SESSION['user'] = $_REQUEST['user'];
 ?>
 <!DOCTYPE HTML>
 <html>
