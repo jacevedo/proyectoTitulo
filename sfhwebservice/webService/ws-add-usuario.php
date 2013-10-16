@@ -12,6 +12,7 @@ require_once '../controladoras/controladorapass.php';
 *Personas, Ododntologos, Funcionario, Pacientes
 *Opciones:
 * 1.- insertar Usuario
+* 2.- buscar Usuario por rut
 */
 
 
@@ -80,6 +81,24 @@ switch ($opcion)
 		}
 
 		//Retorna {"idPersonaInsertada":id};	
+		echo(json_encode($arreglo));
+	break;
+	case 2:
+		//json Buscar Persona Por Rut {"indice":2,"rut":17897359}
+		$rut = $data->{'rut'};
+
+		$controladoraPersona = new ControladoraPersonaRegionComuna();	
+		$arreglo["code"] = 1;
+		$arreglo["datosPersona"] = $controladoraPersona->buscarPorRutUsuario($rut);
+		if()
+		{
+			$controladoraContacto = new ControladoraDatosContacto();
+			$arregloFinal["datosContacto"] = $controladoraContacto->buscarPorPersona($idPersona*);
+			if()
+			{
+				$arreglo["datosContacto"] = $arregloFinal;
+			}
+		}
 		echo(json_encode($arreglo));
 	break;
 	

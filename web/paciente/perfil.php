@@ -1,7 +1,7 @@
 <?php
 session_start();
-$_SESSION['key'] = $_REQUEST['key'];
-$_SESSION['user'] = $_REQUEST['user'];
+//echo($_SESSION['key']);
+//echo($_SESSION['user']);
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -31,6 +31,9 @@ $_SESSION['user'] = $_REQUEST['user'];
 				<img src="imagenes/logo.png" id="imagenCostado">
 			</div>
 			<div id="Contenido">
+				<input type="hidden" value=<?=$_SESSION['user'];?> id="idPaciente">
+				<input type="hidden" value=<?=$_SESSION['key'];?> id="keyPaciente">
+
 				<table id="tablaContenido">
 					<tr>
 						<td class="tdIndicador">Nombre:</td>

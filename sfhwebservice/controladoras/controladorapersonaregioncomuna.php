@@ -178,6 +178,37 @@ class ControladoraPersonaRegionComuna
 		return $this->datos;
 	}
 
+	public function buscarPorRutUsuario($rutB)
+	{
+		$conexion = new MySqlCon();
+		$this->datos = '';
+		try
+		{
+			$this->SqlQuery = '';
+			$this->SqlQuery = "SELECT * FROM `persona` WHERE `RUT` = ?";
+		   	$sentencia=$conexion->prepare($this->SqlQuery);
+		   	$sentencia->bind_param('s', $rutB);
+        	if($sentencia->execute())
+        	{
+        		$sentencia->bind_result($idPersona, $idPerfil, $rut, $dv, $nombre, $apellidoPaterno, $apellidoMaterno, $fechaNacimiento);					
+				$indice=0;     
+				while($sentencia->fetch())
+				{
+					$persona = new Persona();
+					$persona->initClass($idPersona, $idPerfil, $rut, $dv, $nombre, $apellidoPaterno, $apellidoMaterno, $fechaNacimiento);
+					$this->datos[$indice] = $persona;
+					$indice++;
+				}
+      		}
+       		$conexion->close();
+		}
+		catch(Exception $e)
+		{
+			throw new $e("Error al buscar persona");
+		}
+		return $this->datos;
+	}
+
 	public function buscarPorNombre($nombrePersona, $apellidoPersona)
 	{
 		$conexion = new MySqlCon();

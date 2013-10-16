@@ -3,13 +3,13 @@ $(document).ready(inicializarEventos);
 
 function inicializarEventos()
 {
-	$("#btnIngresar").click(login);
+	cargarPerfil();
 }
 
-function login()
+function cargarPerfil()
 {
-	var usuario = $("#txtUsuario").val();
-	var contrasena = $("#txtPass").val();
+	var id = $("#idPaciente").val();
+	var key = $("#keyPaciente").val();
 
 	var ingresar = direccionWeb+"ws-login.php";
 	var data = {"send":"{\"indice\":1,\"usuario\":"+usuario+",\"pass\":\""+contrasena+"\"}"};
