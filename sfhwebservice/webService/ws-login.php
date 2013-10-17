@@ -23,8 +23,6 @@ switch ($opcion)
 		$pass = $data->{"pass"};
 		$controladora = new ControladoraLogin();
 		$arreglo = $controladora->validarUsusario($usuario, $pass);
-
-
 		echo(json_encode($arreglo));
 	break;	
 }

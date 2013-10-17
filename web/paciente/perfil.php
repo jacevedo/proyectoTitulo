@@ -9,7 +9,7 @@ session_start();
 		<link rel="stylesheet" href="estilos/estiloBase.css">
 		<link rel="stylesheet" href="estilos/estiloPerfil.css">
 		<script type="text/javascript" src="javascript/JQuery.js"></script>
-		<script type="text/javascript" src="javascript/script.js"></script>
+		<script type="text/javascript" src="javascript/scriptPerfil.js"></script>
 	</head>
 	<body>
 		<header>
@@ -35,7 +35,7 @@ session_start();
 				<input type="hidden" value=<?=$_SESSION['key'];?> id="keyPaciente">
 
 				<table id="tablaContenido">
-					<tr>
+					<!--<tr>
 						<td class="tdIndicador">Nombre:</td>
 						<td>Juan</td>
 					</tr>
@@ -73,9 +73,7 @@ session_start();
 					</tr>
 					<tr>
 						<td colspan=2><a href="modificarCuenta.html"><button id="btnCrearCuenta">Modificar Cuenta</button></a></td>
-					</tr>
-
-					
+					</tr>-->					
 				</table>
 			</div>
 		</div>

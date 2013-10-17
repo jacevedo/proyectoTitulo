@@ -87,16 +87,25 @@ switch ($opcion)
 		//json Buscar Persona Por Rut {"indice":2,"rut":17897359}
 		$rut = $data->{'rut'};
 
-		$controladoraPersona = new ControladoraPersonaRegionComuna();	
-		$arreglo["code"] = 1;
-		$arreglo["datosPersona"] = $controladoraPersona->buscarPorRutUsuario($rut);
-		if()
+		$persona = new Persona();
+		$controladoraPersona = new ControladoraPersonaRegionComuna();
+
+		$arreglo["code"] = 2;
+		$persona = $controladoraPersona->buscarPorRutUsuario($rut);
+		$idPersona = $persona->idPersona;
+				
+		if($idPersona != 0)
 		{
+			$contacto = new DatosContactos();
 			$controladoraContacto = new ControladoraDatosContacto();
-			$arregloFinal["datosContacto"] = $controladoraContacto->buscarPorPersona($idPersona*);
-			if()
+
+			$contacto = $controladoraContacto->buscarPorPersona($idPersona);
+			$idPersonaContacto = $contacto->idPersona;
+				
+			if($idPersonaContacto != 0)
 			{
-				$arreglo["datosContacto"] = $arregloFinal;
+				$arreglo["datosContacto"] = $contacto;
+				$arreglo["datosPersona"] = $persona;
 			}
 		}
 		echo(json_encode($arreglo));

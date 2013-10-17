@@ -10,50 +10,20 @@ function cargarPerfil()
 {
 	var id = $("#idPaciente").val();
 	var key = $("#keyPaciente").val();
+	//alert("Id: "+id+" || key: "+key);
+	var ingresar = direccionWeb+"ws-add-usuario.php";
+	var data = {"send":"{\"indice\":2,\"rut\":"+id+"}"};
 
-	var ingresar = direccionWeb+"ws-login.php";
-	var data = {"send":"{\"indice\":1,\"usuario\":"+usuario+",\"pass\":\""+contrasena+"\"}"};
-
+	//{"indice":2,"rut":16009332
 	$.post(ingresar, data, function(datos){
+		//alert(datos);
 		var obj = $.parseJSON(datos);
-		var codigo = obj.codAcceso;
-		var key = obj.key;
-		//usuario, key, cod acceso
-		if(codigo == 704)
-		{
-			//alert(usuario);
-			//window.location.href="login.php?user="+usuario+"&key="+key;
+		var persona = obj.datosPersona;
+		var contacto = obj.datosContacto;
+		//alert("Persona: "+persona.apellidoMaterno+". Contacto: "+contacto.direccion);
 
-		    var form = $('<form></form>');
-
-		    form.attr("method", "post");
-		    form.attr("action", "login.php");
-
-	        var field = $('<input></input>');
-
-	        field.attr("type", "hidden");
-	        field.attr("name", "key");
-	        field.attr("value", key);
-
-	        form.append(field);
-
-	        var field1 = $('<input></input>');
-
-	        field1.attr("type", "hidden");
-	        field1.attr("name", "user");
-	        field1.attr("value", usuario);
-
-	        form.append(field1);
-
-		    // The form needs to be a part of the document in
-		    // order for us to be able to submit it.
-		    $(document.body).append(form);
-		    form.submit();
-
-		}
-		else
-		{
-			alert("Usuario y/o Contrase&ntilde;a erroneo.");
-		}
+		var tabla = "";
+		tabla = tabla + "<tr><td class='tdIndicador'>Nombre:</td><td>"+persona.nombre+"</td></tr><tr><td class='tdIndicador'>Apellido Paterno:</td><td>"+persona.apellidoPaterno+"</td></tr><tr><td class='tdIndicador'>Apellido Materno:</td><td>"+persona.apellidoMaterno+"</td></tr><tr><td class='tdIndicador'>Rut:</td><td>"+persona.rut+"-"+persona.dv+"</td></tr><tr><td class='tdIndicador'>Fecha de Nacimiento:</td><td>"+persona.fechaNacimiento+"</td></tr><tr><td class='tdIndicador'>Direccion:</td><td>"+contacto.direccion+"</td></tr><tr><td class='tdIndicador'>Comuna</td><td>"+contacto.idComuna+"</td></tr><tr><td class='tdIndicador'>Telefono Fijo</td><td>"+contacto.fonoFijo+"</td></tr><tr><td class='tdIndicador'>Celular</td><td>"+contacto.fonoCelular+"</td></tr><tr><td colspan=2><button id='btnCrearCuenta'>Modificar Cuenta</button></td></tr>";
+		$("#tablaContenido").html(tabla);
 	});
 }

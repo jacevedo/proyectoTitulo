@@ -165,7 +165,7 @@ class ControladoraPersonaRegionComuna
 				{
 					$persona = new Persona();
 					$persona->initClass($idPersona, $idPerfil, $rut, $dv, $nombre, $apellidoPaterno, $apellidoMaterno, $fechaNacimiento);
-					$this->datos[$indice] = $persona;
+					$this->datos = $persona;
 					$indice++;
 				}
       		}
@@ -196,7 +196,7 @@ class ControladoraPersonaRegionComuna
 				{
 					$persona = new Persona();
 					$persona->initClass($idPersona, $idPerfil, $rut, $dv, $nombre, $apellidoPaterno, $apellidoMaterno, $fechaNacimiento);
-					$this->datos[$indice] = $persona;
+					$this->datos = $persona;
 					$indice++;
 				}
       		}

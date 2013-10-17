@@ -104,7 +104,7 @@ class ControladoraDatosContacto
 				{
 					$contacto = new DatosContactos();
 					$contacto->initClass($idPersona, $idComuna, $fonoFijo, $fonoCelular, $direccion, $mail, $fechaIngreso);
-        			$this->datos[$indice] = $contacto;
+        			$this->datos = $contacto;
         			$indice++;
 				}
       		}
