@@ -13,6 +13,8 @@ require_once '../controladoras/controladorapass.php';
 *Opciones:
 * 1.- insertar Usuario
 * 2.- buscar Usuario por rut
+* 3.- listar Region
+* 4.- listar Comuna por Region
 */
 
 
@@ -96,6 +98,8 @@ switch ($opcion)
 				
 		if($idPersona != 0)
 		{
+			$arreglo["datosPersona"] = $persona;
+
 			$contacto = new DatosContactos();
 			$controladoraContacto = new ControladoraDatosContacto();
 
@@ -105,9 +109,27 @@ switch ($opcion)
 			if($idPersonaContacto != 0)
 			{
 				$arreglo["datosContacto"] = $contacto;
-				$arreglo["datosPersona"] = $persona;
+			}
+			else
+			{
+				$arreglo["datosContacto"] = "No hay datos de contacto";
 			}
 		}
+		echo(json_encode($arreglo));
+	break;
+	case 3:
+		// json listar Regiones {"indice":3}
+		$controladoraRegion = new ControladoraPersonaRegionComuna();
+		$arreglo["code"] = 3;
+		$arreglo["listaRegiones"] = $controladoraRegion->listarRegion();
+		echo(json_encode($arreglo));
+	break;
+	case 4:
+		// json listar Regiones {"indice":3,"idRegion":13}
+		$idRegion = $data->{'idRegion'};
+		$controladoraComuna = new ControladoraPersonaRegionComuna();
+		$arreglo["code"] = 3;
+		$arreglo["listaComuna"] = $controladoraComuna->listarComunaPorRegion($idRegion);
 		echo(json_encode($arreglo));
 	break;
 	

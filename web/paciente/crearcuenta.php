@@ -1,3 +1,5 @@
+<?php
+?>
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -44,13 +46,16 @@
 						<td><input class="textosLargos" type="text" id="txtDireccion" value="Lala"/></td>
 					</tr>
 					<tr>
+						<td>Region</td>
+						<td>
+							<select class="textosLargos" id="region">
+							</select>
+						</td>
+					</tr>
+					<tr>
 						<td>Comuna</td>
 						<td>
 							<select class="textosLargos" id="comuna">
-								<option value="">--</option>
-								<option value="01">Providencia</option>
-								<option value="02">&Ntilde;u&ntilde;oa</option>
-								<option value="03">Las Condes</option>
 							</select>
 						</td>
 					</tr>
