@@ -33,7 +33,7 @@
 						<td colspan=2><button id="btnIngresar" value="Login">Login</button></td>
 					</tr>
 					<tr>
-						<td colspan=2><a href="crearcuenta.html" id="crearCuenta">Crear una Cuenta</a></td>
+						<td colspan=2><a href="crearcuenta.php" id="crearCuenta">Crear una Cuenta</a></td>
 					</tr>
 				</table>
 			</div>

@@ -330,5 +330,34 @@ class ControladoraPersonaRegionComuna
 		}
 		return $this->datos;
 	}
+
+		public function buscarComunaPorID($id)
+	{
+		$conexion = new MySqlCon();
+		$this->datos = '';
+		try
+		{
+			$this->SqlQuery = '';
+			$this->SqlQuery = "SELECT * FROM `comuna` WHERE `ID_COMUNA` = ?";
+		   	$sentencia=$conexion->prepare($this->SqlQuery);
+		   	$sentencia->bind_param('i', $id);
+        	if($sentencia->execute())
+        	{
+        		$sentencia->bind_result($idComuna, $idRegion, $nombreComuna);					
+				while($sentencia->fetch())
+				{
+					$comuna = new Comuna();
+					$comuna->initClass($idComuna, $idRegion, $nombreComuna);
+					$this->datos = $comuna;
+				}
+      		}
+       		$conexion->close();
+		}
+		catch(Exception $e)
+		{
+			throw new $e("Error al listar comunas");
+		}
+		return $this->datos;
+	}
 }
 ?>

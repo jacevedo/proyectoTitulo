@@ -3,7 +3,51 @@ $(document).ready(inicializarEventos);
 
 function inicializarEventos()
 {
+	cargarRegiones();
+	$("#region").change(cambiarComuna);
 	$("#btnCrearCuenta").click(guardarPersona);
+}
+
+function cargarRegiones()
+{
+	var regiones = direccionWeb+"ws-add-usuario.php";
+	var data = {"send":"{\"indice\":3}"};
+
+	$.post(regiones,data,function(datos){
+		var obj = $.parseJSON(datos);
+		var option = document.getElementById("region");
+		option.options.add(new Option("Seleccione una Region", 0));
+
+		$.each(obj.listaRegiones,function()
+			{
+				//sel = sel + "<option value="+this.idCurso+">"+this.nivel+"-"+this.numero+"-"+this.letra+"</option>"
+				option.options.add(new Option(this.nombreRegion, this.idRegion));
+			});
+
+	});
+}
+
+function cambiarComuna()
+{
+	var idRegion = document.getElementById("region").value;
+
+	var comunas = direccionWeb+"ws-add-usuario.php";
+	var data = {"send":"{\"indice\":4,\"idRegion\":\""+idRegion+"\"}"};
+
+	$.post(comunas,data,function(datos){
+		var obj = $.parseJSON(datos);
+		var option = document.getElementById("comuna");
+		$("#comuna").find('option').remove().end();
+		//option = "";
+		option.options.add(new Option("Seleccione una Comuna", 0));
+
+		$.each(obj.listaComuna,function()
+			{
+				//sel = sel + "<option value="+this.idCurso+">"+this.nivel+"-"+this.numero+"-"+this.letra+"</option>"
+				option.options.add(new Option(this.nombreComuna, this.idComuna));
+			});
+
+	});
 }
 
 function guardarPersona()
@@ -41,53 +85,22 @@ function guardarPersona()
 	var yyyy = fechaCad.getFullYear();
 	if(dd<10){dd='0'+dd} if(mm<10){mm='0'+mm} fechaCad = yyyy+'/'+mm+'/'+dd;
 
-	var persona = direccionWeb+"ws-admin-usuario.php";
-	var data = {"send":"{\"indice\":1,\"idPerfil\":4,\"rut\":\""+rut+"\",\"dv\":\""+dv+"\",\"nombre\":\""+nombre+"\",\"appPaterno\":\""+appPaterno+"\",\"appMaterno\":\""+appMaterno+"\",\"fechaNac\":\""+fechaNac+"\"}"};
+	var persona = direccionWeb+"ws-add-usuario.php";
+	var data = {"send":"{\"indice\":1,\"idPerfil\":4,\"rut\":\""+rut+"\",\"dv\":\""+dv+"\",\"nombre\":\""+nombre+"\",\"appPaterno\":\""+appPaterno+"\",\"appMaterno\":\""+appMaterno+"\",\"fechaNac\":\""+fechaNac+"\",\"pass\":\""+pass+"\",\"idComuna\":\""+comuna+"\",\"fonoFijo\":\""+fonoFijo+"\",\"celular\":\""+fonoCel+"\",\"Direccion\":\""+direccion+"\",\"mail\":\""+mail+"\",\"fechaIngreso\":\""+fechaIng+"\"}"};
+	//{"indice":1,"idPerfil":4,"rut":17897359,"dv":2,"nombre":"ada","appPaterno":"wonk","appMaterno":"asturias","fechaNac":"1991-12-12","pass":"asdcasco","idComuna":2,"fonoFijo":"0227780184","celular":"+56976087240","Direccion":"antonio Varas 666","mail":"asd@asd.com","fechaIngreso":"2013-02-02"}
 
 	$.post(persona,data,function(datos){
 		var obj = $.parseJSON(datos);
-		var idPersona = obj.idPersonaInsertada;
-
-		if(idPersona != -1)
+		var result = obj.resultado;
+		alert(result);
+		if(result == "datos Insertados Correctamente")
 		{
-			//alert("La persona fue insertada.");
-			var contacto = direccionWeb+"ws-pass-datos.php";
-			var data = {"send":"{\"indice\":4,\"idPersona\":\""+idPersona+"\",\"idComuna\":\""+comuna+"\",\"fonoFijo\":\""+fonoFijo+"\",\"fonoCelular\":\""+fonoCel+"\",\"direccion\":\""+direccion+"\",\"mail\":\""+mail+"\",\"fechaIngreso\":\""+fechaIng+"\"}"};
-
-			$.post(contacto,data,function(datos){
-				var obj = $.parseJSON(datos);
-				var resultado = obj.Resultado;
-				alert(resultado);
-				if(resultado != -1)
-				{
-					//alert("Los datos de contacto fueron ingresado.");
-					var clave = direccionWeb+"ws-pass-datos.php";
-					var data = {"send":"{\"indice\":1,\"idPersona\":\""+idPersona+"\",\"pass\":\""+pass+"\",\"fechaCaducidad\":\""+fonoFijo+"\"}"};
-					//{"indice":1,"idPersona":3,"pass":"asdasd","fechaCaducidad":"2013-12-12"}
-
-					$.post(contacto,data,function(datos){
-						var obj = $.parseJSON(datos);
-						var resultado = obj.Resultado;
-						alert(resultado);
-						if(resultado != -1)
-						{
-							alert("Las pass fue ingresada.");
-						}
-						else
-						{
-							alert("Error");
-						}
-					});
-				}
-				else
-				{
-					alert("Error");
-				}
-			});
+			alert("Tu cuenta ha sido creada con éxito.");
+			window.location.href = "login.php";
 		}
 		else
 		{
-			alert("Error");
+			alert("Hubo un error al crear tu cuenta.");
 		}
 	});
 }

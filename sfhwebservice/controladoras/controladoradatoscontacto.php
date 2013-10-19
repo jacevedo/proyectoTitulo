@@ -85,29 +85,29 @@ class ControladoraDatosContacto
         }
 	}
 
-	function buscarPorPersona($id)
+	function buscarPorPersona($idPersonaViene)
 	{
 		$conexion = new MySqlCon();
 		$this->datos ='';
 		try
 		{
 			$this->SqlQuery = '';
-			$this->SqlQuery = "SELECT ID_PERSONA, ID_COMUNA, FONO_FIJO, FONO_CELULAR, DIRECCION, MAIL, F_INGRESO FROM datosdecontacto WHERE ID_PERSONA = ?";
+			$this->SqlQuery = "SELECT * FROM datosdecontacto WHERE ID_PERSONA = ?";
 		   	$sentencia=$conexion->prepare($this->SqlQuery);
-			$sentencia->bind_param("i",$id);
-        	if($sentencia->execute())
+			$sentencia->bind_param("i",$idPersonaViene);
+			$sentencia->bind_result($idPersona, $idComuna, $fonoFijo, $fonoCelular, $direccion, $mail, $fechaIngreso);
+        	$sentencia->execute();
+        	if($sentencia->fetch())
         	{
-        		$sentencia->bind_result($idPersona, $idComuna, $fonoFijo, $fonoCelular, $direccion, $mail, $fechaIngreso);				
-				$indice = 0;     
-
-				while($sentencia->fetch())
-				{
-					$contacto = new DatosContactos();
-					$contacto->initClass($idPersona, $idComuna, $fonoFijo, $fonoCelular, $direccion, $mail, $fechaIngreso);
-        			$this->datos = $contacto;
-        			$indice++;
-				}
+       			$contacto = new DatosContactos();
+				$contacto->initClass($idPersona, $idComuna, $fonoFijo, $fonoCelular, $direccion, $mail, $fechaIngreso);
+        		$this->datos = $contacto;
       		}
+      		else
+      		{
+      			echo("ERROR");
+      		}
+
        		$conexion->close();
     	}
     	catch(Exception $e)
