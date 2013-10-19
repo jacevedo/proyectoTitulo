@@ -35,45 +35,69 @@ session_start();
 				<input type="hidden" value=<?=$_SESSION['key'];?> id="keyPaciente">
 
 				<table id="tablaContenido">
-					<!--<tr>
+					<tr>
+						<td class="tdIndicador">Numero:</td>
+						<td id="tdNumero"></td>
+					</tr>
+					<tr style="display: none;">
+						<td class="tdIndicador">Perfil</td>
+						<td id='tdPerfil'></td>
+					</tr>
+					<tr>
 						<td class="tdIndicador">Nombre:</td>
-						<td>Juan</td>
+						<td id="tdNombre"></td>
 					</tr>
 					<tr>
 						<td class="tdIndicador">Apellido Paterno:</td>
-						<td>Perez</td>
+						<td id="tdApellidoPaterno"></td>
 					</tr>
 					<tr>
 						<td class="tdIndicador">Apellido Materno:</td>
-						<td>Saavedra</td>
+						<td id="tdApellidoMaterno"></td>
 					</tr>
 					<tr>
 						<td class="tdIndicador">Rut:</td>
-						<td>14.359.018-7</td>
+						<td id="tdRut"></td>
 					</tr>
 					<tr>
 						<td class="tdIndicador">Fecha de Nacimiento:</td>
-						<td>05/09/1986</td>
+						<td id="tdFechaNacimiento"></td>
 					</tr>
 					<tr>
 						<td class="tdIndicador">Direccion:</td>
-						<td>Calle Falsa 123</td>
+						<td id='tdDireccion'></td>
 					</tr>
 					<tr>
 						<td class="tdIndicador">Comuna</td>
-						<td>Springfield</td>
+						<td id='tdComuna'></td>
+					</tr>
+					<tr style="display: none;">
+						<td class="tdIndicador">idRegion</td>
+						<td id='tdidRegion'></td>
+					</tr>
+					<tr style="display: none;">
+						<td class="tdIndicador">idComuna</td>
+						<td id='tdidComuna'></td>
 					</tr>
 					<tr>
 						<td class="tdIndicador">Telefono Fijo</td>
-						<td>27563312</td>
+						<td id='tdFonoFijo'></td>
 					</tr>
 					<tr>
 						<td class="tdIndicador">Celular</td>
-						<td>96304102</td>
+						<td id='tdFonoCelular'></td>
 					</tr>
 					<tr>
-						<td colspan=2><a href="modificarCuenta.html"><button id="btnCrearCuenta">Modificar Cuenta</button></a></td>
-					</tr>-->					
+						<td class="tdIndicador">Email</td>
+						<td id='tdEmail'></td>
+					</tr>
+					<tr style="display: none;">
+						<td class="tdIndicador">FechaIngreso</td>
+						<td id='tdFechaIngreso'></td>
+					</tr>
+					<tr>
+						<td colspan=2><button id="btnCrearCuenta">Modificar Cuenta</button></td>
+					</tr>				
 				</table>
 			</div>
 		</div>

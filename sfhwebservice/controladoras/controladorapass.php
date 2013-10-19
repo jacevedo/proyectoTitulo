@@ -73,7 +73,7 @@ class ControladoraPass
 			throw new $e("Error al insertar abono.");
 		}
 	}
-	public function buscarIdPersona($idPersona)
+	public function buscarIdPersona($id)
 	{
 		$conexion = new MySqlCon();
 		$this->datos ='';
@@ -82,16 +82,16 @@ class ControladoraPass
 			$this->SqlQuery = '';
 			$this->SqlQuery = "SELECT * FROM pass WHERE ID_PERSONA=? ";
 		   	$sentencia=$conexion->prepare($this->SqlQuery);
-		   	$sentencia->bind_param('i',$idPersona);
+		   	$sentencia->bind_param('i',$id);
         	if($sentencia->execute())
         	{
         		$sentencia->bind_result($idPersona, $pass, $fechaCaducidad);					
 				$indice=0;     
 				while($sentencia->fetch())
 				{
-					$pass = new PASS();
-					$pass->initClass($idPersona,$pass,$fechaCaducidad);
-        			$this->datos[$indice] = $pass;
+					$passP = new Pass();
+					$passP->initClass($idPersona,$pass,$fechaCaducidad);
+        			$this->datos[$indice] = $passP;
         			
         			$indice++;
 				}
