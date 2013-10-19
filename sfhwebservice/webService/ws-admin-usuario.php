@@ -24,10 +24,10 @@ require_once '../controladoras/controladorafuncionario.php';
 * 9.- desabilitar Paciente
 * 10 .- desabilitar Odontologo
 * 11.- desabilitar Funcionario
-* 12.- Listar Personas
-* 13.- Listar Paciente
-* 14.- Listar Odontologo
-* 15.- Listar Funcionario
+* 12.- Listar Personas 
+* 13.- Listar Personas con permiso
+* 14.- Listar Odontologo X
+* 15.- Listar Funcionario X
 * 16.- Listar Pacientes Herencia
 * 17.- Listar Odontologo Herencia
 * 18.- Listar Funcionario Herencia
