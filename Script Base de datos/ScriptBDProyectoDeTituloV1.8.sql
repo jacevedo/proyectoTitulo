@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 19-10-2013 a las 19:24:52
+-- Tiempo de generación: 19-10-2013 a las 19:31:44
 -- Versión del servidor: 5.1.44
 -- Versión de PHP: 5.3.1
 
@@ -617,16 +617,19 @@ INSERT INTO `gastos` (`ID_GASTOS`, `ID_PERSONA`, `CONCEPTO_GASTO`, `MONTO_GASTOS
 CREATE TABLE IF NOT EXISTS `horario` (
   `ID_HORARIO` int(11) NOT NULL AUTO_INCREMENT,
   `ID_ODONTOLOGO` int(11) NOT NULL,
+  `DIA` varchar(30) NOT NULL,
   `HORA_INICIO` time NOT NULL,
   `HORA_TERMINO` time NOT NULL,
   `DURACION_MODULO` int(11) NOT NULL,
   PRIMARY KEY (`ID_HORARIO`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
 -- Volcar la base de datos para la tabla `horario`
 --
 
+INSERT INTO `horario` (`ID_HORARIO`, `ID_ODONTOLOGO`, `DIA`, `HORA_INICIO`, `HORA_TERMINO`, `DURACION_MODULO`) VALUES
+(1, 1, '', '12:00:00', '16:00:00', 30);
 
 -- --------------------------------------------------------
 
