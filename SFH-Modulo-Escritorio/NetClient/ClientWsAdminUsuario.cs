@@ -41,9 +41,9 @@ namespace NetClient
 * 10 .- desabilitar Odontologo
 * 11.- desabilitar Funcionario
 * 12.- Listar Personas
-* 13.- Listar Paciente
-* 14.- Listar Odontologo
-* 15.- Listar Funcionario
+* 13.- Listar Paciente-
+* 14.- Listar Odontologo-
+* 15.- Listar Funcionario-
 * 16.- Listar Pacientes Herencia
 * 17.- Listar Odontologo Herencia
 * 18.- Listar Funcionario Herencia
@@ -150,7 +150,6 @@ namespace NetClient
         }
         #endregion
 
-
         #region ModificarOdontologo
         public string ModificarOdontologo(Odontologo odontologo)
         {
@@ -214,7 +213,7 @@ namespace NetClient
         }
         #endregion
        
-       #region desabilitarHabilitarPaciente
+        #region desabilitarHabilitarPaciente
 
         public string DesabilitarHabilitarPaciente(Paciente paciente)
         {
@@ -308,6 +307,56 @@ namespace NetClient
         }
         #endregion
 
+        #region ListarDatosPersona
+        public List<Persona> ListarDatosPersona()
+        {
+            List<Persona> list = new List<Persona>();
+            try
+            {
+                this.JsonParam = "send={\"indice\":12}";
+                String result = netclient.NetPost("ws-admin-usuario.php", this.JsonParam);
+                var jobject = JObject.Parse(result);
+                var token = jobject.SelectToken("listaPersonas").ToList();
+                foreach (var item in token)
+                {
+                    Persona persona = new Persona();
+                    //{"idPersona":15,"idPerfil":1,"rut":"17897359","dv":"2","nombre":"ada","apellidoPaterno":"wonk","apellidoMaterno":"asturias","fechaNacimiento":"1991-12-12"},
+                    persona.IdPersona = Convert.ToInt32(item.SelectToken("idPersona").ToString());
+                    persona.IdPerfil = Convert.ToInt32(item.SelectToken("idPerfil").ToString());
+                    int num_perfil = persona.IdPerfil;
+                    switch (num_perfil) { 
+                        case 1:
+                            persona.Nomperfil = "Administrador";
+                            break;
+                        case 2:
+                            persona.Nomperfil = "Doctor";
+                            break;
+                        case 3:
+                            persona.Nomperfil = "Asistente";
+                            break;
+                        case 4:
+                            persona.Nomperfil = "Paciente";
+                            break;
+                    
+                    }
+                    persona.Rut  = Convert.ToInt32(item.SelectToken("rut").ToString());
+                    persona.Dv = item.SelectToken("dv").ToString();
+                    persona.Nombre = item.SelectToken("nombre").ToString();
+                    persona.ApellidoPaterno = item.SelectToken("apellidoPaterno").ToString();
+                    persona.ApellidoMaterno = item.SelectToken("apellidoMaterno").ToString();
+                    persona.FechaNacimiento = Convert.ToDateTime(item.SelectToken("fechaNacimiento").ToString());
+                    list.Add(persona);
+                }
+
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e + "| Error al Listar Personas");
+            }
+            return list;
+        }
+        #endregion
+
         #region ListarPacientes
         public List<Paciente> ListarPacientes()
         {
@@ -355,7 +404,6 @@ namespace NetClient
             return list;
         }
         #endregion
-
 
         #region ListarOdontologo
         public List<Odontologo> ListarOdontologo()
@@ -405,7 +453,6 @@ namespace NetClient
         }
         #endregion
 
-
         #region ListarFuncionario
         public List<Funcionario> ListarFuncionario()
         {
@@ -454,7 +501,6 @@ namespace NetClient
             return list;
         }
         #endregion
-
 
         #region ListarPacientePersonas
         public List<Persona> ListarPacientePersona()

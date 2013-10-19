@@ -1,6 +1,4 @@
-﻿using NetClient;
-using ObjectsBeans;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,6 +6,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using NetClient;
+using ObjectsBeans;
 
 namespace SFH_Software
 {
@@ -33,7 +33,7 @@ namespace SFH_Software
 
         private void frmAdministracionTratamiento_Load(object sender, EventArgs e)
         {
-            listaTratamiento = clienteTratamiento.ListarTratamientoIdFicha(idFicha);
+            listaTratamiento = this.clienteTratamiento.ListarTratamientoIdFicha(idFicha);
             GridTratamiento.DataSource = listaTratamiento;
         }
 

@@ -88,8 +88,7 @@ namespace NetClient
             }
             return areaInsumoEliminado;
         }
-        #endregion
-        
+        #endregion   
 
         #region ListarAreaInsumos
 
@@ -121,7 +120,6 @@ namespace NetClient
             return list;
         }
         #endregion
-
 
         #region ListarAreaInsumosIdNombre
 
@@ -181,8 +179,6 @@ namespace NetClient
             return list;
         }
         #endregion
-
-
 
         #region ListarInsumosIdNombre
 

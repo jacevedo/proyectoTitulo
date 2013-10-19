@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClientWsAdminUsuario.cs" />
+    <Compile Include="ClientWsAdminUsuarioSig.cs" />
     <Compile Include="ClientWsAreaInsumoListas.cs" />
     <Compile Include="ClientWsFichaPresupuesto.cs" />
     <Compile Include="ClientWsGastos.cs" />

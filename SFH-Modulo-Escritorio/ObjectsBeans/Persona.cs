@@ -10,12 +10,14 @@ namespace ObjectsBeans
         #region Campos
         private int idPersona;
         private int idPerfil;
+        private string nomperfil;
         private int rut;
         private string dv;
         private string nombre;
         private string apellidoPaterno;
         private string apellidoMaterno;
         private DateTime fechaNacimiento;
+        
         #endregion
 
         #region Constructor
@@ -38,6 +40,12 @@ namespace ObjectsBeans
         {
             get { return idPerfil; }
             set { idPerfil = value; }
+        }
+
+        public string Nomperfil
+        {
+            get { return nomperfil; }
+            set { nomperfil = value; }
         }
 
         public int Rut

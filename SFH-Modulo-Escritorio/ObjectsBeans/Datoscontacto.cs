@@ -14,6 +14,7 @@ namespace ObjectsBeans
         private int fonoCelular;
         private int direccion;
         private string mail;
+        //se captura cuando se registra el usuario
         private DateTime fechaIngreso;
         #endregion
 

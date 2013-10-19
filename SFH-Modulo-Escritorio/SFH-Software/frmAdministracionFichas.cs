@@ -18,6 +18,7 @@ namespace SFH_Software
         List<Fichadental> result = new List<Fichadental>();
         private int id_ficha_modificar;
         frmMenu menu;
+        
         #endregion
         
         #region Propiedades

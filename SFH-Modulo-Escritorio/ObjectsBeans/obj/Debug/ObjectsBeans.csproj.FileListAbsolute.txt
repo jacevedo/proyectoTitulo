@@ -17,3 +17,7 @@ C:\Users\Citt-David\Documents\GitHub\proyectoTitulo\SFH-Modulo-Escritorio\Object
 C:\Users\Citt-David\Documents\GitHub\proyectoTitulo\SFH-Modulo-Escritorio\ObjectsBeans\bin\Debug\ObjectsBeans.pdb
 C:\Users\Citt-David\Documents\GitHub\proyectoTitulo\SFH-Modulo-Escritorio\ObjectsBeans\obj\Debug\ObjectsBeans.dll
 C:\Users\Citt-David\Documents\GitHub\proyectoTitulo\SFH-Modulo-Escritorio\ObjectsBeans\obj\Debug\ObjectsBeans.pdb
+C:\Users\Citt-David\Desktop\SFH-Modulo-Escritorio\ObjectsBeans\bin\Debug\ObjectsBeans.dll
+C:\Users\Citt-David\Desktop\SFH-Modulo-Escritorio\ObjectsBeans\bin\Debug\ObjectsBeans.pdb
+C:\Users\Citt-David\Desktop\SFH-Modulo-Escritorio\ObjectsBeans\obj\Debug\ObjectsBeans.dll
+C:\Users\Citt-David\Desktop\SFH-Modulo-Escritorio\ObjectsBeans\obj\Debug\ObjectsBeans.pdb
