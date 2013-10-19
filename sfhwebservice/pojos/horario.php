@@ -1,5 +1,5 @@
 <?php
-class Cita
+class Horario
 {
 	public $idHorario;
 	public $idOdontologo;

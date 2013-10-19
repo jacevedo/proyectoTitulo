@@ -5,7 +5,6 @@ class Cita
 	public $idOdontologo;
 	public $idPaciente;
 	public $horaInicio;
-	public $horaTermino;
 	public $fecha;
 	public $estado;
 	public $nomPaciente;
@@ -15,24 +14,22 @@ class Cita
 	public $appPaternoOdontologo;
 	public $appMaternoOdontologo;
 
-	function initClass($idCita, $idOdontologo, $idPaciente, $horaInicio, $horaTermino, $fecha, $estado)
+	function initClass($idCita, $idOdontologo, $idPaciente, $horaInicio, $fecha, $estado)
 	{
 		$this->idCita = $idCita;
 		$this->idOdontologo = $idOdontologo;
 		$this->idPaciente = $idPaciente;
 		$this->horaInicio = $horaInicio;
-		$this->horaTermino = $horaTermino;
 		$this->fecha = $fecha;
 		$this->estado = $estado;
 	}
-	function initClassDatosExtra($idCita, $idOdontologo, $idPaciente, $horaInicio, $horaTermino, $fecha, $estado, $nomPaciente, $appPaternoPaciente, 
+	function initClassDatosExtra($idCita, $idOdontologo, $idPaciente, $horaInicio, $fecha, $estado, $nomPaciente, $appPaternoPaciente, 
 								$appMaternoPaciente, $nomOdontologo, $appPaternoOdontologo, $appMaternoOdontologo)
 	{
 		$this->idCita = $idCita;
 		$this->idOdontologo = $idOdontologo;
 		$this->idPaciente = $idPaciente;
 		$this->horaInicio = $horaInicio;
-		$this->horaTermino = $horaTermino;
 		$this->fecha = $fecha;	
 		$this->estado = $estado;
 		$this->nomPaciente = $nomPaciente;
