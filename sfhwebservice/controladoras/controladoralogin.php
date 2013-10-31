@@ -1,4 +1,5 @@
 <?php
+require '../phpass/PasswordHash.php';
 require_once '../bdmysql/MySqlCon.php'; 
 require_once '../pojos/session.php';
 
@@ -6,6 +7,7 @@ class ControladoraLogin
 {
 	private $SqlQuery;
 	private $datos;
+	private $datosInternos;
 
 	public function validarUsusario($usuario, $pass)
 	{
@@ -18,9 +20,9 @@ class ControladoraLogin
 
 		   	$sentencia=$conexion->prepare($this->SqlQuery);
 		   	$sentencia->bind_param("i",$usuario);
-		   	$sentencia->bind_result($idPersona,$usuarioBD,$passBD,$codAcceso);	
-        	if($sentencia->execute())
+		   	if($sentencia->execute())
         	{
+        		$sentencia->bind_result($idPersona,$usuarioBD,$passBD,$codAcceso);	
 	        	$hasher = new PasswordHash(8, false);	
 	        	if($sentencia->fetch())
 	        	{
@@ -56,7 +58,7 @@ class ControladoraLogin
 		$idPersona = $session->idPersona;
 		$keyHashada = $session->keySession;
 		$horaFechaIngreso = $session->fechaHoraIngreso;
-		$datos = '';
+		$this->datosInternos = '';
 		try
 		{
 			$this->SqlQuery='';
@@ -68,17 +70,17 @@ class ControladoraLogin
 	        	$conexion->close();
 				if($sentencia->insert_id!=-1)
 				{
-					$datos = $keyHashada;
+					$this->datosInternos = $keyHashada;
 				}
 				else
 				{
-					$datos = "Error en el inicio de session";
+					$this->datosInternos = "Error en el inicio de session";
 				}
 			}
 			else
 			{
 				$conexion->close();
-	        	$datos = "Error en el inicio de session";
+	        	$this->datosInternos = "Error en el inicio de session";
 	        }
 
 		}
@@ -86,7 +88,7 @@ class ControladoraLogin
 		{
 			throw new $e("Error al listar ordenes");
 		}
-		return $datos;
+		return $this->datosInternos;
 	}
 }
 ?>

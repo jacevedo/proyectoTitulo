@@ -1,5 +1,5 @@
 <?php
-require '../phpass/PasswordHash.php';
+
 require_once '../controladoras/controladoralogin.php';
 
 /*
@@ -20,7 +20,7 @@ switch ($opcion)
 	case 1:
 		//json Login {"indice":1,"usuario":17231233,"pass":"asdcasco"}
 		$usuario = $data->{'usuario'};
-		$pass = $data->{"pass"};
+		$pass = $data->{'pass'};
 		$controladora = new ControladoraLogin();
 		$arreglo = $controladora->validarUsusario($usuario, $pass);
 		echo(json_encode($arreglo));
