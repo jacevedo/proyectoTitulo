@@ -7,9 +7,14 @@
 {
 	width: 43%;
 }
-#btnBuscar
+#btnBuscar, #btnAgregarTratamiento
 {
-	width: 7% !important;
+	width: 9% !important;
+	margin-left: 0% !important;
+}
+#btnAgregarTratamiento
+{
+	width: 40% !important;
 	margin-left: 0% !important;
 }
 #tablaListaPrecios
@@ -25,26 +30,4 @@ button
 {
 	width: 65% !important;
 	margin-left: 14% !important;
-}
-#btnBuscar
-{
-	width: 43% !important;
-	margin-left: 0% !important;
-	margin-top: 0% !important;
-}
-#btnAgregarTratamiento
-{
-	width: 43% !important;
-	margin-left: 0% !important;	
-
-}
-.btnEditarPrecio
-{
-	width: 80% !important;
-	margin-left: 0% !important;	
-
-}
-#botones
-{
-width: 50%;
 }

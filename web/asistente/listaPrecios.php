@@ -1,3 +1,8 @@
+<?php
+session_start();
+//echo($_SESSION['key']);
+//echo($_SESSION['user']);
+?>
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -14,11 +19,10 @@
 			<div id="menu">
 				<table id="tablaMenu">
 					<tr>
-						<td><a href="perfil.html">Perfil</a></td>
-						<td><a href="crearcuenta.html">Crear Cuenta</a></td>
-						<td><a href="confirmarhora.html">Hora Atencion</a></td>
-						<td><a href="ListaPrecios.html">Lista Precios</a></td>
-						<td><a href="index.html">Logout</a></td>	
+						<td><a href="perfil.php">Perfil</a></td>
+						<td><a href="confirmarHora.php">Hora Atencion</a></td>
+						<td><a href="listaPrecios.php">Lista Precios</a></td>
+						<td><a href="index.php">Logout</a></td>	
 					</tr>
 				</table> 
 			</div>
@@ -28,11 +32,13 @@
 				<img src="imagenes/logo.png" id="imagenCostado">
 			</div>
 			<div id="Contenido">
+				<input type="hidden" value=<?=$_SESSION['user'];?> id="idPaciente">
+				<input type="hidden" value=<?=$_SESSION['key'];?> id="keyPaciente">
 				<div id="campos">
 				 <input type="search" id="txtBuscaTratamiento"/>
 					 <div id="botones">
 					 	<button id="btnBuscar">Buscar</button>
-						<a href="agregarTratamiento.html"><button id="btnAgregarTratamiento">Agregar Tratamiento</button></a>
+						<button id="btnAgregarTratamiento">Agregar Tratamiento</button>
 					</div>
 				</div>
 				<table id="tablaListaPrecios">
@@ -42,6 +48,7 @@
 							<td>Nombre Tratamiento</td>
 							<td>Precio</td>
 							<td style="width: 70px;">Editar</td>
+							<td style="width: 70px;">Eliminar</td>
 						</tr>
 					</thead>
 					<tbody id="cuerpoTabla">

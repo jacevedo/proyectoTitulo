@@ -1,6 +1,8 @@
 <?php
+session_start();
+//echo($_SESSION['key']);
+//echo($_SESSION['user']);
 ?>
-
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -8,11 +10,12 @@
 		<link rel="stylesheet" href="estilos/estiloLogin.css">
 		<script type="text/javascript" src="javascript/JQuery.js"></script>
 		<script type="text/javascript" src="javascript/scriptLogin.js"></script>
+		<title>SFH</title>
 	</head>
 	<body>
 		<header>
 			<img src="imagenes/logo.png" id="imagenLogo">
-			<h1 id="titulo">Sistema de Fichas medicas y toma de Horas (SFH)</h1>
+			<h1 id="titulo">Sistema de Fichas Medicas y Toma de Horas (SFH)</h1>
 		</header>
 		<div id="cuerpo">
 			<div id="logo">

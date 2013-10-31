@@ -105,7 +105,10 @@ class ControladoraDatosContacto
       		}
       		else
       		{
-      			echo("ERROR");
+      			//echo("ERROR");
+      			$contacto = new DatosContactos();
+				$contacto->initClass(0, 0, null, null, null, null, null);
+      			$this->datos = $contacto;
       		}
 
        		$conexion->close();

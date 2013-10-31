@@ -196,8 +196,8 @@ class ControladoraPersonaRegionComuna
 				{
 					$persona = new Persona();
 					$persona->initClass($idPersona, $idPerfil, $rut, $dv, $nombre, $apellidoPaterno, $apellidoMaterno, $fechaNacimiento);
-					$this->datos[$indice] = $persona;
-					$indice++;
+					$this->datos = $persona;
+					//$indice++;
 				}
       		}
        		$conexion->close();

@@ -1,3 +1,8 @@
+<?php
+session_start();
+//echo($_SESSION['key']);
+//echo($_SESSION['user']);
+?>
 <!DOCTYPE HTML>
 <html>
 	<head>

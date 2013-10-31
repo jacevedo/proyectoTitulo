@@ -1,3 +1,8 @@
+<?php
+session_start();
+//echo($_SESSION['key']);
+//echo($_SESSION['user']);
+?>
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -14,11 +19,10 @@
 			<div id="menu">
 				<table id="tablaMenu">
 					<tr>
-						<td><a href="perfil.html">Perfil</a></td>
-						<td><a href="crearcuenta.html">Crear Cuenta</a></td>
-						<td><a href="confirmarhora.html">Hora Atencion</a></td>
-						<td><a href="ListaPrecios.html">Lista Precios</a></td>
-						<td><a href="index.html">Logout</a></td>	
+						<td><a href="perfil.php">Perfil</a></td>
+						<td><a href="confirmarHora.php">Hora Atencion</a></td>
+						<td><a href="listaPrecios.php">Lista Precios</a></td>
+						<td><a href="index.php">Logout</a></td>	
 					</tr>
 				</table> 
 			</div>
@@ -28,6 +32,8 @@
 				<img src="imagenes/logo.png" id="imagenCostado">
 			</div>
 			<div id="Contenido">
+				<input type="hidden" value=<?=$_SESSION['user'];?> id="idPaciente">
+				<input type="hidden" value=<?=$_SESSION['key'];?> id="keyPaciente">
 				<table id="tablaAgregarTratamiento">
 					<tr>
 						<td class="tdNombre">Nombre Tratamiento</td>
@@ -40,11 +46,11 @@
 					</tr>
 					<tr>
 						<td class="tdNombre">Precio Iva</td>
-						<td><input type="text" id="txtIva"/></td>
+						<td><input type="text" id="txtIva" disabled/></td>
 					</tr>
 					<tr>
 						<td class="tdNombre">Precio Total</td>
-						<td><input type="text" id="txtTotal"/></td>
+						<td><input type="text" id="txtTotal" disabled/></td>
 					</tr>
 					<tr>
 						<td colspan=2><button id="btnAgregarTratamiento">Agregar</button></td>

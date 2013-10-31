@@ -22,15 +22,7 @@ button
 	width: 60% !important;
 	margin-left: 20% !important;
 }
-#txtNeto
-{
-	width: 95%;
-}
-#txtIva
-{
-	width: 95%;
-} 
-#txtTotal
+#txtPrecioTratamiento
 {
 	width: 95%;
 }

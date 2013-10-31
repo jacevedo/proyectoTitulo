@@ -35,8 +35,8 @@
 {
 	width: 29%;
 }
-.btnOpcionesMenu
+#btnConfirmarHora
 {
-	width: 41% !important;
-	margin-left: 7% !important;
+	width: 60% !important;
+	margin-left: 20% !important;
 }

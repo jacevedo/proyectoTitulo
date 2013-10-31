@@ -111,6 +111,7 @@ switch ($opcion)
 
 			if($idPersonaContacto != 0)
 			{
+				//$idPersonaContacto = $contacto->idPersona;
 				$arreglo["datosContacto"] = $contacto;
 
 				$idComuna = $contacto->idComuna;
@@ -149,7 +150,7 @@ switch ($opcion)
 	break;
 	case 5:
 		$arreglo["code"] = 5;
-		//json Insertar Usuario {"indice":5,"idPersona":1,"idPerfil":4,"rut":17897359,"dv":2,"nombre":"ada","appPaterno":"wonk","appMaterno":"asturias","fechaNac":"1991-12-12","idComuna":2,"fonoFijo":"0227780184","celular":"+56976087240","direccion":"antonio Varas 666","mail":"asd@asd.com","fechaIngreso":"2013-02-02"}
+		//json Modificar Usuario {"indice":5,"idPersona":1,"idPerfil":4,"rut":17897359,"dv":2,"nombre":"ada","appPaterno":"wonk","appMaterno":"asturias","fechaNac":"1991-12-12","idComuna":2,"fonoFijo":"0227780184","celular":"+56976087240","direccion":"antonio Varas 666","mail":"asd@asd.com","fechaIngreso":"2013-02-02"}
 		$idPersona = $data->{'idPersona'};
 		$idPerfil = $data->{'idPerfil'};
 		$rut = $data->{'rut'};

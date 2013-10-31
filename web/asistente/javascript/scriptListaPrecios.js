@@ -5,6 +5,7 @@ function inicializarEventos()
 {
 	cargarListaPrecios();
 	$("#btnBuscar").click(buscarPor);
+	$("#btnAgregarTratamiento").click(agregarTratamiento);
 }
 function buscarPor()
 {
@@ -110,12 +111,6 @@ function modificarObjeto()
 	}
 	$("#tablaListaPrecios").on("click",".btnEditarPrecio",modificarObjeto);
 }
-function insertar(idCosto,concepto,costo)
-{
-	//{"indice":2,"idPrecio":2,"Comentario":"asd","ValorNeto":130}
-	
-	
-}
 function cargarListaPrecios()
 {
 	var precios = direccionWeb+"ws-precios-insumos.php";
@@ -125,12 +120,41 @@ function cargarListaPrecios()
 		var obj = $.parseJSON(datos);
 		$.each(obj.listaPrecios,function()
 			{
-				tabla = tabla+"<tr><td>"+this.idPrecios+"</td><td>"+this.comentario+"</td><td>"+this.valorTotal+"</td><td><Button class='btnEditarPrecio'>Editar</Button></td></tr>";
+				tabla = tabla+"<tr><td>"+this.idPrecios+"</td><td>"+this.comentario+"</td><td>"+this.valorTotal+"</td><td><Button class='btnEditarPrecio'>Editar</Button></td><td><Button class='btnEliminarPrecio'>Eliminar</Button></td></tr>";
 			});
 		$("#cuerpoTabla").html(tabla);
 		//var obj2 = jQuery.parseJSON(obj.listaPrecios[1]);
 		//alert(obj.listaPrecios[0].valorNeto);
 	});
 	$("#tablaListaPrecios").on("click",".btnEditarPrecio",modificarObjeto);
-	
+	$("#tablaListaPrecios").on("click",".btnEliminarPrecio",eliminarObjeto);
+}
+
+function eliminarObjeto()
+{
+	var id = '';
+	var nombre = '';
+	var precio = '';
+
+	$(this).parent().parent().children().each(function(i)
+	{
+		if(i == 0)
+		{
+			id = $(this).html();
+		}
+		if(i == 1)
+		{
+			nombre = $(this).html();
+		}
+		if(i == 2)
+		{
+			precio = $(this).html();
+		}
+	}
+	alert(id+" | "+nombre+" | "+precio);
+}
+
+function agregarTratamiento()
+{
+	location.href="agregarTratamiento.php";
 }

@@ -17,6 +17,22 @@ button
 	width:103%; 
   	color:white;
 }
+.textoSelect
+{
+	width: 70%;
+}
+.textoRutMod
+{
+	width: 100px;
+}
+.textoDvMod
+{
+	width: 43px;
+}
+.regionEscondida
+{
+	 display: none;
+}
 #textoBienvenida
 {
 	width: 73%;
@@ -40,7 +56,7 @@ button
 {
 	float: right;
 	top:7%;
-	margin-left: 69%;
+	margin-left: 77%;
 	margin-right: 0%;
 	position: fixed;
 }
