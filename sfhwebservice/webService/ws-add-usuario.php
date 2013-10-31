@@ -15,7 +15,7 @@ require_once '../controladoras/controladorapass.php';
 * 1.- insertar Usuario
 * 2.- buscar Usuario por rut
 * 3.- listar Region
-* 4.- listar Comuna por Regionç
+* 4.- listar Comuna por Region
 * 5.- modificar Usuario
 * 6.- buscar comuna por id
 */

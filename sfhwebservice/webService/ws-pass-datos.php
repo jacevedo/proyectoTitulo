@@ -93,13 +93,14 @@ switch ($opcion)
 		echo(json_encode($arreglo));
 	break;
 	case 6:
-		//json Listar Datos Contacti idPersona {"indice":6,"idPersona":17}
+		//json Listar Datos Contacto idPersona {"indice":6,"idPersona":17}
 		$idPersona = $data->{"idPersona"};
 		$controladoraDatos = new ControladoraDatosContacto();
 		
 		$arreglo["code"] = 6;
 		$arreglo["Resultado"] =  $controladoraDatos->buscarPorPersona($idPersona);
-		echo(json_encode());
+		echo(json_encode($arreglo));
 	break;
+	
 	
 }

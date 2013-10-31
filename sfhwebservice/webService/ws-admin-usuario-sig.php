@@ -22,6 +22,7 @@ require_once '../controladoras/controladorafuncionario.php';
 * 7.- Buscar Odontologo Por Rut
 * 8.- Buscar Odontologo Por Nombre Apellido
 * 9.- Listar Personas id nombre
+* 11.- Buscar Persona por id
 */
 
 
@@ -130,6 +131,14 @@ switch ($opcion)
 		$controladoraPaciente = new ControladoraDoctor();
 		$arreglo["code"] = 9;
 		$arreglo["listaPersonas"] = $controladoraPaciente->listarOdontologoIdNombre();
+		echo(json_encode($arreglo));
+	break;
+	case 11:
+		//json Listar odontologo con id nombre y apellido {"indice":10,"idPersona":8}
+		$idPersona = $data->{"idPersona"};
+		$controladoraPersona = new ControladoraPersonaRegionComuna();
+		$arreglo["code"] = 11;
+		$arreglo["listaPersonas"] = $controladoraPersona->buscarPorId($idPersona);
 		echo(json_encode($arreglo));
 	break;
 }

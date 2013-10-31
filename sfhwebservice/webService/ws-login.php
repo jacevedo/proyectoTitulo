@@ -26,7 +26,7 @@ switch ($opcion)
 		echo(json_encode($arreglo));
 	break;	
 	case 2:
-		//json Login Asistente {"indice":1,"usuario":17231233,"pass":"asdcasco"}
+		//json Login Asistente {"indice":2,"usuario":17231233,"pass":"asdcasco"}
 		$usuario = $data->{'usuario'};
 		$pass = $data->{'pass'};
 		$controladora = new ControladoraLogin();
@@ -34,7 +34,7 @@ switch ($opcion)
 		echo(json_encode($arreglo));
 	break;	
 	case 3:
-		//json Login Odontologo {"indice":1,"usuario":17231233,"pass":"asdcasco"}
+		//json Login Odontologo {"indice":3,"usuario":17231233,"pass":"asdcasco"}
 		$usuario = $data->{'usuario'};
 		$pass = $data->{'pass'};
 		$controladora = new ControladoraLogin();
@@ -42,7 +42,7 @@ switch ($opcion)
 		echo(json_encode($arreglo));
 	break;	
 	case 4:
-		//json Login Administrador {"indice":1,"usuario":17231233,"pass":"asdcasco"}
+		//json Login Administrador {"indice":4,"usuario":17231233,"pass":"asdcasco"}
 		$usuario = $data->{'usuario'};
 		$pass = $data->{'pass'};
 		$controladora = new ControladoraLogin();

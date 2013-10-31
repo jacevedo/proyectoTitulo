@@ -241,6 +241,36 @@ class ControladoraPersonaRegionComuna
 		}
 		return $this->datos;
 	}
+	public function buscarPorId($id)
+	{
+		$conexion = new MySqlCon();
+		$this->datos = '';
+		try
+		{
+			$this->SqlQuery = '';
+			$this->SqlQuery = "SELECT * FROM persona WHERE ID_PERSONA = ?";
+		   	$sentencia=$conexion->prepare($this->SqlQuery);
+		   	$sentencia->bind_param('i', $id);
+        	if($sentencia->execute())
+        	{
+        		$sentencia->bind_result($idPersona, $idPerfil, $rut, $dv, $nombre, $apellidoPaterno, $apellidoMaterno, $fechaNacimiento);					
+				$indice=0;     
+				while($sentencia->fetch())
+				{
+					$persona = new Persona();
+					$persona->initClass($idPersona, $idPerfil, $rut, $dv, $nombre, $apellidoPaterno, $apellidoMaterno, $fechaNacimiento);
+					$this->datos[$indice] = $persona;
+					$indice++;
+				}
+      		}
+       		$conexion->close();
+		}
+		catch(Exception $e)
+		{
+			throw new $e("Error al buscar persona");
+		}
+		return $this->datos;
+	}
 	
 	public function listarRegion()
 	{

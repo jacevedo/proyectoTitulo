@@ -954,7 +954,6 @@ INSERT INTO `persona` (`ID_PERSONA`, `ID_PERFIL`, `RUT`, `DV`, `NOMBRE`, `APELLI
 (11, 2, '19746228', '7', 'Pedro', 'Lopez', 'Moya', '1993-12-04'),
 (13, 1, '17897359', '2', 'ada', 'wonk', 'asturias', '1991-12-12'),
 (14, 1, '17897359', '2', 'ada', 'wonk', 'asturias', '1991-12-12'),
-(16, NULL, '17897359', '2', NULL, NULL, NULL, NULL),
 (17, 1, '17897359', '2', 'ada', 'wonk', 'asturias', '1991-12-12'),
 (2, 1, '178972492', '2', 'asdasd', 'asdasd', 'asdasd', '2013-09-21'),
 (33, 4, '17897359', '2', 'jaime acevedo', 'acevedo', 'cerna', '1991-04-06'),
