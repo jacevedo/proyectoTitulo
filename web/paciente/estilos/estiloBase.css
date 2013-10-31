@@ -17,6 +17,22 @@ button
 	width:103%; 
   	color:white;
 }
+.textoSelect
+{
+	width: 70%;
+}
+.textoRutMod
+{
+	width: 100px;
+}
+.textoDvMod
+{
+	width: 43px;
+}
+.regionEscondida
+{
+	 display: none;
+}
 #textoBienvenida
 {
 	width: 73%;

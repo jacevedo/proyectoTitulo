@@ -18,10 +18,10 @@ session_start();
 			<div id="menu">
 				<table id="tablaMenu">
 					<tr>
-						<td><a href="perfil.html">Perfil</a></td>
-						<td><a href="reservarHoraPaciente.html">Hora Atencion</a></td>
-						<td><a href="ListaPrecios.html">Lista Precios</a></td>
-						<td><a href="index.html">Logout</a></td>	
+						<td><a href="perfil.php">Perfil</a></td>
+						<td><a href="reservarHoraPaciente.php">Hora Atencion</a></td>
+						<td><a href="ListaPrecios.php">Lista Precios</a></td>
+						<td><a href="index.php">Logout</a></td>	
 					</tr>
 				</table>
 			</div>
@@ -35,7 +35,7 @@ session_start();
 				<input type="hidden" value=<?=$_SESSION['key'];?> id="keyPaciente">
 
 				<table id="tablaContenido">
-					<tr>
+					<tr style="display: none;">
 						<td class="tdIndicador">Numero:</td>
 						<td id="tdNumero"></td>
 					</tr>
@@ -66,6 +66,10 @@ session_start();
 					<tr>
 						<td class="tdIndicador">Direccion:</td>
 						<td id='tdDireccion'></td>
+					</tr>
+					<tr class="regionEscondida">
+						<td class="tdIndicador">Region</td>
+						<td id='tdRegion'></td>
 					</tr>
 					<tr>
 						<td class="tdIndicador">Comuna</td>

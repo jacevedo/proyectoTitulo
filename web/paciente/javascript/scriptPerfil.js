@@ -111,13 +111,16 @@ function modificarCuenta()
 	$("#tdNombre").html("<input type='text' id='txtNombre'/>");
 	$("#tdApellidoPaterno").html("<input type='text' id='txtApellidoPaterno'/>");
 	$("#tdApellidoMaterno").html("<input type='text' id='txtApellidoMaterno'/>");
-	$("#tdRut").html("<input type='text' id='txtRut'/> <input type='text' id='txtDv'/>");
+	$("#tdRut").html("<input type='text' id='txtRut' class='textoRutMod'/> <input type='text' id='txtDv' class='textoDvMod'/>");
 	$("#tdFechaNacimiento").html("<input type='text' id='txtFechaNacimiento'/>");
 
 	//DATOS CONTACTO
 	$("#tdDireccion").html("<input type='text' id='txtDireccion'/>");
 	//$("#tdComuna").html("<input type='text' id='txtComuna'/>");
-	$("#tdComuna").html("<select class='textosLargos' id='region' ></select><select class='textosLargos' id='comuna'></select>");
+	$("#tdRegion").parent().parent().children().removeClass("regionEscondida");
+	//alert($("#tdRegion").parent().parent().children().val());
+	$("#tdRegion").html("<select class='textoSelect' id='region'></select>");
+	$("#tdComuna").html("<select class='textoSelect' id='comuna'></select>");
 	
 	$("#tdFonoFijo").html("<input type='text' id='txtFonoFijo'/>");
 	$("#tdFonoCelular").html("<input type='text' id='txtFonoCelular'/>");
@@ -141,6 +144,7 @@ function modificarCuenta()
 
 	$("#btnCrearCuenta").html("Guardar Cambios");
 	cargarRegiones(idRegion);
+	cargarComunas(idComuna, idRegion);
 	$("#tdComuna").on("change","#region",cambiarComuna);
 
 }
@@ -159,7 +163,7 @@ function guardarModificacionCuenta()
 
 	//DATOS CONTACTO
 	var direccion = $("#txtDireccion").val();
-	var comuna = $("#txtComuna").val();
+	var comuna = $("#comuna").val();
 	var fonoFijo = $("#txtFonoFijo").val();
 	var fonoCelu = $("#txtFonoCelular").val();
 	var email = $("#txtEmail").val();
@@ -223,24 +227,53 @@ function cargarRegiones(RegionesID)
 
 	$.post(regiones,data,function(datos){
 		var obj = $.parseJSON(datos);
-		var option = document.getElementById("region");
-		option.options.add(new Option("Seleccione una Region", 0));
+		var select = '';
+		select = select + "<option value='0'>Seleccione una Region</option>";
+		//var option = document.getElementById("region");
+		//option.options.add(new Option("Seleccione una Region", 0));
 
 		$.each(obj.listaRegiones,function()
+		{
+			if(this.idRegion == RegionesID)
 			{
-				if(this.idRegion == RegionesID)
-				{
-					alert("xd");
-					option.options.add(new Option(this.nombreRegion, this.idRegion));
-				}
-				else
-				{
-					option.options.add(new Option(this.nombreRegion, this.idRegion));	
-				}
-				//sel = sel + "<option value="+this.idCurso+">"+this.nivel+"-"+this.numero+"-"+this.letra+"</option>"
-				
-			});
+				select = select + "<option value="+this.idRegion+" selected='selected'>"+this.nombreRegion+"</option>";
+				//option.options.add(new Option(this.nombreRegion, this.idRegion));
+			}
+			else
+			{
+				select = select + "<option value="+this.idRegion+">"+this.nombreRegion+"</option>";
+				//option.options.add(new Option(this.nombreRegion, this.idRegion));	
+			}
+		});
+		$("#region").html(select);
 
+	});
+}
+
+function cargarComunas(ComunasID, RegionesID)
+{
+	var comunas = direccionWeb+"ws-add-usuario.php";
+	var data = {"send":"{\"indice\":4,\"idRegion\":\""+RegionesID+"\"}"};
+	//{"indice":3,"idRegion":13}
+
+	$.post(comunas,data,function(datos){
+		var obj = $.parseJSON(datos);
+		//var option = document.getElementById("comuna");
+		var select = '';
+		select = select + "<option value='0'>Seleccione una Comuna</option>";
+		$.each(obj.listaComuna,function()
+		{
+			if(this.idComuna == ComunasID)
+			{
+				select = select + "<option value="+this.idComuna+" selected='selected'>"+this.nombreComuna+"</option>";
+			}
+			else
+			{
+				select = select + "<option value="+this.idComuna+">"+this.nombreComuna+"</option>";
+				//option.options.add(new Option(this.nombreRegion, this.idRegion));	
+			}
+		});
+		$("#comuna").html(select);
 	});
 }
 
@@ -261,6 +294,7 @@ function cambiarComuna()
 		$.each(obj.listaComuna,function()
 			{
 				//sel = sel + "<option value="+this.idCurso+">"+this.nivel+"-"+this.numero+"-"+this.letra+"</option>"
+				
 				option.options.add(new Option(this.nombreComuna, this.idComuna));
 			});
 

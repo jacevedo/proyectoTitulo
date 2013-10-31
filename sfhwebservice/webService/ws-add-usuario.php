@@ -201,8 +201,8 @@ switch ($opcion)
 				//$arreglo["resultadoDatos"] = "Existe Contacto";
 				$datoContacto = new DatosContactos();
 				$datoContacto->initClass($idPersona, $idComuna, $fonoFijo, $fonoCelular, $direccion, $mail, $fechaIngreso);
-				
-				if($controladoraContacto->modificarDatosContacto($datoContacto) == "Modificado")
+				$resultCont = $controladoraContacto->modificarDatosContacto($datoContacto);
+				if($resultCont == "Modificado")
 				{
 					$arreglo["resultadoDatos"] = "Modificado";
 				}

@@ -56,7 +56,7 @@ class ControladoraDatosContacto
 		try 
 	   	{ 	 
 	        $this->SqlQuery='';
-	        $this->SqlQuery="UPDATE datosdecontacto SET ID_COMUNA=?, FONO_FIJO=?, FONO_CELULAR=?, DIRECCION=?, MAIL=?, F_INGRESO=? WHERE ID_PERSONA=?";
+	        $this->SqlQuery="UPDATE datosdecontacto SET ID_COMUNA = ?, FONO_FIJO = ?, FONO_CELULAR = ?, DIRECCION = ?, MAIL = ?, F_INGRESO = ? WHERE ID_PERSONA = ?";
 	        $sentencia=$conexion->prepare($this->SqlQuery);
 	        $sentencia->bind_param("isssssi",$idComuna, $fonoFijo, $fonoCelular, $direccion, $mail, $fechaIngreso, $idPersona);
 	      	if($sentencia->execute())
