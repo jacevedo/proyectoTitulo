@@ -47,8 +47,8 @@ switch ($opcion)
 		$appPersona = $data->{'appPersona'};
 		$controladoraPersona = new ControladoraPersonaRegionComuna();
 		$arreglo["code"] = 2;
-		$arreglo["busquedaPersonaNombre"] = $controladorafuncionario->buscarFuncionarioPorRut($rut);
-		echo(json_encode($controladoraPersona->buscarPorNombre($nomPersona, $appPersona)));
+		$arreglo["busquedaPersonaNombre"] = $controladoraPersona->buscarPorNombre($nomPersona, $appPersona);
+		echo(json_encode($arreglo));
 		
 	break;
 	case 3:

@@ -216,9 +216,11 @@ class ControladoraPersonaRegionComuna
 		try
 		{
 			$this->SqlQuery = '';
-			$this->SqlQuery = "SELECT * FROM `persona` WHERE `NOMBRE` LIKE '%?%' OR `APELLIDO_PATERNO` LIKE '%?%'";
+			$this->SqlQuery = "SELECT * FROM persona WHERE NOMBRE LIKE ? OR APELLIDO_PATERNO LIKE ?";
 		   	$sentencia=$conexion->prepare($this->SqlQuery);
-		   	$sentencia->bind_param('ss', $nombrePersona, $apellidoPersona);
+		   	$nombreParam = "%".$nombrePersona."%";
+		   	$appParam = "%".$apellidoPersona."%";
+		   	$sentencia->bind_param('ss', $nombreParam , $appParam);
         	if($sentencia->execute())
         	{
         		$sentencia->bind_result($idPersona, $idPerfil, $rut, $dv, $nombre, $apellidoPaterno, $apellidoMaterno, $fechaNacimiento);					
