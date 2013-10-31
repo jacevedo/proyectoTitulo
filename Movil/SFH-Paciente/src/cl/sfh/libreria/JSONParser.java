@@ -28,7 +28,7 @@ public class JSONParser {
 	static InputStream is = null;
 	static JSONObject jObj = null;
 	static String json = "";
-	public String urlBusqueda = "http://192.168.0.21/proyectoTitulo/sfhwebservice/webService/";
+	public String urlBusqueda = "http://172.16.28.138/sfhwebservice/webService/";
 
 	// constructor
 	public JSONParser() {
@@ -40,8 +40,7 @@ public class JSONParser {
 	public JSONObject makeHttpRequest(String pagina, String method,
 			List<NameValuePair> params)
     {
-        Log.e("JSON","Entre httpRequest");
-		// Making HTTP request
+        // Making HTTP request
 		try {
 			
 			// check for request method
@@ -71,10 +70,7 @@ public class JSONParser {
 				HttpEntity httpEntity = httpResponse.getEntity();
 				is = httpEntity.getContent();
 			}
-            Log.e("JSON","Sali Post");
-			
-
-		}
+        }
         catch (UnsupportedEncodingException e)
         {
 			e.printStackTrace();
@@ -99,11 +95,9 @@ public class JSONParser {
 			}
 			is.close();
 			json = sb.toString();
-			Log.e("Resultado","resultado" +  json);
 		}
         catch (Exception e)
         {
-			Log.e("Buffer Error", "Error converting result " + e.toString());
 		}
 
 		// try parse the string to a JSON object
@@ -113,7 +107,6 @@ public class JSONParser {
 		}
         catch (JSONException e)
         {
-			Log.e("JSON Parser", "Error parsing data " + e.toString());
 		}
 
 		// return JSON String

@@ -4,8 +4,7 @@ require_once '../pojos/horario.php';
 require_once '../pojos/cita.php';
  class ControladoraHorario
 {
-	
-	function nameDate($fecha)//formato: 00/00/0000
+	private function nameDate($fecha)//formato: 00/00/0000
 	{ 	$fecha= empty($fecha)?date('d/m/Y'):$fecha;
 		$dias = array('domingo','lunes','martes','miércoles','jueves','viernes','sábado');
 		$dd   = explode('/',$fecha);
@@ -15,10 +14,11 @@ require_once '../pojos/cita.php';
 
 	public function mostrarHorasDisponibles($fecha)
 	{
+
+		$conexion = new MySqlCon();
 		$fechaHora = explode(" ",$fecha->format('d/m/Y H:i:s'));
 		$arregloDia = explode('/', $this->nameDate($fechaHora[0]));
 		$nombreDia = $arregloDia[0];
-		$conexion = new MySqlCon();
 		$this->datos ='';
 		try
 		{
@@ -32,7 +32,7 @@ require_once '../pojos/cita.php';
         	$indice=0;
         	while($sentencia->fetch())
         	{
-				$horario = new Horario();
+        		$horario = new Horario();
 				$horario->initClass($idHorario, $idOdontologo, $horaInicio, $horaTermino,$modulo);
     			$arreglo["idOdontologo"] = $idOdontologo;
     			$arreglo["nomOdontologo"] = $nomOdontologo." " . $appPaternoOdontologo;
@@ -47,7 +47,7 @@ require_once '../pojos/cita.php';
     	}
     	catch(Exception $e)
     	{
-        	throw new $e("Error al listar pacientes");
+    		throw new $e("Error al listar pacientes");
         }
         return $datos;
 	}

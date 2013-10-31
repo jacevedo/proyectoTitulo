@@ -44,7 +44,7 @@
             android:layout_height="wrap_content"
             android:inputType="textPassword"
             android:ems="10"
-            android:id="@+id/txtContrasena"
+            android:id="@+id/txtAppPaterno"
             android:text="asd"/>
 
     <TextView
@@ -59,7 +59,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:id="@+id/txtNombre"
+            android:id="@+id/txtAppMaterno"
             android:text="Jaime"/>
 
     <TextView
@@ -74,7 +74,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:id="@+id/txtApPaterno"
+            android:id="@+id/txtRut"
             android:text="Acevedo"/>
 
     <TextView
@@ -89,7 +89,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:id="@+id/txtFono"
+            android:id="@+id/txtFechaNacimiento"
             android:layout_gravity="center"
             android:phoneNumber="true"
             android:text="56976087240"/>

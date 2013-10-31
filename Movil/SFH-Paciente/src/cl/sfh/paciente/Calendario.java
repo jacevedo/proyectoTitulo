@@ -64,9 +64,10 @@ public class Calendario extends Activity implements OnClickListener, AdapterView
                 calendarioo.get(Calendar.MINUTE),calendarioo.get(Calendar.SECOND));
         int ultimoDia = calendarioo.getActualMaximum(Calendar.DAY_OF_MONTH);
         int diaPartida = ultimoDia-primerDia+1;
+        
         for(int i=0; i < primerDia;i++)
         {
-            diasCalendarios.add(new DiasCalendario(diaPartida,diaPartida,4));
+            diasCalendarios.add(new DiasCalendario(diaPartida,diaPartida,mes,ano,4));
             diaPartida++;
         }
 
@@ -113,12 +114,14 @@ public class Calendario extends Activity implements OnClickListener, AdapterView
 
 
         int dias = calendario.getActualMaximum(Calendar.DAY_OF_MONTH);
+        int mes = calendario.get(Calendar.MONTH)+1;
+        int year = calendario.get(Calendar.YEAR);
 
         DiasCalendario diaGrilla;
         for(int i=0;i!=dias;i++)
         {
 
-            diaGrilla = new DiasCalendario(i+1,i+1,(int)(Math.random()*3)+1);
+            diaGrilla = new DiasCalendario(i+1,i+1,mes,year,(int)(Math.random()*3)+1);
             diasCalendarios.add(diaGrilla);
         }
         GrillaAdapter grillaAdaptador = new GrillaAdapter(diasCalendarios,this);
@@ -136,15 +139,17 @@ public class Calendario extends Activity implements OnClickListener, AdapterView
         cargarMesAnterior(calendarioSiguiente.get(Calendar.MONTH), calendarioSiguiente.get(Calendar.YEAR));
         calendario.setFirstDayOfWeek(1);
 
-
+        
 
         int dias = calendarioSiguiente.getActualMaximum(Calendar.DAY_OF_MONTH);
-
+        int mes = calendario.get(Calendar.MONTH)+1;
+        int year = calendario.get(Calendar.YEAR);
+        
         DiasCalendario diaGrilla;
         for(int i=0;i!=dias;i++)
         {
 
-            diaGrilla = new DiasCalendario(i+1,i+1,(int)(Math.random()*3)+1);
+            diaGrilla = new DiasCalendario(i+1,i+1,mes,year,(int)(Math.random()*3)+1);
             diasCalendarios.add(diaGrilla);
         }
         GrillaAdapter grillaAdaptador = new GrillaAdapter(diasCalendarios,this);
@@ -154,7 +159,37 @@ public class Calendario extends Activity implements OnClickListener, AdapterView
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id)
     {
-        Intent i = new Intent("cl.sfh.sfhpaciente.TomaHora");
+    	String fecha =  obtenerFecha(diasCalendarios.get(position).getDia(),
+    			diasCalendarios.get(position).getMes(),
+    			diasCalendarios.get(position).getYear());
+    	Toast.makeText(this, fecha, Toast.LENGTH_SHORT).show();
+        Intent i = new Intent("cl.sfh.paciente.TomaHora");
+        i.putExtra("fecha", fecha);
         startActivity(i);
     }
+
+	private String obtenerFecha(int dia, int mes, int year)
+	{
+		String diaString;
+		String mesString;
+		String yearString = year+"";
+		if(dia<10 )
+		{
+			diaString="0"+dia;
+		}
+		else
+		{
+			diaString = dia+"";
+		}
+		if(mes<10 )
+		{
+			mesString="0"+mes;
+		}
+		else
+		{
+			mesString = mes+"";
+		}
+		return yearString+"-"+mesString+"-"+diaString;
+		
+	}
 }

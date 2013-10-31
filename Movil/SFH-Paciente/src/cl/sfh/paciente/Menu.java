@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.content.Intent;
-import android.widget.Toast;
 
 public class Menu extends Activity implements OnClickListener
 {

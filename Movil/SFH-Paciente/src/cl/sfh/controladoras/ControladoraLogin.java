@@ -5,12 +5,9 @@ import java.util.List;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.util.Log;
-import cl.sfh.entidades.ListaPreciosEntidad;
 import cl.sfh.entidades.Login;
 import cl.sfh.libreria.JSONParser;
 
@@ -26,19 +23,18 @@ public class ControladoraLogin
 		JSONObject objetoJson = parser.makeHttpRequest("ws-login.php","POST", parametros);
 		try
 		{
-			JSONObject login = objetoJson.getJSONObject("Resultado");
-			String key = login.getString("key");
-			int codigoAcceso = login.getInt("codAcceso");
-			Login loginObjeto = new Login(key, codigoAcceso);
+			JSONObject segundoObjetoJson = objetoJson.getJSONObject("resultado");
+			String key = segundoObjetoJson.getString("key");
+			int codigoAcceso = segundoObjetoJson.getInt("codAcceso");
+			int idPaciente = segundoObjetoJson.getInt("idPaciente");
+			Login loginObjeto = new Login(key, codigoAcceso, idPaciente);
 			return loginObjeto;
-			
-			
 		} 
 		catch (JSONException e)
 		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return new Login("", -1);
+			return new Login("", -1,-1);
 		}
 		
 	}

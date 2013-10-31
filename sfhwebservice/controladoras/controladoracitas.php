@@ -37,15 +37,18 @@ require_once '../pojos/cita.php';
 	}
 	function buscarCita($fecha, $horaInicio)
 	{
-		$conexion = new MySqlCon();
+		$conexion2 = new MySqlCon();
 		$this->datos ='';
+		$nuevaHoraInicio = $fecha." ".$horaInicio;
 		try
 		{
 			$this->SqlQuery = '';
-			$this->SqlQuery = "SELECT * FROM cita WHERE FECHA = ? AND $HORA_DE_INICIO = ? ";
-		   	$sentencia=$conexion->prepare($this->SqlQuery);
+			$this->SqlQuery = "SELECT * FROM cita WHERE FECHA = ? AND HORA_DE_INICIO = ?";
+		   	$sentencia=$conexion2->prepare($this->SqlQuery);
+		   	$sentencia->bind_param("ss",$fecha,$nuevaHoraInicio);
         	if($sentencia->execute())
         	{
+        		
         		$sentencia->bind_result($idCita, $idOdontologo, $idPaciente, $horaInicio, $horaTermino, $fecha, $estado);
 				$indice=0;     
 				while($sentencia->fetch())
@@ -60,7 +63,11 @@ require_once '../pojos/cita.php';
         			$indice++;
 				}
       		}
-       		$conexion->close();
+      		else
+      		{
+        		echo("hola, else");
+      		}
+       		$conexion2->close();
     	}
     	catch(Exception $e)
     	{
@@ -71,30 +78,33 @@ require_once '../pojos/cita.php';
 	function insertarCita(Cita $cita)
 	{
 		$conexion = new MySqlCon();
-		$idCita = $cita->idCita;
 		$idOdontologo = $cita->idOdontologo;
 		$idPaciente = $cita->idPaciente;
 		$horaInicio = $cita->horaInicio;
-		$horaTermino = $cita->horaTermino;
 		$fecha = $cita->fecha;
 		$estado = $cita->estado;
+		$nuevaHoraInicio = $fecha." ".$horaInicio;
+		$nuevaHoraTermino = $fecha." ".$horaInicio;
+		
+
 		if($this->buscarCita($fecha, $horaInicio))
 		{
 			try 
 		   	{ 	 
 		        $this->SqlQuery='';
-		        $this->SqlQuery='INSERT INTO  cita (ID_CITA, ID_ODONTOLOGO, ID_PACIENTE, HORA_DE_INICIO, HORA_DE_TERMINO, FECHA, ESTADO) VALUES (NULL, ?, ?, ?, ?, ?);';
+		        $this->SqlQuery='INSERT INTO cita(ID_CITA, ID_ODONTOLOGO, ID_PACIENTE, HORA_DE_INICIO, HORA_DE_TERMINO, FECHA, ESTADO)VALUES(NULL, ?, ?, ?, ?, ?, ?)';
 		        $sentencia=$conexion->prepare($this->SqlQuery);
-		        $sentencia->bind_param('iisssi',$idOdontologo, $idPaciente, $horaInicio, $horaTermino, $fecha, $estado);
+		        $sentencia->bind_param('iisssi',$idOdontologo, $idPaciente, $nuevaHoraInicio, $nuevaHoraTermino, $fecha, $estado);
 		      	if($sentencia->execute())
 		      	{
+		      		//$id = ;
 		        	$conexion->close();
 					return $sentencia->insert_id;
 				}
 				else
 				{
 					$conexion->close();
-		        	return "-1";
+		        	return "-1, else";
 		        }
 	        }
 	    	catch(Exception $e)
@@ -105,7 +115,7 @@ require_once '../pojos/cita.php';
 		}
 		else
 		{
-			return "-1";
+			return "Ya existe la Cita";
 		}
 		
 	}
@@ -141,8 +151,5 @@ require_once '../pojos/cita.php';
          throw new $e("Error al Registrar Odontologo");
         }
 	}
-
-
-
 }
 ?>

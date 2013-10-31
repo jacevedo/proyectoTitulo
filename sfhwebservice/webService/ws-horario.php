@@ -1,5 +1,4 @@
 <?php
-require '../phpass/PasswordHash.php';
 require_once '../controladoras/controladorahorario.php';
 
 /*
@@ -19,8 +18,7 @@ switch ($opcion)
 {
 	case 1:
 		//json Login {"indice":1,"fecha":"2013-10-10 13:13:00"}
-
-		$controladora = new controladoraHorario();
+		$controladora = new ControladoraHorario();
 		$fecha =  new DateTime($data->{'fecha'});
 		//echo($date);
 		$arreglo["listaHorarios"] = $controladora->mostrarHorasDisponibles($fecha);

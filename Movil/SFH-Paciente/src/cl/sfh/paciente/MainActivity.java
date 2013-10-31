@@ -1,25 +1,22 @@
 package cl.sfh.paciente;
 
-import java.util.ArrayList;
 
-import cl.sfh.controladoras.ControladoraListaPrecios;
 import cl.sfh.controladoras.ControladoraLogin;
-import cl.sfh.entidades.ListaPreciosEntidad;
 import cl.sfh.entidades.Login;
-import cl.sfh.libreria.ItemAdapter;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.Toast;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 
 public class MainActivity extends Activity implements OnClickListener
 {
@@ -41,7 +38,7 @@ public class MainActivity extends Activity implements OnClickListener
     private void inicializarElementos()
     {
     	txtUsuario = (EditText)findViewById(R.id.txtUsuario);
-    	txtPass = (EditText)findViewById(R.id.txtContrasena);
+    	txtPass = (EditText)findViewById(R.id.txtAppPaterno);
         btnEntrar = (Button)findViewById(R.id.btnEntrar);
         btnNuevaCuenta = (Button)findViewById(R.id.btnNuevaCuenta);
         dialogo = new ProgressDialog(MainActivity.this);
@@ -101,6 +98,10 @@ public class MainActivity extends Activity implements OnClickListener
 		{
 			
 			dialogo.dismiss();
+			SharedPreferences preferencias = getSharedPreferences("datos",Context.MODE_PRIVATE);
+			Editor editor=preferencias.edit();
+	        editor.putInt("idPaciente", result.getIdPaciente());
+	        editor.commit();
 			if(result.getCodAcceso()==704)
 			{
 				Intent i;

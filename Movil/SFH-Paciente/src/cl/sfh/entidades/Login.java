@@ -4,11 +4,13 @@ public class Login
 {
 	private String key;
 	private int codAcceso;
+	private int idPaciente;
 
-	public Login(String key, int codAcceso)
+	public Login(String key, int codAcceso,int idPaciente)
 	{
 		this.key = key;
 		this.codAcceso = codAcceso;
+		this.idPaciente = idPaciente;
 	}
 
 	public String getKey()
@@ -29,5 +31,15 @@ public class Login
 	public void setCodAcceso(int codAcceso)
 	{
 		this.codAcceso = codAcceso;
+	}
+	
+	public int getIdPaciente()
+	{
+		return idPaciente;
+	}
+
+	public void setIdPaciente(int idPaciente)
+	{
+		this.idPaciente = idPaciente;
 	}
 }

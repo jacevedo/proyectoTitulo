@@ -10,20 +10,20 @@ class ControladoraLogin
 	private $datos;
 	private $datosInternos;
 
-	public function validarUsusario($usuario, $pass)
+	public function validarUsusarioPaciente($usuario, $pass)
 	{
 		$conexion = new MySqlCon();
 		$this->datos = '';
 		try
 		{
 			$this->SqlQuery = '';
-			$this->SqlQuery = "SELECT per.ID_PERSONA, per.RUT, pa.PASS, perm.COD_ACCESO FROM persona per, pass pa, permisos perm WHERE per.RUT = ? AND per.ID_PERSONA = pa.ID_PERSONA AND per.ID_PERFIL = perm.ID_PERFIL";
+			$this->SqlQuery = "SELECT per.ID_PERSONA as IDPERSONA, per.RUT, pa.PASS, perm.COD_ACCESO,(SELECT ID_PACIENTE FROM paciente WHERE ID_PERSONA=IDPERSONA) FROM persona per, pass pa, permisos perm WHERE per.RUT = ? AND per.ID_PERSONA = pa.ID_PERSONA AND per.ID_PERFIL = perm.ID_PERFIL";
 
 		   	$sentencia=$conexion->prepare($this->SqlQuery);
 		   	$sentencia->bind_param("i",$usuario);
 		   	if($sentencia->execute())
         	{
-        		$sentencia->bind_result($idPersona,$usuarioBD,$passBD,$codAcceso);	
+        		$sentencia->bind_result($idPersona,$usuarioBD,$passBD,$codAcceso,$idPaciente);	
 	        	$hasher = new PasswordHash(8, false);	
 	        	if($sentencia->fetch())
 	        	{
@@ -37,6 +37,50 @@ class ControladoraLogin
 			        	$session->initClass(0, $idPersona,$keyHashada,$hoy,$hoy);
 			        	$this->datos["key"] = $this->insertSession($session);
 			        	$this->datos["codAcceso"] = $codAcceso;
+			        	$this->datos["idPaciente"] = $idPaciente;
+			        }			
+			        else
+			        {
+			        	$datos = "Usuario o Contrasena no correcta";
+			        }
+	      		}
+      		}
+       		$conexion->close();
+		}
+		catch(Exception $e)
+		{
+			throw new $e("Error al listar ordenes");
+		}
+		return $this->datos;
+	}
+	public function validarUsusario($usuario, $pass)
+	{
+		$conexion = new MySqlCon();
+		$this->datos = '';
+		try
+		{
+			$this->SqlQuery = '';
+			$this->SqlQuery = "SELECT per.ID_PERSONA as IDPERSONA, per.RUT, pa.PASS, perm.COD_ACCESO,(SELECT ID_PACIENTE FROM paciente WHERE ID_PERSONA=IDPERSONA) FROM persona per, pass pa, permisos perm WHERE per.RUT = ? AND per.ID_PERSONA = pa.ID_PERSONA AND per.ID_PERFIL = perm.ID_PERFIL";
+
+		   	$sentencia=$conexion->prepare($this->SqlQuery);
+		   	$sentencia->bind_param("i",$usuario);
+		   	if($sentencia->execute())
+        	{
+        		$sentencia->bind_result($idPersona,$usuarioBD,$passBD,$codAcceso,$idPaciente);	
+	        	$hasher = new PasswordHash(8, false);	
+	        	if($sentencia->fetch())
+	        	{
+	        		if($hasher->CheckPassword($pass, $passBD))
+			        {
+			        	$session = new Session();
+						date_default_timezone_set('America/Argentina/Buenos_Aires');
+			        	$hoy = date("Y-m-d H:i:s",time());
+			        	$keyDesencriptada = $idPersona.$hoy;
+			        	$keyHashada = $hasher->HashPassword($keyDesencriptada);
+			        	$session->initClass(0, $idPersona,$keyHashada,$hoy,$hoy);
+			        	$this->datos["key"] = $this->insertSession($session);
+			        	$this->datos["codAcceso"] = $codAcceso;
+			        	$this->datos["idPaciente"] = $idPaciente;
 			        }			
 			        else
 			        {
