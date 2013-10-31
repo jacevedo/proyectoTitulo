@@ -1,11 +1,12 @@
 <?php
-require '../phpass/PasswordHash.php';
-require_once '../bdmysql/MySqlCon.php'; 
 require_once '../pojos/session.php';
+require_once '../bdmysql/MySqlCon.php'; 
+require_once '../phpass/PasswordHash.php';
 
 class ControladoraLogin
 {
 	private $SqlQuery;
+	private $SqlQueryDos;
 	private $datos;
 	private $datosInternos;
 
@@ -58,17 +59,18 @@ class ControladoraLogin
 		$idPersona = $session->idPersona;
 		$keyHashada = $session->keySession;
 		$horaFechaIngreso = $session->fechaHoraIngreso;
+		$horaFechaCaducidad = $session->fechaHoraIngreso;
 		$this->datosInternos = '';
 		try
 		{
-			$this->SqlQuery='';
-	        $this->SqlQuery="INSERT INTO session (ID_SESSION, ID_PERSONA, KEY_SESSION, FECHA_HORA_INGRESO, FECHA_HORA_CADUCIDAD) VALUES (NULL ,?,?,?,?)";
-			$sentencia=$conexion->prepare($this->SqlQuery);
-	        $sentencia->bind_param('isss', $idPersona,$keyHashada,$horaFechaIngreso,$horaFechaIngreso);
-	      	if($sentencia->execute())
+			$this->SqlQueryDos='';
+	        $this->SqlQueryDos="INSERT INTO session (ID_SESSION, ID_PERSONA, KEY_SESSION, FECHA_HORA_INGRESO, FECHA_HORA_CADUCIDAD) VALUES (NULL ,?,?,?,?)";
+			$sentencia2=$conexion->prepare($this->SqlQueryDos);
+	        $sentencia2->bind_param('isss', $idPersona,$keyHashada,$horaFechaIngreso,$horaFechaCaducidad);
+	      	if($sentencia2->execute())
 	      	{
-	        	$conexion->close();
-				if($sentencia->insert_id!=-1)
+	        	//$conexion->close();
+				if($sentencia2->insert_id!=-1)
 				{
 					$this->datosInternos = $keyHashada;
 				}
@@ -79,7 +81,7 @@ class ControladoraLogin
 			}
 			else
 			{
-				$conexion->close();
+				//$conexion->close();
 	        	$this->datosInternos = "Error en el inicio de session";
 	        }
 
