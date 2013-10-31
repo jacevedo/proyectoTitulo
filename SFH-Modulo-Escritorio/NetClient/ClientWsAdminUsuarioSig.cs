@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+
 using System.Net;
 using System.IO;
 using Newtonsoft.Json;
@@ -44,16 +45,18 @@ namespace NetClient
 
             try
             {
-                String result = netclient.NetPost("ws-admin-usuario-sig.php", "send={\"indice\":1,\"rut\":"+rut+",\"dv\":"+dv+"}");
+                //{"indice":1,"rut":17897359,"dv":2}
+                this.JsonParam ="send={\"indice\":1,\"rut\":"+rut+",\"dv\":"+dv+"}";
+                String result = netclient.NetPost("ws-admin-usuario-sig.php", this.JsonParam);
                 var jobject = JObject.Parse(result);
                 var token = jobject.SelectToken("listaPersonaRut").ToList();
                 foreach (var item in token)
                 {
-                    
-                    //{"idPersona":29,"idPerfil":4,"rut":"17897359","dv":"2","nombre":"ada","apellidoPaterno":"wonk","apellidoMaterno":"asturias","fechaNacimiento":"1991-12-12"}}
+
                     Persona persona = new Persona();
+                    //{"idPersona":15,"idPerfil":1,"rut":"17897359","dv":"2","nombre":"ada","apellidoPaterno":"wonk","apellidoMaterno":"asturias","fechaNacimiento":"1991-12-12"},
                     persona.IdPersona = Convert.ToInt32(item.SelectToken("idPersona").ToString());
-                    persona.IdPerfil = Convert.ToInt32(item.SelectToken("idPerfil").ToString());
+                   /* persona.IdPerfil = Convert.ToInt32(item.SelectToken("idPerfil").ToString());
                     int num_perfil = persona.IdPerfil;
                     switch (num_perfil)
                     {
@@ -76,7 +79,7 @@ namespace NetClient
                     persona.Nombre = item.SelectToken("nombre").ToString();
                     persona.ApellidoPaterno = item.SelectToken("apellidoPaterno").ToString();
                     persona.ApellidoMaterno = item.SelectToken("apellidoMaterno").ToString();
-                    persona.FechaNacimiento = Convert.ToDateTime(item.SelectToken("fechaNacimiento").ToString());
+                    persona.FechaNacimiento = Convert.ToDateTime(item.SelectToken("fechaNacimiento").ToString());*/
                     list.Add(persona);
                 }
             }
@@ -156,9 +159,9 @@ namespace NetClient
                     //{"idFuncionario":2,"idPersona":3,"puestoTrabajo":"Asistente Dental",
                     //"funcionarioHabilitado":null,"idPerfil":3,"rut":"9878987","dv":"4","nombre":"Nicolas","apellidoPaterno":"Palma",
                     //"apellidoMaterno":"Silva","fechaNacimiento":"1987-05-27"}
-                    funcionario.IdFuncionario = Convert.ToInt32(item.SelectToken("idPaciente").ToString());
+                    funcionario.IdFuncionario = Convert.ToInt32(item.SelectToken("idFuncionario").ToString());
                     funcionario.IdPersona = Convert.ToInt32(item.SelectToken("idPersona").ToString());
-                    funcionario.PuestoTrabajo = item.SelectToken("fechaIngreso").ToString();
+                    funcionario.PuestoTrabajo = item.SelectToken("puestoTrabajo").ToString();
                     int estado = Convert.ToInt32(item.SelectToken("habilitadoPaciente").ToString());
                     funcionario.IdPerfil = Convert.ToInt32(item.SelectToken("idPerfil").ToString());
                     int num_perfil = funcionario.IdPerfil;

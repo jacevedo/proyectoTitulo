@@ -35,6 +35,8 @@ namespace SFH_Software
             this.cmbxestado.Items.Clear();
             this.cmbxestado.Items.Insert(Convert.ToInt32(EstadoPersona.DESHABILITADO), "Deshabilitado");
             this.cmbxestado.Items.Insert(Convert.ToInt32(EstadoPersona.HABILITADO), "Habilitado");
+            this.cmbxestado.Items.Insert(2, "Seleccione tipo de estado");
+            this.cmbxestado.SelectedItem = "Seleccione tipo de estado";
            
         
         }
@@ -175,6 +177,11 @@ namespace SFH_Software
                 ficha.Anamnesis = txtAnamnesis.Text.ToString();
                 ficha.FechaIngreso = mcFechaIngreso.SelectionStart;
                 this.client_fichas.ModificarFichaDental(ficha);
+                if (this.cmbxestado.SelectedIndex != 3)
+                {
+                    ficha.EstadoPaciente = Convert.ToInt32(cmbxestado.SelectedIndex);
+                    this.client_fichas.CambiarEstadoFicha(ficha);
+                }
                 datagridFicha.DataSource = this.client_fichas.ListarFichas();
                 this.LimpiarControles();
                 btnNuevo.Text = "Ingresar Ficha";
@@ -186,31 +193,20 @@ namespace SFH_Software
         {
             switch (e.ColumnIndex) { 
                 case 0:
-                    this.ModificarEstado(e);
-                    break;
-                case 1:
                     this.ModidificarFicha(e);
                     break;
-                case 2:
-                    Fichadental ficha = datagridFicha.Rows[e.RowIndex].DataBoundItem as Fichadental;
+                case 1:
+                   Fichadental ficha = datagridFicha.Rows[e.RowIndex].DataBoundItem as Fichadental;
                     menu.MostrarForm("Administración de presupuesto dental",  new frmAdministracionPresupuesto(ficha.IdFicha,ficha.NombrePaciente));
                     break;
-                case 3:
+                case 2:
                     menu.MostrarForm("Administración de orden de laboratorio", new frmAdministracionOrdenLab());
                     break;
-                case 4:
+                case 3:
                     menu.MostrarForm("Administración de tratamiento dental", new frmAdministracionTratamiento(menu));
                     break;
             
             }
-        }
-        private void ModificarEstado(DataGridViewCellEventArgs e)
-        {
-            Fichadental ficha = datagridFicha.Rows[e.RowIndex].DataBoundItem as Fichadental;
-            ficha.EstadoPaciente = Convert.ToInt32(cmbxestado.Index);
-            this.client_fichas.CambiarEstadoFicha(ficha);
-            datagridFicha.DataSource = this.client_fichas.ListarFichas();
-            MessageBox.Show("Estado de Ficha modificado satisfactoriamente", "SFH Administración de Clínica - Administración de Fichas Dentales", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         private void ModidificarFicha(DataGridViewCellEventArgs e) {
             Fichadental ficha = datagridFicha.Rows[e.RowIndex].DataBoundItem as Fichadental;
@@ -223,6 +219,11 @@ namespace SFH_Software
             cmbxPaciente.SelectedValue =  ficha.IdPaciente;
             cmbxOdontologo.SelectedValue =  ficha.IdOdontologo;
             btnNuevo.Text = "Guardar Cambios";
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.LimpiarControles();
         }
       
     }

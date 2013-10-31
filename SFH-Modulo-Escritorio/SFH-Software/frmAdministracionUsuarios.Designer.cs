@@ -33,6 +33,8 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.lblguion = new System.Windows.Forms.Label();
+            this.txtdvbusqueda = new System.Windows.Forms.TextBox();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.cmbxBuscar = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -45,9 +47,9 @@
             this.label16 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.txtpass = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnNuevo = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
-            this.btnAdminCli = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.textBox5 = new System.Windows.Forms.TextBox();
@@ -110,6 +112,8 @@
             // 
             // groupBox7
             // 
+            this.groupBox7.Controls.Add(this.lblguion);
+            this.groupBox7.Controls.Add(this.txtdvbusqueda);
             this.groupBox7.Controls.Add(this.btnBuscar);
             this.groupBox7.Controls.Add(this.cmbxBuscar);
             this.groupBox7.Controls.Add(this.label6);
@@ -117,17 +121,37 @@
             this.groupBox7.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.groupBox7.Location = new System.Drawing.Point(299, 19);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(685, 66);
+            this.groupBox7.Size = new System.Drawing.Size(715, 66);
             this.groupBox7.TabIndex = 7;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Búsqueda de fichas";
+            // 
+            // lblguion
+            // 
+            this.lblguion.AutoSize = true;
+            this.lblguion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblguion.Location = new System.Drawing.Point(501, 29);
+            this.lblguion.Name = "lblguion";
+            this.lblguion.Size = new System.Drawing.Size(12, 16);
+            this.lblguion.TabIndex = 60;
+            this.lblguion.Text = "-";
+            this.lblguion.Visible = false;
+            // 
+            // txtdvbusqueda
+            // 
+            this.txtdvbusqueda.Location = new System.Drawing.Point(517, 26);
+            this.txtdvbusqueda.MaxLength = 1;
+            this.txtdvbusqueda.Name = "txtdvbusqueda";
+            this.txtdvbusqueda.Size = new System.Drawing.Size(38, 20);
+            this.txtdvbusqueda.TabIndex = 59;
+            this.txtdvbusqueda.Visible = false;
             // 
             // btnBuscar
             // 
             this.btnBuscar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(93)))), ((int)(((byte)(129)))));
             this.btnBuscar.ForeColor = System.Drawing.Color.White;
-            this.btnBuscar.Location = new System.Drawing.Point(543, 17);
+            this.btnBuscar.Location = new System.Drawing.Point(574, 17);
             this.btnBuscar.Margin = new System.Windows.Forms.Padding(1);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(127, 36);
@@ -143,6 +167,7 @@
             this.cmbxBuscar.Name = "cmbxBuscar";
             this.cmbxBuscar.Size = new System.Drawing.Size(236, 21);
             this.cmbxBuscar.TabIndex = 57;
+            this.cmbxBuscar.SelectedIndexChanged += new System.EventHandler(this.cmbxBuscar_SelectedIndexChanged);
             // 
             // label6
             // 
@@ -156,8 +181,9 @@
             // txtBuscar
             // 
             this.txtBuscar.Location = new System.Drawing.Point(348, 26);
+            this.txtBuscar.MaxLength = 8;
             this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(170, 20);
+            this.txtBuscar.Size = new System.Drawing.Size(147, 20);
             this.txtBuscar.TabIndex = 2;
             // 
             // datagriPersona
@@ -191,9 +217,9 @@
             this.groupBox5.Controls.Add(this.label16);
             this.groupBox5.Controls.Add(this.label5);
             this.groupBox5.Controls.Add(this.txtpass);
-            this.groupBox5.Controls.Add(this.button2);
+            this.groupBox5.Controls.Add(this.btnNuevo);
             this.groupBox5.Controls.Add(this.label15);
-            this.groupBox5.Controls.Add(this.btnAdminCli);
+            this.groupBox5.Controls.Add(this.btnCancelar);
             this.groupBox5.Controls.Add(this.textBox7);
             this.groupBox5.Controls.Add(this.label8);
             this.groupBox5.Controls.Add(this.textBox5);
@@ -255,18 +281,18 @@
             this.txtpass.TabIndex = 62;
             this.txtpass.UseSystemPasswordChar = true;
             // 
-            // button2
+            // btnNuevo
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(93)))), ((int)(((byte)(129)))));
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(395, 172);
-            this.button2.Margin = new System.Windows.Forms.Padding(1);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(127, 36);
-            this.button2.TabIndex = 13;
-            this.button2.Text = "Guardar";
-            this.button2.UseVisualStyleBackColor = false;
+            this.btnNuevo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnNuevo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(93)))), ((int)(((byte)(129)))));
+            this.btnNuevo.ForeColor = System.Drawing.Color.White;
+            this.btnNuevo.Location = new System.Drawing.Point(398, 172);
+            this.btnNuevo.Margin = new System.Windows.Forms.Padding(1);
+            this.btnNuevo.Name = "btnNuevo";
+            this.btnNuevo.Size = new System.Drawing.Size(127, 36);
+            this.btnNuevo.TabIndex = 13;
+            this.btnNuevo.UseVisualStyleBackColor = false;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
             // label15
             // 
@@ -277,22 +303,23 @@
             this.label15.TabIndex = 61;
             this.label15.Text = "Contraseña";
             // 
-            // btnAdminCli
+            // btnCancelar
             // 
-            this.btnAdminCli.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnAdminCli.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(93)))), ((int)(((byte)(129)))));
-            this.btnAdminCli.ForeColor = System.Drawing.Color.White;
-            this.btnAdminCli.Location = new System.Drawing.Point(253, 172);
-            this.btnAdminCli.Margin = new System.Windows.Forms.Padding(1);
-            this.btnAdminCli.Name = "btnAdminCli";
-            this.btnAdminCli.Size = new System.Drawing.Size(129, 36);
-            this.btnAdminCli.TabIndex = 11;
-            this.btnAdminCli.Text = "Cancelar";
-            this.btnAdminCli.UseVisualStyleBackColor = false;
+            this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(93)))), ((int)(((byte)(129)))));
+            this.btnCancelar.ForeColor = System.Drawing.Color.White;
+            this.btnCancelar.Location = new System.Drawing.Point(253, 172);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(1);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(129, 36);
+            this.btnCancelar.TabIndex = 11;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // textBox7
             // 
-            this.textBox7.Location = new System.Drawing.Point(344, 59);
+            this.textBox7.Location = new System.Drawing.Point(344, 53);
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(181, 20);
             this.textBox7.TabIndex = 44;
@@ -300,7 +327,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(286, 62);
+            this.label8.Location = new System.Drawing.Point(286, 56);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(32, 13);
             this.label8.TabIndex = 52;
@@ -543,8 +570,8 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button btnAdminCli;
+        private System.Windows.Forms.Button btnNuevo;
+        private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBox11;
         private System.Windows.Forms.Label label16;
@@ -583,6 +610,8 @@
         private System.Windows.Forms.ComboBox cmbxBuscar;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtBuscar;
+        private System.Windows.Forms.Label lblguion;
+        private System.Windows.Forms.TextBox txtdvbusqueda;
         
     }
 }

@@ -32,6 +32,20 @@ namespace SFH_Software
         #endregion
 
         #region Metodos 
+
+        private void LimpiarControles() {
+            //combo box 
+            this.PoblarComboBusqueda();
+            this.PoblarComboPerfil();
+            this.txtrut.Text = string.Empty;
+            this.txtdv.Text = string.Empty;
+            this.txtnom.Text = string.Empty;
+            this.txtapellpater.Text = string.Empty;
+            this.txtApeMat.Text = string.Empty;
+            this.mcFechaNac.ResetText();
+
+
+        }
         private void PoblarComboBusqueda()
         {
             /*    
@@ -65,6 +79,23 @@ namespace SFH_Software
             this.cmbxPerfil.Items.Insert(4, "Paciente");
             this.cmbxPerfil.SelectedItem = "Seleccione tipo de perfil";
         }
+        private void ManejodeControles (bool txtdv, bool labelv){
+            if (txtdv == false | labelv == false) {
+   
+                this.txtdvbusqueda.Visible = false;
+                this.lblguion.Visible = false;
+                this.txtBuscar.MaxLength = 100;
+                this.txtBuscar.Text = string.Empty;
+            }
+            else if (txtdv == true | labelv == true) {
+                
+                this.txtdvbusqueda.Visible = true;
+                this.lblguion.Visible = true;
+                this.txtBuscar.MaxLength = 8;
+                this.txtBuscar.Text = string.Empty;
+            }
+        
+       }
         private void PoblarBotonesGrilla() {
             // 
             // Editar
@@ -116,7 +147,8 @@ namespace SFH_Software
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             /*    
-        * 1.- Buscar Persona Por Rut
+        * 1.- Buscar Pe
+             * rsona Por Rut
         * 2.- Buscar Persona Por Nombre
         * 3.- Buscar Funcionario Por Rut
         * 4.- Buscar Funcionario Por Nombre Apellido
@@ -134,10 +166,7 @@ namespace SFH_Software
                     break;
                 case 1:
                     MessageBox.Show("El sistema sfh está realizando su búsqueda", "SFH Administración de Clínica - Administración de cuentas de usuarios", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    char[] delimiterChars = { ' ', '-' };
-                    string[] rutdv_persona = txtBuscar.Text.ToString().Split(delimiterChars);
-                    this.list_persona = this.client_busqueda.BuscarPersonaPorRut(rutdv_persona[0].ToString(),rutdv_persona[1].ToString());
-
+                    this.list_persona = this.client_busqueda.BuscarPersonaPorRut( this.txtBuscar.Text.ToString(),this.txtdvbusqueda.Text.ToString());
                     if (list_persona.Count.Equals(0))
                     {
                         MessageBox.Show("Esta búsqueda no ha arrojado resultados", "SFH Administración de Clínica - Administración de cuentas de usuarios", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -151,8 +180,13 @@ namespace SFH_Software
                 case 2:
                     MessageBox.Show("El sistema sfh está realizando su búsqueda", "SFH Administración de Clínica - Administración de cuentas de usuarios", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     string[] nombreapellido_persona = txtBuscar.Text.ToString().Split(' ');
-                    this.list_persona = this.client_busqueda.BuscarPersonaPorNombre(nombreapellido_persona[0].ToString(), nombreapellido_persona[1].ToString());
-                    
+                    if (nombreapellido_persona.Length == 2)
+                    {
+                        this.list_persona = this.client_busqueda.BuscarPersonaPorNombre(nombreapellido_persona[0].ToString(), nombreapellido_persona[1].ToString());
+                    }
+                    else {
+                        this.list_persona = this.client_busqueda.BuscarPersonaPorNombre(nombreapellido_persona[0].ToString(), "");
+                    }
                     if (list_persona.Count.Equals(0))
                     {
                         MessageBox.Show("Esta búsqueda no ha arrojado resultados", "SFH Administración de Clínica - Administración de cuentas de usuarios", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -166,9 +200,7 @@ namespace SFH_Software
 
                 case 3:
                     MessageBox.Show("El sistema sfh está realizando su búsqueda", "SFH Administración de Clínica - Administración de cuentas de usuarios", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    char[] delimiterChars2 = {' ', '-' };
-                    string[] rutdv_funcionario = txtBuscar.Text.ToString().Split(delimiterChars2);
-                    this.list_funcionario = this.client_busqueda.BuscarFuncionarioPorRut(rutdv_funcionario[0].ToString());
+                    this.list_funcionario = this.client_busqueda.BuscarFuncionarioPorRut(this.txtBuscar.Text.ToString().ToString());
                     if (list_funcionario.Count.Equals(0))
                     {
                         MessageBox.Show("Esta búsqueda no ha arrojado resultados", "SFH Administración de Clínica - Administración de cuentas de usuarios", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -183,7 +215,13 @@ namespace SFH_Software
                     MessageBox.Show("El sistema sfh está realizando su búsqueda", "SFH Administración de Clínica - Administración de cuentas de usuarios", MessageBoxButtons.OK, MessageBoxIcon.Information);
               
                     string[] nombreapellido_funcionario = txtBuscar.Text.ToString().Split(' ');
-                    this.list_funcionario = this.client_busqueda.BuscarFuncionarioPorNombreApellido(nombreapellido_funcionario[0].ToString(), nombreapellido_funcionario[1].ToString());
+                    if (nombreapellido_funcionario.Length == 2)
+                    {
+                        this.list_funcionario = this.client_busqueda.BuscarFuncionarioPorNombreApellido(nombreapellido_funcionario[0].ToString(), nombreapellido_funcionario[1].ToString());
+                    }
+                    else {
+                        this.list_funcionario = this.client_busqueda.BuscarFuncionarioPorNombreApellido(nombreapellido_funcionario[0].ToString(),"");
+                    }
 
                     if (list_funcionario.Count.Equals(0))
                     {
@@ -198,9 +236,7 @@ namespace SFH_Software
 
                 case 5:
                     MessageBox.Show("El sistema sfh está realizando su búsqueda", "SFH Administración de Clínica - Administración de cuentas de usuarios", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    char[] delimiterChars3 = { ' ', '-' };
-                    string[] rutdv_Paciente = txtBuscar.Text.ToString().Split(delimiterChars3);
-                    this.list_paciente = this.client_busqueda.BuscarPacientePorRut(rutdv_Paciente[0].ToString());
+                    this.list_paciente = this.client_busqueda.BuscarPacientePorRut(txtBuscar.Text.ToString());
                     if (list_paciente.Count.Equals(0))
                     {
                         MessageBox.Show("Esta búsqueda no ha arrojado resultados", "SFH Administración de Clínica - Administración de cuentas de usuarios", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -215,8 +251,13 @@ namespace SFH_Software
                     MessageBox.Show("El sistema sfh está realizando su búsqueda", "SFH Administración de Clínica - Administración de cuentas de usuarios", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     string[] nombreapellido_paciente = txtBuscar.Text.ToString().Split(' ');
-                    this.list_paciente = this.client_busqueda.BuscarPacientePorNombreApellido(nombreapellido_paciente[0].ToString(), nombreapellido_paciente[1].ToString());
-
+                    if (nombreapellido_paciente.Length == 2)
+                    {
+                        this.list_paciente = this.client_busqueda.BuscarPacientePorNombreApellido(nombreapellido_paciente[0].ToString(), nombreapellido_paciente[1].ToString());
+                    }
+                    else{
+                        this.list_paciente = this.client_busqueda.BuscarPacientePorNombreApellido(nombreapellido_paciente[0].ToString(),"");
+                    }
                     if (list_paciente.Count.Equals(0))
                     {
                         MessageBox.Show("Esta búsqueda no ha arrojado resultados", "SFH Administración de Clínica - Administración de cuentas de usuarios", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -230,9 +271,8 @@ namespace SFH_Software
 
                 case 7:
                     MessageBox.Show("El sistema sfh está realizando su búsqueda", "SFH Administración de Clínica - Administración de cuentas de usuarios", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    char[] delimiterChars4= { ' ', '-' };
-                    string[] rutdv_Odontologo = txtBuscar.Text.ToString().Split(delimiterChars4);
-                    this.list_odontologo = this.client_busqueda.BuscarOdontologoPorRut(rutdv_Odontologo[0].ToString());
+                    
+                    this.list_odontologo = this.client_busqueda.BuscarOdontologoPorRut(txtBuscar.Text.ToString());
                     if (list_odontologo.Count.Equals(0))
                     {
                         MessageBox.Show("Esta búsqueda no ha arrojado resultados", "SFH Administración de Clínica - Administración de cuentas de usuarios", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -247,8 +287,13 @@ namespace SFH_Software
                     MessageBox.Show("El sistema sfh está realizando su búsqueda", "SFH Administración de Clínica - Administración de cuentas de usuarios", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     string[] nombreapellido_Odontologo = txtBuscar.Text.ToString().Split(' ');
-                    this.list_odontologo = this.client_busqueda.BuscarOdontologoPorNombreApellido(nombreapellido_Odontologo[0].ToString(), nombreapellido_Odontologo[1].ToString());
-
+                    if (nombreapellido_Odontologo.Length == 2)
+                    {
+                        this.list_odontologo = this.client_busqueda.BuscarOdontologoPorNombreApellido(nombreapellido_Odontologo[0].ToString(), nombreapellido_Odontologo[1].ToString());
+                    }
+                    else {
+                        this.list_odontologo = this.client_busqueda.BuscarOdontologoPorNombreApellido(nombreapellido_Odontologo[0].ToString(),"");
+                    }
                     if (list_odontologo.Count.Equals(0))
                     {
                         MessageBox.Show("Esta búsqueda no ha arrojado resultados", "SFH Administración de Clínica - Administración de cuentas de usuarios", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -263,7 +308,54 @@ namespace SFH_Software
             }
         }
 
-       
+        private void cmbxBuscar_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (this.cmbxBuscar.SelectedIndex)
+            {
+                case 0:
+                    this.ManejodeControles(false,false);
+                    break;
+                case 1:
+                    this.ManejodeControles(true, true);
+                    break;
+                case 2:
+                    this.ManejodeControles(false, false);
+                    break;
+                case 3:
+                    this.ManejodeControles(true, true);                    
+                    break;
+                case 4:
+                    this.ManejodeControles(false, false);
+                    break;
+                case 5:
+                    this.ManejodeControles(true, true);
+                    break;
+                case 6:
+                    this.ManejodeControles(false, false);
+                    break;
+                case 7:
+                    this.ManejodeControles(true, true);                   
+                    break;
+                case 8:
+                    this.ManejodeControles(false, false);
+                    break;
+
+
+
+            }
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnNuevo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+      
 
     }
 }

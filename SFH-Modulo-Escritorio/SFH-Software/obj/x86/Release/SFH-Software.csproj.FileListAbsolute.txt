@@ -15,3 +15,15 @@ C:\Users\Citt-David\Documents\GitHub\proyectoTitulo\SFH-Modulo-Escritorio\SFH-So
 C:\Users\Citt-David\Documents\GitHub\proyectoTitulo\SFH-Modulo-Escritorio\SFH-Software\obj\x86\Release\SFH_Software.frmMenu.resources
 C:\Users\Citt-David\Documents\GitHub\proyectoTitulo\SFH-Modulo-Escritorio\SFH-Software\obj\x86\Release\SFH_Software.Properties.Resources.resources
 C:\Users\Citt-David\Documents\GitHub\proyectoTitulo\SFH-Modulo-Escritorio\SFH-Software\obj\x86\Release\SFH-Software.csproj.GenerateResource.Cache
+C:\Users\Citt-David\Documents\GitHub\proyectoTitulo\SFH-Modulo-Escritorio\SFH-Software\bin\Release\SFH-Software.exe
+C:\Users\Citt-David\Documents\GitHub\proyectoTitulo\SFH-Modulo-Escritorio\SFH-Software\bin\Release\SFH-Software.pdb
+C:\Users\Citt-David\Documents\GitHub\proyectoTitulo\SFH-Modulo-Escritorio\SFH-Software\bin\Release\MdiTabControl.dll
+C:\Users\Citt-David\Documents\GitHub\proyectoTitulo\SFH-Modulo-Escritorio\SFH-Software\bin\Release\NetClient.dll
+C:\Users\Citt-David\Documents\GitHub\proyectoTitulo\SFH-Modulo-Escritorio\SFH-Software\bin\Release\ObjectsBeans.dll
+C:\Users\Citt-David\Documents\GitHub\proyectoTitulo\SFH-Modulo-Escritorio\SFH-Software\bin\Release\Newtonsoft.Json.dll
+C:\Users\Citt-David\Documents\GitHub\proyectoTitulo\SFH-Modulo-Escritorio\SFH-Software\bin\Release\NetClient.pdb
+C:\Users\Citt-David\Documents\GitHub\proyectoTitulo\SFH-Modulo-Escritorio\SFH-Software\bin\Release\ObjectsBeans.pdb
+C:\Users\Citt-David\Documents\GitHub\proyectoTitulo\SFH-Modulo-Escritorio\SFH-Software\bin\Release\Newtonsoft.Json.pdb
+C:\Users\Citt-David\Documents\GitHub\proyectoTitulo\SFH-Modulo-Escritorio\SFH-Software\bin\Release\Newtonsoft.Json.xml
+C:\Users\Citt-David\Documents\GitHub\proyectoTitulo\SFH-Modulo-Escritorio\SFH-Software\obj\x86\Release\SFH-Software.exe
+C:\Users\Citt-David\Documents\GitHub\proyectoTitulo\SFH-Modulo-Escritorio\SFH-Software\obj\x86\Release\SFH-Software.pdb
