@@ -7,28 +7,29 @@ function inicializarEventos()
 	$("#btnBuscar").click(buscarPor);
 	$("#btnAgregarTratamiento").click(agregarTratamiento);
 }
+
 function buscarPor()
 {
-
 	$("#tablaListaPrecios").off("click",".btnEditarPrecio",modificarObjeto);
+
 	var concepto = $("#txtBuscaTratamiento").val();
 	var precios = direccionWeb+"ws-precios-insumos.php";
 	var data = {"send":"{\"indice\":4,\"nombre\":\""+concepto+"\"}"};
+
 	var tabla = "";
-	$.post(precios,data,function(datos){
+	$.post(precios,data,function(datos)
+	{
 		var obj = $.parseJSON(datos);
 		$.each(obj.listaPrecios,function()
-			{
-				tabla = tabla+"<tr><td>"+this.idPrecios+"</td><td>"+this.comentario+"</td><td>"+this.valorTotal+"</td><td><Button class='btnEditarPrecio'>Editar</Button></td></tr>";
-			});
+		{
+			tabla = tabla+"<tr><td>"+this.idPrecios+"</td><td>"+this.comentario+"</td><td>"+this.valorTotal+"</td><td><Button class='btnEditarPrecio'>Editar</Button></td><td><Button class='btnEliminarPrecio'>Eliminar</Button></td></tr>";
+		});
 		$("#cuerpoTabla").html(tabla);
-
-
-		//var obj2 = jQuery.parseJSON(obj.listaPrecios[1]);
-		//alert(obj.listaPrecios[0].valorNeto);
 	});
 	$("#tablaListaPrecios").on("click",".btnEditarPrecio",modificarObjeto);
+	$("#tablaListaPrecios").on("click",".btnEliminarPrecio",eliminarObjeto);
 }
+
 function modificarObjeto()
 {
 	$("#tablaListaPrecios").off("click",".btnEditarPrecio",modificarObjeto);
@@ -49,7 +50,6 @@ function modificarObjeto()
 				var input = "<input type='text' id='concepto-"+idCosto+"'  style='width: 80%;' />";
 				$(this).html(input);
 				$("#concepto-"+idCosto).val(valor);
-
 			}
 			else if(i==2)
 			{
@@ -100,31 +100,31 @@ function modificarObjeto()
 			var resultado = obj.Modificado;
 			if(resultado=="Modificado")
 			{
-				alert("sus datos fueron modificados correctamente");
+				alert("El tratamiento fue modificado correctamente.");
 			}
 			else
 			{
-				alert("no se produjo ninguna modificacion")
+				alert("Se produjo un error, vuelva a intentarlo.")
 			}
 		});
-		
 	}
 	$("#tablaListaPrecios").on("click",".btnEditarPrecio",modificarObjeto);
 }
+
 function cargarListaPrecios()
 {
 	var precios = direccionWeb+"ws-precios-insumos.php";
 	var data = {"send":"{\"indice\":3}"};
 	var tabla = "";
-	$.post(precios,data,function(datos){
+
+	$.post(precios,data,function(datos)
+	{
 		var obj = $.parseJSON(datos);
 		$.each(obj.listaPrecios,function()
-			{
-				tabla = tabla+"<tr><td>"+this.idPrecios+"</td><td>"+this.comentario+"</td><td>"+this.valorTotal+"</td><td><Button class='btnEditarPrecio'>Editar</Button></td><td><Button class='btnEliminarPrecio'>Eliminar</Button></td></tr>";
-			});
+		{
+			tabla = tabla+"<tr><td>"+this.idPrecios+"</td><td>"+this.comentario+"</td><td>"+this.valorTotal+"</td><td><Button class='btnEditarPrecio'>Editar</Button></td><td><Button class='btnEliminarPrecio'>Eliminar</Button></td></tr>";
+		});
 		$("#cuerpoTabla").html(tabla);
-		//var obj2 = jQuery.parseJSON(obj.listaPrecios[1]);
-		//alert(obj.listaPrecios[0].valorNeto);
 	});
 	$("#tablaListaPrecios").on("click",".btnEditarPrecio",modificarObjeto);
 	$("#tablaListaPrecios").on("click",".btnEliminarPrecio",eliminarObjeto);
@@ -142,16 +142,24 @@ function eliminarObjeto()
 		{
 			id = $(this).html();
 		}
-		if(i == 1)
+	});
+
+	var precios = direccionWeb+"ws-precios-insumos.php";
+	var data = {"send":"{\"indice\":5,\"idPrecio\":"+id+"}"};
+
+	$.post(precios,data,function(datos)
+	{
+		var obj = $.parseJSON(datos);
+		if(obj.Eliminado == "Eliminado")
 		{
-			nombre = $(this).html();
+			alert("Tratamiento Eliminado.");
+			location.reload();
 		}
-		if(i == 2)
+		else
 		{
-			precio = $(this).html();
+			alert("No se pudo eliminar el tratamiento.");
 		}
-	}
-	alert(id+" | "+nombre+" | "+precio);
+	});
 }
 
 function agregarTratamiento()

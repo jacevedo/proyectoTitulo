@@ -5,26 +5,23 @@ function inicializarEventos()
 {
 	cargarPerfil();
 	$("#btnCrearCuenta").click(accionBoton);
-	
 }
 
 function cargarPerfil()
 {
 	var id = $("#idPaciente").val();
 	var key = $("#keyPaciente").val();
-	//alert("Id: "+id+" || key: "+key);
+
 	var ingresar = direccionWeb+"ws-add-usuario.php";
 	var data = {"send":"{\"indice\":2,\"rut\":"+id+"}"};
-	//{"indice":2,"rut":16009332
 
-	$.post(ingresar, data, function(datos){
-		alert(datos);
+	$.post(ingresar, data, function(datos)
+	{
 		var obj = $.parseJSON(datos);
 		var persona = obj.datosPersona;
 		var contacto = obj.datosContacto;
 		var pass = obj.datosPass;
 		var comu = obj.datoComuna;
-		//alert("Persona: "+obj.datosPersona.apellidoMaterno+". Contacto: "+contacto.direccion);
 
 		var tabla = "";
 		if(contacto == "No hay datos de contacto")
@@ -45,7 +42,6 @@ function cargarPerfil()
 			$("#tdFonoCelular").html("----");
 			$("#tdEmail").html("----");
 			$("#tdFechaIngreso").html("----"); //Invisible
-			//tabla = tabla + "<tr><td class='tdIndicador'>Numero:</td><td>"+persona.idPersona+"</td></tr><tr><td class='tdIndicador'>Nombre:</td><td>"+persona.nombre+"</td></tr><tr><td class='tdIndicador'>Apellido Paterno:</td><td>"+persona.apellidoPaterno+"</td></tr><tr><td class='tdIndicador'>Apellido Materno:</td><td>"+persona.apellidoMaterno+"</td></tr><tr><td class='tdIndicador'>Rut:</td><td>"+persona.rut+"-"+persona.dv+"</td></tr><tr><td class='tdIndicador'>Fecha de Nacimiento:</td><td>"+persona.fechaNacimiento+"</td></tr><tr><td class='tdIndicador'>Direccion:</td><td>----</td></tr><tr><td class='tdIndicador'>Comuna</td><td>----</td></tr><tr><td class='tdIndicador'>Telefono Fijo</td><td>----</td></tr><tr><td class='tdIndicador'>Celular</td><td>----</td></tr><tr><td colspan=2><button id='btnCrearCuenta'>Modificar Cuenta</button></td></tr>";
 		}
 		else
 		{
@@ -67,10 +63,8 @@ function cargarPerfil()
 			$("#tdFonoCelular").html(contacto.fonoCelular);
 			$("#tdEmail").html(contacto.mail);
 			$("#tdFechaIngreso").html(contacto.fechaIngreso);//Invisible
-			//tabla = tabla + "<tr><td class='tdIndicador'>Numero:</td><td>"+persona.idPersona+"</td></tr><tr><td class='tdIndicador'>Nombre:</td><td>"+persona.nombre+"</td></tr><tr><td class='tdIndicador'>Apellido Paterno:</td><td>"+persona.apellidoPaterno+"</td></tr><tr><td class='tdIndicador'>Apellido Materno:</td><td>"+persona.apellidoMaterno+"</td></tr><tr><td class='tdIndicador'>Rut:</td><td>"+persona.rut+"-"+persona.dv+"</td></tr><tr><td class='tdIndicador'>Fecha de Nacimiento:</td><td>"+persona.fechaNacimiento+"</td></tr><tr><td class='tdIndicador'>Direccion:</td><td>"+contacto.direccion+"</td></tr><tr><td class='tdIndicador'>Comuna</td><td>"+contacto.idComuna+"</td></tr><tr><td class='tdIndicador'>Telefono Fijo</td><td>"+contacto.fonoFijo+"</td></tr><tr><td class='tdIndicador'>Celular</td><td>"+contacto.fonoCelular+"</td></tr><tr><td colspan=2><button id='btnCrearCuenta'>Modificar Cuenta</button></td></tr>";
 		}
 	});
-	
 }
 
 function accionBoton()
@@ -83,8 +77,8 @@ function accionBoton()
 	{
 		guardarModificacionCuenta();
 	}
-	//if($(this).val())
 }
+
 function modificarCuenta()
 {
 	//PERSONA
@@ -116,9 +110,7 @@ function modificarCuenta()
 
 	//DATOS CONTACTO
 	$("#tdDireccion").html("<input type='text' id='txtDireccion'/>");
-	//$("#tdComuna").html("<input type='text' id='txtComuna'/>");
 	$("#tdRegion").parent().parent().children().removeClass("regionEscondida");
-	//alert($("#tdRegion").parent().parent().children().val());
 	$("#tdRegion").html("<select class='textoSelect' id='region'></select>");
 	$("#tdComuna").html("<select class='textoSelect' id='comuna'></select>");
 	
@@ -146,7 +138,6 @@ function modificarCuenta()
 	cargarRegiones(idRegion);
 	cargarComunas(idComuna, idRegion);
 	$("#tdComuna").on("change","#region",cambiarComuna);
-
 }
 
 function guardarModificacionCuenta()
@@ -180,11 +171,9 @@ function guardarModificacionCuenta()
 
 	var usuarioModificado = direccionWeb+"ws-add-usuario.php";
 	var data = {"send":"{\"indice\":5,\"idPersona\":\""+numero+"\",\"idPerfil\":\""+perfil+"\",\"rut\":\""+ruts+"\",\"dv\":\""+dv+"\",\"nombre\": \""+nombre+"\",\"appPaterno\":\""+apellidoPaterno+"\",\"appMaterno\": \""+apellidoMaterno+"\",\"fechaNac\": \""+fechaNac+"\",\"idComuna\":\""+comuna+"\",\"fonoFijo\":\""+fonoFijo+"\",\"celular\":\""+fonoCelu+"\",\"direccion\":\""+direccion+"\",\"mail\":\""+email+"\",\"fechaIngreso\":\""+fechaIng+"\"}"}
-	// \""+perfil+"\"
 
 	$.post(usuarioModificado,data,function(datos)
 	{
-		//alert(datos);
 		var obj = $.parseJSON(datos);
 		var persona = obj.resultadoPersona;
 		var contacto = obj.resultadoDatos;
@@ -206,17 +195,17 @@ function cargarRegiones()
 	var regiones = direccionWeb+"ws-add-usuario.php";
 	var data = {"send":"{\"indice\":3}"};
 
-	$.post(regiones,data,function(datos){
+	$.post(regiones,data,function(datos)
+	{
 		var obj = $.parseJSON(datos);
-		var option = document.getElementById("region");
-		option.options.add(new Option("Seleccione una Region", 0));
+		var select = '';
+		select = select + "<option value='0'>Seleccione una Region</option>";
 
 		$.each(obj.listaRegiones,function()
-			{
-				//sel = sel + "<option value="+this.idCurso+">"+this.nivel+"-"+this.numero+"-"+this.letra+"</option>"
-				option.options.add(new Option(this.nombreRegion, this.idRegion));
-			});
-
+		{
+			select = select + "<option value="+this.idRegion+">"+this.nombreRegion+"</option>";
+		});
+		$("#region").html(select);
 	});
 }
 
@@ -225,28 +214,24 @@ function cargarRegiones(RegionesID)
 	var regiones = direccionWeb+"ws-add-usuario.php";
 	var data = {"send":"{\"indice\":3}"};
 
-	$.post(regiones,data,function(datos){
+	$.post(regiones,data,function(datos)
+	{
 		var obj = $.parseJSON(datos);
 		var select = '';
 		select = select + "<option value='0'>Seleccione una Region</option>";
-		//var option = document.getElementById("region");
-		//option.options.add(new Option("Seleccione una Region", 0));
 
 		$.each(obj.listaRegiones,function()
 		{
 			if(this.idRegion == RegionesID)
 			{
 				select = select + "<option value="+this.idRegion+" selected='selected'>"+this.nombreRegion+"</option>";
-				//option.options.add(new Option(this.nombreRegion, this.idRegion));
 			}
 			else
 			{
 				select = select + "<option value="+this.idRegion+">"+this.nombreRegion+"</option>";
-				//option.options.add(new Option(this.nombreRegion, this.idRegion));	
 			}
 		});
 		$("#region").html(select);
-
 	});
 }
 
@@ -254,11 +239,10 @@ function cargarComunas(ComunasID, RegionesID)
 {
 	var comunas = direccionWeb+"ws-add-usuario.php";
 	var data = {"send":"{\"indice\":4,\"idRegion\":\""+RegionesID+"\"}"};
-	//{"indice":3,"idRegion":13}
 
-	$.post(comunas,data,function(datos){
+	$.post(comunas,data,function(datos)
+	{
 		var obj = $.parseJSON(datos);
-		//var option = document.getElementById("comuna");
 		var select = '';
 		select = select + "<option value='0'>Seleccione una Comuna</option>";
 		$.each(obj.listaComuna,function()
@@ -270,7 +254,6 @@ function cargarComunas(ComunasID, RegionesID)
 			else
 			{
 				select = select + "<option value="+this.idComuna+">"+this.nombreComuna+"</option>";
-				//option.options.add(new Option(this.nombreRegion, this.idRegion));	
 			}
 		});
 		$("#comuna").html(select);
@@ -280,23 +263,19 @@ function cargarComunas(ComunasID, RegionesID)
 function cambiarComuna()
 {
 	var idRegion = document.getElementById("region").value;
-
 	var comunas = direccionWeb+"ws-add-usuario.php";
 	var data = {"send":"{\"indice\":4,\"idRegion\":\""+idRegion+"\"}"};
 
 	$.post(comunas,data,function(datos){
 		var obj = $.parseJSON(datos);
-		var option = document.getElementById("comuna");
 		$("#comuna").find('option').remove().end();
-		//option = "";
-		option.options.add(new Option("Seleccione una Comuna", 0));
+		var select = '';
+		select = select + "<option value='0'>Seleccione una Comuna</option>";
 
 		$.each(obj.listaComuna,function()
-			{
-				//sel = sel + "<option value="+this.idCurso+">"+this.nivel+"-"+this.numero+"-"+this.letra+"</option>"
-				
-				option.options.add(new Option(this.nombreComuna, this.idComuna));
-			});
-
+		{
+			select = select + "<option value="+this.idComuna+">"+this.nombreComuna+"</option>";
+		});
+		$("#comuna").html(select);
 	});
 }

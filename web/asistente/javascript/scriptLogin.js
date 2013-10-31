@@ -15,16 +15,12 @@ function login()
 	var data = {"send":"{\"indice\":1,\"usuario\":"+usuario+",\"pass\":\""+contrasena+"\"}"};
 
 	$.post(ingresar, data, function(datos){
-		alert(datos);
 		var obj = $.parseJSON(datos);
 		var codigo = obj.codAcceso;
 		var key = obj.key;
-		//usuario, key, cod acceso
+
 		if(codigo == 707 || codigo == 706 || codigo == 705)
 		{
-			//alert(usuario);
-			//window.location.href="login.php?user="+usuario+"&key="+key;
-
 		    var form = $('<form></form>');
 
 		    form.attr("method", "post");
@@ -46,11 +42,8 @@ function login()
 
 	        form.append(field1);
 
-		    // The form needs to be a part of the document in
-		    // order for us to be able to submit it.
 		    $(document.body).append(form);
 		    form.submit();
-
 		}
 		else
 		{

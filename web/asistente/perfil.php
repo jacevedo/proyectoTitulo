@@ -1,7 +1,5 @@
 <?php
 session_start();
-//echo($_SESSION['key']);
-//echo($_SESSION['user']);
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -22,7 +20,7 @@ session_start();
 						<td><a href="perfil.php">Perfil</a></td>
 						<td><a href="confirmarHora.php">Hora Atencion</a></td>
 						<td><a href="listaPrecios.php">Lista Precios</a></td>
-						<td><a href="index.php">Logout</a></td>	
+						<td><a href="logout.php">Logout</a></td>	
 					</tr>
 				</table> 
 			</div>

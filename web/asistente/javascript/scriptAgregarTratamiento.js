@@ -8,22 +8,23 @@ function inicializarEventos()
 }
 function agregarTratamiento()
 {
-
 	var procedimiento = $("#txtNomTratamiento").val();
 	var neto = $("#txtNeto").val();
+
 	var data = {"send":"{\"indice\":1,\"Comentario\":\""+procedimiento+"\",\"ValorNeto\":"+neto+"}"};
 	var paginaLlamada = direccionWeb+"ws-precios-insumos.php";
+
 	$.post(paginaLlamada,data,function(datos)
 	{
 		var obj = $.parseJSON(datos);
 		if(obj.idPrecioInsertado!=-1)
 		{
-			alert("Precio Agregado Correctamente");
+			alert("Tratamiento agregado correctamente.");
 			location.href="listaPrecios.php";
 		}
 		else
 		{
-			alert("Error al Insertar");
+			alert("Se produjo un error, vuelva a intentarlo.");
 		}
 	});
 }
