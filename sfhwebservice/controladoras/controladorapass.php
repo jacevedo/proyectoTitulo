@@ -31,7 +31,7 @@ class ControladoraPass
 			else
 			{
 				$conexion->close();
-	        	return false;
+	        	return "error";
 	        }
 		}
 		catch(Exception $e)
