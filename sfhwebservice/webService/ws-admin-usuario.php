@@ -4,10 +4,12 @@ require_once '../pojos/persona.php';
 require_once '../pojos/odontologo.php';
 require_once '../pojos/paciente.php';
 require_once '../pojos/funcionario.php';
+require_once '../pojos/pass.php';
 require_once '../controladoras/controladorapersonaregioncomuna.php';
 require_once '../controladoras/controladoradoctor.php';
 require_once '../controladoras/controladorapaciente.php';
 require_once '../controladoras/controladorafuncionario.php';
+require_once '../controladoras/controladorapass.php';
 
 /*
 *Contiene la opciones para insertar, listar y modificar
@@ -31,6 +33,7 @@ require_once '../controladoras/controladorafuncionario.php';
 * 16.- Listar Pacientes Herencia
 * 17.- Listar Odontologo Herencia
 * 18.- Listar Funcionario Herencia
+* 19.- Modificar pass admin
 * Para habilitado 0, desabilitado 1
 */
 

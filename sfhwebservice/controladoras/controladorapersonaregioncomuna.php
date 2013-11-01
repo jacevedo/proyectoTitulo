@@ -70,8 +70,16 @@ class ControladoraPersonaRegionComuna
 	        $sentencia->bind_param('issssssi',$idPerfil, $rut, $dv, $nombre, $apellidoP, $apellidoM, $fechaNac, $idPersona);
 	      	if($sentencia->execute())
 	      	{
-	        	$conexion->close();
-				return "Modificado";
+	      		if($sentencia->affected_rows)
+	      		{
+		        	$conexion->close();
+					return "Modificado";
+				}
+				else
+				{
+					$conexion->close();
+					return "No Modificado";
+				}
 			}
 			else
 			{
@@ -309,7 +317,7 @@ class ControladoraPersonaRegionComuna
 		try
 		{
 			$this->SqlQuery = '';
-			$this->SqlQuery = "SELECT * FROM `comuna`";
+			$this->SqlQuery = "SELECT * FROM comuna";
 		   	$sentencia=$conexion->prepare($this->SqlQuery);
         	if($sentencia->execute())
         	{

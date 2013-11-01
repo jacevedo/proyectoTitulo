@@ -141,7 +141,7 @@ switch ($opcion)
 		echo(json_encode($arreglo));
 	break;
 	case 4:
-		// json listar Regiones {"indice":3,"idRegion":13}
+		// json listar Comunas idRegion {"indice":3,"idRegion":13}
 		$idRegion = $data->{'idRegion'};
 		$controladoraComuna = new ControladoraPersonaRegionComuna();
 		$arreglo["code"] = 3;
@@ -220,13 +220,37 @@ switch ($opcion)
 		echo(json_encode($arreglo));
 	break;
 	case 6:
-		// json listar Regiones {"indice":6,"idComuna":298}
+		// json listar Comunas por id Comuna  {"indice":6,"idComuna":298}
 		$idComuna = $data->{'idComuna'};
 		$controladoraComuna = new ControladoraPersonaRegionComuna();
 		$arreglo["code"] = 3;
 		$arreglo["datoComuna"] = $controladoraComuna->buscarComunaPorID($idComuna);
 		echo(json_encode($arreglo));
 	break;
+	case 7:
+		// json listar Comunas {"indice":7}
+		$controladoraComuna = new ControladoraPersonaRegionComuna();
+		$arreglo["code"] = 7;
+		$arreglo["datoComuna"] = $controladoraComuna->listarComuna();
+		echo(json_encode($arreglo));
+	break;
+	case 8:
+		//{"indice":8,"idPersona":1,"idComuna":2,"fonoFijo":"0227780184","celular":"+56976087240","direccion":"antonio Varas 666","mail":"asd@asd.com","fechaIngreso":"2013-02-02"}
+		$idPersona = $data->{'idPersona'};
+		$idComuna = $data->{'idComuna'};
+		$fonoFijo = $data->{'fonoFijo'};
+		$fonoCelular = $data->{'celular'};
+		$direccion = $data->{'direccion'};
+		$mail = $data->{'mail'};
+		$fechaIngreso = $data->{'fechaIngreso'};
+		$datoContacto = new DatosContactos();
+		$datoContacto->initClass($idPersona, $idComuna, $fonoFijo, $fonoCelular, $direccion, $mail, $fechaIngreso);
+		$controladoraContacto = new ControladoraDatosContacto();
+		$arreglo["code"]=8;
+		$arreglo["resultado"] = $controladoraContacto->modificarDatosContacto($datoContacto);
+		echo(json_encode($arreglo));
+	break;
+	
 	
 }
  

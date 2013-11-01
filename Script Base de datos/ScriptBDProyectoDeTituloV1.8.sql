@@ -620,7 +620,7 @@ CREATE TABLE IF NOT EXISTS `horario` (
   `DIA` varchar(30) NOT NULL,
   `HORA_INICIO` time NOT NULL,
   `HORA_TERMINO` time NOT NULL,
-  `DURACION_MODULO` int(11) NOT NULL,
+  `DURACION_MODULO` time NOT NULL,
   PRIMARY KEY (`ID_HORARIO`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
@@ -629,7 +629,7 @@ CREATE TABLE IF NOT EXISTS `horario` (
 --
 
 INSERT INTO `horario` (`ID_HORARIO`, `ID_ODONTOLOGO`, `DIA`, `HORA_INICIO`, `HORA_TERMINO`, `DURACION_MODULO`) VALUES
-(1, 1, '', '12:00:00', '16:00:00', 30);
+(1, 1, '', '12:00:00', '16:00:00', '00:30:00');
 
 -- --------------------------------------------------------
 

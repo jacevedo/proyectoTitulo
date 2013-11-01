@@ -69,18 +69,18 @@ class ControladoraDatosContacto
 				else
 				{
 					$conexion->close();
-					return "Error";
+					return "No Modificado";
 				}
 			}
 			else
 			{
 				$conexion->close();
-	        	return false;
+	        	return "Error";
 	        }
         }
     	catch(Exception $e)
     	{
-         return false;
+         return "Excepcion";
          throw new $e("Error al modificar datos de contacto.");
         }
 	}

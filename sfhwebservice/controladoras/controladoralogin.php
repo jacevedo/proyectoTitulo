@@ -17,13 +17,68 @@ class ControladoraLogin
 		try
 		{
 			$this->SqlQuery = '';
-			$this->SqlQuery = "SELECT per.ID_PERSONA as IDPERSONA, per.RUT, pa.PASS, perm.COD_ACCESO,(SELECT ID_PACIENTE FROM paciente WHERE ID_PERSONA=IDPERSONA) FROM persona per, pass pa, permisos perm WHERE per.RUT = ? AND per.ID_PERSONA = pa.ID_PERSONA AND per.ID_PERFIL = perm.ID_PERFIL";
+			$this->SqlQuery = "SELECT per.ID_PERSONA as IDPERSONA, per.RUT, pa.PASS, perm.COD_ACCESO,(SELECT ID_PACIENTE FROM paciente WHERE ID_PERSONA=IDPERSONA),(SELECT HABILITADO_PACIENTE FROM paciente WHERE ID_PERSONA=IDPERSONA) FROM persona per, pass pa, permisos perm WHERE per.RUT = ? AND per.ID_PERSONA = pa.ID_PERSONA AND per.ID_PERFIL = perm.ID_PERFIL";
 
 		   	$sentencia=$conexion->prepare($this->SqlQuery);
 		   	$sentencia->bind_param("i",$usuario);
 		   	if($sentencia->execute())
         	{
-        		$sentencia->bind_result($idPersona,$usuarioBD,$passBD,$codAcceso,$idPaciente);	
+        		$sentencia->bind_result($idPersona,$usuarioBD,$passBD,$codAcceso,$idPaciente,$habilitado);	
+        		
+    			$hasher = new PasswordHash(8, false);	
+	        	if($sentencia->fetch())
+	        	{
+	        		
+	        		if($habilitado==1)
+    				{	
+		        		if($hasher->CheckPassword($pass, $passBD))
+				        {
+				        	$session = new Session();
+							date_default_timezone_set('America/Argentina/Buenos_Aires');
+				        	$hoy = date("Y-m-d H:i:s",time());
+				        	$keyDesencriptada = $idPersona.$hoy;
+				        	$keyHashada = $hasher->HashPassword($keyDesencriptada);
+				        	$session->initClass(0, $idPersona,$keyHashada,$hoy,$hoy);
+				        	$this->datos["idPersona"]=$idPersona;
+				        	$this->datos["key"] = $this->insertSession($session);
+				        	$this->datos["codAcceso"] = $codAcceso;
+				        	$this->datos["idPaciente"] = $idPaciente;
+				        	$this->datos["habilitado"] = "Usuario Habilitado";
+				        }			
+				        else
+				        {
+				        	$datos = "Usuario o Contrasena no correcta";
+				        }
+		      		}
+			      		else
+	        		{
+	        			$this->datos["habilitado"] = "Usuario Desabilitado";
+	        		}	        		
+	        	}
+	        	
+      		}
+       		$conexion->close();
+		}
+		catch(Exception $e)
+		{
+			throw new $e("Error al listar ordenes");
+		}
+		return $this->datos;
+	}
+	public function validarUsusarioFuncionario($usuario, $pass)
+	{
+		$conexion = new MySqlCon();
+		$this->datos = '';
+		try
+		{
+			$this->SqlQuery = '';
+			$this->SqlQuery = "SELECT per.ID_PERSONA as IDPERSONA, per.RUT, pa.PASS, perm.COD_ACCESO FROM persona per, pass pa, permisos perm WHERE per.RUT = ? AND per.ID_PERSONA = pa.ID_PERSONA AND per.ID_PERFIL = perm.ID_PERFIL";
+
+		   	$sentencia=$conexion->prepare($this->SqlQuery);
+		   	$sentencia->bind_param("i",$usuario);
+		   	if($sentencia->execute())
+        	{
+        		$sentencia->bind_result($idPersona,$usuarioBD,$passBD,$codAcceso);	
 	        	$hasher = new PasswordHash(8, false);	
 	        	if($sentencia->fetch())
 	        	{
@@ -38,7 +93,6 @@ class ControladoraLogin
 			        	$this->datos["idPersona"]=$idPersona;
 			        	$this->datos["key"] = $this->insertSession($session);
 			        	$this->datos["codAcceso"] = $codAcceso;
-			        	$this->datos["idPaciente"] = $idPaciente;
 			        }			
 			        else
 			        {
@@ -55,6 +109,49 @@ class ControladoraLogin
 		return $this->datos;
 	}
 	public function validarUsusario($usuario, $pass)
+	{
+		$conexion = new MySqlCon();
+		$this->datos = '';
+		try
+		{
+			$this->SqlQuery = '';
+			$this->SqlQuery = "SELECT per.ID_PERSONA as IDPERSONA, per.RUT, pa.PASS, perm.COD_ACCESO FROM persona per, pass pa, permisos perm WHERE per.RUT = ? AND per.ID_PERSONA = pa.ID_PERSONA AND per.ID_PERFIL = perm.ID_PERFIL";
+
+		   	$sentencia=$conexion->prepare($this->SqlQuery);
+		   	$sentencia->bind_param("i",$usuario);
+		   	if($sentencia->execute())
+        	{
+        		$sentencia->bind_result($idPersona,$usuarioBD,$passBD,$codAcceso);	
+	        	$hasher = new PasswordHash(8, false);	
+	        	if($sentencia->fetch())
+	        	{
+	        		if($hasher->CheckPassword($pass, $passBD))
+			        {
+			        	$session = new Session();
+						date_default_timezone_set('America/Argentina/Buenos_Aires');
+			        	$hoy = date("Y-m-d H:i:s",time());
+			        	$keyDesencriptada = $idPersona.$hoy;
+			        	$keyHashada = $hasher->HashPassword($keyDesencriptada);
+			        	$session->initClass(0, $idPersona,$keyHashada,$hoy,$hoy);
+			        	$this->datos["idPersona"]=$idPersona;
+			        	$this->datos["key"] = $this->insertSession($session);
+			        	$this->datos["codAcceso"] = $codAcceso;
+			        }			
+			        else
+			        {
+			        	$datos = "Usuario o Contrasena no correcta";
+			        }
+	      		}
+      		}
+       		$conexion->close();
+		}
+		catch(Exception $e)
+		{
+			throw new $e("Error al listar ordenes");
+		}
+		return $this->datos;
+	}
+	public function validarUsusarioOdontologo($usuario, $pass)
 	{
 		$conexion = new MySqlCon();
 		$this->datos = '';

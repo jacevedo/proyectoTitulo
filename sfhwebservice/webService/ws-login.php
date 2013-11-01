@@ -22,7 +22,7 @@ switch ($opcion)
 		$usuario = $data->{'usuario'};
 		$pass = $data->{'pass'};
 		$controladora = new ControladoraLogin();
-		$arreglo = $controladora->validarUsusarioPaciente($usuario, $pass);
+		$arreglo["resultado"] = $controladora->validarUsusarioPaciente($usuario, $pass);
 		echo(json_encode($arreglo));
 	break;	
 	case 2:
@@ -30,7 +30,7 @@ switch ($opcion)
 		$usuario = $data->{'usuario'};
 		$pass = $data->{'pass'};
 		$controladora = new ControladoraLogin();
-		$arreglo = $controladora->validarUsusario($usuario, $pass);
+		$arreglo = $controladora->validarUsusarioFuncionario($usuario, $pass);
 		echo(json_encode($arreglo));
 	break;	
 	case 3:
@@ -38,7 +38,7 @@ switch ($opcion)
 		$usuario = $data->{'usuario'};
 		$pass = $data->{'pass'};
 		$controladora = new ControladoraLogin();
-		$arreglo = $controladora->validarUsusario($usuario, $pass);
+		$arreglo = $controladora->validarUsusarioOdontologo($usuario, $pass);
 		echo(json_encode($arreglo));
 	break;	
 	case 4:

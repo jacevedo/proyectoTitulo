@@ -90,7 +90,7 @@ require_once '../pojos/cita.php';
 		   	if($sentencia->execute())
 		   	{
 		   		$sentencia->bind_result($idCita, $idOdontologo, $idPaciente,
-		   							 $horaInicio, $fecha, $estado);
+		   							 $horaInicio, $horaTermino, $fecha, $estado);
 		   		$indice=0;
 	        	while($sentencia->fetch())
 	        	{	
@@ -111,6 +111,7 @@ require_once '../pojos/cita.php';
 	}
 	public function obtenerkey($arregloFinal)
 	{
+		$arregloIndices ="";
 		foreach ($arregloFinal as $dato) 
 		{
 			$numKey = explode("-", array_search($dato, $arregloFinal));
