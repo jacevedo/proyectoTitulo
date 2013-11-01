@@ -55,7 +55,7 @@ switch ($opcion)
 		$controladoraPass = new ControladoraPass();
 		$arreglo["code"] = 3;
 		$arreglo["resultado"] =  $controladoraPass->buscarIdPersona($idPersona);
-		echo(json_encode());
+		echo(json_encode($arreglo));
 	break;
 	case 4:
 		//json Insertar Datos Contacto {"indice":4,"idPersona":17,"idComuna":21,"fonoFijo":"+976509346","fonoCelular":"+56984678325","direccion":"San Martin","mail":"ada@gmail.com","fechaIngreso":"2013-10-09"}

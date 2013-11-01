@@ -95,21 +95,30 @@ class ControladoraDatosContacto
 			$this->SqlQuery = "SELECT * FROM datosdecontacto WHERE ID_PERSONA = ?";
 		   	$sentencia=$conexion->prepare($this->SqlQuery);
 			$sentencia->bind_param("i",$idPersonaViene);
-			$sentencia->bind_result($idPersona, $idComuna, $fonoFijo, $fonoCelular, $direccion, $mail, $fechaIngreso);
-        	$sentencia->execute();
-        	if($sentencia->fetch())
-        	{
-       			$contacto = new DatosContactos();
-				$contacto->initClass($idPersona, $idComuna, $fonoFijo, $fonoCelular, $direccion, $mail, $fechaIngreso);
-        		$this->datos = $contacto;
-      		}
-      		else
-      		{
-      			//echo("ERROR");
-      			$contacto = new DatosContactos();
+			if($sentencia->execute())
+			{
+				$sentencia->bind_result($idPersona, $idComuna, $fonoFijo, $fonoCelular, $direccion, $mail, $fechaIngreso);
+				if($sentencia->fetch())
+	        	{
+	        		$contacto = new DatosContactos();
+					$contacto->initClass($idPersona, $idComuna, $fonoFijo, $fonoCelular, $direccion, $mail, $fechaIngreso);
+	        		$this->datos = $contacto;
+	      		}
+	      		else
+	      		{
+	      			//echo("ERROR");
+	      			$contacto = new DatosContactos();
+					$contacto->initClass(0, 0, null, null, null, null, null);
+	      			$this->datos = $contacto;
+	      		}	
+			}
+			else
+			{
+				$contacto = new DatosContactos();
 				$contacto->initClass(0, 0, null, null, null, null, null);
       			$this->datos = $contacto;
-      		}
+			}
+        	
 
        		$conexion->close();
     	}

@@ -284,6 +284,16 @@ switch ($opcion)
 		echo(json_encode($arreglo));
 	break;
 	
+	case 9:
+
+		//{"indice":9,"idPersona":1}
+		$idPersona = $data->{"idPersona"};
+		$datoContacto = new ControladoraDatosContacto();
+		$arreglo["code"]=9;
+		$arreglo["resultado"] = $datoContacto->buscarPorPersona($idPersona);
+		echo(json_encode($arreglo));
+	break;
+	
 	
 }
  
