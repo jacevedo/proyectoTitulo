@@ -80,24 +80,22 @@ class ControladoraPass
 			throw new $e("Error al insertar abono.");
 		}
 	}
-	public function modificarPassConConfirmacion(Pass $passObjeto)
+	public function modificarPassConConfirmacion(Pass $passObjeto,$nuevaPass)
 	{
 
 		$conexion = new MySqlCon();
-		$idPersona = $pass->idPersona;
-		$password = $pass->contrasena;
-		$fechaCaducidad = $pass->fechaCaducidad;
+		$idPersona = $passObjeto->idPersona;
+		$password = $passObjeto->contrasena;
 		$hasher = new PasswordHash(8, false);	
-		$passHash = $hasher->HashPassword($password);
-		if($this->validarPass($idPersona,$passAntigua))
+		$passHash = $hasher->HashPassword($nuevaPass);
+		if($this->validarPass($idPersona,$password))
 		{
-			return "holasssss";
-			/*try
+			try
 			{
 				$this->SqlQuery='';
-		        $this->SqlQuery='UPDATE pass SET PASS=?,FECHA_CADUCIDAD=? WHERE ID_PERSONA=?;';
+		        $this->SqlQuery='UPDATE pass SET PASS=? WHERE ID_PERSONA=?';
 		        $sentencia=$conexion->prepare($this->SqlQuery);
-		        $sentencia->bind_param('ssi', $passHash, $fechaCaducidad, $idPersona);
+		        $sentencia->bind_param('si', $passHash, $idPersona);
 		      	if($sentencia->execute())
 		      	{
 		      		if($sentencia->affected_rows)
@@ -120,11 +118,11 @@ class ControladoraPass
 			{
 				return "Exception";
 				throw new $e("Error al insertar abono.");
-			}*/
+			}
 		}
 		else
 		{
-			return "chaooooss";
+			return "Error";
 		}
 	}
 	public function validarPass($usuario,$pass)
@@ -134,22 +132,27 @@ class ControladoraPass
 		try
 		{
 			$this->SqlQuery = '';
-			$this->SqlQuery = "SELECT per.ID_PERSONA, pa.PASS FROM persona per, pass pa WHERE per.ID_PERSONA = ? AND per.ID_PERSONA = pa.ID_PERSONA";
+			$this->SqlQuery = "SELECT per.ID_PERSONA, pa.PASS FROM persona per, pass pa WHERE per.ID_PERSONA = ? AND pa.ID_PERSONA = per.ID_PERSONA";
 
 		   	$sentencia=$conexion->prepare($this->SqlQuery);
 		   	$sentencia->bind_param("i",$usuario);
 
 		   	if($sentencia->execute())
         	{
-        		$sentencia->bind_result($idPersona,$usuarioBD,$passBD,$codAcceso,$idPaciente,$habilitado);	
+        		$sentencia->bind_result($idPersona,$passBD);	
         		
     			$hasher = new PasswordHash(8, false);	
 	        	if($sentencia->fetch())
 	        	{
+	        		
 	        		if($hasher->CheckPassword($pass, $passBD))
 				    {
-		        		$conexion->close();
+				    	$conexion->close();
 		        		return true;
+		        	}
+		        	else
+		        	{
+		        		return false;
 		        	}
 	        	}
 		      	else
