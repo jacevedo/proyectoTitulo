@@ -97,7 +97,6 @@ C:\Users\JAIME\Desktop\SFH-Modulo-Escritorio\SFH-Software\obj\x86\Debug\SFH_Soft
 C:\Users\JAIME\Desktop\SFH-Modulo-Escritorio\SFH-Software\obj\x86\Debug\SFH-Software.csproj.GenerateResource.Cache
 C:\Users\JAIME\Desktop\SFH-Modulo-Escritorio\SFH-Software\obj\x86\Debug\SFH-Software.exe
 C:\Users\JAIME\Desktop\SFH-Modulo-Escritorio\SFH-Software\obj\x86\Debug\SFH-Software.pdb
-C:\Users\Citt-David\Documents\GitHub\proyectoTitulo\SFH-Modulo-Escritorio\SFH-Software\obj\x86\Debug\SFH-Software.csprojResolveAssemblyReference.cache
 C:\Users\Citt-David\Documents\GitHub\proyectoTitulo\SFH-Modulo-Escritorio\SFH-Software\obj\x86\Debug\SFH_Software.frmAbonos.resources
 C:\Users\Citt-David\Documents\GitHub\proyectoTitulo\SFH-Modulo-Escritorio\SFH-Software\obj\x86\Debug\SFH_Software.frmAcerca.resources
 C:\Users\Citt-David\Documents\GitHub\proyectoTitulo\SFH-Modulo-Escritorio\SFH-Software\obj\x86\Debug\SFH_Software.frmAdministracionAreaInsumos.resources
@@ -148,10 +147,15 @@ C:\Users\Citt-David\Documents\GitHub\proyectoTitulo\SFH-Modulo-Escritorio\SFH-So
 C:\Users\Citt-David\Documents\GitHub\proyectoTitulo\SFH-Modulo-Escritorio\SFH-Software\bin\Debug\SFH-Software.exe
 C:\Users\Citt-David\Documents\GitHub\proyectoTitulo\SFH-Modulo-Escritorio\SFH-Software\bin\Debug\SFH-Software.pdb
 C:\Users\Citt-David\Documents\GitHub\proyectoTitulo\SFH-Modulo-Escritorio\SFH-Software\bin\Debug\MdiTabControl.dll
-C:\Users\Citt-David\Documents\GitHub\proyectoTitulo\SFH-Modulo-Escritorio\SFH-Software\bin\Debug\NetClient.dll
 C:\Users\Citt-David\Documents\GitHub\proyectoTitulo\SFH-Modulo-Escritorio\SFH-Software\bin\Debug\ObjectsBeans.dll
 C:\Users\Citt-David\Documents\GitHub\proyectoTitulo\SFH-Modulo-Escritorio\SFH-Software\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Citt-David\Documents\GitHub\proyectoTitulo\SFH-Modulo-Escritorio\SFH-Software\bin\Debug\NetClient.pdb
 C:\Users\Citt-David\Documents\GitHub\proyectoTitulo\SFH-Modulo-Escritorio\SFH-Software\bin\Debug\ObjectsBeans.pdb
 C:\Users\Citt-David\Documents\GitHub\proyectoTitulo\SFH-Modulo-Escritorio\SFH-Software\bin\Debug\Newtonsoft.Json.pdb
 C:\Users\Citt-David\Documents\GitHub\proyectoTitulo\SFH-Modulo-Escritorio\SFH-Software\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Citt-David\Documents\GitHub\proyectoTitulo\SFH-Modulo-Escritorio\SFH-Software\bin\Debug\NetClient.dll
+C:\Users\Citt-David\Documents\GitHub\proyectoTitulo\SFH-Modulo-Escritorio\SFH-Software\obj\x86\Debug\SFH_Software.frmDatosDeContacto.resources
+C:\Users\Citt-David\Documents\GitHub\proyectoTitulo\SFH-Modulo-Escritorio\SFH-Software\obj\x86\Debug\SFH_Software.frmFuncionario.resources
+C:\Users\Citt-David\Documents\GitHub\proyectoTitulo\SFH-Modulo-Escritorio\SFH-Software\obj\x86\Debug\SFH_Software.frmOdontologo.resources
+C:\Users\Citt-David\Documents\GitHub\proyectoTitulo\SFH-Modulo-Escritorio\SFH-Software\obj\x86\Debug\SFH_Software.frmPaciente.resources
+C:\Users\Citt-David\Documents\GitHub\proyectoTitulo\SFH-Modulo-Escritorio\SFH-Software\obj\x86\Debug\SFH-Software.csprojResolveAssemblyReference.cache

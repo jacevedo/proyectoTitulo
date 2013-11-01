@@ -16,13 +16,16 @@ namespace SFH_Software
         #region Campos 
         ClientWsAdminUsuario client_usuario = new ClientWsAdminUsuario();
         ClientWsAdminUsuarioSig client_busqueda = new ClientWsAdminUsuarioSig();
+        ClientWsAddUsuario client_addUusario = new ClientWsAddUsuario();
+        ClientWsPassDatosdeContacto client_pass_dat = new ClientWsPassDatosdeContacto();
         List<Persona> list_persona = new List<Persona>();
-        List<Odontologo> list_odontologo = new List<Odontologo>();
-        List<Paciente> list_paciente = new List<Paciente>();
-        List<Funcionario> list_funcionario = new List<Funcionario>();
+        
         private int id_persona;
         private System.Windows.Forms.DataGridViewButtonColumn Editar;
-        private System.Windows.Forms.DataGridViewButtonColumn habilitar;
+        private System.Windows.Forms.DataGridViewButtonColumn verdatoscontacto;
+        private System.Windows.Forms.DataGridViewButtonColumn verpaciente;
+        private System.Windows.Forms.DataGridViewButtonColumn verOdontologo;
+        private System.Windows.Forms.DataGridViewButtonColumn verfuncionario;
         public int Id_persona
         {
             get { return id_persona; }
@@ -43,9 +46,40 @@ namespace SFH_Software
             this.txtapellpater.Text = string.Empty;
             this.txtApeMat.Text = string.Empty;
             this.mcFechaNac.ResetText();
-
+            this.txtpass.Text = string.Empty;
+            this.txtpass2.Text = string.Empty;
+            this.btnNuevo.Text = "Ingresar Gastos";
 
         }
+
+        private void ModificarUsuarios(DataGridViewCellEventArgs e)
+        {
+            Persona persona = datagriPersona.Rows[e.RowIndex].DataBoundItem as Persona;
+            this.Id_persona = persona.IdPersona;
+            this.cmbxPerfil.SelectedValue = persona.IdPerfil; 
+            this.txtrut.Text = persona.Rut.ToString();
+            this.txtdv.Text = persona.Dv;
+            this.txtnom.Text = persona.Nombre;
+            this.txtapellpater.Text = persona.ApellidoPaterno;
+            this.txtApeMat.Text = persona.ApellidoMaterno;
+            this.mcFechaNac.SelectionStart = persona.FechaNacimiento;
+            this.mcFechaNac.SelectionEnd = persona.FechaNacimiento;
+            this.txtpass.Text = "1234";
+            this.txtpass2.Text = "1234";
+            btnNuevo.Text = "Guardar Cambios";
+        }
+
+        private Datoscontacto DatosContactoDefault() {
+            Datoscontacto contacto = new Datoscontacto();
+            contacto.IdComuna = 1;
+            contacto.FonoFijo = "Ej:9999999";
+            contacto.FonoCelular = "Ej:99999999";
+            contacto.Mail = "Ingrese su Mail";
+            contacto.Direccion = "Ingrese su direccion";
+            contacto.FechaIngreso = Convert.ToDateTime("1991-12-12");
+            return contacto;
+        }
+
         private void PoblarComboBusqueda()
         {
             /*    
@@ -86,6 +120,7 @@ namespace SFH_Software
                 this.lblguion.Visible = false;
                 this.txtBuscar.MaxLength = 100;
                 this.txtBuscar.Text = string.Empty;
+                this.txtdvbusqueda.Text = string.Empty;
             }
             else if (txtdv == true | labelv == true) {
                 
@@ -93,9 +128,12 @@ namespace SFH_Software
                 this.lblguion.Visible = true;
                 this.txtBuscar.MaxLength = 8;
                 this.txtBuscar.Text = string.Empty;
+                this.txtdvbusqueda.Text = string.Empty;
             }
         
        }
+
+
         private void PoblarBotonesGrilla() {
             // 
             // Editar
@@ -104,15 +142,36 @@ namespace SFH_Software
             this.Editar.HeaderText = "Editar";
             this.Editar.Name = "Editar";
             // 
-            // habilitar
+            // ver contacto
             // 
-            this.habilitar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.habilitar.HeaderText = "Habilitar/Deshabilitar";
-            this.habilitar.Name = "habilitar";
+            this.verdatoscontacto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.verdatoscontacto.HeaderText = "Ver datos de contacto";
+            this.verdatoscontacto.Name = "verdatoscontactos";
+            // 
+            // ver paciente
+            // 
+            this.verpaciente.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.verpaciente.HeaderText = "Ver paciente";
+            this.verpaciente.Name = "verpaciente";
+            // 
+            // ver odontologo
+            // 
+            this.verOdontologo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.verOdontologo.HeaderText = "Ver odontologo";
+            this.verOdontologo.Name = "verodontologo";
+            // 
+            // ver funcionario
+            // 
+            this.verfuncionario.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.verfuncionario.HeaderText = "Ver funcionario";
+            this.verfuncionario.Name = "verfuncionario";
 
             this.datagriPersona.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Editar,
-            this.habilitar});
+            this.verdatoscontacto,
+            this.verpaciente,
+            this.verOdontologo,
+            this.verfuncionario});
         }
         #endregion
 
@@ -120,17 +179,11 @@ namespace SFH_Software
         {
             InitializeComponent();
             this.Editar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.habilitar = new System.Windows.Forms.DataGridViewButtonColumn();
-        }
-
-        private void groupBox2_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
+            this.verdatoscontacto = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.verpaciente = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.verOdontologo =  new System.Windows.Forms.DataGridViewButtonColumn();
+            this.verfuncionario =  new System.Windows.Forms.DataGridViewButtonColumn(); 
+           
         }
 
         private void frmAdministracionUsuarios_Load(object sender, EventArgs e)
@@ -141,6 +194,8 @@ namespace SFH_Software
             //combo box 
             this.PoblarComboBusqueda();
             this.PoblarComboPerfil();
+            //boton
+            btnNuevo.Text = "Ingresar Gastos";
            
         }
 
@@ -162,7 +217,6 @@ namespace SFH_Software
                 case 0:
                     MessageBox.Show("Debes seleccionar una opción de búsqueda", "SFH Administración de Clínica - Administración de cuentas de usuarios", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     datagriPersona.DataSource = this.client_usuario.ListarDatosPersona();
-                    this.PoblarBotonesGrilla();
                     break;
                 case 1:
                     MessageBox.Show("El sistema sfh está realizando su búsqueda", "SFH Administración de Clínica - Administración de cuentas de usuarios", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -174,7 +228,6 @@ namespace SFH_Software
                     else
                     {
                         datagriPersona.DataSource = this.list_persona;
-                        this.PoblarBotonesGrilla();
                     }
                     break;
                 case 2:
@@ -194,21 +247,19 @@ namespace SFH_Software
                     else
                     {
                         datagriPersona.DataSource = this.list_persona;
-                        this.PoblarBotonesGrilla();
                     }
                     break;
 
                 case 3:
                     MessageBox.Show("El sistema sfh está realizando su búsqueda", "SFH Administración de Clínica - Administración de cuentas de usuarios", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.list_funcionario = this.client_busqueda.BuscarFuncionarioPorRut(this.txtBuscar.Text.ToString().ToString());
-                    if (list_funcionario.Count.Equals(0))
+                    this.list_persona = this.client_busqueda.BuscarFuncionarioPorRut(this.txtBuscar.Text.ToString().ToString());
+                    if (list_persona.Count.Equals(0))
                     {
                         MessageBox.Show("Esta búsqueda no ha arrojado resultados", "SFH Administración de Clínica - Administración de cuentas de usuarios", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
                     else
                     {
-                        datagriPersona.DataSource = this.list_funcionario;
-                        this.PoblarBotonesGrilla();
+                        datagriPersona.DataSource = this.list_persona;
                     }
                     break;
                 case 4:
@@ -217,34 +268,34 @@ namespace SFH_Software
                     string[] nombreapellido_funcionario = txtBuscar.Text.ToString().Split(' ');
                     if (nombreapellido_funcionario.Length == 2)
                     {
-                        this.list_funcionario = this.client_busqueda.BuscarFuncionarioPorNombreApellido(nombreapellido_funcionario[0].ToString(), nombreapellido_funcionario[1].ToString());
+                        this.list_persona = this.client_busqueda.BuscarFuncionarioPorNombreApellido(nombreapellido_funcionario[0].ToString(), nombreapellido_funcionario[1].ToString());
                     }
                     else {
-                        this.list_funcionario = this.client_busqueda.BuscarFuncionarioPorNombreApellido(nombreapellido_funcionario[0].ToString(),"");
+                        this.list_persona = this.client_busqueda.BuscarFuncionarioPorNombreApellido(nombreapellido_funcionario[0].ToString(),"");
                     }
 
-                    if (list_funcionario.Count.Equals(0))
+                    if (list_persona.Count.Equals(0))
                     {
                         MessageBox.Show("Esta búsqueda no ha arrojado resultados", "SFH Administración de Clínica - Administración de cuentas de usuarios", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
                     else
                     {
-                        datagriPersona.DataSource = this.list_funcionario;
-                        this.PoblarBotonesGrilla();
+                        datagriPersona.DataSource = this.list_persona;
+                        
                     }
                     break;
 
                 case 5:
                     MessageBox.Show("El sistema sfh está realizando su búsqueda", "SFH Administración de Clínica - Administración de cuentas de usuarios", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.list_paciente = this.client_busqueda.BuscarPacientePorRut(txtBuscar.Text.ToString());
-                    if (list_paciente.Count.Equals(0))
+                    this.list_persona = this.client_busqueda.BuscarPacientePorRut(txtBuscar.Text.ToString());
+                    if (list_persona.Count.Equals(0))
                     {
                         MessageBox.Show("Esta búsqueda no ha arrojado resultados", "SFH Administración de Clínica - Administración de cuentas de usuarios", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
                     else
                     {
-                        datagriPersona.DataSource = this.list_paciente;
-                        this.PoblarBotonesGrilla();
+                        datagriPersona.DataSource = this.list_persona;
+                        
                     }
                     break;
                 case 6:
@@ -253,34 +304,34 @@ namespace SFH_Software
                     string[] nombreapellido_paciente = txtBuscar.Text.ToString().Split(' ');
                     if (nombreapellido_paciente.Length == 2)
                     {
-                        this.list_paciente = this.client_busqueda.BuscarPacientePorNombreApellido(nombreapellido_paciente[0].ToString(), nombreapellido_paciente[1].ToString());
+                        this.list_persona = this.client_busqueda.BuscarPacientePorNombreApellido(nombreapellido_paciente[0].ToString(), nombreapellido_paciente[1].ToString());
                     }
                     else{
-                        this.list_paciente = this.client_busqueda.BuscarPacientePorNombreApellido(nombreapellido_paciente[0].ToString(),"");
+                        this.list_persona = this.client_busqueda.BuscarPacientePorNombreApellido(nombreapellido_paciente[0].ToString(),"");
                     }
-                    if (list_paciente.Count.Equals(0))
+                    if (list_persona.Count.Equals(0))
                     {
                         MessageBox.Show("Esta búsqueda no ha arrojado resultados", "SFH Administración de Clínica - Administración de cuentas de usuarios", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
                     else
                     {
-                        datagriPersona.DataSource = this.list_paciente;
-                        this.PoblarBotonesGrilla();
+                        datagriPersona.DataSource = this.list_persona;
+                        
                     }
                     break;
 
                 case 7:
                     MessageBox.Show("El sistema sfh está realizando su búsqueda", "SFH Administración de Clínica - Administración de cuentas de usuarios", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     
-                    this.list_odontologo = this.client_busqueda.BuscarOdontologoPorRut(txtBuscar.Text.ToString());
-                    if (list_odontologo.Count.Equals(0))
+                    this.list_persona = this.client_busqueda.BuscarOdontologoPorRut(txtBuscar.Text.ToString());
+                    if (list_persona.Count.Equals(0))
                     {
                         MessageBox.Show("Esta búsqueda no ha arrojado resultados", "SFH Administración de Clínica - Administración de cuentas de usuarios", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
                     else
                     {
-                        datagriPersona.DataSource = this.list_odontologo;
-                        this.PoblarBotonesGrilla();
+                        datagriPersona.DataSource = this.list_persona;
+                        
                     }
                     break;
                 case 8:
@@ -289,19 +340,19 @@ namespace SFH_Software
                     string[] nombreapellido_Odontologo = txtBuscar.Text.ToString().Split(' ');
                     if (nombreapellido_Odontologo.Length == 2)
                     {
-                        this.list_odontologo = this.client_busqueda.BuscarOdontologoPorNombreApellido(nombreapellido_Odontologo[0].ToString(), nombreapellido_Odontologo[1].ToString());
+                        this.list_persona = this.client_busqueda.BuscarOdontologoPorNombreApellido(nombreapellido_Odontologo[0].ToString(), nombreapellido_Odontologo[1].ToString());
                     }
                     else {
-                        this.list_odontologo = this.client_busqueda.BuscarOdontologoPorNombreApellido(nombreapellido_Odontologo[0].ToString(),"");
+                        this.list_persona = this.client_busqueda.BuscarOdontologoPorNombreApellido(nombreapellido_Odontologo[0].ToString(),"");
                     }
-                    if (list_odontologo.Count.Equals(0))
+                    if (list_persona.Count.Equals(0))
                     {
                         MessageBox.Show("Esta búsqueda no ha arrojado resultados", "SFH Administración de Clínica - Administración de cuentas de usuarios", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
                     else
                     {
-                        datagriPersona.DataSource = this.list_odontologo;
-                        this.PoblarBotonesGrilla();
+                        datagriPersona.DataSource = this.list_persona;
+                        
                     }
                     break;
 
@@ -347,15 +398,94 @@ namespace SFH_Software
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-
+            this.LimpiarControles();
         }
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
+            if (btnNuevo.Text.ToString().Trim() == "Ingresar Gastos")
+            {
+                
+                Persona persona = new Persona();
+                persona.IdPerfil = Convert.ToInt32(this.cmbxPerfil.SelectedValue);
+                persona.Rut = int.Parse(this.txtrut.Text);
+                persona.Dv = this.txtdv.Text;
+                persona.Nombre = this.txtnom.Text;
+                persona.ApellidoPaterno = this.txtapellpater.Text;
+                persona.ApellidoMaterno = this.txtApeMat.Text;
+                persona.FechaNacimiento = mcFechaNac.SelectionStart;
+                if(txtpass.ToString()==txtpass2.ToString()){
+                String id_per = client_usuario.InsertarPersona(persona);
+                Pass pass = new Pass();
+                pass.IdPersona = int.Parse(id_per);
+                pass.Passtext = txtpass.Text.ToString();
+                pass.FechaCaducidad = mcFechadeCaducidad.SelectionStart;
+                Datoscontacto contacto = this.DatosContactoDefault();
+                this.client_pass_dat.InsertarPass(pass);
+                //this.client_addUusario.insertarPersonaDatosdeContacto(persona,contacto, pass);
+                }
+                datagriPersona.DataSource = this.client_usuario.ListarDatosPersona();
+                this.LimpiarControles();
+                MessageBox.Show("Usuario registrado satisfactoriamente", "SFH Administración de Clínica - Administración de Usuarios", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+            }
+            else if (btnNuevo.Text.ToString().Trim() == "Guardar Cambios")
+            {
+                Persona persona = new Persona();
+                persona.IdPersona = this.Id_persona;
+                persona.IdPerfil = Convert.ToInt32(this.cmbxPerfil.SelectedValue);
+                persona.Rut = int.Parse(this.txtrut.Text);
+                persona.Dv = this.txtdv.Text;
+                persona.Nombre = this.txtnom.Text;
+                persona.ApellidoPaterno = this.txtapellpater.Text;
+                persona.ApellidoMaterno = this.txtApeMat.Text;
+                persona.FechaNacimiento = mcFechaNac.SelectionStart;
+                if (txtpass.ToString() == txtpass2.ToString())
+                {
+                    Pass pass = new Pass();
+                    pass.IdPersona = Id_persona;
+                    pass.Passtext = txtpass.Text.ToString();
+                    pass.FechaCaducidad = mcFechadeCaducidad.SelectionStart;
+                    this.client_usuario.ModificarPersona(persona);
+                    this.client_pass_dat.ModificarPass(pass);
+                    //Datoscontacto contacto = this.DatosContactoDefault();
+                    //this.client_addUusario.insertarPersonaDatosdeContacto(persona, contacto, pass);
+                    
+                }
+                datagriPersona.DataSource = this.client_usuario.ListarDatosPersona();
+                this.LimpiarControles();
+                MessageBox.Show("Usuario modificado satisfactoriamente", "SFH Administración de Clínica - Administración de Usuarios", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
         }
 
-      
+       
 
+        private void datagriPersona_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            switch (e.ColumnIndex)
+            {
+                case 0:
+                    this.ModificarUsuarios(e); 
+                    break;
+                case 1:
+                    
+                    break;
+                case 2:
+                    
+                    break;
+                case 3:
+
+                    break;
+                case 4:
+
+                    break;
+
+            }
+        }
+
+        
+
+       
     }
 }

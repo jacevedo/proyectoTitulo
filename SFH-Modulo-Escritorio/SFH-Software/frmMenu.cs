@@ -139,6 +139,22 @@ namespace SFH_Software
                     frmGastos gastos = new frmGastos(this);
                     this.MostrarForm(e.Node.Text.ToString(), gastos);
                     break;
+                case "Administración de datos de contacto":
+                    frmDatosDeContacto datosdecontacto = new frmDatosDeContacto();
+                    this.MostrarForm(e.Node.Text.ToString(), datosdecontacto);
+                    break;
+                case "Administración de pacientes":
+                    frmPaciente pacientes = new frmPaciente();
+                    this.MostrarForm(e.Node.Text.ToString(), pacientes);
+                    break;
+                case "Administración de odontólogos":
+                    frmOdontologo odontologos = new frmOdontologo();
+                    this.MostrarForm(e.Node.Text.ToString(), odontologos);
+                    break;
+                case "Administración de funcionarios":
+                    frmFuncionario funcionario = new frmFuncionario();
+                    this.MostrarForm(e.Node.Text.ToString(), funcionario);
+                    break;
             }
         }
 
@@ -223,6 +239,32 @@ namespace SFH_Software
             frmGastos gastos = new frmGastos(this);
             this.MostrarForm("Administración de gastos", gastos);
         }
+
+        private void AdministracióndedatosdecontactoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmDatosDeContacto datosdeContacto = new frmDatosDeContacto();
+            this.MostrarForm("Administración de datos de contacto", datosdeContacto);
+
+        }
+
+        private void AdministracióndepacientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmPaciente paciente = new frmPaciente();
+            this.MostrarForm("Administración de  pacientes ", paciente);
+        }
+
+        private void administraciónDeOdontólogosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmOdontologo odontologo = new frmOdontologo();
+            this.MostrarForm("Administración de odontólogos ", odontologo);
+        }
+
+        private void administraciónDeFuncionariosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmFuncionario funcionarios = new frmFuncionario();
+            this.MostrarForm("Administración de funcionarios ", funcionarios);
+        }
+
 
     }
 }

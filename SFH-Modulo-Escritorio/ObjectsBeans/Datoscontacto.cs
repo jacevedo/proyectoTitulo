@@ -5,14 +5,14 @@ using System.Text;
 
 namespace ObjectsBeans
 {
-    public class Datoscontacto
+    public class Datoscontacto : Persona
     {
         #region Campos
-        private int idPersona;
+        //private int idPersona;
         private int idComuna;
-        private int fonoFijo;
-        private int fonoCelular;
-        private int direccion;
+        private string fonoFijo;
+        private string fonoCelular;
+        private string direccion;
         private string mail;
         //se captura cuando se registra el usuario
         private DateTime fechaIngreso;
@@ -21,15 +21,17 @@ namespace ObjectsBeans
         #region Constructor
         public Datoscontacto() { 
         }
+         public Datoscontacto(int _idPersona)
+            : base(_idPersona){ }
         #endregion
 
         #region Propiedad
-
-        public int IdPersona
+        
+        /*public int IdPersona
         {
             get { return idPersona; }
             set { idPersona = value; }
-        }
+        */
 
         public int IdComuna
         {
@@ -37,19 +39,19 @@ namespace ObjectsBeans
             set { idComuna = value; }
         }
 
-        public int FonoFijo
+        public string FonoFijo
         {
             get { return fonoFijo; }
             set { fonoFijo = value; }
         }
 
-        public int FonoCelular
+        public string FonoCelular
         {
             get { return fonoCelular; }
             set { fonoCelular = value; }
         }
 
-        public int Direccion
+        public string Direccion
         {
             get { return direccion; }
             set { direccion = value; }

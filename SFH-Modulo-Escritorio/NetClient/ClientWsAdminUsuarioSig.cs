@@ -52,11 +52,10 @@ namespace NetClient
                 var token = jobject.SelectToken("listaPersonaRut").ToList();
                 foreach (var item in token)
                 {
-
                     Persona persona = new Persona();
                     //{"idPersona":15,"idPerfil":1,"rut":"17897359","dv":"2","nombre":"ada","apellidoPaterno":"wonk","apellidoMaterno":"asturias","fechaNacimiento":"1991-12-12"},
                     persona.IdPersona = Convert.ToInt32(item.SelectToken("idPersona").ToString());
-                   /* persona.IdPerfil = Convert.ToInt32(item.SelectToken("idPerfil").ToString());
+                    persona.IdPerfil = Convert.ToInt32(item.SelectToken("idPerfil").ToString());
                     int num_perfil = persona.IdPerfil;
                     switch (num_perfil)
                     {
@@ -72,14 +71,13 @@ namespace NetClient
                         case 4:
                             persona.Nomperfil = "Paciente";
                             break;
-
                     }
                     persona.Rut = Convert.ToInt32(item.SelectToken("rut").ToString());
                     persona.Dv = item.SelectToken("dv").ToString();
                     persona.Nombre = item.SelectToken("nombre").ToString();
                     persona.ApellidoPaterno = item.SelectToken("apellidoPaterno").ToString();
                     persona.ApellidoMaterno = item.SelectToken("apellidoMaterno").ToString();
-                    persona.FechaNacimiento = Convert.ToDateTime(item.SelectToken("fechaNacimiento").ToString());*/
+                    persona.FechaNacimiento = Convert.ToDateTime(item.SelectToken("fechaNacimiento").ToString());
                     list.Add(persona);
                 }
             }
@@ -103,9 +101,8 @@ namespace NetClient
                 var token = jobject.SelectToken("busquedaPersonaNombre").ToList();
                 foreach (var item in token)
                 {
-
-                    //{"idPersona":29,"idPerfil":4,"rut":"17897359","dv":"2","nombre":"ada","apellidoPaterno":"wonk","apellidoMaterno":"asturias","fechaNacimiento":"1991-12-12"}}
                     Persona persona = new Persona();
+                    //{"idPersona":15,"idPerfil":1,"rut":"17897359","dv":"2","nombre":"ada","apellidoPaterno":"wonk","apellidoMaterno":"asturias","fechaNacimiento":"1991-12-12"},
                     persona.IdPersona = Convert.ToInt32(item.SelectToken("idPersona").ToString());
                     persona.IdPerfil = Convert.ToInt32(item.SelectToken("idPerfil").ToString());
                     int num_perfil = persona.IdPerfil;
@@ -123,7 +120,6 @@ namespace NetClient
                         case 4:
                             persona.Nomperfil = "Paciente";
                             break;
-
                     }
                     persona.Rut = Convert.ToInt32(item.SelectToken("rut").ToString());
                     persona.Dv = item.SelectToken("dv").ToString();
@@ -143,9 +139,9 @@ namespace NetClient
         #endregion
 
         #region Buscar Funcionario Por Rut
-        public List<Funcionario> BuscarFuncionarioPorRut(string rut)
+        public List<Persona> BuscarFuncionarioPorRut(string rut)
         {
-            List<Funcionario> list = new List<Funcionario>();
+            List<Persona> list = new List<Persona>();
             try
             {
                 this.JsonParam = "send={\"indice\":3,\"rut\":"+rut+"}";
@@ -154,49 +150,33 @@ namespace NetClient
                 var token = jobject.SelectToken("listaFuncionarioRut").ToList();
                 foreach (var item in token)
                 {
-
-                    Funcionario funcionario = new Funcionario();
-                    //{"idFuncionario":2,"idPersona":3,"puestoTrabajo":"Asistente Dental",
-                    //"funcionarioHabilitado":null,"idPerfil":3,"rut":"9878987","dv":"4","nombre":"Nicolas","apellidoPaterno":"Palma",
-                    //"apellidoMaterno":"Silva","fechaNacimiento":"1987-05-27"}
-                    funcionario.IdFuncionario = Convert.ToInt32(item.SelectToken("idFuncionario").ToString());
-                    funcionario.IdPersona = Convert.ToInt32(item.SelectToken("idPersona").ToString());
-                    funcionario.PuestoTrabajo = item.SelectToken("puestoTrabajo").ToString();
-                    int estado = Convert.ToInt32(item.SelectToken("habilitadoPaciente").ToString());
-                    funcionario.IdPerfil = Convert.ToInt32(item.SelectToken("idPerfil").ToString());
-                    int num_perfil = funcionario.IdPerfil;
+                    Persona persona = new Persona();
+                    //{"idPersona":15,"idPerfil":1,"rut":"17897359","dv":"2","nombre":"ada","apellidoPaterno":"wonk","apellidoMaterno":"asturias","fechaNacimiento":"1991-12-12"},
+                    persona.IdPersona = Convert.ToInt32(item.SelectToken("idPersona").ToString());
+                    persona.IdPerfil = Convert.ToInt32(item.SelectToken("idPerfil").ToString());
+                    int num_perfil = persona.IdPerfil;
                     switch (num_perfil)
                     {
                         case 1:
-                            funcionario.Nomperfil = "Administrador";
+                            persona.Nomperfil = "Administrador";
                             break;
                         case 2:
-                            funcionario.Nomperfil = "Doctor";
+                            persona.Nomperfil = "Doctor";
                             break;
                         case 3:
-                            funcionario.Nomperfil = "Asistente";
+                            persona.Nomperfil = "Asistente";
                             break;
                         case 4:
-                            funcionario.Nomperfil = "Paciente";
+                            persona.Nomperfil = "Paciente";
                             break;
-
                     }
-                    funcionario.Rut = Convert.ToInt32(item.SelectToken("rut").ToString());
-                    funcionario.Dv = item.SelectToken("dv").ToString();
-                    funcionario.Nombre = item.SelectToken("nombre").ToString();
-                    funcionario.ApellidoPaterno = item.SelectToken("apellidoPaterno").ToString();
-                    funcionario.ApellidoMaterno = item.SelectToken("apellidoMaterno").ToString();
-                    funcionario.FechaNacimiento = Convert.ToDateTime(item.SelectToken("fechaNacimiento").ToString());
-
-                    if (estado.Equals(0))
-                    {
-                        funcionario.Estado_funcionario = EstadoPersona.DESHABILITADO;
-                    }
-                    else if (estado.Equals(1))
-                    {
-                        funcionario.Estado_funcionario = EstadoPersona.HABILITADO;
-                    }
-                    list.Add(funcionario);
+                    persona.Rut = Convert.ToInt32(item.SelectToken("rut").ToString());
+                    persona.Dv = item.SelectToken("dv").ToString();
+                    persona.Nombre = item.SelectToken("nombre").ToString();
+                    persona.ApellidoPaterno = item.SelectToken("apellidoPaterno").ToString();
+                    persona.ApellidoMaterno = item.SelectToken("apellidoMaterno").ToString();
+                    persona.FechaNacimiento = Convert.ToDateTime(item.SelectToken("fechaNacimiento").ToString());
+                    list.Add(persona);
                 }
 
             }
@@ -209,9 +189,9 @@ namespace NetClient
         #endregion
 
         #region Buscar Funcionario Por Nombre Apellido
-        public List<Funcionario> BuscarFuncionarioPorNombreApellido(string nombre, string apellido)
+        public List<Persona> BuscarFuncionarioPorNombreApellido(string nombre, string apellido)
         {
-            List<Funcionario> list = new List<Funcionario>();
+            List<Persona> list = new List<Persona>();
             try
             {
                 this.JsonParam = "send={\"indice\":4,\"nombre\":\""+nombre+"\",\"apellido\":\""+apellido+"\"}";
@@ -220,49 +200,33 @@ namespace NetClient
                 var token = jobject.SelectToken("buscarFuncionarioNombre").ToList();
                 foreach (var item in token)
                 {
-
-                    Funcionario funcionario = new Funcionario();
-                    //{"idFuncionario":2,"idPersona":3,"puestoTrabajo":"Asistente Dental",
-                    //"funcionarioHabilitado":null,"idPerfil":3,"rut":"9878987","dv":"4","nombre":"Nicolas","apellidoPaterno":"Palma",
-                    //"apellidoMaterno":"Silva","fechaNacimiento":"1987-05-27"}
-                    funcionario.IdFuncionario = Convert.ToInt32(item.SelectToken("idPaciente").ToString());
-                    funcionario.IdPersona = Convert.ToInt32(item.SelectToken("idPersona").ToString());
-                    funcionario.PuestoTrabajo = item.SelectToken("fechaIngreso").ToString();
-                    int estado = Convert.ToInt32(item.SelectToken("habilitadoPaciente").ToString());
-                    funcionario.IdPerfil = Convert.ToInt32(item.SelectToken("idPerfil").ToString());
-                    int num_perfil = funcionario.IdPerfil;
+                    Persona persona = new Persona();
+                    //{"idPersona":15,"idPerfil":1,"rut":"17897359","dv":"2","nombre":"ada","apellidoPaterno":"wonk","apellidoMaterno":"asturias","fechaNacimiento":"1991-12-12"},
+                    persona.IdPersona = Convert.ToInt32(item.SelectToken("idPersona").ToString());
+                    persona.IdPerfil = Convert.ToInt32(item.SelectToken("idPerfil").ToString());
+                    int num_perfil = persona.IdPerfil;
                     switch (num_perfil)
                     {
                         case 1:
-                            funcionario.Nomperfil = "Administrador";
+                            persona.Nomperfil = "Administrador";
                             break;
                         case 2:
-                            funcionario.Nomperfil = "Doctor";
+                            persona.Nomperfil = "Doctor";
                             break;
                         case 3:
-                            funcionario.Nomperfil = "Asistente";
+                            persona.Nomperfil = "Asistente";
                             break;
                         case 4:
-                            funcionario.Nomperfil = "Paciente";
+                            persona.Nomperfil = "Paciente";
                             break;
-
                     }
-                    funcionario.Rut = Convert.ToInt32(item.SelectToken("rut").ToString());
-                    funcionario.Dv = item.SelectToken("dv").ToString();
-                    funcionario.Nombre = item.SelectToken("nombre").ToString();
-                    funcionario.ApellidoPaterno = item.SelectToken("apellidoPaterno").ToString();
-                    funcionario.ApellidoMaterno = item.SelectToken("apellidoMaterno").ToString();
-                    funcionario.FechaNacimiento = Convert.ToDateTime(item.SelectToken("fechaNacimiento").ToString());
-
-                    if (estado.Equals(0))
-                    {
-                        funcionario.Estado_funcionario = EstadoPersona.DESHABILITADO;
-                    }
-                    else if (estado.Equals(1))
-                    {
-                        funcionario.Estado_funcionario = EstadoPersona.HABILITADO;
-                    }
-                    list.Add(funcionario);
+                    persona.Rut = Convert.ToInt32(item.SelectToken("rut").ToString());
+                    persona.Dv = item.SelectToken("dv").ToString();
+                    persona.Nombre = item.SelectToken("nombre").ToString();
+                    persona.ApellidoPaterno = item.SelectToken("apellidoPaterno").ToString();
+                    persona.ApellidoMaterno = item.SelectToken("apellidoMaterno").ToString();
+                    persona.FechaNacimiento = Convert.ToDateTime(item.SelectToken("fechaNacimiento").ToString());
+                    list.Add(persona);
                 }
 
             }
@@ -275,9 +239,9 @@ namespace NetClient
         #endregion
 
         #region Buscar Paciente Por Rut
-        public List<Paciente> BuscarPacientePorRut(string rut)
+        public List<Persona> BuscarPacientePorRut(string rut)
         {
-            List<Paciente> list = new List<Paciente>();
+            List<Persona> list = new List<Persona>();
             try
             {
                 this.JsonParam = "send={\"indice\":5,\"rut\":"+rut+"}";
@@ -287,47 +251,33 @@ namespace NetClient
                 foreach (var item in token)
                 {
 
-                    Paciente paciente = new Paciente();
-                    //"idPaciente":1,"idPersona":1,"fechaIngreso":"2013-04-12",
-                    //"habilitadoPaciente":1,"idPerfil":1,"rut":"17231233","dv":"2","nombre":"Ada","apellidoPaterno":"Tatus",
-                    //"apellidoMaterno":"Boren","fechaNacimiento":"1991-08-06"
-                    paciente.IdPaciente = Convert.ToInt32(item.SelectToken("idPaciente").ToString());
-                    paciente.IdPersona = Convert.ToInt32(item.SelectToken("idPersona").ToString());
-                    paciente.FechaIngreso = Convert.ToDateTime(item.SelectToken("fechaIngreso").ToString());
-                    int estado = Convert.ToInt32(item.SelectToken("habilitadoPaciente").ToString());
-                    paciente.IdPerfil = Convert.ToInt32(item.SelectToken("idPerfil").ToString());
-                    int num_perfil = paciente.IdPerfil;
+                    Persona persona = new Persona();
+                    //{"idPersona":15,"idPerfil":1,"rut":"17897359","dv":"2","nombre":"ada","apellidoPaterno":"wonk","apellidoMaterno":"asturias","fechaNacimiento":"1991-12-12"},
+                    persona.IdPersona = Convert.ToInt32(item.SelectToken("idPersona").ToString());
+                    persona.IdPerfil = Convert.ToInt32(item.SelectToken("idPerfil").ToString());
+                    int num_perfil = persona.IdPerfil;
                     switch (num_perfil)
                     {
                         case 1:
-                            paciente.Nomperfil = "Administrador";
+                            persona.Nomperfil = "Administrador";
                             break;
                         case 2:
-                            paciente.Nomperfil = "Doctor";
+                            persona.Nomperfil = "Doctor";
                             break;
                         case 3:
-                            paciente.Nomperfil = "Asistente";
+                            persona.Nomperfil = "Asistente";
                             break;
                         case 4:
-                            paciente.Nomperfil = "Paciente";
+                            persona.Nomperfil = "Paciente";
                             break;
                     }
-                    paciente.Rut = Convert.ToInt32(item.SelectToken("rut").ToString());
-                    paciente.Dv = item.SelectToken("dv").ToString();
-                    paciente.Nombre = item.SelectToken("nombre").ToString();
-                    paciente.ApellidoPaterno = item.SelectToken("apellidoPaterno").ToString();
-                    paciente.ApellidoMaterno = item.SelectToken("apellidoMaterno").ToString();
-                    paciente.FechaNacimiento = Convert.ToDateTime(item.SelectToken("fechaNacimiento").ToString());
-
-                    if (estado.Equals(0))
-                    {
-                        paciente.HabilitadoPaciente = EstadoPersona.DESHABILITADO;
-                    }
-                    else if (estado.Equals(1))
-                    {
-                        paciente.HabilitadoPaciente = EstadoPersona.HABILITADO;
-                    }
-                    list.Add(paciente);
+                    persona.Rut = Convert.ToInt32(item.SelectToken("rut").ToString());
+                    persona.Dv = item.SelectToken("dv").ToString();
+                    persona.Nombre = item.SelectToken("nombre").ToString();
+                    persona.ApellidoPaterno = item.SelectToken("apellidoPaterno").ToString();
+                    persona.ApellidoMaterno = item.SelectToken("apellidoMaterno").ToString();
+                    persona.FechaNacimiento = Convert.ToDateTime(item.SelectToken("fechaNacimiento").ToString());
+                    list.Add(persona);
                 }
 
             }
@@ -340,9 +290,9 @@ namespace NetClient
         #endregion
 
         #region Buscar Paciente Por Nombre Apellido
-        public List<Paciente> BuscarPacientePorNombreApellido(string nombre, string apellido)
+        public List<Persona> BuscarPacientePorNombreApellido(string nombre, string apellido)
         {
-            List<Paciente> list = new List<Paciente>();
+            List<Persona> list = new List<Persona>();
             try
             {
                 this.JsonParam = "send={\"indice\":6,\"nombre\":\""+nombre+"\",\"apellido\":\""+apellido+"\"}";
@@ -351,47 +301,33 @@ namespace NetClient
                 var token = jobject.SelectToken("buscarPacienteNombre").ToList();
                 foreach (var item in token)
                 {
-                    Paciente paciente = new Paciente();
-                    //"idPaciente":1,"idPersona":1,"fechaIngreso":"2013-04-12",
-                    //"habilitadoPaciente":1,"idPerfil":1,"rut":"17231233","dv":"2","nombre":"Ada","apellidoPaterno":"Tatus",
-                    //"apellidoMaterno":"Boren","fechaNacimiento":"1991-08-06"
-                    paciente.IdPaciente = Convert.ToInt32(item.SelectToken("idPaciente").ToString());
-                    paciente.IdPersona = Convert.ToInt32(item.SelectToken("idPersona").ToString());
-                    paciente.FechaIngreso = Convert.ToDateTime(item.SelectToken("fechaIngreso").ToString());
-                    int estado = Convert.ToInt32(item.SelectToken("habilitadoPaciente").ToString());
-                    paciente.IdPerfil = Convert.ToInt32(item.SelectToken("idPerfil").ToString());
-                    int num_perfil = paciente.IdPerfil;
+                    Persona persona = new Persona();
+                    //{"idPersona":15,"idPerfil":1,"rut":"17897359","dv":"2","nombre":"ada","apellidoPaterno":"wonk","apellidoMaterno":"asturias","fechaNacimiento":"1991-12-12"},
+                    persona.IdPersona = Convert.ToInt32(item.SelectToken("idPersona").ToString());
+                    persona.IdPerfil = Convert.ToInt32(item.SelectToken("idPerfil").ToString());
+                    int num_perfil = persona.IdPerfil;
                     switch (num_perfil)
                     {
                         case 1:
-                            paciente.Nomperfil = "Administrador";
+                            persona.Nomperfil = "Administrador";
                             break;
                         case 2:
-                            paciente.Nomperfil = "Doctor";
+                            persona.Nomperfil = "Doctor";
                             break;
                         case 3:
-                            paciente.Nomperfil = "Asistente";
+                            persona.Nomperfil = "Asistente";
                             break;
                         case 4:
-                            paciente.Nomperfil = "Paciente";
+                            persona.Nomperfil = "Paciente";
                             break;
                     }
-                    paciente.Rut = Convert.ToInt32(item.SelectToken("rut").ToString());
-                    paciente.Dv = item.SelectToken("dv").ToString();
-                    paciente.Nombre = item.SelectToken("nombre").ToString();
-                    paciente.ApellidoPaterno = item.SelectToken("apellidoPaterno").ToString();
-                    paciente.ApellidoMaterno = item.SelectToken("apellidoMaterno").ToString();
-                    paciente.FechaNacimiento = Convert.ToDateTime(item.SelectToken("fechaNacimiento").ToString());
-
-                    if (estado.Equals(0))
-                    {
-                        paciente.HabilitadoPaciente = EstadoPersona.DESHABILITADO;
-                    }
-                    else if (estado.Equals(1))
-                    {
-                        paciente.HabilitadoPaciente = EstadoPersona.HABILITADO;
-                    }
-                    list.Add(paciente);
+                    persona.Rut = Convert.ToInt32(item.SelectToken("rut").ToString());
+                    persona.Dv = item.SelectToken("dv").ToString();
+                    persona.Nombre = item.SelectToken("nombre").ToString();
+                    persona.ApellidoPaterno = item.SelectToken("apellidoPaterno").ToString();
+                    persona.ApellidoMaterno = item.SelectToken("apellidoMaterno").ToString();
+                    persona.FechaNacimiento = Convert.ToDateTime(item.SelectToken("fechaNacimiento").ToString());
+                    list.Add(persona);
                 }
 
             }
@@ -404,9 +340,9 @@ namespace NetClient
         #endregion
 
         #region Buscar Odontologo Por Rut
-        public List<Odontologo> BuscarOdontologoPorRut(string rut)
+        public List<Persona> BuscarOdontologoPorRut(string rut)
         {
-            List<Odontologo> list = new List<Odontologo>();
+            List<Persona> list = new List<Persona>();
             try
             {
                 this.JsonParam = "send={\"indice\":7,\"rut\":"+rut+"}";
@@ -416,46 +352,33 @@ namespace NetClient
                 foreach (var item in token)
                 {
 
-                    Odontologo odontologo = new Odontologo();
-                    //{"idOdontologo":2,"idPersona":1,"especialidad":"Cirugia","odontologoHabilitado":null,"idPerfil":1,"rut":"17231233","dv":"2",
-                    //"nombre":"Ada","apellidoPaterno":"Tatus","apellidoMaterno":"Boren","fechaNacimiento":"1991-08-06"}
-                    odontologo.IdOdontologo = Convert.ToInt32(item.SelectToken("idOdontologo").ToString());
-                    odontologo.IdPersona = Convert.ToInt32(item.SelectToken("idPersona").ToString());
-                    odontologo.Especialidad = item.SelectToken("especialidad").ToString();
-                    int estado = Convert.ToInt32(item.SelectToken("odontologoHabilitado").ToString());
-                    odontologo.IdPerfil = Convert.ToInt32(item.SelectToken("idPerfil").ToString());
-                    int num_perfil = odontologo.IdPerfil;
+                    Persona persona = new Persona();
+                    //{"idPersona":15,"idPerfil":1,"rut":"17897359","dv":"2","nombre":"ada","apellidoPaterno":"wonk","apellidoMaterno":"asturias","fechaNacimiento":"1991-12-12"},
+                    persona.IdPersona = Convert.ToInt32(item.SelectToken("idPersona").ToString());
+                    persona.IdPerfil = Convert.ToInt32(item.SelectToken("idPerfil").ToString());
+                    int num_perfil = persona.IdPerfil;
                     switch (num_perfil)
                     {
                         case 1:
-                            odontologo.Nomperfil = "Administrador";
+                            persona.Nomperfil = "Administrador";
                             break;
                         case 2:
-                            odontologo.Nomperfil = "Doctor";
+                            persona.Nomperfil = "Doctor";
                             break;
                         case 3:
-                            odontologo.Nomperfil = "Asistente";
+                            persona.Nomperfil = "Asistente";
                             break;
                         case 4:
-                            odontologo.Nomperfil = "Paciente";
+                            persona.Nomperfil = "Paciente";
                             break;
                     }
-                    odontologo.Rut = Convert.ToInt32(item.SelectToken("rut").ToString());
-                    odontologo.Dv = item.SelectToken("dv").ToString();
-                    odontologo.Nombre = item.SelectToken("nombre").ToString();
-                    odontologo.ApellidoPaterno = item.SelectToken("apellidoPaterno").ToString();
-                    odontologo.ApellidoMaterno = item.SelectToken("apellidoMaterno").ToString();
-                    odontologo.FechaNacimiento = Convert.ToDateTime(item.SelectToken("fechaNacimiento").ToString());
-
-                    if (estado.Equals(0))
-                    {
-                        odontologo.OdontologoHabilitado = EstadoPersona.DESHABILITADO;
-                    }
-                    else if (estado.Equals(1))
-                    {
-                        odontologo.OdontologoHabilitado = EstadoPersona.HABILITADO;
-                    }
-                    list.Add(odontologo);
+                    persona.Rut = Convert.ToInt32(item.SelectToken("rut").ToString());
+                    persona.Dv = item.SelectToken("dv").ToString();
+                    persona.Nombre = item.SelectToken("nombre").ToString();
+                    persona.ApellidoPaterno = item.SelectToken("apellidoPaterno").ToString();
+                    persona.ApellidoMaterno = item.SelectToken("apellidoMaterno").ToString();
+                    persona.FechaNacimiento = Convert.ToDateTime(item.SelectToken("fechaNacimiento").ToString());
+                    list.Add(persona);
                 }
 
             }
@@ -468,9 +391,9 @@ namespace NetClient
         #endregion
 
         #region Buscar Odontologo Por Nombre Apellido
-        public List<Odontologo> BuscarOdontologoPorNombreApellido(string nombre, string apellido)
+        public List<Persona> BuscarOdontologoPorNombreApellido(string nombre, string apellido)
         {
-            List<Odontologo> list = new List<Odontologo>();
+            List<Persona> list = new List<Persona>();
             try
             {
                 this.JsonParam = "send={\"indice\":8,\"nombre\":\""+nombre+"\",\"apellido\":\""+apellido+"\"}";
@@ -480,46 +403,33 @@ namespace NetClient
                 foreach (var item in token)
                 {
 
-                    Odontologo odontologo = new Odontologo();
-                    //{"idOdontologo":2,"idPersona":1,"especialidad":"Cirugia","odontologoHabilitado":null,"idPerfil":1,"rut":"17231233","dv":"2",
-                    //"nombre":"Ada","apellidoPaterno":"Tatus","apellidoMaterno":"Boren","fechaNacimiento":"1991-08-06"}
-                    odontologo.IdOdontologo = Convert.ToInt32(item.SelectToken("idOdontologo").ToString());
-                    odontologo.IdPersona = Convert.ToInt32(item.SelectToken("idPersona").ToString());
-                    odontologo.Especialidad = item.SelectToken("especialidad").ToString();
-                    int estado = Convert.ToInt32(item.SelectToken("odontologoHabilitado").ToString());
-                    odontologo.IdPerfil = Convert.ToInt32(item.SelectToken("idPerfil").ToString());
-                    int num_perfil = odontologo.IdPerfil;
+                    Persona persona = new Persona();
+                    //{"idPersona":15,"idPerfil":1,"rut":"17897359","dv":"2","nombre":"ada","apellidoPaterno":"wonk","apellidoMaterno":"asturias","fechaNacimiento":"1991-12-12"},
+                    persona.IdPersona = Convert.ToInt32(item.SelectToken("idPersona").ToString());
+                    persona.IdPerfil = Convert.ToInt32(item.SelectToken("idPerfil").ToString());
+                    int num_perfil = persona.IdPerfil;
                     switch (num_perfil)
                     {
                         case 1:
-                            odontologo.Nomperfil = "Administrador";
+                            persona.Nomperfil = "Administrador";
                             break;
                         case 2:
-                            odontologo.Nomperfil = "Doctor";
+                            persona.Nomperfil = "Doctor";
                             break;
                         case 3:
-                            odontologo.Nomperfil = "Asistente";
+                            persona.Nomperfil = "Asistente";
                             break;
                         case 4:
-                            odontologo.Nomperfil = "Paciente";
+                            persona.Nomperfil = "Paciente";
                             break;
                     }
-                    odontologo.Rut = Convert.ToInt32(item.SelectToken("rut").ToString());
-                    odontologo.Dv = item.SelectToken("dv").ToString();
-                    odontologo.Nombre = item.SelectToken("nombre").ToString();
-                    odontologo.ApellidoPaterno = item.SelectToken("apellidoPaterno").ToString();
-                    odontologo.ApellidoMaterno = item.SelectToken("apellidoMaterno").ToString();
-                    odontologo.FechaNacimiento = Convert.ToDateTime(item.SelectToken("fechaNacimiento").ToString());
-
-                    if (estado.Equals(0))
-                    {
-                        odontologo.OdontologoHabilitado = EstadoPersona.DESHABILITADO;
-                    }
-                    else if (estado.Equals(1))
-                    {
-                        odontologo.OdontologoHabilitado = EstadoPersona.HABILITADO;
-                    }
-                    list.Add(odontologo);
+                    persona.Rut = Convert.ToInt32(item.SelectToken("rut").ToString());
+                    persona.Dv = item.SelectToken("dv").ToString();
+                    persona.Nombre = item.SelectToken("nombre").ToString();
+                    persona.ApellidoPaterno = item.SelectToken("apellidoPaterno").ToString();
+                    persona.ApellidoMaterno = item.SelectToken("apellidoMaterno").ToString();
+                    persona.FechaNacimiento = Convert.ToDateTime(item.SelectToken("fechaNacimiento").ToString());
+                    list.Add(persona);
                 }
 
             }

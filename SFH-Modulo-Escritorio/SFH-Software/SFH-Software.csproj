@@ -140,6 +140,18 @@
     <Compile Include="frmAdministracionFichas.Designer.cs">
       <DependentUpon>frmAdministracionFichas.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmDatosDeContacto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDatosDeContacto.Designer.cs">
+      <DependentUpon>frmDatosDeContacto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFuncionario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFuncionario.Designer.cs">
+      <DependentUpon>frmFuncionario.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmGastos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -157,6 +169,18 @@
     </Compile>
     <Compile Include="frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmOdontologo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmOdontologo.Designer.cs">
+      <DependentUpon>frmOdontologo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPaciente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPaciente.Designer.cs">
+      <DependentUpon>frmPaciente.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -193,6 +217,12 @@
     <EmbeddedResource Include="frmAdministracionUsuarios.resx">
       <DependentUpon>frmAdministracionUsuarios.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmDatosDeContacto.resx">
+      <DependentUpon>frmDatosDeContacto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFuncionario.resx">
+      <DependentUpon>frmFuncionario.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmGastos.resx">
       <DependentUpon>frmGastos.cs</DependentUpon>
     </EmbeddedResource>
@@ -201,6 +231,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMenu.resx">
       <DependentUpon>frmMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmOdontologo.resx">
+      <DependentUpon>frmOdontologo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPaciente.resx">
+      <DependentUpon>frmPaciente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

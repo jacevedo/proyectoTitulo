@@ -42,24 +42,12 @@
             this.datagriPersona = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.textBox11 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtpass2 = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.txtpass = new System.Windows.Forms.TextBox();
             this.btnNuevo = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label14 = new System.Windows.Forms.Label();
             this.txtnom = new System.Windows.Forms.TextBox();
@@ -73,8 +61,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtApeMat = new System.Windows.Forms.TextBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.mcFechadeCaducidad = new System.Windows.Forms.MonthCalendar();
             this.mcFechaNac = new System.Windows.Forms.MonthCalendar();
             this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox7.SuspendLayout();
@@ -93,7 +83,7 @@
             this.groupBox1.ForeColor = System.Drawing.Color.White;
             this.groupBox1.Location = new System.Drawing.Point(3, 27);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1212, 769);
+            this.groupBox1.Size = new System.Drawing.Size(1287, 769);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Administración de cuentas de usuario ";
@@ -105,7 +95,7 @@
             this.groupBox3.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.groupBox3.Location = new System.Drawing.Point(6, 277);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(1196, 483);
+            this.groupBox3.Size = new System.Drawing.Size(1272, 483);
             this.groupBox3.TabIndex = 15;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Lista  usuarios ";
@@ -193,9 +183,9 @@
             this.datagriPersona.Name = "datagriPersona";
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
             this.datagriPersona.RowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.datagriPersona.Size = new System.Drawing.Size(1184, 386);
+            this.datagriPersona.Size = new System.Drawing.Size(1260, 386);
             this.datagriPersona.TabIndex = 0;
-            this.datagriPersona.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.datagriPersona.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datagriPersona_CellContentClick);
             // 
             // groupBox2
             // 
@@ -205,79 +195,52 @@
             this.groupBox2.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.groupBox2.Location = new System.Drawing.Point(6, 19);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1196, 252);
+            this.groupBox2.Size = new System.Drawing.Size(1272, 252);
             this.groupBox2.TabIndex = 14;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.textBox11);
-            this.groupBox5.Controls.Add(this.textBox1);
+            this.groupBox5.Controls.Add(this.label4);
+            this.groupBox5.Controls.Add(this.mcFechadeCaducidad);
+            this.groupBox5.Controls.Add(this.txtpass2);
             this.groupBox5.Controls.Add(this.label16);
-            this.groupBox5.Controls.Add(this.label5);
             this.groupBox5.Controls.Add(this.txtpass);
             this.groupBox5.Controls.Add(this.btnNuevo);
             this.groupBox5.Controls.Add(this.label15);
             this.groupBox5.Controls.Add(this.btnCancelar);
-            this.groupBox5.Controls.Add(this.textBox7);
-            this.groupBox5.Controls.Add(this.label8);
-            this.groupBox5.Controls.Add(this.textBox5);
-            this.groupBox5.Controls.Add(this.label4);
-            this.groupBox5.Controls.Add(this.textBox6);
-            this.groupBox5.Controls.Add(this.comboBox1);
-            this.groupBox5.Controls.Add(this.label9);
-            this.groupBox5.Controls.Add(this.comboBox2);
-            this.groupBox5.Controls.Add(this.label10);
-            this.groupBox5.Controls.Add(this.label11);
             this.groupBox5.ForeColor = System.Drawing.Color.White;
-            this.groupBox5.Location = new System.Drawing.Point(632, 13);
+            this.groupBox5.Location = new System.Drawing.Point(681, 10);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(558, 221);
+            this.groupBox5.Size = new System.Drawing.Size(539, 236);
             this.groupBox5.TabIndex = 70;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Datos de contatcto";
             // 
-            // textBox11
+            // txtpass2
             // 
-            this.textBox11.Location = new System.Drawing.Point(344, 131);
-            this.textBox11.MaxLength = 60;
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(181, 20);
-            this.textBox11.TabIndex = 64;
-            this.textBox11.UseSystemPasswordChar = true;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(344, 16);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(181, 20);
-            this.textBox1.TabIndex = 58;
+            this.txtpass2.Location = new System.Drawing.Point(352, 129);
+            this.txtpass2.MaxLength = 60;
+            this.txtpass2.Name = "txtpass2";
+            this.txtpass2.Size = new System.Drawing.Size(145, 20);
+            this.txtpass2.TabIndex = 64;
+            this.txtpass2.UseSystemPasswordChar = true;
             // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(286, 138);
+            this.label16.Location = new System.Drawing.Point(295, 132);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(51, 13);
             this.label16.TabIndex = 63;
             this.label16.Text = "Confirmar";
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(286, 19);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(52, 13);
-            this.label5.TabIndex = 59;
-            this.label5.Text = "Dirección";
-            // 
             // txtpass
             // 
-            this.txtpass.Location = new System.Drawing.Point(344, 94);
+            this.txtpass.Location = new System.Drawing.Point(352, 97);
             this.txtpass.MaxLength = 60;
             this.txtpass.Name = "txtpass";
-            this.txtpass.Size = new System.Drawing.Size(181, 20);
+            this.txtpass.Size = new System.Drawing.Size(145, 20);
             this.txtpass.TabIndex = 62;
             this.txtpass.UseSystemPasswordChar = true;
             // 
@@ -286,7 +249,7 @@
             this.btnNuevo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnNuevo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(93)))), ((int)(((byte)(129)))));
             this.btnNuevo.ForeColor = System.Drawing.Color.White;
-            this.btnNuevo.Location = new System.Drawing.Point(398, 172);
+            this.btnNuevo.Location = new System.Drawing.Point(399, 196);
             this.btnNuevo.Margin = new System.Windows.Forms.Padding(1);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(127, 36);
@@ -297,7 +260,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(277, 94);
+            this.label15.Location = new System.Drawing.Point(285, 100);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(61, 13);
             this.label15.TabIndex = 61;
@@ -308,7 +271,7 @@
             this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(93)))), ((int)(((byte)(129)))));
             this.btnCancelar.ForeColor = System.Drawing.Color.White;
-            this.btnCancelar.Location = new System.Drawing.Point(253, 172);
+            this.btnCancelar.Location = new System.Drawing.Point(248, 196);
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(1);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(129, 36);
@@ -316,88 +279,6 @@
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
-            // 
-            // textBox7
-            // 
-            this.textBox7.Location = new System.Drawing.Point(344, 53);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(181, 20);
-            this.textBox7.TabIndex = 44;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(286, 56);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(32, 13);
-            this.label8.TabIndex = 52;
-            this.label8.Text = "Email";
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(121, 94);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(145, 20);
-            this.textBox5.TabIndex = 42;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(46, 19);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(41, 13);
-            this.label4.TabIndex = 57;
-            this.label4.Text = "Region";
-            // 
-            // textBox6
-            // 
-            this.textBox6.Location = new System.Drawing.Point(121, 131);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(145, 20);
-            this.textBox6.TabIndex = 43;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(118, 16);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(145, 21);
-            this.comboBox1.TabIndex = 56;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(47, 56);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(46, 13);
-            this.label9.TabIndex = 55;
-            this.label9.Text = "Comuna";
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(119, 53);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(145, 21);
-            this.comboBox2.TabIndex = 53;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(30, 97);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(65, 13);
-            this.label10.TabIndex = 56;
-            this.label10.Text = "Teléfono fijo";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(12, 134);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(83, 13);
-            this.label11.TabIndex = 57;
-            this.label11.Text = "Teléfono celular";
             // 
             // groupBox4
             // 
@@ -413,9 +294,9 @@
             this.groupBox4.Controls.Add(this.label2);
             this.groupBox4.Controls.Add(this.txtApeMat);
             this.groupBox4.ForeColor = System.Drawing.Color.White;
-            this.groupBox4.Location = new System.Drawing.Point(6, 13);
+            this.groupBox4.Location = new System.Drawing.Point(56, 10);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(336, 221);
+            this.groupBox4.Size = new System.Drawing.Size(336, 236);
             this.groupBox4.TabIndex = 69;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Datos de Usuario";
@@ -512,12 +393,18 @@
             // 
             this.groupBox6.Controls.Add(this.mcFechaNac);
             this.groupBox6.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.groupBox6.Location = new System.Drawing.Point(348, 13);
+            this.groupBox6.Location = new System.Drawing.Point(398, 10);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(277, 221);
+            this.groupBox6.Size = new System.Drawing.Size(277, 236);
             this.groupBox6.TabIndex = 65;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Fecha de Nacimiento";
+            // 
+            // mcFechadeCaducidad
+            // 
+            this.mcFechadeCaducidad.Location = new System.Drawing.Point(12, 35);
+            this.mcFechadeCaducidad.Name = "mcFechadeCaducidad";
+            this.mcFechadeCaducidad.TabIndex = 65;
             // 
             // mcFechaNac
             // 
@@ -537,12 +424,21 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "Administración de cuentas de usuario ";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(9, 19);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(105, 13);
+            this.label4.TabIndex = 66;
+            this.label4.Text = "Fecha de caducidad";
+            // 
             // frmAdministracionUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(200)))), ((int)(((byte)(226)))));
-            this.ClientSize = new System.Drawing.Size(1217, 799);
+            this.ClientSize = new System.Drawing.Size(1293, 799);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -573,20 +469,12 @@
         private System.Windows.Forms.Button btnNuevo;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.TextBox txtpass2;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox txtpass;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.ComboBox cmbxPerfil;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.TextBox txtdv;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox txtrut;
@@ -600,10 +488,6 @@
         private System.Windows.Forms.MonthCalendar mcFechaNac;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.DataGridView datagriPersona;
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.Button btnBuscar;
@@ -612,6 +496,8 @@
         private System.Windows.Forms.TextBox txtBuscar;
         private System.Windows.Forms.Label lblguion;
         private System.Windows.Forms.TextBox txtdvbusqueda;
+        private System.Windows.Forms.MonthCalendar mcFechadeCaducidad;
+        private System.Windows.Forms.Label label4;
         
     }
 }

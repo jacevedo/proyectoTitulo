@@ -51,12 +51,16 @@
     <Compile Include="ClientWsAdminUsuarioSig.cs" />
     <Compile Include="ClientWsAreaInsumoListas.cs" />
     <Compile Include="ClientWsFichaPresupuesto.cs" />
+    <Compile Include="ClientWsFuncionario.cs" />
     <Compile Include="ClientWsGastos.cs" />
     <Compile Include="ClientWsOrdenLaboratorio.cs" />
+    <Compile Include="ClientWsPaciente.cs" />
+    <Compile Include="ClientWsPassDatosdeContacto.cs" />
     <Compile Include="ClientWsPreciosInsumos.cs" />
     <Compile Include="ClientWsTratamientoAbono.cs" />
     <Compile Include="CoreNetClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ClientWsOdontologo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
