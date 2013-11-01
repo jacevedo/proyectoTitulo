@@ -244,11 +244,43 @@ switch ($opcion)
 		$direccion = $data->{'direccion'};
 		$mail = $data->{'mail'};
 		$fechaIngreso = $data->{'fechaIngreso'};
-		$datoContacto = new DatosContactos();
-		$datoContacto->initClass($idPersona, $idComuna, $fonoFijo, $fonoCelular, $direccion, $mail, $fechaIngreso);
+		$cont = new DatosContactos();
 		$controladoraContacto = new ControladoraDatosContacto();
+
+		$cont = $controladoraContacto->buscarPorPersona($idPersona);
+		$idPersonaContacto = $cont->idPersona;	
+
+		if($idPersonaContacto == 0)
+		{
+			//$arreglo["resultadoDatos"] = "No Existe Contacto";
+			$datoContacto = new DatosContactos();
+			$datoContacto->initClass($idPersona, $idComuna, $fonoFijo, $fonoCelular, $direccion, $mail, $fechaIngreso);
+			
+			if($controladoraContacto->insertarDatosContacto($datoContacto) == "datos Insertados Correctamente")
+			{
+				$arreglo["resultado"] = "Modificado";
+			}
+			else
+			{
+				$arreglo["resultado"] = "Error al modificar datos contacto";
+			}
+		}
+		else
+		{
+			//$arreglo["resultadoDatos"] = "Existe Contacto";
+			$datoContacto = new DatosContactos();
+			$datoContacto->initClass($idPersona, $idComuna, $fonoFijo, $fonoCelular, $direccion, $mail, $fechaIngreso);
+			$resultCont = $controladoraContacto->modificarDatosContacto($datoContacto);
+			if($resultCont == "Modificado")
+			{
+				$arreglo["resultado"] = "Modificado";
+			}
+			else
+			{
+				$arreglo["resultado"] = "Error al modificar datos contacto";
+			}
+		}
 		$arreglo["code"]=8;
-		$arreglo["resultado"] = $controladoraContacto->modificarDatosContacto($datoContacto);
 		echo(json_encode($arreglo));
 	break;
 	
