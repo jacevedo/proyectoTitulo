@@ -35,6 +35,8 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.datagriPersona = new System.Windows.Forms.DataGridView();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.lblusuario = new System.Windows.Forms.Label();
+            this.cmbxUsuario = new System.Windows.Forms.ComboBox();
             this.txtdir = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.btnNuevo = new System.Windows.Forms.Button();
@@ -49,6 +51,7 @@
             this.cmbxComuna = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
+            this.mcfechaIngreso = new System.Windows.Forms.MonthCalendar();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.datagriPersona)).BeginInit();
@@ -93,15 +96,19 @@
             // datagriPersona
             // 
             this.datagriPersona.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.datagriPersona.Location = new System.Drawing.Point(6, 32);
+            this.datagriPersona.Location = new System.Drawing.Point(6, 19);
             this.datagriPersona.Name = "datagriPersona";
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
             this.datagriPersona.RowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.datagriPersona.Size = new System.Drawing.Size(1234, 386);
+            this.datagriPersona.Size = new System.Drawing.Size(1234, 399);
             this.datagriPersona.TabIndex = 1;
+            this.datagriPersona.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datagriPersona_CellContentClick);
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.mcfechaIngreso);
+            this.groupBox5.Controls.Add(this.lblusuario);
+            this.groupBox5.Controls.Add(this.cmbxUsuario);
             this.groupBox5.Controls.Add(this.txtdir);
             this.groupBox5.Controls.Add(this.label5);
             this.groupBox5.Controls.Add(this.btnNuevo);
@@ -117,17 +124,33 @@
             this.groupBox5.Controls.Add(this.label10);
             this.groupBox5.Controls.Add(this.label11);
             this.groupBox5.ForeColor = System.Drawing.Color.White;
-            this.groupBox5.Location = new System.Drawing.Point(291, 19);
+            this.groupBox5.Location = new System.Drawing.Point(151, 19);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(669, 200);
+            this.groupBox5.Size = new System.Drawing.Size(965, 217);
             this.groupBox5.TabIndex = 71;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Datos de contatcto";
-            this.groupBox5.Enter += new System.EventHandler(this.groupBox5_Enter);
+            // 
+            // lblusuario
+            // 
+            this.lblusuario.AutoSize = true;
+            this.lblusuario.Location = new System.Drawing.Point(44, 29);
+            this.lblusuario.Name = "lblusuario";
+            this.lblusuario.Size = new System.Drawing.Size(43, 13);
+            this.lblusuario.TabIndex = 61;
+            this.lblusuario.Text = "Usuario";
+            // 
+            // cmbxUsuario
+            // 
+            this.cmbxUsuario.FormattingEnabled = true;
+            this.cmbxUsuario.Location = new System.Drawing.Point(116, 26);
+            this.cmbxUsuario.Name = "cmbxUsuario";
+            this.cmbxUsuario.Size = new System.Drawing.Size(203, 21);
+            this.cmbxUsuario.TabIndex = 60;
             // 
             // txtdir
             // 
-            this.txtdir.Location = new System.Drawing.Point(440, 16);
+            this.txtdir.Location = new System.Drawing.Point(432, 60);
             this.txtdir.Name = "txtdir";
             this.txtdir.Size = new System.Drawing.Size(181, 20);
             this.txtdir.TabIndex = 58;
@@ -135,7 +158,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(382, 19);
+            this.label5.Location = new System.Drawing.Point(374, 63);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(52, 13);
             this.label5.TabIndex = 59;
@@ -146,7 +169,7 @@
             this.btnNuevo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnNuevo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(93)))), ((int)(((byte)(129)))));
             this.btnNuevo.ForeColor = System.Drawing.Color.White;
-            this.btnNuevo.Location = new System.Drawing.Point(495, 149);
+            this.btnNuevo.Location = new System.Drawing.Point(495, 166);
             this.btnNuevo.Margin = new System.Windows.Forms.Padding(1);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(127, 36);
@@ -159,7 +182,7 @@
             this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(93)))), ((int)(((byte)(129)))));
             this.btnCancelar.ForeColor = System.Drawing.Color.White;
-            this.btnCancelar.Location = new System.Drawing.Point(352, 149);
+            this.btnCancelar.Location = new System.Drawing.Point(352, 166);
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(1);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(129, 36);
@@ -170,7 +193,7 @@
             // 
             // txtmail
             // 
-            this.txtmail.Location = new System.Drawing.Point(440, 53);
+            this.txtmail.Location = new System.Drawing.Point(432, 97);
             this.txtmail.Name = "txtmail";
             this.txtmail.Size = new System.Drawing.Size(181, 20);
             this.txtmail.TabIndex = 44;
@@ -178,7 +201,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(382, 56);
+            this.label8.Location = new System.Drawing.Point(374, 100);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(32, 13);
             this.label8.TabIndex = 52;
@@ -186,7 +209,7 @@
             // 
             // txtTelefono
             // 
-            this.txtTelefono.Location = new System.Drawing.Point(121, 94);
+            this.txtTelefono.Location = new System.Drawing.Point(119, 138);
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(200, 20);
             this.txtTelefono.TabIndex = 42;
@@ -194,7 +217,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(46, 19);
+            this.label4.Location = new System.Drawing.Point(44, 63);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(41, 13);
             this.label4.TabIndex = 57;
@@ -202,15 +225,15 @@
             // 
             // txtCelular
             // 
-            this.txtCelular.Location = new System.Drawing.Point(121, 131);
+            this.txtCelular.Location = new System.Drawing.Point(432, 26);
             this.txtCelular.Name = "txtCelular";
-            this.txtCelular.Size = new System.Drawing.Size(200, 20);
+            this.txtCelular.Size = new System.Drawing.Size(181, 20);
             this.txtCelular.TabIndex = 43;
             // 
             // cmbxRegion
             // 
             this.cmbxRegion.FormattingEnabled = true;
-            this.cmbxRegion.Location = new System.Drawing.Point(118, 16);
+            this.cmbxRegion.Location = new System.Drawing.Point(116, 60);
             this.cmbxRegion.Name = "cmbxRegion";
             this.cmbxRegion.Size = new System.Drawing.Size(203, 21);
             this.cmbxRegion.TabIndex = 56;
@@ -219,7 +242,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(47, 56);
+            this.label9.Location = new System.Drawing.Point(45, 100);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(46, 13);
             this.label9.TabIndex = 55;
@@ -228,7 +251,7 @@
             // cmbxComuna
             // 
             this.cmbxComuna.FormattingEnabled = true;
-            this.cmbxComuna.Location = new System.Drawing.Point(119, 53);
+            this.cmbxComuna.Location = new System.Drawing.Point(117, 97);
             this.cmbxComuna.Name = "cmbxComuna";
             this.cmbxComuna.Size = new System.Drawing.Size(202, 21);
             this.cmbxComuna.TabIndex = 53;
@@ -236,7 +259,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(30, 97);
+            this.label10.Location = new System.Drawing.Point(28, 141);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(65, 13);
             this.label10.TabIndex = 56;
@@ -245,11 +268,17 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(12, 134);
+            this.label11.Location = new System.Drawing.Point(339, 29);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(83, 13);
             this.label11.TabIndex = 57;
             this.label11.Text = "Teléfono celular";
+            // 
+            // mcfechaIngreso
+            // 
+            this.mcfechaIngreso.Location = new System.Drawing.Point(683, 26);
+            this.mcfechaIngreso.Name = "mcfechaIngreso";
+            this.mcfechaIngreso.TabIndex = 62;
             // 
             // frmDatosDeContacto
             // 
@@ -295,5 +324,8 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.DataGridView datagriPersona;
+        private System.Windows.Forms.Label lblusuario;
+        private System.Windows.Forms.ComboBox cmbxUsuario;
+        private System.Windows.Forms.MonthCalendar mcfechaIngreso;
     }
 }

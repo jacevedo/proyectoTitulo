@@ -407,7 +407,7 @@ namespace SFH_Software
             {
                 
                 Persona persona = new Persona();
-                persona.IdPerfil = Convert.ToInt32(this.cmbxPerfil.SelectedValue);
+                persona.IdPerfil = Convert.ToInt32(this.cmbxPerfil.SelectedIndex);
                 persona.Rut = int.Parse(this.txtrut.Text);
                 persona.Dv = this.txtdv.Text;
                 persona.Nombre = this.txtnom.Text;
@@ -421,8 +421,7 @@ namespace SFH_Software
                 pass.Passtext = txtpass.Text.ToString();
                 pass.FechaCaducidad = mcFechadeCaducidad.SelectionStart;
                 Datoscontacto contacto = this.DatosContactoDefault();
-                this.client_pass_dat.InsertarPass(pass);
-                //this.client_addUusario.insertarPersonaDatosdeContacto(persona,contacto, pass);
+                this.client_addUusario.insertarPersonaDatosdeContacto(persona,contacto, pass);
                 }
                 datagriPersona.DataSource = this.client_usuario.ListarDatosPersona();
                 this.LimpiarControles();
@@ -433,7 +432,7 @@ namespace SFH_Software
             {
                 Persona persona = new Persona();
                 persona.IdPersona = this.Id_persona;
-                persona.IdPerfil = Convert.ToInt32(this.cmbxPerfil.SelectedValue);
+                persona.IdPerfil = Convert.ToInt32(this.cmbxPerfil.SelectedIndex);
                 persona.Rut = int.Parse(this.txtrut.Text);
                 persona.Dv = this.txtdv.Text;
                 persona.Nombre = this.txtnom.Text;
@@ -448,9 +447,6 @@ namespace SFH_Software
                     pass.FechaCaducidad = mcFechadeCaducidad.SelectionStart;
                     this.client_usuario.ModificarPersona(persona);
                     this.client_pass_dat.ModificarPass(pass);
-                    //Datoscontacto contacto = this.DatosContactoDefault();
-                    //this.client_addUusario.insertarPersonaDatosdeContacto(persona, contacto, pass);
-                    
                 }
                 datagriPersona.DataSource = this.client_usuario.ListarDatosPersona();
                 this.LimpiarControles();

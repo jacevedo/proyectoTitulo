@@ -42,6 +42,8 @@
             this.datagriPersona = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.mcFechadeCaducidad = new System.Windows.Forms.MonthCalendar();
             this.txtpass2 = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.txtpass = new System.Windows.Forms.TextBox();
@@ -61,10 +63,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtApeMat = new System.Windows.Forms.TextBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.mcFechadeCaducidad = new System.Windows.Forms.MonthCalendar();
             this.mcFechaNac = new System.Windows.Forms.MonthCalendar();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox7.SuspendLayout();
@@ -83,7 +83,7 @@
             this.groupBox1.ForeColor = System.Drawing.Color.White;
             this.groupBox1.Location = new System.Drawing.Point(3, 27);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1287, 769);
+            this.groupBox1.Size = new System.Drawing.Size(1254, 769);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Administración de cuentas de usuario ";
@@ -95,7 +95,7 @@
             this.groupBox3.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.groupBox3.Location = new System.Drawing.Point(6, 277);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(1272, 483);
+            this.groupBox3.Size = new System.Drawing.Size(1241, 483);
             this.groupBox3.TabIndex = 15;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Lista  usuarios ";
@@ -183,7 +183,7 @@
             this.datagriPersona.Name = "datagriPersona";
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
             this.datagriPersona.RowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.datagriPersona.Size = new System.Drawing.Size(1260, 386);
+            this.datagriPersona.Size = new System.Drawing.Size(1222, 386);
             this.datagriPersona.TabIndex = 0;
             this.datagriPersona.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datagriPersona_CellContentClick);
             // 
@@ -195,7 +195,7 @@
             this.groupBox2.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.groupBox2.Location = new System.Drawing.Point(6, 19);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1272, 252);
+            this.groupBox2.Size = new System.Drawing.Size(1241, 252);
             this.groupBox2.TabIndex = 14;
             this.groupBox2.TabStop = false;
             // 
@@ -210,12 +210,27 @@
             this.groupBox5.Controls.Add(this.label15);
             this.groupBox5.Controls.Add(this.btnCancelar);
             this.groupBox5.ForeColor = System.Drawing.Color.White;
-            this.groupBox5.Location = new System.Drawing.Point(681, 10);
+            this.groupBox5.Location = new System.Drawing.Point(663, 10);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(539, 236);
             this.groupBox5.TabIndex = 70;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Datos de contatcto";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(9, 19);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(105, 13);
+            this.label4.TabIndex = 66;
+            this.label4.Text = "Fecha de caducidad";
+            // 
+            // mcFechadeCaducidad
+            // 
+            this.mcFechadeCaducidad.Location = new System.Drawing.Point(12, 35);
+            this.mcFechadeCaducidad.Name = "mcFechadeCaducidad";
+            this.mcFechadeCaducidad.TabIndex = 65;
             // 
             // txtpass2
             // 
@@ -294,7 +309,7 @@
             this.groupBox4.Controls.Add(this.label2);
             this.groupBox4.Controls.Add(this.txtApeMat);
             this.groupBox4.ForeColor = System.Drawing.Color.White;
-            this.groupBox4.Location = new System.Drawing.Point(56, 10);
+            this.groupBox4.Location = new System.Drawing.Point(38, 10);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(336, 236);
             this.groupBox4.TabIndex = 69;
@@ -393,18 +408,12 @@
             // 
             this.groupBox6.Controls.Add(this.mcFechaNac);
             this.groupBox6.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.groupBox6.Location = new System.Drawing.Point(398, 10);
+            this.groupBox6.Location = new System.Drawing.Point(380, 10);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(277, 236);
             this.groupBox6.TabIndex = 65;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Fecha de Nacimiento";
-            // 
-            // mcFechadeCaducidad
-            // 
-            this.mcFechadeCaducidad.Location = new System.Drawing.Point(12, 35);
-            this.mcFechadeCaducidad.Name = "mcFechadeCaducidad";
-            this.mcFechadeCaducidad.TabIndex = 65;
             // 
             // mcFechaNac
             // 
@@ -424,21 +433,12 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "Administración de cuentas de usuario ";
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(9, 19);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(105, 13);
-            this.label4.TabIndex = 66;
-            this.label4.Text = "Fecha de caducidad";
-            // 
             // frmAdministracionUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(200)))), ((int)(((byte)(226)))));
-            this.ClientSize = new System.Drawing.Size(1293, 799);
+            this.ClientSize = new System.Drawing.Size(1257, 799);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
