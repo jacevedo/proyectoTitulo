@@ -8,7 +8,7 @@ require_once '../controladoras/controladoracitas.php';
 *Opciones:
 *Opciones:
 * 1.- ingresarCita
-* 2.- Logout
+* 2.- listar cita por id Paciente
 */
 
 
@@ -29,6 +29,13 @@ switch ($opcion)
 		$cita->initClass(0, $idOdontologo, $idPaciente, $horaInicio, $fecha, $estado);
 		//echo($date);
 		$arreglo["resultado"] = $controladora->insertarCita($cita);
+		echo(json_encode($arreglo));
+	break;	
+	case 2:
+		//json lista citas por id Paciente{"indice":2,"idPaciente":3}
+		$controladora = new ControladoraCitas();
+		$idPaciente = $data->{"idPaciente"};
+		$arreglo["resultado"] = $controladora->listarCitaPorIdPaciente($idPaciente);
 		echo(json_encode($arreglo));
 	break;	
 }
