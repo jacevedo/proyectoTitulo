@@ -29,7 +29,7 @@ switch ($opcion)
 {
 	case 1:
 		$arreglo["code"] = 1;
-		//json Insertar Usuario {"indice":1,"idPerfil":4,"rut":17897359,"dv":2,"nombre":"ada","appPaterno":"wonk","appMaterno":"asturias","fechaNac":"1991-12-12","pass":"asdcasco","idComuna":2,"fonoFijo":"0227780184","celular":"+56976087240","Direccion":"antonio Varas 666","mail":"asd@asd.com","fechaIngreso":"2013-02-02"}
+		//json Insertar Usuario {"indice":1,"idPerfil":4,"rut":17897359,"dv":2,"nombre":"ada","appPaterno":"wonk","appMaterno":"asturias","fechaNac":"1991-12-12","pass":"asdcasco","idComuna":2,"fonoFijo":"0227780184","celular":"+56976087240","Direccion":"antonio Varas 666","mail":"asd@asd.com","fechaIngreso":"2013-02-02","fechaCaducidad":"2013-02-02"}
 		$idPerfil = $data->{'idPerfil'};
 		$rut = $data->{'rut'};
 		$dv = $data->{'dv'};
@@ -44,6 +44,7 @@ switch ($opcion)
 		$direccion = $data->{'direccion'};
 		$mail = $data->{'mail'};
 		$fechaIngreso = $data->{'fechaIngreso'};
+		$fechaCaducidad = $data->{'fechaCaducidad'};
 		$persona = new Persona();
 		$controladoraPersona = new ControladoraPersonaRegionComuna();
 		$persona->initClass(0, $idPerfil, $rut, $dv, $nombre, $appPateno, $appMaterno, $fechaNac);
@@ -52,7 +53,7 @@ switch ($opcion)
 		{
 			$pass = new Pass();
 			$controladoraPass = new ControladoraPass();
-			$pass->initClass($idPersona,$contrasena,"2014-01-01");
+			$pass->initClass($idPersona,$contrasena,$fechaCaducidad);
 			$insertadoPass = $controladoraPass->insertarPass($pass);
 			if($insertadoPass=="Password Registrada")
 			{
