@@ -86,7 +86,7 @@ namespace NetClient
             string datosInsertado = string.Empty;
             String fechaIngreso = datos.FechaIngreso.Year + "-" + datos.FechaIngreso.Month + "-" + datos.FechaIngreso.Day;
             //{"indice":4,"idPersona":17,"idComuna":21,"fonoFijo":"+976509346","fonoCelular":"+56984678325","direccion":"San Martin","mail":"ada@gmail.com","fechaIngreso":"2013-10-09"}
-            this.JsonParam = "send={\"indice\":4,\"idPersona\":"+datos.IdPersona+",\"idComuna\":"+datos.IdComuna+",\"fonoFijo\":\""+datos.FonoFijo+"\",\"fonoCelular\":\""+datos.FonoCelular+"\",\"direccion\":\""+datos.Direccion+"\",\"mail\":\""+datos.Mail+"\",\"fechaIngreso\":\""+fechaIngreso+"\"}";
+            this.JsonParam = "send={\"indice\":4,\"idPersona\":"+datos.IdPersona_dat + ",\"idComuna\":"+datos.IdComuna+",\"fonoFijo\":\""+datos.FonoFijo+"\",\"fonoCelular\":\""+datos.FonoCelular+"\",\"direccion\":\""+datos.Direccion+"\",\"mail\":\""+datos.Mail+"\",\"fechaIngreso\":\""+fechaIngreso+"\"}";
             try
             {
                 String result = netclient.NetPost("ws-pass-datos.php", this.JsonParam);
@@ -108,7 +108,7 @@ namespace NetClient
             string datosModificados = string.Empty;
             String fechaIngreso = datos.FechaIngreso.Year + "-" + datos.FechaIngreso.Month + "-" + datos.FechaIngreso.Day;
             //{"indice":5,"idPersona":17,"idComuna":21,"fonoFijo":"+976509346","fonoCelular":"+56984678325","direccion":"San Agustin","mail":"ada@hotmail.com","fechaIngreso":"2013-10-10"}
-            this.JsonParam = "send={\"indice\":5,\"idPersona\":" + datos.IdPersona + ",\"idComuna\":" + datos.IdComuna + ",\"fonoFijo\":\"" + datos.FonoFijo + "\",\"fonoCelular\":\"" + datos.FonoCelular + "\",\"direccion\":\"" + datos.Direccion + "\",\"mail\":\"" + datos.Mail + "\",\"fechaIngreso\":\"" + fechaIngreso + "\"}";
+            this.JsonParam = "send={\"indice\":5,\"idPersona\":" + datos.IdPersona_dat + ",\"idComuna\":" + datos.IdComuna + ",\"fonoFijo\":\"" + datos.FonoFijo + "\",\"fonoCelular\":\"" + datos.FonoCelular + "\",\"direccion\":\"" + datos.Direccion + "\",\"mail\":\"" + datos.Mail + "\",\"fechaIngreso\":\"" + fechaIngreso + "\"}";
             try
             {
                 String result = netclient.NetPost("ws-pass-datos.php", this.JsonParam);

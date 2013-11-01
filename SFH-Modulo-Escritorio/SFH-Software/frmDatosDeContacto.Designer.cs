@@ -35,6 +35,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.datagriPersona = new System.Windows.Forms.DataGridView();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.mcfechaIngreso = new System.Windows.Forms.MonthCalendar();
             this.lblusuario = new System.Windows.Forms.Label();
             this.cmbxUsuario = new System.Windows.Forms.ComboBox();
             this.txtdir = new System.Windows.Forms.TextBox();
@@ -51,7 +52,6 @@
             this.cmbxComuna = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.mcfechaIngreso = new System.Windows.Forms.MonthCalendar();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.datagriPersona)).BeginInit();
@@ -131,6 +131,12 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Datos de contatcto";
             // 
+            // mcfechaIngreso
+            // 
+            this.mcfechaIngreso.Location = new System.Drawing.Point(683, 26);
+            this.mcfechaIngreso.Name = "mcfechaIngreso";
+            this.mcfechaIngreso.TabIndex = 62;
+            // 
             // lblusuario
             // 
             this.lblusuario.AutoSize = true;
@@ -147,6 +153,7 @@
             this.cmbxUsuario.Name = "cmbxUsuario";
             this.cmbxUsuario.Size = new System.Drawing.Size(203, 21);
             this.cmbxUsuario.TabIndex = 60;
+            this.cmbxUsuario.SelectedIndexChanged += new System.EventHandler(this.cmbxUsuario_SelectedIndexChanged);
             // 
             // txtdir
             // 
@@ -273,12 +280,6 @@
             this.label11.Size = new System.Drawing.Size(83, 13);
             this.label11.TabIndex = 57;
             this.label11.Text = "Teléfono celular";
-            // 
-            // mcfechaIngreso
-            // 
-            this.mcfechaIngreso.Location = new System.Drawing.Point(683, 26);
-            this.mcfechaIngreso.Name = "mcfechaIngreso";
-            this.mcfechaIngreso.TabIndex = 62;
             // 
             // frmDatosDeContacto
             // 

@@ -5,10 +5,10 @@ using System.Text;
 
 namespace ObjectsBeans
 {
-    public class Datoscontacto : Persona
+    public class Datoscontacto 
     {
         #region Campos
-        //private int idPersona;
+        private int idPersona_dat;
         private int idComuna;
         private string fonoFijo;
         private string fonoCelular;
@@ -21,17 +21,19 @@ namespace ObjectsBeans
         #region Constructor
         public Datoscontacto() { 
         }
-         public Datoscontacto(int _idPersona)
-            : base(_idPersona){ }
+         /*public Datoscontacto(int _idPersona)
+            : base(_idPersona){
+               
+         }*/
         #endregion
 
         #region Propiedad
-        
-        /*public int IdPersona
-        {
-            get { return idPersona; }
-            set { idPersona = value; }
-        */
+
+         public int IdPersona_dat
+         {
+             get { return idPersona_dat; }
+             set { idPersona_dat = value; }
+         }
 
         public int IdComuna
         {

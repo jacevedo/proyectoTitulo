@@ -140,5 +140,39 @@ namespace NetClient
             return personaModificada;
         }
         #endregion
+        //{"code":9,"resultado":{"idPersona":1,"idComuna":2,"fonoFijo":"+567685932","fonoCelular":"+343849482","direccion":"antonio varas 666","mail":"varas@varas.cl","fechaIngreso":"2013-08-02"}}
+        #region ListarComunaIdRegiones
+        public List<Datoscontacto> ListarDatosDeContacto(int persona)
+        {
+            List<Datoscontacto> list = new List<Datoscontacto>();
+            try
+            {
+                this.JsonParam = "send={\"indice\":9,\"idPersona\":" + persona+ "}";
+                String result = netclient.NetPost("ws-add-usuario.php", this.JsonParam);
+                var jobject = JObject.Parse(result);
+                var token = jobject.SelectToken("resultado").ToList();
+                Datoscontacto datos = new Datoscontacto();
+                foreach (var item in token)
+                {
+                    
+                    //{"code":9,"resultado":{"idPersona":1,"idComuna":2,"fonoFijo":"+567685932","fonoCelular":"+343849482","direccion":"antonio varas 666","mail":"varas@varas.cl","fechaIngreso":"2013-08-02"}}
+                    datos.IdPersona_dat = int.Parse(item.SelectToken("idPersona").ToString());
+                    datos.IdComuna = Convert.ToInt32(item.SelectToken("idComuna").ToString());
+                    datos.FonoFijo = item.SelectToken("fonoFijo").ToString();
+                    datos.FonoCelular = item.SelectToken("fonoCelular").ToString();
+                    datos.Direccion = item.SelectToken("direccion").ToString();
+                    datos.Mail = item.SelectToken("mail").ToString();
+                    datos.FechaIngreso = Convert.ToDateTime(item.SelectToken("fechaIngreso").ToString());
+                    list.Add(datos);
+                }
+
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e + "| Error al Listar Datos de contacto");
+            }
+            return list;
+        }
+        #endregion
     }
 }

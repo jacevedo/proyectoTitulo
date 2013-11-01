@@ -63,6 +63,11 @@ namespace SFH_Software
             this.cmbxComuna.ValueMember = "IdComuna";
             this.cmbxComuna.DisplayMember = "NombreComuna";
         }
+        private void PoblarGrillaDatosDeContacto(int id_persona) {
+            
+            datagriPersona.DataSource = this.client_addUusario.ListarDatosDeContacto(id_persona);
+
+        }
         private void PoblarBotonesGrid() {
             // 
             // Editar
@@ -79,6 +84,7 @@ namespace SFH_Software
         {
             InitializeComponent();
             this.Editar = new System.Windows.Forms.DataGridViewButtonColumn();
+           
         }
 
         
@@ -86,8 +92,8 @@ namespace SFH_Software
         {
             this.PoblarComboRegion();
             this.PoblarComboPersona();
-            this.datagriPersona.DataSource = this.client_users.ListarDatosPersona();
-            this.PoblarBotonesGrid();
+            //this.PoblarGrillaDatosDeContacto(1);
+            //this.PoblarBotonesGrid();
             this.btnNuevo.Text = "Ingresar Gastos";
         }
 
@@ -102,7 +108,7 @@ namespace SFH_Software
             if (btnNuevo.Text.ToString().Trim() == "Ingresar Gastos")
             {
                 Datoscontacto datos = new Datoscontacto();
-                datos.IdPersona = Convert.ToInt32(this.cmbxUsuario.SelectedValue);
+                datos.IdPersona_dat = Convert.ToInt32(this.cmbxUsuario.SelectedValue);
                 datos.IdComuna = Convert.ToInt32(this.cmbxComuna.SelectedValue);
                 datos.FonoFijo = txtTelefono.Text;
                 datos.FonoCelular = txtCelular.Text;
@@ -117,8 +123,15 @@ namespace SFH_Software
             }
             else if (btnNuevo.Text.ToString().Trim() == "Guardar Cambios")
             {
-               
-                datagriPersona.DataSource = this.client_users.ListarDatosPersona();
+                Datoscontacto datos = new Datoscontacto();
+                datos.IdPersona_dat = Convert.ToInt32(this.cmbxUsuario.SelectedValue);
+                datos.IdComuna = Convert.ToInt32(this.cmbxComuna.SelectedValue);
+                datos.FonoFijo = txtTelefono.Text;
+                datos.FonoCelular = txtCelular.Text;
+                datos.Mail = txtmail.Text;
+                datos.Direccion = txtdir.Text;
+                datos.FechaIngreso = mcfechaIngreso.SelectionStart;
+                client_datos.ModificarDatosdeContacto(datos);
                 this.LimpiarControles();
                 MessageBox.Show("Usuario modificado satisfactoriamente", "SFH Administración de Clínica - Administración de Usuarios", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -150,6 +163,22 @@ namespace SFH_Software
                     this.ModificarUsuarios(e);
                     break;
               
+            }
+        }
+
+        private void cmbxUsuario_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int aux = 0;
+            Persona persona = this.cmbxUsuario.SelectedValue as Persona;
+            if (persona != null)
+            {
+                aux = persona.IdPersona;
+                //this.PoblarGrillaDatosDeContacto(aux); 
+            }
+            else
+            {
+                aux = Convert.ToInt32(this.cmbxUsuario.SelectedValue.ToString());
+                this.PoblarGrillaDatosDeContacto(aux);
             }
         }
 
