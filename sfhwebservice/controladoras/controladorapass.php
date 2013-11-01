@@ -36,7 +36,7 @@ class ControladoraPass
 		}
 		catch(Exception $e)
 		{
-			return false;
+			return "Exception";
 			throw new $e("Error al insertar tratamiento.");
 		}
 	}
