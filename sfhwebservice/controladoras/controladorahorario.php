@@ -14,6 +14,7 @@ require_once '../pojos/cita.php';
 
 	public function mostrarHorasDisponibles($fecha)
 	{
+
 		$conexion = new MySqlCon();
 		$fechaHora = explode(" ",$fecha->format('d/m/Y H:i:s'));
 		$arregloDia = explode('/', $this->nameDate($fechaHora[0]));
@@ -26,15 +27,15 @@ require_once '../pojos/cita.php';
 		   	$sentencia=$conexion->prepare($this->SqlQuery);
 		   	$sentencia->bind_param("s",$nombreDia);
 		   	$sentencia->execute();
-		   	$sentencia->bind_result($idHorario, $idOdontologo, $dia, $horaInicio, $horaTermino, $modulo ,$nomOdontologo, $appPaternoOdontologo);
-        	$indice = 0;
-
+		   	$sentencia->bind_result($idHorario, $idOdontologo, $dia, 
+        								$horaInicio, $horaTermino, $modulo ,$nomOdontologo,$appPaternoOdontologo);
+        	$indice=0;
         	while($sentencia->fetch())
         	{
         		$horario = new Horario();
 				$horario->initClass($idHorario, $idOdontologo, $horaInicio, $horaTermino,$modulo);
     			$arreglo["idOdontologo"] = $idOdontologo;
-    			$arreglo["nomOdontologo"] = $nomOdontologo." ".$appPaternoOdontologo;
+    			$arreglo["nomOdontologo"] = $nomOdontologo." " . $appPaternoOdontologo;
     			$arregloHoras = $this->sumaHorario($horaInicio,$modulo,$horaTermino);
     			$arregloCitas = $this->horasTomadas($idOdontologo,$fechaHora[0]);
     			$arreglo["horario"] =	$this->coparHoras($arregloHoras,$arregloCitas);
@@ -50,7 +51,6 @@ require_once '../pojos/cita.php';
         }
         return $datos;
 	}
-
 	public function coparHoras($arregloHoras,$arregloCitas)
 	{
 		if(!empty($arregloCitas))
@@ -69,9 +69,9 @@ require_once '../pojos/cita.php';
 				}
 			}	
 		}
+
 		return $arregloHoras;
 	}
-
 	public function horasTomadas($idOdontologo,$fecha)
 	{
 		$fecha= new DateTime($fecha);
@@ -84,15 +84,19 @@ require_once '../pojos/cita.php';
 			$this->SqlQuery = "SELECT * FROM cita WHERE ID_ODONTOLOGO = ? AND FECHA = ?";
 		   	$sentencia=$conexion->prepare($this->SqlQuery);
 
+
+		
 		   	$sentencia->bind_param("is",$idOdontologo,$fecha);
 		   	if($sentencia->execute())
 		   	{
-		   		$sentencia->bind_result($idCita, $idOdontologo, $idPaciente,$horaInicio, $horaTermino, $fecha, $estado);
+		   		$sentencia->bind_result($idCita, $idOdontologo, $idPaciente,
+		   							 $horaInicio, $horaTermino, $fecha, $estado);
 		   		$indice=0;
 	        	while($sentencia->fetch())
 	        	{	
 	        		$cita = new Cita();
-	        		$cita->initClass($idCita, $idOdontologo, $idPaciente, $horaInicio,$fecha, $estado);
+	        		$cita->initClass($idCita, $idOdontologo, $idPaciente, $horaInicio,
+	        						 $fecha, $estado);
 	        		$this->datos[$indice] = $cita;
 	        		$indice++;
 	        	}
@@ -102,12 +106,11 @@ require_once '../pojos/cita.php';
     	{
         	throw new $e("Error al listar pacientes");
         }
-        return $this->datos;		
+        return $this->datos;
+		
 	}
-
 	public function obtenerkey($arregloFinal)
 	{
-		$arregloIndices ="";
 		foreach ($arregloFinal as $dato) 
 		{
 			$numKey = explode("-", array_search($dato, $arregloFinal));
@@ -115,7 +118,6 @@ require_once '../pojos/cita.php';
 		}
 		return $arregloIndices;
 	}
-	
 	public function sumaHorario($fechaInicial, $rangoFecha,$horaTermino)
 	{
 		$contador=0;
@@ -151,9 +153,11 @@ require_once '../pojos/cita.php';
 				$arreglosHoras["hora-".$contador] = $fechaInicial;	
 			}
 			$contador++;
-			//$tiempoHorario--;
+			$tiempoHorario--;
 		}
 		return $arreglosHoras;
+//		echo($hora);
 	}
+	
 }
 ?>

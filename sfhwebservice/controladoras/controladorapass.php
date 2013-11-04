@@ -31,12 +31,12 @@ class ControladoraPass
 			else
 			{
 				$conexion->close();
-	        	return "error";
+	        	return false;
 	        }
 		}
 		catch(Exception $e)
 		{
-			return "Exception";
+			return false;
 			throw new $e("Error al insertar tratamiento.");
 		}
 	}

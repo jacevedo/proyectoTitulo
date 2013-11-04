@@ -16,13 +16,14 @@ require_once '../pojos/cita.php';
         	{
         		$sentencia->bind_result($idCita, $idOdontologo, $idPaciente, $horaInicio, $horaTermino, $fecha, $estado, $nomPaciente, $appPaternoPaciente, 
 								$appMaternoPaciente, $nomOdontologo, $appPaternoOdontologo, $appMaternoOdontologo);
-				$indice = 0;
+				$indice=0;     
 				while($sentencia->fetch())
 				{
 					$cita = new Cita();
 					$cita->initClassDatosExtra($idCita, $idOdontologo, $idPaciente, $horaInicio, $horaTermino, $fecha, $estado, $nomPaciente, $appPaternoPaciente, 
 								$appMaternoPaciente, $nomOdontologo, $appPaternoOdontologo, $appMaternoOdontologo);
         			$this->datos[$indice] = $cita;
+        			
         			$indice++;
 				}
       		}
@@ -34,7 +35,6 @@ require_once '../pojos/cita.php';
         }
         return $this->datos;
 	}
-
 	function buscarCita($fecha, $horaInicio)
 	{
 		$conexion2 = new MySqlCon();
@@ -48,8 +48,9 @@ require_once '../pojos/cita.php';
 		   	$sentencia->bind_param("ss",$fecha,$nuevaHoraInicio);
         	if($sentencia->execute())
         	{
+        		
         		$sentencia->bind_result($idCita, $idOdontologo, $idPaciente, $horaInicio, $horaTermino, $fecha, $estado);
-				$indice = 0;
+				$indice=0;     
 				while($sentencia->fetch())
 				{
 					$cita = new Cita();
@@ -58,6 +59,7 @@ require_once '../pojos/cita.php';
         			{
         				return 0;
         			}
+        			
         			$indice++;
 				}
       		}
@@ -73,7 +75,6 @@ require_once '../pojos/cita.php';
         }
         return 1;
 	}
-
 	function insertarCita(Cita $cita)
 	{
 		$conexion = new MySqlCon();
@@ -84,6 +85,7 @@ require_once '../pojos/cita.php';
 		$estado = $cita->estado;
 		$nuevaHoraInicio = $fecha." ".$horaInicio;
 		$nuevaHoraTermino = $fecha." ".$horaInicio;
+		
 
 		if($this->buscarCita($fecha, $horaInicio))
 		{
@@ -95,6 +97,7 @@ require_once '../pojos/cita.php';
 		        $sentencia->bind_param('iisssi',$idOdontologo, $idPaciente, $nuevaHoraInicio, $nuevaHoraTermino, $fecha, $estado);
 		      	if($sentencia->execute())
 		      	{
+		      		//$id = ;
 		        	$conexion->close();
 					return $sentencia->insert_id;
 				}
@@ -116,7 +119,6 @@ require_once '../pojos/cita.php';
 		}
 		
 	}
-	
 	function modificarCita($cita)
 	{
 		$idCita = $cita->idCita;
@@ -148,6 +150,84 @@ require_once '../pojos/cita.php';
          return false;
          throw new $e("Error al Registrar Odontologo");
         }
+	}
+	function listarCitaPorIdPaciente($idPaciente)
+	{
+		$conexion2 = new MySqlCon();
+		$this->datos ='';
+		$nuevaHoraInicio = $fecha." ".$horaInicio;
+		try
+		{
+			$this->SqlQuery = '';
+			$this->SqlQuery = "SELECT ID_CITA, ID_ODONTOLOGO AS IDODONTOLOGO, ID_PACIENTE AS IDPACIENTE, HORA_DE_INICIO, HORA_DE_TERMINO, FECHA, ESTADO, (SELECT NOMBRE FROM persona pe, odontologo od WHERE od.ID_PERSONA = pe.ID_PERSONA AND od.ID_ODONTOLOGO = IDODONTOLOGO ) AS NOMBRE_ODONTOLOGO, (SELECT APELLIDO_PATERNO FROM persona pe, odontologo od WHERE od.ID_PERSONA = pe.ID_PERSONA AND od.ID_ODONTOLOGO = IDODONTOLOGO ) AS APELLIDO_PATERNO_ODONTOLOGO, (SELECT APELLIDO_MATERNO FROM persona pe, odontologo od WHERE od.ID_PERSONA = pe.ID_PERSONA AND od.ID_ODONTOLOGO = IDODONTOLOGO ) AS APELLIDO_MATERNO_ODONTOLOGO, (SELECT NOMBRE FROM persona pe, paciente pa WHERE pa.ID_PERSONA = pe.ID_PERSONA AND pa.ID_PACIENTE = IDPACIENTE ) AS NOMBRE_PACIENTE,(SELECT APELLIDO_PATERNO FROM persona pe, paciente pa WHERE pa.ID_PERSONA = pe.ID_PERSONA AND pa.ID_PACIENTE = IDPACIENTE ) AS APELLIDO_PATERNO_PACIENTE,(SELECT APELLIDO_MATERNO FROM persona pe, paciente pa WHERE pa.ID_PERSONA = pe.ID_PERSONA AND pa.ID_PACIENTE = IDPACIENTE ) AS APELLIDO_MATERNO_PACIENTE FROM cita WHERE ID_PACIENTE = ? ";
+		   	$sentencia=$conexion2->prepare($this->SqlQuery);
+		   	$sentencia->bind_param("s",$idPaciente);
+        	if($sentencia->execute())
+        	{
+        		
+        		$sentencia->bind_result($idCita, $idOdontologo, $idPaciente, $horaInicio, $horaTermino, $fecha, $estado, $nomPaciente, $appPaternoPaciente, 
+								$appMaternoPaciente, $nomOdontologo, $appPaternoOdontologo, $appMaternoOdontologo);
+				$indice=0;     
+				while($sentencia->fetch())
+				{
+					$cita = new Cita();
+					$cita->initClassDatosExtra($idCita, $idOdontologo, $idPaciente, $horaInicio, $horaTermino, $fecha, $estado, $nomPaciente, $appPaternoPaciente, 
+								$appMaternoPaciente, $nomOdontologo, $appPaternoOdontologo, $appMaternoOdontologo);
+        			$this->datos[$indice] = $cita;
+        			
+        			$indice++;
+				}
+      		}
+      		else
+      		{
+        		echo("Error al ejecutar");
+      		}
+       		$conexion2->close();
+    	}
+    	catch(Exception $e)
+    	{
+        	throw new $e("Error al listar pacientes");
+        }
+        return $this->datos;
+	}
+	public function listarCitaPorPacienteFecha($idPaciente, $fecha)
+	{
+		$conexion2 = new MySqlCon();
+		$this->datos ='';
+		$nuevaHoraInicio = $fecha." ".$horaInicio;
+		try
+		{
+			$this->SqlQuery = '';
+			$this->SqlQuery = "SELECT ID_CITA, ID_ODONTOLOGO AS IDODONTOLOGO, ID_PACIENTE AS IDPACIENTE, HORA_DE_INICIO, HORA_DE_TERMINO, FECHA, ESTADO, (SELECT NOMBRE FROM persona pe, odontologo od WHERE od.ID_PERSONA = pe.ID_PERSONA AND od.ID_ODONTOLOGO = IDODONTOLOGO ) AS NOMBRE_ODONTOLOGO, (SELECT APELLIDO_PATERNO FROM persona pe, odontologo od WHERE od.ID_PERSONA = pe.ID_PERSONA AND od.ID_ODONTOLOGO = IDODONTOLOGO ) AS APELLIDO_PATERNO_ODONTOLOGO, (SELECT APELLIDO_MATERNO FROM persona pe, odontologo od WHERE od.ID_PERSONA = pe.ID_PERSONA AND od.ID_ODONTOLOGO = IDODONTOLOGO ) AS APELLIDO_MATERNO_ODONTOLOGO, (SELECT NOMBRE FROM persona pe, paciente pa WHERE pa.ID_PERSONA = pe.ID_PERSONA AND pa.ID_PACIENTE = IDPACIENTE ) AS NOMBRE_PACIENTE,(SELECT APELLIDO_PATERNO FROM persona pe, paciente pa WHERE pa.ID_PERSONA = pe.ID_PERSONA AND pa.ID_PACIENTE = IDPACIENTE ) AS APELLIDO_PATERNO_PACIENTE,(SELECT APELLIDO_MATERNO FROM persona pe, paciente pa WHERE pa.ID_PERSONA = pe.ID_PERSONA AND pa.ID_PACIENTE = IDPACIENTE ) AS APELLIDO_MATERNO_PACIENTE FROM cita WHERE ID_PACIENTE = ? AND FECHA >= ?";
+		   	$sentencia=$conexion2->prepare($this->SqlQuery);
+		   	$sentencia->bind_param("is",$idPaciente,$fecha);
+        	if($sentencia->execute())
+        	{
+        		
+        		$sentencia->bind_result($idCita, $idOdontologo, $idPaciente, $horaInicio, $horaTermino, $fecha, $estado, $nomPaciente, $appPaternoPaciente, 
+								$appMaternoPaciente, $nomOdontologo, $appPaternoOdontologo, $appMaternoOdontologo);
+				$indice=0;     
+				while($sentencia->fetch())
+				{
+					$cita = new Cita();
+					$cita->initClassDatosExtra($idCita, $idOdontologo, $idPaciente, $horaInicio, $horaTermino, $fecha, $estado, $nomPaciente, $appPaternoPaciente, 
+								$appMaternoPaciente, $nomOdontologo, $appPaternoOdontologo, $appMaternoOdontologo);
+					$this->datos[$indice] = $cita;
+        			
+        			$indice++;
+				}
+      		}
+      		else
+      		{
+        		echo("Error al ejecutar");
+      		}
+       		$conexion2->close();
+    	}
+    	catch(Exception $e)
+    	{
+        	throw new $e("Error al listar pacientes");
+        }
+        return $this->datos;
 	}
 }
 ?>
