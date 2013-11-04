@@ -118,16 +118,8 @@ switch ($opcion)
 	case 8:
 		//json Listar Datos Contacto idPersona {"indice":8}
 		$controladoraDatos = new ControladoraDatosContacto();
-		
 		$arreglo["code"] = 8;
 		$arreglo["Resultado"] =  $controladoraDatos->listarDatosContacto();
 		echo(json_encode($arreglo));
 	break;
-
-
-
-
-
-
-
 }
