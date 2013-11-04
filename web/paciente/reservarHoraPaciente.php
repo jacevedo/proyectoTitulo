@@ -6,6 +6,7 @@ session_start();
 	<head>
 		<link rel="stylesheet" href="estilos/estiloBase.css">
 		<link rel="stylesheet" href="estilos/estiloTomarHoraPaciente.css">
+		<script type="text/javascript" src="javascript/JQuery.js"></script>
 		<script type="text/javascript" src="javascript/scriptReservarHoraPaciente.js"></script>
 	</head>
 	<body>
@@ -30,6 +31,8 @@ session_start();
 			<div id="Contenido">
 				<input type="hidden" value=<?=$_SESSION['user'];?> id="idPaciente">
 				<input type="hidden" value=<?=$_SESSION['key'];?> id="keyPaciente">
+				<input type="hidden" value=<?=$_SESSION['paciente'];?> id="pacientes">
+				
 				<table id="tablaTomarHora">
 					<tr>
 						<td class="encabezado">Fecha</td>
@@ -37,19 +40,12 @@ session_start();
 										
 					</tr>
 					<tr>
-						<td class="encabezado">Hora</td>
-						<td><input type="text" id="txtHora"/></td>
+						<td class="encabezado">Dentista</td>
+						<td><select id="selectDentista"></select></td>
 					</tr>
 					<tr>
-						<td class="encabezado">Dentista</td>
-						<td>
-							<select id="selectDentista">
-								<option value="--">--</option>
-								<option value="01">Dra. Pamela Acevedo</option>
-								<option value="02">Dr. Ariel Garrido</option>
-								<option value="02">Dr. German Garrido</option>
-							</select>
-						</td>
+						<td class="encabezado">Hora</td>
+						<td><select id="selectHora"></select></td>
 					</tr>
 					<tr>
 						<td colspan=2><button id="btnReservarHoraPaciente">Reservar Hora</button></td>

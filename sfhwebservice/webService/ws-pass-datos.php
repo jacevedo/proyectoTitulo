@@ -15,7 +15,6 @@ require_once '../controladoras/controladoradatoscontacto.php';
 * 5.- Modificar Datos Contacto
 * 6.- Buscar Datos por idPersona
 * 7.- Modificar pass con confirmacion
-* 8.- Listar datos de persona
 */
 
 
@@ -56,7 +55,7 @@ switch ($opcion)
 		$controladoraPass = new ControladoraPass();
 		$arreglo["code"] = 3;
 		$arreglo["resultado"] =  $controladoraPass->buscarIdPersona($idPersona);
-		echo(json_encode($arreglo));
+		echo(json_encode());
 	break;
 	case 4:
 		//json Insertar Datos Contacto {"indice":4,"idPersona":17,"idComuna":21,"fonoFijo":"+976509346","fonoCelular":"+56984678325","direccion":"San Martin","mail":"ada@gmail.com","fechaIngreso":"2013-10-09"}
@@ -115,19 +114,4 @@ switch ($opcion)
 		$arreglo["Resultado"] =  $controladoraPass->modificarPassConConfirmacion($passObjeto, $nuevaPass);
 		echo(json_encode($arreglo));
 	break;	
-	case 8:
-		//json Listar Datos Contacto idPersona {"indice":8}
-		$controladoraDatos = new ControladoraDatosContacto();
-		
-		$arreglo["code"] = 8;
-		$arreglo["Resultado"] =  $controladoraDatos->listarDatosContacto();
-		echo(json_encode($arreglo));
-	break;
-
-
-
-
-
-
-
 }

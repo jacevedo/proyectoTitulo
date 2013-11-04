@@ -77,13 +77,16 @@ function guardarPersona()
 	var dd = fechaCad.getDate();
 	var mm = fechaCad.getMonth()+1;
 	var yyyy = fechaCad.getFullYear();
-	if(dd<10){dd='0'+dd} if(mm<10){mm='0'+mm} fechaCad = yyyy+'/'+mm+'/'+dd;
+	if(dd<10){dd='0'+dd} if(mm<10){mm='0'+mm}
+	//fechaCad = yyyy+'/'+mm+'/'+dd;
+	fechaCad = "2014"+'/'+mm+'/'+dd
 
 	var persona = direccionWeb+"ws-add-usuario.php";
 	var data = {"send":"{\"indice\":1,\"idPerfil\":4,\"rut\":\""+rut+"\",\"dv\":\""+dv+"\",\"nombre\":\""+nombre+"\",\"appPaterno\":\""+appPaterno+"\",\"appMaterno\":\""+appMaterno+"\",\"fechaNac\":\""+fechaNac+"\",\"pass\":\""+pass+"\",\"idComuna\":\""+comuna+"\",\"fonoFijo\":\""+fonoFijo+"\",\"celular\":\""+fonoCel+"\",\"Direccion\":\""+direccion+"\",\"mail\":\""+mail+"\",\"fechaIngreso\":\""+fechaIng+"\"}"};
 
 	$.post(persona,data,function(datos)
 	{
+		alert(datos);
 		var obj = $.parseJSON(datos);
 		var result = obj.resultado;
 		if(result == "datos Insertados Correctamente")

@@ -32,6 +32,7 @@ session_start();
 			<div id="Contenido">
 				<input type="hidden" value=<?=$_SESSION['user'];?> id="idPaciente">
 				<input type="hidden" value=<?=$_SESSION['key'];?> id="keyPaciente">
+				<input type="hidden" value=<?=$_SESSION['paciente'];?> id="pacientes">
 				<div id="campos">
 				 <input type="search" id="txtBuscaTratamiento"/>
 					 <div id="botones">

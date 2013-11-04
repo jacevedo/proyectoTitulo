@@ -18,6 +18,7 @@ function login()
 		var obj = $.parseJSON(datos);
 		var codigo = obj.codAcceso;
 		var key = obj.key;
+		var idPaciente = obj.idPaciente;
 
 		if(codigo == 707 || codigo == 706 || codigo == 705)
 		{
@@ -41,6 +42,14 @@ function login()
 	        field1.attr("value", usuario);
 
 	        form.append(field1);
+
+	        var field2 = $('<input></input>');
+
+	        field2.attr("type", "hidden");
+	        field2.attr("name", "pacienteId");
+	        field2.attr("value", idPaciente);
+
+	        form.append(field2);
 
 		    $(document.body).append(form);
 		    form.submit();
