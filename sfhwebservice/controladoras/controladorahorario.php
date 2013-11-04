@@ -87,12 +87,7 @@ require_once '../pojos/cita.php';
 		   	$sentencia->bind_param("is",$idOdontologo,$fecha);
 		   	if($sentencia->execute())
 		   	{
-<<<<<<< HEAD
 		   		$sentencia->bind_result($idCita, $idOdontologo, $idPaciente,$horaInicio, $horaTermino, $fecha, $estado);
-=======
-		   		$sentencia->bind_result($idCita, $idOdontologo, $idPaciente,
-		   							 $horaInicio, $horaTermino, $fecha, $estado);
->>>>>>> a2b3cb7c1ed2bf0b1480f6181e34210a5c35d6a7
 		   		$indice=0;
 	        	while($sentencia->fetch())
 	        	{	

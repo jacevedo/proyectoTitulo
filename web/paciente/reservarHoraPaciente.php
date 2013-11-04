@@ -17,7 +17,7 @@ session_start();
 				<table id="tablaMenu">
 					<tr>
 						<td><a href="perfil.php">Perfil</a></td>
-						<td><a href="reservarHoraPaciente.php">Hora Atencion</a></td>
+						<td><a href="verHoras.php">Hora Atencion</a></td>
 						<td><a href="listaPrecios.php">Lista Precios</a></td>
 						<td><a href="logout.php">Logout</a></td>	
 					</tr>

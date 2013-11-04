@@ -15,11 +15,11 @@ function login()
 	var data = {"send":"{\"indice\":1,\"usuario\":"+usuario+",\"pass\":\""+contrasena+"\"}"};
 
 	$.post(ingresar, data, function(datos){
-		alert(datos);
 		var obj = $.parseJSON(datos);
-		var codigo = obj.codAcceso;
-		var key = obj.key;
-		var idPaciente = obj.idPaciente;
+		var resultado = obj.resultado;
+		var codigo = resultado.codAcceso;
+		var key = resultado.key;
+		var idPaciente = resultado.idPaciente;
 
 		if(codigo == 704)
 		{

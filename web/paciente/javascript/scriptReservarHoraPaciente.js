@@ -11,7 +11,6 @@ function inicializarEventos()
 function cargarDatosFecha()
 {
 	var fecha = $("#txtFecha").val() + " 13:13:00";
-
 	var ingresar = direccionWeb+"ws-horario.php";
 	var data = {"send":"{\"indice\":1,\"fecha\":\""+fecha+"\"}"};
 
@@ -37,6 +36,7 @@ function cargarHoras()
 	var idDent = document.getElementById("selectDentista").value;
 	var select = '';
 	select = select + "<option value='0'>Seleccione una Hora</option>";
+
 	$.each(horarios,function()
 	{
 		if(this.idOdontologo == idDent)
@@ -68,7 +68,6 @@ function guardarHora()
 
 	$.post(ingresar, data, function(datos)
 	{
-		alert(datos);
 		var obj = $.parseJSON(datos);
 		var idInsertado = obj.resultado;
 		if(idInsertado != 0)
