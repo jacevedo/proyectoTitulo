@@ -7,18 +7,18 @@ using System.IO;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using ObjectsBeans;
-
 namespace NetClient
 {
 
    public class ClientWsPaciente
     {
-        #region Campos
+       
+       #region Campos
         CoreNetClient netclient = new CoreNetClient();
         private string jsonParam;
         #endregion
 
-        #region Propiedades
+       #region Propiedades
         public string JsonParam
         {
             get { return jsonParam; }
@@ -26,12 +26,13 @@ namespace NetClient
         }
         #endregion
 
-        #region InsertarPaciente
+       #region InsertarPaciente
         public string InsertarPaciente(Paciente paciente)
         {
             string pacienteInsertado = string.Empty;
             //{"indice":3,"idPersona":1,"fechaIngreso":"2013-04-12","habilitado":1}
-            this.JsonParam = "send={\"indice\":3,\"idPersona\":" + paciente.IdPersona + ",\"fechaIngreso\":\"" + paciente.FechaIngreso + "\",\"habilitado\":1}";
+            String fechaIngreso = paciente.FechaIngreso.Year + "-" + paciente.FechaIngreso.Month + "-" + paciente.FechaIngreso.Day;
+            this.JsonParam = "send={\"indice\":3,\"idPersona\":" + paciente.IdPersona + ",\"fechaIngreso\":\"" + fechaIngreso + "\",\"habilitado\":1}";
             try
             {
                 String result = netclient.NetPost("ws-admin-usuario.php", this.JsonParam);
@@ -46,12 +47,14 @@ namespace NetClient
             return pacienteInsertado;
         }
         #endregion
-        #region ModificarPaciente
+       
+       #region ModificarPaciente
         public string ModificarPaciente(Paciente paciente)
         {
             string pacienteModificado = string.Empty;
             //{"indice":7,"idPaciente":1,"idPersona":1,"fechaIngreso":"2013-04-12"}
-            this.JsonParam = "send={\"indice\":7,\"idPaciente\":" + paciente.IdPaciente + ",\"idPersona\":" + paciente.IdPersona + ",\"fechaIngreso\":\"" + paciente.FechaIngreso + "\",\"habilitado\":1}";
+            String fechaIngreso = paciente.FechaIngreso.Year + "-" + paciente.FechaIngreso.Month + "-" + paciente.FechaIngreso.Day;
+            this.JsonParam = "send={\"indice\":7,\"idPaciente\":" + paciente.IdPaciente + ",\"idPersona\":" + paciente.IdPersona + ",\"fechaIngreso\":\"" + fechaIngreso + "\"}";
             try
             {
                 String result = netclient.NetPost("ws-admin-usuario.php", this.JsonParam);
@@ -66,13 +69,16 @@ namespace NetClient
             return pacienteModificado;
         }
         #endregion
-        #region desabilitarHabilitarPaciente
+      
+       #region desabilitarHabilitarPaciente
 
-        public string DesabilitarHabilitarPaciente(Paciente paciente)
+        public string DesabilitarHabilitarPaciente(int id, int est)
         {
+         
             string pacienteModificado = string.Empty;
             //{"indice":9,"idPaciente":1,"habilitado":1}
-            this.JsonParam = "send={\"indice\":9,\"idPaciente\":" + paciente.IdPaciente + ",\"habilitado\":" + paciente.HabilitadoPaciente + "}";
+            
+            this.JsonParam = "send={\"indice\":9,\"idPaciente\":" + id + ",\"habilitado\":" +  est + "}";
             try
             {
                 String result = netclient.NetPost("ws-admin-usuario.php", this.JsonParam);
@@ -87,11 +93,10 @@ namespace NetClient
             return pacienteModificado;
         }
         #endregion
-
-        #region ListarPacientes
+       
+       #region ListarPacientes
         public List<Paciente> ListarPacientes()
         {
-           Paciente p = new Paciente();
             List<Paciente> list = new List<Paciente>();
             try
             {
@@ -137,7 +142,8 @@ namespace NetClient
             return list;
         }
         #endregion
-        #region Buscar Paciente Por Rut
+       
+       #region Buscar Paciente Por Rut
         public List<Paciente> BuscarPacientePorRut(string rut)
         {
             List<Paciente> list = new List<Paciente>();
@@ -202,7 +208,7 @@ namespace NetClient
         }
         #endregion
 
-        #region Buscar Paciente Por Nombre Apellido
+       #region Buscar Paciente Por Nombre Apellido
         public List<Paciente> BuscarPacientePorNombreApellido(string nombre, string apellido)
         {
             List<Paciente> list = new List<Paciente>();

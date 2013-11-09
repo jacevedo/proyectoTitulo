@@ -29,11 +29,30 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDatosDeContacto));
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.datagriPersona = new System.Windows.Forms.DataGridView();
+            this.IdPersona = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IdPerfil = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nomperfil = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Rut = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Dv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ApellidoPaterno = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ApellidoMaterno = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FechaNacimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Idcomuna1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IdPersona_dat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FonoFijo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FonoCelular = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Mail = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Direccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IdComuna = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NomComuna = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FechaIngreso = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.mcfechaIngreso = new System.Windows.Forms.MonthCalendar();
             this.lblusuario = new System.Windows.Forms.Label();
@@ -52,24 +71,7 @@
             this.cmbxComuna = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.IdPersona_dat = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IdPersona = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Rut = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Dv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ApellidoPaterno = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ApellidoMaterno = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FonoFijo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FonoCelular = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Direccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IdComuna = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Mail = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FechaIngreso = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NomComuna = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Idcomuna1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nomperfil = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FechaNacimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IdPerfil = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.datagriPersona)).BeginInit();
@@ -115,37 +117,186 @@
             // 
             this.datagriPersona.AllowUserToAddRows = false;
             this.datagriPersona.AllowUserToDeleteRows = false;
+            this.datagriPersona.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.datagriPersona.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.datagriPersona.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.datagriPersona.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.IdPersona_dat,
             this.IdPersona,
+            this.IdPerfil,
+            this.Nomperfil,
             this.Rut,
             this.Dv,
             this.Nombre,
             this.ApellidoPaterno,
             this.ApellidoMaterno,
+            this.FechaNacimiento,
+            this.Idcomuna1,
+            this.IdPersona_dat,
             this.FonoFijo,
             this.FonoCelular,
+            this.Mail,
             this.Direccion,
             this.IdComuna,
-            this.Mail,
-            this.FechaIngreso,
             this.NomComuna,
-            this.Idcomuna1,
-            this.Nomperfil,
-            this.FechaNacimiento,
-            this.IdPerfil});
+            this.FechaIngreso});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.datagriPersona.DefaultCellStyle = dataGridViewCellStyle2;
             this.datagriPersona.Location = new System.Drawing.Point(6, 19);
             this.datagriPersona.Name = "datagriPersona";
             this.datagriPersona.ReadOnly = true;
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            this.datagriPersona.RowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.datagriPersona.Size = new System.Drawing.Size(1234, 399);
-            this.datagriPersona.TabIndex = 1;
+            this.datagriPersona.Size = new System.Drawing.Size(1238, 403);
+            this.datagriPersona.TabIndex = 0;
             this.datagriPersona.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datagriPersona_CellContentClick);
+            // 
+            // IdPersona
+            // 
+            this.IdPersona.DataPropertyName = "IdPersona";
+            this.IdPersona.HeaderText = "IdPersona";
+            this.IdPersona.Name = "IdPersona";
+            this.IdPersona.ReadOnly = true;
+            this.IdPersona.Visible = false;
+            // 
+            // IdPerfil
+            // 
+            this.IdPerfil.DataPropertyName = "IdPerfil";
+            this.IdPerfil.HeaderText = "IdPerfil";
+            this.IdPerfil.Name = "IdPerfil";
+            this.IdPerfil.ReadOnly = true;
+            this.IdPerfil.Visible = false;
+            // 
+            // Nomperfil
+            // 
+            this.Nomperfil.DataPropertyName = "Nomperfil";
+            this.Nomperfil.HeaderText = "Nomperfil";
+            this.Nomperfil.Name = "Nomperfil";
+            this.Nomperfil.ReadOnly = true;
+            this.Nomperfil.Visible = false;
+            // 
+            // Rut
+            // 
+            this.Rut.DataPropertyName = "Rut";
+            this.Rut.HeaderText = "Rut";
+            this.Rut.Name = "Rut";
+            this.Rut.ReadOnly = true;
+            // 
+            // Dv
+            // 
+            this.Dv.DataPropertyName = "Dv";
+            this.Dv.HeaderText = "Dv";
+            this.Dv.Name = "Dv";
+            this.Dv.ReadOnly = true;
+            // 
+            // Nombre
+            // 
+            this.Nombre.DataPropertyName = "Nombre";
+            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.Name = "Nombre";
+            this.Nombre.ReadOnly = true;
+            // 
+            // ApellidoPaterno
+            // 
+            this.ApellidoPaterno.DataPropertyName = "ApellidoPaterno";
+            this.ApellidoPaterno.HeaderText = "ApellidoPaterno";
+            this.ApellidoPaterno.Name = "ApellidoPaterno";
+            this.ApellidoPaterno.ReadOnly = true;
+            // 
+            // ApellidoMaterno
+            // 
+            this.ApellidoMaterno.DataPropertyName = "ApellidoMaterno";
+            this.ApellidoMaterno.HeaderText = "ApellidoMaterno";
+            this.ApellidoMaterno.Name = "ApellidoMaterno";
+            this.ApellidoMaterno.ReadOnly = true;
+            // 
+            // FechaNacimiento
+            // 
+            this.FechaNacimiento.DataPropertyName = "FechaNacimiento";
+            this.FechaNacimiento.HeaderText = "FechaNacimiento";
+            this.FechaNacimiento.Name = "FechaNacimiento";
+            this.FechaNacimiento.ReadOnly = true;
+            this.FechaNacimiento.Visible = false;
+            // 
+            // Idcomuna1
+            // 
+            this.Idcomuna1.DataPropertyName = "Idcomuna";
+            this.Idcomuna1.HeaderText = "Idcomuna1";
+            this.Idcomuna1.Name = "Idcomuna1";
+            this.Idcomuna1.ReadOnly = true;
+            this.Idcomuna1.Visible = false;
+            // 
+            // IdPersona_dat
+            // 
+            this.IdPersona_dat.DataPropertyName = "IdPersona_dat";
+            this.IdPersona_dat.HeaderText = "IdPersona_dat";
+            this.IdPersona_dat.Name = "IdPersona_dat";
+            this.IdPersona_dat.ReadOnly = true;
+            this.IdPersona_dat.Visible = false;
+            // 
+            // FonoFijo
+            // 
+            this.FonoFijo.DataPropertyName = "FonoFijo";
+            this.FonoFijo.HeaderText = "FonoFijo";
+            this.FonoFijo.Name = "FonoFijo";
+            this.FonoFijo.ReadOnly = true;
+            // 
+            // FonoCelular
+            // 
+            this.FonoCelular.DataPropertyName = "FonoCelular";
+            this.FonoCelular.HeaderText = "FonoCelular";
+            this.FonoCelular.Name = "FonoCelular";
+            this.FonoCelular.ReadOnly = true;
+            // 
+            // Mail
+            // 
+            this.Mail.DataPropertyName = "Mail";
+            this.Mail.HeaderText = "Mail";
+            this.Mail.Name = "Mail";
+            this.Mail.ReadOnly = true;
+            // 
+            // Direccion
+            // 
+            this.Direccion.DataPropertyName = "Direccion";
+            this.Direccion.HeaderText = "Direccion";
+            this.Direccion.Name = "Direccion";
+            this.Direccion.ReadOnly = true;
+            // 
+            // IdComuna
+            // 
+            this.IdComuna.DataPropertyName = "IdComuna";
+            this.IdComuna.HeaderText = "IdComuna";
+            this.IdComuna.Name = "IdComuna";
+            this.IdComuna.ReadOnly = true;
+            this.IdComuna.Visible = false;
+            // 
+            // NomComuna
+            // 
+            this.NomComuna.DataPropertyName = "NomComuna";
+            this.NomComuna.HeaderText = "NomComuna";
+            this.NomComuna.Name = "NomComuna";
+            this.NomComuna.ReadOnly = true;
+            // 
+            // FechaIngreso
+            // 
+            this.FechaIngreso.DataPropertyName = "FechaIngreso";
+            this.FechaIngreso.HeaderText = "FechaIngreso";
+            this.FechaIngreso.Name = "FechaIngreso";
+            this.FechaIngreso.ReadOnly = true;
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.label1);
             this.groupBox5.Controls.Add(this.mcfechaIngreso);
             this.groupBox5.Controls.Add(this.lblusuario);
             this.groupBox5.Controls.Add(this.cmbxUsuario);
@@ -173,7 +324,7 @@
             // 
             // mcfechaIngreso
             // 
-            this.mcfechaIngreso.Location = new System.Drawing.Point(683, 26);
+            this.mcfechaIngreso.Location = new System.Drawing.Point(726, 26);
             this.mcfechaIngreso.Name = "mcfechaIngreso";
             this.mcfechaIngreso.TabIndex = 62;
             // 
@@ -321,138 +472,14 @@
             this.label11.TabIndex = 57;
             this.label11.Text = "Teléfono celular";
             // 
-            // IdPersona_dat
+            // label1
             // 
-            this.IdPersona_dat.DataPropertyName = "IdPersona_dat";
-            this.IdPersona_dat.HeaderText = "IdPersona_dat";
-            this.IdPersona_dat.Name = "IdPersona_dat";
-            this.IdPersona_dat.ReadOnly = true;
-            this.IdPersona_dat.Visible = false;
-            // 
-            // IdPersona
-            // 
-            this.IdPersona.DataPropertyName = "IdPersona";
-            this.IdPersona.HeaderText = "IdPersona";
-            this.IdPersona.Name = "IdPersona";
-            this.IdPersona.ReadOnly = true;
-            this.IdPersona.Visible = false;
-            // 
-            // Rut
-            // 
-            this.Rut.DataPropertyName = "Rut";
-            this.Rut.HeaderText = "Rut";
-            this.Rut.Name = "Rut";
-            this.Rut.ReadOnly = true;
-            // 
-            // Dv
-            // 
-            this.Dv.DataPropertyName = "Dv";
-            this.Dv.HeaderText = "Dv";
-            this.Dv.Name = "Dv";
-            this.Dv.ReadOnly = true;
-            // 
-            // Nombre
-            // 
-            this.Nombre.DataPropertyName = "Nombre";
-            this.Nombre.HeaderText = "Nombre";
-            this.Nombre.Name = "Nombre";
-            this.Nombre.ReadOnly = true;
-            // 
-            // ApellidoPaterno
-            // 
-            this.ApellidoPaterno.DataPropertyName = "ApellidoPaterno";
-            this.ApellidoPaterno.HeaderText = "ApellidoPaterno";
-            this.ApellidoPaterno.Name = "ApellidoPaterno";
-            this.ApellidoPaterno.ReadOnly = true;
-            // 
-            // ApellidoMaterno
-            // 
-            this.ApellidoMaterno.DataPropertyName = "ApellidoMaterno";
-            this.ApellidoMaterno.HeaderText = "ApellidoMaterno";
-            this.ApellidoMaterno.Name = "ApellidoMaterno";
-            this.ApellidoMaterno.ReadOnly = true;
-            // 
-            // FonoFijo
-            // 
-            this.FonoFijo.DataPropertyName = "FonoFijo";
-            this.FonoFijo.HeaderText = "FonoFijo";
-            this.FonoFijo.Name = "FonoFijo";
-            this.FonoFijo.ReadOnly = true;
-            // 
-            // FonoCelular
-            // 
-            this.FonoCelular.DataPropertyName = "FonoCelular";
-            this.FonoCelular.HeaderText = "FonoCelular";
-            this.FonoCelular.Name = "FonoCelular";
-            this.FonoCelular.ReadOnly = true;
-            // 
-            // Direccion
-            // 
-            this.Direccion.DataPropertyName = "Direccion";
-            this.Direccion.HeaderText = "Direccion";
-            this.Direccion.Name = "Direccion";
-            this.Direccion.ReadOnly = true;
-            // 
-            // IdComuna
-            // 
-            this.IdComuna.DataPropertyName = "IdComuna";
-            this.IdComuna.HeaderText = "IdComuna";
-            this.IdComuna.Name = "IdComuna";
-            this.IdComuna.ReadOnly = true;
-            this.IdComuna.Visible = false;
-            // 
-            // Mail
-            // 
-            this.Mail.DataPropertyName = "Mail";
-            this.Mail.HeaderText = "Mail";
-            this.Mail.Name = "Mail";
-            this.Mail.ReadOnly = true;
-            // 
-            // FechaIngreso
-            // 
-            this.FechaIngreso.DataPropertyName = "FechaIngreso";
-            this.FechaIngreso.HeaderText = "Fecha de Ingreso";
-            this.FechaIngreso.Name = "FechaIngreso";
-            this.FechaIngreso.ReadOnly = true;
-            // 
-            // NomComuna
-            // 
-            this.NomComuna.DataPropertyName = "NomComuna";
-            this.NomComuna.HeaderText = "Comuna";
-            this.NomComuna.Name = "NomComuna";
-            this.NomComuna.ReadOnly = true;
-            // 
-            // Idcomuna1
-            // 
-            this.Idcomuna1.DataPropertyName = "Idcomuna";
-            this.Idcomuna1.HeaderText = "Idcomuna";
-            this.Idcomuna1.Name = "Idcomuna1";
-            this.Idcomuna1.ReadOnly = true;
-            this.Idcomuna1.Visible = false;
-            // 
-            // Nomperfil
-            // 
-            this.Nomperfil.DataPropertyName = "Nomperfil";
-            this.Nomperfil.HeaderText = "Nomperfil";
-            this.Nomperfil.Name = "Nomperfil";
-            this.Nomperfil.ReadOnly = true;
-            this.Nomperfil.Visible = false;
-            // 
-            // FechaNacimiento
-            // 
-            this.FechaNacimiento.DataPropertyName = "FechaNacimiento";
-            this.FechaNacimiento.HeaderText = "FechaNacimiento";
-            this.FechaNacimiento.Name = "FechaNacimiento";
-            this.FechaNacimiento.ReadOnly = true;
-            this.FechaNacimiento.Visible = false;
-            // 
-            // IdPerfil
-            // 
-            this.IdPerfil.DataPropertyName = "IdPerfil";
-            this.IdPerfil.HeaderText = "IdPerfil";
-            this.IdPerfil.Name = "IdPerfil";
-            this.IdPerfil.ReadOnly = true;
-            this.IdPerfil.Visible = false;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(631, 26);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(89, 13);
+            this.label1.TabIndex = 63;
+            this.label1.Text = "Fecha de ingreso";
             // 
             // frmDatosDeContacto
             // 
@@ -497,27 +524,28 @@
         private System.Windows.Forms.ComboBox cmbxComuna;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.DataGridView datagriPersona;
         private System.Windows.Forms.Label lblusuario;
         private System.Windows.Forms.ComboBox cmbxUsuario;
         private System.Windows.Forms.MonthCalendar mcfechaIngreso;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IdPersona_dat;
+        private System.Windows.Forms.DataGridView datagriPersona;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdPersona;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdPerfil;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nomperfil;
         private System.Windows.Forms.DataGridViewTextBoxColumn Rut;
         private System.Windows.Forms.DataGridViewTextBoxColumn Dv;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn ApellidoPaterno;
         private System.Windows.Forms.DataGridViewTextBoxColumn ApellidoMaterno;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FechaNacimiento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Idcomuna1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdPersona_dat;
         private System.Windows.Forms.DataGridViewTextBoxColumn FonoFijo;
         private System.Windows.Forms.DataGridViewTextBoxColumn FonoCelular;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Mail;
         private System.Windows.Forms.DataGridViewTextBoxColumn Direccion;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdComuna;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Mail;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FechaIngreso;
         private System.Windows.Forms.DataGridViewTextBoxColumn NomComuna;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Idcomuna1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nomperfil;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FechaNacimiento;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IdPerfil;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FechaIngreso;
+        private System.Windows.Forms.Label label1;
     }
 }

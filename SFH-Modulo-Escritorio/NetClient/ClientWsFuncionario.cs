@@ -69,11 +69,11 @@ namespace NetClient
 
        #region desabilitarHabilitarFuncionario
 
-       public string DesabilitarHabilitarFuncionario(Funcionario funcionario)
+       public string DesabilitarHabilitarFuncionario(int id_funcionario, int estado)
        {
            string funcionarioModificado = string.Empty;
            //{"indice":9,"idPaciente":1,"habilitado":1}
-           this.JsonParam = "send={\"indice\":11,\"idFuncionario\":" + funcionario.IdFuncionario + ",\"isDesabilitado\":" + funcionario.Estado_funcionario + "}";
+           this.JsonParam = "send={\"indice\":11,\"idFuncionario\":" + id_funcionario + ",\"isDesabilitado\":" + estado + "}";
            try
            {
                String result = netclient.NetPost("ws-admin-usuario.php", this.JsonParam);
@@ -88,6 +88,7 @@ namespace NetClient
            return funcionarioModificado;
        }
        #endregion
+
        #region ListarFuncionario
        public List<Funcionario> ListarFuncionario()
        {
@@ -105,10 +106,10 @@ namespace NetClient
                    //{"idFuncionario":2,"idPersona":3,"puestoTrabajo":"Asistente Dental",
                    //"funcionarioHabilitado":null,"idPerfil":3,"rut":"9878987","dv":"4","nombre":"Nicolas","apellidoPaterno":"Palma",
                    //"apellidoMaterno":"Silva","fechaNacimiento":"1987-05-27"}
-                   funcionario.IdFuncionario = Convert.ToInt32(item.SelectToken("idPaciente").ToString());
+                   funcionario.IdFuncionario = Convert.ToInt32(item.SelectToken("idFuncionario").ToString());
                    funcionario.IdPersona = Convert.ToInt32(item.SelectToken("idPersona").ToString());
-                   funcionario.PuestoTrabajo = item.SelectToken("fechaIngreso").ToString();
-                   int estado = Convert.ToInt32(item.SelectToken("habilitadoPaciente").ToString());
+                   funcionario.PuestoTrabajo = item.SelectToken("puestoTrabajo").ToString();
+                   int estado = Convert.ToInt32(item.SelectToken("funcionarioHabilitado").ToString());
                    funcionario.IdPerfil = Convert.ToInt32(item.SelectToken("idPerfil").ToString());
                    funcionario.Rut = Convert.ToInt32(item.SelectToken("rut").ToString());
                    funcionario.Dv = item.SelectToken("dv").ToString();
@@ -136,6 +137,7 @@ namespace NetClient
            return list;
        }
        #endregion
+
        #region Buscar Funcionario Por Rut
        public List<Funcionario> BuscarFuncionarioPorRut(string rut)
        {

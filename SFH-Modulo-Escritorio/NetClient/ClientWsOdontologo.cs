@@ -34,7 +34,7 @@ namespace NetClient
         #endregion
 
         #region InsertarOdontolo
-        public string InsertarOdontolo(Odontologo odontologo)
+        public string InsertarOdontologo(Odontologo odontologo)
         {
 
             string odontologoInsertado = string.Empty;
@@ -78,11 +78,11 @@ namespace NetClient
 
         #region desabilitarHabilitarOdontologo
 
-        public string DesabilitarHabilitarOdontologo(Odontologo odontologo)
+        public string DesabilitarHabilitarOdontologo(int id_odontologo, int estado)
         {
             string odontologoModificado = string.Empty;
             //{"indice":9,"idPaciente":1,"habilitado":1}
-            this.JsonParam = "send={\"indice\":10,\"idOdontologo\":" + odontologo.IdOdontologo + ",\"habilitado\":1}";
+            this.JsonParam = "send={\"indice\":10,\"idOdontologo\":" + id_odontologo + ",\"habilitado\":" + estado + "}";
             try
             {
                 String result = netclient.NetPost("ws-admin-usuario.php", this.JsonParam);

@@ -19,6 +19,7 @@ namespace SFH_Software
         ClientWsAdminUsuario client_users = new ClientWsAdminUsuario();
         List<RegionContacto> list_region = new List<RegionContacto>();
         List<Comuna> list_comuna = new List<Comuna>();
+        private System.Windows.Forms.DataGridViewButtonColumn Editar;
         
       
         public int Id_persona
@@ -29,19 +30,39 @@ namespace SFH_Software
 
         private void ModificarUsuarios(DataGridViewCellEventArgs e)
         {
+            Datoscontacto contacto = datagriPersona.Rows[e.RowIndex].DataBoundItem as Datoscontacto;
+            this.Id_persona = contacto.IdPersona;
+            this.cmbxUsuario.SelectedValue = this.Id_persona;
+            this.txtTelefono.Text = contacto.FonoFijo;
+            this.txtCelular.Text = contacto.FonoCelular;
+            this.txtdir.Text = contacto.Direccion;
+            this.txtmail.Text = contacto.Mail;
+            this.mcfechaIngreso.SelectionStart = contacto.FechaIngreso;
+            this.mcfechaIngreso.SelectionEnd = contacto.FechaIngreso;
             btnNuevo.Text = "Guardar Cambios";
         }
 
         private void LimpiarControles()
         {
-            
-            this.PoblarComboRegion();
-            this.txtTelefono.Text = string.Empty;
-            this.txtCelular.Text = string.Empty;
-            this.txtdir.Text = string.Empty;
-            this.txtmail.Text = string.Empty;
-            this.btnNuevo.Text = "Ingresar Gastos";
-
+            if (this.Editar.Name.Equals("Editar"))
+            {
+                this.PoblarComboRegion();
+                this.txtTelefono.Text = string.Empty;
+                this.txtCelular.Text = string.Empty;
+                this.txtdir.Text = string.Empty;
+                this.txtmail.Text = string.Empty;
+                this.btnNuevo.Text = "Ingresar Datos de Contacto";
+                this.datagriPersona.Columns.RemoveAt(18);
+                this.Editar.Name = String.Empty;
+            }
+            else {
+                this.PoblarComboRegion();
+                this.txtTelefono.Text = string.Empty;
+                this.txtCelular.Text = string.Empty;
+                this.txtdir.Text = string.Empty;
+                this.txtmail.Text = string.Empty;
+                this.btnNuevo.Text = "Ingresar Datos de Contacto";
+            }
         }
 
         private void PoblarComboPersona() 
@@ -63,37 +84,52 @@ namespace SFH_Software
             this.cmbxComuna.ValueMember = "IdComuna";
             this.cmbxComuna.DisplayMember = "NombreComuna";
         }
+        private void PoblarBotonesGrilla() {
+            // 
+            // Editar
+            // 
+            this.Editar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Editar.HeaderText = "Editar";
+            this.Editar.Name = "Editar";
+            this.datagriPersona.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Editar});
+        
+        }
+
         private void PoblarGrillaDatosDeContacto() {
-
+            
             datagriPersona.DataSource = this.client_datos.ListarPersonasDatosDeContacto();
-
+            
         }
        
         
         public frmDatosDeContacto()
         {
             InitializeComponent();
-              
+            this.Editar = new System.Windows.Forms.DataGridViewButtonColumn();      
         }
 
         
         private void frmDatosDeContacto_Load(object sender, EventArgs e)
         {
+            
             this.PoblarComboRegion();
             this.PoblarComboPersona();
             this.PoblarGrillaDatosDeContacto();
-            this.btnNuevo.Text = "Ingresar Gastos";
+            this.btnNuevo.Text = "Ingresar Datos de Contacto";
+            
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.LimpiarControles();
+            
         }
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
 
-            if (btnNuevo.Text.ToString().Trim() == "Ingresar Gastos")
+            if (btnNuevo.Text.ToString().Trim() == "Ingresar Datos de Contacto")
             {
                 Datoscontacto datos = new Datoscontacto();
                 datos.IdPersona_dat = Convert.ToInt32(this.cmbxUsuario.SelectedValue);
@@ -104,8 +140,9 @@ namespace SFH_Software
                 datos.Direccion = txtdir.Text;
                 datos.FechaIngreso = mcfechaIngreso.SelectionStart;
                 client_datos.InsertarDatosdeContacto(datos);
-                datagriPersona.DataSource = this.client_users.ListarDatosPersona();
                 this.LimpiarControles();
+                datagriPersona.DataSource = this.client_datos.ListarPersonasDatosDeContacto();
+                
                 MessageBox.Show("Usuario registrado satisfactoriamente", "SFH Administración de Clínica - Administración de Usuarios", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }
@@ -121,8 +158,10 @@ namespace SFH_Software
                 datos.FechaIngreso = mcfechaIngreso.SelectionStart;
                 client_datos.ModificarDatosdeContacto(datos);
                 this.LimpiarControles();
+                datagriPersona.DataSource = this.client_datos.ListarPersonasDatosDeContacto();
+               
                 MessageBox.Show("Usuario modificado satisfactoriamente", "SFH Administración de Clínica - Administración de Usuarios", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                
             }
         }
 
@@ -143,17 +182,6 @@ namespace SFH_Software
         
         }
 
-        private void datagriPersona_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            switch (e.ColumnIndex)
-            {
-                case 0:
-                    this.ModificarUsuarios(e);
-                    break;
-              
-            }
-        }
-
         private void cmbxUsuario_SelectedIndexChanged(object sender, EventArgs e)
         {
             int aux = 0;
@@ -169,6 +197,25 @@ namespace SFH_Software
                 //this.PoblarGrillaDatosDeContacto(aux);
             }
         }
+
+        private void datagriPersona_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (this.Editar.Name.Equals("Editar"))
+            {
+                switch (e.ColumnIndex)
+                {
+                    case 18:
+                        this.ModificarUsuarios(e);
+                        break;
+                }
+            }
+            else
+            {
+                this.PoblarBotonesGrilla();
+            }
+        }
+
+       
 
     }
 }
