@@ -7,6 +7,7 @@ using System.IO;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using ObjectsBeans;
+
 namespace NetClient
 {
 
@@ -86,9 +87,11 @@ namespace NetClient
             return pacienteModificado;
         }
         #endregion
+
         #region ListarPacientes
         public List<Paciente> ListarPacientes()
         {
+           Paciente p = new Paciente();
             List<Paciente> list = new List<Paciente>();
             try
             {

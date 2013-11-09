@@ -21,9 +21,9 @@ class ControladoraPaciente
 		try 
 	   	{ 	 
 	        $this->SqlQuery='';
-	        $this->SqlQuery='INSERT INTO `paciente` (`ID_PACIENTE` ,`ID_PERSONA` ,`FECHA_INGRESO`,`HABILITADO_PACIENTE`) VALUES (null,  ?,  ?, ?);';
+	        $this->SqlQuery='INSERT INTO `paciente` (`ID_PACIENTE` ,`ID_PERSONA` ,`FECHA_INGRESO`,`HABILITADO_PACIENTE`) VALUES (null,  ?,  ?, 1);';
 	        $sentencia=$conexion->prepare($this->SqlQuery);
-	        $sentencia->bind_param('isi',$idPersona,$fechaIngreso,$habilitadoPaciente);
+	        $sentencia->bind_param('is',$idPersona,$fechaIngreso);
 	      	if($sentencia->execute())
 	      	{
 	        	$conexion->close();
