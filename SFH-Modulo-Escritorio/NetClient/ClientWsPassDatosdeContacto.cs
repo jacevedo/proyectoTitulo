@@ -123,5 +123,45 @@ namespace NetClient
             return datosModificados;
         }
         #endregion
+        //{"nombre":"asdasd","apellidoPaterno":"asdasd","apellidoMaterno":"asdasd","rut":"178972492","dv":"2","idPersona":2,"idComuna":4,"fonoFijo":"+568798754","fonoCelular":"+458374838","direccion":"San Martin 33","mail":"martin@martin.cl","fechaIngreso":"2013-08-23","nomComuna":"General Lagos"}
+
+        #region ListarPersonasDatosDeContacto
+        public List<Datoscontacto> ListarPersonasDatosDeContacto()
+        {
+            List<Datoscontacto> list = new List<Datoscontacto>();
+            try
+            {
+                this.JsonParam = "send={\"indice\":8}";
+                String result = netclient.NetPost("ws-pass-datos.php", this.JsonParam);
+                var jobject = JObject.Parse(result);
+                var token = jobject.SelectToken("Resultado").ToList();
+                foreach (var item in token)
+                {
+                    Datoscontacto datos = new Datoscontacto();
+                    //{"nombre":"asdasd","apellidoPaterno":"asdasd","apellidoMaterno":"asdasd","rut":"178972492","dv":"2","idPersona":2,"idComuna":4,"fonoFijo":"+568798754","fonoCelular":"+458374838","direccion":"San Martin 33","mail":"martin@martin.cl","fechaIngreso":"2013-08-23","nomComuna":"General Lagos"}
+                    datos.Nombre = item.SelectToken("nombre").ToString();
+                    datos.ApellidoPaterno = item.SelectToken("apellidoPaterno").ToString();
+                    datos.ApellidoMaterno = item.SelectToken("apellidoMaterno").ToString();
+                    datos.Rut = Convert.ToInt32(item.SelectToken("rut").ToString());
+                    datos.Dv = item.SelectToken("dv").ToString();
+                    datos.IdPersona = Convert.ToInt32(item.SelectToken("idPersona").ToString());
+                    datos.IdComuna = Convert.ToInt32(item.SelectToken("idComuna").ToString());
+                    datos.FonoFijo = item.SelectToken("fonoFijo").ToString();
+                    datos.FonoCelular = item.SelectToken("fonoCelular").ToString();
+                    datos.Direccion = item.SelectToken("direccion").ToString();
+                    datos.Mail = item.SelectToken("mail").ToString();
+                    datos.FechaIngreso = Convert.ToDateTime(item.SelectToken("fechaIngreso").ToString());
+                    datos.NomComuna = item.SelectToken("nomComuna").ToString();
+                    list.Add(datos);
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e + "| Error al Listar Datos de contacto");
+            }
+            return list;
+        }
+        #endregion
     }
+   
 }

@@ -52,6 +52,24 @@
             this.cmbxComuna = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
+            this.IdPersona_dat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IdPersona = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Rut = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Dv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ApellidoPaterno = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ApellidoMaterno = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FonoFijo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FonoCelular = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Direccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IdComuna = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Mail = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FechaIngreso = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NomComuna = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Idcomuna1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nomperfil = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FechaNacimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IdPerfil = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.datagriPersona)).BeginInit();
@@ -95,9 +113,31 @@
             // 
             // datagriPersona
             // 
+            this.datagriPersona.AllowUserToAddRows = false;
+            this.datagriPersona.AllowUserToDeleteRows = false;
             this.datagriPersona.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.datagriPersona.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.IdPersona_dat,
+            this.IdPersona,
+            this.Rut,
+            this.Dv,
+            this.Nombre,
+            this.ApellidoPaterno,
+            this.ApellidoMaterno,
+            this.FonoFijo,
+            this.FonoCelular,
+            this.Direccion,
+            this.IdComuna,
+            this.Mail,
+            this.FechaIngreso,
+            this.NomComuna,
+            this.Idcomuna1,
+            this.Nomperfil,
+            this.FechaNacimiento,
+            this.IdPerfil});
             this.datagriPersona.Location = new System.Drawing.Point(6, 19);
             this.datagriPersona.Name = "datagriPersona";
+            this.datagriPersona.ReadOnly = true;
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
             this.datagriPersona.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.datagriPersona.Size = new System.Drawing.Size(1234, 399);
@@ -281,6 +321,139 @@
             this.label11.TabIndex = 57;
             this.label11.Text = "Teléfono celular";
             // 
+            // IdPersona_dat
+            // 
+            this.IdPersona_dat.DataPropertyName = "IdPersona_dat";
+            this.IdPersona_dat.HeaderText = "IdPersona_dat";
+            this.IdPersona_dat.Name = "IdPersona_dat";
+            this.IdPersona_dat.ReadOnly = true;
+            this.IdPersona_dat.Visible = false;
+            // 
+            // IdPersona
+            // 
+            this.IdPersona.DataPropertyName = "IdPersona";
+            this.IdPersona.HeaderText = "IdPersona";
+            this.IdPersona.Name = "IdPersona";
+            this.IdPersona.ReadOnly = true;
+            this.IdPersona.Visible = false;
+            // 
+            // Rut
+            // 
+            this.Rut.DataPropertyName = "Rut";
+            this.Rut.HeaderText = "Rut";
+            this.Rut.Name = "Rut";
+            this.Rut.ReadOnly = true;
+            // 
+            // Dv
+            // 
+            this.Dv.DataPropertyName = "Dv";
+            this.Dv.HeaderText = "Dv";
+            this.Dv.Name = "Dv";
+            this.Dv.ReadOnly = true;
+            // 
+            // Nombre
+            // 
+            this.Nombre.DataPropertyName = "Nombre";
+            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.Name = "Nombre";
+            this.Nombre.ReadOnly = true;
+            // 
+            // ApellidoPaterno
+            // 
+            this.ApellidoPaterno.DataPropertyName = "ApellidoPaterno";
+            this.ApellidoPaterno.HeaderText = "ApellidoPaterno";
+            this.ApellidoPaterno.Name = "ApellidoPaterno";
+            this.ApellidoPaterno.ReadOnly = true;
+            // 
+            // ApellidoMaterno
+            // 
+            this.ApellidoMaterno.DataPropertyName = "ApellidoMaterno";
+            this.ApellidoMaterno.HeaderText = "ApellidoMaterno";
+            this.ApellidoMaterno.Name = "ApellidoMaterno";
+            this.ApellidoMaterno.ReadOnly = true;
+            // 
+            // FonoFijo
+            // 
+            this.FonoFijo.DataPropertyName = "FonoFijo";
+            this.FonoFijo.HeaderText = "FonoFijo";
+            this.FonoFijo.Name = "FonoFijo";
+            this.FonoFijo.ReadOnly = true;
+            // 
+            // FonoCelular
+            // 
+            this.FonoCelular.DataPropertyName = "FonoCelular";
+            this.FonoCelular.HeaderText = "FonoCelular";
+            this.FonoCelular.Name = "FonoCelular";
+            this.FonoCelular.ReadOnly = true;
+            // 
+            // Direccion
+            // 
+            this.Direccion.DataPropertyName = "Direccion";
+            this.Direccion.HeaderText = "Direccion";
+            this.Direccion.Name = "Direccion";
+            this.Direccion.ReadOnly = true;
+            // 
+            // IdComuna
+            // 
+            this.IdComuna.DataPropertyName = "IdComuna";
+            this.IdComuna.HeaderText = "IdComuna";
+            this.IdComuna.Name = "IdComuna";
+            this.IdComuna.ReadOnly = true;
+            this.IdComuna.Visible = false;
+            // 
+            // Mail
+            // 
+            this.Mail.DataPropertyName = "Mail";
+            this.Mail.HeaderText = "Mail";
+            this.Mail.Name = "Mail";
+            this.Mail.ReadOnly = true;
+            // 
+            // FechaIngreso
+            // 
+            this.FechaIngreso.DataPropertyName = "FechaIngreso";
+            this.FechaIngreso.HeaderText = "Fecha de Ingreso";
+            this.FechaIngreso.Name = "FechaIngreso";
+            this.FechaIngreso.ReadOnly = true;
+            // 
+            // NomComuna
+            // 
+            this.NomComuna.DataPropertyName = "NomComuna";
+            this.NomComuna.HeaderText = "Comuna";
+            this.NomComuna.Name = "NomComuna";
+            this.NomComuna.ReadOnly = true;
+            // 
+            // Idcomuna1
+            // 
+            this.Idcomuna1.DataPropertyName = "Idcomuna";
+            this.Idcomuna1.HeaderText = "Idcomuna";
+            this.Idcomuna1.Name = "Idcomuna1";
+            this.Idcomuna1.ReadOnly = true;
+            this.Idcomuna1.Visible = false;
+            // 
+            // Nomperfil
+            // 
+            this.Nomperfil.DataPropertyName = "Nomperfil";
+            this.Nomperfil.HeaderText = "Nomperfil";
+            this.Nomperfil.Name = "Nomperfil";
+            this.Nomperfil.ReadOnly = true;
+            this.Nomperfil.Visible = false;
+            // 
+            // FechaNacimiento
+            // 
+            this.FechaNacimiento.DataPropertyName = "FechaNacimiento";
+            this.FechaNacimiento.HeaderText = "FechaNacimiento";
+            this.FechaNacimiento.Name = "FechaNacimiento";
+            this.FechaNacimiento.ReadOnly = true;
+            this.FechaNacimiento.Visible = false;
+            // 
+            // IdPerfil
+            // 
+            this.IdPerfil.DataPropertyName = "IdPerfil";
+            this.IdPerfil.HeaderText = "IdPerfil";
+            this.IdPerfil.Name = "IdPerfil";
+            this.IdPerfil.ReadOnly = true;
+            this.IdPerfil.Visible = false;
+            // 
             // frmDatosDeContacto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -328,5 +501,23 @@
         private System.Windows.Forms.Label lblusuario;
         private System.Windows.Forms.ComboBox cmbxUsuario;
         private System.Windows.Forms.MonthCalendar mcfechaIngreso;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdPersona_dat;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdPersona;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Rut;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Dv;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ApellidoPaterno;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ApellidoMaterno;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FonoFijo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FonoCelular;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Direccion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdComuna;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Mail;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FechaIngreso;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NomComuna;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Idcomuna1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nomperfil;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FechaNacimiento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdPerfil;
     }
 }

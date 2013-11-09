@@ -20,7 +20,7 @@ namespace SFH_Software
         List<RegionContacto> list_region = new List<RegionContacto>();
         List<Comuna> list_comuna = new List<Comuna>();
         
-        private System.Windows.Forms.DataGridViewButtonColumn Editar;
+      
         public int Id_persona
         {
             get { return id_persona; }
@@ -63,28 +63,17 @@ namespace SFH_Software
             this.cmbxComuna.ValueMember = "IdComuna";
             this.cmbxComuna.DisplayMember = "NombreComuna";
         }
-        private void PoblarGrillaDatosDeContacto(int id_persona) {
-            
-            datagriPersona.DataSource = this.client_addUusario.ListarDatosDeContacto(id_persona);
+        private void PoblarGrillaDatosDeContacto() {
+
+            datagriPersona.DataSource = this.client_datos.ListarPersonasDatosDeContacto();
 
         }
-        private void PoblarBotonesGrid() {
-            // 
-            // Editar
-            // 
-            this.Editar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Editar.HeaderText = "Editar";
-            this.Editar.Name = "Editar";
-            this.datagriPersona.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Editar});
-
-        }
+       
         
         public frmDatosDeContacto()
         {
             InitializeComponent();
-            this.Editar = new System.Windows.Forms.DataGridViewButtonColumn();
-           
+              
         }
 
         
@@ -92,8 +81,7 @@ namespace SFH_Software
         {
             this.PoblarComboRegion();
             this.PoblarComboPersona();
-            //this.PoblarGrillaDatosDeContacto(1);
-            //this.PoblarBotonesGrid();
+            this.PoblarGrillaDatosDeContacto();
             this.btnNuevo.Text = "Ingresar Gastos";
         }
 
@@ -178,7 +166,7 @@ namespace SFH_Software
             else
             {
                 aux = Convert.ToInt32(this.cmbxUsuario.SelectedValue.ToString());
-                this.PoblarGrillaDatosDeContacto(aux);
+                //this.PoblarGrillaDatosDeContacto(aux);
             }
         }
 

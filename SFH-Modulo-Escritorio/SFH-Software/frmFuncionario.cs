@@ -15,5 +15,15 @@ namespace SFH_Software
         {
             InitializeComponent();
         }
+
+        private void frmFuncionario_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }
