@@ -93,6 +93,27 @@ namespace NetClient
             return pacienteModificado;
         }
         #endregion
+
+        #region EliminarPaciente
+        public string EliminarPaciente(int id_paciente)
+        {
+            string pacienteEliminado = string.Empty;
+            //{"indice":12,"idOdontologo":1}
+            this.JsonParam = "send={\"indice\":14,\"idPaciente\":" + id_paciente + "}";
+            try
+            {
+                String result = netclient.NetPost("ws-admin-usuario-sig.php", this.JsonParam);
+                var jobject = JObject.Parse(result);
+                //resutadoHabilitar
+                pacienteEliminado = jobject.SelectToken("resultado").ToString();
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e + "| Error al eliminar paciente");
+            }
+            return pacienteEliminado;
+        }
+        #endregion
        
        #region ListarPacientes
         public List<Paciente> ListarPacientes()

@@ -69,10 +69,12 @@ namespace SFH_Software
                 this.btnNuevo.Text = "Ingresar Funcionario";
                 this.datagriPersona.Columns.RemoveAt(13);
                 this.Editar.Name = String.Empty;
+                this.txtPuesto.Text = String.Empty;
             }
             else
             {
                 this.btnNuevo.Text = "Ingresar Funcionario";
+                this.txtPuesto.Text = String.Empty;
             }
 
         }

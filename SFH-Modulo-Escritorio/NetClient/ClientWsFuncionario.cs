@@ -89,6 +89,27 @@ namespace NetClient
        }
        #endregion
 
+       #region EliminarFuncionario
+       public string EliminarFuncionario(int id_funcionario)
+       {
+           string funcionarioEliminado = string.Empty;
+           //{"indice":12,"idOdontologo":1}
+           this.JsonParam = "send={\"indice\":13,\"idFuncionario\":" + id_funcionario + "}";
+           try
+           {
+               String result = netclient.NetPost("ws-admin-usuario-sig.php", this.JsonParam);
+               var jobject = JObject.Parse(result);
+               //resutadoHabilitar
+               funcionarioEliminado = jobject.SelectToken("resultado").ToString();
+           }
+           catch (Exception e)
+           {
+               throw new Exception(e + "| Error al eliminar funcionario");
+           }
+           return funcionarioEliminado;
+       }
+       #endregion
+
        #region ListarFuncionario
        public List<Funcionario> ListarFuncionario()
        {

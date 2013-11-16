@@ -92,11 +92,17 @@
     <Compile Include="frmAdministracionDeInsumos.Designer.cs">
       <DependentUpon>frmAdministracionDeInsumos.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmAdministracionDeReporteria.cs">
+    <Compile Include="frmGenerarReportesMonetarios.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmAdministracionDeReporteria.Designer.cs">
-      <DependentUpon>frmAdministracionDeReporteria.cs</DependentUpon>
+    <Compile Include="frmGenerarReportesMonetarios.Designer.cs">
+      <DependentUpon>frmGenerarReportesMonetarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmGenerarReportesPacientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmGenerarReportesPacientes.Designer.cs">
+      <DependentUpon>frmGenerarReportesPacientes.cs</DependentUpon>
     </Compile>
     <Compile Include="frmAdministracionListasDePrecios.cs">
       <SubType>Form</SubType>
@@ -182,6 +188,12 @@
     <Compile Include="frmPaciente.Designer.cs">
       <DependentUpon>frmPaciente.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmListarHistorialdeReportes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmListarHistorialdeReportes.Designer.cs">
+      <DependentUpon>frmListarHistorialdeReportes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmAbonos.resx">
@@ -196,8 +208,11 @@
     <EmbeddedResource Include="frmAdministracionDeInsumos.resx">
       <DependentUpon>frmAdministracionDeInsumos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmAdministracionDeReporteria.resx">
-      <DependentUpon>frmAdministracionDeReporteria.cs</DependentUpon>
+    <EmbeddedResource Include="frmGenerarReportesMonetarios.resx">
+      <DependentUpon>frmGenerarReportesMonetarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmGenerarReportesPacientes.resx">
+      <DependentUpon>frmGenerarReportesPacientes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmAdministracionFichas.resx">
       <DependentUpon>frmAdministracionFichas.cs</DependentUpon>
@@ -225,6 +240,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmGastos.resx">
       <DependentUpon>frmGastos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmListarHistorialdeReportes.resx">
+      <DependentUpon>frmListarHistorialdeReportes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>

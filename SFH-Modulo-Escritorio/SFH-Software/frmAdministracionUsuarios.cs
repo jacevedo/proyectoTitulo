@@ -18,9 +18,16 @@ namespace SFH_Software
         ClientWsAdminUsuarioSig client_busqueda = new ClientWsAdminUsuarioSig();
         ClientWsAddUsuario client_addUusario = new ClientWsAddUsuario();
         ClientWsPassDatosdeContacto client_pass_dat = new ClientWsPassDatosdeContacto();
-        List<Persona> list_persona = new List<Persona>();
+        //usuarios 
+        ClientWsFuncionario client_fun = new ClientWsFuncionario();
+        ClientWsOdontologo cliente_odontologo = new ClientWsOdontologo();
+        ClientWsPaciente cliente_paciente = new ClientWsPaciente();
         
+        List<Persona> list_persona = new List<Persona>();
+    
         private int id_persona;
+        private int id_perfil_nat;
+
         private System.Windows.Forms.DataGridViewButtonColumn Editar;
         private System.Windows.Forms.DataGridViewButtonColumn verdatoscontacto;
         private System.Windows.Forms.DataGridViewButtonColumn verpaciente;
@@ -32,9 +39,61 @@ namespace SFH_Software
             set { id_persona = value; }
         }
 
+        public int Id_perfil_nat
+        {
+            get { return id_perfil_nat; }
+            set { id_perfil_nat = value; }
+        }
         #endregion
 
         #region Metodos 
+        private void EliminarPerfiles(int indxPerfil, int param_idPersona) {
+          switch(indxPerfil){
+              case 1:
+                  cliente_odontologo.EliminarOdontologo(param_idPersona);
+                  break;
+              case 2:
+                  cliente_odontologo.EliminarOdontologo(param_idPersona);
+                  break;
+              case 3:
+                  client_fun.EliminarFuncionario(param_idPersona);
+                  break;
+              case 4:
+                  cliente_paciente.EliminarPaciente(param_idPersona);
+                  break;
+         }
+        }
+
+        private void InsertarPerfiles(int indxPerfil, int param_idPersona)
+        {
+            switch (indxPerfil)
+            {
+                case 1:
+                    Odontologo odo = new Odontologo();
+                    odo.IdPersona = param_idPersona;
+                    odo.Especialidad = "Ingrese Especialidad";
+                    cliente_odontologo.InsertarOdontologo(odo);
+                    break;
+                case 2:
+                  Odontologo odonto = new Odontologo();
+                    odonto.IdPersona = param_idPersona;
+                    odonto.Especialidad = "Ingrese Especialidad";
+                    cliente_odontologo.InsertarOdontologo(odonto);
+                    break;
+                case 3:
+                    Funcionario funcionario = new Funcionario(); 
+                    funcionario.IdPersona = param_idPersona;
+                    funcionario.PuestoTrabajo = "Ingrese puesto de trabajo";
+                    client_fun.InsertarFuncionario(funcionario);
+                    break;
+                case 4:
+                    Paciente paciente = new Paciente();
+                    paciente.IdPersona = param_idPersona;
+                    paciente.FechaIngreso = DateTime.Now;
+                    cliente_paciente.InsertarPaciente(paciente);
+                    break;
+            }
+        }
 
         private void LimpiarControles() {
             //combo box 
@@ -56,7 +115,8 @@ namespace SFH_Software
         {
             Persona persona = datagriPersona.Rows[e.RowIndex].DataBoundItem as Persona;
             this.Id_persona = persona.IdPersona;
-            this.cmbxPerfil.SelectedValue = persona.IdPerfil; 
+            this.cmbxPerfil.SelectedValue = persona.IdPerfil;
+            this.Id_perfil_nat = persona.IdPerfil;
             this.txtrut.Text = persona.Rut.ToString();
             this.txtdv.Text = persona.Dv;
             this.txtnom.Text = persona.Nombre;
@@ -108,7 +168,7 @@ namespace SFH_Software
             this.cmbxPerfil.Items.Clear();
             this.cmbxPerfil.Items.Insert(0, "Seleccione tipo de perfil");
             this.cmbxPerfil.Items.Insert(1, "Administrador");
-            this.cmbxPerfil.Items.Insert(2, "Doctor");
+            this.cmbxPerfil.Items.Insert(2, "Odontologo");
             this.cmbxPerfil.Items.Insert(3, "Asistente");
             this.cmbxPerfil.Items.Insert(4, "Paciente");
             this.cmbxPerfil.SelectedItem = "Seleccione tipo de perfil";
@@ -446,6 +506,8 @@ namespace SFH_Software
                     pass.Passtext = txtpass.Text.ToString();
                     pass.FechaCaducidad = mcFechadeCaducidad.SelectionStart;
                     this.client_usuario.ModificarPersona(persona);
+                    this.EliminarPerfiles(this.Id_perfil_nat, Id_persona);
+                    this.InsertarPerfiles(persona.IdPerfil,Id_persona);
                     this.client_pass_dat.ModificarPass(pass);
                 }
                 datagriPersona.DataSource = this.client_usuario.ListarDatosPersona();

@@ -62,12 +62,14 @@ namespace SFH_Software
             if (this.Editar.Name.Equals("Editar"))
             {
                 this.btnNuevo.Text = "Ingresar Odontologo";
+                this.txtesp.Text = String.Empty;
                 this.datagriPersona.Columns.RemoveAt(13);
                 this.Editar.Name = String.Empty;
             }
             else
             {
                 this.btnNuevo.Text = "Ingresar Odontologo";
+                this.txtesp.Text = String.Empty;
             }
 
         }

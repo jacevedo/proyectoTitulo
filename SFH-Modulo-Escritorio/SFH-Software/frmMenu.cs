@@ -89,8 +89,7 @@ namespace SFH_Software
 
         private void btnAdminCli_Click(object sender, EventArgs e)
         {
-            treeViewMenu.ExpandAll();
-            
+            treeViewMenu.ExpandAll();            
         }
 
         private void treeViewMenu_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
@@ -126,11 +125,6 @@ namespace SFH_Software
                     frmAdministracionUsuarios adminuser = new frmAdministracionUsuarios();
                     this.MostrarForm(e.Node.Text.ToString(), adminuser);
                     break;
-
-                case "Reportes y estadísticas":
-                    frmAdministracionDeReporteria report = new frmAdministracionDeReporteria();
-                    this.MostrarForm(e.Node.Text.ToString(), report);
-                    break;
                 case "Administración de área insumos":
                     frmAdministracionAreaInsumos areainsumo = new frmAdministracionAreaInsumos(this);
                     this.MostrarForm(e.Node.Text.ToString(), areainsumo);
@@ -155,6 +149,18 @@ namespace SFH_Software
                     frmFuncionario funcionario = new frmFuncionario();
                     this.MostrarForm(e.Node.Text.ToString(), funcionario);
                     break;
+                case "Generar Reporte Pacientes":
+                    frmGenerarReportesPacientes report = new frmGenerarReportesPacientes();
+                    this.MostrarForm(e.Node.Text.ToString(), report);
+                    break;
+                case "Generar Reportes Monetarios":
+                    frmGenerarReportesMonetarios reportMon = new frmGenerarReportesMonetarios();
+                    this.MostrarForm(e.Node.Text.ToString(), reportMon);
+                    break;
+                case "Listar Historial de Reportes":
+                    frmListarHistorialdeReportes histReport= new frmListarHistorialdeReportes();
+                    this.MostrarForm(e.Node.Text.ToString(), histReport);
+                    break;
             }
         }
 
@@ -168,7 +174,7 @@ namespace SFH_Software
         private void btnReportes_Click(object sender, EventArgs e)
         {
              
-                  frmAdministracionDeReporteria report = new frmAdministracionDeReporteria();
+                  frmGenerarReportesPacientes report = new frmGenerarReportesPacientes();
                   this.MostrarForm("Reportes y estadísticas", report);
                     
         }
@@ -263,6 +269,24 @@ namespace SFH_Software
         {
             frmFuncionario funcionarios = new frmFuncionario();
             this.MostrarForm("Administración de funcionarios ", funcionarios);
+        }
+
+        private void generarReportePacientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmGenerarReportesPacientes reportPaciente = new frmGenerarReportesPacientes();
+            this.MostrarForm("Generar Reporte Pacientes ", reportPaciente);
+        }
+
+        private void generarReportesMonetariosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmGenerarReportesMonetarios reportMonetario = new frmGenerarReportesMonetarios();
+            this.MostrarForm("Generar Reportes Monetarios ", reportMonetario);
+        }
+
+        private void listarHistorialDeReportesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmListarHistorialdeReportes reportHistorial = new frmListarHistorialdeReportes();
+            this.MostrarForm("Listar Historial de Reportes ", reportHistorial);
         }
 
 

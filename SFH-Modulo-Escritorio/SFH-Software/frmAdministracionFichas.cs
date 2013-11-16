@@ -225,6 +225,17 @@ namespace SFH_Software
         {
             this.LimpiarControles();
         }
+
+        private void cmbxOdontologo_MouseClick(object sender, MouseEventArgs e)
+        {
+            this.PoblarComboOdontologo();
+        }
+
+        private void cmbxPaciente_MouseClick(object sender, MouseEventArgs e)
+        {
+            this.PoblarComboPacientes();
+        }
+
       
     }
 }

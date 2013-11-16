@@ -97,6 +97,28 @@ namespace NetClient
             return odontologoModificado;
         }
         #endregion
+
+        #region EliminarOdontologo
+        public string EliminarOdontologo(int id_odontologo)
+        {
+            string odontologoEliminado = string.Empty;
+            //{"indice":12,"idOdontologo":1}
+            this.JsonParam = "send={\"indice\":12,\"idOdontologo\":" + id_odontologo + "}";
+            try
+            {
+                String result = netclient.NetPost("ws-admin-usuario-sig.php", this.JsonParam);
+                var jobject = JObject.Parse(result);
+                //resutadoHabilitar
+                odontologoEliminado = jobject.SelectToken("resultado").ToString();
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e + "| Error al eliminar odontologo");
+            }
+            return odontologoEliminado;
+        }
+        #endregion
+
         #region ListarOdontologo
         public List<Odontologo> ListarOdontologo()
         {
@@ -144,7 +166,6 @@ namespace NetClient
             return list;
         }
         #endregion
-       
 
         #region Buscar Odontologo Por Rut
         public List<Odontologo> BuscarOdontologoPorRut(string rut)

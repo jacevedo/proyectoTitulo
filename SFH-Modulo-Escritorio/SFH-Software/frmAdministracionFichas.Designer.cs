@@ -385,6 +385,7 @@
             this.cmbxPaciente.Size = new System.Drawing.Size(161, 21);
             this.cmbxPaciente.TabIndex = 3;
             this.cmbxPaciente.SelectedIndexChanged += new System.EventHandler(this.cmbxPaciente_SelectedIndexChanged);
+            this.cmbxPaciente.MouseClick += new System.Windows.Forms.MouseEventHandler(this.cmbxPaciente_MouseClick);
             // 
             // txtPaciente
             // 
@@ -433,6 +434,7 @@
             this.cmbxOdontologo.Size = new System.Drawing.Size(161, 21);
             this.cmbxOdontologo.TabIndex = 2;
             this.cmbxOdontologo.SelectedIndexChanged += new System.EventHandler(this.cmbxOdontologo_SelectedIndexChanged);
+            this.cmbxOdontologo.MouseClick += new System.Windows.Forms.MouseEventHandler(this.cmbxOdontologo_MouseClick);
             // 
             // txtOdontologo
             // 

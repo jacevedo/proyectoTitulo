@@ -101,7 +101,6 @@ C:\Users\Citt-David\Desktop\SFH-Modulo-Escritorio\SFH-Software\obj\x86\Debug\SFH
 C:\Users\Citt-David\Desktop\SFH-Modulo-Escritorio\SFH-Software\obj\x86\Debug\SFH_Software.frmAcerca.resources
 C:\Users\Citt-David\Desktop\SFH-Modulo-Escritorio\SFH-Software\obj\x86\Debug\SFH_Software.frmAdministracionAreaInsumos.resources
 C:\Users\Citt-David\Desktop\SFH-Modulo-Escritorio\SFH-Software\obj\x86\Debug\SFH_Software.frmAdministracionDeInsumos.resources
-C:\Users\Citt-David\Desktop\SFH-Modulo-Escritorio\SFH-Software\obj\x86\Debug\SFH_Software.frmAdministracionDeReporteria.resources
 C:\Users\Citt-David\Desktop\SFH-Modulo-Escritorio\SFH-Software\obj\x86\Debug\SFH_Software.frmAdministracionFichas.resources
 C:\Users\Citt-David\Desktop\SFH-Modulo-Escritorio\SFH-Software\obj\x86\Debug\SFH_Software.frmAdministracionListasDePrecios.resources
 C:\Users\Citt-David\Desktop\SFH-Modulo-Escritorio\SFH-Software\obj\x86\Debug\SFH_Software.frmAdministracionOrdenLab.resources
@@ -161,5 +160,8 @@ C:\Users\Citt-David\Desktop\SFH-Modulo-Escritorio\SFH-Software\obj\x86\Debug\SFH
 C:\Users\Citt-David\Desktop\SFH-Modulo-Escritorio\SFH-Software\obj\x86\Debug\SFH_Software.frmFuncionario.resources
 C:\Users\Citt-David\Desktop\SFH-Modulo-Escritorio\SFH-Software\obj\x86\Debug\SFH_Software.frmOdontologo.resources
 C:\Users\Citt-David\Desktop\SFH-Modulo-Escritorio\SFH-Software\obj\x86\Debug\SFH_Software.frmPaciente.resources
-C:\Users\Citt-David\Desktop\SFH-Modulo-Escritorio\SFH-Software\obj\x86\Debug\SFH-Software.csprojResolveAssemblyReference.cache
 C:\Users\Citt-David\Desktop\SFH-Modulo-Escritorio\SFH-Software\bin\Debug\NetClient.dll
+C:\Users\Citt-David\Desktop\SFH-Modulo-Escritorio\SFH-Software\obj\x86\Debug\SFH_Software.frmGenerarReportesPacientes.resources
+C:\Users\Citt-David\Desktop\SFH-Modulo-Escritorio\SFH-Software\obj\x86\Debug\SFH_Software.frmGenerarReportesMonetarios.resources
+C:\Users\Citt-David\Desktop\SFH-Modulo-Escritorio\SFH-Software\obj\x86\Debug\SFH_Software.frmListarHistorialdeReportes.resources
+C:\Users\Citt-David\Desktop\SFH-Modulo-Escritorio\SFH-Software\obj\x86\Debug\SFH-Software.csprojResolveAssemblyReference.cache
