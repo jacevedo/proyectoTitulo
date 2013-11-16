@@ -1,18 +1,26 @@
 package cl.sfh.Odontologo;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.view.Menu;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 
+import cl.sfh.controladoras.ControladoraHorario;
+import cl.sfh.entidades.Horario;
+import cl.sfh.entidades.Horas;
 import cl.sfh.libreria.*;
 
 public class HorasCargadas extends Activity
 {
-    ListView lstHorasCargadas;
-
+    private ListView lstHorasCargadas;
+    private int idOdontologo;
+    
+    
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -24,13 +32,14 @@ public class HorasCargadas extends Activity
     private void inicializarElementos()
     {
         lstHorasCargadas = (ListView)findViewById(R.id.lstHorasCargadas);
-        ArrayList<Horas> hora = new ArrayList<Horas>();
-        hora.add(new Horas(0L,"12:00 PM","Juan Peres"));
-        hora.add(new Horas(1L,"13:00 PM","Pedro Molina"));
-        hora.add(new Horas(2L,"14:00 PM","Pablo Marmol"));
-
-        HorasAdapter adapter = new HorasAdapter(hora,this);
-        lstHorasCargadas.setAdapter(adapter);
+        SharedPreferences preferencias = getSharedPreferences("datos",Context.MODE_PRIVATE);
+        idOdontologo = preferencias.getInt("idOdontologo", -1);
+        
+        new busquedaHoras().execute(idOdontologo);
+        
+        
+        
+       
     }
 
 
@@ -39,6 +48,28 @@ public class HorasCargadas extends Activity
     {
         // Inflate the menu; this adds items to the action bar if it is present.
         return true;
+    }
+    class busquedaHoras extends AsyncTask<Integer, Void, ArrayList<Horario>>
+    {
+
+		@Override
+		protected ArrayList<Horario> doInBackground(Integer... params)
+		{
+			ControladoraHorario controlHorario = new ControladoraHorario();
+			ArrayList<Horario> listaHoras = controlHorario.obtenerHorarioIdOdontologo(params[0]);
+			return listaHoras;
+		}
+
+		@Override
+		protected void onPostExecute(ArrayList<Horario> result)
+		{
+			// TODO Auto-generated method stub
+			HorasAdapter adapter = new HorasAdapter(result,HorasCargadas.this);
+	        lstHorasCargadas.setAdapter(adapter);
+			super.onPostExecute(result);
+		}
+		
+    	
     }
     
 }

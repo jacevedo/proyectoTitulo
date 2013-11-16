@@ -1,6 +1,7 @@
 package cl.sfh.libreria;
 
 import cl.sfh.Odontologo.R;
+import cl.sfh.entidades.Pacientes;
 import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;

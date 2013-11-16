@@ -12,7 +12,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.view.View.OnClickListener;
 
 public class MainActivity extends Activity implements OnClickListener
@@ -37,7 +40,7 @@ public class MainActivity extends Activity implements OnClickListener
         txtUsuario = (EditText)findViewById(R.id.txtUsuario);
     	txtPass = (EditText)findViewById(R.id.txtContrasena);
     	dialogo = new ProgressDialog(MainActivity.this);
-		dialogo.setMessage("Cargando Lista Precio");
+		dialogo.setMessage("Iniciando Sesion...");
 		dialogo.setTitle("Cargando");
         btnEntrar.setOnClickListener(this);
 
@@ -88,7 +91,13 @@ public class MainActivity extends Activity implements OnClickListener
 		{
 			
 			dialogo.dismiss();
-			if(result.getCodAcceso()==706)
+			SharedPreferences preferencias = getSharedPreferences("datos",Context.MODE_PRIVATE);
+			Editor editor=preferencias.edit();
+	        editor.putInt("idPersona", result.getIdPersona());
+	        editor.putInt("idOdontologo", result.getIdOdontologo());
+	        editor.putInt("rutPersona", Integer.parseInt(txtUsuario.getText().toString()));
+	        editor.commit();
+			if(result.getCodAcceso()==706||result.getCodAcceso()==707)
 			{
 				 Intent i;
 				 i = new Intent("cl.sfh.Odontologo.MenuAplicacion");

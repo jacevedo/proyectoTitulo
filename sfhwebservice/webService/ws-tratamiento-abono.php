@@ -2,6 +2,7 @@
 require_once '../pojos/tratamientodental.php';
 require_once '../pojos/abono.php';
 require_once '../controladoras/controladoratratamientoabono.php';
+require_once '../controladoras/controladorapaciente.php';
 
 /*
 *Contiene la opciones para insertar, listar y modificar
@@ -135,6 +136,7 @@ switch ($opcion)
 		$cantRonda = $data->{"cantPaciente"};
 		$controladoraPaciente  = new ControladoraPaciente();
 		$arreglo["code"]=12;
-		$arreglo["lista"] = $controladoraPaciente->personasConPresupesto($cantRonda);
+		$arreglo["lista"] = $controladoraPaciente->buscarPresupuesto($cantRonda);
+		echo(json_encode($arreglo));
 	break;
 }

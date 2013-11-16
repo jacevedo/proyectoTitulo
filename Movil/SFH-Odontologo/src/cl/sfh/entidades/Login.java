@@ -4,11 +4,38 @@ public class Login
 {
 	private String key;
 	private int codAcceso;
+	private int idPersona;
+	private int idOdontologo;
 
-	public Login(String key, int codAcceso)
+	public Login(String key, int codAcceso, int idPersona,int idOdontologo)
 	{
 		this.key = key;
 		this.codAcceso = codAcceso;
+		this.idPersona = idPersona;
+		this.idOdontologo = idOdontologo;
+	}
+
+	
+	public int getIdOdontologo()
+	{
+		return idOdontologo;
+	}
+
+
+	public void setIdOdontologo(int idOdontologo)
+	{
+		this.idOdontologo = idOdontologo;
+	}
+
+
+	public int getIdPersona()
+	{
+		return idPersona;
+	}
+
+	public void setIdPersona(int idPersona)
+	{
+		this.idPersona = idPersona;
 	}
 
 	public String getKey()

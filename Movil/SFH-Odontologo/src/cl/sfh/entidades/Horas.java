@@ -1,4 +1,4 @@
-package cl.sfh.libreria;
+package cl.sfh.entidades;
 
 /**
  * Created by jacevedo on 24-06-13.

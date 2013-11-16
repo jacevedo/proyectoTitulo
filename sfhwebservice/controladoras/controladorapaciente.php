@@ -2,6 +2,7 @@
 require_once '../bdmysql/MySqlCon.php'; 
 require_once '../pojos/paciente.php';
 require_once '../pojos/persona.php';
+require_once '../pojos/tratamientodental.php';
 
 class ControladoraPaciente
 {
@@ -293,7 +294,7 @@ class ControladoraPaciente
  	}
  	public function personasConPresupesto($canPersonas)
  	{
- 		$limitInferior=0;
+ 		$limitInferior = 0;
  		$limitSuperior = 0;
  		if($canPersonas==1)
  		{
@@ -302,8 +303,8 @@ class ControladoraPaciente
  		}
  		else
  		{
- 			$limitSuperior = ($canPersonas) * 10;
- 			$limitInferior = ($limitSuperior-10);
+ 			$limitSuperior = $canPersonas * 10;
+ 			$limitInferior = $limitSuperior-10;
  		}
  		
  		$conexion = new MySqlCon();
@@ -313,7 +314,7 @@ class ControladoraPaciente
 			$this->SqlQuery = '';
 			$this->SqlQuery = "SELECT pe.ID_PERSONA, pe.ID_PERFIL, pa.ID_PACIENTE, pe.RUT, pe.DV, pe.NOMBRE, pe.APELLIDO_PATERNO,".
 								" pe.APELLIDO_MATERNO, pe.FECHA_NAC, pa.FECHA_INGRESO, pa.HABILITADO_PACIENTE FROM paciente pa, persona pe ".
-								"WHERE pa.ID_PERSONA = pe.ID_PERSONA Limit ? , ?";
+								" WHERE pa.ID_PERSONA = pe.ID_PERSONA Limit ? , ?";
 		   	$sentencia=$conexion->prepare($this->SqlQuery);
 		   	$sentencia->bind_param("ii",$limitInferior,$limitSuperior);
         	if($sentencia->execute())
@@ -337,9 +338,50 @@ class ControladoraPaciente
         }
         return $this->datos;
  	}
- 	function buscarPresupuesto()
+ 	function buscarPresupuesto($canPersonas)
  	{
- 		
+ 		$personas = $this->personasConPresupesto($canPersonas);
+ 		$devolucion = array();
+ 		$contadorObjetos = 0;
+ 		foreach ($personas as $value)
+ 		{
+ 			$conexion = new MySqlCon();
+			
+ 			try
+			{
+				$idPaciente = $value->idPaciente;
+				$arregloTratamientos = array();
+				$this->SqlQuery = '';
+				$this->SqlQuery = "SELECT ta.*, fi.ANAMNESIS FROM tratamientodental ta, fichadental fi WHERE ta.ID_FICHA = fi.ID_FICHA AND fi.ID_PACIENTE = ? Limit 0 , 3";
+			   	$sentencia=$conexion->prepare($this->SqlQuery);
+			   	$sentencia->bind_param("i",$idPaciente);
+	        	if($sentencia->execute())
+	        	{
+	        		$sentencia->bind_result($idTrataMiento, $idFicha, $fechaCreacion, $tratamientoDental, $fechaSeguimiento, $valorTotalConsulta,$amamnesis);				
+					$indice=0;     
+					while($sentencia->fetch())
+					{
+						$tratamiento = new TratamientoDental();
+						$tratamiento->initClass($idTrataMiento, $idFicha, $fechaCreacion,$tratamientoDental,$fechaSeguimiento, $valorTotalConsulta);
+	        			$arregloTratamientos[$indice] = $tratamiento;
+	        			$indice++;
+					}
+					$arregloTemporal = array();
+					$arregloTemporal["persona"] = $value;
+					$arregloTemporal["tratamiento"] = $arregloTratamientos;
+					$arregloTemporal["amamnesis"] = $amamnesis;
+					$devolucion[$contadorObjetos] = $arregloTemporal;
+					$contadorObjetos++;
+	      		}
+
+	       		$conexion->close();
+       		}
+	    	catch(Exception $e)
+	    	{
+	        	throw new $e("Error al listar pacientes");
+	        }
+ 		}
+ 		return $devolucion;
 			
  	} 	
 }

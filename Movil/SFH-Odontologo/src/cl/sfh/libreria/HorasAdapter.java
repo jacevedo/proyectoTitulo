@@ -11,16 +11,18 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import cl.sfh.Odontologo.R;
+import cl.sfh.entidades.Horario;
+import cl.sfh.entidades.Horas;
 
 /**
  * Created by jacevedo on 24-06-13.
  */
 public class HorasAdapter extends BaseAdapter
 {
-    ArrayList<Horas> horas;
+    ArrayList<Horario> horas;
     Activity activity;
 
-    public HorasAdapter(ArrayList<Horas> horas, Activity activity)
+    public HorasAdapter(ArrayList<Horario> horas, Activity activity)
     {
         this.horas = horas;
         this.activity = activity;
@@ -41,7 +43,7 @@ public class HorasAdapter extends BaseAdapter
     @Override
     public long getItemId(int position)
     {
-        return horas.get(position).getId();
+        return horas.get(position).getIdHorario();
     }
 
     @Override
@@ -54,14 +56,14 @@ public class HorasAdapter extends BaseAdapter
             v = inf.inflate(R.layout.hora, null);
         }
 
-        Horas hora = horas.get(position);
+        Horario hora = horas.get(position);
 
         //Rellenamos el nombre
         TextView txtHora = (TextView) v.findViewById(R.id.txtHora);
         txtHora.setText(hora.getHora());
 
         TextView txtNomPaciente = (TextView)v.findViewById(R.id.txtNomPaciente);
-        txtNomPaciente.setText(hora.getNomPaciente());
+        txtNomPaciente.setText(hora.getPaciente());
 
         // Retornamos la vista
         return v;

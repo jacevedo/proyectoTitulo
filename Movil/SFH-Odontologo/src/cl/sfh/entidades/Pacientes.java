@@ -1,4 +1,6 @@
-package cl.sfh.libreria;
+package cl.sfh.entidades;
+
+import java.util.ArrayList;
 
 /**
  * Created by jacevedo on 24-06-13.
@@ -9,21 +11,22 @@ public class Pacientes
     private String nombre;
     private String appPaterno;
     private String appMaterno;
-    private String ultimoProcedimiento;
     private String fechaNacimiento;
     private String anamnesis;
+    private ArrayList<Tratamiento> listaTratamientos;
 
-    public Pacientes(long id, String nombre, String appPaterno, String appMaterno, String ultimoProcedimiento, String fechaNacimiento, String anamnesis)
+    public Pacientes(long id, String nombre, String appPaterno, String appMaterno,  String fechaNacimiento, String anamnesis, ArrayList<Tratamiento> listaTratamiento)
     {
         this.id = id;
         this.nombre = nombre;
         this.appPaterno = appPaterno;
         this.appMaterno = appMaterno;
-        this.ultimoProcedimiento = ultimoProcedimiento;
         this.fechaNacimiento = fechaNacimiento;
         this.anamnesis = anamnesis;
+        this.listaTratamientos = listaTratamiento;
     }
 
+  
     public long getId()
     {
         return id;
@@ -64,16 +67,7 @@ public class Pacientes
         this.appMaterno = appMaterno;
     }
 
-    public String getUltimoProcedimiento()
-    {
-        return ultimoProcedimiento;
-    }
-
-    public void setUltimoProcedimiento(String ultimoProcedimiento)
-    {
-        this.ultimoProcedimiento = ultimoProcedimiento;
-    }
-
+   
     public String getFechaNacimiento()
     {
         return fechaNacimiento;
@@ -93,4 +87,18 @@ public class Pacientes
     {
         this.anamnesis = anamnesis;
     }
+
+
+	public ArrayList<Tratamiento> getListaTratamientos()
+	{
+		return listaTratamientos;
+	}
+
+
+	public void setListaTratamientos(ArrayList<Tratamiento> listaTratamientos)
+	{
+		this.listaTratamientos = listaTratamientos;
+	}
+    
+    
 }
