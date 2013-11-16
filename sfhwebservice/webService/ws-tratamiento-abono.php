@@ -19,6 +19,7 @@ require_once '../controladoras/controladoratratamientoabono.php';
 * 9.- Total Abono Paciente
 * 10.- Listar Tratamientos Con total Abono
 * 11.- Eliminar Abono
+* 12.- ListarPacientesTratamiento
 */
 
 
@@ -128,5 +129,12 @@ switch ($opcion)
 		$arreglo["code"]=11;
 		$arreglo["eliminado"]=$controladoraFicha->eliminarAbono($idAbono);
 		echo(json_encode($arreglo));
+	break;
+	case 12:
+		//json Pacientes con Tratamiento {"indice":12,"cantPaciente":1}
+		$cantRonda = $data->{"cantPaciente"};
+		$controladoraPaciente  = new ControladoraPaciente();
+		$arreglo["code"]=12;
+		$arreglo["lista"] = $controladoraPaciente->personasConPresupesto($cantRonda);
 	break;
 }

@@ -253,5 +253,40 @@ require_once '../pojos/persona.php';
         }
         return $this->datos;
  	}
+ 	public function eliminarOdontologo($idOdontologo)
+ 	{
+ 		$conexion = new MySqlCon();
+		$this->datos ='';
+		try 
+	   	{ 	 
+	        $this->SqlQuery='';
+	        $this->SqlQuery="DELETE FROM odontologo WHERE ID_ODONTOLOGO=?";
+	        $sentencia=$conexion->prepare($this->SqlQuery);
+	        $sentencia->bind_param("i",$idOdontologo);
+	      	if($sentencia->execute())
+	      	{
+	      		if($sentencia->affected_rows)
+	      		{
+		        	$conexion->close();
+					return "Eliminado";
+				}
+				else
+				{
+					$conexion->close();
+					return "Error";
+				}
+			}
+			else
+			{
+				$conexion->close();
+	        	return "Else";
+	        }
+        }
+    	catch(Exception $e)
+    	{
+         return "Exception";
+         throw new $e("Error al eliminar Odontologo");
+        }
+ 	}
 }
 ?>

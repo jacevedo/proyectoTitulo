@@ -263,5 +263,40 @@ class ControladoraFuncionario
         }
         return $this->datos;
 	}
+	public function eliminarFuncionario($idFuncionario)
+ 	{
+ 		$conexion = new MySqlCon();
+		$this->datos ='';
+		try 
+	   	{ 	 
+	        $this->SqlQuery='';
+	        $this->SqlQuery="DELETE FROM funcionario WHERE ID_FUNCIONARIO=?";
+	        $sentencia=$conexion->prepare($this->SqlQuery);
+	        $sentencia->bind_param("i",$idFuncionario);
+	      	if($sentencia->execute())
+	      	{
+	      		if($sentencia->affected_rows)
+	      		{
+		        	$conexion->close();
+					return "Eliminado";
+				}
+				else
+				{
+					$conexion->close();
+					return "Error";
+				}
+			}
+			else
+			{
+				$conexion->close();
+	        	return false;
+	        }
+        }
+    	catch(Exception $e)
+    	{
+         return false;
+         throw new $e("Error al eliminar Funcionario");
+        }
+ 	}
 }
 ?>

@@ -40,11 +40,19 @@ switch ($opcion)
 		echo(json_encode($arreglo));
 	break;	
 	case 3:
-		//json lista citas por id Paciente{"indice":3,"idPaciente":3,"fecha":"2013-11-02"}
+		//json lista citas por id Paciente y fecha {"indice":3,"idPaciente":3,"fecha":"2013-11-02"}
 		$controladora = new ControladoraCitas();
 		$idPaciente = $data->{"idPaciente"};
 		$fecha = $data->{"fecha"};
 		$arreglo["resultado"] = $controladora->listarCitaPorPacienteFecha($idPaciente,$fecha);
+		echo(json_encode($arreglo));
+	break;	
+	case 4:
+		//json lista citas por id Odontologo y Fecha {"indice":4,"idOdontologo":3,"fecha":"2013-11-07"}
+		$controladora = new ControladoraCitas();
+		$idOdontologo = $data->{"idOdontologo"};
+		$fecha = $data->{"fecha"};
+		$arreglo["resultado"] = $controladora->listarCitaPorOdontologoFecha($idOdontologo,$fecha);
 		echo(json_encode($arreglo));
 	break;	
 }

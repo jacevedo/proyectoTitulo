@@ -124,13 +124,13 @@ class ControladoraLogin
 		try
 		{
 			$this->SqlQuery = '';
-			$this->SqlQuery = "SELECT per.ID_PERSONA as IDPERSONA, per.RUT, pa.PASS, perm.COD_ACCESO, (SELECT ODONTOLOGO_HABILITADO FROM odontologo WHERE ID_PERSONA=IDPERSONA) FROM persona per, pass pa, permisos perm WHERE per.RUT = ? AND per.ID_PERSONA = pa.ID_PERSONA AND per.ID_PERFIL = perm.ID_PERFIL";
+			$this->SqlQuery = "SELECT per.ID_PERSONA as IDPERSONA, per.RUT, pa.PASS, perm.COD_ACCESO, (SELECT ODONTOLOGO_HABILITADO FROM odontologo WHERE ID_PERSONA=IDPERSONA),(SELECT ID_ODONTOLOGO FROM odontologo WHERE ID_PERSONA=IDPERSONA) FROM persona per, pass pa, permisos perm WHERE per.RUT = ? AND per.ID_PERSONA = pa.ID_PERSONA AND per.ID_PERFIL = perm.ID_PERFIL";
 
 		   	$sentencia=$conexion->prepare($this->SqlQuery);
 		   	$sentencia->bind_param("i",$usuario);
 		   	if($sentencia->execute())
         	{
-        		$sentencia->bind_result($idPersona,$usuarioBD,$passBD,$codAcceso,$habilitado);	
+        		$sentencia->bind_result($idPersona,$usuarioBD,$passBD,$codAcceso,$habilitado,$idOdontologo);	
 	        	$hasher = new PasswordHash(8, false);	
 	        	if($sentencia->fetch())
 	        	{
@@ -145,9 +145,11 @@ class ControladoraLogin
 				        	$keyHashada = $hasher->HashPassword($keyDesencriptada);
 				        	$session->initClass(0, $idPersona,$keyHashada,$hoy,$hoy);
 				        	$this->datos["idPersona"]=$idPersona;
+				        	$this->datos["idOdontologo"] = $idOdontologo;
 				        	$this->datos["key"] = $this->insertSession($session);
 				        	$this->datos["codAcceso"] = $codAcceso;
 				        	$this->datos["habilitado"] = "Usuario Habilitado";
+
 				        }			
 				        else
 				        {

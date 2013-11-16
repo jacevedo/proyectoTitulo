@@ -23,6 +23,9 @@ require_once '../controladoras/controladorafuncionario.php';
 * 8.- Buscar Odontologo Por Nombre Apellido
 * 9.- Listar Personas id nombre
 * 11.- Buscar Persona por id
+* 12.- Eliminar odontologo id
+* 13.- Eliminar Funcionario id
+* 14.- Eliminar paciente id
 */
 
 
@@ -134,11 +137,35 @@ switch ($opcion)
 		echo(json_encode($arreglo));
 	break;
 	case 11:
-		//json Listar odontologo con id nombre y apellido {"indice":10,"idPersona":8}
+		//json Listar odontologo con id nombre y apellido {"indice":11,"idPersona":8}
 		$idPersona = $data->{"idPersona"};
 		$controladoraPersona = new ControladoraPersonaRegionComuna();
 		$arreglo["code"] = 11;
 		$arreglo["listaPersonas"] = $controladoraPersona->buscarPorId($idPersona);
+		echo(json_encode($arreglo));
+	break;
+	case 12:
+		//json Eliminar odontologo con id {"indice":12,"idOdontologo":1}
+		$idOdontologo = $data->{"idOdontologo"};
+		$controladoraOdontologo = new ControladoraDoctor();
+		$arreglo["code"] = 12;
+		$arreglo["resultado"] = $controladoraOdontologo->eliminarOdontologo($idOdontologo);
+		echo(json_encode($arreglo));
+	break;
+	case 13:
+		//json Eliminar funcionario con id {"indice":12,"idFuncionario":1}
+		$idFuncionario = $data->{"idFuncionario"};
+		$controladoraFuncionario = new ControladoraFuncionario();
+		$arreglo["code"] = 13;
+		$arreglo["resultado"] = $controladoraFuncionario->eliminarFuncionario($idFuncionario);
+		echo(json_encode($arreglo));
+	break;
+	case 14:
+		//json Eliminar paciente con id {"indice":12,"idPaciente":1}
+		$idPaciente = $data->{"idPaciente"};
+		$controladoraPaciente = new ControladoraPaciente();
+		$arreglo["code"] = 14;
+		$arreglo["resultado"] = $controladoraPaciente->eliminarPaciente($idPaciente);
 		echo(json_encode($arreglo));
 	break;
 }

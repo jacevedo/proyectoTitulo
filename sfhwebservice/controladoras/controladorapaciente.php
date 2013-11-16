@@ -256,6 +256,92 @@ class ControladoraPaciente
         }
         return $this->datos;
 	}
+	public function eliminarPaciente($idPaciente)
+ 	{
+ 		$conexion = new MySqlCon();
+		$this->datos ='';
+		try 
+	   	{ 	 
+	        $this->SqlQuery='';
+	        $this->SqlQuery="DELETE FROM paciente WHERE ID_PACIENTE=?";
+	        $sentencia=$conexion->prepare($this->SqlQuery);
+	        $sentencia->bind_param("i",$idPaciente);
+	      	if($sentencia->execute())
+	      	{
+	      		if($sentencia->affected_rows)
+	      		{
+		        	$conexion->close();
+					return "Eliminado";
+				}
+				else
+				{
+					$conexion->close();
+					return "Error";
+				}
+			}
+			else
+			{
+				$conexion->close();
+	        	return false;
+	        }
+        }
+    	catch(Exception $e)
+    	{
+         return false;
+         throw new $e("Error al eliminar Paciente");
+        }
+ 	}
+ 	public function personasConPresupesto($canPersonas)
+ 	{
+ 		$limitInferior=0;
+ 		$limitSuperior = 0;
+ 		if($canPersonas==1)
+ 		{
+ 			$limitInferior = 0;
+ 			$limitSuperior = 10;	
+ 		}
+ 		else
+ 		{
+ 			$limitSuperior = ($canPersonas) * 10;
+ 			$limitInferior = ($limitSuperior-10);
+ 		}
+ 		
+ 		$conexion = new MySqlCon();
+		$this->datos ='';
+		try
+		{
+			$this->SqlQuery = '';
+			$this->SqlQuery = "SELECT pe.ID_PERSONA, pe.ID_PERFIL, pa.ID_PACIENTE, pe.RUT, pe.DV, pe.NOMBRE, pe.APELLIDO_PATERNO,".
+								" pe.APELLIDO_MATERNO, pe.FECHA_NAC, pa.FECHA_INGRESO, pa.HABILITADO_PACIENTE FROM paciente pa, persona pe ".
+								"WHERE pa.ID_PERSONA = pe.ID_PERSONA Limit ? , ?";
+		   	$sentencia=$conexion->prepare($this->SqlQuery);
+		   	$sentencia->bind_param("ii",$limitInferior,$limitSuperior);
+        	if($sentencia->execute())
+        	{
+        		$sentencia->bind_result($idPersona, $idPerfil, $idPaciente, $rut, $dv, $nombre, $apellidoPaterno, $apellidoMaterno, $fechaNacimiento, $fechaIngreso, $habilitadoPaciente);				
+				$indice=0;     
+				while($sentencia->fetch())
+				{
+					$paciente = new Paciente();
+					$paciente->initClassDatosCompletos($idPersona, $idPerfil, $idPaciente, $rut, $dv, $nombre, $apellidoPaterno, $apellidoMaterno, $fechaNacimiento, $fechaIngreso, $habilitadoPaciente);
+        			$this->datos[$indice] = $paciente;
+        			
+        			$indice++;
+				}
+      		}
+       		$conexion->close();
+    	}
+    	catch(Exception $e)
+    	{
+        	throw new $e("Error al listar pacientes");
+        }
+        return $this->datos;
+ 	}
+ 	function buscarPresupuesto()
+ 	{
+ 		
+			
+ 	} 	
 }
 
 ?>
