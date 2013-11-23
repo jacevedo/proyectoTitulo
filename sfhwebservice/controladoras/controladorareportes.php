@@ -6,6 +6,10 @@ class ControladoraReportes
 	{
 
 	}
+	function generarReporteGasto()
+	{
+		
+	}
 	function listarReportes()
 	{
 		$conexion = new MySqlCon();

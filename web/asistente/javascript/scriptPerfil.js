@@ -66,6 +66,7 @@ function cargarPerfil()
 			$("#tdEmail").html(contacto.mail);
 			$("#tdFechaIngreso").html(contacto.fechaIngreso);//Invisible
 		}
+		
 	});
 }
 
@@ -103,7 +104,7 @@ function modificarCuenta()
 	var fechaIng = $("#tdFechaIngreso").html(); //Invisible
 
 	//PERSONA
-	$("#tdNumero").html("<input type='text' id='txtNumero'/>");
+	$("#tdNumero").html("<input type='text'class='form-control'  id='txtNumero'/>");
 	$("#tdNombre").html("<input type='text' id='txtNombre'/>");
 	$("#tdApellidoPaterno").html("<input type='text' id='txtApellidoPaterno'/>");
 	$("#tdApellidoMaterno").html("<input type='text' id='txtApellidoMaterno'/>");
@@ -179,11 +180,35 @@ function guardarModificacionCuenta()
 		var obj = $.parseJSON(datos);
 		var persona = obj.resultadoPersona;
 		var contacto = obj.resultadoDatos;
-
-		if(persona == "Modificado" && contacto == "Modificado")
+		alert(persona);
+		alert(contacto);
+		if(persona == "Modificado")
 		{
-			alert("Su perfil fue modificado correctamente.");
-			location.reload();
+			if( contacto == "Modificado")
+			{
+				alert("Su perfil fue modificado correctamente.");
+				location.reload();
+			}
+			else
+			{
+				alert("Algunos datos no fueron modificados");
+				location.reload();
+			}
+			
+		}
+		if(contacto == "Modificado")
+		{
+			if( persona == "Modificado")
+			{
+				alert("Su perfil fue modificado correctamente.");
+				location.reload();
+			}
+			else
+			{
+				alert("Algunos datos no fueron modificados");
+				location.reload();
+			}
+			
 		}
 		else
 		{

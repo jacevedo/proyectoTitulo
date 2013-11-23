@@ -21,6 +21,8 @@ function login()
 		var codigo = obj.codAcceso;
 		var key = obj.key;
 		var idPaciente = obj.idPaciente;
+		var nombre = obj.nombre;
+		var appPaterno = obj.appPaterno;
 		if(codigo == 707 || codigo == 706 || codigo == 705)
 		{
 		    var form = $('<form></form>');
@@ -51,6 +53,20 @@ function login()
 	        field2.attr("value", idPaciente);
 
 	        form.append(field2);
+	        
+	        var field3 = $('<input></input>');
+	        field3.attr("type", "hidden");
+	        field3.attr("name", "nombre");
+	        field3.attr("value", nombre);
+
+	        form.append(field3);
+	         
+	        var field4 = $('<input></input>');
+	        field4.attr("type", "hidden");
+	        field4.attr("name", "appPaterno");
+	        field4.attr("value", appPaterno);
+
+	        form.append(field4);
 
 		    $(document.body).append(form);
 		    form.submit();
