@@ -22,7 +22,7 @@ function buscarPor()
 		var obj = $.parseJSON(datos);
 		$.each(obj.listaPrecios,function()
 		{
-			tabla = tabla+"<tr><td>"+this.idPrecios+"</td><td>"+this.comentario+"</td><td>"+this.valorTotal+"</td><td><Button class='btnEditarPrecio'>Editar</Button></td><td><Button class='btnEliminarPrecio'>Eliminar</Button></td></tr>";
+			tabla = tabla+"<tr><td>"+this.idPrecios+"</td><td>"+this.comentario+"</td><td>"+this.valorTotal+"</td><td><Button class='btnEditarPrecio btn btn-lg btn-primary btn-block'>Editar</Button></td><td><Button class='btnEliminarPrecio btn btn-lg btn-primary btn-block'>Eliminar</Button></td></tr>";
 		});
 		$("#cuerpoTabla").html(tabla);
 	});
@@ -60,7 +60,7 @@ function modificarObjeto()
 			}
 			else if(i==3)
 			{
-				$(this).html("<Button class='btnEditarPrecio'>Guardar</Button>");
+				$(this).html("<Button class='btnEditarPrecio btn btn-lg btn-primary btn-block'>Guardar</Button>");
 			}
 		});
 	}
@@ -88,7 +88,7 @@ function modificarObjeto()
 			}
 			else if(i==3)
 			{
-				$(this).html("<Button class='btnEditarPrecio'>Editar</Button>");
+				$(this).html("<Button class='btnEditarPrecio btn btn-lg btn-primary btn-block'>Editar</Button>");
 			}
 		});
 
@@ -122,7 +122,7 @@ function cargarListaPrecios()
 		var obj = $.parseJSON(datos);
 		$.each(obj.listaPrecios,function()
 		{
-			tabla = tabla+"<tr><td>"+this.idPrecios+"</td><td>"+this.comentario+"</td><td>"+this.valorTotal+"</td><td><Button class='btnEditarPrecio'>Editar</Button></td><td><Button class='btnEliminarPrecio'>Eliminar</Button></td></tr>";
+			tabla = tabla+"<tr><td>"+this.idPrecios+"</td><td>"+this.comentario+"</td><td>"+this.valorTotal+"</td><td><button class='btnEditarPrecio btn btn-lg btn-primary btn-block' type='submit'>Editar</button></td><td><button class='btnEliminarPrecio btn btn-lg btn-primary btn-block' type='submit'>Eliminar</button></td></tr>";
 		});
 		$("#cuerpoTabla").html(tabla);
 	});

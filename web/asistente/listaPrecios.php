@@ -12,6 +12,9 @@ session_start();
 	</head>
 	<body>
 		<div class="container">
+			<input type="hidden" value=<?=$_SESSION['user'];?> id="idPaciente">
+			<input type="hidden" value=<?=$_SESSION['key'];?> id="keyPaciente">
+			<input type="hidden" value=<?=$_SESSION['paciente'];?> id="pacientes">
 			<div class="navbar navbar-default" role="navigation">
 		        <div class="navbar-header">
 		          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -25,7 +28,7 @@ session_start();
 		        <div class="navbar-collapse collapse">
 		          <ul class="nav navbar-nav">
 		            <li ><a href="perfil.php">Perfil</a></li>
-		            <li><a href="confirmarHora.php">Hora Atencion</a></li>
+		            <li><a href="confirmarhora.php">Hora Atencion</a></li>
 		            <li class="active"><a href="listaPrecios.php">Lista Precios</a></li>
 		           
 		          </ul>
@@ -39,30 +42,44 @@ session_start();
 		    	<h1>
 		      		Lista de Precios
 		      	</h1>
+		      	<div class="panel panel-default">
+					 <div class="panel-heading">
+					 	<div class="row">
+						 	<div class="col-xs-6 col-sm-4">
+								<input type="search" id="txtBuscaTratamiento"/>
+							</div>
+							 <div id="botones" class="col-xs-6 col-sm-4">
+							 	<button id="btnBuscar" class="btn btn-lg btn-primary btn-block" type="submit">Buscar</button>
+							</div>
+							<div id="botones" class="col-xs-6 col-sm-4">
+								<button id="btnAgregarTratamiento" class="btn btn-lg btn-primary btn-block" type="submit">Agregar</button>
+							</div>
+						</div>
+					 </div>
+					  <!-- Table -->
+					  <table class="table" id="tablaListaPrecios">
+					  	<thead>
+					  		<tr>
+							<td>Nro</td>
+							<td>Nombre Tratamiento</td>
+							<td>Precio</td>
+							<td>Editar</td>
+							<td>Eliminar</td>
+						</tr>
+					  	</thead>
+					  	<tbody id="cuerpoTabla">
+						
+						</tbody>
+					  </table>
+					</div>
 		    </div>
 		</div>
-		<head>
-			<img src="imagenes/logo.png" id="imagenLogo">
-			<h1>SFH: Lista de Precios</h1>
-			<div id="menu">
-				<table id="tablaMenu">
-					<tr>
-						<td><a href="perfil.php">Perfil</a></td>
-						<td><a href="confirmarHora.php">Hora Atencion</a></td>
-						<td><a href="listaPrecios.php">Lista Precios</a></td>
-						<td><a href="logout.php">Logout</a></td>	
-					</tr>
-				</table> 
-			</div>
-		</head>
-		<div id="cuerpo">
+	<!--<div id="cuerpo">
 			<div id="logo">
 				<img src="imagenes/logo.png" id="imagenCostado">
 			</div>
 			<div id="Contenido">
-				<input type="hidden" value=<?=$_SESSION['user'];?> id="idPaciente">
-				<input type="hidden" value=<?=$_SESSION['key'];?> id="keyPaciente">
-				<input type="hidden" value=<?=$_SESSION['paciente'];?> id="pacientes">
+				
 				<div id="campos">
 				 <input type="search" id="txtBuscaTratamiento"/>
 					 <div id="botones">
@@ -85,6 +102,6 @@ session_start();
 					</tbody>
 				</table>
 			</div>
-		</div>
+		</div>-->
 	</body>
 </html>

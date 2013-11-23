@@ -26,7 +26,7 @@ session_start();
 		        <div class="navbar-collapse collapse">
 		          <ul class="nav navbar-nav">
 		            <li class="active"><a href="perfil.php">Perfil</a></li>
-		            <li><a href="confirmarHora.php">Hora Atencion</a></li>
+		            <li><a href="confirmarhora.php">Hora Atencion</a></li>
 		            <li><a href="listaPrecios.php">Lista Precios</a></li>
 		           
 		          </ul>
