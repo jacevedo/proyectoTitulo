@@ -1,4 +1,4 @@
-var direccionWeb = "http://localhost/proyectoTitulo/sfhwebservice/webService/";
+var direccionWeb = "http://172.16.28.138/sfhwebservice/webService/";
 $(document).ready(inicializarEventos);
 
 function inicializarEventos()
@@ -12,14 +12,15 @@ function login()
 	var contrasena = $("#txtPass").val();
 
 	var ingresar = direccionWeb+"ws-login.php";
-	var data = {"send":"{\"indice\":1,\"usuario\":"+usuario+",\"pass\":\""+contrasena+"\"}"};
+	var data = {"send":"{\"indice\":2,\"usuario\":"+usuario+",\"pass\":\""+contrasena+"\"}"};
 
 	$.post(ingresar, data, function(datos){
-		var obj = $.parseJSON(datos);
+		alert(datos);
+		var datosObjeto = $.parseJSON(datos);
+		var obj = datosObjeto.resultado;
 		var codigo = obj.codAcceso;
 		var key = obj.key;
 		var idPaciente = obj.idPaciente;
-
 		if(codigo == 707 || codigo == 706 || codigo == 705)
 		{
 		    var form = $('<form></form>');

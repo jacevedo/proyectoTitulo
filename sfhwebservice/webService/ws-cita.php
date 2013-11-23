@@ -55,4 +55,34 @@ switch ($opcion)
 		$arreglo["resultado"] = $controladora->listarCitaPorOdontologoFecha($idOdontologo,$fecha);
 		echo(json_encode($arreglo));
 	break;	
+	case 5:
+		//json listar citas por fecha {"indice":5,"fecha":"2013-11-16"}
+		$controladora = new ControladoraCitas();
+		$fecha = $data->{"fecha"};
+		$arreglo["resultado"] = $controladora->listarCitaPorFecha($fecha);
+		echo(json_encode($arreglo));
+	break;
+	case 6:
+
+		//json ConfirmarCitas{"indice":6,"citas":[{"idCita":2,"estado":3}]}
+		$controladora = new ControladoraCitas();
+		$arregloJson = $data->{"citas"};
+		$devolucion = true;
+		foreach ($arregloJson as $objetoJson) 
+		{
+			$idCita = $objetoJson->{"idCita"};
+			$estado = $objetoJson->{"estado"};
+			$devolucion = true && $controladora->confirmarCita($idCita,$estado);
+
+		}
+		echo $jsonRecibido+" " + $devolucion;
+	break;
+	case 7:
+		//json Eliminar{"indice":7,"idCita":3}
+		$controladora = new ControladoraCitas();
+		$idCita = $data->{"idCita"};
+		$estado = 3;
+		$resultado = $controladora->confirmarCita($idCita,$estado);
+		echo $resultado;
+	break;
 }
