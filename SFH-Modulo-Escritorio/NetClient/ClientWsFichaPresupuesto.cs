@@ -43,7 +43,8 @@ namespace NetClient
             set { jsonParam = value; }
         }
         #endregion
-   #region ListarFichas
+       
+        #region ListarFichas
 
         public List<Fichadental> ListarFichas() { 
           List<Fichadental> list = new List<Fichadental>();

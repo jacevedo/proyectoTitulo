@@ -89,7 +89,8 @@ namespace SFH_Software
 
         private void btnAdminCli_Click(object sender, EventArgs e)
         {
-            treeViewMenu.ExpandAll();            
+            //treeViewMenu.TreeViewNodeSorterExpandAll();
+            //treeViewMenu..Expand(); 
         }
 
         private void treeViewMenu_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
@@ -173,7 +174,7 @@ namespace SFH_Software
 
         private void btnReportes_Click(object sender, EventArgs e)
         {
-             
+            
                   frmGenerarReportesPacientes report = new frmGenerarReportesPacientes();
                   this.MostrarForm("Reportes y estadísticas", report);
                     

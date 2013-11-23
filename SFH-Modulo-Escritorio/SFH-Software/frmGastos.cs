@@ -52,6 +52,8 @@ namespace SFH_Software
             this.txtMonto.Text = gasto.MontoGastos.ToString();
             this.txtDescuento.Text = gasto.DescuentoGastos.ToString();
             this.txtConcept.Text = gasto.ConceptodeGastos.ToString();
+            this.MntCalendarGastos.SelectionStart = gasto.FechaGastos;
+            this.MntCalendarGastos.SelectionEnd = gasto.FechaGastos;
             btnNuevo.Text = "Guardar Cambios";
         }
         private void LimpiarControles()
@@ -121,6 +123,7 @@ namespace SFH_Software
                 gasto.ConceptodeGastos = txtConcept.Text.ToString();
                 gasto.MontoGastos = int.Parse(txtMonto.Text.ToString());
                 gasto.DescuentoGastos = int.Parse(txtDescuento.Text.ToString());
+                gasto.FechaGastos = MntCalendarGastos.SelectionStart;
                 this.client_gastos.InsertarGatos(gasto);
                 this.dataGridGastos.DataSource = this.client_gastos.ListarGastos();
                 this.LimpiarControles();
@@ -135,6 +138,7 @@ namespace SFH_Software
                 gasto.ConceptodeGastos = txtConcept.Text.ToString();
                 gasto.MontoGastos = int.Parse(txtMonto.Text.ToString());
                 gasto.DescuentoGastos = int.Parse(txtDescuento.Text.ToString());
+                gasto.FechaGastos = MntCalendarGastos.SelectionStart;
                 this.client_gastos.ModificarGastos(gasto);
                 this.dataGridGastos.DataSource = this.client_gastos.ListarGastos();
                 this.LimpiarControles();

@@ -50,6 +50,7 @@
     <Compile Include="ClientWsAdminUsuario.cs" />
     <Compile Include="ClientWsAdminUsuarioSig.cs" />
     <Compile Include="ClientWsAreaInsumoListas.cs" />
+    <Compile Include="ClientWsDataReportes.cs" />
     <Compile Include="ClientWsFichaPresupuesto.cs" />
     <Compile Include="ClientWsFuncionario.cs" />
     <Compile Include="ClientWsGastos.cs" />
@@ -57,6 +58,7 @@
     <Compile Include="ClientWsPaciente.cs" />
     <Compile Include="ClientWsPassDatosdeContacto.cs" />
     <Compile Include="ClientWsPreciosInsumos.cs" />
+    <Compile Include="ClientWsReportes.cs" />
     <Compile Include="ClientWsTratamientoAbono.cs" />
     <Compile Include="CoreNetClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

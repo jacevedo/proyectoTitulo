@@ -49,6 +49,8 @@
             this.btnNuevo = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.MntCalendarGastos = new System.Windows.Forms.MonthCalendar();
+            this.label1 = new System.Windows.Forms.Label();
             this.idgastos = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idpersona = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.monto = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,6 +58,7 @@
             this.conceptogasto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FechasGastos = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.editar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.verinsumos = new System.Windows.Forms.DataGridViewButtonColumn();
@@ -83,9 +86,9 @@
             this.groupBox3.Controls.Add(this.dataGridGastos);
             this.groupBox3.Controls.Add(this.groupBox4);
             this.groupBox3.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.groupBox3.Location = new System.Drawing.Point(20, 338);
+            this.groupBox3.Location = new System.Drawing.Point(20, 303);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(1228, 485);
+            this.groupBox3.Size = new System.Drawing.Size(1228, 517);
             this.groupBox3.TabIndex = 15;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Listado de Gastos";
@@ -101,6 +104,7 @@
             this.conceptogasto,
             this.nombre,
             this.apellido,
+            this.FechasGastos,
             this.editar,
             this.eliminar,
             this.verinsumos});
@@ -108,7 +112,7 @@
             this.dataGridGastos.Name = "dataGridGastos";
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
             this.dataGridGastos.RowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridGastos.Size = new System.Drawing.Size(1190, 394);
+            this.dataGridGastos.Size = new System.Drawing.Size(1190, 426);
             this.dataGridGastos.TabIndex = 4;
             this.dataGridGastos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridGastos_CellContentClick);
             // 
@@ -158,6 +162,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label1);
+            this.groupBox2.Controls.Add(this.MntCalendarGastos);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.cmbxpersona);
             this.groupBox2.Controls.Add(this.txtConcept);
@@ -171,7 +177,7 @@
             this.groupBox2.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.groupBox2.Location = new System.Drawing.Point(20, 19);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1228, 313);
+            this.groupBox2.Size = new System.Drawing.Size(1228, 278);
             this.groupBox2.TabIndex = 14;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Ingresar gastos";
@@ -179,7 +185,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(433, 87);
+            this.label4.Location = new System.Drawing.Point(49, 90);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(97, 13);
             this.label4.TabIndex = 40;
@@ -188,14 +194,14 @@
             // cmbxpersona
             // 
             this.cmbxpersona.FormattingEnabled = true;
-            this.cmbxpersona.Location = new System.Drawing.Point(562, 37);
+            this.cmbxpersona.Location = new System.Drawing.Point(178, 40);
             this.cmbxpersona.Name = "cmbxpersona";
             this.cmbxpersona.Size = new System.Drawing.Size(215, 21);
             this.cmbxpersona.TabIndex = 39;
             // 
             // txtConcept
             // 
-            this.txtConcept.Location = new System.Drawing.Point(562, 76);
+            this.txtConcept.Location = new System.Drawing.Point(178, 79);
             this.txtConcept.Multiline = true;
             this.txtConcept.Name = "txtConcept";
             this.txtConcept.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -205,7 +211,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(433, 37);
+            this.label11.Location = new System.Drawing.Point(49, 40);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(46, 13);
             this.label11.TabIndex = 35;
@@ -214,7 +220,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(433, 229);
+            this.label8.Location = new System.Drawing.Point(433, 79);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(59, 13);
             this.label8.TabIndex = 30;
@@ -222,7 +228,7 @@
             // 
             // txtDescuento
             // 
-            this.txtDescuento.Location = new System.Drawing.Point(562, 226);
+            this.txtDescuento.Location = new System.Drawing.Point(562, 76);
             this.txtDescuento.Name = "txtDescuento";
             this.txtDescuento.Size = new System.Drawing.Size(215, 20);
             this.txtDescuento.TabIndex = 22;
@@ -230,7 +236,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(433, 190);
+            this.label2.Location = new System.Drawing.Point(433, 40);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(104, 13);
             this.label2.TabIndex = 17;
@@ -238,7 +244,7 @@
             // 
             // txtMonto
             // 
-            this.txtMonto.Location = new System.Drawing.Point(562, 187);
+            this.txtMonto.Location = new System.Drawing.Point(562, 37);
             this.txtMonto.Name = "txtMonto";
             this.txtMonto.Size = new System.Drawing.Size(215, 20);
             this.txtMonto.TabIndex = 14;
@@ -248,7 +254,7 @@
             this.btnNuevo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnNuevo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(93)))), ((int)(((byte)(129)))));
             this.btnNuevo.ForeColor = System.Drawing.Color.White;
-            this.btnNuevo.Location = new System.Drawing.Point(650, 263);
+            this.btnNuevo.Location = new System.Drawing.Point(1002, 222);
             this.btnNuevo.Margin = new System.Windows.Forms.Padding(1);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(127, 36);
@@ -261,7 +267,7 @@
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(93)))), ((int)(((byte)(129)))));
             this.btnCancel.ForeColor = System.Drawing.Color.White;
-            this.btnCancel.Location = new System.Drawing.Point(436, 263);
+            this.btnCancel.Location = new System.Drawing.Point(852, 222);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(1);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(129, 36);
@@ -280,6 +286,21 @@
             this.label3.Size = new System.Drawing.Size(185, 23);
             this.label3.TabIndex = 8;
             this.label3.Text = "Administración de gastos";
+            // 
+            // MntCalendarGastos
+            // 
+            this.MntCalendarGastos.Location = new System.Drawing.Point(900, 40);
+            this.MntCalendarGastos.Name = "MntCalendarGastos";
+            this.MntCalendarGastos.TabIndex = 41;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(807, 40);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(81, 13);
+            this.label1.TabIndex = 42;
+            this.label1.Text = "Fecha de gasto";
             // 
             // idgastos
             // 
@@ -324,6 +345,12 @@
             this.apellido.DataPropertyName = "Apellido";
             this.apellido.HeaderText = "Apellido";
             this.apellido.Name = "apellido";
+            // 
+            // FechasGastos
+            // 
+            this.FechasGastos.DataPropertyName = "FechaGastos";
+            this.FechasGastos.HeaderText = "Fechas de Gastos";
+            this.FechasGastos.Name = "FechasGastos";
             // 
             // editar
             // 
@@ -387,6 +414,8 @@
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridView dataGridGastos;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.MonthCalendar MntCalendarGastos;
         private System.Windows.Forms.DataGridViewTextBoxColumn idgastos;
         private System.Windows.Forms.DataGridViewTextBoxColumn idpersona;
         private System.Windows.Forms.DataGridViewTextBoxColumn monto;
@@ -394,6 +423,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn conceptogasto;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn apellido;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FechasGastos;
         private System.Windows.Forms.DataGridViewButtonColumn editar;
         private System.Windows.Forms.DataGridViewButtonColumn eliminar;
         private System.Windows.Forms.DataGridViewButtonColumn verinsumos;

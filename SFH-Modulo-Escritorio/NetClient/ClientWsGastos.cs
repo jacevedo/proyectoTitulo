@@ -29,8 +29,10 @@ namespace NetClient
         public string InsertarGatos(Gastos gasto)
         {
             string gastoInsertado = string.Empty;
-            //{"indice":1,"idPersona":1,"conceptoGasto":"Colacion","montoGasto":2000,"descuentoGasto":0}
-            this.JsonParam = "send={\"indice\":1,\"idPersona\":"+gasto.IdPersona+",\"conceptoGasto\":\""+gasto.ConceptodeGastos+"\",\"montoGasto\":"+gasto.MontoGastos+",\"descuentoGasto\":"+gasto.DescuentoGastos+ "}";
+            string fichaInsertada = string.Empty;
+            string fechaAEnviar = gasto.FechaGastos.Year + "-" + gasto.FechaGastos.Month + "-" + gasto.FechaGastos.Day;
+            //{"indice":1,"idPersona":1,"conceptoGasto":"Colacion","montoGasto":2000,"descuentoGasto":0,"fechaGasto":"2013-11-23"}
+            this.JsonParam = "send={\"indice\":1,\"idPersona\":"+gasto.IdPersona+",\"conceptoGasto\":\""+gasto.ConceptodeGastos+"\",\"montoGasto\":"+gasto.MontoGastos+",\"descuentoGasto\":"+gasto.DescuentoGastos+",\"fechaGasto\":\""+fechaAEnviar+"\"}";
             try
             {
                 String result = netclient.NetPost("ws-gastos.php", this.JsonParam);
@@ -50,8 +52,10 @@ namespace NetClient
         public string ModificarGastos(Gastos gasto)
         {
             string gastoModificado = string.Empty;
-            //{"indice":2,"idGasto":4,"idPersona":1,"conceptoGasto":"Colacionjsjjss","montoGasto":2000,"descuentoGasto":14}
-            this.JsonParam = "send={\"indice\":2,\"idGasto\":"+gasto.IdGastos+",\"idPersona\":"+gasto.IdPersona+",\"conceptoGasto\":\""+gasto.ConceptodeGastos+" \",\"montoGasto\":"+gasto.MontoGastos+",\"descuentoGasto\":"+gasto.DescuentoGastos+ "}";
+            string fichaInsertada = string.Empty;
+            string fechaAEnviar = gasto.FechaGastos.Year + "-" + gasto.FechaGastos.Month + "-" + gasto.FechaGastos.Day;
+            //{"indice":1,"idPersona":1,"conceptoGasto":"Colacion","montoGasto":2000,"descuentoGasto":0,"fechaGasto":"2013-11-23"}
+            this.JsonParam = "send={\"indice\":2,\"idGasto\":" + gasto.IdGastos + ",\"idPersona\":" + gasto.IdPersona + ",\"conceptoGasto\":\"" + gasto.ConceptodeGastos + " \",\"montoGasto\":" + gasto.MontoGastos + ",\"descuentoGasto\":" + gasto.DescuentoGastos + ",\"fechaGasto\":\"" + fechaAEnviar + "\"}";
             try
             {
                 String result = netclient.NetPost("ws-gastos.php", this.JsonParam);
@@ -66,7 +70,6 @@ namespace NetClient
             return gastoModificado;
         }
         #endregion
-
 
         #region ListarGastos
 
@@ -83,6 +86,7 @@ namespace NetClient
                 {
                     Gastos gasto = new Gastos();
                     //{"idGastos":2,"idPersona":1,"conceptoGasto":"","montoGastos":30000,"descuentoGastos":40000,"nomPersona":"Ada","apellidoPersona":"Tatus"}
+
                     gasto.IdGastos = Convert.ToInt32(item.SelectToken("idGastos").ToString());
                     gasto.IdPersona = Convert.ToInt32(item.SelectToken("idPersona").ToString());
                     gasto.ConceptodeGastos = item.SelectToken("conceptoGasto").ToString();
@@ -90,6 +94,7 @@ namespace NetClient
                     gasto.DescuentoGastos = Convert.ToInt32(item.SelectToken("descuentoGastos").ToString());
                     gasto.Nombre = item.SelectToken("nomPersona").ToString();
                     gasto.Apellido = item.SelectToken("apellidoPersona").ToString();
+                    gasto.FechaGastos = Convert.ToDateTime(item.SelectToken("fechaGasto").ToString());
                     list.Add(gasto);
                 }
 
@@ -101,7 +106,6 @@ namespace NetClient
             return list;
         }
         #endregion
-
 
         #region ListarGastos
 
@@ -125,6 +129,7 @@ namespace NetClient
                     gasto.DescuentoGastos = Convert.ToInt32(item.SelectToken("descuentoGastos").ToString());
                     gasto.Nombre = item.SelectToken("nomPersona").ToString();
                     gasto.Apellido = item.SelectToken("apellidoPersona").ToString();
+                    gasto.FechaGastos = Convert.ToDateTime(item.SelectToken("fechaGasto").ToString());
                     list.Add(gasto);
                 }
 

@@ -15,6 +15,7 @@ namespace ObjectsBeans
         private string conceptodeGastos;
         private string nombre;
         private string apellido;
+        private DateTime fechaGastos;
         #endregion
 
         #region Constructor
@@ -67,6 +68,12 @@ namespace ObjectsBeans
         {
             get { return apellido; }
             set { apellido = value; }
+        }
+
+        public DateTime FechaGastos
+        {
+            get { return fechaGastos; }
+            set { fechaGastos = value; }
         }
         #endregion
     }
