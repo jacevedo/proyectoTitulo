@@ -57,8 +57,8 @@ class ControladoraGastos
 	        $this->SqlQuery="UPDATE gastos SET ID_PERSONA=?,CONCEPTO_GASTO=?,".
 	        				"MONTO_GASTOS=?,DESCUENTO_GASTOS=?, FECHA_GASTO=?  WHERE ID_GASTOS=?";
 	        $sentencia=$conexion->prepare($this->SqlQuery);
-	        $sentencia->bind_param("isiiis",$idPersona,$concepto,$montoGasto,
-	        						$descGasto,$idGasto,$fechaGasto);
+	        $sentencia->bind_param("isiisi",$idPersona,$concepto,$montoGasto,
+	        						$descGasto,$fechaGasto,$idGasto);
 	      	if($sentencia->execute())
 	      	{
 	      		if($sentencia->affected_rows)
