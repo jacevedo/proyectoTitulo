@@ -8,9 +8,10 @@ class Gastos
 	public $descuentoGastos;
 	public $nomPersona;
 	public $apellidoPersona;
+	public $fechaGasto;
 
 	function initClass($idGastos,$idPersona,$conceptoGasto,$montoGastos,$descuentoGastos,
-						$nomPersona,$apellidoPersona)
+						$nomPersona,$apellidoPersona,$fechaGasto)
 	{
 		$this->idGastos = $idGastos;
 		$this->idPersona = $idPersona;
@@ -19,6 +20,7 @@ class Gastos
 		$this->descuentoGastos = $descuentoGastos;
 		$this->nomPersona = $nomPersona;
 		$this->apellidoPersona = $apellidoPersona;
+		$this->fechaGasto = $fechaGasto;
 	}
 }
 ?>

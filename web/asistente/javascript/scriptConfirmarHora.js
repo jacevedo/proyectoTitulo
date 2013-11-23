@@ -19,7 +19,6 @@ function eliminarHora()
 {
  	var id = $(this).parent().parent().children().first().text();
  	var boton = $(this);
- 	alert(id);
  	var data = {"send":"{\"indice\":7,\"idCita\":"+id+"}"};
 	var url = direccionWeb+"ws-cita.php";
 	if (confirm("¿Desea Eliminar La cita seleccionada?")) 
@@ -30,7 +29,9 @@ function eliminarHora()
 			if(datos==1)
 			{
 				alert("Las cita fue eliminada Correctamente");
-				boton.parent().parent().remove();
+				boton.parent().parent().fadeOut(500,function(){
+					$(this).remove();
+				});
 			}
 			else
 			{

@@ -20,27 +20,29 @@ $opcion = $data->{'indice'};
 switch ($opcion) 
 {
 	case 1:
-		//json Insertar Gasto {"indice":1,"idPersona":1,"conceptoGasto":"Colacion","montoGasto":2000,"descuentoGasto":0}
+		//json Insertar Gasto {"indice":1,"idPersona":1,"conceptoGasto":"Colacion","montoGasto":2000,"descuentoGasto":0,"fechaGasto":"2013-11-23"}
 		$idPersona = $data->{"idPersona"};
 		$concepto = $data->{"conceptoGasto"};
 		$monto  = $data->{"montoGasto"};
 		$descuentoGasto = $data->{"descuentoGasto"};
+		$fechaGasto = $data->{"fechaGasto"};
 		$gasto = new Gastos();
-		$gasto->initClass("",$idPersona,$concepto,$monto,$descuentoGasto,"", "");
+		$gasto->initClass("",$idPersona,$concepto,$monto,$descuentoGasto,"", "",$fechaGasto);
 		$controladoraGastos = new ControladoraGastos();
 		$arreglo["code"]=1;
 		$arreglo["idGastoInsertado"] = $controladoraGastos->insertarGasto($gasto);
 		echo(json_encode($arreglo));
 	break;
 	case 2:
-		//json Modificar Gasto {"indice":2,"idGasto":4,"idPersona":1,"conceptoGasto":"Colacion","montoGasto":2000,"descuentoGasto":0}
+		//json Modificar Gasto {"indice":2,"idGasto":4,"idPersona":1,"conceptoGasto":"Colacion","montoGasto":2000,"descuentoGasto":0,"fechaGasto":"2013-11-22"}
 		$idGasto = $data->{"idGasto"}; 
 		$idPersona = $data->{"idPersona"};
 		$concepto = $data->{"conceptoGasto"};
 		$monto  = $data->{"montoGasto"};
 		$descuentoGasto = $data->{"descuentoGasto"};
+		$fechaGasto = $data->{"fechaGasto"};
 		$gasto = new Gastos();
-		$gasto->initClass($idGasto,$idPersona,$concepto,$monto,$descuentoGasto,"", "");
+		$gasto->initClass($idGasto,$idPersona,$concepto,$monto,$descuentoGasto,"", "",$fechaGasto);
 		$controladoraGastos = new ControladoraGastos();
 		$arreglo["code"]=2;
 		$arreglo["idGastoModificado"] = $controladoraGastos->modificarGasto($gasto);

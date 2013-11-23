@@ -15,13 +15,14 @@ class ControladoraGastos
 		$concepto = $gasto->conceptoGasto;
 		$montoGasto = $gasto->montoGastos;
 		$descGasto = $gasto->descuentoGastos;
+		$fechaGasto = $gasto->fechaGasto;
 		try 
 	   	{ 	 
 	        $this->SqlQuery='';
 	        $this->SqlQuery="INSERT INTO gastos (ID_GASTOS,ID_PERSONA,CONCEPTO_GASTO,".
-	        				"MONTO_GASTOS,DESCUENTO_GASTOS) VALUES (null,?,?,?,?)";
+	        				"MONTO_GASTOS,DESCUENTO_GASTOS, FECHA_GASTO) VALUES (null,?,?,?,?,?)";
 	        $sentencia=$conexion->prepare($this->SqlQuery);
-	        $sentencia->bind_param("isii",$idPersona,$concepto,$montoGasto,$descGasto);
+	        $sentencia->bind_param("isiis",$idPersona,$concepto,$montoGasto,$descGasto,$fechaGasto);
 	      	if($sentencia->execute())
 	      	{
 	        	$conexion->close();
@@ -49,14 +50,15 @@ class ControladoraGastos
 		$concepto = $gasto->conceptoGasto;
 		$montoGasto = $gasto->montoGastos;
 		$descGasto = $gasto->descuentoGastos;
+		$fechaGasto = $gasto->fechaGasto;
 		try 
 	   	{ 	 
 	        $this->SqlQuery='';
 	        $this->SqlQuery="UPDATE gastos SET ID_PERSONA=?,CONCEPTO_GASTO=?,".
-	        				"MONTO_GASTOS=?,DESCUENTO_GASTOS=? WHERE ID_GASTOS=?";
+	        				"MONTO_GASTOS=?,DESCUENTO_GASTOS=?, FECHA_GASTO=?  WHERE ID_GASTOS=?";
 	        $sentencia=$conexion->prepare($this->SqlQuery);
-	        $sentencia->bind_param("isiii",$idPersona,$concepto,$montoGasto,
-	        						$descGasto,$idGasto);
+	        $sentencia->bind_param("isiiis",$idPersona,$concepto,$montoGasto,
+	        						$descGasto,$idGasto,$fechaGasto);
 	      	if($sentencia->execute())
 	      	{
 	      		if($sentencia->affected_rows)
@@ -126,7 +128,7 @@ class ControladoraGastos
 		{
 			$this->SqlQuery = '';
 			$this->SqlQuery = "SELECT ga.ID_GASTOS, ga.ID_PERSONA, ga.CONCEPTO_GASTO,".
-							  " ga.MONTO_GASTOS, ga.DESCUENTO_GASTOS, pe.NOMBRE, ".
+							  " ga.MONTO_GASTOS, ga.DESCUENTO_GASTOS, ga.FECHA_GASTO , pe.NOMBRE, ".
 							  " pe.APELLIDO_PATERNO  FROM gastos ga, persona pe" .
 							  " WHERE ga.ID_PERSONA = pe.ID_PERSONA";
 
@@ -134,7 +136,7 @@ class ControladoraGastos
 			
         	if($sentencia->execute())
         	{
-        		$sentencia->bind_result($id,$idPersona,$concepto,$monto, $descuento,
+        		$sentencia->bind_result($id,$idPersona,$concepto,$monto, $descuento, $fechaGasto,
         						$nombre,$app);				
 				$indice=0;     
 
@@ -144,7 +146,7 @@ class ControladoraGastos
 					$nomPersonaGasto = 
 					$gastos = new Gastos();
 					$gastos->initClass($id,$idPersona,$concepto,$monto,$descuento,
-						$nombre,$app);
+						$nombre,$app,$fechaGasto);
         			$this->datos[$indice] = $gastos;
         			
         			$indice++;
@@ -167,7 +169,7 @@ class ControladoraGastos
 		{
 			$this->SqlQuery = '';
 			$this->SqlQuery = "SELECT ga.ID_GASTOS, ga.ID_PERSONA, ga.CONCEPTO_GASTO,".
-							  " ga.MONTO_GASTOS, ga.DESCUENTO_GASTOS, pe.NOMBRE, ".
+							  " ga.MONTO_GASTOS, ga.DESCUENTO_GASTOS,ga.FECHA_GASTO, pe.NOMBRE, ".
 							  " pe.APELLIDO_PATERNO  FROM gastos ga, persona pe" .
 							  " WHERE ga.ID_PERSONA = pe.ID_PERSONA ".
 							  " AND ga.ID_Persona = ?";
@@ -176,7 +178,7 @@ class ControladoraGastos
 			$sentencia->bind_param("i",$idPersona);
         	if($sentencia->execute())
         	{
-        		$sentencia->bind_result($id,$idPersona,$concepto,$monto, $descuento,
+        		$sentencia->bind_result($id,$idPersona,$concepto,$monto, $descuento, $fechaGasto,
         						$nombre,$app);				
 				$indice=0;     
 
@@ -186,7 +188,7 @@ class ControladoraGastos
 					$nomPersonaGasto = 
 					$gastos = new Gastos();
 					$gastos->initClass($id,$idPersona,$concepto,$monto,$descuento,
-						$nombre,$app);
+						$nombre,$app, $fechaGasto);
         			$this->datos[$indice] = $gastos;
         			
         			$indice++;
