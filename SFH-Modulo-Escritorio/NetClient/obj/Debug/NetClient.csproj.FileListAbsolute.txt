@@ -37,3 +37,4 @@ C:\Users\Citt-David\Desktop\SFH-Modulo-Escritorio\NetClient\obj\Debug\NetClient.
 C:\Users\Citt-David\Desktop\SFH-Modulo-Escritorio\NetClient\obj\Debug\NetClient.pdb
 C:\Users\Citt-David\Documents\GitHub\proyectoTitulo\SFH-Modulo-Escritorio\NetClient\bin\Debug\ObjectsBeans.pdb
 C:\Users\Citt-David\Documents\GitHub\proyectoTitulo\SFH-Modulo-Escritorio\NetClient\obj\Debug\NetClient.csprojResolveAssemblyReference.cache
+C:\Users\Citt-David\Desktop\SFH-Modulo-Escritorio\NetClient\obj\Debug\NetClient.csprojResolveAssemblyReference.cache

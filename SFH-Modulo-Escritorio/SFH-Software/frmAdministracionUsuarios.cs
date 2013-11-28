@@ -107,7 +107,7 @@ namespace SFH_Software
             this.mcFechaNac.ResetText();
             this.txtpass.Text = string.Empty;
             this.txtpass2.Text = string.Empty;
-            this.btnNuevo.Text = "Ingresar Gastos";
+            this.btnNuevo.Text = "Ingresar Usuarios";
 
         }
 
@@ -255,7 +255,7 @@ namespace SFH_Software
             this.PoblarComboBusqueda();
             this.PoblarComboPerfil();
             //boton
-            btnNuevo.Text = "Ingresar Gastos";
+            btnNuevo.Text = "Ingresar Usuarios";
            
         }
 
@@ -463,7 +463,7 @@ namespace SFH_Software
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            if (btnNuevo.Text.ToString().Trim() == "Ingresar Gastos")
+            if (btnNuevo.Text.ToString().Trim() == "Ingresar Usuarios")
             {
                 
                 Persona persona = new Persona();
