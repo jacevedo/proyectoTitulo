@@ -1,4 +1,4 @@
-var direccionWeb = "http://localhost/proyectoTitulo/sfhwebservice/webService/";
+var direccionWeb = "http://172.16.28.138/sfhwebservice/webService/";
 $(document).ready(inicializarEventos);
 var horarios = '';
 

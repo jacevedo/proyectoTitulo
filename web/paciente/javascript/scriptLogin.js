@@ -1,4 +1,4 @@
-var direccionWeb = "http://localhost/proyectoTitulo/sfhwebservice/webService/";
+var direccionWeb = "http://172.16.28.138/sfhwebservice/webService/";
 $(document).ready(inicializarEventos);
 
 function inicializarEventos()
@@ -20,6 +20,9 @@ function login()
 		var codigo = resultado.codAcceso;
 		var key = resultado.key;
 		var idPaciente = resultado.idPaciente;
+		var nomPaciente = resultado.nombre;
+		var appPaciente = resultado.appPaterno;
+	
 
 		if(codigo == 704)
 		{
@@ -51,6 +54,22 @@ function login()
 	        field2.attr("value", idPaciente);
 
 	        form.append(field2);
+
+	        var field3 = $('<input></input>');
+
+	        field3.attr("type", "hidden");
+	        field3.attr("name", "nomPaciente");
+	        field3.attr("value", nomPaciente);
+
+	        form.append(field3);
+
+	        var field4 = $('<input></input>');
+
+	        field4.attr("type", "hidden");
+	        field4.attr("name", "appPaciente");
+	        field4.attr("value", appPaciente);
+
+	        form.append(field4);
 
 		    $(document.body).append(form);
 		    form.submit();

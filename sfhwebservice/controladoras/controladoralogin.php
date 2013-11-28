@@ -17,13 +17,13 @@ class ControladoraLogin
 		try
 		{
 			$this->SqlQuery = '';
-			$this->SqlQuery = "SELECT per.ID_PERSONA as IDPERSONA, per.RUT, pa.PASS, perm.COD_ACCESO,(SELECT ID_PACIENTE FROM paciente WHERE ID_PERSONA=IDPERSONA),(SELECT HABILITADO_PACIENTE FROM paciente WHERE ID_PERSONA=IDPERSONA) FROM persona per, pass pa, permisos perm WHERE per.RUT = ? AND per.ID_PERSONA = pa.ID_PERSONA AND per.ID_PERFIL = perm.ID_PERFIL";
+			$this->SqlQuery = "SELECT per.NOMBRE, per.APELLIDO_PATERNO, per.ID_PERSONA as IDPERSONA, per.RUT, pa.PASS, perm.COD_ACCESO,(SELECT ID_PACIENTE FROM paciente WHERE ID_PERSONA=IDPERSONA),(SELECT HABILITADO_PACIENTE FROM paciente WHERE ID_PERSONA=IDPERSONA) FROM persona per, pass pa, permisos perm WHERE per.RUT = ? AND per.ID_PERSONA = pa.ID_PERSONA AND per.ID_PERFIL = perm.ID_PERFIL";
 
 		   	$sentencia=$conexion->prepare($this->SqlQuery);
 		   	$sentencia->bind_param("i",$usuario);
 		   	if($sentencia->execute())
         	{
-        		$sentencia->bind_result($idPersona,$usuarioBD,$passBD,$codAcceso,$idPaciente,$habilitado);	
+        		$sentencia->bind_result($nombre, $appPaterno, $idPersona,$usuarioBD,$passBD,$codAcceso,$idPaciente,$habilitado);	
         		
     			$hasher = new PasswordHash(8, false);	
 	        	if($sentencia->fetch())
@@ -44,6 +44,8 @@ class ControladoraLogin
 				        	$this->datos["codAcceso"] = $codAcceso;
 				        	$this->datos["idPaciente"] = $idPaciente;
 				        	$this->datos["habilitado"] = "Usuario Habilitado";
+				        	$this->datos["nombre"] = $nombre;
+				        	$this->datos["appPaterno"] = $appPaterno;
 				        }			
 				        else
 				        {
