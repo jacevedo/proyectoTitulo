@@ -223,17 +223,123 @@ class ControladoraReportes
 		try
 		{
 			$this->SqlQuery = '';
-			$this->SqlQuery = "SELECT ID_REPORTE, ID_PERSONA as IDPERSONA, F_CREACION, (SELECT NOMBRE FROM persona pe WHERE pe.ID_PERSONA = IDPERSONA ) AS NOMBRE,(SELECT APELLIDO_PATERNO FROM persona pe WHERE pe.ID_PERSONA = IDPERSONA ) AS APELLIDO_PATERNO_PACIENTE,(SELECT APELLIDO_MATERNO FROM persona pe WHERE pe.ID_PERSONA  = IDPERSONA) AS APELLIDO_MATERNO_PACIENTE FROM reporte";
+			$this->SqlQuery = "SELECT per.RUT,per.DV,per.NOMBRE,per.APELLIDO_PATERNO,per.APELLIDO_MATERNO,
+re.ID_REPORTE,re.F_CREACION, re.TIPO_REPORTE FROM persona per,reporte re WHERE 
+per.ID_PERSONA = re.ID_PERSONA;";
 		   	$sentencia=$conexion->prepare($this->SqlQuery);
         	if($sentencia->execute())
         	{
-        		$sentencia->bind_result($idReporte, $idPersona, $fechaCreacion, $nombre, $appPaterno);
+        		$sentencia->bind_result($rut,$dv,$nombre,$appPaterno, $appMaterno, $idReporte, $fechaCreacion, $tipoReporte);
 				$indice=0;     
 				while($sentencia->fetch())
 				{
-					$reporte = new Reporte();
-					$reporte->initClassDatosPersona($idReporte, $idPersona, $fechaCreacion, $nombre, $appPaterno);
-        			$this->datos[$indice] = $reporte;
+					$arreglo["rut"]=$rut;
+					$arreglo["dv"]=$dv;
+					$arreglo["nombre"]=$nombre;
+					$arreglo["appPaterno"]=$appPaterno;
+					$arreglo["appMaterno"]=$appMaterno;
+					$arreglo["idReporte"]=$idReporte;
+					$arreglo["fechaCreacion"]=$fechaCreacion;
+					$arreglo["tipoReporte"]=$tipoReporte;
+
+        			$this->datos[$indice] = $arreglo;
+        			$indice++;
+				}
+      		}
+       		$conexion->close();
+    	}
+    	catch(Exception $e)
+    	{
+        	throw new $e("Error al listar pacientes");
+        }
+        return $this->datos;
+	}
+	function listarReportesFiltros($fechaInicio, $fechaTermino)
+	{
+		$conexion = new MySqlCon();
+		$this->datos ='';
+		try
+		{
+			$this->SqlQuery = '';
+			$this->SqlQuery = "SELECT per.RUT,per.DV,per.NOMBRE,per.APELLIDO_PATERNO,per.APELLIDO_MATERNO,
+re.ID_REPORTE,re.F_CREACION, re.TIPO_REPORTE FROM persona per,reporte re WHERE 
+ re.F_CREACION >= ? AND re.F_CREACION <= ? AND per.ID_PERSONA = re.ID_PERSONA;";
+		   	$sentencia=$conexion->prepare($this->SqlQuery);
+		   	$sentencia->bind_param("ss",$fechaInicio, $fechaTermino);
+        	if($sentencia->execute())
+        	{
+        		$sentencia->bind_result($rut,$dv,$nombre,$appPaterno, $appMaterno, $idReporte, $fechaCreacion, $tipoReporte);
+				$indice=0;     
+				while($sentencia->fetch())
+				{
+					$arreglo["rut"]=$rut;
+					$arreglo["dv"]=$dv;
+					$arreglo["nombre"]=$nombre;
+					$arreglo["appPaterno"]=$appPaterno;
+					$arreglo["appMaterno"]=$appMaterno;
+					$arreglo["idReporte"]=$idReporte;
+					$arreglo["fechaCreacion"]=$fechaCreacion;
+					$arreglo["tipoReporte"]=$tipoReporte;
+
+        			$this->datos[$indice] = $arreglo;
+        			$indice++;
+				}
+      		}
+       		$conexion->close();
+    	}
+    	catch(Exception $e)
+    	{
+        	throw new $e("Error al listar pacientes");
+        }
+        return $this->datos;
+	}
+	function listarReportesFechaOrdenada()
+	{
+		$conexion = new MySqlCon();
+		$this->datos ='';
+		try
+		{
+			$this->SqlQuery = '';
+			$this->SqlQuery = "SELECT ID_REPORTE, F_CREACION FROM reporte ORDER BY F_CREACION;";
+		   	$sentencia=$conexion->prepare($this->SqlQuery);
+		   	if($sentencia->execute())
+        	{
+        		$sentencia->bind_result($idCita, $fecha);
+				$indice=0;     
+				while($sentencia->fetch())
+				{
+					$arreglo["idCita"]=$idReporte;
+					$arreglo["fecha"]=$fecha;
+        			$this->datos[$indice]=$arreglo;
+        			$indice++;
+				}
+      		}
+       		$conexion->close();
+    	}
+    	catch(Exception $e)
+    	{
+        	throw new $e("Error al listar pacientes");
+        }
+        return $this->datos;
+	}
+	function listarReportesFechaDesordenada()
+	{
+		$conexion = new MySqlCon();
+		$this->datos ='';
+		try
+		{
+			$this->SqlQuery = '';
+			$this->SqlQuery = "SELECT `ID_REPORTE`,`F_CREACION` FROM `reporte` ORDER BY `F_CREACION` DESC;";
+		   	$sentencia=$conexion->prepare($this->SqlQuery);
+		   	if($sentencia->execute())
+        	{
+        		$sentencia->bind_result($idCita, $fecha);
+				$indice=0;     
+				while($sentencia->fetch())
+				{
+					$arreglo["idCita"]=$idReporte;
+					$arreglo["fecha"]=$fecha;
+        			$this->datos[$indice]=$arreglo;
         			$indice++;
 				}
       		}

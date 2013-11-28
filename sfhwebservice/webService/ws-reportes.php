@@ -71,5 +71,34 @@ switch ($opcion)
 		$arreglo["gastos"] = $controladoraReporte->gastosRangoFecha($fechaInicio, $fechaTermino);
 		echo (json_encode($arreglo));
 	break;
-
+	case 8:
+		//JSON listar reportes con datos persona {indice:8}
+		$controladoraReporte = new ControladoraReportes();
+		$arreglo["code"] = 8;
+		$arreglo["reportes"] = $controladoraReporte->listarReportes();
+		echo (json_encode($arreglo));
+	break;
+	case 9:
+		//JSON listar reportes entre fechas {"indice":9,"fechaInicio":"2013-02-01","fechaTermino":"2013-10-30"}
+		$fechaInicio = $data->{"fechaInicio"};
+		$fechaTermino = $data->{"fechaTermino"};
+		$controladoraReporte = new ControladoraReportes();
+		$arreglo["code"] = 9;
+		$arreglo["reportes"] = $controladoraReporte->listarReportesFiltros($fechaInicio,$fechaTermino);
+		echo (json_encode($arreglo));
+	break;
+	case 10:
+		//JSON listar reportes de manera ascendente {"indice":10}
+		$controladoraReporte = new ControladoraReportes();
+		$arreglo["code"] = 10;
+		$arreglo["reportes"] = $controladoraReporte->listarReportesFechaOrdenada();
+		echo (json_encode($arreglo));
+	break;
+	case 11:
+		//JSON listar reportes de manera desendente {"indice":11}
+		$controladoraReporte = new ControladoraReportes();
+		$arreglo["code"] = 11;
+		$arreglo["reportes"] = $controladoraReporte->listarReportesFechaDesordenada();
+		echo (json_encode($arreglo));
+	break;
 }
