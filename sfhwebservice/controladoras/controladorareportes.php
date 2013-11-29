@@ -304,12 +304,12 @@ re.ID_REPORTE,re.F_CREACION, re.TIPO_REPORTE FROM persona per,reporte re WHERE
 		   	$sentencia=$conexion->prepare($this->SqlQuery);
 		   	if($sentencia->execute())
         	{
-        		$sentencia->bind_result($idCita, $fecha);
+        		$sentencia->bind_result($idReporte, $fecha);
 				$indice=0;     
 				while($sentencia->fetch())
 				{
-					$arreglo["idCita"]=$idReporte;
-					$arreglo["fecha"]=$fecha;
+					$arreglo["idReporte"]=$idReporte;
+					$arreglo["fechaCreacion"]=$fecha;
         			$this->datos[$indice]=$arreglo;
         			$indice++;
 				}
@@ -333,12 +333,12 @@ re.ID_REPORTE,re.F_CREACION, re.TIPO_REPORTE FROM persona per,reporte re WHERE
 		   	$sentencia=$conexion->prepare($this->SqlQuery);
 		   	if($sentencia->execute())
         	{
-        		$sentencia->bind_result($idCita, $fecha);
+        		$sentencia->bind_result($idReporte, $fecha);
 				$indice=0;     
 				while($sentencia->fetch())
 				{
-					$arreglo["idCita"]=$idReporte;
-					$arreglo["fecha"]=$fecha;
+					$arreglo["idReporte"]=$idReporte;
+					$arreglo["fechaCreacion"]=$fecha;
         			$this->datos[$indice]=$arreglo;
         			$indice++;
 				}
