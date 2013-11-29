@@ -38,10 +38,10 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
             this.cmbxHastaFecha = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnBuscar = new System.Windows.Forms.Button();
+            this.btngenerar = new System.Windows.Forms.Button();
             this.cmbxDesdeFecha = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
@@ -106,10 +106,10 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.button1);
+            this.groupBox4.Controls.Add(this.btnCancelar);
             this.groupBox4.Controls.Add(this.cmbxHastaFecha);
             this.groupBox4.Controls.Add(this.label1);
-            this.groupBox4.Controls.Add(this.btnBuscar);
+            this.groupBox4.Controls.Add(this.btngenerar);
             this.groupBox4.Controls.Add(this.cmbxDesdeFecha);
             this.groupBox4.Controls.Add(this.label9);
             this.groupBox4.ForeColor = System.Drawing.Color.WhiteSmoke;
@@ -121,18 +121,19 @@
             this.groupBox4.Tag = "v";
             this.groupBox4.Text = "Herramienta de reporte";
             // 
-            // button1
+            // btnCancelar
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(93)))), ((int)(((byte)(129)))));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(350, 51);
-            this.button1.Margin = new System.Windows.Forms.Padding(1);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(127, 36);
-            this.button1.TabIndex = 61;
-            this.button1.Text = "Cancelar";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(93)))), ((int)(((byte)(129)))));
+            this.btnCancelar.ForeColor = System.Drawing.Color.White;
+            this.btnCancelar.Location = new System.Drawing.Point(350, 56);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(1);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(127, 36);
+            this.btnCancelar.TabIndex = 61;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // cmbxHastaFecha
             // 
@@ -151,18 +152,19 @@
             this.label1.TabIndex = 59;
             this.label1.Text = "Hasta";
             // 
-            // btnBuscar
+            // btngenerar
             // 
-            this.btnBuscar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(93)))), ((int)(((byte)(129)))));
-            this.btnBuscar.ForeColor = System.Drawing.Color.White;
-            this.btnBuscar.Location = new System.Drawing.Point(487, 51);
-            this.btnBuscar.Margin = new System.Windows.Forms.Padding(1);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(127, 36);
-            this.btnBuscar.TabIndex = 58;
-            this.btnBuscar.Text = "Generar Reporte";
-            this.btnBuscar.UseVisualStyleBackColor = false;
+            this.btngenerar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btngenerar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(93)))), ((int)(((byte)(129)))));
+            this.btngenerar.ForeColor = System.Drawing.Color.White;
+            this.btngenerar.Location = new System.Drawing.Point(487, 56);
+            this.btngenerar.Margin = new System.Windows.Forms.Padding(1);
+            this.btngenerar.Name = "btngenerar";
+            this.btngenerar.Size = new System.Drawing.Size(127, 36);
+            this.btngenerar.TabIndex = 58;
+            this.btngenerar.Text = "Generar Reporte";
+            this.btngenerar.UseVisualStyleBackColor = false;
+            this.btngenerar.Click += new System.EventHandler(this.btngenerar_Click);
             // 
             // cmbxDesdeFecha
             // 
@@ -210,10 +212,10 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.ComboBox cmbxHastaFecha;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnBuscar;
+        private System.Windows.Forms.Button btngenerar;
         private System.Windows.Forms.ComboBox cmbxDesdeFecha;
         private System.Windows.Forms.Label label9;
 

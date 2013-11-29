@@ -15,6 +15,8 @@ namespace SFH_Software
     {
         #region Campos 
         ClientWsDataReportes client_data = new ClientWsDataReportes();
+        ClientWsDataReportes client_repo = new ClientWsDataReportes();
+        List<Cita> list_citas = new List<Cita>();
         #endregion 
 
         #region Propiedades
@@ -32,6 +34,14 @@ namespace SFH_Software
             this.cmbxHastaFecha.ValueMember = "IdPaciente";
             this.cmbxHastaFecha.DisplayMember = "Fecha";
         }
+        private void LimpiarControles()
+        {
+            this.cmbxDesdeFecha.ResetText();
+            this.cmbxHastaFecha.ResetText();
+            this.CargarComboDesde();
+            this.CargarComboHasta();
+        }
+
         #endregion
 
         public frmGenerarReportesPacientes()
@@ -63,6 +73,28 @@ namespace SFH_Software
             } 
         }
 
-        
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.LimpiarControles();
+        }
+
+        private void btngenerar_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("El sistema sfh está realizando su búsqueda", "SFH Administración de Clínica - Reportes de Pacientes Atendidos", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            DateTime fecha_inicio = Convert.ToDateTime(this.cmbxDesdeFecha.Text.ToString());
+            DateTime fecha_termino = Convert.ToDateTime(this.cmbxHastaFecha.Text.ToString());
+            this.list_citas = this.client_data.ListarCitasporFechas(fecha_inicio, fecha_termino);
+
+            if (list_citas.Count.Equals(0))
+            {
+                MessageBox.Show("Esta búsqueda no ha arrojado resultados", "SFH Administración de Clínica - Reportes de Pacientes Atendidos", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                MessageBox.Show("Registros : " + list_citas.Count + " Totales", "SFH Administración de Clínica - Reportes de Pacientes Atendidos", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            this.LimpiarControles();
+        }
+      
     }
 }

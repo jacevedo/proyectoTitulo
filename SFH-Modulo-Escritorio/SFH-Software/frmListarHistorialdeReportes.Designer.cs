@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmListarHistorialdeReportes));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.datagridhistorial = new System.Windows.Forms.DataGridView();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
             this.cmbxHastaFecha = new System.Windows.Forms.ComboBox();
@@ -38,12 +40,23 @@
             this.btnBuscar = new System.Windows.Forms.Button();
             this.cmbxDesdeFecha = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.label3 = new System.Windows.Forms.Label();
+            this.IdPersona = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IdPerfil = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nomperfil = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IdReporte = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Rut = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Dv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ApellidoPaterno = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ApellidoMaterno = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TipoReporte = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FechaCreacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FechaNacimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
-            this.groupBox4.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.datagridhistorial)).BeginInit();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -58,18 +71,40 @@
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Listar Historial de Reportes";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
-            // label3
+            // groupBox2
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(523, 6);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(198, 23);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "Listar Historial de Reportes";
+            this.groupBox2.Controls.Add(this.datagridhistorial);
+            this.groupBox2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.groupBox2.Location = new System.Drawing.Point(9, 116);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(1248, 544);
+            this.groupBox2.TabIndex = 6;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Historial de Reportes";
+            // 
+            // datagridhistorial
+            // 
+            this.datagridhistorial.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.datagridhistorial.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.IdPersona,
+            this.IdPerfil,
+            this.Nomperfil,
+            this.IdReporte,
+            this.Rut,
+            this.Dv,
+            this.Nombre,
+            this.ApellidoPaterno,
+            this.ApellidoMaterno,
+            this.TipoReporte,
+            this.FechaCreacion,
+            this.FechaNacimiento});
+            this.datagridhistorial.Location = new System.Drawing.Point(6, 19);
+            this.datagridhistorial.Name = "datagridhistorial";
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            this.datagridhistorial.RowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.datagridhistorial.Size = new System.Drawing.Size(1236, 519);
+            this.datagridhistorial.TabIndex = 0;
             // 
             // groupBox4
             // 
@@ -100,6 +135,7 @@
             this.button1.TabIndex = 61;
             this.button1.Text = "Cancelar";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // cmbxHastaFecha
             // 
@@ -130,6 +166,7 @@
             this.btnBuscar.TabIndex = 58;
             this.btnBuscar.Text = "Mostar Historial";
             this.btnBuscar.UseVisualStyleBackColor = false;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // cmbxDesdeFecha
             // 
@@ -148,24 +185,93 @@
             this.label9.TabIndex = 56;
             this.label9.Text = "Desde";
             // 
-            // groupBox2
+            // label3
             // 
-            this.groupBox2.Controls.Add(this.dataGridView1);
-            this.groupBox2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.groupBox2.Location = new System.Drawing.Point(9, 116);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1248, 544);
-            this.groupBox2.TabIndex = 6;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Historial de Reportes";
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(523, 6);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(198, 23);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Listar Historial de Reportes";
             // 
-            // dataGridView1
+            // IdPersona
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 19);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(1236, 519);
-            this.dataGridView1.TabIndex = 0;
+            this.IdPersona.DataPropertyName = "IdPersona";
+            this.IdPersona.HeaderText = "IdPersona";
+            this.IdPersona.Name = "IdPersona";
+            this.IdPersona.Visible = false;
+            // 
+            // IdPerfil
+            // 
+            this.IdPerfil.DataPropertyName = "IdPerfil";
+            this.IdPerfil.HeaderText = "IdPerfil";
+            this.IdPerfil.Name = "IdPerfil";
+            this.IdPerfil.Visible = false;
+            // 
+            // Nomperfil
+            // 
+            this.Nomperfil.DataPropertyName = "Nomperfil";
+            this.Nomperfil.HeaderText = "Nomperfil";
+            this.Nomperfil.Name = "Nomperfil";
+            this.Nomperfil.Visible = false;
+            // 
+            // IdReporte
+            // 
+            this.IdReporte.DataPropertyName = "IdReporte";
+            this.IdReporte.HeaderText = "IdReporte";
+            this.IdReporte.Name = "IdReporte";
+            this.IdReporte.Visible = false;
+            // 
+            // Rut
+            // 
+            this.Rut.DataPropertyName = "Rut";
+            this.Rut.HeaderText = "Rut";
+            this.Rut.Name = "Rut";
+            // 
+            // Dv
+            // 
+            this.Dv.DataPropertyName = "Dv";
+            this.Dv.HeaderText = "Dv";
+            this.Dv.Name = "Dv";
+            // 
+            // Nombre
+            // 
+            this.Nombre.DataPropertyName = "Nombre";
+            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.Name = "Nombre";
+            // 
+            // ApellidoPaterno
+            // 
+            this.ApellidoPaterno.DataPropertyName = "ApellidoPaterno";
+            this.ApellidoPaterno.HeaderText = "ApellidoPaterno";
+            this.ApellidoPaterno.Name = "ApellidoPaterno";
+            // 
+            // ApellidoMaterno
+            // 
+            this.ApellidoMaterno.DataPropertyName = "ApellidoMaterno";
+            this.ApellidoMaterno.HeaderText = "ApellidoMaterno";
+            this.ApellidoMaterno.Name = "ApellidoMaterno";
+            // 
+            // TipoReporte
+            // 
+            this.TipoReporte.DataPropertyName = "TipoReporte";
+            this.TipoReporte.HeaderText = "TipoReporte";
+            this.TipoReporte.Name = "TipoReporte";
+            // 
+            // FechaCreacion
+            // 
+            this.FechaCreacion.DataPropertyName = "FechaCreacion";
+            this.FechaCreacion.HeaderText = "FechaCreacion";
+            this.FechaCreacion.Name = "FechaCreacion";
+            // 
+            // FechaNacimiento
+            // 
+            this.FechaNacimiento.DataPropertyName = "FechaNacimiento";
+            this.FechaNacimiento.HeaderText = "FechaNacimiento";
+            this.FechaNacimiento.Name = "FechaNacimiento";
+            this.FechaNacimiento.Visible = false;
             // 
             // frmListarHistorialdeReportes
             // 
@@ -178,11 +284,12 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmListarHistorialdeReportes";
             this.Text = "ListarHistorialdeReportes";
+            this.Load += new System.EventHandler(this.frmListarHistorialdeReportes_Load);
             this.groupBox1.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.datagridhistorial)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -193,7 +300,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView datagridhistorial;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ComboBox cmbxHastaFecha;
@@ -201,5 +308,17 @@
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.ComboBox cmbxDesdeFecha;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdPersona;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdPerfil;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nomperfil;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdReporte;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Rut;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Dv;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ApellidoPaterno;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ApellidoMaterno;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TipoReporte;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FechaCreacion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FechaNacimiento;
     }
 }

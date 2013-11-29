@@ -42,15 +42,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.datagriPersona = new System.Windows.Forms.DataGridView();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.cmbxestado = new System.Windows.Forms.ComboBox();
-            this.cmbxUsuario = new System.Windows.Forms.ComboBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtesp = new System.Windows.Forms.TextBox();
-            this.btnNuevo = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
             this.IdOdontologo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IdPersonaOdontologo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Rut = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -64,6 +55,15 @@
             this.IdPersona = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IdPerfil = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nomperfil = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cmbxestado = new System.Windows.Forms.ComboBox();
+            this.cmbxUsuario = new System.Windows.Forms.ComboBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtesp = new System.Windows.Forms.TextBox();
+            this.btnNuevo = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox7.SuspendLayout();
@@ -97,8 +97,8 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.groupBox7);
             this.groupBox3.Controls.Add(this.datagriPersona);
+            this.groupBox3.Controls.Add(this.groupBox7);
             this.groupBox3.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.groupBox3.Location = new System.Drawing.Point(6, 188);
             this.groupBox3.Name = "groupBox3";
@@ -185,7 +185,7 @@
             // 
             // datagriPersona
             // 
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.datagriPersona.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.datagriPersona.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.datagriPersona.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -205,7 +205,7 @@
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.WhiteSmoke;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
@@ -215,6 +215,89 @@
             this.datagriPersona.Size = new System.Drawing.Size(1225, 402);
             this.datagriPersona.TabIndex = 0;
             this.datagriPersona.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datagriPersona_CellContentClick);
+            // 
+            // IdOdontologo
+            // 
+            this.IdOdontologo.DataPropertyName = "IdOdontologo";
+            this.IdOdontologo.HeaderText = "IdOdontologo";
+            this.IdOdontologo.Name = "IdOdontologo";
+            this.IdOdontologo.Visible = false;
+            // 
+            // IdPersonaOdontologo
+            // 
+            this.IdPersonaOdontologo.DataPropertyName = "IdPersonaOdontologo";
+            this.IdPersonaOdontologo.HeaderText = "IdPersonaOdontologo";
+            this.IdPersonaOdontologo.Name = "IdPersonaOdontologo";
+            this.IdPersonaOdontologo.Visible = false;
+            // 
+            // Rut
+            // 
+            this.Rut.DataPropertyName = "Rut";
+            this.Rut.HeaderText = "Rut";
+            this.Rut.Name = "Rut";
+            // 
+            // Dv
+            // 
+            this.Dv.DataPropertyName = "Dv";
+            this.Dv.HeaderText = "Dv";
+            this.Dv.Name = "Dv";
+            // 
+            // Nombre
+            // 
+            this.Nombre.DataPropertyName = "Nombre";
+            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.Name = "Nombre";
+            // 
+            // ApellidoPaterno
+            // 
+            this.ApellidoPaterno.DataPropertyName = "ApellidoPaterno";
+            this.ApellidoPaterno.HeaderText = "ApellidoPaterno";
+            this.ApellidoPaterno.Name = "ApellidoPaterno";
+            // 
+            // ApellidoMaterno
+            // 
+            this.ApellidoMaterno.DataPropertyName = "ApellidoMaterno";
+            this.ApellidoMaterno.HeaderText = "ApellidoMaterno";
+            this.ApellidoMaterno.Name = "ApellidoMaterno";
+            // 
+            // Especialidad
+            // 
+            this.Especialidad.DataPropertyName = "Especialidad";
+            this.Especialidad.HeaderText = "Especialidad";
+            this.Especialidad.Name = "Especialidad";
+            // 
+            // OdontologoHabilitado
+            // 
+            this.OdontologoHabilitado.DataPropertyName = "OdontologoHabilitado";
+            this.OdontologoHabilitado.HeaderText = "OdontologoHabilitado";
+            this.OdontologoHabilitado.Name = "OdontologoHabilitado";
+            // 
+            // FechaNacimiento
+            // 
+            this.FechaNacimiento.DataPropertyName = "FechaNacimiento";
+            this.FechaNacimiento.HeaderText = "FechaNacimiento";
+            this.FechaNacimiento.Name = "FechaNacimiento";
+            // 
+            // IdPersona
+            // 
+            this.IdPersona.DataPropertyName = "IdPersona";
+            this.IdPersona.HeaderText = "IdPersona";
+            this.IdPersona.Name = "IdPersona";
+            this.IdPersona.Visible = false;
+            // 
+            // IdPerfil
+            // 
+            this.IdPerfil.DataPropertyName = "IdPerfil";
+            this.IdPerfil.HeaderText = "IdPerfil";
+            this.IdPerfil.Name = "IdPerfil";
+            this.IdPerfil.Visible = false;
+            // 
+            // Nomperfil
+            // 
+            this.Nomperfil.DataPropertyName = "Nomperfil";
+            this.Nomperfil.HeaderText = "Nomperfil";
+            this.Nomperfil.Name = "Nomperfil";
+            this.Nomperfil.Visible = false;
             // 
             // groupBox2
             // 
@@ -310,89 +393,6 @@
             this.btnCancel.Text = "Cancelar";
             this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-            // 
-            // IdOdontologo
-            // 
-            this.IdOdontologo.DataPropertyName = "IdOdontologo";
-            this.IdOdontologo.HeaderText = "IdOdontologo";
-            this.IdOdontologo.Name = "IdOdontologo";
-            this.IdOdontologo.Visible = false;
-            // 
-            // IdPersonaOdontologo
-            // 
-            this.IdPersonaOdontologo.DataPropertyName = "IdPersonaOdontologo";
-            this.IdPersonaOdontologo.HeaderText = "IdPersonaOdontologo";
-            this.IdPersonaOdontologo.Name = "IdPersonaOdontologo";
-            this.IdPersonaOdontologo.Visible = false;
-            // 
-            // Rut
-            // 
-            this.Rut.DataPropertyName = "Rut";
-            this.Rut.HeaderText = "Rut";
-            this.Rut.Name = "Rut";
-            // 
-            // Dv
-            // 
-            this.Dv.DataPropertyName = "Dv";
-            this.Dv.HeaderText = "Dv";
-            this.Dv.Name = "Dv";
-            // 
-            // Nombre
-            // 
-            this.Nombre.DataPropertyName = "Nombre";
-            this.Nombre.HeaderText = "Nombre";
-            this.Nombre.Name = "Nombre";
-            // 
-            // ApellidoPaterno
-            // 
-            this.ApellidoPaterno.DataPropertyName = "ApellidoPaterno";
-            this.ApellidoPaterno.HeaderText = "ApellidoPaterno";
-            this.ApellidoPaterno.Name = "ApellidoPaterno";
-            // 
-            // ApellidoMaterno
-            // 
-            this.ApellidoMaterno.DataPropertyName = "ApellidoMaterno";
-            this.ApellidoMaterno.HeaderText = "ApellidoMaterno";
-            this.ApellidoMaterno.Name = "ApellidoMaterno";
-            // 
-            // Especialidad
-            // 
-            this.Especialidad.DataPropertyName = "Especialidad";
-            this.Especialidad.HeaderText = "Especialidad";
-            this.Especialidad.Name = "Especialidad";
-            // 
-            // OdontologoHabilitado
-            // 
-            this.OdontologoHabilitado.DataPropertyName = "OdontologoHabilitado";
-            this.OdontologoHabilitado.HeaderText = "OdontologoHabilitado";
-            this.OdontologoHabilitado.Name = "OdontologoHabilitado";
-            // 
-            // FechaNacimiento
-            // 
-            this.FechaNacimiento.DataPropertyName = "FechaNacimiento";
-            this.FechaNacimiento.HeaderText = "FechaNacimiento";
-            this.FechaNacimiento.Name = "FechaNacimiento";
-            // 
-            // IdPersona
-            // 
-            this.IdPersona.DataPropertyName = "IdPersona";
-            this.IdPersona.HeaderText = "IdPersona";
-            this.IdPersona.Name = "IdPersona";
-            this.IdPersona.Visible = false;
-            // 
-            // IdPerfil
-            // 
-            this.IdPerfil.DataPropertyName = "IdPerfil";
-            this.IdPerfil.HeaderText = "IdPerfil";
-            this.IdPerfil.Name = "IdPerfil";
-            this.IdPerfil.Visible = false;
-            // 
-            // Nomperfil
-            // 
-            this.Nomperfil.DataPropertyName = "Nomperfil";
-            this.Nomperfil.HeaderText = "Nomperfil";
-            this.Nomperfil.Name = "Nomperfil";
-            this.Nomperfil.Visible = false;
             // 
             // frmOdontologo
             // 

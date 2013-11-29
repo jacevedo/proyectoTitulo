@@ -179,7 +179,7 @@ namespace NetClient
         }
         #endregion
 
-        #region Listar fechas Antiguas --> nuevas
+        #region Listar fechas nuevas --> antiguas
         public List<Abono> ListarAbonosFechasNuevaAnt()
         {
             List<Abono> list = new List<Abono>();
@@ -219,8 +219,7 @@ namespace NetClient
                 this.JsonParam = "send={\"indice\":7,\"fechaInicio\":\"" + fechaSend + "\",\"fechaTermino\":\"" + fechaSend2 + "\"}";
                 String result = netclient.NetPost("ws-reportes.php", this.JsonParam);
                 var jobject = JObject.Parse(result);
-                var token = jobject.SelectToken("abonos").ToList();
-               
+                var token = jobject.SelectToken("gastos").ToList();
                 foreach (var item in token)
                 {
                     //{"idGastos":2,"idPersona":1,"conceptoGasto":"Colacion casa","montoGastos":2000,"descuentoGastos":0,"nomPersona":"","apellidoPersona":"","fechaGasto":"2013-11-16"}

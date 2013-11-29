@@ -216,6 +216,7 @@
             this.groupBox5.TabIndex = 70;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Datos de contatcto";
+           
             // 
             // label4
             // 
