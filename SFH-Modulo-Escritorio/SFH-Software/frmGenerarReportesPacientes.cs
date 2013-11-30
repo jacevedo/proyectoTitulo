@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -16,6 +17,7 @@ namespace SFH_Software
         #region Campos 
         ClientWsDataReportes client_data = new ClientWsDataReportes();
         ClientWsDataReportes client_repo = new ClientWsDataReportes();
+        List<String> list_fechas = new List<String>();
         List<Cita> list_citas = new List<Cita>();
         #endregion 
 
@@ -41,6 +43,53 @@ namespace SFH_Software
             this.CargarComboDesde();
             this.CargarComboHasta();
         }
+        private void GenerarReporte(List<Cita> list_citas)
+        {
+            //this.chtGrafico.Legends.Clear();
+            this.chtGrafico.Titles.Add(" Reportes Pacientes  " + DateTime.Now);
+            this.chtGrafico.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Range;
+            chtGrafico.Palette = ChartColorPalette.SeaGreen;
+           // this.chtGrafico.ChartAreas[0].Area3DStyle.Enable3D = true;
+            int i = 0;
+            foreach (Cita cita in list_citas){
+
+                this.list_fechas.Add(cita.Fecha.ToString());
+            }
+
+
+            // Arreglos del Grafico
+            //string[] seriesArray = { "Categoria 1", "Categoria 2", "Categoria 3" };
+            int[] pointsArray = { Convert.ToInt32(1), Convert.ToInt32(2), Convert.ToInt32(1) };
+            SortedSet<string> set = new SortedSet<string>(list_fechas);
+            int x = list_fechas.Count;
+            int y = set.Count;
+            this.chtGrafico.Series[0].Points.AddXY(x,y);
+            foreach (string val in set)
+            {
+                Series series = this.chtGrafico.Series.Add(val);
+                series.Points.Add(pointsArray[i]);
+                ++i;
+                //chtGrafico.Update();
+            }
+            //this.chtGrafico.Legends.RemoveAt(0);
+            chtGrafico.Update();
+
+            // Se modifica la Paleta de Colores a utilizar por el control.
+            // this.chart1.Palette = ChartColorPalette.SeaGreen;
+            // Se agrega un titulo al Grafico.
+           
+            // Agregar las Series al Grafico.
+            /*for (int i = 0; i < seriesArray.Length; i++)
+            {
+                // Aqui se agregan las series o Categorias.
+             // Series series = this.chtGrafico.Series.Add(seriesArray[i]);
+
+                // Aqui se agregan los Valores.
+              
+               
+            } */
+            
+        }
 
         #endregion
 
@@ -56,21 +105,7 @@ namespace SFH_Software
             this.CargarComboDesde();
             this.CargarComboHasta();
 
-            // Arreglos del Grafico
-            string[] seriesArray = { "Categoria 1", "Categoria 2", "Categoria 3" };
-            int[] pointsArray = { Convert.ToInt32(690), Convert.ToInt32(811), Convert.ToInt32(745) };
-            // Se modifica la Paleta de Colores a utilizar por el control.
-           // this.chart1.Palette = ChartColorPalette.SeaGreen;
-            // Se agrega un titulo al Grafico.
-            this.chart1.Titles.Add("Categorias");
-            // Agregar las Series al Grafico.
-            for (int i = 0; i < seriesArray.Length; i++)
-            {
-                // Aqui se agregan las series o Categorias.
-                Series series = this.chart1.Series.Add(seriesArray[i]);
-                // Aqui se agregan los Valores.
-                series.Points.Add(pointsArray[i]);
-            } 
+            
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -80,6 +115,7 @@ namespace SFH_Software
 
         private void btngenerar_Click(object sender, EventArgs e)
         {
+           
             MessageBox.Show("El sistema sfh está realizando su búsqueda", "SFH Administración de Clínica - Reportes de Pacientes Atendidos", MessageBoxButtons.OK, MessageBoxIcon.Information);
             DateTime fecha_inicio = Convert.ToDateTime(this.cmbxDesdeFecha.Text.ToString());
             DateTime fecha_termino = Convert.ToDateTime(this.cmbxHastaFecha.Text.ToString());
@@ -91,10 +127,12 @@ namespace SFH_Software
             }
             else
             {
+                this.GenerarReporte(list_citas);
                 MessageBox.Show("Registros : " + list_citas.Count + " Totales", "SFH Administración de Clínica - Reportes de Pacientes Atendidos", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             this.LimpiarControles();
         }
-      
+
+  
     }
 }

@@ -87,6 +87,11 @@ namespace SFH_Software
             this.LimpiarControles();
         }
 
+        private void chart2_Click(object sender, EventArgs e)
+        {
+
+        }
+
       
       
     }

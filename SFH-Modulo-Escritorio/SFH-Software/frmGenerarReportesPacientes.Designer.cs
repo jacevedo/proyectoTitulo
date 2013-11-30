@@ -29,14 +29,12 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmGenerarReportesPacientes));
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.cmbxHastaFecha = new System.Windows.Forms.ComboBox();
@@ -44,10 +42,11 @@
             this.btngenerar = new System.Windows.Forms.Button();
             this.cmbxDesdeFecha = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
+            this.chtGrafico = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chtGrafico)).BeginInit();
             this.SuspendLayout();
             // 
             // label3
@@ -76,7 +75,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.chart1);
+            this.groupBox2.Controls.Add(this.chtGrafico);
             this.groupBox2.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.groupBox2.Location = new System.Drawing.Point(9, 116);
             this.groupBox2.Name = "groupBox2";
@@ -84,25 +83,6 @@
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Reporte Generado";
-            // 
-            // chart1
-            // 
-            chartArea1.Name = "ChartArea1";
-            chartArea2.Name = "ChartArea2";
-            this.chart1.ChartAreas.Add(chartArea1);
-            this.chart1.ChartAreas.Add(chartArea2);
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(6, 19);
-            this.chart1.Name = "chart1";
-            this.chart1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Reporte";
-            this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(1237, 532);
-            this.chart1.TabIndex = 2;
-            this.chart1.Text = "chart1";
             // 
             // groupBox4
             // 
@@ -183,6 +163,21 @@
             this.label9.TabIndex = 56;
             this.label9.Text = "Desde";
             // 
+            // chtGrafico
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.chtGrafico.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chtGrafico.Legends.Add(legend1);
+            this.chtGrafico.Location = new System.Drawing.Point(317, 76);
+            this.chtGrafico.Name = "chtGrafico";
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chtGrafico.Series.Add(series1);
+            this.chtGrafico.Size = new System.Drawing.Size(609, 428);
+            this.chtGrafico.TabIndex = 0;
+            // 
             // frmGenerarReportesPacientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -197,9 +192,9 @@
             this.Load += new System.EventHandler(this.frmAdministracionDeReporteria_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chtGrafico)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -210,7 +205,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.ComboBox cmbxHastaFecha;
@@ -218,6 +212,7 @@
         private System.Windows.Forms.Button btngenerar;
         private System.Windows.Forms.ComboBox cmbxDesdeFecha;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chtGrafico;
 
 
     }
