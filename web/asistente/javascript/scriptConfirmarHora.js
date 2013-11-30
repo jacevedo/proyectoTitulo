@@ -1,7 +1,16 @@
 var direccionWeb = "http://172.16.28.138/sfhwebservice/webService/";
 $(document).ready(inicializarElementos);
+var horaActual;
+var odontologoActual;
+var editando="asd";
+var arregloPersonas = [];
+var arregloPersonasId = [];
+var arregloHoras = [];
+var idCita;
+
 function inicializarElementos()
 {
+	editando=0;
 	var fecha = new Date();
 	var dia = fecha.getDate();
 	var mes = fecha.getMonth()+1;
@@ -13,7 +22,138 @@ function inicializarElementos()
 }
 function modificarHora()
 {
-	alert("hoa");
+		
+		if($(this).text()=="Modificar"&&editando==0)
+		{
+			editando=1;
+			var control = $(this);
+			var fecha = $("#dateFecha").val()+" 13:13:00";
+			var url = direccionWeb+"ws-horario.php";
+			var data = {send:"{\"indice\":1,\"fecha\":\""+fecha+"\"}"};
+			
+			$.ajax({
+				url: url,
+				data: data,
+				type: "POST",
+				dataType: "json",
+				success: function(source)
+				{
+					var data = source;
+					ajaxCompleto(data,control);	
+				},
+				error: function(dato)
+				{
+					alert("No pudimos traer los datos");
+				}
+			});
+			$(this).text("Guardar");
+		}
+		else if($(this).text()=="Guardar")
+		{
+			var boton = $(this);
+			var url = direccionWeb+"ws-cita.php";
+
+			var idCitaInterno = idCita;
+			var odontologo = $(".selectOdontologo").val();
+			var nomOdontologo = $(".selectOdontologo option[value='"+odontologo+"']").text();
+			var horario = $(".selectHorario").val();
+			var hora = $(".selectHorario option[value='"+horario+"']").text();
+			var dates = $("#dateFecha").val().split("-");
+			var date = dates[0]+"-"+dates[1]+"-"+dates[2];
+			var optionValue = $(".opcion"+odontologo).attr("idOdontologo");
+			var fechaMasHora = date+" "+hora;
+
+			var data = {send:"{\"indice\":8,\"idOdontologo\":"+optionValue+",\"hora\":\""+fechaMasHora+"\",\"idCita\":"+idCitaInterno+"}"};
+
+			$.post(url,data,function(datos)
+			{
+				var obj = $.parseJSON(datos);
+				var resultado = obj.resultado;
+				if(resultado=="se modifico correctamente")
+				{
+					boton.text("Modificar");
+					editando=0;
+					$(".hora").html(hora);
+					$(".odontologo").html(nomOdontologo);
+				}
+				else if(resultado=="error al modificar")
+				{
+					alert("No ha cambiado ningun campo");
+					boton.text("Modificar");
+					editando=0;
+					$(".hora").html(hora);
+					$(".odontologo").html(nomOdontologo);
+				}
+				else
+				{
+					alert("hubo un error, por favor actualize la pagina");
+				}
+			});
+		}
+			
+		
+}
+function ajaxCompleto(source,control)
+{
+	
+	
+	$.each(source['listaHorarios'],function(i,value)
+	{
+		arregloPersonas.push(value["nomOdontologo"]);
+		arregloPersonasId.push(value["idOdontologo"]);
+		var arreglo2 = [];
+		$.each(this["horario"],function(i2,value2)
+		{
+			arreglo2.push(value2);
+		});
+		arregloHoras.push(arreglo2);
+	});
+	control.parent().parent().children().each(function(i)
+	{
+		if(i==0)
+		{
+			idCita = $(this).text();
+		}
+		if(i==3)
+		{
+			$(this).addClass("hora");
+		 	horaActual = $(this).text();
+		 	var select = "<select class='selectHorario'><option>"+horaActual+"</option>";
+			$.each(arregloHoras[0],function(i2,value)
+			{
+				select = select+"<option value='"+i2+"'>"+value+"</option>";
+			})
+			select = select +"<select>";
+			$(this).html(select);
+		}
+		if(i==4)
+		{
+			$(this).addClass("odontologo");
+			controlDentista = $(this);
+			odontologoActual = $(this).text();
+			var select = "<select class='selectOdontologo'>";
+			$.each(arregloPersonas,function(i2,value)
+			{
+				select = select+"<option value='"+i2+"' class='opcion"+i2+"' idOdontologo='"+arregloPersonasId[i2]+"'>"+value+"</option>";
+			})
+			select = select +"<select>";
+			$(this).html(select);
+		}
+	});
+	$("#tablaConfirmarHora").on("change",".selectOdontologo",cambiarHorario);
+			
+}
+function cambiarHorario()
+{
+	var indice = $(this).val();
+	var select = "<select class='selectHorario'>";
+	$.each(arregloHoras[indice],function(i2,value)
+	{
+		select = select+"<option value='"+i2+"'>"+value+"</option>";
+	})
+	select = select +"<select>";
+	$(".selectHorario").html(select);
+
 }
 function eliminarHora()
 {

@@ -58,15 +58,11 @@ h1
   color: inherit;
   background-color: #f8f8f8;
 }
+#txtBuscaTratamiento
+{
+  width: 100%;
+}
 #nomUsuario
 {
   max-height: 11px;
-}
-#btnConfirmarHora
-{
-  margin-top: 2%;
-}
-#btnCrearHora
-{
-  margin-top: 2%;
 }

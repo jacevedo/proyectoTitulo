@@ -32,7 +32,7 @@ session_start();
 		            <li ><a href="perfil.php">Perfil</a></li>
 		            <li class="active"><a href="confirmarhora.php">Hora Atencion</a></li>
 		            <li><a href="listaPrecios.php">Lista Precios</a></li>
-		           
+		           	<li><a href="#">Horarios Odontologo</a></li>
 		          </ul>
 		          <ul class="nav navbar-nav navbar-right">
 		            <li class="active"><a href="#"><p id="nomUsuario"> <?php echo($_SESSION['nombre']);?> <?php echo($_SESSION['appPaterno']);?> </p></a></li>
@@ -57,9 +57,19 @@ session_start();
 								<a href="modificarEliminarHora.html"><button id="btnBuscar" class="btn btn-lg btn-primary btn-block">Buscar</button></a>
 							</div>
 						</div>
+						<div class="row">
+					  		<div class="col-xs-6 col-sm-4">
+					  			<a href="ReservarHoraAsistente.php" ><button id="btnCrearHora" class="btn btn-lg btn-primary btn-block">Reservar Hora atencion</button></a>
+					  		</div>
+					  		<div class="col-xs-6 col-sm-4">
+					  		</div>
+							<div class="col-xs-6 col-sm-4">
+					  			<button id="btnConfirmarHora" class="btn btn-lg btn-primary btn-block">Confirmar Hora</button>
+					  		</div>
+					  	</div>
 					 </div>
 					  <!-- Table -->
-					  <table class="table" id="tablaListaPrecios">
+					  <table class="table" id="tablaConfirmarHora">
 					  	<thead>
 							<tr>
 								<td class="tdId">id</td>
@@ -76,6 +86,7 @@ session_start();
 						
 						</tbody>
 					  </table>
+
 				</div>
 		  </div>
 		</div>
