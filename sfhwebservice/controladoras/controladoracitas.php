@@ -156,6 +156,40 @@ require_once '../pojos/cita.php';
          throw new $e("Error al Registrar Odontologo");
         }
 	}
+	function modificarCitaWeb($idOdontologo, $fecha, $idCita)
+	{
+		$conexion = new MySqlCon();
+		
+		try 
+	   	{ 	 
+	        $this->SqlQuery='';
+	        $this->SqlQuery='UPDATE cita SET ID_ODONTOLOGO = ?, HORA_DE_INICIO = ? WHERE ID_CITA = ?;';
+	        $sentencia=$conexion->prepare($this->SqlQuery);
+	        $sentencia->bind_param('isi',$idOdontologo, $fecha,$idCita);
+	      	if($sentencia->execute())
+	      	{
+	      		if($sentencia->affected_rows)
+	      		{
+		        	$conexion->close();
+					return "se modifico correctamente";
+				}
+				else
+				{
+					return "error al modificar";
+				}
+			}
+			else
+			{
+				$conexion->close();
+	        	return "error de coneccion";
+	        }
+        }
+    	catch(Exception $e)
+    	{
+         return false;
+         throw new $e("Error al Registrar Odontologo");
+        }
+	}
 	function confirmarCita($idCita, $estado)
 	{
 		$conexion = new MySqlCon();
@@ -196,8 +230,8 @@ require_once '../pojos/cita.php';
         	if($sentencia->execute())
         	{
         		
-        		$sentencia->bind_result($idCita, $idOdontologo, $idPaciente, $horaInicio, $horaTermino, $fecha, $estado, $nomPaciente, $appPaternoPaciente, 
-								$appMaternoPaciente, $nomOdontologo, $appPaternoOdontologo, $appMaternoOdontologo);
+        		$sentencia->bind_result($idCita, $idOdontologo, $idPaciente, $horaInicio, $horaTermino, $fecha, $estado, $nomOdontologo, $appPaternoOdontologo, 
+								$appMaternoOdontologo, $nomPaciente, $appPaternoPaciente, $appMaternoPaciente);
 				$indice=0;     
 				while($sentencia->fetch())
 				{

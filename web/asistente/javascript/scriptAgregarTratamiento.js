@@ -3,8 +3,18 @@ $(document).ready(inicializarEventos);
 
 function inicializarEventos()
 {
+	obtenerTratamientos();
 	$("#btnAgregarTratamiento").click(agregarTratamiento);
 	$("#txtNeto").change(calcularIvaTotal);
+}
+function obtenerTratamientos()
+{
+	var url = direccionWeb+"ws-tratamiento-abono.php";
+	var data = {send:"{\"indice\":3}"};
+	$.post(url,data,function(data)
+	{
+		alert(data);
+	});
 }
 function agregarTratamiento()
 {

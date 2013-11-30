@@ -233,6 +233,7 @@ switch ($opcion)
 		$arreglo["listaFuncionarioHerencia"] = $controladoraFuncionario->listarFuncionarioHerencia();
 		echo(json_encode($arreglo));
 	break;
+
 }
  
 ?>

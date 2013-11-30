@@ -28,7 +28,7 @@ session_start();
 		            <li class="active"><a href="perfil.php">Perfil</a></li>
 		            <li><a href="confirmarhora.php">Hora Atencion</a></li>
 		            <li><a href="listaPrecios.php">Lista Precios</a></li>
-		           
+		           	<li><a href="#">Horarios Odontologo</a></li>
 		          </ul>
 		          <ul class="nav navbar-nav navbar-right">
 		            <li class="active"><a href="#"><p id="nomUsuario"> <?php echo($_SESSION['nombre']);?> <?php echo($_SESSION['appPaterno']);?> </p></a></li>

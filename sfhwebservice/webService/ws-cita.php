@@ -1,6 +1,10 @@
 <?php
 require_once '../pojos/cita.php';
+require_once '../pojos/persona.php';
+require_once '../pojos/paciente.php';
+require_once '../controladoras/controladorapaciente.php';
 require_once '../controladoras/controladoracitas.php';
+require_once '../controladoras/controladorapersonaregioncomuna.php';
 
 /*
 *Contiene la opciones para insertar, listar y modificar
@@ -84,5 +88,54 @@ switch ($opcion)
 		$estado = 3;
 		$resultado = $controladora->confirmarCita($idCita,$estado);
 		echo $resultado;
+	break;
+	case 8:
+		//json modificarCita {"indice":4,"idOdontologo":3,"hora":"2013-11-30 13:00:00","idCita":1}
+		$controladora = new ControladoraCitas();
+		$idOdontologo = $data->{"idOdontologo"};
+		$hora = $data->{"hora"};
+		$idCita = $data->{"idCita"};
+		$arreglo["resultado"] = $controladora->modificarCitaWeb($idOdontologo,$hora,$idCita);
+		echo(json_encode($arreglo));
+	break;
+	case 9:
+		//json Crear Persona Cita {"indice":9,"rut":123123,"dv":"k","nombre":"antonio","appPaterno":"palmas","apellidoMaterno":"simoneli","fechaNacimiento":"2013-10-12","fechaReserva":"2013-11-30","idOdontologo":2,"horaReserva":"2013-11-30 13:30:00","estado":0}
+		$rut = $data->{"rut"};
+		$dv = $data->{"dv"};
+		$nombre = $data->{"nombre"};
+		$appPaterno = $data->{"appPaterno"};
+		$appMaterno = $data->{"apellidoMaterno"};
+		$fechaNacimiento = $data->{"fechaNacimiento"};
+		$fechaReserva = $data->{"fechaReserva"};
+		$idOdontologo = $data->{"idOdontologo"};
+		$horaReserva = $data->{"horaReserva"};
+		$estado = $data->{"estado"};
+		$controladoraPersona = new ControladoraPersonaRegionComuna();
+		$controladoraPaciente = new ControladoraPaciente();
+		$controladoraCita = new ControladoraCitas();
+		$persona = new Persona();
+		$paciente = new Paciente();
+		$cita = new Cita();
+		$persona->initClass(0, 4, $rut, $dv, $nombre, $appPaterno, $appMaterno, $fechaNacimiento);
+		$idPersona = $controladoraPersona->insertarPersona($persona);
+		if($idPersona!=-1)
+		{
+			$paciente->initClassPacientePersona($persona, $idPersona, date("Y-m-d"), 1);
+			$idPaciente = $controladoraPaciente->insertarPaciente($paciente);
+			if($idPaciente!=-1)
+			{
+				$cita->initClass(0, $idOdontologo, $idPaciente, $horaReserva, $fechaReserva, $estado);
+				$arreglo["resultado"] = $controladoraCita->insertarCita($cita);
+			}
+			else
+			{
+				$arreglo["hubo un error al insertar al paciente"];
+			}
+		}
+		else
+		{
+			$arreglo["resultado"] = "hubo un error al insertar la persona";
+		}
+		echo (json_encode($arreglo));
 	break;
 }

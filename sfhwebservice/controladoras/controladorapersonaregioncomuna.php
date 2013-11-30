@@ -40,7 +40,7 @@ class ControladoraPersonaRegionComuna
 			else
 			{
 				$conexion->close();
-	        	return false;
+	        	return -1;
 	        }
 		}
 		catch(Exception $e)

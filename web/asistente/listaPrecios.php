@@ -30,7 +30,7 @@ session_start();
 		            <li ><a href="perfil.php">Perfil</a></li>
 		            <li><a href="confirmarhora.php">Hora Atencion</a></li>
 		            <li class="active"><a href="listaPrecios.php">Lista Precios</a></li>
-		           
+		           	<li><a href="#">Horarios Odontologo</a></li>
 		          </ul>
 		          <ul class="nav navbar-nav navbar-right">
 		            <li class="active"><a href="#"><p id="nomUsuario"> <?php echo($_SESSION['nombre']);?> <?php echo($_SESSION['appPaterno']);?> </p></a></li>
@@ -55,17 +55,23 @@ session_start();
 								<button id="btnAgregarTratamiento" class="btn btn-lg btn-primary btn-block" type="submit">Agregar</button>
 							</div>
 						</div>
+						<div class="row agregar">
+							<div class="col-xs-6 col-sm-4"><input placeholder="Nombre Procedimiento" type="text"/></div>
+							<div class="col-xs-6 col-sm-4"><input placeholder="Costo Neto Proced." type="text"/></div>
+							<div class="col-xs-6 col-sm-4"><Button class="btn btn-lg btn-primary btn-block">Guardar</Button></div>
+						<div>
 					 </div>
 					  <!-- Table -->
 					  <table class="table" id="tablaListaPrecios">
 					  	<thead>
 					  		<tr>
-							<td>Nro</td>
-							<td>Nombre Tratamiento</td>
-							<td>Precio</td>
-							<td>Editar</td>
-							<td>Eliminar</td>
-						</tr>
+								<td>Nro</td>
+								<td>Nombre Tratamiento</td>
+								<td>Precio</td>
+								<td>Editar</td>
+								<td>Eliminar</td>
+							</tr>
+							
 					  	</thead>
 					  	<tbody id="cuerpoTabla">
 						

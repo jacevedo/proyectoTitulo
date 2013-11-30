@@ -18,15 +18,24 @@ function cargarDatosFecha()
 	{
 		var obj = $.parseJSON(datos);
 		horarios = obj.listaHorarios;
-
-		var select = '';
-		select = select + "<option value='0'>Seleccione un Dentista</option>";
-
-		$.each(horarios,function()
+		
+		if(horarios!=null)
 		{
-			select = select + "<option value="+this.idOdontologo+">"+this.nomOdontologo+"</option>";
-		});
-		$("#selectDentista").html(select);
+			var select = '';
+			select = select + "<option value='0'>Seleccione un Dentista</option>";
+
+			$.each(horarios,function()
+			{
+				select = select + "<option value="+this.idOdontologo+">"+this.nomOdontologo+"</option>";
+			});
+			$("#selectDentista").html(select);	
+		}
+		else
+		{
+			alert("No se encontraron dentistas");
+			$("#selectDentista").html("");	
+		}
+		
 	});
 	$("#selectDentista").change(cargarHoras);
 }

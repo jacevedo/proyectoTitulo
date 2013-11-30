@@ -20,8 +20,14 @@ switch ($opcion)
 		//json Login {"indice":1,"fecha":"2013-10-10 13:13:00"}
 		$controladora = new ControladoraHorario();
 		$fecha =  new DateTime($data->{'fecha'});
-		//echo($date);
 		$arreglo["listaHorarios"] = $controladora->mostrarHorasDisponibles($fecha);
+		echo(json_encode($arreglo));
+	break;	
+	case 2:
+		//json Login {"indice":1,"fecha":"2013-10-10 13:13:00"}
+		$controladora = new ControladoraHorario();
+		$fecha =  new DateTime($data->{'fecha'});
+		$arreglo["listaHorarios"] = $controladora->mostrarHorasDisponiblesWeb($fecha);
 		echo(json_encode($arreglo));
 	break;	
 }
