@@ -32,7 +32,7 @@ session_start();
 		            <li ><a href="perfil.php">Perfil</a></li>
 		            <li class="active"><a href="confirmarhora.php">Hora Atencion</a></li>
 		            <li><a href="listaPrecios.php">Lista Precios</a></li>
-		           	<li><a href="#">Horarios Odontologo</a></li>
+		           	<li><a href="listaOdontologos.php">Horarios Odontologo</a></li>
 		          </ul>
 		          <ul class="nav navbar-nav navbar-right">
 		            <li class="active"><a href="#"><p id="nomUsuario"> <?php echo($_SESSION['nombre']);?> <?php echo($_SESSION['appPaterno']);?> </p></a></li>

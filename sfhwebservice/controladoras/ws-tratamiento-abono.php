@@ -139,12 +139,4 @@ switch ($opcion)
 		$arreglo["lista"] = $controladoraPaciente->buscarPresupuesto($cantRonda);
 		echo(json_encode($arreglo));
 	break;
-	case 13:
-		//json Pacientes con Tratamiento {"indice":13,"nomPaciente":"ada"}
-		$nomPaciente = $data->{"nomPaciente"};
-		$controladoraPaciente  = new ControladoraPaciente();
-		$arreglo["code"]=12;
-		$arreglo["lista"] = $controladoraPaciente->buscarPresupuestoPersona($nomPaciente);
-		echo(json_encode($arreglo));
-	break;
 }

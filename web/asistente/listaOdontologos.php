@@ -7,7 +7,7 @@ session_start();
 		<link rel="stylesheet" href="estilos/css/bootstrap.css">
 		<link rel="stylesheet" href="estilos/css/estiloListaPrecios.css">
 		<script type="text/javascript" src="javascript/JQuery.js"></script>
-		<script type="text/javascript" src="javascript/scriptListaPrecios.js"></script>
+		<script type="text/javascript" src="javascript/scriptListaOdontologos.js"></script>
 		<title>SFH</title>
 	</head>
 	<body>
@@ -29,8 +29,8 @@ session_start();
 		          <ul class="nav navbar-nav">
 		            <li ><a href="perfil.php">Perfil</a></li>
 		            <li><a href="confirmarhora.php">Hora Atencion</a></li>
-		            <li class="active"><a href="listaPrecios.php">Lista Precios</a></li>
-		           	<li><a href="listaOdontologos.php">Horarios Odontologo</a></li>
+		            <li><a href="listaPrecios.php">Lista Precios</a></li>
+		           	<li class="active"><a href="listaOdontologos.php">Horarios Odontologo</a></li>
 		          </ul>
 		          <ul class="nav navbar-nav navbar-right">
 		            <li class="active"><a href="#"><p id="nomUsuario"> <?php echo($_SESSION['nombre']);?> <?php echo($_SESSION['appPaterno']);?> </p></a></li>
@@ -40,36 +40,31 @@ session_start();
 		    </div>
 		    <div class="jumbotron">
 		    	<h1>
-		      		Lista de Precios
+		      		Lista de Odontologos
 		      	</h1>
 		      	<div class="panel panel-default">
-					 <div class="panel-heading">
+					 <!--<div class="panel-heading">
 					 	<div class="row">
 						 	<div class="col-xs-6 col-sm-4">
 								<input type="search" id="txtBuscaTratamiento"/>
 							</div>
 							 <div id="botones" class="col-xs-6 col-sm-4">
-							 	<button id="btnBuscar" class="btn btn-lg btn-primary btn-block" type="submit">Buscar</button>
+							 	
 							</div>
 							<div id="botones" class="col-xs-6 col-sm-4">
-								<button id="btnAgregarTratamiento" class="btn btn-lg btn-primary btn-block" type="submit">Agregar</button>
+								<button id="btnBuscar" class="btn btn-lg btn-primary btn-block" type="submit">Buscar</button>
 							</div>
 						</div>
-						<div class="row agregar">
-							<div class="col-xs-6 col-sm-4"><input id="txtNomProcedimiento" placeholder="Nombre Procedimiento" type="text"/></div>
-							<div class="col-xs-6 col-sm-4"><input id="txtCostoProcedimiento" placeholder="Costo Neto Proced." type="text"/></div>
-							<div class="col-xs-6 col-sm-4"><Button id="crearNuevoPrecio" class="btn btn-lg btn-primary btn-block">Guardar</Button></div>
-						<div>
-					 </div>
+					 </div>-->
 					  <!-- Table -->
-					  <table class="table" id="tablaListaPrecios">
+					  <table class="table" id="tablaListaOdontologos">
 					  	<thead>
 					  		<tr>
-								<td>Nro</td>
-								<td>Nombre Tratamiento</td>
-								<td>Precio</td>
-								<td>Editar</td>
-								<td>Eliminar</td>
+								<td>Nombre Odontologo</td>
+								<td>Apellido Paterno</td>
+								<td>Apellido Materno</td>
+								<td>Rut</td>
+								<td>Horario</td>
 							</tr>
 							
 					  	</thead>
@@ -80,6 +75,7 @@ session_start();
 					</div>
 		    </div>
 		</div>
+		
 	<!--<div id="cuerpo">
 			<div id="logo">
 				<img src="imagenes/logo.png" id="imagenCostado">

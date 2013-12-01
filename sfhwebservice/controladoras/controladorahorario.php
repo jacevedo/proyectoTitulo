@@ -4,6 +4,119 @@ require_once '../pojos/horario.php';
 require_once '../pojos/cita.php';
  class ControladoraHorario
 {
+	private $SqlQuery;
+	private $datos;
+
+	public function listarHorarioOdontologo($idOdontologo)
+	{
+		$conexion = new MySqlCon();
+		$idOdontologoInterno = $idOdontologo;
+		$this->datos ='';
+		try
+		{
+			$this->SqlQuery = '';
+			$this->SqlQuery = "SELECT * FROM horario WHERE ID_ODONTOLOGO = ?";
+		   	$sentencia=$conexion->prepare($this->SqlQuery);
+		   	$sentencia->bind_param("i",$idOdontologoInterno);
+        	if($sentencia->execute())
+        	{
+        		$sentencia->bind_result($idHorario,$idOdontologoConsulta,$dia,$horaInicio, $horaTermino, $duracionModulo);					
+				$indice=0;     
+				while($sentencia->fetch())
+				{
+					$horario["idHorario"] = $idHorario;
+					$horario["idOdontologoConsulta"] = $idOdontologoConsulta;
+					$horario["dia"] = $dia;
+					$horario["horaInicio"] = $horaInicio;
+					$horario["horaTermino"] = $horaTermino;
+					$horario["duracionModulo"] = $duracionModulo;
+        			$this->datos[$indice] = $horario;
+        			
+        			$indice++;
+				}
+      		}
+       		$conexion->close();
+    	}
+    	catch(Exception $e)
+    	{
+        	throw new $e("Error al listar pacientes");
+        }
+        return $this->datos;
+    }
+	public function modificarHorario(Horario $horario,$dia)
+	{
+		$conexion = new MySqlCon();
+		$idHorario = $horario->idHorario;
+		$idOdontologo = $horario->idOdontologo;
+		$diaInterno = $dia;
+		$horaInicio = $horario->horaInicio;
+		$horaTermino = $horario->horaTermino;
+		$duracionModulo = $horario->duracionModulo;
+		$this->datos ='';
+		try
+		{
+			$this->SqlQuery = '';
+			$this->SqlQuery = "UPDATE horario SET ID_ODONTOLOGO = ?, DIA = ?, HORA_INICIO = ?, HORA_TERMINO = ?, DURACION_MODULO = ? WHERE ID_HORARIO = ?;";
+		   	$sentencia=$conexion->prepare($this->SqlQuery);
+		   	$sentencia->bind_param("issssi",$idOdontologo,$diaInterno,$horaInicio,$horaTermino,$duracionModulo,$idHorario);
+        	if($sentencia->execute())
+        	{
+        		if($sentencia->affected_rows)
+	      		{
+		        	$conexion->close();
+					return "Modificado";
+				}
+				else
+				{
+					$conexion->close();
+					return "Error";
+				}
+        	}
+        	else
+        	{
+        		$conexion->close();
+        		return "Error en la coneccion";
+        	}
+  		}
+  		catch(Exception $e)
+    	{
+        	throw new $e("excepcion");
+        	return "error";
+        }
+        
+    	
+	}
+	public function insertarHorario(Horario $horario,$dia)
+	{
+		$conexion = new MySqlCon();
+		$idOdontologo = $horario->idOdontologo;
+		$diaInterno = $dia;
+		$horaInicio = $horario->horaInicio;
+		$horaTermino = $horario->horaTermino;
+		$duracionModulo = $horario->duracionModulo;
+		try 
+	   	{ 	 
+	        $this->SqlQuery='';
+	        $this->SqlQuery='INSERT INTO horario (ID_HORARIO, ID_ODONTOLOGO, DIA, HORA_INICIO, HORA_TERMINO, DURACION_MODULO) VALUES (null,  ?,  ?, ?, ?, ?);';
+	        $sentencia=$conexion->prepare($this->SqlQuery);
+	        $sentencia->bind_param('issss',$idOdontologo,$diaInterno,$horaInicio,$horaTermino,$duracionModulo);
+	      	if($sentencia->execute())
+	      	{
+	        	$conexion->close();
+				return $sentencia->insert_id;
+			}
+			else
+			{
+				$conexion->close();
+	        	return false;
+	        }
+        }
+    	catch(Exception $e)
+    	{
+         return false;
+         throw new $e("Error al Registrar Usuarios");
+        }
+	}
 	private function nameDate($fecha)//formato: 00/00/0000
 	{ 	$fecha= empty($fecha)?date('d/m/Y'):$fecha;
 		$dias = array('domingo','lunes','martes','miercoles','jueves','viernes','sabado');

@@ -10,11 +10,11 @@ class ControladoraPass
 
 	public function insertarPass(Pass $passObjeto)
 	{
+
 		$conexion = new MySqlCon();
 		$idPersona = $passObjeto->idPersona;
 		$password = $passObjeto->contrasena;
 		$fechaCaducidad = $passObjeto->fechaCaducidad;
-		echo($password);
 		$hasher = new PasswordHash(8, false);	
 		$passHash = $hasher->HashPassword($password);
 		try

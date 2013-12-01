@@ -15,7 +15,6 @@ function login()
 	var data = {"send":"{\"indice\":2,\"usuario\":"+usuario+",\"pass\":\""+contrasena+"\"}"};
 
 	$.post(ingresar, data, function(datos){
-		alert(datos);
 		var datosObjeto = $.parseJSON(datos);
 		var obj = datosObjeto.resultado;
 		var codigo = obj.codAcceso;

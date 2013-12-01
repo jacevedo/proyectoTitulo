@@ -4,6 +4,8 @@ require_once '../pojos/persona.php';
 require_once '../pojos/datoscontacto.php';
 require_once '../pojos/pass.php';
 require_once '../pojos/comuna.php';
+require_once '../pojos/paciente.php';
+require_once '../controladoras/controladorapaciente.php';
 require_once '../controladoras/controladorapersonaregioncomuna.php';
 require_once '../controladoras/controladoradatoscontacto.php';
 require_once '../controladoras/controladorapass.php';
@@ -29,7 +31,7 @@ switch ($opcion)
 {
 	case 1:
 		$arreglo["code"] = 1;
-		//json Insertar Usuario {"indice":1,"idPerfil":4,"rut":17897359,"dv":2,"nombre":"ada","appPaterno":"wonk","appMaterno":"asturias","fechaNac":"1991-12-12","pass":"asdcasco","idComuna":2,"fonoFijo":"0227780184","celular":"+56976087240","Direccion":"antonio Varas 666","mail":"asd@asd.com","fechaIngreso":"2013-02-02","fechaCaducidad":"2013-02-02"}
+		//json Insertar Usuario {"indice":1,"idPerfil":4,"rut":17897359,"dv":2,"nombre":"ada","appPaterno":"wonk","appMaterno":"asturias","fechaNac":"1991-12-12","pass":"asdcasco","idComuna":2,"fonoFijo":"0227780184","celular":"+56976087240","direccion":"antonio Varas 666","mail":"asd@asd.com","fechaIngreso":"2013-02-02","fechaCaducidad":"2013-02-02"}
 		$idPerfil = $data->{'idPerfil'};
 		$rut = $data->{'rut'};
 		$dv = $data->{'dv'};
@@ -37,7 +39,7 @@ switch ($opcion)
 		$appPateno = $data->{'appPaterno'};
 		$appMaterno = $data->{'appMaterno'};
 		$fechaNac = $data->{'fechaNac'};
-		$pass = $data->{'pass'};
+		$contrasena = $data->{'pass'};
 		$idComuna = $data->{'idComuna'};
 		$fonoFijo = $data->{'fonoFijo'};
 		$fonoCelular = $data->{'celular'};
@@ -62,6 +64,7 @@ switch ($opcion)
 				$datoContacto->initClass($idPersona, $idComuna, $fonoFijo, $fonoCelular, $direccion, $mail, $fechaIngreso);
 				if($controladoraContacto->insertarDatosContacto($datoContacto)=="datos Insertados Correctamente")
 				{
+
 					$arregloFinal["idPersona"] = $idPersona;
 					$arregloFinal["resultado"] = "Todos los datos fueron insertados";
 					$arreglo["resultado"] = $arregloFinal; 
@@ -293,7 +296,82 @@ switch ($opcion)
 		$arreglo["resultado"] = $datoContacto->buscarPorPersona($idPersona);
 		echo(json_encode($arreglo));
 	break;
-	
+	case 10:
+		$arreglo["code"] = 1;
+		//json Insertar Usuario {"indice":10,"idPerfil":4,"rut":17897359,"dv":2,"nombre":"ada","appPaterno":"wonk","appMaterno":"asturias","fechaNac":"1991-12-12","pass":"asdcasco","idComuna":2,"fonoFijo":"0227780184","celular":"+56976087240","direccion":"antonio Varas 666","mail":"asd@asd.com","fechaIngreso":"2013-02-02","fechaCaducidad":"2013-02-02"}
+		$idPerfil = $data->{'idPerfil'};
+		$rut = $data->{'rut'};
+		$dv = $data->{'dv'};
+		$nombre = $data->{'nombre'};
+		$appPateno = $data->{'appPaterno'};
+		$appMaterno = $data->{'appMaterno'};
+		$fechaNac = $data->{'fechaNac'};
+		$password = $data->{'pass'};
+		$idComuna = $data->{'idComuna'};
+		$fonoFijo = $data->{'fonoFijo'};
+		$fonoCelular = $data->{'celular'};
+		$direccion = $data->{'direccion'};
+		$mail = $data->{'mail'};
+		$fechaIngreso = $data->{'fechaIngreso'};
+		$fechaCaducidad = $data->{'fechaCaducidad'};
+		$persona = new Persona();
+		$controladoraPersona = new ControladoraPersonaRegionComuna();
+		$persona->initClass(0, $idPerfil, $rut, $dv, $nombre, $appPateno, $appMaterno, $fechaNac);
+		$idPersona = $controladoraPersona->insertarPersona($persona);
+		if($idPersona !=-1)
+		{
+			$pass = new Pass();
+			$controladoraPass = new ControladoraPass();
+			$pass->initClass($idPersona,$password,$fechaCaducidad);
+			$insertadoPass = $controladoraPass->insertarPass($pass);
+			if($insertadoPass=="Password Registrada")
+			{
+				$datoContacto = new DatosContactos();
+				$controladoraContacto = new ControladoraDatosContacto();
+				$datoContacto->initClass($idPersona, $idComuna, $fonoFijo, $fonoCelular, $direccion, $mail, $fechaIngreso);
+				if($controladoraContacto->insertarDatosContacto($datoContacto)=="datos Insertados Correctamente")
+				{
+					$paciente = new Paciente();
+					$controladoraPaciente = new ControladoraPaciente();
+					$paciente->initClassPaciente(0,$idPersona, $fechaIngreso, 1);
+					$idPaciente = $controladoraPaciente->insertarPaciente($paciente);
+					if($idPaciente != -1)
+					{
+						$arregloFinal["idPersona"] = $idPersona;
+						$arregloFinal["resultado"] = "Todos los datos fueron insertados";
+						$arreglo["resultado"] = $arregloFinal;
+					}
+					else
+					{
+						$arregloFinal["idPersona"] = $idPersona;
+						$arregloFinal["resultado"] = "Error al insertar Paciente";
+						$arreglo["resultado"] = $arregloFinal;	
+					}
+					 
+				}
+				else
+				{
+					$arregloFinal["idPersona"] = $idPersona;
+					$arregloFinal["resultado"] = "Error al insertar los datos de contacto";
+					$arreglo["resultado"] = $arregloFinal; 
+				}
+
+			}
+			else
+			{
+				$arregloFinal["idPersona"] = $idPersona;
+				$arregloFinal["resultado"] = "Hubo un error al registrar la password, comuniquese con la clinica odontologica";
+				$arreglo["resultado"] = $arregloFinal; 
+			}
+		}
+		else
+		{
+			$arreglo["resultado"] = "Hubo un error al ingresar a la persona";
+		}
+
+		//Retorna {"idPersonaInsertada":id};	
+		echo(json_encode($arreglo));
+	break;
 	
 }
  
