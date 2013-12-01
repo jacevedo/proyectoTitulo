@@ -56,9 +56,9 @@ session_start();
 							</div>
 						</div>
 						<div class="row agregar">
-							<div class="col-xs-6 col-sm-4"><input placeholder="Nombre Procedimiento" type="text"/></div>
-							<div class="col-xs-6 col-sm-4"><input placeholder="Costo Neto Proced." type="text"/></div>
-							<div class="col-xs-6 col-sm-4"><Button class="btn btn-lg btn-primary btn-block">Guardar</Button></div>
+							<div class="col-xs-6 col-sm-4"><input id="txtNomProcedimiento" placeholder="Nombre Procedimiento" type="text"/></div>
+							<div class="col-xs-6 col-sm-4"><input id="txtCostoProcedimiento" placeholder="Costo Neto Proced." type="text"/></div>
+							<div class="col-xs-6 col-sm-4"><Button id="crearNuevoPrecio" class="btn btn-lg btn-primary btn-block">Guardar</Button></div>
 						<div>
 					 </div>
 					  <!-- Table -->

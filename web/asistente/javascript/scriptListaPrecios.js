@@ -6,8 +6,36 @@ function inicializarEventos()
 	cargarListaPrecios();
 	$("#btnBuscar").click(buscarPor);
 	$("#btnAgregarTratamiento").click(agregarTratamiento);
+	$("#crearNuevoPrecio").click(crearPrecio);
 }
+function crearPrecio()
+{
+	var nomProcedimiento = $("#txtNomProcedimiento").val();
+	var precioProcedimiento = $("#txtCostoProcedimiento").val();
+	
+	//{"indice":1,"Comentario":"Procedimiento","ValorNeto":12000}
+	var url = direccionWeb + "ws-precios-insumos.php";
+	var data = {"send":"{\"indice\":1,\"Comentario\":\""+nomProcedimiento+"\",\"ValorNeto\":"+precioProcedimiento+"}"};
+	$.post(url,data,function(datos)
+	{
+		var obj = $.parseJSON(datos);
+		if(obj.idPrecioInsertado!=-1)
+		{
+			alert("Procedimiento Insertado Correctamente")
+			var textoNuevo = "<tr><td>"+obj.idPrecioInsertado+"</td><td>"+nomProcedimiento+"</td><td>"+precioProcedimiento+"</td><td><button class=\"btnEditarPrecio btn btn-lg btn-primary btn-block\" type=\"submit\">Editar</button></td><td><button class=\"btnEliminarPrecio btn btn-lg btn-primary btn-block\" type=\"submit\">Eliminar</button></td></tr>";
+			$("#cuerpoTabla").prepend(textoNuevo);
+			$("#tablaListaPrecios").off("click",".btnEditarPrecio",modificarObjeto);
+			$("#tablaListaPrecios").off("click",".btnEliminarPrecio",eliminarObjeto);
 
+			$("#tablaListaPrecios").on("click",".btnEditarPrecio",modificarObjeto);
+			$("#tablaListaPrecios").on("click",".btnEliminarPrecio",eliminarObjeto);
+		}
+		else
+		{
+			alert("Hubo un error al insertar el procedimiento");
+		}
+	});
+}
 function buscarPor()
 {
 	$("#tablaListaPrecios").off("click",".btnEditarPrecio",modificarObjeto);
