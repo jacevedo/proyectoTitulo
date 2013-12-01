@@ -39,7 +39,7 @@ public class ListaPrecios extends Activity implements OnClickListener
 	{
 		txtBuscar = (EditText)findViewById(R.id.txtBusqueda);
 		btnBuscar = (Button)findViewById(R.id.btnBuscar);
-		listaMain = (ListView) findViewById(R.id.lstPrecios);
+		listaMain = (ListView) findViewById(R.id.lstHoras);
 		btnBuscar.setOnClickListener(this);
 		
 		new Asincrono(listaMain).execute();

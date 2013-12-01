@@ -1,6 +1,8 @@
 package cl.sfh.controladoras;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import org.apache.http.NameValuePair;
@@ -9,7 +11,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.util.Log;
 import cl.sfh.entidades.Horario;
+import cl.sfh.entidades.HorasTomadas;
 import cl.sfh.libreria.JSONParser;
 
 public class ControladoraHorario
@@ -74,5 +78,48 @@ public class ControladoraHorario
 			ex.printStackTrace();
 		}
 		return resultado;
+	}
+	public ArrayList<HorasTomadas> listaHorasTomadas(int idPaciente)
+	{
+		ArrayList<HorasTomadas> listadoHoras =  new ArrayList<HorasTomadas>();
+		Calendar calendarioo = GregorianCalendar.getInstance();
+		
+		String fecha=calendarioo.get(Calendar.YEAR)+"-"+calendarioo.get(Calendar.MONTH)+"-"+calendarioo.get(Calendar.DAY_OF_YEAR);
+		mensajeEnviar = "{\"indice\":3,\"idPaciente\":"+idPaciente+",\"fecha\":\""+fecha+"\"}";
+		
+		JSONParser parser = new JSONParser();
+		List<NameValuePair> parametros = new ArrayList<NameValuePair>();
+		parametros.add(new BasicNameValuePair("send", mensajeEnviar));
+		JSONObject objetoJson = parser.makeHttpRequest("ws-cita.php","POST", parametros);
+		
+		try
+		{
+			JSONArray arreglo = objetoJson.getJSONArray("resultado");
+			if(arreglo.length()>0)
+			{
+				Log.e("asd", "fecha: " + fecha);
+				Log.e("asd", "id Paciente: " + idPaciente);
+				Log.e("asd", "Resultado: " +objetoJson.toString());
+				for (int i = 0; i < arreglo.length(); i++)
+				{
+					JSONObject objetoFor = (JSONObject)arreglo.get(i);
+					String horaInicio = objetoFor.getString("horaInicio");
+					String fechaJson = objetoFor.getString("fecha");
+					String nombre = objetoFor.getString("nomOdontologo");
+					String apellidoPaterno = objetoFor.getString("appPaternoOdontologo");
+					String apellidoMaterno = objetoFor.getString("appMaternoOdontologo");
+					String nombreCompleto = nombre +" " + apellidoPaterno +" " +apellidoMaterno;
+					int idOdontologo = objetoFor.getInt("idOdontologo");
+					String[] horaFiltro = horaInicio.split(" ");
+					HorasTomadas horario = new HorasTomadas(nombreCompleto, idOdontologo, fechaJson, horaFiltro[1]);
+					listadoHoras.add(horario);
+				}
+			}
+		}
+		catch(JSONException ex)
+		{
+			ex.printStackTrace();
+		}
+		return listadoHoras;
 	}
 }

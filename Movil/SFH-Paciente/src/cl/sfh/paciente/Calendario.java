@@ -3,7 +3,9 @@ package cl.sfh.paciente;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
+
 import java.util.*;
 
 import android.view.View;
@@ -24,6 +26,8 @@ public class Calendario extends Activity implements OnClickListener, AdapterView
     private Button btnMesSiguiente;
     private Button btnMesAnterior;
     private Button btnMesMesActual;
+    private int mesesMas=0;
+    private int mesesMenos=0;
     ArrayList<DiasCalendario> diasCalendarios = new ArrayList<DiasCalendario>();
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -39,7 +43,7 @@ public class Calendario extends Activity implements OnClickListener, AdapterView
          mesActual(Calendar.getInstance());
 
         btnMesSiguiente = (Button)findViewById(R.id.btnMesSiguiente);
-        btnMesAnterior = (Button)findViewById(R.id.btnMesAnterior);
+        btnMesAnterior = (Button)findViewById(R.id.btnMesAnteriorCalendario);
         btnMesMesActual = (Button)findViewById(R.id.btnMesActual);
 
         btnMesAnterior.setOnClickListener(this);
@@ -54,17 +58,25 @@ public class Calendario extends Activity implements OnClickListener, AdapterView
     public void cargarMesAnterior(int mes,int ano)
     {
         Calendar calendarioo = GregorianCalendar.getInstance();
-        calendarioo.setFirstDayOfWeek(1);
+        calendarioo.setFirstDayOfWeek(Calendar.MONDAY);
         calendarioo.set(ano,mes,
                 calendarioo.getActualMinimum(Calendar.DAY_OF_MONTH),calendarioo.get(Calendar.HOUR_OF_DAY),
                 calendarioo.get(Calendar.MINUTE),calendarioo.get(Calendar.SECOND));
         int primerDia = calendarioo.get(Calendar.DAY_OF_WEEK)-2;
+        
+        Log.e("primerDia", primerDia+"");
         calendarioo.set(calendarioo.get(Calendar.YEAR),calendarioo.get(Calendar.MONTH)-1,
                 calendarioo.getActualMinimum(Calendar.DAY_OF_MONTH),calendarioo.get(Calendar.HOUR_OF_DAY),
                 calendarioo.get(Calendar.MINUTE),calendarioo.get(Calendar.SECOND));
+        if(primerDia==-1)
+        {
+        	primerDia=6;
+        }
+        
+        
         int ultimoDia = calendarioo.getActualMaximum(Calendar.DAY_OF_MONTH);
         int diaPartida = ultimoDia-primerDia+1;
-        
+        Log.e("primerDia", calendarioo.getFirstDayOfWeek()+"");
         for(int i=0; i < primerDia;i++)
         {
             diasCalendarios.add(new DiasCalendario(diaPartida,diaPartida,mes,ano,4));
@@ -88,51 +100,26 @@ public class Calendario extends Activity implements OnClickListener, AdapterView
     {
         switch (v.getId())
         {
-            case R.id.btnMesAnterior:
-                mesAnterior(GregorianCalendar.getInstance());
+            case R.id.btnMesAnteriorCalendario:
+                mesAnterior(GregorianCalendar.getInstance(),--mesesMas);
                 break;
             case R.id.btnMesActual:
+            	mesesMas=0;
+                mesesMenos=0;
                 mesActual(GregorianCalendar.getInstance());
+              
                 break;
             case R.id.btnMesSiguiente:
-                mesSiguiente(GregorianCalendar.getInstance());
+                mesSiguiente(GregorianCalendar.getInstance(),++mesesMas);
                 break;
         }
     }
-    public void mesAnterior(Calendar calendario)
+    public void mesAnterior(Calendar calendario,int meses)
     {
-
-    }
-    public void mesActual(Calendar calendario)
-    {
-        diasCalendarios.clear();
-        diasCalendarios = new ArrayList<DiasCalendario>();
-
-        cargarMesAnterior(calendario.get(Calendar.MONTH),calendario.get(Calendar.YEAR));
-        calendario.setFirstDayOfWeek(1);
-
-
-
-        int dias = calendario.getActualMaximum(Calendar.DAY_OF_MONTH);
-        int mes = calendario.get(Calendar.MONTH)+1;
-        int year = calendario.get(Calendar.YEAR);
-
-        DiasCalendario diaGrilla;
-        for(int i=0;i!=dias;i++)
-        {
-
-            diaGrilla = new DiasCalendario(i+1,i+1,mes,year,(int)(Math.random()*3)+1);
-            diasCalendarios.add(diaGrilla);
-        }
-        GrillaAdapter grillaAdaptador = new GrillaAdapter(diasCalendarios,this);
-        grilla.setAdapter(grillaAdaptador);
-    }
-    public void mesSiguiente(Calendar calendario)
-    {
-        diasCalendarios.clear();
+    	diasCalendarios.clear();
         diasCalendarios = new ArrayList<DiasCalendario>();
         Calendar calendarioSiguiente = GregorianCalendar.getInstance();
-        calendarioSiguiente.set(calendario.get(Calendar.YEAR),calendario.get(Calendar.MONTH)+1,
+        calendarioSiguiente.set(calendario.get(Calendar.YEAR),calendario.get(Calendar.MONTH)+meses,
                 calendario.get(Calendar.DAY_OF_MONTH),calendario.get(Calendar.HOUR_OF_DAY),
                 calendario.get(Calendar.MINUTE),calendario.get(Calendar.SECOND));
 
@@ -152,6 +139,65 @@ public class Calendario extends Activity implements OnClickListener, AdapterView
             diaGrilla = new DiasCalendario(i+1,i+1,mes,year,(int)(Math.random()*3)+1);
             diasCalendarios.add(diaGrilla);
         }
+        GrillaAdapter grillaAdaptador = new GrillaAdapter(diasCalendarios,this);
+        grilla.setAdapter(grillaAdaptador);
+        if(meses==0)
+        {
+        	btnMesAnterior.setEnabled(false);
+        }
+    }
+    public void mesActual(Calendar calendario)
+    {
+        diasCalendarios.clear();
+        diasCalendarios = new ArrayList<DiasCalendario>();
+
+        cargarMesAnterior(calendario.get(Calendar.MONTH),calendario.get(Calendar.YEAR));
+        calendario.setFirstDayOfWeek(Calendar.MONDAY);
+
+
+
+        int dias = calendario.getActualMaximum(Calendar.DAY_OF_MONTH);
+        int mes = calendario.get(Calendar.MONTH)+1;
+        int year = calendario.get(Calendar.YEAR);
+        
+        
+
+        DiasCalendario diaGrilla;
+        for(int i=0;i!=dias;i++)
+        {
+
+            diaGrilla = new DiasCalendario(i+1,i+1,mes,year,(int)(Math.random()*3)+1);
+            diasCalendarios.add(diaGrilla);
+        }
+        GrillaAdapter grillaAdaptador = new GrillaAdapter(diasCalendarios,this);
+        grilla.setAdapter(grillaAdaptador);
+    }
+    public void mesSiguiente(Calendar calendario,int mesSiguiente)
+    {
+        diasCalendarios.clear();
+        diasCalendarios = new ArrayList<DiasCalendario>();
+        Calendar calendarioSiguiente = GregorianCalendar.getInstance();
+        calendarioSiguiente.set(calendario.get(Calendar.YEAR),calendario.get(Calendar.MONTH)+mesSiguiente,
+                calendario.get(Calendar.DAY_OF_MONTH),calendario.get(Calendar.HOUR_OF_DAY),
+                calendario.get(Calendar.MINUTE),calendario.get(Calendar.SECOND));
+
+        cargarMesAnterior(calendarioSiguiente.get(Calendar.MONTH), calendarioSiguiente.get(Calendar.YEAR));
+        calendario.setFirstDayOfWeek(1);
+
+        
+
+        int dias = calendarioSiguiente.getActualMaximum(Calendar.DAY_OF_MONTH);
+        int mes = calendario.get(Calendar.MONTH)+1;
+        int year = calendario.get(Calendar.YEAR);
+        
+        DiasCalendario diaGrilla;
+        for(int i=0;i!=dias;i++)
+        {
+
+            diaGrilla = new DiasCalendario(i+1,i+1,mes,year,(int)(Math.random()*3)+1);
+            diasCalendarios.add(diaGrilla);
+        }
+        btnMesAnterior.setEnabled(true);
         GrillaAdapter grillaAdaptador = new GrillaAdapter(diasCalendarios,this);
         grilla.setAdapter(grillaAdaptador);
 

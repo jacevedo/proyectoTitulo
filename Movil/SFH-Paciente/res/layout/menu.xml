@@ -43,6 +43,16 @@
             android:background="#375D81"
             android:textColor="#FFFFFF"
             android:layout_marginTop="10dp"/>
+
+    <Button
+        android:id="@+id/btnVerHorasTomadas"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="#375D81"
+        android:text="Ver Horas Tomadas"
+        android:textColor="#FFFFFF" />
+
     <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"

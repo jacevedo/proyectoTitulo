@@ -88,7 +88,7 @@
                 android:id="@+id/textView4"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="Fecha Nacimiento"
+                android:text="Fecha Nacimiento (Formato: Dia-Mes-Año)"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <EditText
@@ -111,20 +111,33 @@
                 android:ems="10" />
 
             <TextView
-                android:id="@+id/textView8"
+                android:id="@+id/TextView06"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Region"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <Spinner
+                android:id="@+id/spRegionesNvaCta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:tag="region" />
+
+            <TextView
+                android:id="@+id/TextView01"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:text="Comuna"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
-            <EditText
-                android:id="@+id/txtComuna"
-                android:layout_width="fill_parent"
+            <Spinner
+                android:id="@+id/spComunaNvaCta"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10" />
+                android:tag="comuna" />
 
             <TextView
-                android:id="@+id/TextView01"
+                android:id="@+id/TxtFechaHorario"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:text="Telefono Fijo"
@@ -157,7 +170,7 @@
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <EditText
-                android:id="@+id/txtMail"
+                android:id="@+id/spComuna"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10" />

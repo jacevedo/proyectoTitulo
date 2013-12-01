@@ -24,7 +24,7 @@ public class ControladoraHorario
 		Calendar calendarioo = GregorianCalendar.getInstance();
 		String fecha=calendarioo.get(Calendar.YEAR)+"-"+calendarioo.get(Calendar.MONTH)+"-"+calendarioo.get(Calendar.DAY_OF_YEAR);
 		
-		
+		{} 
 		mensajeEnviar = "{\"indice\":4,\"idOdontologo\":"+idOdontologo+",\"fecha\":\""+fecha+"\"}";
 		JSONParser parser = new JSONParser();
 		List<NameValuePair> parametros = new ArrayList<NameValuePair>();

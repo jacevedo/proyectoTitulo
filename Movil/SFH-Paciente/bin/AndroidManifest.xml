@@ -30,7 +30,7 @@
             <intent-filter>
                 <action android:name="cl.sfh.paciente.Menu" />
 
-                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.DEFAULT" /> 
             </intent-filter>
         </activity>
         <activity
@@ -84,14 +84,22 @@
             </intent-filter>
         </activity>
         <activity
+            android:name="cl.sfh.paciente.VerHoras"
+            android:label="@string/app_name_titulo"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="cl.sfh.paciente.VerHoras" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
                 android:name="cl.sfh.paciente.SplashScreen"
                 android:label="@string/app_name_titulo"
                 android:screenOrientation="portrait" >
             <intent-filter>   
                 <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />            
-               
+                <category android:name="android.intent.category.LAUNCHER" />                  
             </intent-filter>
         </activity>
     </application>

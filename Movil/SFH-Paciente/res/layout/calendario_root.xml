@@ -13,17 +13,17 @@
             >
 
         <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Mes Anterior"
-                android:id="@+id/btnMesAnterior"
-                android:gravity="center_vertical|center_horizontal"
-                android:layout_weight="1"
-                android:enabled="false"
-                android:background="#375D81"
-                android:textColor="#FFFFFF"
-                android:layout_marginRight="3dp"
-                android:layout_marginLeft="3dp"/>
+            android:id="@+id/btnMesAnteriorCalendario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp"
+            android:layout_weight="1"
+            android:background="#375D81"
+            android:enabled="false"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="Mes Anterior"
+            android:textColor="#FFFFFF" />
 
         <Button
                 android:layout_width="wrap_content"
@@ -143,14 +143,6 @@
                 android:orientation="vertical" >
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/textView1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Dia Completo"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
-
         </LinearLayout>
 
         <LinearLayout
@@ -163,14 +155,6 @@
                 android:background="@color/Yellow"
                 android:orientation="vertical" >
             </LinearLayout>
-
-            <TextView
-                android:id="@+id/textView1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Dia Medianamente Lleno"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
 
         </LinearLayout>
 
@@ -185,14 +169,6 @@
                  android:orientation="vertical" >
 
             </LinearLayout>
-
-            <TextView
-                android:id="@+id/textView1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Dia Disponible"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
 
         </LinearLayout>
     </LinearLayout>

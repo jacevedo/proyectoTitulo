@@ -96,18 +96,28 @@ public class MainActivity extends Activity implements OnClickListener
 		@Override
 		protected void onPostExecute(Login result)
 		{
-			
 			dialogo.dismiss();
-			SharedPreferences preferencias = getSharedPreferences("datos",Context.MODE_PRIVATE);
-			Editor editor=preferencias.edit();
-	        editor.putInt("idPaciente", result.getIdPaciente());
-	        editor.commit();
-			if(result.getCodAcceso()==704)
+		
+			if(result.getIdPaciente()!=-1)
 			{
-				Intent i;
-				i = new Intent("cl.sfh.paciente.Menu");
-		        startActivity(i);
-		        finish();
+				
+				SharedPreferences preferencias = getSharedPreferences("datos",Context.MODE_PRIVATE);
+				Editor editor=preferencias.edit();
+		        editor.putInt("idPaciente", result.getIdPaciente());
+		        editor.putInt("idPersona", result.getIdPersona());
+		        editor.putInt("rutPersona", Integer.parseInt(txtUsuario.getText().toString()));
+		        editor.commit();
+				if(result.getCodAcceso()==704)
+				{
+					Intent i;
+					i = new Intent("cl.sfh.paciente.Menu");
+			        startActivity(i);
+			        finish();
+				}
+				else
+				{
+					Toast.makeText(MainActivity.this, "Usuario y/o Contraseña Incorrecto", Toast.LENGTH_SHORT).show();	 
+				}
 			}
 			else
 			{

@@ -8,6 +8,7 @@ import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.util.Log;
 import cl.sfh.entidades.DatosContacto;
 import cl.sfh.entidades.Pass;
 import cl.sfh.entidades.Persona;
@@ -18,13 +19,14 @@ public class controladoraAgregarUsuario
 	String mensajeEnviar;
 	public String crearCuenta(Persona per, DatosContacto datos, Pass pass)
 	{
-		mensajeEnviar = "{\"indice\":1,\"idPerfil\":"+per.getIdPerfil()+",\"rut\":"+per.getRut()+",\"dv\":"+per.getDv()+
+		Log.e("pass",pass.getPass());
+		mensajeEnviar = "{\"indice\":10,\"idPerfil\":"+per.getIdPerfil()+",\"rut\":"+per.getRut()+",\"dv\":"+per.getDv()+
 						",\"nombre\":\""+per.getNombre()+"\",\"appPaterno\":\""+per.getAppPaterno()+"\","+
 						"\"appMaterno\":\""+per.getAppMaterno()+"\",\"fechaNac\":\""+per.getFechaNacimiento()+
 						"\",\"pass\":\""+pass.getPass()+"\",\"idComuna\":"+datos.getIdComuna()+
 						",\"fonoFijo\":\""+datos.getFonoFijo()+"\",\"celular\":\""+datos.getFonoCelular()+
-						"\",\"Direccion\":\""+datos.getDireccion()+"\",\"mail\":\""+datos.getMail()+"\","+
-						"\"fechaIngreso\":\""+datos.getFechaIngreso()+"\"}";
+						"\",\"direccion\":\""+datos.getDireccion()+"\",\"mail\":\""+datos.getMail()+"\","+
+						"\"fechaIngreso\":\""+datos.getFechaIngreso()+"\",\"fechaCaducidad\":\""+pass.getFechaCaducidad()+"\"}";
 		JSONParser parser = new JSONParser();
 		List<NameValuePair> parametros = new ArrayList<NameValuePair>();
 		parametros.add(new BasicNameValuePair("send", mensajeEnviar));

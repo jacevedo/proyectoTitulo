@@ -1,22 +1,32 @@
 package cl.sfh.paciente;
 
+import java.util.ArrayList;
 import java.util.Date;
 
+import cl.sfh.controladoras.ControladoraEditarDatosContacto;
 import cl.sfh.controladoras.controladoraAgregarUsuario;
+import cl.sfh.entidades.Comunas;
 import cl.sfh.entidades.DatosContacto;
 import cl.sfh.entidades.Pass;
 import cl.sfh.entidades.Persona;
+import cl.sfh.entidades.Region;
+import cl.sfh.paciente.EditarCuenta.obtenerComunas;
 import android.app.Activity;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
+import android.widget.AdapterView.OnItemSelectedListener;
 
-public class NuevaCuenta extends Activity implements OnClickListener
+public class NuevaCuenta extends Activity implements OnClickListener, OnItemSelectedListener
 {
 	private EditText txtNombre;
 	private EditText txtAppPaterno;
@@ -24,18 +34,22 @@ public class NuevaCuenta extends Activity implements OnClickListener
 	private EditText txtRut;
 	private EditText txtFechaNacimiento;
 	private EditText txtDireccion;
-	private EditText txtComuna;
+	private Spinner spRegion;
+	private Spinner spComuna;
 	private EditText txtFonoFijo;
 	private EditText txtCelular;
 	private EditText txtEmail;
 	private EditText txtContrasena;
 	private EditText txtConfirmarContrasena;
 	private Button btnCrearUsuario;
+	private ArrayList<Region> regionGlobal;
+	private ArrayList<Comunas> comunasGlobal;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.nueva_cuenta);
+        new obtenerRegiones().execute(0,0);
         inicializarElementos();
     }
 
@@ -47,10 +61,11 @@ public class NuevaCuenta extends Activity implements OnClickListener
     	txtRut = (EditText)findViewById(R.id.txtRut);
     	txtFechaNacimiento = (EditText)findViewById(R.id.txtFechaNacimiento);
     	txtDireccion = (EditText)findViewById(R.id.txtDireccion);
-    	txtComuna = (EditText)findViewById(R.id.txtComuna);
+    	spRegion = (Spinner)findViewById(R.id.spRegionesNvaCta);
+    	spComuna = (Spinner)findViewById(R.id.spComunaNvaCta);
     	txtFonoFijo = (EditText)findViewById(R.id.txtTelefonoFijo);
     	txtCelular = (EditText)findViewById(R.id.txtCelular);
-    	txtEmail = (EditText)findViewById(R.id.txtMail);
+    	txtEmail = (EditText)findViewById(R.id.spComuna);
     	txtContrasena = (EditText)findViewById(R.id.txtPassNueva);
     	txtConfirmarContrasena = (EditText)findViewById(R.id.txtPassNuevaConfirmar);
     	btnCrearUsuario = (Button)findViewById(R.id.btnCrearCuenta);
@@ -74,10 +89,22 @@ public class NuevaCuenta extends Activity implements OnClickListener
 			case R.id.btnCrearCuenta:
 				if(txtConfirmarContrasena.getText().toString().compareToIgnoreCase(txtContrasena.getText().toString())==0)
 				{
+					int idComuna = 0 ;
+					for (Comunas comuna : comunasGlobal)
+					{
+						if(spComuna.getSelectedItem().toString().compareToIgnoreCase(comuna.getNomComuna())==0)
+						{
+							idComuna=comuna.getIdComuna();
+							break;
+						}
+					}
+					Log.e("idComuna", idComuna+"");
 					String[] rut = txtRut.getText().toString().split("-");
-					Persona per = new Persona(0, 4, Integer.parseInt(rut[0]), rut[1] , txtNombre.getText().toString(), txtAppPaterno.getText().toString(), txtAppMaterno.getText().toString(), txtFechaNacimiento.getText().toString());
-					DatosContacto datoContacto = new DatosContacto(0, Integer.parseInt(txtComuna.getText().toString()), txtFonoFijo.getText().toString(), txtCelular.getText().toString(), txtDireccion.getText().toString(), txtEmail.getText().toString(), new Date().toString());
-					Pass contrasena = new Pass(0, txtConfirmarContrasena.getText().toString(), "2013-12-12");
+					String[] fecha = txtFechaNacimiento.getText().toString().split("-");
+					String fechaMostrar = fecha[2]+"-"+fecha[1]+"-"+fecha[0];
+					Persona per = new Persona(0, 4, Integer.parseInt(rut[0]), rut[1] , txtNombre.getText().toString(), txtAppPaterno.getText().toString(), txtAppMaterno.getText().toString(), fechaMostrar);
+					DatosContacto datoContacto = new DatosContacto(0, idComuna, txtFonoFijo.getText().toString(), txtCelular.getText().toString(), txtDireccion.getText().toString(), txtEmail.getText().toString(), new Date().toString());
+					Pass contrasena = new Pass(0, txtConfirmarContrasena.getText().toString(), "2014-12-12");
 					new InsertarUsuario().execute(per,datoContacto,contrasena);
 				}
 				else
@@ -109,6 +136,7 @@ public class NuevaCuenta extends Activity implements OnClickListener
 		@Override
 		protected String doInBackground(Object... params)
 		{
+			Log.e("entre","entre");
 			Persona per = (Persona) params[0];
 			DatosContacto datos = (DatosContacto)params[1];
 			Pass contrasena = (Pass)params[2];
@@ -121,22 +149,149 @@ public class NuevaCuenta extends Activity implements OnClickListener
 		protected void onPostExecute(String result)
 		{
 			// TODO Auto-generated method stu
-			if(result.compareToIgnoreCase("")==0)
+			if(result.compareToIgnoreCase("Todos los datos fueron insertados")==0)
 			{
 				Toast.makeText(NuevaCuenta.this,"Datos insertado Correctamente", Toast.LENGTH_SHORT).show();
+				finish();
 			}
-			else if(result.compareToIgnoreCase("")==0)
+			else
 			{
-				Toast.makeText(NuevaCuenta.this,"Datos insertado Correctamente", Toast.LENGTH_SHORT).show();
-			}
-			else if(result.compareToIgnoreCase("")==0)
-			{
-				Toast.makeText(NuevaCuenta.this,"Datos insertado Correctamente", Toast.LENGTH_SHORT).show();
+				Toast.makeText(NuevaCuenta.this,"Error al insertar los datos", Toast.LENGTH_SHORT).show();
 			}
 			super.onPostExecute(result);
 		}
 
 		
+    }
+	@Override
+	public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2,
+			long arg3)
+	{
+		Spinner spiner = (Spinner)arg0;
+		if(spiner.getTag().toString().compareToIgnoreCase("region")==0&&arg2!=0)
+		{
+			int idRegion=-1;
+			for (Region region : regionGlobal)
+			{
+				if(region.getNomRegion().compareToIgnoreCase(spiner.getItemAtPosition(arg2).toString())==0)
+				{
+					
+					idRegion = region.getIdRegion();
+					break;
+					
+				}
+				
+			}
+			ArrayList<Comunas> comunasForSpinner = new ArrayList<Comunas>();
+			Log.e("asd", idRegion+"");
+			for (Comunas comunas : comunasGlobal)
+			{
+				
+				if(comunas.getIdRegion()==idRegion)
+				{
+					comunasForSpinner.add(comunas);
+				}
+			}
+			ArrayAdapter<Comunas> listaEpinnerComunas = new ArrayAdapter<Comunas>(NuevaCuenta.this, android.R.layout.simple_spinner_item, comunasForSpinner);
+			listaEpinnerComunas.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+			spComuna.setAdapter(listaEpinnerComunas);
+		}
+	}
+
+	@Override
+	public void onNothingSelected(AdapterView<?> arg0)
+	{
+		// TODO Auto-generated method stub
+		
+	}
+	
+	class obtenerComunas extends AsyncTask<Integer, Void, ArrayList<Object>>
+    {
+
+		@Override
+		protected ArrayList<Object> doInBackground(Integer... params)
+		{
+			ArrayList<Object> listaObjetos = new ArrayList<Object>();
+			ControladoraEditarDatosContacto controladoraEditarDatos = new ControladoraEditarDatosContacto();
+			listaObjetos.add(controladoraEditarDatos.obtenerComunas());
+			Log.e("asd",  params[0]+"");
+			Log.e("asd",  params[1]+"");
+			listaObjetos.add(params[0]);
+			listaObjetos.add(params[1]);
+			return listaObjetos;
+		}
+
+		@SuppressWarnings("unchecked")
+		@Override
+		protected void onPostExecute(ArrayList<Object> result)
+		{
+			ArrayList<Comunas> comuna = (ArrayList<Comunas>)result.get(0);
+			comunasGlobal = comuna;
+			ArrayList<Comunas> comunaForSpinner = new ArrayList<Comunas>();
+			Log.e("asd",(Integer)result.get(1)+"");
+			for (Comunas comunas : comuna)
+			{
+				if(comunas.getIdRegion() == (Integer)result.get(1))
+				{
+					comunaForSpinner.add(comunas);
+				}
+			}
+			
+			ArrayAdapter<Comunas> listaEpinnerComunas = new ArrayAdapter<Comunas>(NuevaCuenta.this, android.R.layout.simple_spinner_item, comunaForSpinner);
+			listaEpinnerComunas.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+			spComuna.setAdapter(listaEpinnerComunas);
+			for(int i=0;i<comunaForSpinner.size();i++)
+			{
+				if(comunaForSpinner.get(i).getIdComuna()==(Integer)result.get(2))
+				{
+					spComuna.setSelection(i);
+					break;
+				}
+		
+			}
+			spRegion.setOnItemSelectedListener(NuevaCuenta.this);
+			super.onPostExecute(result);
+		}
+		
+    	
+    }
+    class obtenerRegiones extends AsyncTask<Integer, Void, ArrayList<Object>>
+    {
+
+		@Override
+		protected ArrayList<Object> doInBackground(Integer... params)
+		{
+			ArrayList<Object> listaObjeto = new ArrayList<Object>();
+			ControladoraEditarDatosContacto controladoraEditarDatos = new ControladoraEditarDatosContacto();
+			listaObjeto.add(controladoraEditarDatos.obtenerRegiones());
+			listaObjeto.add(params[0]);
+			listaObjeto.add(params[1]);
+			return listaObjeto;
+		}
+
+		@SuppressWarnings("unchecked")
+		@Override
+		protected void onPostExecute(ArrayList<Object> result)
+		{
+			ArrayList<Region> region = (ArrayList<Region>)result.get(0);
+			regionGlobal = region;
+			ArrayAdapter<Region> listaEpinnerRegiones= new ArrayAdapter<Region>(NuevaCuenta.this, android.R.layout.simple_spinner_item, region);
+			listaEpinnerRegiones.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+			spRegion.setAdapter(listaEpinnerRegiones);
+			for(int i=0;i<region.size();i++)
+			{
+				if(region.get(i).getIdRegion()==(Integer)result.get(1))
+				{
+					spRegion.setSelection(i);
+					break;
+				}
+		
+			}
+			Log.e("asd", result.get(1)+"");
+			new obtenerComunas().execute((Integer)result.get(1),(Integer)result.get(2));
+			super.onPostExecute(result);
+		}
+    	
     }
     
 }

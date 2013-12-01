@@ -59,23 +59,7 @@ public class GrillaAdapter extends BaseAdapter
         TextView diaNumero = (TextView) v.findViewById(R.id.txtNumero);
         diaNumero.setText(dias.get(position).getDia()+"");
 
-        switch (dias.get(position).getEstado())
-        {
-            case 1:
-                diaNumero.setBackgroundColor(Color.parseColor("#375D81"));
-                diaNumero.setTextColor(Color.GREEN);
-                break;
-            case 2:
-                diaNumero.setBackgroundColor(Color.parseColor("#375D81"));
-                diaNumero.setTextColor(Color.YELLOW);
-                break;
-            case 3:
-                diaNumero.setBackgroundColor(Color.parseColor("#375D81"));
-                diaNumero.setTextColor(Color.RED);
-                diaNumero.setTextColor(Color.RED);
-                break;
-        }
-
+      
 
         return v;
     }

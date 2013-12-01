@@ -19,11 +19,11 @@
             android:layout_gravity="center"/>
 
     <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Usuario"
-            android:id="@+id/textView2"/>
+        android:id="@+id/textView2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Usuario (rut sin guion ni digito)"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <LinearLayout
             android:orientation="vertical"
@@ -31,10 +31,12 @@
             android:layout_height="wrap_content">
 
         <EditText
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/txtUsuario"
-                android:textColor="#000000"/>
+            android:id="@+id/txtUsuario"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="1232132"
+            android:textColor="#000000" />
+
     </LinearLayout>
 
     <TextView
