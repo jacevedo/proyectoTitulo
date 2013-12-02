@@ -29,13 +29,11 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmGenerarReportesMonetarios));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.cmbxHastaFecha = new System.Windows.Forms.ComboBox();
@@ -44,10 +42,11 @@
             this.cmbxDesdeFecha = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -73,25 +72,6 @@
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Reporte Generado";
-            // 
-            // chart1
-            // 
-            chartArea1.Name = "ChartArea1";
-            chartArea2.Name = "ChartArea2";
-            this.chart1.ChartAreas.Add(chartArea1);
-            this.chart1.ChartAreas.Add(chartArea2);
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(6, 19);
-            this.chart1.Name = "chart1";
-            this.chart1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Reporte";
-            this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(1237, 532);
-            this.chart1.TabIndex = 2;
-            this.chart1.Text = "chart1";
             // 
             // groupBox4
             // 
@@ -183,23 +163,40 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "Generar Reportes Monetarios";
             // 
+            // chart1
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
+            this.chart1.Location = new System.Drawing.Point(6, 19);
+            this.chart1.Name = "chart1";
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart1.Series.Add(series1);
+            this.chart1.Size = new System.Drawing.Size(1237, 524);
+            this.chart1.TabIndex = 0;
+            this.chart1.Text = "chart1";
+            // 
             // frmGenerarReportesMonetarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(200)))), ((int)(((byte)(226)))));
             this.ClientSize = new System.Drawing.Size(1279, 722);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.label3);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmGenerarReportesMonetarios";
             this.Text = "frmGenerarReportesMonetarios";
             this.Load += new System.EventHandler(this.frmGenerarReportesMonetarios_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

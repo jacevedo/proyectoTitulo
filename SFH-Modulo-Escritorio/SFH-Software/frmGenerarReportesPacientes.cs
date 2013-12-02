@@ -16,8 +16,8 @@ namespace SFH_Software
     {
         #region Campos 
         ClientWsDataReportes client_data = new ClientWsDataReportes();
-        ClientWsDataReportes client_repo = new ClientWsDataReportes();
-        List<String> list_fechas = new List<String>();
+        ClientWsReportes client_repo = new ClientWsReportes();
+        List<DateTime> list_fechas = new List<DateTime>();
         List<Cita> list_citas = new List<Cita>();
         #endregion 
 
@@ -45,50 +45,43 @@ namespace SFH_Software
         }
         private void GenerarReporte(List<Cita> list_citas)
         {
-            //this.chtGrafico.Legends.Clear();
+            int i = 0; int j = 1; int iguales = 0;
             this.chtGrafico.Titles.Add(" Reportes Pacientes  " + DateTime.Now);
-            this.chtGrafico.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Range;
-            chtGrafico.Palette = ChartColorPalette.SeaGreen;
-           // this.chtGrafico.ChartAreas[0].Area3DStyle.Enable3D = true;
-            int i = 0;
+            ArrayList list_iguales = new ArrayList();
+           //this.chtGrafico.ChartAreas[0].Area3DStyle.Enable3D = true;
+           //this.chtGrafico.ChartAreas[0].AxisX.LabelStyle.Format = DateTime;
             foreach (Cita cita in list_citas){
 
-                this.list_fechas.Add(cita.Fecha.ToString());
+                this.list_fechas.Add(cita.Fecha);
             }
+            SortedSet<DateTime> set = new SortedSet<DateTime>(list_fechas);
 
-
-            // Arreglos del Grafico
-            //string[] seriesArray = { "Categoria 1", "Categoria 2", "Categoria 3" };
-            int[] pointsArray = { Convert.ToInt32(1), Convert.ToInt32(2), Convert.ToInt32(1) };
-            SortedSet<string> set = new SortedSet<string>(list_fechas);
+            foreach (DateTime val in set) {
+                iguales = 0;
+                foreach (Cita cita in list_citas) {
+                    if (cita.Fecha == val) {
+                        ++iguales;
+                    }
+                }
+                list_iguales.Add(iguales);
+            }
+            
             int x = list_fechas.Count;
             int y = set.Count;
-            this.chtGrafico.Series[0].Points.AddXY(x,y);
-            foreach (string val in set)
+            foreach (DateTime val in set)
             {
-                Series series = this.chtGrafico.Series.Add(val);
-                series.Points.Add(pointsArray[i]);
-                ++i;
-                //chtGrafico.Update();
+                Series serie = new Series();
+                Legend legend = new Legend();
+                serie.Legend = val.ToString();
+                legend.Name = "Hora-" + val;
+                legend.Title = "Horas de atencion";
+                this.chtGrafico.Legends.Add(legend);
+                serie = this.chtGrafico.Series.Add(val.ToString());
+                serie.Points.AddXY(j, list_iguales[i]);
+                ++i; ++j;
+                
             }
-            //this.chtGrafico.Legends.RemoveAt(0);
             chtGrafico.Update();
-
-            // Se modifica la Paleta de Colores a utilizar por el control.
-            // this.chart1.Palette = ChartColorPalette.SeaGreen;
-            // Se agrega un titulo al Grafico.
-           
-            // Agregar las Series al Grafico.
-            /*for (int i = 0; i < seriesArray.Length; i++)
-            {
-                // Aqui se agregan las series o Categorias.
-             // Series series = this.chtGrafico.Series.Add(seriesArray[i]);
-
-                // Aqui se agregan los Valores.
-              
-               
-            } */
-            
         }
 
         #endregion

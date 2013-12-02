@@ -29,12 +29,11 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmGenerarReportesPacientes));
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.chtGrafico = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.cmbxHastaFecha = new System.Windows.Forms.ComboBox();
@@ -42,11 +41,10 @@
             this.btngenerar = new System.Windows.Forms.Button();
             this.cmbxDesdeFecha = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.chtGrafico = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chtGrafico)).BeginInit();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // label3
@@ -83,6 +81,15 @@
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Reporte Generado";
+            // 
+            // chtGrafico
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.chtGrafico.ChartAreas.Add(chartArea1);
+            this.chtGrafico.Location = new System.Drawing.Point(17, 16);
+            this.chtGrafico.Name = "chtGrafico";
+            this.chtGrafico.Size = new System.Drawing.Size(1216, 534);
+            this.chtGrafico.TabIndex = 0;
             // 
             // groupBox4
             // 
@@ -163,21 +170,6 @@
             this.label9.TabIndex = 56;
             this.label9.Text = "Desde";
             // 
-            // chtGrafico
-            // 
-            chartArea1.Name = "ChartArea1";
-            this.chtGrafico.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chtGrafico.Legends.Add(legend1);
-            this.chtGrafico.Location = new System.Drawing.Point(317, 76);
-            this.chtGrafico.Name = "chtGrafico";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chtGrafico.Series.Add(series1);
-            this.chtGrafico.Size = new System.Drawing.Size(609, 428);
-            this.chtGrafico.TabIndex = 0;
-            // 
             // frmGenerarReportesPacientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -192,9 +184,9 @@
             this.Load += new System.EventHandler(this.frmAdministracionDeReporteria_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chtGrafico)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chtGrafico)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
