@@ -51,7 +51,7 @@ namespace SFH_Software
             int montoAbono = 0;
             int montoGastos =0;
             int montoTotal = 0;
-            this.chart1.Titles.Add(" Reportes Monetario  Dia: " + DateTime.Now + System.Environment.NewLine + " " + System.Environment.NewLine + "Desde el dia " + desde + " Hasta dia " + hasta);
+            this.chart1.Titles.Add(" Reportes Monetario - Generado el Dia: " + DateTime.Now + System.Environment.NewLine + " " + System.Environment.NewLine + "Desde el dia " + desde + " Hasta el dia " + hasta);
             foreach (Abono abono in param_lista_abonos) {
                 montoAbono += abono.Monto;
                 montoTotal += montoAbono;
@@ -61,7 +61,7 @@ namespace SFH_Software
                 montoTotal  += montoGastos;
             }
             int[] yValues = {montoAbono, montoGastos};
-            string[] xValues = { "Total Abonos: " + montoAbono.ToString(), "Gastos Totales: " + montoGastos.ToString()};
+            string[] xValues = { "Total Abonos: $" + montoAbono.ToString(), "Gastos Totales: $" + montoGastos.ToString()};
             chart1.Series[0].Points.DataBindXY(xValues, yValues);
             chart1.Series[0].ChartType = SeriesChartType.Doughnut;
             chart1.Series[0]["PieLabelStyle"] = "Outside";
@@ -69,7 +69,7 @@ namespace SFH_Software
             chart1.Series[0].Points[1]["Exploded"] = "true";
             chart1.ChartAreas[0].Area3DStyle.Enable3D = true;
             chart1.Series[0]["PieDrawingStyle"] = "SoftEdge";
-            MessageBox.Show("Monto de ingreso Clinica: "+montoAbono.ToString()+System.Environment.NewLine +"Monto de egreso por gasto: "+montoGastos.ToString(), "SFH Administración de Clínica - Reportes Monetarios", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            MessageBox.Show("Monto de ingreso Clinica: $"+montoAbono.ToString()+System.Environment.NewLine +"Monto de egreso por gasto: $"+ montoGastos.ToString()+" " + System.Environment.NewLine + " " + System.Environment.NewLine + "Desde el dia " + desde + " Hasta el dia ", "SFH Administración de Clínica - Reportes Monetarios", MessageBoxButtons.OK, MessageBoxIcon.Information);
             chart1.UpdateAnnotations();
             chart1.Update();
         }
@@ -94,14 +94,14 @@ namespace SFH_Software
 
         private void btnGeneraReporte_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("El sistema sfh está realizando su búsqueda", "SFH Administración de Clínica - Reportes Monetarios", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("El sistema sfh está generando su reporte", "SFH Administración de Clínica - Reportes Monetarios", MessageBoxButtons.OK, MessageBoxIcon.Information);
             DateTime fecha_inicio = Convert.ToDateTime(this.cmbxDesdeFecha.Text.ToString());
             DateTime fecha_termino = Convert.ToDateTime(this.cmbxHastaFecha.Text.ToString());
             this.list_abns = this.client_data.ListarAbonosporFechas(fecha_inicio, fecha_termino);
 
             if (list_abns.Count.Equals(0))
             {
-                MessageBox.Show("Esta búsqueda no ha arrojado resultados", "SFH Administración de Clínica - Reportes Monetarios", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("Esta operación no ha arrojado resultados", "SFH Administración de Clínica - Reportes Monetarios", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else
             {

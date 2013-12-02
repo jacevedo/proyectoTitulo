@@ -43,13 +43,14 @@ namespace SFH_Software
             this.CargarComboDesde();
             this.CargarComboHasta();
         }
-        private void GenerarReporte(List<Cita> list_citas)
+        private void GenerarReporte(List<Cita> list_citas, DateTime desde, DateTime hasta)
         {
             int i = 0; int j = 1; int iguales = 0;
-            this.chtGrafico.Titles.Add(" Reportes Pacientes  " + DateTime.Now);
+            this.chtGrafico.Titles.Clear();
+            this.chtGrafico.Legends.Clear();
+            this.chtGrafico.Series.Clear();
+            this.chtGrafico.Titles.Add(" Reportes Pacientes Atendidos - Generado el Dia: " + DateTime.Now + " " + System.Environment.NewLine + " " + System.Environment.NewLine + "Desde el dia " + desde + " Hasta el dia " + hasta);
             ArrayList list_iguales = new ArrayList();
-           //this.chtGrafico.ChartAreas[0].Area3DStyle.Enable3D = true;
-           //this.chtGrafico.ChartAreas[0].AxisX.LabelStyle.Format = DateTime;
             foreach (Cita cita in list_citas){
 
                 this.list_fechas.Add(cita.Fecha);
@@ -76,12 +77,19 @@ namespace SFH_Software
                 legend.Name = "Hora-" + val;
                 legend.Title = "Horas de atencion";
                 this.chtGrafico.Legends.Add(legend);
-                serie = this.chtGrafico.Series.Add(val.ToString());
-                serie.Points.AddXY(j, list_iguales[i]);
-                ++i; ++j;
+                this.chtGrafico.Series.Add(val.ToString());
+                this.chtGrafico.Series[i].Points.AddXY(j,list_iguales[i]);
+                this.chtGrafico.Series[i].ChartType = SeriesChartType.Bar;
+                this.chtGrafico.Series[i]["PointWidth"] = "0.6";
+                this.chtGrafico.Series[i].IsValueShownAsLabel = true;
+                this.chtGrafico.Series[i]["BarLabelStyle"] = "Center";
+                this.chtGrafico.Series[i]["DrawingStyle"] = "Emboss";
+                ++i;++j;
                 
             }
             chtGrafico.Update();
+            chtGrafico.UpdateAnnotations();
+            MessageBox.Show("Registros Total de pacientes atendidos : " + list_citas.Count + " en total" + " " + System.Environment.NewLine + " " + System.Environment.NewLine + "Desde el dia " + desde + " Hasta el dia " + hasta, "SFH Administración de Clínica - Reportes de Pacientes Atendidos", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         #endregion
@@ -109,7 +117,7 @@ namespace SFH_Software
         private void btngenerar_Click(object sender, EventArgs e)
         {
            
-            MessageBox.Show("El sistema sfh está realizando su búsqueda", "SFH Administración de Clínica - Reportes de Pacientes Atendidos", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("El sistema sfh está generando su reporte", "SFH Administración de Clínica - Reportes de Pacientes Atendidos", MessageBoxButtons.OK, MessageBoxIcon.Information);
             DateTime fecha_inicio = Convert.ToDateTime(this.cmbxDesdeFecha.Text.ToString());
             DateTime fecha_termino = Convert.ToDateTime(this.cmbxHastaFecha.Text.ToString());
             this.list_citas = this.client_data.ListarCitasporFechas(fecha_inicio, fecha_termino);
@@ -120,8 +128,8 @@ namespace SFH_Software
             }
             else
             {
-                this.GenerarReporte(list_citas);
-                MessageBox.Show("Registros : " + list_citas.Count + " Totales", "SFH Administración de Clínica - Reportes de Pacientes Atendidos", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                this.GenerarReporte(list_citas,fecha_inicio,fecha_termino);
+                
             }
             this.LimpiarControles();
         }
