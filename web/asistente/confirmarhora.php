@@ -54,12 +54,12 @@ session_start();
 							 	<input type="search" id="txtBuscar"/>
 							</div>
 							<div id="botones" class="col-xs-6 col-sm-4">
-								<a href="modificarEliminarHora.html"><button id="btnBuscar" class="btn btn-lg btn-primary btn-block">Buscar</button></a>
+								<button id="btnBuscar" class="btn btn-lg btn-primary btn-block">Buscar</button>
 							</div>
 						</div>
 						<div class="row">
 					  		<div class="col-xs-6 col-sm-4">
-					  			<a href="ReservarHoraAsistente.php" ><button id="btnCrearHora" class="btn btn-lg btn-primary btn-block">Reservar Hora atencion</button></a>
+					  			<button id="btnCrearHora" class="btn btn-lg btn-primary btn-block">Reservar Hora atencion</button>
 					  		</div>
 					  		<div class="col-xs-6 col-sm-4">
 					  		</div>

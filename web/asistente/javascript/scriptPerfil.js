@@ -1,4 +1,4 @@
-var direccionWeb = "http://172.16.28.138/sfhwebservice/webService/";
+var direccionWeb = "http://192.168.89.128/sfhwebservice/webService/";
 $(document).ready(inicializarEventos);
 
 function inicializarEventos()
@@ -72,7 +72,7 @@ function cargarPerfil()
 
 function accionBoton()
 {
-	if($(this).html()=="Modificar Cuenta")
+	if($(this).html()=="Modificar")
 	{
 		modificarCuenta();
 	}
@@ -180,8 +180,8 @@ function guardarModificacionCuenta()
 		var obj = $.parseJSON(datos);
 		var persona = obj.resultadoPersona;
 		var contacto = obj.resultadoDatos;
-		alert(persona);
-		alert(contacto);
+		//alert(persona);
+		//alert(contacto);
 		if(persona == "Modificado")
 		{
 			if( contacto == "Modificado")
@@ -200,7 +200,7 @@ function guardarModificacionCuenta()
 		{
 			if( persona == "Modificado")
 			{
-				alert("Su perfil fue modificado correctamente.");
+				alert("Su perfil fue modificado correctamente");
 				location.reload();
 			}
 			else
@@ -208,9 +208,8 @@ function guardarModificacionCuenta()
 				alert("Algunos datos no fueron modificados");
 				location.reload();
 			}
-			
 		}
-		else
+		if(persona == "Error al modificar datos contacto" && contacto == "Error al modificar datos contacto")
 		{
 			alert("Se produjo un error, vuelva a intentarlo.")
 		}

@@ -1,4 +1,4 @@
-var direccionWeb = "http://172.16.28.138/sfhwebservice/webService/"
+var direccionWeb = "http://192.168.89.128/sfhwebservice/webService/"
 $(document).ready(inicializarEventos);
 
 function inicializarEventos()
@@ -8,49 +8,19 @@ function inicializarEventos()
 	$("#btnAgregarTratamiento").click(agregarTratamiento);
 	$("#crearNuevoPrecio").click(crearPrecio);
 }
-function crearPrecio()
-{
-	var nomProcedimiento = $("#txtNomProcedimiento").val();
-	var precioProcedimiento = $("#txtCostoProcedimiento").val();
-	
-	//{"indice":1,"Comentario":"Procedimiento","ValorNeto":12000}
-	var url = direccionWeb + "ws-precios-insumos.php";
-	var data = {"send":"{\"indice\":1,\"Comentario\":\""+nomProcedimiento+"\",\"ValorNeto\":"+precioProcedimiento+"}"};
-	$.post(url,data,function(datos)
-	{
-		var obj = $.parseJSON(datos);
-		if(obj.idPrecioInsertado!=-1)
-		{
-			alert("Procedimiento Insertado Correctamente")
-			var textoNuevo = "<tr><td>"+obj.idPrecioInsertado+"</td><td>"+nomProcedimiento+"</td><td>"+precioProcedimiento+"</td><td><button class=\"btnEditarPrecio btn btn-lg btn-primary btn-block\" type=\"submit\">Editar</button></td><td><button class=\"btnEliminarPrecio btn btn-lg btn-primary btn-block\" type=\"submit\">Eliminar</button></td></tr>";
-			$("#cuerpoTabla").prepend(textoNuevo);
-			$("#tablaListaPrecios").off("click",".btnEditarPrecio",modificarObjeto);
-			$("#tablaListaPrecios").off("click",".btnEliminarPrecio",eliminarObjeto);
 
-			$("#tablaListaPrecios").on("click",".btnEditarPrecio",modificarObjeto);
-			$("#tablaListaPrecios").on("click",".btnEliminarPrecio",eliminarObjeto);
-		}
-		else
-		{
-			alert("Hubo un error al insertar el procedimiento");
-		}
-	});
-}
-function buscarPor()
+function cargarListaPrecios()
 {
-	$("#tablaListaPrecios").off("click",".btnEditarPrecio",modificarObjeto);
-
-	var concepto = $("#txtBuscaTratamiento").val();
 	var precios = direccionWeb+"ws-precios-insumos.php";
-	var data = {"send":"{\"indice\":4,\"nombre\":\""+concepto+"\"}"};
-
+	var data = {"send":"{\"indice\":3}"};
 	var tabla = "";
+
 	$.post(precios,data,function(datos)
 	{
 		var obj = $.parseJSON(datos);
 		$.each(obj.listaPrecios,function()
 		{
-			tabla = tabla+"<tr><td>"+this.idPrecios+"</td><td>"+this.comentario+"</td><td>"+this.valorTotal+"</td><td><Button class='btnEditarPrecio btn btn-lg btn-primary btn-block'>Editar</Button></td><td><Button class='btnEliminarPrecio btn btn-lg btn-primary btn-block'>Eliminar</Button></td></tr>";
+			tabla = tabla+"<tr><td>"+this.idPrecios+"</td><td>"+this.comentario+"</td><td>"+this.valorTotal+"</td><td><button class='btnEditarPrecio btn btn-lg btn-primary btn-block' type='submit'>Editar</button></td><td><button class='btnEliminarPrecio btn btn-lg btn-primary btn-block' type='submit'>Eliminar</button></td></tr>";
 		});
 		$("#cuerpoTabla").html(tabla);
 	});
@@ -139,25 +109,6 @@ function modificarObjeto()
 	$("#tablaListaPrecios").on("click",".btnEditarPrecio",modificarObjeto);
 }
 
-function cargarListaPrecios()
-{
-	var precios = direccionWeb+"ws-precios-insumos.php";
-	var data = {"send":"{\"indice\":3}"};
-	var tabla = "";
-
-	$.post(precios,data,function(datos)
-	{
-		var obj = $.parseJSON(datos);
-		$.each(obj.listaPrecios,function()
-		{
-			tabla = tabla+"<tr><td>"+this.idPrecios+"</td><td>"+this.comentario+"</td><td>"+this.valorTotal+"</td><td><button class='btnEditarPrecio btn btn-lg btn-primary btn-block' type='submit'>Editar</button></td><td><button class='btnEliminarPrecio btn btn-lg btn-primary btn-block' type='submit'>Eliminar</button></td></tr>";
-		});
-		$("#cuerpoTabla").html(tabla);
-	});
-	$("#tablaListaPrecios").on("click",".btnEditarPrecio",modificarObjeto);
-	$("#tablaListaPrecios").on("click",".btnEliminarPrecio",eliminarObjeto);
-}
-
 function eliminarObjeto()
 {
 	var id = '';
@@ -190,7 +141,60 @@ function eliminarObjeto()
 	});
 }
 
+function buscarPor()
+{
+	$("#tablaListaPrecios").off("click",".btnEditarPrecio",modificarObjeto);
+
+	var concepto = $("#txtBuscaTratamiento").val();
+	var precios = direccionWeb+"ws-precios-insumos.php";
+	var data = {"send":"{\"indice\":4,\"nombre\":\""+concepto+"\"}"};
+
+	var tabla = "";
+	$.post(precios,data,function(datos)
+	{
+		var obj = $.parseJSON(datos);
+		$.each(obj.listaPrecios,function()
+		{
+			tabla = tabla+"<tr><td>"+this.idPrecios+"</td><td>"+this.comentario+"</td><td>"+this.valorTotal+"</td><td><Button class='btnEditarPrecio btn btn-lg btn-primary btn-block'>Editar</Button></td><td><Button class='btnEliminarPrecio btn btn-lg btn-primary btn-block'>Eliminar</Button></td></tr>";
+		});
+		$("#cuerpoTabla").html(tabla);
+	});
+	$("#tablaListaPrecios").on("click",".btnEditarPrecio",modificarObjeto);
+	$("#tablaListaPrecios").on("click",".btnEliminarPrecio",eliminarObjeto);
+}
+
+//
+function crearPrecio()
+{
+	var nomProcedimiento = $("#txtNomProcedimiento").val();
+	var precioProcedimiento = $("#txtCostoProcedimiento").val();
+	
+	//{"indice":1,"Comentario":"Procedimiento","ValorNeto":12000}
+	var url = direccionWeb + "ws-precios-insumos.php";
+	var data = {"send":"{\"indice\":1,\"Comentario\":\""+nomProcedimiento+"\",\"ValorNeto\":"+precioProcedimiento+"}"};
+	$.post(url,data,function(datos)
+	{
+		var obj = $.parseJSON(datos);
+		if(obj.idPrecioInsertado!=-1)
+		{
+			alert("Procedimiento Insertado Correctamente");
+			
+			var textoNuevo = "<tr><td>"+obj.idPrecioInsertado+"</td><td>"+nomProcedimiento+"</td><td>"+precioProcedimiento+"</td><td><button class=\"btnEditarPrecio btn btn-lg btn-primary btn-block\" type=\"submit\">Editar</button></td><td><button class=\"btnEliminarPrecio btn btn-lg btn-primary btn-block\" type=\"submit\">Eliminar</button></td></tr>";
+			$("#cuerpoTabla").prepend(textoNuevo);
+			$("#tablaListaPrecios").off("click",".btnEditarPrecio",modificarObjeto);
+			$("#tablaListaPrecios").off("click",".btnEliminarPrecio",eliminarObjeto);
+
+			$("#tablaListaPrecios").on("click",".btnEditarPrecio",modificarObjeto);
+			$("#tablaListaPrecios").on("click",".btnEliminarPrecio",eliminarObjeto);
+		}
+		else
+		{
+			alert("Hubo un error al insertar el procedimiento");
+		}
+	});
+}
+
 function agregarTratamiento()
 {
-	location.href="agregarTratamiento.php";
+	//location.href="agregarTratamiento.php";
 }

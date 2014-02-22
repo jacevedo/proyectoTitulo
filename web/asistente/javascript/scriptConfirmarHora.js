@@ -1,4 +1,4 @@
-var direccionWeb = "http://172.16.28.138/sfhwebservice/webService/";
+var direccionWeb = "http://192.168.89.128/sfhwebservice/webService/";
 $(document).ready(inicializarElementos);
 var horaActual;
 var odontologoActual;
@@ -19,84 +19,81 @@ function inicializarElementos()
 	$("#dateFecha").val(fecha);
 	buscarFechas(fecha);
 	$("#btnConfirmarHora").click(confirmarHora);
+	$("#btnCrearHora").click(reservarHora);
 }
+
 function modificarHora()
 {
+	if($(this).text()=="Modificar"&&editando==0)
+	{
+		editando=1;
+		var control = $(this);
+		var fecha = $("#dateFecha").val()+" 13:13:00";
+		var url = direccionWeb+"ws-horario.php";
+		var data = {send:"{\"indice\":1,\"fecha\":\""+fecha+"\"}"};
 		
-		if($(this).text()=="Modificar"&&editando==0)
-		{
-			editando=1;
-			var control = $(this);
-			var fecha = $("#dateFecha").val()+" 13:13:00";
-			var url = direccionWeb+"ws-horario.php";
-			var data = {send:"{\"indice\":1,\"fecha\":\""+fecha+"\"}"};
-			
-			$.ajax({
-				url: url,
-				data: data,
-				type: "POST",
-				dataType: "json",
-				success: function(source)
-				{
-					var data = source;
-					ajaxCompleto(data,control);	
-				},
-				error: function(dato)
-				{
-					alert("No pudimos traer los datos");
-				}
-			});
-			$(this).text("Guardar");
-		}
-		else if($(this).text()=="Guardar")
-		{
-			var boton = $(this);
-			var url = direccionWeb+"ws-cita.php";
-
-			var idCitaInterno = idCita;
-			var odontologo = $(".selectOdontologo").val();
-			var nomOdontologo = $(".selectOdontologo option[value='"+odontologo+"']").text();
-			var horario = $(".selectHorario").val();
-			var hora = $(".selectHorario option[value='"+horario+"']").text();
-			var dates = $("#dateFecha").val().split("-");
-			var date = dates[0]+"-"+dates[1]+"-"+dates[2];
-			var optionValue = $(".opcion"+odontologo).attr("idOdontologo");
-			var fechaMasHora = date+" "+hora;
-
-			var data = {send:"{\"indice\":8,\"idOdontologo\":"+optionValue+",\"hora\":\""+fechaMasHora+"\",\"idCita\":"+idCitaInterno+"}"};
-
-			$.post(url,data,function(datos)
+		$.ajax({
+			url: url,
+			data: data,
+			type: "POST",
+			dataType: "json",
+			success: function(source)
 			{
-				var obj = $.parseJSON(datos);
-				var resultado = obj.resultado;
-				if(resultado=="se modifico correctamente")
-				{
-					boton.text("Modificar");
-					editando=0;
-					$(".hora").html(hora);
-					$(".odontologo").html(nomOdontologo);
-				}
-				else if(resultado=="error al modificar")
-				{
-					alert("No ha cambiado ningun campo");
-					boton.text("Modificar");
-					editando=0;
-					$(".hora").html(hora);
-					$(".odontologo").html(nomOdontologo);
-				}
-				else
-				{
-					alert("hubo un error, por favor actualize la pagina");
-				}
-			});
-		}
-			
-		
+				var data = source;
+				ajaxCompleto(data,control);	
+			},
+			error: function(dato)
+			{
+				alert("No pudimos traer los datos");
+			}
+		});
+		$(this).text("Guardar");
+	}
+	else if($(this).text()=="Guardar")
+	{
+		var boton = $(this);
+		var url = direccionWeb+"ws-cita.php";
+
+		var idCitaInterno = idCita;
+		var odontologo = $(".selectOdontologo").val();
+		var nomOdontologo = $(".selectOdontologo option[value='"+odontologo+"']").text();
+		var horario = $(".selectHorario").val();
+		var hora = $(".selectHorario option[value='"+horario+"']").text();
+		var dates = $("#dateFecha").val().split("-");
+		var date = dates[0]+"-"+dates[1]+"-"+dates[2];
+		var optionValue = $(".opcion"+odontologo).attr("idOdontologo");
+		var fechaMasHora = date+" "+hora;
+
+		var data = {send:"{\"indice\":8,\"idOdontologo\":"+optionValue+",\"hora\":\""+fechaMasHora+"\",\"idCita\":"+idCitaInterno+"}"};
+
+		$.post(url,data,function(datos)
+		{
+			var obj = $.parseJSON(datos);
+			var resultado = obj.resultado;
+			if(resultado=="se modifico correctamente")
+			{
+				boton.text("Modificar");
+				editando=0;
+				$(".hora").html(hora);
+				$(".odontologo").html(nomOdontologo);
+			}
+			else if(resultado=="error al modificar")
+			{
+				alert("No ha cambiado ningun campo");
+				boton.text("Modificar");
+				editando=0;
+				$(".hora").html(hora);
+				$(".odontologo").html(nomOdontologo);
+			}
+			else
+			{
+				alert("hubo un error, por favor actualize la pagina");
+			}
+		});
+	}	
 }
 function ajaxCompleto(source,control)
 {
-	
-	
 	$.each(source['listaHorarios'],function(i,value)
 	{
 		arregloPersonas.push(value["nomOdontologo"]);
@@ -140,9 +137,9 @@ function ajaxCompleto(source,control)
 			$(this).html(select);
 		}
 	});
-	$("#tablaConfirmarHora").on("change",".selectOdontologo",cambiarHorario);
-			
+	$("#tablaConfirmarHora").on("change",".selectOdontologo",cambiarHorario);		
 }
+
 function cambiarHorario()
 {
 	var indice = $(this).val();
@@ -153,8 +150,8 @@ function cambiarHorario()
 	})
 	select = select +"<select>";
 	$(".selectHorario").html(select);
-
 }
+
 function eliminarHora()
 {
  	var id = $(this).parent().parent().children().first().text();
@@ -163,7 +160,6 @@ function eliminarHora()
 	var url = direccionWeb+"ws-cita.php";
 	if (confirm("¿Desea Eliminar La cita seleccionada?")) 
 	{
-
 		$.post(url,data,function(datos)
 		{
 			if(datos==1)
@@ -180,12 +176,15 @@ function eliminarHora()
 		});
 	}
 }
+
 function buscarFechas(fecha)
 {
+	alert(fecha);
 	var url = direccionWeb + "ws-cita.php";
 	var data = {send:"{\"indice\":5,\"fecha\":\""+fecha+"\"}"};
 	$.post(url,data,function(datos)
 	{
+		//alert(datos);
 		var obj = $.parseJSON(datos);
 		$.each(obj.resultado,function()
 		{
@@ -230,32 +229,32 @@ function buscarFechas(fecha)
 		$("#tablaConfirmarHora").on("click",".btnEliminar",eliminarHora);
 	});
 }
+
 function confirmarHora()
 {
 	var json = "{\"indice\":6,\"citas\":[";
 	$(".checkConf").each(function()
+	{
+		var id = $(this).parent().parent().children().first().text();
+		var estado;
+		if($(this).is(":checked"))
 		{
+			estado = 1;
+		}
+		else
+		{
+			estado = 0;
+		}
+		if(json!="{\"indice\":6,\"citas\":[")
+		{
+			json = json+",{\"idCita\":"+id+",\"estado\":"+estado+"}";
+		}
+		else
+		{
+			json = json+"{\"idCita\":"+id+",\"estado\":"+estado+"}";
+		}
 
-			var id = $(this).parent().parent().children().first().text();
-			var estado;
-			if($(this).is(":checked"))
-			{
-				estado = 1;
-			}
-			else
-			{
-				estado = 0;
-			}
-			if(json!="{\"indice\":6,\"citas\":[")
-			{
-				json = json+",{\"idCita\":"+id+",\"estado\":"+estado+"}";
-			}
-			else
-			{
-				json = json+"{\"idCita\":"+id+",\"estado\":"+estado+"}";
-			}
-
-		});
+	});
 	json = json +"]}";
 	var data = {"send":json};
 	var url = direccionWeb+"ws-cita.php";
@@ -263,11 +262,16 @@ function confirmarHora()
 	{
 		if(datos==1)
 		{
-			alert("Las citas fueron Modificadas Correctamente");
+			alert("Los cambios fueron guardados correctamente.");
 		}
 		else
 		{
 			alert("Hubo un error al Modificar las citas");
 		}
 	});
+}
+
+function reservarHora()
+{
+	location.href="ReservarHoraAsistente.php";
 }
