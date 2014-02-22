@@ -36,7 +36,7 @@ switch ($opcion)
 		echo(json_encode($arreglo));
 	break;
 	case 2:
-		//Json insertar Area Insumo {"indice":2,"idAreaInsumo":3,"nomArea":"Oficina",
+		//Json modificar Area Insumo {"indice":2,"idAreaInsumo":3,"nomArea":"Oficina",
 		//								"descripcion":"asd"}
 		$idAreaInsumo = $data->{"idAreaInsumo"};
 		$nomArea = $data->{"nomArea"};
@@ -49,12 +49,11 @@ switch ($opcion)
 		echo(json_encode($arreglo)); 
 	break;
 	case 3: 
-		//Json insertar Area Insumo {"indice":3,"idAreaInsumo":3}
+		//Json Eliminar Area Insumo {"indice":3,"idAreaInsumo":3}
 		$idAreaInsumo = $data->{"idAreaInsumo"};
 		$controladoraAreaInsumo = new ControladoraInsumos();
 		$arreglo["code"] = 3;
-		$arreglo["Eliminado"] = $controladoraAreaInsumo->
-												eliminarAreaInsumo($idAreaInsumo);
+		$arreglo["Eliminado"] = $controladoraAreaInsumo->eliminarAreaInsumo($idAreaInsumo);
 		echo(json_encode($arreglo)); 
 	break;
 	case 4: 

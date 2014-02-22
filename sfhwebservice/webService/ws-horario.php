@@ -6,10 +6,11 @@ require_once '../pojos/horario.php';
 *Contiene la opciones para insertar, listar y modificar
 *Tratamientos y Abonos
 *Opciones:
-*Opciones:
 * 1.- mostrar horario disponible
 * 2.- mostrar horario disponible web
 * 3.- agregar horario
+* 4.- listar horarios
+* 5.- modificar horario
 */
 
 
@@ -53,7 +54,7 @@ switch ($opcion)
 		echo(json_encode($arreglo));
 	break;
 	case 5:
-		//json insertar horario {"indice":5,"idHorario":2,"idOdontologo":3,"dia":"lunes","horaInicio":"13:00:00","horaTermino":"14:00:00","duracionModulo":"00:30:00"}
+		//json Modificar horario {"indice":5,"idHorario":2,"idOdontologo":3,"dia":"lunes","horaInicio":"13:00:00","horaTermino":"14:00:00","duracionModulo":"00:30:00"}
 		$idHorario = $data->{"idHorario"};
 		$idOdontologo = $data->{"idOdontologo"};
 		$dia = $data->{"dia"};

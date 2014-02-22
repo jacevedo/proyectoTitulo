@@ -20,7 +20,8 @@ require_once '../controladoras/controladorapaciente.php';
 * 9.- Total Abono Paciente
 * 10.- Listar Tratamientos Con total Abono
 * 11.- Eliminar Abono
-* 12.- ListarPacientesTratamiento
+* 12.- Listar Pacientes y Tratamiento
+* 13.- buscar Presupuesto persona
 */
 
 
@@ -140,7 +141,7 @@ switch ($opcion)
 		echo(json_encode($arreglo));
 	break;
 	case 13:
-		//json Pacientes con Tratamiento {"indice":13,"nomPaciente":"ada"}
+		//json Presupuesto nomPaciente {"indice":13,"nomPaciente":"ada"}
 		$nomPaciente = $data->{"nomPaciente"};
 		$controladoraPaciente  = new ControladoraPaciente();
 		$arreglo["code"]=12;

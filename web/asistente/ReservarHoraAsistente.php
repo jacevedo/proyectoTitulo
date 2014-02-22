@@ -48,19 +48,19 @@ session_start();
 		      	<table id="tablaReservarHoraAsistente" class="tab">
 					<tr>
 						<td>Rut</td>
-						<td><input type="text" id="txtRut"/> - <input type="text" id="txtDv"/></td>
+						<td><input type="text" id="txtRut"/> - <input type="text" id="txtDv"/><span id="spanErrorRut" class="error"></span></td>
 					</tr>
 					<tr>
 						<td>Nombre</td>
-						<td><input class="inputHora" type="text" id="txtNombre"/></td>
+						<td><input class="inputHora" type="text" id="txtNombre"/><span id="spanErrorNombre" class="error"></span></td>
 					</tr>
 					<tr>
 						<td>Apellido Paterno</td>
-						<td><input class="inputHora" type="text" id="txtAppPaterno"/></td>
+						<td><input class="inputHora" type="text" id="txtAppPaterno"/><span id="spanErrorAppPaterno" class="error"></span></td>
 					</tr>
 					<tr>
 						<td>Apellido Materno</td>
-						<td><input class="inputHora" type="text" id="txtAppMaterno"/></td>
+						<td><input class="inputHora" type="text" id="txtAppMaterno"/><span id="spanErrorAppMaterno" class="error"></span></td>
 					</tr>
 					<tr>
 						<td>Fecha de Nacimiento</td>
@@ -78,6 +78,7 @@ session_start();
 								<option value="--">--</option>
 								
 							</select>
+							<span id="spanErrorDentista" class="error"></span>
 						</td>
 										
 					</tr>
@@ -87,6 +88,7 @@ session_start();
 							<select id="selectHora">
 								<option value="--">--</option>
 							</select>
+							<span id="spanErrorHora" class="error"></span>
 						</td>
 					</tr>
 				</table>

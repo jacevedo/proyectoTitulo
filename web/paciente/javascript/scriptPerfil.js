@@ -6,7 +6,144 @@ function inicializarEventos()
 	cargarPerfil();
 	$("#btnCrearCuenta").click(accionBoton);
 }
+function validarMail()
+{
+	var mail = $("#txtEmail").val();
+	var pattern = /^[a-zA-Z0-9._%+-]+@(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,4}$/;
+	if(!mail.match(pattern))
+	{
+		$("#errorMail").html("Debe ingresar un numero mail valido");
+		return false;
+	}
+	else
+	{
+		$("#errorMail").html("");
+		return true;
+	}
+}
+function validarCelular()
+{
+	
+	var telefonoFijo = $("#txtFonoCelular").val();
+	var pattern = /0{0,2}([\+]?[\d]{1,3} ?)?([\(]([\d]{2,3})[)] ?)?[0-9][0-9 \-]{6,}( ?([xX]|([eE]xt[\.]?)) ?([\d]{1,5}))?/;
+	if(!telefonoFijo.match(pattern))
+	{
+		$("#errorFonoCell").html("Debe ingresar un numero de telefono valido");
+		return false;
+	}
+	else
+	{
+		$("#errorFonoCell").html("");
+		return true;
+	}
+}
+function validarTelefonoFijo()
+{
+	var telefonoFijo = $("#txtFonoFijo").val();
+	var pattern = /0{0,2}([\+]?[\d]{1,3} ?)?([\(]([\d]{2,3})[)] ?)?[0-9][0-9 \-]{6,}( ?([xX]|([eE]xt[\.]?)) ?([\d]{1,5}))?/;
+	if(!telefonoFijo.match(pattern))
+	{
+		$("#errorFonoFijo").html("Debe ingresar un numero de telefono valido");
+		return false;
+	}
+	else
+	{
+		$("#errorFonoFijo").html("");
+		return true;
+	}
+}
+function validarPrimeraParteRut()
+{
+	var primeraParteRut = $("#txtRut").val();
+	var pattern = /\d{7}|\d{8}/;
+	if(!primeraParteRut.match(pattern))
+	{
+		$("#errorRut").html("Debe ingresar solo digitos");
+		return false;
+	}
+	else
+	{
+		$("#errorRut").html("");
+		return true;
+	}
+}
+function dv(T)
+{
+	var M=0,S=1;for(;T;T=Math.floor(T/10))
+S=(S+T%10*(9-M++%6))%11;return S?S-1:'k';
+}
 
+function validarSegundaParteRut()
+{
+	var segundaParteRut = $("#txtDv").val();
+	var primeraParteRut = $("#txtRut").val();
+	var pattern = /\d{1}|[kK]/;
+	if(!segundaParteRut.match(pattern))
+	{
+		$("#errorRut").html("Debe ingresar un solo digitos o una k");
+		return false;
+	}
+	else
+	{
+		$("#errorRut").html("");
+
+		if(dv(primeraParteRut)!=segundaParteRut)
+		{
+			$("#errorRut").html("Rut no valido");
+			return false;
+		}
+		else
+		{
+			$("#errorRut").html("");
+			return true;
+		}
+	}
+}
+
+function validarApellidoMaterno()
+{
+	var appPaterno = $("#txtApellidoMaterno").val();
+	var pattern = /^[a-zA-ZñÑ]*$/;
+	if(!appPaterno.match(pattern)||appPaterno.length==0)
+	{
+		$("#errorAppMaterno").html("Debe ingresar solo letras");
+		return false;
+	}
+	else
+	{
+		$("#errorAppMaterno").html("");
+		return true;
+	}
+}
+function validarApellidoPaterno()
+{
+	var appPaterno = $("#txtApellidoPaterno").val();
+	var pattern = /^[a-zA-ZñÑ]*$/;
+	if(!appPaterno.match(pattern)||appPaterno.length==0)
+	{
+		$("#errorAppPaterno").html("Debe ingresar solo letras");
+		return false;
+	}
+	else
+	{
+		$("#errorAppPaterno").html("");
+		return true;
+	}
+}
+function validarNombre() 
+{
+	var nombre = $("#txtNombre").val();
+	if (/^([a-z ñáéíóú]{2,60})$/i.test(nombre))
+	{
+	      $("#errorNombre").html("");
+               return true;
+	}
+	else
+	{
+       $("#errorNombre").html('Debe ingresar solo letras y a lo mas, 2 nombres');
+           return false;
+    }
+}
 function cargarPerfil()
 {
 	var id = $("#idPaciente").val();
@@ -75,7 +212,11 @@ function accionBoton()
 	}
 	else
 	{
-		guardarModificacionCuenta();
+		if(validarNombre()&validarApellidoPaterno()&validarApellidoMaterno()&validarPrimeraParteRut()&validarSegundaParteRut()
+			&(validarCelular() ||validarTelefonoFijo() )&validarMail())
+		{
+			guardarModificacionCuenta();
+		}
 	}
 }
 
@@ -102,11 +243,11 @@ function modificarCuenta()
 
 	//PERSONA
 	$("#tdNumero").html("<input type='text' id='txtNumero'/>");
-	$("#tdNombre").html("<input type='text' id='txtNombre'/>");
-	$("#tdApellidoPaterno").html("<input type='text' id='txtApellidoPaterno'/>");
-	$("#tdApellidoMaterno").html("<input type='text' id='txtApellidoMaterno'/>");
-	$("#tdRut").html("<input type='text' id='txtRut' class='textoRutMod'/> <input type='text' id='txtDv' class='textoDvMod'/>");
-	$("#tdFechaNacimiento").html("<input type='text' id='txtFechaNacimiento'/>");
+	$("#tdNombre").html("<input type='text' id='txtNombre'/><span id='errorNombre' class='error' ></span>");
+	$("#tdApellidoPaterno").html("<input type='text' id='txtApellidoPaterno'/><span id='errorAppPaterno' class='error'></span>");
+	$("#tdApellidoMaterno").html("<input type='text' id='txtApellidoMaterno'/><span id='errorAppMaterno' class='error'></span>");
+	$("#tdRut").html("<input type='text' id='txtRut' class='textoRutMod'/> <input type='text' id='txtDv' class='textoDvMod'/><span id='errorRut' class='error'></span>");
+	$("#tdFechaNacimiento").html("<input type='date' id='txtFechaNacimiento'/>");
 
 	//DATOS CONTACTO
 	$("#tdDireccion").html("<input type='text' id='txtDireccion'/>");
@@ -114,9 +255,9 @@ function modificarCuenta()
 	$("#tdRegion").html("<select class='textoSelect' id='region'></select>");
 	$("#tdComuna").html("<select class='textoSelect' id='comuna'></select>");
 	
-	$("#tdFonoFijo").html("<input type='text' id='txtFonoFijo'/>");
-	$("#tdFonoCelular").html("<input type='text' id='txtFonoCelular'/>");
-	$("#tdEmail").html("<input type='text' id='txtEmail'/>");
+	$("#tdFonoFijo").html("<input type='text' id='txtFonoFijo'/><span id='errorFonoFijo' class='error'></span>");
+	$("#tdFonoCelular").html("<input type='text' id='txtFonoCelular'/><span id='errorFonoCell' class='error'></span>");
+	$("#tdEmail").html("<input type='text' id='txtEmail'/><span id='errorMail' class='error'>");
 
 	//PERSONA
 	$("#txtNumero").val(numero);
@@ -138,6 +279,15 @@ function modificarCuenta()
 	cargarRegiones(idRegion);
 	cargarComunas(idComuna, idRegion);
 	$("#tdComuna").on("change","#region",cambiarComuna);
+	
+	$("#tdNombre").on("blur","#txtNombre",validarNombre);
+	$("#tdApellidoPaterno").on("blur","#txtApellidoPaterno",validarApellidoPaterno);
+	$("#tdApellidoMaterno").on("blur","#txtApellidoMaterno",validarApellidoMaterno);
+	$("#tdRut").on("blur","#txtRut",validarPrimeraParteRut);
+	$("#tdRut").on("blur","#txtDv",validarSegundaParteRut);
+	$("#tdFonoFijo").on("blur","#txtFonoFijo",validarTelefonoFijo);
+	$("#tdFonoCelular").on("blur","#txtFonoCelular",validarCelular);
+	$("#tdEmail").on("blur","#txtEmail",validarMail);
 }
 
 function guardarModificacionCuenta()
@@ -178,7 +328,7 @@ function guardarModificacionCuenta()
 		var persona = obj.resultadoPersona;
 		var contacto = obj.resultadoDatos;
 
-		if(persona == "Modificado" && contacto == "Modificado")
+		if(persona == "Modificado" ||  contacto == "Modificado")
 		{
 			alert("Su perfil fue modificado correctamente");
 			location.reload();

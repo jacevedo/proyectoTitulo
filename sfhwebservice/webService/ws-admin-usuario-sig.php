@@ -21,8 +21,9 @@ require_once '../controladoras/controladorafuncionario.php';
 * 6.- Buscar Paciente Por Nombre Apellido
 * 7.- Buscar Odontologo Por Rut
 * 8.- Buscar Odontologo Por Nombre Apellido
-* 9.- Listar Personas id nombre
-* 11.- Buscar Persona por id
+* 9.- Listar Paciente
+* 10.- Listar Odontolog con Nombre e Id
+* 11.- Listar Odontologo por id
 * 12.- Eliminar odontologo id
 * 13.- Eliminar Funcionario id
 * 14.- Eliminar paciente id
@@ -137,7 +138,7 @@ switch ($opcion)
 		echo(json_encode($arreglo));
 	break;
 	case 11:
-		//json Listar odontologo con id nombre y apellido {"indice":11,"idPersona":8}
+		//json Listar odontologo por id {"indice":11,"idPersona":8}
 		$idPersona = $data->{"idPersona"};
 		$controladoraPersona = new ControladoraPersonaRegionComuna();
 		$arreglo["code"] = 11;

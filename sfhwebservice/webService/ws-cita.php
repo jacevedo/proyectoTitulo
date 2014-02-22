@@ -11,9 +11,15 @@ require_once '../controladoras/controladorapersonaregioncomuna.php';
 *Tratamientos y Abonos
 *Opciones:
 *Opciones:
-* 1.- ingresarCita
+* 1.- insertar cita
 * 2.- listar cita por id Paciente
 * 3.- Listar Cita por id Paciente y fecha
+* 4.- lista citas por id Odontologo y Fecha
+* 5.- listar citas por fecha
+* 6.- ConfirmarCitas
+* 7.- Confirmar una cita
+* 8.- modificarCita web
+* 9.- Crear Persona Cita
 */
 
 
@@ -31,6 +37,7 @@ switch ($opcion)
 		$horaInicio = $data->{"horaInicio"};
 		$estado = $data->{"estado"};
 		$cita = new Cita();
+
 		$cita->initClass(0, $idOdontologo, $idPaciente, $horaInicio, $fecha, $estado);
 		//echo($date);
 		$arreglo["resultado"] = $controladora->insertarCita($cita);
@@ -82,7 +89,7 @@ switch ($opcion)
 		echo $jsonRecibido+" " + $devolucion;
 	break;
 	case 7:
-		//json Eliminar{"indice":7,"idCita":3}
+		//json Confirmar una cita {"indice":7,"idCita":3}
 		$controladora = new ControladoraCitas();
 		$idCita = $data->{"idCita"};
 		$estado = 3;
@@ -90,7 +97,7 @@ switch ($opcion)
 		echo $resultado;
 	break;
 	case 8:
-		//json modificarCita {"indice":4,"idOdontologo":3,"hora":"2013-11-30 13:00:00","idCita":1}
+		//json modificarCita web {"indice":4,"idOdontologo":3,"hora":"2013-11-30 13:00:00","idCita":1}
 		$controladora = new ControladoraCitas();
 		$idOdontologo = $data->{"idOdontologo"};
 		$hora = $data->{"hora"};

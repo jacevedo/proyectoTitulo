@@ -3,10 +3,7 @@ require_once '../bdmysql/MySqlCon.php';
 require_once '../pojos/gastos.php';
 class ControladoraGastos
 {
-	function crearGasto($idGasto,$idPersona,$montoGasto,$descGasto)
-	{
-
-	}
+	
 	function insertarGasto(Gastos $gasto)
 	{
 		$conexion = new MySqlCon();

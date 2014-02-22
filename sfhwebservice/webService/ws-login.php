@@ -7,8 +7,10 @@ require_once '../controladoras/controladoralogin.php';
 *Tratamientos y Abonos
 *Opciones:
 *Opciones:
-* 1.- Login
-* 2.- Logout
+* 1.- Login Paciente
+* 2.- Login Asistente
+* 3.- Login Odontologo
+* 4.- Login Administrador
 */
 
 
