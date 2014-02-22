@@ -348,9 +348,6 @@ class ControladoraTratamientoAbono
 			throw new $e("Error al listar total de abonos.");
 		}
 	}
-	public function listrarTratamientoPersonas()
-	{
-		
-	}
+	
 }
 ?>

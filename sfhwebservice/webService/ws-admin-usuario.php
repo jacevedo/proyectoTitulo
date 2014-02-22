@@ -27,13 +27,12 @@ require_once '../controladoras/controladorapass.php';
 * 10 .- desabilitar Odontologo
 * 11.- desabilitar Funcionario
 * 12.- Listar Personas 
-* 13.- Listar Personas con permiso
-* 14.- Listar Odontologo X
-* 15.- Listar Funcionario X
+* 13.- Listar Pacientes
+* 14.- Listar Odontologo 
+* 15.- Listar Funcionario 
 * 16.- Listar Pacientes Herencia
 * 17.- Listar Odontologo Herencia
 * 18.- Listar Funcionario Herencia
-* 19.- Modificar pass admin
 * Para habilitado 0, desabilitado 1
 */
 

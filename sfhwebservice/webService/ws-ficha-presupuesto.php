@@ -17,10 +17,12 @@ require_once '../controladoras/controladorafichapresupuesto.php';
 * 6.- Deshabilitar Ficha
 * 7.- insertar Presupuesto
 * 8.- modificar Presupuesto
-* 9.- buscar por id
-* 10.- buscar por id persona
+* 9.- buscar presupuesto por id
+* 10.- buscar presupuesto por id paciente
 * 11.- listar Presupuestos
 * 12.- Listar Ficha con nombres
+* 13.- Listar Ficha nom app paciente
+* 14.- buscar presupuesto id ficha
 */
 
 

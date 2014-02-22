@@ -57,51 +57,51 @@ $idOdontologo = $_POST["idOdontologo"];
 					</tr>
 					<tr>
 						<td>Lunes</td>
-						<td><input placeholder="00:00:00" class="inputHora" type="text" id="txtHoraIniciolunes"/></td>
-						<td><input placeholder="00:00:00" class="inputHora" type="text" id="txtHoraTerminolunes"/></td>
-						<td><input placeholder="00:00:00" class="inputHora" type="text" id="txtDuracionModulolunes"/></td>
+						<td><input placeholder="00:00:00" class="inputHora" dia="HoraIniciolunes" type="text" id="txtHoraIniciolunes"/><br><span id="spanHoraIniciolunes"></span></td>
+						<td><input placeholder="00:00:00" class="inputHora" dia="HoraTerminolunes" type="text" id="txtHoraTerminolunes"/><br><span id="spanHoraTerminolunes"></span></td>
+						<td><input placeholder="00:00:00" class="inputHora" dia="DuracionModulolunes" type="text" id="txtDuracionModulolunes"/><br><span id="spanDuracionModulolunes"></span></td>
 						<td><Button dia="lunes" class="btnGuardar btn btn-lg btn-primary btn-block">Guardar</Button></td>
 					</tr>
 					<tr>
 						<td>Martes</td>
-						<td><input placeholder="00:00:00" class="inputHora" type="text" id="txtHoraIniciomartes"/></td>
-						<td><input placeholder="00:00:00" class="inputHora" type="text" id="txtHoraTerminomartes"/></td>
-						<td><input placeholder="00:00:00" class="inputHora" type="text" id="txtDuracionModulomartes"/></td>
+						<td><input placeholder="00:00:00" class="inputHora" dia="HoraIniciomartes" type="text" id="txtHoraIniciomartes"/><br><span id="spanHoraIniciomartes"></span></td>
+						<td><input placeholder="00:00:00" class="inputHora" dia="HoraTerminomartes" type="text" id="txtHoraTerminomartes"/><br><span id="spanHoraTerminomartes"></span></td>
+						<td><input placeholder="00:00:00" class="inputHora" dia="DuracionModulomartes" type="text" id="txtDuracionModulomartes"/><br><span id="spanDuracionModulomartes"></span></td>
 						<td><Button dia="martes" class="btnGuardar btn btn-lg btn-primary btn-block">Guardar</Button></td>
 					</tr>
 					<tr>
 						<td>Miercoles</td>
-						<td><input placeholder="00:00:00" class="inputHora" type="text" id="txtHoraIniciomiercoles"/></td>
-						<td><input placeholder="00:00:00" class="inputHora" type="text" id="txtHoraTerminomiercoles"/></td>
-						<td><input placeholder="00:00:00" class="inputHora" type="text" id="txtDuracionModulomiercoles"/></td>
+						<td><input placeholder="00:00:00" class="inputHora" dia="HoraIniciomiercoles" type="text" id="txtHoraIniciomiercoles"/><br><span id="spanHoraIniciomiercoles"></span></td>
+						<td><input placeholder="00:00:00" class="inputHora" dia="HoraTerminomiercoles" type="text" id="txtHoraTerminomiercoles"/><br><span id="spanHoraTerminomiercoles"></span></td>
+						<td><input placeholder="00:00:00" class="inputHora" dia="DuracionModulomiercoles" type="text" id="txtDuracionModulomiercoles"/><br><span id="spanDuracionModulomiercoles"></span></td>
 						<td><Button dia="miercoles" class="btnGuardar btn btn-lg btn-primary btn-block">Guardar</Button></td>
 					</tr>
 					<tr>
 						<td>Jueves</td>
-						<td><input placeholder="00:00:00" class="inputHora" type="text" id="txtHoraIniciojueves"/></td>
-						<td><input placeholder="00:00:00" class="inputHora" type="text" id="txtHoraTerminojueves"/></td>
-						<td><input placeholder="00:00:00" class="inputHora" type="text" id="txtDuracionModulojueves"/></td>
+						<td><input placeholder="00:00:00" class="inputHora" dia="HoraIniciojueves" type="text" id="txtHoraIniciojueves"/><br><span id="spanHoraIniciojueves"></span></td>
+						<td><input placeholder="00:00:00" class="inputHora" dia="HoraTerminojueves" type="text" id="txtHoraTerminojueves"/><br><span id="spanHoraTerminojueves"></span></td>
+						<td><input placeholder="00:00:00" class="inputHora" dia="DuracionModulojueves" type="text" id="txtDuracionModulojueves"/><br><span id="spanDuracionModulojueves"></span></td>
 						<td><Button dia="jueves" class="btnGuardar btn btn-lg btn-primary btn-block">Guardar</Button></td>							
 					</tr>
 					<tr>
 						<td>Viernes</td>
-						<td><input placeholder="00:00:00" class="inputHora" type="text" id="txtHoraInicioviernes"/></td>
-						<td><input placeholder="00:00:00" class="inputHora" type="text" id="txtHoraTerminoviernes"/></td>
-						<td><input placeholder="00:00:00" class="inputHora" type="text" id="txtDuracionModuloviernes"/></td>
+						<td><input placeholder="00:00:00" class="inputHora" dia="HoraInicioviernes" type="text" id="txtHoraInicioviernes"/><br><span id="spanHoraInicioviernes"></span></td>
+						<td><input placeholder="00:00:00" class="inputHora" dia="HoraTerminoviernes" type="text" id="txtHoraTerminoviernes"/><br><span id="spanHoraTerminoviernes"></span></td>
+						<td><input placeholder="00:00:00" class="inputHora" dia="DuracionModuloviernes" type="text" id="txtDuracionModuloviernes"/><br><span id="spanDuracionModuloviernes"></span></td>
 						<td><Button dia="viernes" class="btnGuardar btn btn-lg btn-primary btn-block">Guardar</Button></td>										
 					</tr>
 					<tr>
 						<td>Sabado</td>		
-						<td><input placeholder="00:00:00" class="inputHora" type="text" id="txtHoraIniciosabado"/></td>
-						<td><input placeholder="00:00:00" class="inputHora" type="text" id="txtHoraTerminosabado"/></td>
-						<td><input placeholder="00:00:00" class="inputHora" type="text" id="txtDuracionModulosabado"/></td>
+						<td><input placeholder="00:00:00" class="inputHora" dia="HoraIniciosabado" type="text" id="txtHoraIniciosabado"/><br><span id="spanHoraIniciosabado"></span></td>
+						<td><input placeholder="00:00:00" class="inputHora" dia="HoraTerminosabado" type="text" id="txtHoraTerminosabado"/><br><span id="spanHoraTerminosabado"></span></td>
+						<td><input placeholder="00:00:00" class="inputHora" dia="DuracionModulosabado" type="text" id="txtDuracionModulosabado"/><br><span id="spanDuracionModulosabado"></span></td>
 						<td><Button dia="sabado" class="btnGuardar btn btn-lg btn-primary btn-block">Guardar</Button></td>						
 					</tr>
 					<tr>
 						<td>Domingo</td>
-						<td><input placeholder="00:00:00" class="inputHora" type="text" id="txtHoraIniciodomingo"/></td>
-						<td><input placeholder="00:00:00" class="inputHora" type="text" id="txtHoraTerminodomingo"/></td>
-						<td><input placeholder="00:00:00" class="inputHora" type="text" id="txtDuracionModulodomingo"/></td>
+						<td><input placeholder="00:00:00" class="inputHora" dia="HoraIniciodomingo" type="text" id="txtHoraIniciodomingo"/><br><span id="spanHoraIniciodomingo"></span></td>
+						<td><input placeholder="00:00:00" class="inputHora" dia="HoraTerminodomingo" type="text" id="txtHoraTerminodomingo"/><br><span id="spanHoraTerminodomingo"></span></td>
+						<td><input placeholder="00:00:00" class="inputHora" dia="DuracionModulodomingo" type="text" id="txtDuracionModulodomingo"/><br><span id="spanDuracionModulodomingo"></span></td>
 						<td><Button dia="domingo" class="btnGuardar btn btn-lg btn-primary btn-block">Guardar</Button></td>
 					</tr>
 				</table>

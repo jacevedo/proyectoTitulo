@@ -9,10 +9,7 @@ class ControladoraPaciente
 	private $SqlQuery;
 	private $datos;
 
-	public function crearPaciente(Persona $persona, $fechaIngreso)
-	{
-
-	}
+	
 	public function insertarPaciente(Paciente $paciente)
 	{
 		$conexion = new MySqlCon();

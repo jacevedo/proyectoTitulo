@@ -9,10 +9,7 @@ class ControladoraPersonaRegionComuna
 	private $SqlQuery;
 	private $datos;
 	
-	function crearPersona()
-	{
-
-	}
+	
 	
 	function insertarPersona(Persona $persona)
 	{

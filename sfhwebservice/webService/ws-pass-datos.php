@@ -13,9 +13,9 @@ require_once '../controladoras/controladoradatoscontacto.php';
 * 3.- Listar pass por idPersona
 * 4.- Insertar Datos Contacto
 * 5.- Modificar Datos Contacto
-* 6.- Buscar Datos por idPersona
+* 6.- Listar Datos Contacto id Persona
 * 7.- Modificar pass con confirmacion
-* 8.- Listar datos de persona
+* 8.- Listar datos Contacto
 */
 
 

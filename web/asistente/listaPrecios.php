@@ -55,9 +55,15 @@ session_start();
 								<button id="btnAgregarTratamiento" class="btn btn-lg btn-primary btn-block" type="submit">Agregar</button>
 							</div>
 						</div>
+<<<<<<< HEAD
 						<div id="filaAgregar" class="row agregar">
 							<div class="col-xs-6 col-sm-4"><input id="txtNomProcedimiento" placeholder="Nombre Procedimiento" type="text"/></div>
 							<div class="col-xs-6 col-sm-4"><input id="txtCostoProcedimiento" placeholder="Costo Neto Proced." type="text"/></div>
+=======
+						<div class="row agregar">
+							<div class="col-xs-6 col-sm-4"><input id="txtNomProcedimiento" placeholder="Nombre Procedimiento" type="text"/><br><span id="spanErrorNomProcedimiento" class="error"></span></div>
+							<div class="col-xs-6 col-sm-4"><input id="txtCostoProcedimiento" placeholder="Costo Neto Proced." type="text"/><br><span id="spanErrorCostoProcedimiento" class="error"></span></div>
+>>>>>>> cf582fc86d280ab04aa7c09489d5972db55beb4c
 							<div class="col-xs-6 col-sm-4"><Button id="crearNuevoPrecio" class="btn btn-lg btn-primary btn-block">Guardar</Button></div>
 						<div>
 					 </div>

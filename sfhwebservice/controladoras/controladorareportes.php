@@ -6,10 +6,7 @@ require_once '../pojos/abono.php';
 require_once '../pojos/gastos.php'; 
 class ControladoraReportes
 {
-    function generarReportes()
-	{
-
-	}
+    
 	function gastosRangoFecha($fechaInicio, $fechaTermino)
 	{
 		$conexion = new MySqlCon();

@@ -6,14 +6,7 @@ require_once '../pojos/presupuesto.php';
 
 class ControladoraFichaPresupuesto
 {
-	function crearFicha($idFicha, $fechaCreacion, $idPaciente, $Anamnesis)
-	{
-
-	}
-	function crearPresupuesto()
-	{
-
-	}
+	
 	public function insertarPresupuesto(Presupuesto $presupuesto)
 	{
 		$conexion = new MySqlCon();
@@ -137,10 +130,7 @@ class ControladoraFichaPresupuesto
 	         throw new $e("Error al Actualizar Usuarios");
         }
 	}
-	function desabilitarPresupuesto($presupuesto)
-	{
 
-	}
 	public function buscarPresupuestoPorId($idPresupuesto)
 	{
 		$conexion = new MySqlCon();

@@ -6,10 +6,7 @@ require_once '../pojos/areainsumo.php';
 
 class ControladoraListaPreciosDentales
 {
-	function listarPiesas()
-	{
-
-	}
+	
 	function listarPreciosNombre($nombre)
 	{
 		$conexion = new MySqlCon();
@@ -124,10 +121,7 @@ class ControladoraListaPreciosDentales
          throw new $e("Error al Registrar Usuarios");
         }
 	}
-	function crearPrecio($idPrecio, $comentario, $valorNeto)
-	{
-
-	}
+	
 	function insertarPrecio(ListaPrecios $precio)
 	{
 		$conexion = new MySqlCon();

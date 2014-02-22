@@ -7,7 +7,16 @@ require_once '../controladoras/controladorareportes.php';
 *Tratamientos y Abonos
 *Opciones:
 * 1.- Crear Reporte Cita rango Fecha
-* 2.- Listar Reportes
+* 2.- Crear Reporte Cita fecha mas antigua a mas nueva
+* 3.- Crear Reporte Cita fecha mas nueva a mas antigua
+* 4.- crear Reporte abono rango fecha
+* 5.- crear Reporte abono mas antigua a mas nueva
+* 6.- crear Reporte abono mas nueva a mas antigua
+* 7.- crear reporte gastos rango fecha
+* 8.- listar reportes con datos persona
+* 9.- listar reportes entre fechas
+* 10.- listar reportes de manera ascendente
+* 11.- listar reportes de manera desendente
 */
 
 
@@ -63,7 +72,7 @@ switch ($opcion)
 		echo (json_encode($arreglo));
 	break;
 	case 7:
-		//json crear reporte abono rango fecha {"indice":7,"fechaInicio":"2013-02-01","fechaTermino":"2013-10-30"}
+		//json crear reporte gastos rango fecha {"indice":7,"fechaInicio":"2013-02-01","fechaTermino":"2013-10-30"}
 		$fechaInicio = $data->{"fechaInicio"};
 		$fechaTermino = $data->{"fechaTermino"};
 		$controladoraReporte = new ControladoraReportes();

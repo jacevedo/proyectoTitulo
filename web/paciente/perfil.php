@@ -7,6 +7,7 @@ session_start();
 		<link rel="stylesheet" href="estilos/css/bootstrap.css">
 		<link rel="stylesheet" href="estilos/css/estiloPerfil.css">
 		<script type="text/javascript" src="javascript/JQuery.js"></script>
+		<script src="estilos/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="javascript/scriptPerfil.js"></script>
 	</head>
 	<body>

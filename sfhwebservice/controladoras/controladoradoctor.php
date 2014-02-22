@@ -4,11 +4,7 @@ require_once '../pojos/odontologo.php';
 require_once '../pojos/persona.php';
  class ControladoraDoctor
 {
-	function CrearDoctor($idOdontologo,Persona $persona, $especialidad)
-	{
-
-	}
-
+	
 	public function insertarDoctor(Odontologo $doctor)
 	{
 		$conexion = new MySqlCon();

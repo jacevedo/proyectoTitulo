@@ -4,10 +4,7 @@ require_once '../pojos/funcionario.php';
 
 class ControladoraFuncionario
 {
-	function crearFuncionario($idFuncionario,$idPersona,$puestoTrabajo)
-	{
-
-	}
+	
 	public function insertarFuncionario(Funcionario $funcionario)
 	{
 		$conexion = new MySqlCon();

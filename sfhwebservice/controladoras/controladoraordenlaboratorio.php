@@ -7,10 +7,7 @@ class ControladoraOrdenLaboratorio
 	private $SqlQuery;
 	private $datos;
 
-	function crearOrden(Orden $orden)
-	{
-
-	}
+	
 
 	public function insertarOrden(OrdenLaboratorio $orden)
 	{

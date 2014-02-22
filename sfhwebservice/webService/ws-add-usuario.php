@@ -14,12 +14,16 @@ require_once '../controladoras/controladorapass.php';
 *Contiene la opciones para insertar, listar y modificar
 *Personas, Ododntologos, Funcionario, Pacientes
 *Opciones:
-* 1.- insertar Usuario
-* 2.- buscar Usuario por rut
+* 1.- insertar Persona y Datos Contacto
+* 2.- buscar Persona por rut
 * 3.- listar Region
 * 4.- listar Comuna por Region
 * 5.- modificar Usuario
 * 6.- buscar comuna por id
+* 7.- listar comunas
+* 8.- Modificar datos contacto
+* 9.- buscar datos de contacto por id Persona
+* 10.- insertar paciente completo
 */
 
 
