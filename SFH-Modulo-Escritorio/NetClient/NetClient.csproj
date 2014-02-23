@@ -54,6 +54,7 @@
     <Compile Include="ClientWsFichaPresupuesto.cs" />
     <Compile Include="ClientWsFuncionario.cs" />
     <Compile Include="ClientWsGastos.cs" />
+    <Compile Include="ClientWsLogin.cs" />
     <Compile Include="ClientWsOrdenLaboratorio.cs" />
     <Compile Include="ClientWsPaciente.cs" />
     <Compile Include="ClientWsPassDatosdeContacto.cs" />
