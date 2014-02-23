@@ -9,16 +9,19 @@ using System.Windows.Forms;
 using NetClient;
 using ObjectsBeans;
 
+
 namespace SFH_Software
 {
     public partial class frmMenu : Form
     {
-
-
         #region Campos
         private static int i;
         string[] pantallas = new string[100];
         frmAcerca acer = new frmAcerca();
+        private Session session = new Session();
+        private ClientWsLogin login = new ClientWsLogin();
+        private Persona persona = new Persona();
+        private string exp0,exp1,exp2;
         #endregion
 
         #region Propiedades
@@ -56,8 +59,10 @@ namespace SFH_Software
         }
         #endregion
 
-        public frmMenu()
+        public frmMenu(Session session_param)
         {
+            this.session = session_param;
+            this.exp0 = ""; this.exp1 = ""; this.exp2="";
             InitializeComponent();
         }
 
@@ -79,6 +84,8 @@ namespace SFH_Software
         {
             if (MessageBox.Show("¿Realmente desea cerrar esta sesión?", "SFH Administración de Clínica - Cerrar Sesión", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
             {
+                this.persona = null;
+                this.session = null;
                 this.Dispose();
                 frmLogin log = new frmLogin();
                 log.ShowDialog();
@@ -86,13 +93,20 @@ namespace SFH_Software
         }
         private void frmMenu_FormClosing(object sender, FormClosingEventArgs e)
         {
+            this.persona = null;
+            this.session = null;
             Application.Exit();
         }
 
         private void btnAdminCli_Click(object sender, EventArgs e)
         {
-            //treeViewMenu.TreeViewNodeSorterExpandAll();
-            //treeViewMenu..Expand(); 
+            if(this.exp0.Equals("")){
+            this.treeViewMenu.Nodes[0].Expand();
+            this.exp0 = "1";
+            }else if(exp0.Equals("1")){
+             this.treeViewMenu.Nodes[0].Collapse();
+            this.exp0 = "";
+            }
         }
 
         private void treeViewMenu_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
@@ -169,16 +183,30 @@ namespace SFH_Software
 
         private void btnAdminUser_Click(object sender, EventArgs e)
         {
-            
-                   frmAdministracionUsuarios adminuser = new frmAdministracionUsuarios();
-                   this.MostrarForm("Administración de usuarios", adminuser);
+            if (this.exp1.Equals(""))
+            {
+                this.treeViewMenu.Nodes[1].Expand();
+                this.exp1 = "1";
+            }
+            else if (exp1.Equals("1"))
+            {
+                this.treeViewMenu.Nodes[1].Collapse();
+                this.exp1 = "";
+            }
         }
 
         private void btnReportes_Click(object sender, EventArgs e)
         {
-            
-                  frmGenerarReportesPacientes report = new frmGenerarReportesPacientes();
-                  this.MostrarForm("Reportes y estadísticas", report);
+            if (this.exp2.Equals(""))
+            {
+                this.treeViewMenu.Nodes[2].Expand();
+                this.exp2 = "1";
+            }
+            else if (exp2.Equals("1"))
+            {
+                this.treeViewMenu.Nodes[2].Collapse();
+                this.exp2 = "";
+            }
                     
         }
 
@@ -290,6 +318,13 @@ namespace SFH_Software
         {
             frmListarHistorialdeReportes reportHistorial = new frmListarHistorialdeReportes();
             this.MostrarForm("Listar Historial de Reportes ", reportHistorial);
+        }
+
+        private void frmMenu_Load(object sender, EventArgs e)
+        {
+            this.persona = this.login.RecuperarDatosDeUsuarioConectado(this.session.Rut);
+            this.usuarioToolStripMenuItem.Text = persona.Nombre + " " + persona.ApellidoPaterno + " " + persona.ApellidoMaterno;
+            this.Refresh();
         }
 
 

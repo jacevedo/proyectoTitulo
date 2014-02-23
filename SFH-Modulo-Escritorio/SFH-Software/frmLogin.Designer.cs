@@ -38,15 +38,18 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtdv = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.pbcarga = new System.Windows.Forms.PictureBox();
+            this.lblinicio = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.pbcarga)).BeginInit();
             this.SuspendLayout();
             // 
             // btningresar
             // 
             this.btningresar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(93)))), ((int)(((byte)(129)))));
-            this.btningresar.Location = new System.Drawing.Point(105, 147);
+            this.btningresar.Location = new System.Drawing.Point(105, 148);
             this.btningresar.Name = "btningresar";
             this.btningresar.Size = new System.Drawing.Size(84, 32);
-            this.btningresar.TabIndex = 0;
+            this.btningresar.TabIndex = 4;
             this.btningresar.Text = "Ingresar";
             this.btningresar.UseVisualStyleBackColor = false;
             this.btningresar.Click += new System.EventHandler(this.btningresar_Click);
@@ -54,10 +57,10 @@
             // btnCancelar
             // 
             this.btnCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(93)))), ((int)(((byte)(129)))));
-            this.btnCancelar.Location = new System.Drawing.Point(195, 147);
+            this.btnCancelar.Location = new System.Drawing.Point(195, 148);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(91, 32);
-            this.btnCancelar.TabIndex = 1;
+            this.btnCancelar.TabIndex = 5;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
@@ -86,7 +89,7 @@
             this.txtpass.MaxLength = 60;
             this.txtpass.Name = "txtpass";
             this.txtpass.Size = new System.Drawing.Size(181, 20);
-            this.txtpass.TabIndex = 4;
+            this.txtpass.TabIndex = 2;
             this.txtpass.UseSystemPasswordChar = true;
             // 
             // txtuser
@@ -95,17 +98,17 @@
             this.txtuser.MaxLength = 8;
             this.txtuser.Name = "txtuser";
             this.txtuser.Size = new System.Drawing.Size(130, 20);
-            this.txtuser.TabIndex = 5;
+            this.txtuser.TabIndex = 0;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(110, 11);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(112, 20);
+            this.label3.Size = new System.Drawing.Size(141, 25);
             this.label3.TabIndex = 6;
-            this.label3.Text = "Iniciar Session";
+            this.label3.Text = "Iniciar Sesion";
             // 
             // txtdv
             // 
@@ -113,7 +116,7 @@
             this.txtdv.MaxLength = 1;
             this.txtdv.Name = "txtdv";
             this.txtdv.Size = new System.Drawing.Size(29, 20);
-            this.txtdv.TabIndex = 7;
+            this.txtdv.TabIndex = 1;
             // 
             // label4
             // 
@@ -124,12 +127,38 @@
             this.label4.TabIndex = 8;
             this.label4.Text = "--";
             // 
+            // pbcarga
+            // 
+            this.pbcarga.Image = ((System.Drawing.Image)(resources.GetObject("pbcarga.Image")));
+            this.pbcarga.Location = new System.Drawing.Point(249, 191);
+            this.pbcarga.Name = "pbcarga";
+            this.pbcarga.Size = new System.Drawing.Size(28, 25);
+            this.pbcarga.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbcarga.TabIndex = 9;
+            this.pbcarga.TabStop = false;
+            this.pbcarga.Visible = false;
+            // 
+            // lblinicio
+            // 
+            this.lblinicio.AutoSize = true;
+            this.lblinicio.BackColor = System.Drawing.Color.White;
+            this.lblinicio.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblinicio.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(200)))), ((int)(((byte)(226)))));
+            this.lblinicio.Location = new System.Drawing.Point(108, 193);
+            this.lblinicio.Name = "lblinicio";
+            this.lblinicio.Size = new System.Drawing.Size(142, 20);
+            this.lblinicio.TabIndex = 10;
+            this.lblinicio.Text = "Iniciando Sesion....";
+            this.lblinicio.Visible = false;
+            // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(200)))), ((int)(((byte)(226)))));
-            this.ClientSize = new System.Drawing.Size(314, 204);
+            this.ClientSize = new System.Drawing.Size(314, 229);
+            this.Controls.Add(this.lblinicio);
+            this.Controls.Add(this.pbcarga);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtdv);
             this.Controls.Add(this.label3);
@@ -145,6 +174,7 @@
             this.Name = "frmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SFH-Login";
+            ((System.ComponentModel.ISupportInitialize)(this.pbcarga)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -161,6 +191,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtdv;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.PictureBox pbcarga;
+        private System.Windows.Forms.Label lblinicio;
     }
 }
 

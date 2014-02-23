@@ -165,11 +165,10 @@ C:\Users\Citt-David\Desktop\SFH-Modulo-Escritorio\SFH-Software\obj\x86\Debug\SFH
 C:\Users\Citt-David\Desktop\SFH-Modulo-Escritorio\SFH-Software\obj\x86\Debug\SFH-Software.exe
 C:\Users\Citt-David\Desktop\SFH-Modulo-Escritorio\SFH-Software\obj\x86\Debug\SFH-Software.pdb
 C:\Users\Citt-David\Desktop\SFH-Modulo-Escritorio\SFH-Software\obj\x86\Debug\SFH-Software.csprojResolveAssemblyReference.cache
-C:\Users\David\Desktop\SFH-Modulo-Escritorio\SFH-Software\obj\x86\Debug\SFH-Software.exe
-C:\Users\David\Desktop\SFH-Modulo-Escritorio\SFH-Software\obj\x86\Debug\SFH-Software.pdb
 C:\Users\David\Desktop\SFH-Modulo-Escritorio\SFH-Software\bin\Debug\SFH-Software.exe
 C:\Users\David\Desktop\SFH-Modulo-Escritorio\SFH-Software\bin\Debug\SFH-Software.pdb
 C:\Users\David\Desktop\SFH-Modulo-Escritorio\SFH-Software\bin\Debug\MdiTabControl.dll
+C:\Users\David\Desktop\SFH-Modulo-Escritorio\SFH-Software\bin\Debug\NetClient.dll
 C:\Users\David\Desktop\SFH-Modulo-Escritorio\SFH-Software\bin\Debug\ObjectsBeans.dll
 C:\Users\David\Desktop\SFH-Modulo-Escritorio\SFH-Software\bin\Debug\Newtonsoft.Json.dll
 C:\Users\David\Desktop\SFH-Modulo-Escritorio\SFH-Software\bin\Debug\NetClient.pdb
@@ -199,4 +198,5 @@ C:\Users\David\Desktop\SFH-Modulo-Escritorio\SFH-Software\obj\x86\Debug\SFH_Soft
 C:\Users\David\Desktop\SFH-Modulo-Escritorio\SFH-Software\obj\x86\Debug\SFH_Software.frmPaciente.resources
 C:\Users\David\Desktop\SFH-Modulo-Escritorio\SFH-Software\obj\x86\Debug\SFH_Software.Properties.Resources.resources
 C:\Users\David\Desktop\SFH-Modulo-Escritorio\SFH-Software\obj\x86\Debug\SFH-Software.csproj.GenerateResource.Cache
-C:\Users\David\Desktop\SFH-Modulo-Escritorio\SFH-Software\bin\Debug\NetClient.dll
+C:\Users\David\Desktop\SFH-Modulo-Escritorio\SFH-Software\obj\x86\Debug\SFH-Software.exe
+C:\Users\David\Desktop\SFH-Modulo-Escritorio\SFH-Software\obj\x86\Debug\SFH-Software.pdb

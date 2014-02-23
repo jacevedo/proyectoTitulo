@@ -8,7 +8,7 @@ namespace ObjectsBeans
     public class Session
     {
         #region Campos
-        //{"resultado":{"idPersona":11,"idOdontologo":4,"key":"$2a$08$W04EZdtv\/Y6mhCqRLVya4Ot\/w5RSwf2BcQ95ShS1uycSOkojHpUG.","codAcceso":706,"habilitado":"Usuario Habilitado"}}
+       
         private int id_persona;
 
         private int id_odontologo;
@@ -21,6 +21,9 @@ namespace ObjectsBeans
 
         private Boolean secdat;
 
+        private string rut;
+
+       
         #endregion
 
         #region Propiedades
@@ -58,6 +61,11 @@ namespace ObjectsBeans
         {
             get { return secdat; }
             set { secdat = value; }
+        }
+        public string Rut
+        {
+            get { return rut; }
+            set { rut = value; }
         }
         #endregion
     }

@@ -5,10 +5,10 @@ using System.Runtime.InteropServices;
 // La información general sobre un ensamblado se controla mediante el siguiente 
 // conjunto de atributos. Cambie estos atributos para modificar la información
 // asociada con un ensamblado.
-[assembly: AssemblyTitle("SFH-Software")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("SFH – Sistema de Fichas Médicas y Toma de Horas")]
+[assembly: AssemblyDescription("El software SFH (Sistema de Fichas Médicas y Horas de Atención) se creará para controlar las fichas dentales, poder reservar y monitorear las horas de atención disponibles en una clínica dental. Esta herramienta consta de tres plataformas: móvil, web y escritorio. Esto permite tener la toda la información de una forma más rápida. Plataforma Escritorio.La plataforma de escritorio se va a programar en primera instancia para el sistema operativo Windows. Esto es debido a que es el sistema operativo utilizado por la clínica odontológica con la cual estamos trabajando. El lenguaje de programación a utilizar es C#, debido a la alta compatibilidad de este lenguaje con el sistema operativo.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Made in W-JOS Lmtda.")]
 [assembly: AssemblyProduct("SFH-Software")]
 [assembly: AssemblyCopyright("Copyright ©  2013")]
 [assembly: AssemblyTrademark("")]
