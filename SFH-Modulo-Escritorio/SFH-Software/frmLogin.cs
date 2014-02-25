@@ -34,7 +34,6 @@ namespace SFH_Software
                         this.btningresar.Enabled = false;
                         this.btnCancelar.Enabled = false;
                         this.lblinicio.Visible = true;
-                        this.pbcarga.Visible = true;
                         this.Refresh();
                         this.session = this.login.RecuperarSession(txtuser.Text.ToString(),txtpass.Text.ToString());
                         if (this.session.Secdat.Equals(true)){
@@ -44,6 +43,7 @@ namespace SFH_Software
                                 frmMenu men = new frmMenu(this.session);
                                 men.ShowDialog();
                             }
+
                             else {
                                 MessageBox.Show("No se ha podido iniciar la sesión. Este usuario se encuentra inhabilitado para acceder al sistema.", "SFH Administración de Clínica - Inicio de Sesión", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                                 txtuser.Focus();
@@ -78,7 +78,7 @@ namespace SFH_Software
                 Refresh();
             }
             this.lblinicio.Visible = false;
-            this.pbcarga.Visible = false;
+       
             this.btningresar.Enabled = true;
             this.btnCancelar.Enabled = true;
             this.Refresh();

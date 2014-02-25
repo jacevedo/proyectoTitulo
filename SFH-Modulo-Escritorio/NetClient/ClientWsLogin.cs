@@ -25,9 +25,11 @@ namespace NetClient
         }
         #endregion
 
-        #region RecuperarSessionOdontologo
 
-        public Session RecuperarSession(string rut,string pass) {
+        #region RecuperarSession
+
+        public Session RecuperarSession(string rut, string pass)
+        {
             Session session = new Session();
             String result;
             try {
@@ -71,6 +73,7 @@ namespace NetClient
         }
 
         #endregion
+
         #region RecuperarSessionAsistente
         public Session RecuperarSessionAsistente(string rut, string pass) {
             Session session = new Session();
@@ -84,7 +87,6 @@ namespace NetClient
                     if (jobject.SelectToken("resultado").SelectToken("habilitado").ToString() == "Usuario Habilitado")
                     {
                         session.Id_persona = Convert.ToInt32(jobject.SelectToken("resultado").SelectToken("idPersona").ToString());
-                        session.Id_odontologo = Convert.ToInt32(jobject.SelectToken("resultado").SelectToken("idOdontologo").ToString());
                         session.Key = jobject.SelectToken("resultado").SelectToken("key").ToString();
                         session.Cod_acceso = Convert.ToInt32(jobject.SelectToken("resultado").SelectToken("codAcceso").ToString());
                         session.Habilitado = jobject.SelectToken("resultado").SelectToken("habilitado").ToString();
@@ -133,7 +135,7 @@ namespace NetClient
                   }
                 }
             
-            catch(Exception e){
+            catch(Exception ){
                 persona.Nombre = "Sin Nombre";
                 persona.Rut = 212;
                 throw new Exception("Error al intentar iniciar session :( ... Vuelva a intentarlo ");

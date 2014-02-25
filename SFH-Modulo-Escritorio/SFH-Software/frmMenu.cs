@@ -28,6 +28,58 @@ namespace SFH_Software
         #endregion
 
         #region Metodos
+        private void PerfilamientoDeInterfaz(int codAcceso) {
+            switch (codAcceso) {
+                case 707:
+                    this.seguridadToolStripMenuItem.Visible = true;
+                    this.toolStripReportesyestadisticas.Visible = true;
+                    this.administraciónDeFichaDentalToolStripMenuItem.Visible = true;
+                    this.administraciónDePresupuestoDentalToolStripMenuItem.Visible = true;
+                    this.administraciónDeOrdenDeLaboratorioToolStripMenuItem.Visible = true;
+                    this.administraciónDeTratamientoDentalToolStripMenuItem.Visible = true;
+                    this.administraciónDeReportesEInsumosToolStripMenuItem.Visible = true;
+                    this.administraciónDeListasDePreciosPorTratamientoToolStripMenuItem.Visible = true;
+                    this.administraciónDeÁreaInsumosToolStripMenuItem.Visible = true;
+                    this.administraciónDeGatosToolStripMenuItem.Visible = true;
+                    break;
+                case 706:
+                    //Odontologo
+                    this.seguridadToolStripMenuItem.Visible = true;
+                    this.toolStripReportesyestadisticas.Visible = true;
+                    this.administraciónDeFichaDentalToolStripMenuItem.Visible = true;
+                    this.administraciónDePresupuestoDentalToolStripMenuItem.Visible = true;
+                    this.administraciónDeOrdenDeLaboratorioToolStripMenuItem.Visible = true;
+                    this.administraciónDeTratamientoDentalToolStripMenuItem.Visible = true;
+                    this.administraciónDeReportesEInsumosToolStripMenuItem.Visible = true;
+                    this.administraciónDeListasDePreciosPorTratamientoToolStripMenuItem.Visible = true;
+                    this.administraciónDeÁreaInsumosToolStripMenuItem.Visible = true;
+                    this.administraciónDeGatosToolStripMenuItem.Visible = true;
+                    break;
+                case 705:
+                    //asistente
+                    this.administraciónDeFichaDentalToolStripMenuItem.Visible = true;
+                    this.administraciónDePresupuestoDentalToolStripMenuItem.Visible = true;
+                    this.administraciónDeOrdenDeLaboratorioToolStripMenuItem.Visible = true;
+                    this.administraciónDeTratamientoDentalToolStripMenuItem.Visible = true;
+                    this.administraciónDeReportesEInsumosToolStripMenuItem.Visible = true;
+                    this.treeViewMenu.Nodes[2].Remove();
+                    this.treeViewMenu.Nodes[1].Remove();
+                    this.treeViewMenu.Nodes.Remove(this.treeViewMenu.Nodes[0].Nodes[7]);
+                    this.treeViewMenu.Nodes.Remove(this.treeViewMenu.Nodes[0].Nodes[6]);
+                    this.treeViewMenu.Nodes.Remove(this.treeViewMenu.Nodes[0].Nodes[5]);
+                    this.btnAdminUser.Visible = false;
+                    this.btnReportes.Visible = false;
+                    break;
+                default:
+                     this.persona = null;
+                     this.session = null;
+                     this.Dispose();
+                     frmLogin log = new frmLogin();
+                     log.ShowDialog();
+                    break;
+            }
+        }
+
         public void MostrarForm(string nombre, Form frm)
         {
             //Muetra pantalla si esta repetida
@@ -322,6 +374,7 @@ namespace SFH_Software
 
         private void frmMenu_Load(object sender, EventArgs e)
         {
+            this.PerfilamientoDeInterfaz(session.Cod_acceso);
             this.persona = this.login.RecuperarDatosDeUsuarioConectado(this.session.Rut);
             this.usuarioToolStripMenuItem.Text = persona.Nombre + " " + persona.ApellidoPaterno + " " + persona.ApellidoMaterno;
             this.Refresh();
