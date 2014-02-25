@@ -1,0 +1,64 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    android:background="#ABC8E2">
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="SFH"
+            android:id="@+id/textView"
+            android:layout_gravity="center"/>
+
+    <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Lista de Precios"
+            android:id="@+id/btnVerPrecios"
+            android:background="#375D81"
+            android:textColor="#FFFFFF"/>
+
+    <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Modificar Cuenta"
+            android:id="@+id/btnModificarCuenta"
+            android:background="#375D81"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="10dp"/>
+
+    <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Tomar Hora"
+            android:id="@+id/btnTomarHora"
+            android:background="#375D81"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="10dp"/>
+
+    <Button
+        android:id="@+id/btnVerHorasTomadas"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="#375D81"
+        android:text="Ver Horas Tomadas"
+        android:textColor="#FFFFFF" />
+
+    <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Cerrar Sesion"
+            android:id="@+id/btnCerrarSesion"
+            android:background="#375D81"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="10dp"/>
+</LinearLayout>
