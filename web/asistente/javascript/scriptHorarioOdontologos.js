@@ -150,12 +150,13 @@ function guardarDia()
 }
 function cargarHorarios()
 {
-	var idOdontologo = $("#idOdontologo").val();
+	var idOdontologo = $("#idOdontologo").val();alert(idOdontologo);
 	var url = direccionWeb + "ws-horario.php";
 	var data = {"send":"{\"indice\":4,\"idOdontologo\":"+idOdontologo+"}"};
 
 	$.post(url,data,function(datos)
 	{
+		alert(datos);
 	 	var obj = $.parseJSON(datos);
 		$.each(obj.listaHorarios,function()
 		{
@@ -168,31 +169,3 @@ function cargarHorarios()
 		});
 	});
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

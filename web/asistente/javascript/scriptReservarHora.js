@@ -99,7 +99,7 @@ function validarNombre()
 	}
 	else
 	{
-       	$("#spanErrorNombre").html('Debe ingresar solo letras y a lo mas, 2 nombres');
+       	$("#spanErrorNombre").html('Debe ingresar solo letras y a lo más, 2 nombres');
         return false;
     }
 }
@@ -127,7 +127,7 @@ function reservarHora()
 				var resultado = obj.resultado;
 				if(resultado!=-1)
 				{
-					alert("La Cita se guardo correctamente");
+					alert("La cita se guardo correctamente");
 					limpiarCampos();
 				}
 				else
@@ -158,11 +158,11 @@ function reservarHora()
 			{
 				var objeto = $.parseJSON(datos);
 				var respuesta = objeto.resultado;
-				if(respuesta == "hubo un error al insertar la persona")
+				if(respuesta == "Hubo un error al insertar la persona")
 				{
 					alert(respuesta);				
 				}
-				else if(respuesta == "hubo un error al insertar al paciente")
+				else if(respuesta == "Hubo un error al insertar al paciente")
 				{
 					alert(respuesta);	
 				}
@@ -172,7 +172,7 @@ function reservarHora()
 				}
 				else
 				{
-					alert("hubo un error al insertar la cita");
+					alert("Hubo un error al insertar la cita");
 				}
 				limpiarCampos();
 			});
