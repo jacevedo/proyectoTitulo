@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="cl.sfh.Odontologo"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="10"
+        android:targetSdkVersion="17" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="cl.sfh.Odontologo.SpashScreen"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+                
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="EditarCuenta"
+            android:label="@string/app_name_titulo"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="cl.sfh.Odontologo.EditarCuenta" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="Ficha"
+            android:label="@string/app_name_titulo"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="cl.sfh.Odontologo.Ficha" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="HorasCargadas"
+            android:label="@string/app_name_titulo"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="cl.sfh.Odontologo.HorasCargadas" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="ListaPaciente"
+            android:label="@string/app_name_titulo"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="cl.sfh.Odontologo.ListaPaciente" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="MainActivity"
+            android:label="@string/app_name_titulo"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="cl.sfh.Odontologo.MainActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="MenuAplicacion"
+            android:label="@string/app_name_titulo"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                   <action android:name="cl.sfh.Odontologo.MenuAplicacion" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

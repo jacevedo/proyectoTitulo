@@ -6,23 +6,80 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using NetClient;
+using ObjectsBeans;
+
 
 namespace SFH_Software
 {
     public partial class frmMenu : Form
     {
-
-
         #region Campos
         private static int i;
         string[] pantallas = new string[100];
         frmAcerca acer = new frmAcerca();
+        private Session session = new Session();
+        private ClientWsLogin login = new ClientWsLogin();
+        private Persona persona = new Persona();
+        private string exp0,exp1,exp2;
         #endregion
 
         #region Propiedades
         #endregion
 
         #region Metodos
+        private void PerfilamientoDeInterfaz(int codAcceso) {
+            switch (codAcceso) {
+                case 707:
+                    this.seguridadToolStripMenuItem.Visible = true;
+                    this.toolStripReportesyestadisticas.Visible = true;
+                    this.administraciónDeFichaDentalToolStripMenuItem.Visible = true;
+                    this.administraciónDePresupuestoDentalToolStripMenuItem.Visible = true;
+                    this.administraciónDeOrdenDeLaboratorioToolStripMenuItem.Visible = true;
+                    this.administraciónDeTratamientoDentalToolStripMenuItem.Visible = true;
+                    this.administraciónDeReportesEInsumosToolStripMenuItem.Visible = true;
+                    this.administraciónDeListasDePreciosPorTratamientoToolStripMenuItem.Visible = true;
+                    this.administraciónDeÁreaInsumosToolStripMenuItem.Visible = true;
+                    this.administraciónDeGatosToolStripMenuItem.Visible = true;
+                    break;
+                case 706:
+                    //Odontologo
+                    this.seguridadToolStripMenuItem.Visible = true;
+                    this.toolStripReportesyestadisticas.Visible = true;
+                    this.administraciónDeFichaDentalToolStripMenuItem.Visible = true;
+                    this.administraciónDePresupuestoDentalToolStripMenuItem.Visible = true;
+                    this.administraciónDeOrdenDeLaboratorioToolStripMenuItem.Visible = true;
+                    this.administraciónDeTratamientoDentalToolStripMenuItem.Visible = true;
+                    this.administraciónDeReportesEInsumosToolStripMenuItem.Visible = true;
+                    this.administraciónDeListasDePreciosPorTratamientoToolStripMenuItem.Visible = true;
+                    this.administraciónDeÁreaInsumosToolStripMenuItem.Visible = true;
+                    this.administraciónDeGatosToolStripMenuItem.Visible = true;
+                    break;
+                case 705:
+                    //asistente
+                    this.administraciónDeFichaDentalToolStripMenuItem.Visible = true;
+                    this.administraciónDePresupuestoDentalToolStripMenuItem.Visible = true;
+                    this.administraciónDeOrdenDeLaboratorioToolStripMenuItem.Visible = true;
+                    this.administraciónDeTratamientoDentalToolStripMenuItem.Visible = true;
+                    this.administraciónDeReportesEInsumosToolStripMenuItem.Visible = true;
+                    this.treeViewMenu.Nodes[2].Remove();
+                    this.treeViewMenu.Nodes[1].Remove();
+                    this.treeViewMenu.Nodes.Remove(this.treeViewMenu.Nodes[0].Nodes[7]);
+                    this.treeViewMenu.Nodes.Remove(this.treeViewMenu.Nodes[0].Nodes[6]);
+                    this.treeViewMenu.Nodes.Remove(this.treeViewMenu.Nodes[0].Nodes[5]);
+                    this.btnAdminUser.Visible = false;
+                    this.btnReportes.Visible = false;
+                    break;
+                default:
+                     this.persona = null;
+                     this.session = null;
+                     this.Dispose();
+                     frmLogin log = new frmLogin();
+                     log.ShowDialog();
+                    break;
+            }
+        }
+
         public void MostrarForm(string nombre, Form frm)
         {
             //Muetra pantalla si esta repetida
@@ -54,8 +111,10 @@ namespace SFH_Software
         }
         #endregion
 
-        public frmMenu()
+        public frmMenu(Session session_param)
         {
+            this.session = session_param;
+            this.exp0 = ""; this.exp1 = ""; this.exp2="";
             InitializeComponent();
         }
 
@@ -77,6 +136,8 @@ namespace SFH_Software
         {
             if (MessageBox.Show("¿Realmente desea cerrar esta sesión?", "SFH Administración de Clínica - Cerrar Sesión", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
             {
+                this.persona = null;
+                this.session = null;
                 this.Dispose();
                 frmLogin log = new frmLogin();
                 log.ShowDialog();
@@ -84,13 +145,20 @@ namespace SFH_Software
         }
         private void frmMenu_FormClosing(object sender, FormClosingEventArgs e)
         {
+            this.persona = null;
+            this.session = null;
             Application.Exit();
         }
 
         private void btnAdminCli_Click(object sender, EventArgs e)
         {
-            //treeViewMenu.TreeViewNodeSorterExpandAll();
-            //treeViewMenu..Expand(); 
+            if(this.exp0.Equals("")){
+            this.treeViewMenu.Nodes[0].Expand();
+            this.exp0 = "1";
+            }else if(exp0.Equals("1")){
+             this.treeViewMenu.Nodes[0].Collapse();
+            this.exp0 = "";
+            }
         }
 
         private void treeViewMenu_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
@@ -167,16 +235,30 @@ namespace SFH_Software
 
         private void btnAdminUser_Click(object sender, EventArgs e)
         {
-            
-                   frmAdministracionUsuarios adminuser = new frmAdministracionUsuarios();
-                   this.MostrarForm("Administración de usuarios", adminuser);
+            if (this.exp1.Equals(""))
+            {
+                this.treeViewMenu.Nodes[1].Expand();
+                this.exp1 = "1";
+            }
+            else if (exp1.Equals("1"))
+            {
+                this.treeViewMenu.Nodes[1].Collapse();
+                this.exp1 = "";
+            }
         }
 
         private void btnReportes_Click(object sender, EventArgs e)
         {
-            
-                  frmGenerarReportesPacientes report = new frmGenerarReportesPacientes();
-                  this.MostrarForm("Reportes y estadísticas", report);
+            if (this.exp2.Equals(""))
+            {
+                this.treeViewMenu.Nodes[2].Expand();
+                this.exp2 = "1";
+            }
+            else if (exp2.Equals("1"))
+            {
+                this.treeViewMenu.Nodes[2].Collapse();
+                this.exp2 = "";
+            }
                     
         }
 
@@ -288,6 +370,14 @@ namespace SFH_Software
         {
             frmListarHistorialdeReportes reportHistorial = new frmListarHistorialdeReportes();
             this.MostrarForm("Listar Historial de Reportes ", reportHistorial);
+        }
+
+        private void frmMenu_Load(object sender, EventArgs e)
+        {
+            this.PerfilamientoDeInterfaz(session.Cod_acceso);
+            this.persona = this.login.RecuperarDatosDeUsuarioConectado(this.session.Rut);
+            this.usuarioToolStripMenuItem.Text = persona.Nombre + " " + persona.ApellidoPaterno + " " + persona.ApellidoMaterno;
+            this.Refresh();
         }
 
 

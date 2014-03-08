@@ -30,17 +30,12 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmOdontologo));
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.lblguion = new System.Windows.Forms.Label();
-            this.txtdvbusqueda = new System.Windows.Forms.TextBox();
-            this.btnBuscar = new System.Windows.Forms.Button();
-            this.cmbxBuscar = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtBuscar = new System.Windows.Forms.TextBox();
             this.datagriPersona = new System.Windows.Forms.DataGridView();
             this.IdOdontologo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IdPersonaOdontologo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -55,6 +50,13 @@
             this.IdPersona = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IdPerfil = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nomperfil = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.lblguion = new System.Windows.Forms.Label();
+            this.txtdvbusqueda = new System.Windows.Forms.TextBox();
+            this.btnBuscar = new System.Windows.Forms.Button();
+            this.cmbxBuscar = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtBuscar = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbxestado = new System.Windows.Forms.ComboBox();
@@ -66,8 +68,8 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            this.groupBox7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.datagriPersona)).BeginInit();
+            this.groupBox7.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -107,85 +109,9 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Listado de odontólogos";
             // 
-            // groupBox7
-            // 
-            this.groupBox7.Controls.Add(this.lblguion);
-            this.groupBox7.Controls.Add(this.txtdvbusqueda);
-            this.groupBox7.Controls.Add(this.btnBuscar);
-            this.groupBox7.Controls.Add(this.cmbxBuscar);
-            this.groupBox7.Controls.Add(this.label6);
-            this.groupBox7.Controls.Add(this.txtBuscar);
-            this.groupBox7.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.groupBox7.Location = new System.Drawing.Point(244, 10);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(715, 66);
-            this.groupBox7.TabIndex = 8;
-            this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "Búsqueda de odontólogos";
-            // 
-            // lblguion
-            // 
-            this.lblguion.AutoSize = true;
-            this.lblguion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblguion.Location = new System.Drawing.Point(501, 29);
-            this.lblguion.Name = "lblguion";
-            this.lblguion.Size = new System.Drawing.Size(12, 16);
-            this.lblguion.TabIndex = 60;
-            this.lblguion.Text = "-";
-            this.lblguion.Visible = false;
-            // 
-            // txtdvbusqueda
-            // 
-            this.txtdvbusqueda.Location = new System.Drawing.Point(517, 26);
-            this.txtdvbusqueda.MaxLength = 1;
-            this.txtdvbusqueda.Name = "txtdvbusqueda";
-            this.txtdvbusqueda.Size = new System.Drawing.Size(38, 20);
-            this.txtdvbusqueda.TabIndex = 59;
-            this.txtdvbusqueda.Visible = false;
-            // 
-            // btnBuscar
-            // 
-            this.btnBuscar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(93)))), ((int)(((byte)(129)))));
-            this.btnBuscar.ForeColor = System.Drawing.Color.White;
-            this.btnBuscar.Location = new System.Drawing.Point(574, 17);
-            this.btnBuscar.Margin = new System.Windows.Forms.Padding(1);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(127, 36);
-            this.btnBuscar.TabIndex = 58;
-            this.btnBuscar.Text = "Buscar";
-            this.btnBuscar.UseVisualStyleBackColor = false;
-            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
-            // 
-            // cmbxBuscar
-            // 
-            this.cmbxBuscar.FormattingEnabled = true;
-            this.cmbxBuscar.Location = new System.Drawing.Point(90, 26);
-            this.cmbxBuscar.Name = "cmbxBuscar";
-            this.cmbxBuscar.Size = new System.Drawing.Size(236, 21);
-            this.cmbxBuscar.TabIndex = 57;
-            this.cmbxBuscar.SelectedIndexChanged += new System.EventHandler(this.cmbxBuscar_SelectedIndexChanged);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(25, 29);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(59, 13);
-            this.label6.TabIndex = 56;
-            this.label6.Text = "Buscar Por";
-            // 
-            // txtBuscar
-            // 
-            this.txtBuscar.Location = new System.Drawing.Point(348, 26);
-            this.txtBuscar.MaxLength = 8;
-            this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(147, 20);
-            this.txtBuscar.TabIndex = 2;
-            // 
             // datagriPersona
             // 
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.AliceBlue;
             this.datagriPersona.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.datagriPersona.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.datagriPersona.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -205,13 +131,23 @@
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.datagriPersona.DefaultCellStyle = dataGridViewCellStyle2;
             this.datagriPersona.Location = new System.Drawing.Point(6, 82);
             this.datagriPersona.Name = "datagriPersona";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.datagriPersona.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
+            this.datagriPersona.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.datagriPersona.Size = new System.Drawing.Size(1225, 402);
             this.datagriPersona.TabIndex = 0;
             this.datagriPersona.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datagriPersona_CellContentClick);
@@ -298,6 +234,82 @@
             this.Nomperfil.HeaderText = "Nomperfil";
             this.Nomperfil.Name = "Nomperfil";
             this.Nomperfil.Visible = false;
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.lblguion);
+            this.groupBox7.Controls.Add(this.txtdvbusqueda);
+            this.groupBox7.Controls.Add(this.btnBuscar);
+            this.groupBox7.Controls.Add(this.cmbxBuscar);
+            this.groupBox7.Controls.Add(this.label6);
+            this.groupBox7.Controls.Add(this.txtBuscar);
+            this.groupBox7.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.groupBox7.Location = new System.Drawing.Point(244, 10);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(715, 66);
+            this.groupBox7.TabIndex = 8;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Búsqueda de odontólogos";
+            // 
+            // lblguion
+            // 
+            this.lblguion.AutoSize = true;
+            this.lblguion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblguion.Location = new System.Drawing.Point(501, 29);
+            this.lblguion.Name = "lblguion";
+            this.lblguion.Size = new System.Drawing.Size(12, 16);
+            this.lblguion.TabIndex = 60;
+            this.lblguion.Text = "-";
+            this.lblguion.Visible = false;
+            // 
+            // txtdvbusqueda
+            // 
+            this.txtdvbusqueda.Location = new System.Drawing.Point(517, 26);
+            this.txtdvbusqueda.MaxLength = 1;
+            this.txtdvbusqueda.Name = "txtdvbusqueda";
+            this.txtdvbusqueda.Size = new System.Drawing.Size(38, 20);
+            this.txtdvbusqueda.TabIndex = 59;
+            this.txtdvbusqueda.Visible = false;
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(93)))), ((int)(((byte)(129)))));
+            this.btnBuscar.ForeColor = System.Drawing.Color.White;
+            this.btnBuscar.Location = new System.Drawing.Point(574, 17);
+            this.btnBuscar.Margin = new System.Windows.Forms.Padding(1);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(127, 36);
+            this.btnBuscar.TabIndex = 58;
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.UseVisualStyleBackColor = false;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
+            // cmbxBuscar
+            // 
+            this.cmbxBuscar.FormattingEnabled = true;
+            this.cmbxBuscar.Location = new System.Drawing.Point(90, 26);
+            this.cmbxBuscar.Name = "cmbxBuscar";
+            this.cmbxBuscar.Size = new System.Drawing.Size(236, 21);
+            this.cmbxBuscar.TabIndex = 57;
+            this.cmbxBuscar.SelectedIndexChanged += new System.EventHandler(this.cmbxBuscar_SelectedIndexChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(25, 29);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(59, 13);
+            this.label6.TabIndex = 56;
+            this.label6.Text = "Buscar Por";
+            // 
+            // txtBuscar
+            // 
+            this.txtBuscar.Location = new System.Drawing.Point(348, 26);
+            this.txtBuscar.MaxLength = 8;
+            this.txtBuscar.Name = "txtBuscar";
+            this.txtBuscar.Size = new System.Drawing.Size(147, 20);
+            this.txtBuscar.TabIndex = 2;
             // 
             // groupBox2
             // 
@@ -408,9 +420,9 @@
             this.Load += new System.EventHandler(this.frmOdontologo_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.datagriPersona)).EndInit();
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.datagriPersona)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);

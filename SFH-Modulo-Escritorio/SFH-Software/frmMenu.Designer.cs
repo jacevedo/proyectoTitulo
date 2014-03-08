@@ -29,43 +29,43 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMenu));
-            System.Windows.Forms.TreeNode treeNode39 = new System.Windows.Forms.TreeNode("Administración de ficha dental");
-            System.Windows.Forms.TreeNode treeNode40 = new System.Windows.Forms.TreeNode("Administración de presupuesto dental");
-            System.Windows.Forms.TreeNode treeNode41 = new System.Windows.Forms.TreeNode("Administración de orden de laboratorio");
-            System.Windows.Forms.TreeNode treeNode42 = new System.Windows.Forms.TreeNode("Administración de tratamiento dental");
-            System.Windows.Forms.TreeNode treeNode43 = new System.Windows.Forms.TreeNode("Administración de insumos");
-            System.Windows.Forms.TreeNode treeNode44 = new System.Windows.Forms.TreeNode("Administración de listas de precios por tratamiento");
-            System.Windows.Forms.TreeNode treeNode45 = new System.Windows.Forms.TreeNode("Administración de área insumos");
-            System.Windows.Forms.TreeNode treeNode46 = new System.Windows.Forms.TreeNode("Administración de gastos");
-            System.Windows.Forms.TreeNode treeNode47 = new System.Windows.Forms.TreeNode("Administración de clínicas", new System.Windows.Forms.TreeNode[] {
-            treeNode39,
-            treeNode40,
-            treeNode41,
-            treeNode42,
-            treeNode43,
-            treeNode44,
-            treeNode45,
-            treeNode46});
-            System.Windows.Forms.TreeNode treeNode48 = new System.Windows.Forms.TreeNode("Administración de usuarios");
-            System.Windows.Forms.TreeNode treeNode49 = new System.Windows.Forms.TreeNode("Administración de datos de contacto");
-            System.Windows.Forms.TreeNode treeNode50 = new System.Windows.Forms.TreeNode("Administración de pacientes");
-            System.Windows.Forms.TreeNode treeNode51 = new System.Windows.Forms.TreeNode("Administración de odontólogos");
-            System.Windows.Forms.TreeNode treeNode52 = new System.Windows.Forms.TreeNode("Administración de funcionarios");
-            System.Windows.Forms.TreeNode treeNode53 = new System.Windows.Forms.TreeNode("Administración de usuarios del sistema", new System.Windows.Forms.TreeNode[] {
-            treeNode48,
-            treeNode49,
-            treeNode50,
-            treeNode51,
-            treeNode52});
-            System.Windows.Forms.TreeNode treeNode54 = new System.Windows.Forms.TreeNode("Generar Reporte Pacientes");
-            System.Windows.Forms.TreeNode treeNode55 = new System.Windows.Forms.TreeNode("Generar Reportes Monetarios");
-            System.Windows.Forms.TreeNode treeNode56 = new System.Windows.Forms.TreeNode("Listar Historial de Reportes");
-            System.Windows.Forms.TreeNode treeNode57 = new System.Windows.Forms.TreeNode("Reportes y estadísticas", new System.Windows.Forms.TreeNode[] {
-            treeNode54,
-            treeNode55,
-            treeNode56});
+            System.Windows.Forms.TreeNode treeNode20 = new System.Windows.Forms.TreeNode("Administración de ficha dental");
+            System.Windows.Forms.TreeNode treeNode21 = new System.Windows.Forms.TreeNode("Administración de presupuesto dental");
+            System.Windows.Forms.TreeNode treeNode22 = new System.Windows.Forms.TreeNode("Administración de orden de laboratorio");
+            System.Windows.Forms.TreeNode treeNode23 = new System.Windows.Forms.TreeNode("Administración de tratamiento dental");
+            System.Windows.Forms.TreeNode treeNode24 = new System.Windows.Forms.TreeNode("Administración de insumos");
+            System.Windows.Forms.TreeNode treeNode25 = new System.Windows.Forms.TreeNode("Administración de listas de precios por tratamiento");
+            System.Windows.Forms.TreeNode treeNode26 = new System.Windows.Forms.TreeNode("Administración de área insumos");
+            System.Windows.Forms.TreeNode treeNode27 = new System.Windows.Forms.TreeNode("Administración de gastos");
+            System.Windows.Forms.TreeNode treeNode28 = new System.Windows.Forms.TreeNode("Administración de clínicas", new System.Windows.Forms.TreeNode[] {
+            treeNode20,
+            treeNode21,
+            treeNode22,
+            treeNode23,
+            treeNode24,
+            treeNode25,
+            treeNode26,
+            treeNode27});
+            System.Windows.Forms.TreeNode treeNode29 = new System.Windows.Forms.TreeNode("Administración de usuarios");
+            System.Windows.Forms.TreeNode treeNode30 = new System.Windows.Forms.TreeNode("Administración de datos de contacto");
+            System.Windows.Forms.TreeNode treeNode31 = new System.Windows.Forms.TreeNode("Administración de pacientes");
+            System.Windows.Forms.TreeNode treeNode32 = new System.Windows.Forms.TreeNode("Administración de odontólogos");
+            System.Windows.Forms.TreeNode treeNode33 = new System.Windows.Forms.TreeNode("Administración de funcionarios");
+            System.Windows.Forms.TreeNode treeNode34 = new System.Windows.Forms.TreeNode("Administración de usuarios del sistema", new System.Windows.Forms.TreeNode[] {
+            treeNode29,
+            treeNode30,
+            treeNode31,
+            treeNode32,
+            treeNode33});
+            System.Windows.Forms.TreeNode treeNode35 = new System.Windows.Forms.TreeNode("Generar Reporte Pacientes");
+            System.Windows.Forms.TreeNode treeNode36 = new System.Windows.Forms.TreeNode("Generar Reportes Monetarios");
+            System.Windows.Forms.TreeNode treeNode37 = new System.Windows.Forms.TreeNode("Listar Historial de Reportes");
+            System.Windows.Forms.TreeNode treeNode38 = new System.Windows.Forms.TreeNode("Reportes y estadísticas", new System.Windows.Forms.TreeNode[] {
+            treeNode35,
+            treeNode36,
+            treeNode37});
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.cittEnrolaPersonaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.admClinicaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.administraciónDeFichaDentalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.administraciónDePresupuestoDentalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.administraciónDeOrdenDeLaboratorioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -80,6 +80,10 @@
             this.AdministracióndepacientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.administraciónDeOdontólogosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.administraciónDeFuncionariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripReportesyestadisticas = new System.Windows.Forms.ToolStripMenuItem();
+            this.generarReportePacientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.generarReportesMonetariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.listarHistorialDeReportesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usuarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cerrarSessionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.acercaDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -92,10 +96,6 @@
             this.tabControlMenu = new MdiTabControl.TabControl();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.toolStripReportesyestadisticas = new System.Windows.Forms.ToolStripMenuItem();
-            this.generarReportePacientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.generarReportesMonetariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.listarHistorialDeReportesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -105,7 +105,7 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cittEnrolaPersonaToolStripMenuItem,
+            this.admClinicaToolStripMenuItem,
             this.seguridadToolStripMenuItem,
             this.toolStripReportesyestadisticas,
             this.usuarioToolStripMenuItem,
@@ -117,9 +117,9 @@
             this.menuStrip1.TabIndex = 5;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // cittEnrolaPersonaToolStripMenuItem
+            // admClinicaToolStripMenuItem
             // 
-            this.cittEnrolaPersonaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.admClinicaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.administraciónDeFichaDentalToolStripMenuItem,
             this.administraciónDePresupuestoDentalToolStripMenuItem,
             this.administraciónDeOrdenDeLaboratorioToolStripMenuItem,
@@ -128,15 +128,16 @@
             this.administraciónDeListasDePreciosPorTratamientoToolStripMenuItem,
             this.administraciónDeÁreaInsumosToolStripMenuItem,
             this.administraciónDeGatosToolStripMenuItem});
-            this.cittEnrolaPersonaToolStripMenuItem.Name = "cittEnrolaPersonaToolStripMenuItem";
-            this.cittEnrolaPersonaToolStripMenuItem.Size = new System.Drawing.Size(153, 20);
-            this.cittEnrolaPersonaToolStripMenuItem.Text = "Administración de clínica";
+            this.admClinicaToolStripMenuItem.Name = "admClinicaToolStripMenuItem";
+            this.admClinicaToolStripMenuItem.Size = new System.Drawing.Size(153, 20);
+            this.admClinicaToolStripMenuItem.Text = "Administración de clínica";
             // 
             // administraciónDeFichaDentalToolStripMenuItem
             // 
             this.administraciónDeFichaDentalToolStripMenuItem.Name = "administraciónDeFichaDentalToolStripMenuItem";
             this.administraciónDeFichaDentalToolStripMenuItem.Size = new System.Drawing.Size(343, 22);
             this.administraciónDeFichaDentalToolStripMenuItem.Text = "Administración de ficha dental";
+            this.administraciónDeFichaDentalToolStripMenuItem.Visible = false;
             this.administraciónDeFichaDentalToolStripMenuItem.Click += new System.EventHandler(this.administraciónDeFichaDentalToolStripMenuItem_Click);
             // 
             // administraciónDePresupuestoDentalToolStripMenuItem
@@ -144,6 +145,7 @@
             this.administraciónDePresupuestoDentalToolStripMenuItem.Name = "administraciónDePresupuestoDentalToolStripMenuItem";
             this.administraciónDePresupuestoDentalToolStripMenuItem.Size = new System.Drawing.Size(343, 22);
             this.administraciónDePresupuestoDentalToolStripMenuItem.Text = "Administración de presupuesto dental";
+            this.administraciónDePresupuestoDentalToolStripMenuItem.Visible = false;
             this.administraciónDePresupuestoDentalToolStripMenuItem.Click += new System.EventHandler(this.administraciónDePresupuestoDentalToolStripMenuItem_Click);
             // 
             // administraciónDeOrdenDeLaboratorioToolStripMenuItem
@@ -151,6 +153,7 @@
             this.administraciónDeOrdenDeLaboratorioToolStripMenuItem.Name = "administraciónDeOrdenDeLaboratorioToolStripMenuItem";
             this.administraciónDeOrdenDeLaboratorioToolStripMenuItem.Size = new System.Drawing.Size(343, 22);
             this.administraciónDeOrdenDeLaboratorioToolStripMenuItem.Text = "Administración de orden de laboratorio";
+            this.administraciónDeOrdenDeLaboratorioToolStripMenuItem.Visible = false;
             this.administraciónDeOrdenDeLaboratorioToolStripMenuItem.Click += new System.EventHandler(this.administraciónDeOrdenDeLaboratorioToolStripMenuItem_Click);
             // 
             // administraciónDeTratamientoDentalToolStripMenuItem
@@ -158,6 +161,7 @@
             this.administraciónDeTratamientoDentalToolStripMenuItem.Name = "administraciónDeTratamientoDentalToolStripMenuItem";
             this.administraciónDeTratamientoDentalToolStripMenuItem.Size = new System.Drawing.Size(343, 22);
             this.administraciónDeTratamientoDentalToolStripMenuItem.Text = "Administración de tratamiento dental";
+            this.administraciónDeTratamientoDentalToolStripMenuItem.Visible = false;
             this.administraciónDeTratamientoDentalToolStripMenuItem.Click += new System.EventHandler(this.administraciónDeTratamientoDentalToolStripMenuItem_Click);
             // 
             // administraciónDeReportesEInsumosToolStripMenuItem
@@ -165,6 +169,7 @@
             this.administraciónDeReportesEInsumosToolStripMenuItem.Name = "administraciónDeReportesEInsumosToolStripMenuItem";
             this.administraciónDeReportesEInsumosToolStripMenuItem.Size = new System.Drawing.Size(343, 22);
             this.administraciónDeReportesEInsumosToolStripMenuItem.Text = "Administración de reportes e insumos";
+            this.administraciónDeReportesEInsumosToolStripMenuItem.Visible = false;
             this.administraciónDeReportesEInsumosToolStripMenuItem.Click += new System.EventHandler(this.administraciónDeReportesEInsumosToolStripMenuItem_Click);
             // 
             // administraciónDeListasDePreciosPorTratamientoToolStripMenuItem
@@ -172,6 +177,7 @@
             this.administraciónDeListasDePreciosPorTratamientoToolStripMenuItem.Name = "administraciónDeListasDePreciosPorTratamientoToolStripMenuItem";
             this.administraciónDeListasDePreciosPorTratamientoToolStripMenuItem.Size = new System.Drawing.Size(343, 22);
             this.administraciónDeListasDePreciosPorTratamientoToolStripMenuItem.Text = "Administración de listas de precios por tratamiento";
+            this.administraciónDeListasDePreciosPorTratamientoToolStripMenuItem.Visible = false;
             this.administraciónDeListasDePreciosPorTratamientoToolStripMenuItem.Click += new System.EventHandler(this.administraciónDeListasDePreciosPorTratamientoToolStripMenuItem_Click);
             // 
             // administraciónDeÁreaInsumosToolStripMenuItem
@@ -179,6 +185,7 @@
             this.administraciónDeÁreaInsumosToolStripMenuItem.Name = "administraciónDeÁreaInsumosToolStripMenuItem";
             this.administraciónDeÁreaInsumosToolStripMenuItem.Size = new System.Drawing.Size(343, 22);
             this.administraciónDeÁreaInsumosToolStripMenuItem.Text = "Administración de área insumos";
+            this.administraciónDeÁreaInsumosToolStripMenuItem.Visible = false;
             this.administraciónDeÁreaInsumosToolStripMenuItem.Click += new System.EventHandler(this.administraciónDeÁreaInsumosToolStripMenuItem_Click);
             // 
             // administraciónDeGatosToolStripMenuItem
@@ -186,6 +193,7 @@
             this.administraciónDeGatosToolStripMenuItem.Name = "administraciónDeGatosToolStripMenuItem";
             this.administraciónDeGatosToolStripMenuItem.Size = new System.Drawing.Size(343, 22);
             this.administraciónDeGatosToolStripMenuItem.Text = "Administración de gastos";
+            this.administraciónDeGatosToolStripMenuItem.Visible = false;
             this.administraciónDeGatosToolStripMenuItem.Click += new System.EventHandler(this.administraciónDeGatosToolStripMenuItem_Click);
             // 
             // seguridadToolStripMenuItem
@@ -199,6 +207,7 @@
             this.seguridadToolStripMenuItem.Name = "seguridadToolStripMenuItem";
             this.seguridadToolStripMenuItem.Size = new System.Drawing.Size(225, 20);
             this.seguridadToolStripMenuItem.Text = "Administración de usuarios del sistema";
+            this.seguridadToolStripMenuItem.Visible = false;
             // 
             // crearUsuarioToolStripMenuItem
             // 
@@ -235,6 +244,38 @@
             this.administraciónDeFuncionariosToolStripMenuItem.Text = "Administración de funcionarios";
             this.administraciónDeFuncionariosToolStripMenuItem.Click += new System.EventHandler(this.administraciónDeFuncionariosToolStripMenuItem_Click);
             // 
+            // toolStripReportesyestadisticas
+            // 
+            this.toolStripReportesyestadisticas.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.generarReportePacientesToolStripMenuItem,
+            this.generarReportesMonetariosToolStripMenuItem,
+            this.listarHistorialDeReportesToolStripMenuItem});
+            this.toolStripReportesyestadisticas.Name = "toolStripReportesyestadisticas";
+            this.toolStripReportesyestadisticas.Size = new System.Drawing.Size(137, 20);
+            this.toolStripReportesyestadisticas.Text = "Reportes y estadísticas";
+            this.toolStripReportesyestadisticas.Visible = false;
+            // 
+            // generarReportePacientesToolStripMenuItem
+            // 
+            this.generarReportePacientesToolStripMenuItem.Name = "generarReportePacientesToolStripMenuItem";
+            this.generarReportePacientesToolStripMenuItem.Size = new System.Drawing.Size(227, 22);
+            this.generarReportePacientesToolStripMenuItem.Text = "Generar Reporte Pacientes";
+            this.generarReportePacientesToolStripMenuItem.Click += new System.EventHandler(this.generarReportePacientesToolStripMenuItem_Click);
+            // 
+            // generarReportesMonetariosToolStripMenuItem
+            // 
+            this.generarReportesMonetariosToolStripMenuItem.Name = "generarReportesMonetariosToolStripMenuItem";
+            this.generarReportesMonetariosToolStripMenuItem.Size = new System.Drawing.Size(227, 22);
+            this.generarReportesMonetariosToolStripMenuItem.Text = "Generar Reportes Monetarios";
+            this.generarReportesMonetariosToolStripMenuItem.Click += new System.EventHandler(this.generarReportesMonetariosToolStripMenuItem_Click);
+            // 
+            // listarHistorialDeReportesToolStripMenuItem
+            // 
+            this.listarHistorialDeReportesToolStripMenuItem.Name = "listarHistorialDeReportesToolStripMenuItem";
+            this.listarHistorialDeReportesToolStripMenuItem.Size = new System.Drawing.Size(227, 22);
+            this.listarHistorialDeReportesToolStripMenuItem.Text = "Listar Historial de Reportes";
+            this.listarHistorialDeReportesToolStripMenuItem.Click += new System.EventHandler(this.listarHistorialDeReportesToolStripMenuItem_Click);
+            // 
             // usuarioToolStripMenuItem
             // 
             this.usuarioToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -246,7 +287,7 @@
             // cerrarSessionToolStripMenuItem
             // 
             this.cerrarSessionToolStripMenuItem.Name = "cerrarSessionToolStripMenuItem";
-            this.cerrarSessionToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.cerrarSessionToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.cerrarSessionToolStripMenuItem.Text = "Cerrar Session";
             this.cerrarSessionToolStripMenuItem.Click += new System.EventHandler(this.cerrarSessionToolStripMenuItem_Click);
             // 
@@ -281,49 +322,48 @@
             this.treeViewMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.treeViewMenu.Location = new System.Drawing.Point(19, 239);
             this.treeViewMenu.Name = "treeViewMenu";
-            treeNode39.Name = "ndAdministración de ficha dental";
-            treeNode39.Text = "Administración de ficha dental";
-            treeNode40.Name = "ndAdministración de presupuesto dental";
-            treeNode40.Text = "Administración de presupuesto dental";
-            treeNode41.Name = "ndAdministración de orden de laboratorio";
-            treeNode41.Text = "Administración de orden de laboratorio";
-            treeNode42.Name = "ndAdministración de tratamiento dental";
-            treeNode42.Text = "Administración de tratamiento dental";
-            treeNode43.Name = "ndAdministración de reportes e insumos";
-            treeNode43.Text = "Administración de insumos";
-            treeNode44.Name = "ndAdministración de listas de precios por tratamiento";
-            treeNode44.Text = "Administración de listas de precios por tratamiento";
-            treeNode45.Name = "Administración de área insumos";
-            treeNode45.Text = "Administración de área insumos";
-            treeNode46.Name = "Administración de gastos";
-            treeNode46.Text = "Administración de gastos";
-            treeNode47.Name = "adminCli";
-            treeNode47.Text = "Administración de clínicas";
-            treeNode48.Name = "Administraciondeusuarios";
-            treeNode48.Text = "Administración de usuarios";
-            treeNode49.Name = "Datosdecontacto";
-            treeNode49.Text = "Administración de datos de contacto";
-            treeNode50.Name = "Pacientes";
-            treeNode50.Text = "Administración de pacientes";
-            treeNode51.Name = "Odontologos";
-            treeNode51.Text = "Administración de odontólogos";
-            treeNode52.Name = "Funcionarios";
-            treeNode52.Text = "Administración de funcionarios";
-            treeNode53.Name = "AdminUser";
-            treeNode53.Text = "Administración de usuarios del sistema";
-            treeNode54.Name = "GenerarReportePacientes";
-            treeNode54.Text = "Generar Reporte Pacientes";
-            treeNode55.Name = "GenerarReportesMonetarios";
-            treeNode55.Text = "Generar Reportes Monetarios";
-            treeNode56.Name = "ListarHistorialdeReportes";
-            treeNode56.Text = "Listar Historial de Reportes";
-            treeNode57.Name = "AdminRep";
-            treeNode57.Text = "Reportes y estadísticas";
+            treeNode20.Name = "ndAdministración de ficha dental";
+            treeNode20.Text = "Administración de ficha dental";
+            treeNode21.Name = "ndAdministración de presupuesto dental";
+            treeNode21.Text = "Administración de presupuesto dental";
+            treeNode22.Name = "ndAdministración de orden de laboratorio";
+            treeNode22.Text = "Administración de orden de laboratorio";
+            treeNode23.Name = "ndAdministración de tratamiento dental";
+            treeNode23.Text = "Administración de tratamiento dental";
+            treeNode24.Name = "ndAdministración de reportes e insumos";
+            treeNode24.Text = "Administración de insumos";
+            treeNode25.Name = "ndAdministración de listas de precios por tratamiento";
+            treeNode25.Text = "Administración de listas de precios por tratamiento";
+            treeNode26.Name = "Administración de área insumos";
+            treeNode26.Text = "Administración de área insumos";
+            treeNode27.Name = "Administración de gastos";
+            treeNode27.Text = "Administración de gastos";
+            treeNode28.Name = "adminCli";
+            treeNode28.Text = "Administración de clínicas";
+            treeNode29.Name = "Administraciondeusuarios";
+            treeNode29.Text = "Administración de usuarios";
+            treeNode30.Name = "Datosdecontacto";
+            treeNode30.Text = "Administración de datos de contacto";
+            treeNode31.Name = "Pacientes";
+            treeNode31.Text = "Administración de pacientes";
+            treeNode32.Name = "Odontologos";
+            treeNode32.Text = "Administración de odontólogos";
+            treeNode33.Name = "Funcionarios";
+            treeNode33.Text = "Administración de funcionarios";
+            treeNode34.Name = "AdminUser";
+            treeNode34.Text = "Administración de usuarios del sistema";
+            treeNode35.Name = "GenerarReportePacientes";
+            treeNode35.Text = "Generar Reporte Pacientes";
+            treeNode36.Name = "GenerarReportesMonetarios";
+            treeNode36.Text = "Generar Reportes Monetarios";
+            treeNode37.Name = "ListarHistorialdeReportes";
+            treeNode37.Text = "Listar Historial de Reportes";
+            treeNode38.Name = "AdminRep";
+            treeNode38.Text = "Reportes y estadísticas";
             this.treeViewMenu.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode47,
-            treeNode53,
-            treeNode57});
-            
+            treeNode28,
+            treeNode34,
+            treeNode38});
             this.treeViewMenu.Size = new System.Drawing.Size(246, 234);
             this.treeViewMenu.TabIndex = 7;
             this.treeViewMenu.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeViewMenu_NodeMouseDoubleClick);
@@ -426,37 +466,6 @@
             this.groupBox2.TabIndex = 14;
             this.groupBox2.TabStop = false;
             // 
-            // toolStripReportesyestadisticas
-            // 
-            this.toolStripReportesyestadisticas.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.generarReportePacientesToolStripMenuItem,
-            this.generarReportesMonetariosToolStripMenuItem,
-            this.listarHistorialDeReportesToolStripMenuItem});
-            this.toolStripReportesyestadisticas.Name = "toolStripReportesyestadisticas";
-            this.toolStripReportesyestadisticas.Size = new System.Drawing.Size(137, 20);
-            this.toolStripReportesyestadisticas.Text = "Reportes y estadísticas";
-            // 
-            // generarReportePacientesToolStripMenuItem
-            // 
-            this.generarReportePacientesToolStripMenuItem.Name = "generarReportePacientesToolStripMenuItem";
-            this.generarReportePacientesToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
-            this.generarReportePacientesToolStripMenuItem.Text = "Generar Reporte Pacientes";
-            this.generarReportePacientesToolStripMenuItem.Click += new System.EventHandler(this.generarReportePacientesToolStripMenuItem_Click);
-            // 
-            // generarReportesMonetariosToolStripMenuItem
-            // 
-            this.generarReportesMonetariosToolStripMenuItem.Name = "generarReportesMonetariosToolStripMenuItem";
-            this.generarReportesMonetariosToolStripMenuItem.Size = new System.Drawing.Size(227, 22);
-            this.generarReportesMonetariosToolStripMenuItem.Text = "Generar Reportes Monetarios";
-            this.generarReportesMonetariosToolStripMenuItem.Click += new System.EventHandler(this.generarReportesMonetariosToolStripMenuItem_Click);
-            // 
-            // listarHistorialDeReportesToolStripMenuItem
-            // 
-            this.listarHistorialDeReportesToolStripMenuItem.Name = "listarHistorialDeReportesToolStripMenuItem";
-            this.listarHistorialDeReportesToolStripMenuItem.Size = new System.Drawing.Size(227, 22);
-            this.listarHistorialDeReportesToolStripMenuItem.Text = "Listar Historial de Reportes";
-            this.listarHistorialDeReportesToolStripMenuItem.Click += new System.EventHandler(this.listarHistorialDeReportesToolStripMenuItem_Click);
-            // 
             // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -472,6 +481,7 @@
             this.Text = "frmMenu";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMenu_FormClosing);
+            this.Load += new System.EventHandler(this.frmMenu_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -485,7 +495,7 @@
         #endregion
 
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem cittEnrolaPersonaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem admClinicaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem seguridadToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem crearUsuarioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem acercaDeToolStripMenuItem;

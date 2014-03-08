@@ -21,3 +21,7 @@ C:\Users\Citt-David\Desktop\SFH-Modulo-Escritorio\ObjectsBeans\bin\Debug\Objects
 C:\Users\Citt-David\Desktop\SFH-Modulo-Escritorio\ObjectsBeans\bin\Debug\ObjectsBeans.pdb
 C:\Users\Citt-David\Desktop\SFH-Modulo-Escritorio\ObjectsBeans\obj\Debug\ObjectsBeans.dll
 C:\Users\Citt-David\Desktop\SFH-Modulo-Escritorio\ObjectsBeans\obj\Debug\ObjectsBeans.pdb
+C:\Users\David\Desktop\SFH-Modulo-Escritorio\ObjectsBeans\bin\Debug\ObjectsBeans.dll
+C:\Users\David\Desktop\SFH-Modulo-Escritorio\ObjectsBeans\bin\Debug\ObjectsBeans.pdb
+C:\Users\David\Desktop\SFH-Modulo-Escritorio\ObjectsBeans\obj\Debug\ObjectsBeans.dll
+C:\Users\David\Desktop\SFH-Modulo-Escritorio\ObjectsBeans\obj\Debug\ObjectsBeans.pdb

@@ -5,6 +5,7 @@ require_once '../pojos/paciente.php';
 require_once '../controladoras/controladorapaciente.php';
 require_once '../controladoras/controladoracitas.php';
 require_once '../controladoras/controladorapersonaregioncomuna.php';
+require_once '../controladoras/encript.php';
 
 /*
 *Contiene la opciones para insertar, listar y modificar
@@ -24,8 +25,20 @@ require_once '../controladoras/controladorapersonaregioncomuna.php';
 
 
 $jsonRecibido = $_REQUEST["send"];
-$data = json_decode($jsonRecibido);
-$opcion = $data->{'indice'};
+$encript = new Encript();
+$datos = $encript->validarkey($jsonRecibido);
+$data = "";
+error_log("json: datos: ".$datos); 
+if(!is_numeric($datos))
+{
+
+	$data = json_decode($datos);
+	$opcion = $data->{"indice"};
+}
+else
+{
+	$opcion = -1;	
+}
 switch ($opcion) 
 {
 	case 1:
@@ -41,14 +54,18 @@ switch ($opcion)
 		$cita->initClass(0, $idOdontologo, $idPaciente, $horaInicio, $fecha, $estado);
 		//echo($date);
 		$arreglo["resultado"] = $controladora->insertarCita($cita);
-		echo(json_encode($arreglo));
+		$enript = new Encript();
+		$jsonEncriptado = $enript->encriptar($arreglo);
+		echo($jsonEncriptado);
 	break;	
 	case 2:
 		//json lista citas por id Paciente{"indice":2,"idPaciente":3}
 		$controladora = new ControladoraCitas();
 		$idPaciente = $data->{"idPaciente"};
 		$arreglo["resultado"] = $controladora->listarCitaPorIdPaciente($idPaciente);
-		echo(json_encode($arreglo));
+		$enript = new Encript();
+		$jsonEncriptado = $enript->encriptar($arreglo);
+		echo($jsonEncriptado);
 	break;	
 	case 3:
 		//json lista citas por id Paciente y fecha {"indice":3,"idPaciente":3,"fecha":"2013-11-02"}
@@ -56,7 +73,9 @@ switch ($opcion)
 		$idPaciente = $data->{"idPaciente"};
 		$fecha = $data->{"fecha"};
 		$arreglo["resultado"] = $controladora->listarCitaPorPacienteFecha($idPaciente,$fecha);
-		echo(json_encode($arreglo));
+		$enript = new Encript();
+		$jsonEncriptado = $enript->encriptar($arreglo);
+		echo($jsonEncriptado);
 	break;	
 	case 4:
 		//json lista citas por id Odontologo y Fecha {"indice":4,"idOdontologo":3,"fecha":"2013-11-07"}
@@ -64,14 +83,18 @@ switch ($opcion)
 		$idOdontologo = $data->{"idOdontologo"};
 		$fecha = $data->{"fecha"};
 		$arreglo["resultado"] = $controladora->listarCitaPorOdontologoFecha($idOdontologo,$fecha);
-		echo(json_encode($arreglo));
+		$enript = new Encript();
+		$jsonEncriptado = $enript->encriptar($arreglo);
+		echo($jsonEncriptado);
 	break;	
 	case 5:
 		//json listar citas por fecha {"indice":5,"fecha":"2013-11-16"}
 		$controladora = new ControladoraCitas();
 		$fecha = $data->{"fecha"};
 		$arreglo["resultado"] = $controladora->listarCitaPorFecha($fecha);
-		echo(json_encode($arreglo));
+		$enript = new Encript();
+		$jsonEncriptado = $enript->encriptar($arreglo);
+		echo($jsonEncriptado);
 	break;
 	case 6:
 
@@ -86,15 +109,19 @@ switch ($opcion)
 			$devolucion = true && $controladora->confirmarCita($idCita,$estado);
 
 		}
-		echo $jsonRecibido+" " + $devolucion;
+		$enript = new Encript();
+		$jsonEncriptado = $enript->encriptar($arreglo);
+		echo($jsonEncriptado+" " + $devolucion);
 	break;
 	case 7:
 		//json Confirmar una cita {"indice":7,"idCita":3}
 		$controladora = new ControladoraCitas();
 		$idCita = $data->{"idCita"};
 		$estado = 3;
-		$resultado = $controladora->confirmarCita($idCita,$estado);
-		echo $resultado;
+		$arreglo["resultado"] = $controladora->confirmarCita($idCita,$estado);
+		$enript = new Encript();
+		$jsonEncriptado = $enript->encriptar($arreglo);
+		echo($jsonEncriptado+" " + $devolucion);
 	break;
 	case 8:
 		//json modificarCita web {"indice":4,"idOdontologo":3,"hora":"2013-11-30 13:00:00","idCita":1}
@@ -103,7 +130,9 @@ switch ($opcion)
 		$hora = $data->{"hora"};
 		$idCita = $data->{"idCita"};
 		$arreglo["resultado"] = $controladora->modificarCitaWeb($idOdontologo,$hora,$idCita);
-		echo(json_encode($arreglo));
+		$enript = new Encript();
+		$jsonEncriptado = $enript->encriptar($arreglo);
+		echo($jsonEncriptado);
 	break;
 	case 9:
 		//json Crear Persona Cita {"indice":9,"rut":123123,"dv":"k","nombre":"antonio","appPaterno":"palmas","apellidoMaterno":"simoneli","fechaNacimiento":"2013-10-12","fechaReserva":"2013-11-30","idOdontologo":2,"horaReserva":"2013-11-30 13:30:00","estado":0}
@@ -143,6 +172,8 @@ switch ($opcion)
 		{
 			$arreglo["resultado"] = "hubo un error al insertar la persona";
 		}
-		echo (json_encode($arreglo));
+		$enript = new Encript();
+		$jsonEncriptado = $enript->encriptar($arreglo);
+		echo($jsonEncriptado);
 	break;
 }
