@@ -1,4 +1,4 @@
-var direccionWeb = "http://192.168.89.128/sfhwebservice/webService/";
+var direccionWeb = "http://172.16.28.138/sfhwebservice/webService/";
 $(document).ready(inicializarElementos);
 var horaActual;
 var odontologoActual;
@@ -21,6 +21,11 @@ function inicializarElementos()
 	$("#btnConfirmarHora").click(confirmarHora);
 	$("#btnCrearHora").click(reservarHora);
 	$("#btnBuscar").click(buscarHora);
+	$("#txtBuscar").focus(limpiarFecha);
+}
+function limpiarFecha()
+{
+	$("#dateFecha").val("");
 }
 
 function modificarHora()
@@ -180,10 +185,12 @@ function eliminarHora()
 
 function buscarFechas(fecha)
 {
+	$("#cuerpoTabla").html("");
 	var url = direccionWeb + "ws-cita.php";
 	var data = {send:"{\"indice\":5,\"fecha\":\""+fecha+"\"}"};
 	$.post(url,data,function(datos)
 	{
+		alert(datos);
 		var obj = $.parseJSON(datos);
 		$.each(obj.resultado,function()
 		{
