@@ -213,13 +213,11 @@ function accionBoton()
 	{
 		modificarCuenta();
 	}
-	else
+	else if(validarNombre() & validarApellidoPaterno() & validarApellidoMaterno() & 
+	validarPrimeraParteRut() & validarSegundaParteRut() & (validarCelular() || 
+	validarTelefonoFijo() ) & validarMail())
 	{
-		if(validarNombre()&validarApellidoPaterno()&validarApellidoMaterno()&validarPrimeraParteRut()&validarSegundaParteRut()
-			&(validarCelular() ||validarTelefonoFijo() )&validarMail())
-		{
-			guardarModificacionCuenta();
-		}
+		guardarModificacionCuenta();
 	}
 }
 
@@ -294,7 +292,6 @@ function modificarCuenta()
 }
 function validarTexto()
 {
-	alert("hola");
 	if (!e) var e = window.event
 	if (e.keyCode) code = e.keyCode;
 	else if (e.which) code = e.which;
@@ -357,38 +354,25 @@ function guardarModificacionCuenta()
 		var obj = $.parseJSON(datos);
 		var persona = obj.resultadoPersona;
 		var contacto = obj.resultadoDatos;
+		var mensaje = " ";
+		var mensaje2 = " ";
 		//alert(persona);
 		//alert(contacto);
-		if(persona == "Modificado")
+
+		if(persona == "Error al modificar persona" && contacto == "Error al modificar datos contacto")
 		{
-			if( contacto == "Modificado")
-			{
-				alert("Su perfil fue modificado correctamente.");
-				location.reload();
-			}
-			else
-			{
-				alert("Algunos datos no fueron modificados");
-				location.reload();
-			}
+			mensaje = "Se produjo un error, vuelva a intentarlo.";
+		}
+		else
+		{
+			if(persona == "Modificado") { mensaje = "Sus datos personales fueron modificados correctamente."; }
+			else { mensaje = "Sus datos personales NO fueron modificados"; }
+
+			if(contacto == "Modificado") { mensaje2 = "Sus datos de contacto fueron modificados correctamente."; }
+			else { mensaje2 = "Sus datos de contacto NO fueron modificados"; }
 			
-		}
-		if(contacto == "Modificado")
-		{
-			if( persona == "Modificado")
-			{
-				alert("Su perfil fue modificado correctamente");
-				location.reload();
-			}
-			else
-			{
-				alert("Algunos datos no fueron modificados");
-				location.reload();
-			}
-		}
-		if(persona == "Error al modificar datos contacto" && contacto == "Error al modificar datos contacto")
-		{
-			alert("Se produjo un error, vuelva a intentarlo.")
+			alert(mensaje+" "+mensaje2);
+			location.reload();
 		}
 	});
 }

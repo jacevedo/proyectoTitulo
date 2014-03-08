@@ -122,7 +122,7 @@ function reservarHora()
 
 			$.post(url,data,function(datos)
 			{
-				alert(datos);
+				//alert(datos);
 				var obj = $.parseJSON(datos);
 				var resultado = obj.resultado;
 				if(resultado!=-1)

@@ -12,38 +12,44 @@
 
 	$direccionWeb = "http://192.168.89.128/sfhwebservice/webService/";
 
-	$titulo_pagina ='Lista de Precios';
+	$titulo_pagina='Hora Atencion';
 
-	$estilo_css = '<link rel="stylesheet" href="estilos/css/estiloListaPrecios.css">';
+	$estilo_css = '<link rel="stylesheet" href="estilos/css/estiloConfirmarHora.css">';
 
-	$script_javascript = '<script type="text/javascript" src="javascript/scriptListaPrecios.js"></script>';
+	$script_javascript = '<script type="text/javascript" src="javascript/scriptConfirmarHora.js"></script>';
 	
 	$menu_activo = '
 	<li><a href="perfilAsistente.php">Perfil</a></li>
-	<li><a href="confirmarHoras.php">Hora Atencion</a></li>
-	<li class="active"><a href="listaPrecios.php">Lista Precios</a></li>
+	<li class="active"><a href="confirmarHoras.php">Hora Atencion</a></li>
+	<li><a href="listaPrecios.php">Lista Precios</a></li>
 	<li><a href="listaOdontologos.php">Horarios Odontologo</a></li>';
 
 	$contenido_usuario='<p id="nomUsuario"> '.$nombre.' '.$apellido.'</p>';
 
-	$titulo_seccion = '<h1>Lista de Precios</h1>';
+	$titulo_seccion = '<h1>Confirmar Hora</h1>';
 
 	$contenido_pagina = '
 	<div class="panel panel-default">
 		<div class="panel-heading">
 			<div class="row">
-				<div class="col-xs-6 col-sm-4"><input type="search" id="txtBuscaTratamiento"/></div>
-				<div id="botones" class="col-xs-6 col-sm-4"><button id="btnBuscar" class="btn btn-lg btn-primary btn-block" type="submit">Buscar</button></div>
-				<div id="botones" class="col-xs-6 col-sm-4"><button id="btnAgregarTratamiento" class="btn btn-lg btn-primary btn-block" type="submit">Agregar</button></div>
+				<div class="col-xs-6 col-sm-4"><input type="date" id="dateFecha" /></div>
+				<div id="botones" class="col-xs-6 col-sm-4"><input type="search" id="txtBuscar"/></div>
+				<div id="botones" class="col-xs-6 col-sm-4"><button id="btnBuscar" class="btn btn-lg btn-primary btn-block">Buscar</button></div>
 			</div>
-			<div class="row agregar">
-				<div class="col-xs-6 col-sm-4"><input id="txtNomProcedimiento" placeholder="Nombre Procedimiento" type="text"/></div>
-				<div class="col-xs-6 col-sm-4"><input id="txtCostoProcedimiento" placeholder="Costo Neto Proced." type="text"/></div>
-				<div class="col-xs-6 col-sm-4"><Button id="crearNuevoPrecio" class="btn btn-lg btn-primary btn-block">Guardar</Button></div>
-			<div>
+
+			<div class="row">
+				<div class="col-xs-6 col-sm-4"><button id="btnCrearHora" class="btn btn-lg btn-primary btn-block">Reservar Hora atencion</button></div>
+				<div class="col-xs-6 col-sm-4"></div>
+				<div class="col-xs-6 col-sm-4"><button id="btnConfirmarHora" class="btn btn-lg btn-primary btn-block">Confirmar Hora</button></div>
+			</div>
 		</div>
-		<table class="table" id="tablaListaPrecios">
-			<thead><tr><td>Nro</td><td>Nombre Tratamiento</td><td>Precio</td><td>Editar</td><td>Eliminar</td></tr></thead>
+		<table class="table" id="tablaConfirmarHora">
+			<thead>
+				<tr><td class="tdId">id</td><td class="tdNombre">Nombre Paciente</td>
+				<td class="tdTelefono">Telefono</td><td class="tdHora">Hora</td>
+				<td class="tdDentista">Dentista</td><td class="tdConfirmar">Confirmar</td>
+				<td class="tdConfirmar">Modificar</td><td class="tdConfirmar">Eliminar</td></tr>
+			</thead>
 			<tbody id="cuerpoTabla"></tbody>
 		</table>
 	</div>';

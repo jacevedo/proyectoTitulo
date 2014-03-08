@@ -20,6 +20,7 @@ function inicializarElementos()
 	buscarFechas(fecha);
 	$("#btnConfirmarHora").click(confirmarHora);
 	$("#btnCrearHora").click(reservarHora);
+	$("#btnBuscar").click(buscarHora);
 }
 
 function modificarHora()
@@ -179,12 +180,10 @@ function eliminarHora()
 
 function buscarFechas(fecha)
 {
-	alert(fecha);
 	var url = direccionWeb + "ws-cita.php";
 	var data = {send:"{\"indice\":5,\"fecha\":\""+fecha+"\"}"};
 	$.post(url,data,function(datos)
 	{
-		//alert(datos);
 		var obj = $.parseJSON(datos);
 		$.each(obj.resultado,function()
 		{
@@ -273,5 +272,152 @@ function confirmarHora()
 
 function reservarHora()
 {
-	location.href="ReservarHoraAsistente.php";
+	location.href="reservarHoras.php";
 }
+
+function buscarHora()
+{
+	var fechaBuscar = $("#dateFecha").val();
+	var nombreBuscar = $("#txtBuscar").val();
+	if(fechaBuscar == "" && nombreBuscar == "")
+	{
+		alert("Debe ingresar un campo valido para la busqueda.");
+	}
+	else if(fechaBuscar != "" & nombreBuscar == "")
+	{
+		buscarFechas(fechaBuscar);
+	}
+	else if(fechaBuscar == "" && nombreBuscar != "")
+	{
+		var pattern = /\d{7}|\d{8}/;
+		if(nombreBuscar.match(pattern))
+		{
+			alert("Busqueda Rut");
+			var elem = nombreBuscar.split('-');
+			var rut = elem[0];
+			var dv = elem[1];
+
+			if(rut != "" && dv != "")
+			{
+				buscarPacientePorRut(rut);
+			}
+		}
+		else
+		{
+			alert("Busqueda Nombre");
+			var elem = nombreBuscar.split(' ');
+			var nombre = elem[0];
+			var apellido = elem[1];
+
+			if(nombre != "" && apellido != "")
+			{
+				buscarPacientePorNombre(nombre, apellido);
+			}
+		}
+	}
+	else
+	{
+		alert("Busqueda ambas");
+	}
+}
+
+function buscarPacientePorNombre(nombre, apellido)
+{
+	//Buscar por nombre {"indice":6,"nombre":"Jose","apellido":"Muñoz"}
+	var idPaciente = "";
+	var url = direccionWeb + "ws-admin-usuario-sig.php";
+	var data = {"send":"{\"indice\":6,\"nombre\":\""+nombre+"\",\"apellido\":\""+apellido+"\"}"};
+	$.post(url,data,function(datos)
+	{
+		var objeto = $.parseJSON(datos);
+		var paciente = objeto.buscarPacienteNombre;
+		if(paciente != "")
+		{
+			var p = paciente[0];
+			idPaciente = p.idPaciente;
+			buscarCita(idPaciente);
+		}
+		else
+		{
+			alert("Error recuperando id persona.");
+		}
+	});
+}
+
+function buscarPacientePorRut(rut)
+{
+	//Buscar por rut {"indice":5,"rut":17231233}
+	var idPaciente = "";
+	var url = direccionWeb + "ws-admin-usuario-sig.php";
+	var data = {"send":"{\"indice\":5,\"rut\":\""+rut+"\"}"};
+	$.post(url,data,function(datos)
+	{
+		var objeto = $.parseJSON(datos);
+		var paciente = objeto.buscarPacienteRut;
+		if(paciente != "")
+		{
+			var p = paciente[0];
+			idPaciente = p.idPaciente;
+			buscarCita(idPaciente);
+		}
+		else
+		{
+			alert("Error recuperando id persona.");
+		}
+	});
+}
+
+function buscarCita(idPaciente)
+{
+	//{"indice":2,"idPaciente":3}
+	var url = direccionWeb + "ws-cita.php";
+	var data = {send:"{\"indice\":2,\"idPaciente\":\""+idPaciente+"\"}"};
+	$.post(url,data,function(datos)
+	{
+		alert(datos);
+		var obj = $.parseJSON(datos);
+		$.each(obj.resultado,function()
+		{
+			//[{horaInicio":"2014-02-24 12:30:00","fecha":"2014-02-24"
+			/*var cita = obj.resultado;
+			var nomPaciente = cita.nomPaciente+ " " + cita.appPaternoPaciente+" "+ cita.appMaternoPaciente;
+			var horaI = cita.horaInicio;
+			var hora = horaI.split(' ');
+			if(this.fonoFijo == null)
+			{
+				var fonoFijo = "--";
+			}
+			else
+			{
+				var fonoFijo = this.fonoFijo;
+			}
+			if(this.fonoCelular ==null)
+			{
+				var fonoCelular="--";
+			}
+			else
+			{
+				var fonoCelular=this.fonoCelular;
+			}
+
+			var telefono = fonoFijo+" " +fonoCelular;
+			var id = cita.idCita;
+			var estado = cita.estado;
+			var odontologo = cita.nomOdontologo+" "+cita.appPaternoOdontologo+" " + cita.appMaternoOdontologo;
+			var html = "<tr><td class='tdId'>"+id+" </td><td>"+nomPaciente+"</td><td>"+telefono+"</td><td>"+horaI+"</td><td>"+odontologo+"</td><td><input type='checkbox' name='check' class='checkActual'></td><td><Button class='btnModificar btn btn-lg btn-primary btn-block'>Modificar</Button></td><td><Button class='btnEliminar btn btn-lg btn-primary btn-block'>Eliminar</Button></td></tr>"
+			
+			$("#cuerpoTabla").append(html);
+
+			if(estado==1)
+			{
+				$(".checkActual").attr("checked","checked");
+
+			}
+			$(".checkActual").addClass("checkConf");
+			$(".checkConf").removeClass("checkActual");*/
+		});
+		/*$("#tablaConfirmarHora").on("click",".btnModificar",modificarHora);
+		$("#tablaConfirmarHora").on("click",".btnEliminar",eliminarHora);*/
+	});
+}
+

@@ -15,7 +15,7 @@ if($key != "" && $id != "")
 	$_SESSION['nombre'] = $nombre;
 	$_SESSION['appPaterno'] = $appPaterno;
 	
-	header("Location: perfil.php");
+	header("Location: perfilAsistente.php");
 }
 else
 {

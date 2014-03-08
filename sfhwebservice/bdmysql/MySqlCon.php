@@ -12,7 +12,7 @@ class MySqlCon extends mysqli {
     // propiedades que representan parametros de conexion
     private $host_bd = 'localhost';
     private $user_bd = 'root';
-    private $pass_bd = '';
+    private $pass_bd = 'server.2013';
     private $name_bd = 'sfh';
     /**
      * Contructor de esta clase...

@@ -40,7 +40,6 @@ function validarPass()
 
 function login()
 {
-
 	if(validarUsuario()&validarPass())
 	{
 		var usuario = $("#txtUsuario").val();
@@ -111,7 +110,6 @@ function login()
 			}
 		});
 	}
-	
 }
 function validarUser()
 {
@@ -139,5 +137,5 @@ function validarUser()
 		}
 	}
 	return retorno;
-
 }
+
