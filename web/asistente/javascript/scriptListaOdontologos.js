@@ -4,7 +4,6 @@ $(document).ready(inicializarEventos);
 function inicializarEventos()
 {
 	cargarOdontologos();
-
 }
 function cargarOdontologos()
 {
@@ -16,15 +15,16 @@ function cargarOdontologos()
 		var obj = $.parseJSON(datos);
 		$.each(obj.listaOdontologoHerencia,function()
 		{
-			//alert(this.nombre);
 			tabla = tabla+"<tr><td>"+this.nombre+"</td><td>"+this.apellidoPaterno+"</td><td>"+this.apellidoMaterno+"</td><td>"+this.rut+"-"+this.dv+"</td><td><button class='btnModificarHorario btn btn-lg btn-primary btn-block' type='submit' idOdontologo=\""+this.idOdontologo+"\" >Horario</button></td></tr>";
 		});
 		$("#cuerpoTabla").html(tabla);
 	});
 	$("#tablaListaOdontologos").on("click",".btnModificarHorario",llamarHorarios);
 }
+
 function llamarHorarios()
 {
+	var id = $(this).attr("idodontologo");
 	var form = $('<form></form>');
 
     form.attr("method", "post");
@@ -34,18 +34,9 @@ function llamarHorarios()
 
     field.attr("type", "hidden");
     field.attr("name", "idOdontologo");
-    field.attr("value", $(this).attr("idodontologo"));
+    field.attr("value", id);
 
     form.append(field);
     $(document.body).append(form);
     form.submit();
-
-
 }
-
-
-
-
-
-
-

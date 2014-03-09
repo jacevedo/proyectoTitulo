@@ -14,7 +14,7 @@ function validarUsuario()
 	var RegExPattern = /\d{7}|\d{8}/;
 	if(!usuario.match(RegExPattern))
 	{
-		$("#validacionUsuario").html("Debe ingresar su rut sin guion ni digito verificador");
+		$("#validacionUsuario").html("Debe ingresar rut sin gui&oacute;n ni d&iacute;gito verificador");
 		return false;
 	}
 	else
@@ -106,7 +106,7 @@ function login()
 			}
 			else
 			{
-				alert("Usuario y/o Contrase&ntilde;a erroneo.");
+				alert("Usuario y/o contrase\u00f1a err\u00f3neo.");
 			}
 		});
 	}

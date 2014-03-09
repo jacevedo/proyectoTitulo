@@ -13,7 +13,7 @@ function validarMail()
 	var pattern = /^[a-zA-Z0-9._%+-]+@(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,4}$/;
 	if(!mail.match(pattern))
 	{
-		$("#errorMail").html("Debe ingresar un numero mail valido");
+		$("#errorMail").html("Debe ingresar un email v&aacute;lido");
 		return false;
 	}
 	else
@@ -29,7 +29,7 @@ function validarCelular()
 	var pattern = /0{0,2}([\+]?[\d]{1,3} ?)?([\(]([\d]{2,3})[)] ?)?[0-9][0-9 \-]{6,}( ?([xX]|([eE]xt[\.]?)) ?([\d]{1,5}))?/;
 	if(!telefonoFijo.match(pattern))
 	{
-		$("#errorFonoCell").html("Debe ingresar un numero de telefono valido");
+		$("#errorFonoCell").html("Debe ingresar un n&uacute;mero de tel&eacute;fono v&aacute;lido");
 		return false;
 	}
 	else
@@ -44,7 +44,7 @@ function validarTelefonoFijo()
 	var pattern = /0{0,2}([\+]?[\d]{1,3} ?)?([\(]([\d]{2,3})[)] ?)?[0-9][0-9 \-]{6,}( ?([xX]|([eE]xt[\.]?)) ?([\d]{1,5}))?/;
 	if(!telefonoFijo.match(pattern))
 	{
-		$("#errorFonoFijo").html("Debe ingresar un numero de telefono valido");
+		$("#errorFonoFijo").html("Debe ingresar un n&uacute;mero de tel&eacute;fono v&aacute;lido");
 		return false;
 	}
 	else
@@ -59,7 +59,7 @@ function validarPrimeraParteRut()
 	var pattern = /\d{7}|\d{8}/;
 	if(!primeraParteRut.match(pattern))
 	{
-		$("#errorRut").html("Debe ingresar solo digitos");
+		$("#errorRut").html("Debe ingresar s&oacute;lo d&iacute;gitos");
 		return false;
 	}
 	else
@@ -81,7 +81,7 @@ function validarSegundaParteRut()
 	var pattern = /\d{1}|[kK]/;
 	if(!segundaParteRut.match(pattern))
 	{
-		$("#errorRut").html("Debe ingresar un solo digitos o una k");
+		$("#errorRut").html("Debe ingresar s&oacute;lo d&iacute;gitos o una k");
 		return false;
 	}
 	else
@@ -90,7 +90,7 @@ function validarSegundaParteRut()
 
 		if(dv(primeraParteRut)!=segundaParteRut)
 		{
-			$("#errorRut").html("Rut no valido");
+			$("#errorRut").html("Rut no v&aacute;lido");
 			return false;
 		}
 		else
@@ -107,7 +107,7 @@ function validarApellidoMaterno()
 	var pattern = /^[a-zA-ZñÑ]*$/;
 	if(!appPaterno.match(pattern)||appPaterno.length==0)
 	{
-		$("#errorAppMaterno").html("Debe ingresar solo letras");
+		$("#errorAppMaterno").html("Debe ingresar s&oacute;lo letras");
 		return false;
 	}
 	else
@@ -122,7 +122,7 @@ function validarApellidoPaterno()
 	var pattern = /^[a-zA-ZñÑ]*$/;
 	if(!appPaterno.match(pattern)||appPaterno.length==0)
 	{
-		$("#errorAppPaterno").html("Debe ingresar solo letras");
+		$("#errorAppPaterno").html("Debe ingresar s&oacute;lo letras");
 		return false;
 	}
 	else
@@ -141,7 +141,7 @@ function validarNombre()
 	}
 	else
 	{
-       $("#errorNombre").html('Debe ingresar solo letras y a lo mas, 2 nombres');
+       $("#errorNombre").html('Debe ingresar s&oacute;lo letras y a lo m&aacute;s, dos nombres');
            return false;
     }
 }
@@ -160,6 +160,7 @@ function cargarPerfil()
 		var contacto = obj.datosContacto;
 		var pass = obj.datosPass;
 		var comu = obj.datoComuna;
+		var reg = obj.datoRegion;
 
 		var tabla = "";
 
@@ -175,6 +176,7 @@ function cargarPerfil()
 			$("#tdFechaNacimiento").html(persona.fechaNacimiento);
 
 			//DATOS CONTACTO
+			$("#tdRegion").html("----");
 			$("#tdDireccion").html("----");
 			$("#tdComuna").html("----");
 			$("#tdFonoFijo").html("----");
@@ -197,6 +199,7 @@ function cargarPerfil()
 			$("#tdDireccion").html(contacto.direccion);
 			$("#tdidRegion").html(comu.idRegion); // Invisible
 			$("#tdidComuna").html(comu.idComuna); // Invisible
+			$("#tdRegion").html(reg.nombreRegion);
 			$("#tdComuna").html(comu.nombreComuna);
 			$("#tdFonoFijo").html(contacto.fonoFijo);
 			$("#tdFonoCelular").html(contacto.fonoCelular);
@@ -356,20 +359,19 @@ function guardarModificacionCuenta()
 		var contacto = obj.resultadoDatos;
 		var mensaje = " ";
 		var mensaje2 = " ";
-		//alert(persona);
-		//alert(contacto);
 
 		if(persona == "Error al modificar persona" && contacto == "Error al modificar datos contacto")
 		{
 			mensaje = "Se produjo un error, vuelva a intentarlo.";
+			alert(mensaje);
 		}
 		else
 		{
-			if(persona == "Modificado") { mensaje = "Sus datos personales fueron modificados correctamente."; }
-			else { mensaje = "Sus datos personales NO fueron modificados"; }
+			if(persona == "Modificado") { mensaje = "Datos personales modificados correctamente."; }
+			else { mensaje = "Datos personales NO fueron modificados."; }
 
-			if(contacto == "Modificado") { mensaje2 = "Sus datos de contacto fueron modificados correctamente."; }
-			else { mensaje2 = "Sus datos de contacto NO fueron modificados"; }
+			if(contacto == "Modificado") { mensaje2 = "\nDatos de contacto modificados correctamente."; }
+			else { mensaje2 = "\nDatos de contacto NO fueron modificados."; }
 			
 			alert(mensaje+" "+mensaje2);
 			location.reload();
@@ -386,7 +388,7 @@ function cargarRegiones()
 	{
 		var obj = $.parseJSON(datos);
 		var select = '';
-		select = select + "<option value='0'>Seleccione una Region</option>";
+		select = select + "<option value='0'>Seleccione una Regi&oacute;n</option>";
 
 		$.each(obj.listaRegiones,function()
 		{
@@ -405,7 +407,7 @@ function cargarRegiones(RegionesID)
 	{
 		var obj = $.parseJSON(datos);
 		var select = '';
-		select = select + "<option value='0'>Seleccione una Region</option>";
+		select = select + "<option value='0'>Seleccione una Regi&oacute;n</option>";
 
 		$.each(obj.listaRegiones,function()
 		{

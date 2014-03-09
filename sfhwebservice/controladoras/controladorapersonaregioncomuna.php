@@ -368,7 +368,7 @@ class ControladoraPersonaRegionComuna
 		return $this->datos;
 	}
 
-		public function buscarComunaPorID($id)
+	public function buscarComunaPorID($id)
 	{
 		$conexion = new MySqlCon();
 		$this->datos = '';
@@ -393,6 +393,34 @@ class ControladoraPersonaRegionComuna
 		catch(Exception $e)
 		{
 			throw new $e("Error al listar comunas");
+		}
+		return $this->datos;
+	}
+	public function buscarRegionPorID($id)
+	{
+		$conexion = new MySqlCon();
+		$this->datos = '';
+		try
+		{
+			$this->SqlQuery = '';
+			$this->SqlQuery = "SELECT * FROM `region` WHERE `ID_REGION` = ?";
+		   	$sentencia=$conexion->prepare($this->SqlQuery);
+		   	$sentencia->bind_param('i', $id);
+        	if($sentencia->execute())
+        	{
+        		$sentencia->bind_result($idRegion, $nombreRegion, $numeroRegion);					
+				while($sentencia->fetch())
+				{
+					$region = new Region();
+					$region->initClass($idRegion, $nombreRegion, $numeroRegion);
+					$this->datos = $region;
+				}
+      		}
+       		$conexion->close();
+		}
+		catch(Exception $e)
+		{
+			throw new $e("Error al listar regiones");
 		}
 		return $this->datos;
 	}

@@ -9,11 +9,11 @@
 	$paciente = $_SESSION['paciente'];
 	$nombre = $_SESSION['nombre'];
 	$apellido = $_SESSION['appPaterno'];
-	$odontologo = $_POST["idOdontologo"]; 
+	$odontologo = $_POST["idOdontologo"];
 
 	$direccionWeb = "http://192.168.89.128/sfhwebservice/webService/";
 
-	$titulo_pagina ='Horario Odontologo';
+	$titulo_pagina ='Horarios Odont&oacute;logo';
 
 	$estilo_css = '<link rel="stylesheet" href="estilos/css/estiloReservarHora.css">';
 
@@ -21,18 +21,18 @@
 	
 	$menu_activo = '
 	<li><a href="perfilAsistente.php">Perfil</a></li>
-	<li><a href="confirmarHoras.php">Hora Atencion</a></li>
+	<li><a href="confirmarHoras.php">Horas Atenci&oacute;n</a></li>
 	<li><a href="listaPrecios.php">Lista Precios</a></li>
-	<li class="active"><a href="listaOdontologos.php">Horarios Odontologo</a></li>';
+	<li class="active"><a href="listaOdontologos.php">Horarios Odont&oacute;logo</a></li>';
 
 	$contenido_usuario='<p id="nomUsuario"> '.$nombre.' '.$apellido.'</p>';
 
-	$titulo_seccion = '<h1>Lista de Odontologos</h1>';
+	$titulo_seccion = '<h1>Lista de Odont&oacute;logos</h1>';
 
 	$contenido_pagina = '
 	<input type="hidden" id="idUsuario" value=""/>
 	<table id="tablaReservarHoraAsistente" class="tab">
-		<tr><td>Dia</td><td>Hora Inicio</td><td>Hora Termino</td><td>Duracion Modulo</td><td></td></tr>
+		<tr><td>Dia</td><td>Hora Inicio</td><td>Hora T&eacute;rmino</td><td>Duraci&oacute;n M&oacute;dulo</td><td></td></tr>
 
 		<tr><td>Lunes</td>
 		<td><input placeholder="00:00:00" class="inputHora" dia="HoraIniciolunes" type="text" id="txtHoraIniciolunes"/><br><span id="spanHoraIniciolunes"></span></td>
@@ -46,7 +46,7 @@
 		<td><input placeholder="00:00:00" class="inputHora" dia="DuracionModulomartes" type="text" id="txtDuracionModulomartes"/><br><span id="spanDuracionModulomartes"></span></td>
 		<td><Button dia="martes" class="btnGuardar btn btn-lg btn-primary btn-block">Guardar</Button></td></tr>
 
-		<tr><td>Miercoles</td>
+		<tr><td>Mi&eacute;rcoles</td>
 		<td><input placeholder="00:00:00" class="inputHora" dia="HoraIniciomiercoles" type="text" id="txtHoraIniciomiercoles"/><br><span id="spanHoraIniciomiercoles"></span></td>
 		<td><input placeholder="00:00:00" class="inputHora" dia="HoraTerminomiercoles" type="text" id="txtHoraTerminomiercoles"/><br><span id="spanHoraTerminomiercoles"></span></td>
 		<td><input placeholder="00:00:00" class="inputHora" dia="DuracionModulomiercoles" type="text" id="txtDuracionModulomiercoles"/><br><span id="spanDuracionModulomiercoles"></span></td>
@@ -64,7 +64,7 @@
 		<td><input placeholder="00:00:00" class="inputHora" dia="DuracionModuloviernes" type="text" id="txtDuracionModuloviernes"/><br><span id="spanDuracionModuloviernes"></span></td>
 		<td><Button dia="viernes" class="btnGuardar btn btn-lg btn-primary btn-block">Guardar</Button></td>										</tr>
 
-		<tr><td>Sabado</td>		
+		<tr><td>S&aacute;bado</td>		
 		<td><input placeholder="00:00:00" class="inputHora" dia="HoraIniciosabado" type="text" id="txtHoraIniciosabado"/><br><span id="spanHoraIniciosabado"></span></td>
 		<td><input placeholder="00:00:00" class="inputHora" dia="HoraTerminosabado" type="text" id="txtHoraTerminosabado"/><br><span id="spanHoraTerminosabado"></span></td>
 		<td><input placeholder="00:00:00" class="inputHora" dia="DuracionModulosabado" type="text" id="txtDuracionModulosabado"/><br><span id="spanDuracionModulosabado"></span></td>
@@ -78,10 +78,10 @@
 	</table>';
 
 	$valores_ocultos = '
-	<input type="hidden" value='.$user.' id="idPaciente">
-	<input type="hidden" value='.$key.' id="keyPaciente">
-	<input type="hidden" value='.$paciente.' id="pacientes">
-	<input type="hidden" value='.$odontologo.'id="idOdontologo">';
+	<input type="hidden" value="'.$user.'" id="idPaciente">
+	<input type="hidden" value="'.$key.'" id="keyPaciente">
+	<input type="hidden" value="'.$paciente.'" id="pacientes">
+	<input type="hidden" value="'.$odontologo.'" id="odontologos">';
 
 	$contenido_cuerpo = '';
 

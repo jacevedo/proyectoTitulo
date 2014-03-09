@@ -50,7 +50,7 @@ function validarAppPaterno()
 	var pattern = /^[a-zA-ZñÑ]*$/;
 	if(!appPaterno.match(pattern)||appPaterno.length==0)
 	{
-		$("#spanErrorAppPaterno").html("Debe ingresar solo letras");
+		$("#spanErrorAppPaterno").html("Debe ingresar s&oacute;lo letras");
 		return false;
 	}
 	else
@@ -65,7 +65,7 @@ function validarAppMaterno()
 	var pattern = /^[a-zA-ZñÑ]*$/;
 	if(!appPaterno.match(pattern)||appPaterno.length==0)
 	{
-		$("#spanErrorAppMaterno").html("Debe ingresar solo letras");
+		$("#spanErrorAppMaterno").html("Debe ingresar s&oacute;lo letras");
 		return false;
 	}
 	else
@@ -80,7 +80,7 @@ function validarRut()
 	var pattern = /\d{7}|\d{8}/;
 	if(!rut.match(pattern))
 	{
-		$("#spanErrorRut").html("Debe ingresar solo numeros");
+		$("#spanErrorRut").html("Debe ingresar s&oacute;lo d&iacute;gitos");
 		return false;
 	}
 	else
@@ -99,7 +99,7 @@ function validarNombre()
 	}
 	else
 	{
-       	$("#spanErrorNombre").html('Debe ingresar solo letras y a lo más, 2 nombres');
+       	$("#spanErrorNombre").html('Debe ingresar s&oacute;lo letras y a lo m&aacute;s, dos nombres');
         return false;
     }
 }
@@ -122,17 +122,16 @@ function reservarHora()
 
 			$.post(url,data,function(datos)
 			{
-				//alert(datos);
 				var obj = $.parseJSON(datos);
 				var resultado = obj.resultado;
 				if(resultado!=-1)
 				{
-					alert("La cita se guardo correctamente");
+					alert("Cita ingresada correctamente.");
 					limpiarCampos();
 				}
 				else
 				{
-					alert("Hubo un error al almacenar la cita");
+					alert("Se produjo un error, vuelva a intentarlo.");
 				}
 			});
 		}
@@ -160,19 +159,19 @@ function reservarHora()
 				var respuesta = objeto.resultado;
 				if(respuesta == "Hubo un error al insertar la persona")
 				{
-					alert(respuesta);				
+					alert("Se produjo un error, vuelva a intentarlo.");				
 				}
 				else if(respuesta == "Hubo un error al insertar al paciente")
 				{
-					alert(respuesta);	
+					alert("Se produjo un error, vuelva a intentarlo.");	
 				}
 				else if(respuesta!=-1)
 				{
-					alert("La cita se ingreso correctamente");
+					alert("Cita insertada correctamente.");
 				}
 				else
 				{
-					alert("Hubo un error al insertar la cita");
+					alert("Se produjo un error, vuelva a intentarlo.");
 				}
 				limpiarCampos();
 			});
@@ -215,7 +214,7 @@ function validarRutDigitoVerificador()
 	}
 	else
 	{
-		$("#spanErrorRut").html("Debe ingresar un rut valido");
+		$("#spanErrorRut").html("Debe ingresar un rut v&aacute;lido");
 		return false;
 	}
 }
@@ -265,14 +264,14 @@ function buscarPersona()
 		}	
 		else
 		{
-			alert("Debe llenar el rut");
+			alert("Debe ingresar un rut v\u00e1lido.");
 		}	
 		$("#spanErrorRut").html("");
 		return true;
 	}
 	else
 	{
-		$("#spanErrorRut").html("Debe ingresar un rut valido");
+		$("#spanErrorRut").html("Debe ingresar un rut v&aacute;lido");
 		return false;
 	}
 	
@@ -301,7 +300,7 @@ function disponibilidad()
 		}
 		else
 		{
-			alert("No se encontraron dentistas");
+			alert("No se encontraron dentistas.");
 			$("#selectDentista").html("<option>--</option>");
 		}
 		
@@ -333,30 +332,4 @@ function cargarHoras()
 		}
 	});
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

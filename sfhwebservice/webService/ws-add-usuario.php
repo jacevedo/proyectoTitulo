@@ -123,11 +123,23 @@ switch ($opcion)
 				$arreglo["datosContacto"] = $contacto;
 
 				$idComuna = $contacto->idComuna;
+
 				if($idComuna != 0)
 				{
 					//$datosComuna = new Comuna();
 					$controladoraComuna = new ControladoraPersonaRegionComuna();
+					$comuna = $controladoraComuna->buscarComunaPorID($idComuna);
 					$arreglo["datoComuna"] = $controladoraComuna->buscarComunaPorID($idComuna);
+					
+					$idRegion = $comuna->idRegion;
+					if($idRegion != 0)
+					{
+						$arreglo["datoRegion"] = $controladoraComuna->buscarRegionPorID($idRegion);
+					}
+					else
+					{
+						$arreglo["datoRegion"] = "Error";
+					}
 				}
 				else
 				{

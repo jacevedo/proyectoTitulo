@@ -12,7 +12,7 @@
 
 	$direccionWeb = "http://192.168.89.128/sfhwebservice/webService/";
 
-	$titulo_pagina='Hora Atencion';
+	$titulo_pagina='Horas Atenci&oacute;n';
 
 	$estilo_css = '<link rel="stylesheet" href="estilos/css/estiloConfirmarHora.css">';
 
@@ -20,13 +20,13 @@
 	
 	$menu_activo = '
 	<li><a href="perfilAsistente.php">Perfil</a></li>
-	<li class="active"><a href="confirmarHoras.php">Hora Atencion</a></li>
+	<li class="active"><a href="confirmarHoras.php">Horas Atenci&oacute;n</a></li>
 	<li><a href="listaPrecios.php">Lista Precios</a></li>
-	<li><a href="listaOdontologos.php">Horarios Odontologo</a></li>';
+	<li><a href="listaOdontologos.php">Horarios Odont&oacute;logo</a></li>';
 
 	$contenido_usuario='<p id="nomUsuario"> '.$nombre.' '.$apellido.'</p>';
 
-	$titulo_seccion = '<h1>Confirmar Hora</h1>';
+	$titulo_seccion = '<h1>Horas de Atenci&oacute;n</h1>';
 
 	$contenido_pagina = '
 	<div class="panel panel-default">
@@ -38,7 +38,7 @@
 			</div>
 
 			<div class="row">
-				<div class="col-xs-6 col-sm-4"><button id="btnCrearHora" class="btn btn-lg btn-primary btn-block">Reservar Hora atencion</button></div>
+				<div class="col-xs-6 col-sm-4"><button id="btnCrearHora" class="btn btn-lg btn-primary btn-block">Reservar Hora</button></div>
 				<div class="col-xs-6 col-sm-4"></div>
 				<div class="col-xs-6 col-sm-4"><button id="btnConfirmarHora" class="btn btn-lg btn-primary btn-block">Confirmar Hora</button></div>
 			</div>
@@ -46,7 +46,7 @@
 		<table class="table" id="tablaConfirmarHora">
 			<thead>
 				<tr><td class="tdId">id</td><td class="tdNombre">Nombre Paciente</td>
-				<td class="tdTelefono">Telefono</td><td class="tdHora">Hora</td>
+				<td class="tdTelefono">Tel&eacute;fono</td><td class="tdHora">Hora</td>
 				<td class="tdDentista">Dentista</td><td class="tdConfirmar">Confirmar</td>
 				<td class="tdConfirmar">Modificar</td><td class="tdConfirmar">Eliminar</td></tr>
 			</thead>
@@ -55,9 +55,9 @@
 	</div>';
 
 	$valores_ocultos = '
-	<input type="hidden" value='.$user.' id="idPaciente">
-	<input type="hidden" value='.$key.' id="keyPaciente">
-	<input type="hidden" value='.$paciente.' id="pacientes">';
+	<input type="hidden" value="'.$user.'" id="idPaciente">
+	<input type="hidden" value="'.$key.'" id="keyPaciente">
+	<input type="hidden" value="'.$paciente.'" id="pacientes">';
 
 	$contenido_cuerpo = '';
 

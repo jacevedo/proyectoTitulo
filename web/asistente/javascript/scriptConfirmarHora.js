@@ -50,7 +50,7 @@ function modificarHora()
 			},
 			error: function(dato)
 			{
-				alert("No pudimos traer los datos");
+				alert("Se produjo un error, vuelva a intentarlo.");
 			}
 		});
 		$(this).text("Guardar");
@@ -85,7 +85,7 @@ function modificarHora()
 			}
 			else if(resultado=="error al modificar")
 			{
-				alert("No ha cambiado ningun campo");
+				alert("No ha modificado ning\u00fan campo.");
 				boton.text("Modificar");
 				editando=0;
 				$(".hora").html(hora);
@@ -93,7 +93,7 @@ function modificarHora()
 			}
 			else
 			{
-				alert("hubo un error, por favor actualize la pagina");
+				alert("Se produjo un error, vuelva a intentarlo.");
 			}
 		});
 	}	
@@ -164,20 +164,20 @@ function eliminarHora()
  	var boton = $(this);
  	var data = {"send":"{\"indice\":7,\"idCita\":"+id+"}"};
 	var url = direccionWeb+"ws-cita.php";
-	if (confirm("¿Desea Eliminar La cita seleccionada?")) 
+	if (confirm("¿Desea eliminar la cita seleccionada?")) 
 	{
 		$.post(url,data,function(datos)
 		{
 			if(datos==1)
 			{
-				alert("Las cita fue eliminada Correctamente");
+				alert("Cita eliminada correctamente.");
 				boton.parent().parent().fadeOut(500,function(){
 					$(this).remove();
 				});
 			}
 			else
 			{
-				alert("Hubo un error al eliminar la cita");
+				alert("Se produjo un error, vuelva a intentarlo.");
 			}
 		});
 	}
@@ -268,11 +268,11 @@ function confirmarHora()
 	{
 		if(datos==1)
 		{
-			alert("Los cambios fueron guardados correctamente.");
+			alert("Cita modificada correctamente.");
 		}
 		else
 		{
-			alert("Hubo un error al Modificar las citas");
+			alert("Se produjo un error, vuelva a intentarlo.");
 		}
 	});
 }
@@ -288,7 +288,7 @@ function buscarHora()
 	var nombreBuscar = $("#txtBuscar").val();
 	if(fechaBuscar == "" && nombreBuscar == "")
 	{
-		alert("Debe ingresar un campo valido para la busqueda.");
+		alert("Debe ingresar un campo v\u00e1lido.");
 	}
 	else if(fechaBuscar != "" & nombreBuscar == "")
 	{
@@ -346,7 +346,7 @@ function buscarPacientePorNombre(nombre, apellido)
 		}
 		else
 		{
-			alert("Error recuperando id persona.");
+			alert("Se produjo un error, vuelva a intentarlo.");
 		}
 	});
 }
@@ -369,7 +369,7 @@ function buscarPacientePorRut(rut)
 		}
 		else
 		{
-			alert("Error recuperando id persona.");
+			alert("Se produjo un error, vuelva a intentarlo.");
 		}
 	});
 }

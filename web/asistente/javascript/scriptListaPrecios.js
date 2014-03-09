@@ -8,14 +8,15 @@ function inicializarEventos()
 	$("#btnAgregarTratamiento").click(agregarTratamiento);
 	$("#crearNuevoPrecio").click(crearPrecio);
 	$("#txtNomProcedimiento").blur(validarVacio);
-	$("#txtCostoProcedimiento").blur(validarCosto);
+	$("#txtCostoProcedimiento").blur(validarCostoP);
+	$("#filaAgregar").hide();
 }
 function validarVacio()
 {
 	var nomProcedimiento = $("#txtNomProcedimiento").val();
 	if(nomProcedimiento.length==0)
 	{
-		$("#spanErrorNomProcedimiento").html("Debes ingresar un nombre de procedimiento");
+		$("#spanErrorNomProcedimiento").html("Debe ingresar un nombre");
 		return false;
 	}
 	else
@@ -24,25 +25,34 @@ function validarVacio()
 		return true;
 	}
 }
-function validarCosto()
+function validarCostoP()
 {
-	var costo=$("#txtCostoProcedimiento").val();
+	var costo = $("#txtCostoProcedimiento").val();
 	var pattern = /[0-9]/
-	if(!costo.match(pattern))
+	if(costo.length == 0)
 	{
-		$("#spanErrorCostoProcedimiento").html("Debe ingresar solo digitos");
+		$("#spanErrorCostoProcedimiento").html("Debe ingresar un valor");
 		return false;
 	}
 	else
 	{
 		$("#spanErrorCostoProcedimiento").html("");
-		return true;
+		if(!costo.match(pattern))
+		{
+			$("#spanErrorCostoProcedimiento").html("Debe ingresar s&oacute;lo d&iacute;gitos");
+			return false;
+		}
+		else
+		{
+			$("#spanErrorCostoProcedimiento").html("");
+			return true;
+		}
 	}
 
 }
 function crearPrecio()
 {
-	if(validarVacio()&validarCosto())
+	if(validarVacio()&validarCostoP())
 	{
 		var nomProcedimiento = $("#txtNomProcedimiento").val();
 		var precioProcedimiento = $("#txtCostoProcedimiento").val();
@@ -55,7 +65,7 @@ function crearPrecio()
 			var obj = $.parseJSON(datos);
 			if(obj.idPrecioInsertado!=-1)
 			{
-				alert("Procedimiento Insertado Correctamente")
+				alert("Procedimiento insertado correctamente.")
 				var textoNuevo = "<tr><td>"+obj.idPrecioInsertado+"</td><td>"+nomProcedimiento+"</td><td>"+precioProcedimiento+"</td><td><button class=\"btnEditarPrecio btn btn-lg btn-primary btn-block\" type=\"submit\">Editar</button></td><td><button class=\"btnEliminarPrecio btn btn-lg btn-primary btn-block\" type=\"submit\">Eliminar</button></td></tr>";
 				$("#cuerpoTabla").prepend(textoNuevo);
 				$("#tablaListaPrecios").off("click",".btnEditarPrecio",modificarObjeto);
@@ -66,7 +76,7 @@ function crearPrecio()
 			}
 			else
 			{
-				alert("Hubo un error al insertar el procedimiento");
+				alert("Se produjo un error, vuelva a intentarlo.");
 			}
 		});
 	}
@@ -100,7 +110,7 @@ function validarCostoBoton(boton)
 	var pattern = /^[0-9]/
 	if(!costo.match(pattern))
 	{
-		$("#spanErrorCostoDinamico").html("Debe ingresar solo digitos");
+		$("#spanErrorCostoDinamico").html("Debe ingresar s&oacute;lo d&iacute;gitos");
 		return false;
 	}
 	else
@@ -116,7 +126,7 @@ function validarNomProcedimientoBoton(boton)
 	var concepto = $("#concepto-"+idCosto).val();
 	if(concepto.length==0)
 	{
-		$("#spanErrorConceptoDinamico").html("Error debe ingresar algo");
+		$("#spanErrorConceptoDinamico").html("Debe ingresar un valor");
 		return false;
 	}
 	else
@@ -201,7 +211,7 @@ function modificarObjeto()
 				var resultado = obj.Modificado;
 				if(resultado=="Modificado")
 				{
-					alert("El tratamiento fue modificado correctamente.");
+					alert("Tratamiento modificado correctamente.");
 				}
 				else
 				{
@@ -217,7 +227,7 @@ function validarConcepto(idCosto)
 	var concepto = $(this).val();
 	if(concepto.length==0)
 	{
-		$("#spanErrorConceptoDinamico").html("Error debe ingresar algo");
+		$("#spanErrorConceptoDinamico").html("Debe ingresar un valor");
 		return false;
 	}
 	else
@@ -233,7 +243,7 @@ function validarCosto(idCosto)
 	var pattern = /^[0-9]/
 	if(!costo.match(pattern))
 	{
-		$("#spanErrorCostoDinamico").html("Debe ingresar solo digitos");
+		$("#spanErrorCostoDinamico").html("Debe ingresar s&oacute;lo d&iacute;gitos");
 		return false;
 	}
 	else
@@ -285,17 +295,26 @@ function eliminarObjeto()
 		var obj = $.parseJSON(datos);
 		if(obj.Eliminado == "Eliminado")
 		{
-			alert("Tratamiento Eliminado.");
+			alert("Tratamiento eliminado correctamente.");
 			location.reload();
 		}
 		else
 		{
-			alert("No se pudo eliminar el tratamiento.");
+			alert("Se produjo un error, vuelva a intentarlo.");
 		}
 	});
 }
 
 function agregarTratamiento()
 {
-	//location.href="agregarTratamiento.php";
+	if($(this).html()=="Agregar")
+	{
+		$("#filaAgregar").fadeIn();
+		$(this).html("Cerrar");
+	}
+	else if($(this).html()=="Cerrar")
+	{
+		$("#filaAgregar").fadeOut();
+		$(this).html("Agregar");
+	}
 }

@@ -20,9 +20,9 @@
 	
 	$menu_activo = '
 	<li class="active"><a href="perfilAsistente.php">Perfil</a></li>
-	<li><a href="confirmarHoras.php">Hora Atencion</a></li>
+	<li><a href="confirmarHoras.php">Horas Atenci&oacute;n</a></li>
 	<li><a href="listaPrecios.php">Lista Precios</a></li>
-	<li><a href="listaOdontologos.php">Horarios Odontologo</a></li>';
+	<li><a href="listaOdontologos.php">Horarios Odont&oacute;logo</a></li>';
 
 	$contenido_usuario='<p id="nomUsuario"> '.$nombre.' '.$apellido.'</p>';
 
@@ -39,13 +39,13 @@
 
   	<div class="row"><div class="col-xs-6 col-lg-4">Fecha de Nacimiento:</div><div id="tdFechaNacimiento" class="col-xs-12 col-sm-6 col-lg-8"></div></div>
 
-  	<div class="row"><div class="col-xs-6 col-lg-4">Direccion:</div><div id="tdDireccion" class="col-xs-12 col-sm-6 col-lg-8"></div></div>
+  	<div class="row"><div class="col-xs-6 col-lg-4">Direcci&oacute;n:</div><div id="tdDireccion" class="col-xs-12 col-sm-6 col-lg-8"></div></div>
 
-  	<div class="row"><div class="col-xs-6 col-lg-4">Region:</div><div id="tdRegion" class="col-xs-12 col-sm-6 col-lg-8"></div></div>
+  	<div class="row"><div class="col-xs-6 col-lg-4">Regi&oacute;n:</div><div id="tdRegion" class="col-xs-12 col-sm-6 col-lg-8"></div></div>
 
   	<div class="row"><div class="col-xs-6 col-lg-4">Comuna:</div><div id="tdComuna" class="col-xs-12 col-sm-6 col-lg-8"></div></div>
 
-  	<div class="row"><div class="col-xs-6 col-lg-4">Telefono Fijo:</div><div id="tdFonoFijo" class="col-xs-12 col-sm-6 col-lg-8"></div></div>
+  	<div class="row"><div class="col-xs-6 col-lg-4">Tel&eacute;fono Fijo:</div><div id="tdFonoFijo" class="col-xs-12 col-sm-6 col-lg-8"></div></div>
 
   	<div class="row"><div class="col-xs-6 col-lg-4">Celular:</div><div id="tdFonoCelular" class="col-xs-12 col-sm-6 col-lg-8"></div></div>
 
@@ -68,9 +68,9 @@
 	</table>';
 
 	$valores_ocultos = '
-	<input type="hidden" value='.$user.' id="idPaciente">
-	<input type="hidden" value='.$key.' id="keyPaciente">
-	<input type="hidden" value='.$paciente.' id="pacientes">';
+	<input type="hidden" value="'.$user.'" id="idPaciente">
+	<input type="hidden" value="'.$key.'" id="keyPaciente">
+	<input type="hidden" value="'.$paciente.'" id="pacientes">';
 
 	$contenido_cuerpo = '<div id="Contenido"></div>';
 

@@ -10,7 +10,7 @@
 	$contenido_pagina='
 	<div class="form-signin">
         <h2 id="textoBienvenida" class="form-signin-heading">SFH</h2>
-        <input type="text" id="txtUsuario" class="form-control" placeholder="Usuario (rut sin punto ni guion)" required autofocus/>
+        <input type="text" id="txtUsuario" class="form-control" placeholder="Usuario (rut sin punto ni gui&oacute;n)" required autofocus/>
         <span id="validacionUsuario"></span>
         <input type="password" id="txtPass" class="form-control" placeholder="Contrase&ntilde;a" required/>
         <span id="validacionContrasena"></span>

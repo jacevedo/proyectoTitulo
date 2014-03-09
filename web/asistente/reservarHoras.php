@@ -20,13 +20,13 @@
 	
 	$menu_activo = '
 	<li><a href="perfilAsistente.php">Perfil</a></li>
-	<li class="active"><a href="confirmarHoras.php">Hora Atencion</a></li>
+	<li class="active"><a href="confirmarHoras.php">Horas Atenci&oacute;n</a></li>
 	<li><a href="listaPrecios.php">Lista Precios</a></li>
-	<li><a href="listaOdontologos.php">Horarios Odontologo</a></li>';
+	<li><a href="listaOdontologos.php">Horarios Odont&oacute;logo</a></li>';
 
 	$contenido_usuario='<p id="nomUsuario"> '.$nombre.' '.$apellido.'</p>';
 
-	$titulo_seccion = '<h1>Reservar Hora de Atencion</h1>';
+	$titulo_seccion = '<h1>Reservar Hora de Atenci&oacute;n</h1>';
 
 	$contenido_pagina = '
 	<input type="hidden" id="idUsuario" value=""/>
@@ -50,9 +50,9 @@
 	<button id="btnReservarHora" class="btn btn-lg btn-primary btn-block">Reservar Hora</button>';
 
 	$valores_ocultos = '
-	<input type="hidden" value='.$user.' id="idPaciente">
-	<input type="hidden" value='.$key.' id="keyPaciente">
-	<input type="hidden" value='.$paciente.' id="pacientes">';
+	<input type="hidden" value="'.$user.'" id="idPaciente">
+	<input type="hidden" value="'.$key.'" id="keyPaciente">
+	<input type="hidden" value="'.$paciente.'" id="pacientes">';
 
 	$contenido_cuerpo = '';
 

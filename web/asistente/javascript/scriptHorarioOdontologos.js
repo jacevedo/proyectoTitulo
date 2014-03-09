@@ -35,7 +35,7 @@ function validarTiempo()
 	var pattern = /\d{2}\:\d{2}\:\d{2}/
 	if(!texto.match(pattern))
 	{
-		$("#span"+campo).html("Debe ingresar una hora valida");
+		$("#span"+campo).html("Debe ingresar una hora v&aacute;lida");
 		return false;
 	}
 	else
@@ -50,7 +50,7 @@ function validarHoraInicio(dia)
 	var pattern = /\d{2}\:\d{2}\:\d{2}/
 	if(!texto.match(pattern))
 	{
-		$("#spanHoraInicio"+dia).html("Debe ingresar una hora valida");
+		$("#spanHoraInicio"+dia).html("Debe ingresar una hora v&aacute;lida");
 		return false;
 	}
 	else
@@ -65,7 +65,7 @@ function validarHoraTermino(dia)
 	var pattern = /\d{2}\:\d{2}\:\d{2}/
 	if(!texto.match(pattern))
 	{
-		$("#spanHoraTermino"+dia).html("Debe ingresar una hora valida");
+		$("#spanHoraTermino"+dia).html("Debe ingresar una hora v&aacute;lida");
 		return false;
 	}
 	else
@@ -80,7 +80,7 @@ function validarDuracionModulo(dia)
 	var pattern = /\d{2}\:\d{2}\:\d{2}/
 	if(!texto.match(pattern))
 	{
-		$("#spanDuracionModulo"+dia).html("Debe ingresar una hora valida");
+		$("#spanDuracionModulo"+dia).html("Debe ingresar una hora v&aacute;lida");
 		return false;
 	}
 	else
@@ -94,7 +94,7 @@ function guardarDia()
 	var dia = $(this).attr("dia");
 	if(validarHoraInicio(dia)&validarHoraTermino(dia)&validarDuracionModulo(dia))
 	{
-		var idOdontologo = $("#idOdontologo").val();
+		var idOdontologo = $("#odontologos").val();
 		var horaInicio = $("#txtHoraInicio"+dia).val();
 		var horaTermino = $("#txtHoraTermino"+dia).val();
 		var duracionModulo = $("#txtDuracionModulo"+dia).val();
@@ -119,11 +119,11 @@ function guardarDia()
 				var obj = $.parseJSON(datos);
 				if(obj.resultado!=-1)
 				{
-					alert("se guardo el horario correctamente");
+					alert("Horario ingresado correctamente.");
 				}
 				else
 				{
-					alert("Hubo un error al guardar el registro");
+					alert("Se produjo un error, vuelva a intentarlo.");
 				}
 			});	
 		}
@@ -138,11 +138,11 @@ function guardarDia()
 				var obj = $.parseJSON(datos);
 				if(obj.resultado!=-1)
 				{
-					alert("se guardo el horario correctamente");
+					alert("Horario ingresado correctamente.");
 				}
 				else
 				{
-					alert("Hubo un error al guardar el registro");
+					alert("Se produjo un error, vuelva a intentarlo.");
 				}
 			});	
 		}
@@ -150,13 +150,12 @@ function guardarDia()
 }
 function cargarHorarios()
 {
-	var idOdontologo = $("#idOdontologo").val();alert(idOdontologo);
+	var idOdontologo = $("#odontologos").val();
 	var url = direccionWeb + "ws-horario.php";
 	var data = {"send":"{\"indice\":4,\"idOdontologo\":"+idOdontologo+"}"};
 
 	$.post(url,data,function(datos)
 	{
-		alert(datos);
 	 	var obj = $.parseJSON(datos);
 		$.each(obj.listaHorarios,function()
 		{
