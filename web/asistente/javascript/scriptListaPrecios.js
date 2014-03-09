@@ -1,4 +1,4 @@
-var direccionWeb = "http://192.168.89.128/sfhwebservice/webService/"
+var direccionWeb = "http://sfh.crossline.cl/webServiceencriptado/";
 $(document).ready(inicializarEventos);
 
 function inicializarEventos()
@@ -59,9 +59,12 @@ function crearPrecio()
 
 		//{"indice":1,"Comentario":"Procedimiento","ValorNeto":12000}
 		var url = direccionWeb + "ws-precios-insumos.php";
-		var data = {"send":"{\"indice\":1,\"Comentario\":\""+nomProcedimiento+"\",\"ValorNeto\":"+precioProcedimiento+"}"};
-		$.post(url,data,function(datos)
+		var key = $("#keyPaciente").val();
+		var stringJson = "{\"indice\":1,\"Comentario\":\""+nomProcedimiento+"\",\"ValorNeto\":"+precioProcedimiento+",\"key\":\""+key+"\"}";
+		var data = {"send":encriptar(stringJson)};
+		$.post(url,data,function(jsonEncriptado)
 		{
+			var datos = desencriptar(jsonEncriptado);
 			var obj = $.parseJSON(datos);
 			if(obj.idPrecioInsertado!=-1)
 			{
@@ -88,11 +91,13 @@ function buscarPor()
 
 	var concepto = $("#txtBuscaTratamiento").val();
 	var precios = direccionWeb+"ws-precios-insumos.php";
-	var data = {"send":"{\"indice\":4,\"nombre\":\""+concepto+"\"}"};
-
 	var tabla = "";
-	$.post(precios,data,function(datos)
+	var key = $("#keyPaciente").val();
+	var stringJson = "{\"indice\":4,\"nombre\":\""+concepto+"\",\"key\":\""+key+"\"}";
+	var data = {"send":encriptar(stringJson)};
+	$.post(precios,data,function(jsonEncriptado)
 	{
+		var datos = desencriptar(jsonEncriptado);
 		var obj = $.parseJSON(datos);
 		$.each(obj.listaPrecios,function()
 		{
@@ -204,9 +209,12 @@ function modificarObjeto()
 			});
 
 			var precios = direccionWeb+"ws-precios-insumos.php";
-			var data = {"send":"{\"indice\":2,\"idPrecio\":"+idCosto+",\"Comentario\":\""+concepto+"\",\"ValorNeto\":"+costo+"}"};
-			$.post(precios,data,function(datos)
+			var key = $("#keyPaciente").val();
+			var stringJson = "{\"indice\":2,\"idPrecio\":"+idCosto+",\"Comentario\":\""+concepto+"\",\"ValorNeto\":"+costo+",\"key\":\""+key+"\"}";
+			var data = {"send":encriptar(stringJson)};
+			$.post(precios,data,function(jsonEncriptado)
 			{
+				var datos = desencriptar(jsonEncriptado);
 				var obj = $.parseJSON(datos);
 				var resultado = obj.Modificado;
 				if(resultado=="Modificado")
@@ -257,11 +265,13 @@ function validarCosto(idCosto)
 function cargarListaPrecios()
 {
 	var precios = direccionWeb+"ws-precios-insumos.php";
-	var data = {"send":"{\"indice\":3}"};
 	var tabla = "";
-
-	$.post(precios,data,function(datos)
+	var key = $("#keyPaciente").val();
+	var stringJson = "{\"indice\":3,\"key\":\""+key+"\"}";
+	var data = {"send":encriptar(stringJson)};
+	$.post(precios,data,function(jsonEncriptado)
 	{
+		var datos = desencriptar(jsonEncriptado);
 		var obj = $.parseJSON(datos);
 		$.each(obj.listaPrecios,function()
 		{
@@ -288,10 +298,12 @@ function eliminarObjeto()
 	});
 
 	var precios = direccionWeb+"ws-precios-insumos.php";
-	var data = {"send":"{\"indice\":5,\"idPrecio\":"+id+"}"};
-
-	$.post(precios,data,function(datos)
+	var key = $("#keyPaciente").val();
+	var stringJson = "{\"indice\":5,\"idPrecio\":"+id+",\"key\":\""+key+"\"}";
+	var data = {"send":encriptar(stringJson)};
+	$.post(precios,data,function(jsonEncriptado)
 	{
+		var datos = desencriptar(jsonEncriptado);
 		var obj = $.parseJSON(datos);
 		if(obj.Eliminado == "Eliminado")
 		{

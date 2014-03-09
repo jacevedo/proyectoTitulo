@@ -1,4 +1,4 @@
-var direccionWeb = "http://192.168.89.128/sfhwebservice/webService/";
+var direccionWeb = "http://sfh.crossline.cl/webServiceencriptado/";
 $(document).ready(inicializarEventos);
 var diasArreglo = new Array();
 var idHorarioArreglo = new Array();
@@ -112,10 +112,12 @@ function guardarDia()
 		if(esta=="no")
 		{
 			var url = direccionWeb + "ws-horario.php";
-			var data = {"send":"{\"indice\":3,\"idOdontologo\":"+idOdontologo+",\"dia\":\""+dia+"\",\"horaInicio\":\""+horaInicio+"\",\"horaTermino\":\""+horaTermino+"\",\"duracionModulo\":\""+duracionModulo+"\"}"};
-
-			$.post(url,data,function(datos)
+			var key = $("#keyPaciente").val();
+			var stringJson = "{\"indice\":3,\"idOdontologo\":"+idOdontologo+",\"dia\":\""+dia+"\",\"horaInicio\":\""+horaInicio+"\",\"horaTermino\":\""+horaTermino+"\",\"duracionModulo\":\""+duracionModulo+"\",\"key\":\""+key+"\"}";
+			var data = {"send":encriptar(stringJson)};
+			$.post(url,data,function(jsonEncriptado)
 			{
+				var datos = desencriptar(jsonEncriptado);
 				var obj = $.parseJSON(datos);
 				if(obj.resultado!=-1)
 				{
@@ -131,10 +133,12 @@ function guardarDia()
 		{
 			var idHorario = idHorarioArreglo[indice];
 			var url = direccionWeb + "ws-horario.php";
-			var data = {"send":"{\"indice\":5,\"idHorario\":"+idHorario+",\"idOdontologo\":"+idOdontologo+",\"dia\":\""+dia+"\",\"horaInicio\":\""+horaInicio+"\",\"horaTermino\":\""+horaTermino+"\",\"duracionModulo\":\""+duracionModulo+"\"}"};
-
-			$.post(url,data,function(datos)
+			var key = $("#keyPaciente").val();
+			var stringJson = "{\"indice\":5,\"idHorario\":"+idHorario+",\"idOdontologo\":"+idOdontologo+",\"dia\":\""+dia+"\",\"horaInicio\":\""+horaInicio+"\",\"horaTermino\":\""+horaTermino+"\",\"duracionModulo\":\""+duracionModulo+"\",\"key\":\""+key+"\"}";
+			var data = {"send":encriptar(stringJson)};
+			$.post(url,data,function(jsonEncriptado)
 			{
+				var datos = desencriptar(jsonEncriptado);
 				var obj = $.parseJSON(datos);
 				if(obj.resultado!=-1)
 				{
@@ -152,10 +156,12 @@ function cargarHorarios()
 {
 	var idOdontologo = $("#odontologos").val();
 	var url = direccionWeb + "ws-horario.php";
-	var data = {"send":"{\"indice\":4,\"idOdontologo\":"+idOdontologo+"}"};
-
-	$.post(url,data,function(datos)
+	var key = $("#keyPaciente").val();
+	var stringJson = "{\"indice\":4,\"idOdontologo\":"+idOdontologo+",\"key\":\""+key+"\"}";
+	var data = {"send":encriptar(stringJson)};
+	$.post(url,data,function(jsonEncriptado)
 	{
+		var datos = desencriptar(jsonEncriptado);
 	 	var obj = $.parseJSON(datos);
 		$.each(obj.listaHorarios,function()
 		{

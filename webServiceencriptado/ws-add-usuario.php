@@ -140,7 +140,17 @@ switch ($opcion)
 				{
 					//$datosComuna = new Comuna();
 					$controladoraComuna = new ControladoraPersonaRegionComuna();
-					$arreglo["datoComuna"] = $controladoraComuna->buscarComunaPorID($idComuna);
+					$comuna = $controladoraComuna->buscarComunaPorID($idComuna);
+					$arreglo["datoComuna"] = $comuna;
+					$idRegion = $comuna->idRegion;
+					if($idRegion != 0)
+					{
+						$arreglo["datoRegion"] = $controladoraComuna->buscarRegionPorID($idRegion);
+					}
+					else
+					{
+						$arreglo["datoRegion"] = "Error";
+					}
 				}
 				else
 				{
