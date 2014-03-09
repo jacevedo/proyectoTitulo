@@ -76,12 +76,11 @@ namespace SFH_Software
 
         private void PoblarComboEstado()
         {
-
             this.cmbxestado.Items.Clear();
             this.cmbxestado.Items.Insert(Convert.ToInt32(EstadoPersona.DESHABILITADO), "Deshabilitado");
             this.cmbxestado.Items.Insert(Convert.ToInt32(EstadoPersona.HABILITADO), "Habilitado");
-            this.cmbxestado.Items.Insert(2, "Seleccione tipo de estado");
-            this.cmbxestado.SelectedItem = "Seleccione tipo de estado";
+            //this.cmbxestado.Items.Insert(2, "Seleccione tipo de estado");
+            this.cmbxestado.SelectedItem = "Habilitado";
         }
 
         private void PoblarComboBusqueda()
@@ -245,14 +244,52 @@ namespace SFH_Software
         {
             if (btnNuevo.Text.ToString().Trim() == "Ingresar Odontologo")
             {
-                Odontologo odontologo = new Odontologo();
-                odontologo.IdPersona = Convert.ToInt32(cmbxUsuario.SelectedValue);
-                odontologo.Especialidad = txtesp.Text;
-                this.client_odontologo.InsertarOdontologo(odontologo);
-                this.LimpiarControles();
-                datagriPersona.DataSource = this.client_odontologo.ListarOdontologo();
-                MessageBox.Show("Odontologo registrado satisfactoriamente", "SFH Administración de Clínica - Administración de Usuarios", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (cmbxUsuario.SelectedValue.ToString() != "")
+                {
+                    //datagriPersona.DataSource = 
+                    List<Odontologo> list = this.client_odontologo.ListarOdontologo();
+                    int patron = Convert.ToInt32(cmbxUsuario.SelectedValue.ToString());
+                    Odontologo result = list.Find(delegate(Odontologo odot) { return odot.IdPersona == patron; });
+                    if (result != null)
+                    {
+                        if (MessageBox.Show("El Odontologo " + result.Nombre + " " + result.ApellidoPaterno + " ya se encuentra registrado dentro del sistema, ¿Desea Modificar su información con la recién ingresada?", "SFH Administración de Clínica - Administración de Usuarios", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+                        {
+                            Odontologo odontologo = new Odontologo();
+                            odontologo.IdOdontologo = result.IdOdontologo;
+                            odontologo.IdPersona = Convert.ToInt32(cmbxUsuario.SelectedValue);
+                            odontologo.Especialidad = txtesp.Text;
+                            if (this.client_odontologo.ModificarOdontologo(odontologo) != "")
+                            {
+                                switch (cmbxestado.SelectedIndex)
+                                {
+                                    case 0:
+                                        this.client_odontologo.DesabilitarHabilitarOdontologo(this.Id_odontologo, 0);
+                                        break;
 
+                                    case 1:
+                                        this.client_odontologo.DesabilitarHabilitarOdontologo(this.Id_odontologo, 1);
+                                        break;
+                                }
+
+                            }
+
+                            this.LimpiarControles();
+                            datagriPersona.DataSource = this.client_odontologo.ListarOdontologo();
+                            MessageBox.Show("Odontologo modificado satisfactoriamente", "SFH Administración de Clínica - Administración de Usuarios", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                    else
+                    {
+                        Odontologo odontologo = new Odontologo();
+                        odontologo.IdPersona = Convert.ToInt32(cmbxUsuario.SelectedValue);
+                        odontologo.Especialidad = txtesp.Text;
+                        this.client_odontologo.InsertarOdontologo(odontologo);
+                        this.LimpiarControles();
+                        datagriPersona.DataSource = this.client_odontologo.ListarOdontologo();
+                        MessageBox.Show("Odontologo registrado satisfactoriamente", "SFH Administración de Clínica - Administración de Usuarios", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                          
             }
             else if (btnNuevo.Text.ToString().Trim() == "Guardar Cambios")
             {
@@ -283,6 +320,26 @@ namespace SFH_Software
             }
         }
 
-       
+        private void cmbxestado_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbxestado.SelectedIndex == 0)
+            {
+                if (cmbxUsuario.SelectedValue.ToString() != "")
+                {
+                    if (MessageBox.Show("¿Desea deshabilitar al usuario " + cmbxUsuario.SelectedText + " ?", "SFH Administración de Clínica - Administración de Ficha Dental.", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.No)
+                    {
+                        this.cmbxestado.SelectedItem = "Habilitado";
+                    }
+                }
+                else
+                {
+
+                    if (MessageBox.Show("¿Desea deshabilitar al usuario que está creando?", "SFH Administración de Clínica - Administración de Ficha Dental.", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.No)
+                    {
+                        this.cmbxestado.SelectedItem = "Habilitado";
+                    }
+                }
+            }
+        }
     }
 }

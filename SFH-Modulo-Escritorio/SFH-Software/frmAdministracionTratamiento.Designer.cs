@@ -39,7 +39,7 @@
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.CalendarSeguimiento = new System.Windows.Forms.MonthCalendar();
             this.btnGuardarTratamiento = new System.Windows.Forms.Button();
-            this.btnAdminCli = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.txtDescTratamiento = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -60,10 +60,7 @@
             this.editar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Abonos = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tratamientodentalBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.btnActualizar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -93,7 +90,7 @@
             this.groupBox2.Controls.Add(this.lblIdTratamiento);
             this.groupBox2.Controls.Add(this.groupBox5);
             this.groupBox2.Controls.Add(this.btnGuardarTratamiento);
-            this.groupBox2.Controls.Add(this.btnAdminCli);
+            this.groupBox2.Controls.Add(this.btnCancelar);
             this.groupBox2.Controls.Add(this.groupBox6);
             this.groupBox2.Controls.Add(this.groupBox4);
             this.groupBox2.Controls.Add(this.txtValorTotal);
@@ -154,27 +151,28 @@
             this.btnGuardarTratamiento.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnGuardarTratamiento.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(93)))), ((int)(((byte)(129)))));
             this.btnGuardarTratamiento.ForeColor = System.Drawing.Color.White;
-            this.btnGuardarTratamiento.Location = new System.Drawing.Point(195, 148);
+            this.btnGuardarTratamiento.Location = new System.Drawing.Point(46, 148);
             this.btnGuardarTratamiento.Margin = new System.Windows.Forms.Padding(1);
             this.btnGuardarTratamiento.Name = "btnGuardarTratamiento";
             this.btnGuardarTratamiento.Size = new System.Drawing.Size(127, 36);
             this.btnGuardarTratamiento.TabIndex = 13;
-            this.btnGuardarTratamiento.Text = "Guardar";
+            this.btnGuardarTratamiento.Text = "Ingresar Tratamiento";
             this.btnGuardarTratamiento.UseVisualStyleBackColor = false;
             this.btnGuardarTratamiento.Click += new System.EventHandler(this.btnGuardarTratamiento_Click);
             // 
-            // btnAdminCli
+            // btnCancelar
             // 
-            this.btnAdminCli.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnAdminCli.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(93)))), ((int)(((byte)(129)))));
-            this.btnAdminCli.ForeColor = System.Drawing.Color.White;
-            this.btnAdminCli.Location = new System.Drawing.Point(20, 148);
-            this.btnAdminCli.Margin = new System.Windows.Forms.Padding(1);
-            this.btnAdminCli.Name = "btnAdminCli";
-            this.btnAdminCli.Size = new System.Drawing.Size(129, 36);
-            this.btnAdminCli.TabIndex = 11;
-            this.btnAdminCli.Text = "Cancelar";
-            this.btnAdminCli.UseVisualStyleBackColor = false;
+            this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(93)))), ((int)(((byte)(129)))));
+            this.btnCancelar.ForeColor = System.Drawing.Color.White;
+            this.btnCancelar.Location = new System.Drawing.Point(193, 148);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(1);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(129, 36);
+            this.btnCancelar.TabIndex = 11;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // groupBox6
             // 
@@ -208,7 +206,7 @@
             // 
             // calendarCreacion
             // 
-            this.calendarCreacion.Location = new System.Drawing.Point(12, 12);
+            this.calendarCreacion.Location = new System.Drawing.Point(12, 14);
             this.calendarCreacion.Name = "calendarCreacion";
             this.calendarCreacion.TabIndex = 0;
             // 
@@ -247,10 +245,7 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.btnActualizar);
             this.groupBox3.Controls.Add(this.GridTratamiento);
-            this.groupBox3.Controls.Add(this.label6);
-            this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.groupBox3.Location = new System.Drawing.Point(6, 221);
             this.groupBox3.Name = "groupBox3";
@@ -258,7 +253,6 @@
             this.groupBox3.TabIndex = 19;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Listado de Tratamientos";
-            this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
             // 
             // GridTratamiento
             // 
@@ -278,15 +272,15 @@
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.WhiteSmoke;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.GridTratamiento.DefaultCellStyle = dataGridViewCellStyle1;
             this.GridTratamiento.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.GridTratamiento.Location = new System.Drawing.Point(6, 66);
+            this.GridTratamiento.Location = new System.Drawing.Point(6, 19);
             this.GridTratamiento.Name = "GridTratamiento";
-            this.GridTratamiento.Size = new System.Drawing.Size(1074, 283);
+            this.GridTratamiento.Size = new System.Drawing.Size(1074, 345);
             this.GridTratamiento.TabIndex = 11;
             this.GridTratamiento.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridTratamiento_CellContentClick);
             // 
@@ -350,28 +344,6 @@
             // 
             this.tratamientodentalBindingSource.DataSource = typeof(ObjectsBeans.Tratamientodental);
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(600, 16);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(143, 24);
-            this.label6.TabIndex = 10;
-            this.label6.Text = "Gonzalo Guerra";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(391, 16);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(239, 24);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "Listado Tratamiento dental :";
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -382,20 +354,6 @@
             this.label3.Size = new System.Drawing.Size(313, 24);
             this.label3.TabIndex = 5;
             this.label3.Text = "Administración de tratamiento dental";
-            // 
-            // btnActualizar
-            // 
-            this.btnActualizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnActualizar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(93)))), ((int)(((byte)(129)))));
-            this.btnActualizar.ForeColor = System.Drawing.Color.White;
-            this.btnActualizar.Location = new System.Drawing.Point(4, 17);
-            this.btnActualizar.Margin = new System.Windows.Forms.Padding(1);
-            this.btnActualizar.Name = "btnActualizar";
-            this.btnActualizar.Size = new System.Drawing.Size(127, 36);
-            this.btnActualizar.TabIndex = 31;
-            this.btnActualizar.Text = "Actualizar Lista";
-            this.btnActualizar.UseVisualStyleBackColor = false;
-            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
             // frmAdministracionTratamiento
             // 
@@ -417,7 +375,6 @@
             this.groupBox6.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GridTratamiento)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tratamientodentalBindingSource)).EndInit();
             this.ResumeLayout(false);
@@ -438,14 +395,12 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnGuardarTratamiento;
-        private System.Windows.Forms.Button btnAdminCli;
+        private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.MonthCalendar CalendarSeguimiento;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.TextBox txtDescTratamiento;
         private System.Windows.Forms.DataGridView GridTratamiento;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label lblIdTratamiento;
         private System.Windows.Forms.BindingSource tratamientodentalBindingSource;
         private System.Windows.Forms.Label lblAbono;
@@ -459,6 +414,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn totalAbonoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewButtonColumn editar;
         private System.Windows.Forms.DataGridViewButtonColumn Abonos;
-        private System.Windows.Forms.Button btnActualizar;
     }
 }

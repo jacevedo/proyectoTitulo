@@ -33,6 +33,17 @@ namespace SFH_Software
         }
         #endregion
 
+        #region Metodos 
+        private void LimpiarControles()
+        {
+            this.txtValorTotal.Text = string.Empty;
+            this.calendarioCreacion.SelectionStart = DateTime.Today;
+            this.calendarioCreacion.SelectionEnd = DateTime.Today;
+            btnGuardar.Text = string.Empty;
+            btnGuardar.Text = "Ingresar Presupuesto";
+        }
+        #endregion
+
         public frmAdministracionPresupuesto(int idFicha, string nombre)
         {
             this.IdFicha = idFicha;
@@ -47,53 +58,45 @@ namespace SFH_Software
                 Presupuesto presupuesto = grillaPresupuesto.Rows[e.RowIndex].DataBoundItem as Presupuesto;
                 if (e.ColumnIndex == 5)
                 {
-                    lblnom.Text = cmbPersona.SelectedText;
+                    
                     txtValorTotal.Text = presupuesto.ValorTotal.ToString();
                     cmbPersona.SelectedValue = presupuesto.IdFicha;
                     calendarioCreacion.SelectionStart = presupuesto.FechaPresupuesto;
                     calendarioCreacion.SelectionEnd = presupuesto.FechaPresupuesto;
                     lblIdPresupuesto.Text = presupuesto.IdPresupuesto.ToString();
-                    btnGuardar.Text = "Modificar";
+                    btnGuardar.Text = string.Empty;
+                    btnGuardar.Text = "Guardar Cambios";
                     
                 }
             }
         }
 
-        private void btnAdminCli_Click(object sender, EventArgs e)
-        {
-            this.Nombre = this.cmbPersona.Text;
-            this.lblnom.Text = this.Nombre;
-            listaPresupuestos = null;
-            listaPresupuestos = clientePresupuesto.listadoPresupuestoPorFicha(Convert.ToInt32(cmbPersona.SelectedValue));
-            grillaPresupuesto.DataSource = null;
-            grillaPresupuesto.DataSource = listaPresupuestos;
-            
-        }
+      
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (btnGuardar.Text == "Guardar")
+            if (btnGuardar.Text == "Ingresar Presupuesto")
             {
                 try
                 {
                     Presupuesto presupuesto = new Presupuesto();
-                    presupuesto.IdFicha = Convert.ToInt32(cmbPersona.SelectedValue);
+                    presupuesto.IdFicha = Convert.ToInt32(cmbPersona.SelectedValue.ToString());
                     presupuesto.ValorTotal = Convert.ToInt32(txtValorTotal.Text.ToString());
                     presupuesto.FechaPresupuesto = calendarioCreacion.SelectionStart;
                     presupuesto.IdPresupuesto = Convert.ToInt32(clientePresupuesto.insertarPresupuesto(presupuesto));
                     limpiarFormulario();
                     listaPresupuestos = clientePresupuesto.listadoPresupuestoPorPaciente(presupuesto.IdFicha);
                     grillaPresupuesto.DataSource = listaPresupuestos;
-                    this.Nombre = this.cmbPersona.Text;
-                    this.lblnom.Text = this.Nombre;
+                    MessageBox.Show("Presupuesto modificada satisfactoriamente", "SFH Administración de Clínica - Administración de Presupuesto Dental", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                   
                 }
-                catch (Exception ex)
+                catch
                 {
-                    MessageBox.Show("Hubo un error al insertar");
+                    MessageBox.Show("Se ha producido un error vuelva a intentarlo nuevamente", "SFH Administración de Clínica - Administración de Presupuesto Dental", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
             }
-            else if (btnGuardar.Text == "Modificar")
+            else if (btnGuardar.Text == "Guardar Cambios")
             {
                 Presupuesto presupuesto = new Presupuesto();
                 presupuesto.IdFicha = Convert.ToInt32(cmbPersona.SelectedValue);
@@ -114,16 +117,15 @@ namespace SFH_Software
                         }
 
                     }
-                   
                     limpiarFormulario();
-                    this.Nombre = this.cmbPersona.Text;
-                    this.lblnom.Text = this.Nombre;
                 }
                 else
                 {
-                    MessageBox.Show("Hubo un problema al modificar El presupuesto");
+                    MessageBox.Show("Se ha producido un error vuelva a intentarlo nuevamente", "SFH Administración de Clínica - Administración de Presupuesto Dental", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                btnGuardar.Text = "Guardar";
+                btnGuardar.Text = string.Empty;
+                btnGuardar.Text = "Ingresar Presupuesto";
+                MessageBox.Show("Presupuesto  modificada satisfactoriamente", "SFH Administración de Clínica - Administración de Presupuesto Dental", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
         }
@@ -140,21 +142,37 @@ namespace SFH_Software
             cmbPersona.DataSource = clientePresupuesto.listaPersonaFichaNombre();
             if (idFicha == 1)
             {
-              
                 listaPresupuestos = clientePresupuesto.listadoPresupuestoPorFicha(Convert.ToInt32(cmbPersona.SelectedValue));
-                this.Nombre = this.cmbPersona.Text;
-                this.lblnom.Text = this.Nombre;
-               
             }
             else
             {
                 listaPresupuestos = null;
                 listaPresupuestos = clientePresupuesto.listadoPresupuestoPorFicha(this.idFicha);
                 grillaPresupuesto.DataSource = null;
-                lblnom.Text = this.Nombre;
+               
             }
 
             grillaPresupuesto.DataSource = listaPresupuestos;
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.limpiarFormulario();
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            this.Nombre = this.cmbPersona.Text;
+            listaPresupuestos = null;
+            grillaPresupuesto.DataSource = null;
+            listaPresupuestos = clientePresupuesto.listadoPresupuestoPorFicha(Convert.ToInt32(cmbPersona.SelectedValue));
+            if (listaPresupuestos != null)
+            {
+                grillaPresupuesto.DataSource = listaPresupuestos;
+            }
+            else {
+                MessageBox.Show("Esta búsqueda no ha arrojado resultados", "SFH Administración de Clínica - Administración de Presupuesto Dental", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
        

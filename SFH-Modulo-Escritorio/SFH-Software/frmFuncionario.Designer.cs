@@ -42,15 +42,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.datagriPersona = new System.Windows.Forms.DataGridView();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.cmbxestado = new System.Windows.Forms.ComboBox();
-            this.cmbxUsuario = new System.Windows.Forms.ComboBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtPuesto = new System.Windows.Forms.TextBox();
-            this.btnNuevo = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
             this.IdFuncionario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IdPersonafun = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Rut = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -64,6 +55,15 @@
             this.PuestoTrabajo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Estado_funcionario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FechaNacimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cmbxestado = new System.Windows.Forms.ComboBox();
+            this.cmbxUsuario = new System.Windows.Forms.ComboBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtPuesto = new System.Windows.Forms.TextBox();
+            this.btnNuevo = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox7.SuspendLayout();
@@ -205,7 +205,7 @@
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.WhiteSmoke;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
@@ -215,101 +215,6 @@
             this.datagriPersona.Size = new System.Drawing.Size(1247, 439);
             this.datagriPersona.TabIndex = 0;
             this.datagriPersona.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datagriPersona_CellContentClick);
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Controls.Add(this.cmbxestado);
-            this.groupBox2.Controls.Add(this.cmbxUsuario);
-            this.groupBox2.Controls.Add(this.label11);
-            this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.txtPuesto);
-            this.groupBox2.Controls.Add(this.btnNuevo);
-            this.groupBox2.Controls.Add(this.btnCancel);
-            this.groupBox2.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.groupBox2.Location = new System.Drawing.Point(7, 19);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1257, 126);
-            this.groupBox2.TabIndex = 16;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Ingreso odontólogos";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(762, 39);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(105, 13);
-            this.label1.TabIndex = 41;
-            this.label1.Text = "Habilitar/Deshabilitar";
-            // 
-            // cmbxestado
-            // 
-            this.cmbxestado.FormattingEnabled = true;
-            this.cmbxestado.Location = new System.Drawing.Point(873, 36);
-            this.cmbxestado.Name = "cmbxestado";
-            this.cmbxestado.Size = new System.Drawing.Size(215, 21);
-            this.cmbxestado.TabIndex = 40;
-            // 
-            // cmbxUsuario
-            // 
-            this.cmbxUsuario.FormattingEnabled = true;
-            this.cmbxUsuario.Location = new System.Drawing.Point(122, 36);
-            this.cmbxUsuario.Name = "cmbxUsuario";
-            this.cmbxUsuario.Size = new System.Drawing.Size(215, 21);
-            this.cmbxUsuario.TabIndex = 39;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(70, 36);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(46, 13);
-            this.label11.TabIndex = 35;
-            this.label11.Text = "Persona";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(385, 39);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(90, 13);
-            this.label2.TabIndex = 17;
-            this.label2.Text = "Puesto de trabajo";
-            // 
-            // txtPuesto
-            // 
-            this.txtPuesto.Location = new System.Drawing.Point(491, 36);
-            this.txtPuesto.Name = "txtPuesto";
-            this.txtPuesto.Size = new System.Drawing.Size(215, 20);
-            this.txtPuesto.TabIndex = 14;
-            // 
-            // btnNuevo
-            // 
-            this.btnNuevo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnNuevo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(93)))), ((int)(((byte)(129)))));
-            this.btnNuevo.ForeColor = System.Drawing.Color.White;
-            this.btnNuevo.Location = new System.Drawing.Point(964, 71);
-            this.btnNuevo.Margin = new System.Windows.Forms.Padding(1);
-            this.btnNuevo.Name = "btnNuevo";
-            this.btnNuevo.Size = new System.Drawing.Size(127, 36);
-            this.btnNuevo.TabIndex = 13;
-            this.btnNuevo.UseVisualStyleBackColor = false;
-            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(93)))), ((int)(((byte)(129)))));
-            this.btnCancel.ForeColor = System.Drawing.Color.White;
-            this.btnCancel.Location = new System.Drawing.Point(827, 71);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(1);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(129, 36);
-            this.btnCancel.TabIndex = 11;
-            this.btnCancel.Text = "Cancelar";
-            this.btnCancel.UseVisualStyleBackColor = false;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // IdFuncionario
             // 
@@ -393,6 +298,102 @@
             this.FechaNacimiento.DataPropertyName = "FechaNacimiento";
             this.FechaNacimiento.HeaderText = "FechaNacimiento";
             this.FechaNacimiento.Name = "FechaNacimiento";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.label1);
+            this.groupBox2.Controls.Add(this.cmbxestado);
+            this.groupBox2.Controls.Add(this.cmbxUsuario);
+            this.groupBox2.Controls.Add(this.label11);
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Controls.Add(this.txtPuesto);
+            this.groupBox2.Controls.Add(this.btnNuevo);
+            this.groupBox2.Controls.Add(this.btnCancel);
+            this.groupBox2.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.groupBox2.Location = new System.Drawing.Point(7, 19);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(1257, 126);
+            this.groupBox2.TabIndex = 16;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Ingreso odontólogos";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(762, 39);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(105, 13);
+            this.label1.TabIndex = 41;
+            this.label1.Text = "Habilitar/Deshabilitar";
+            // 
+            // cmbxestado
+            // 
+            this.cmbxestado.FormattingEnabled = true;
+            this.cmbxestado.Location = new System.Drawing.Point(873, 36);
+            this.cmbxestado.Name = "cmbxestado";
+            this.cmbxestado.Size = new System.Drawing.Size(215, 21);
+            this.cmbxestado.TabIndex = 40;
+            this.cmbxestado.SelectedIndexChanged += new System.EventHandler(this.cmbxestado_SelectedIndexChanged);
+            // 
+            // cmbxUsuario
+            // 
+            this.cmbxUsuario.FormattingEnabled = true;
+            this.cmbxUsuario.Location = new System.Drawing.Point(122, 36);
+            this.cmbxUsuario.Name = "cmbxUsuario";
+            this.cmbxUsuario.Size = new System.Drawing.Size(215, 21);
+            this.cmbxUsuario.TabIndex = 39;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(70, 36);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(46, 13);
+            this.label11.TabIndex = 35;
+            this.label11.Text = "Persona";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(385, 39);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(90, 13);
+            this.label2.TabIndex = 17;
+            this.label2.Text = "Puesto de trabajo";
+            // 
+            // txtPuesto
+            // 
+            this.txtPuesto.Location = new System.Drawing.Point(491, 36);
+            this.txtPuesto.Name = "txtPuesto";
+            this.txtPuesto.Size = new System.Drawing.Size(215, 20);
+            this.txtPuesto.TabIndex = 14;
+            // 
+            // btnNuevo
+            // 
+            this.btnNuevo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnNuevo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(93)))), ((int)(((byte)(129)))));
+            this.btnNuevo.ForeColor = System.Drawing.Color.White;
+            this.btnNuevo.Location = new System.Drawing.Point(964, 71);
+            this.btnNuevo.Margin = new System.Windows.Forms.Padding(1);
+            this.btnNuevo.Name = "btnNuevo";
+            this.btnNuevo.Size = new System.Drawing.Size(127, 36);
+            this.btnNuevo.TabIndex = 13;
+            this.btnNuevo.UseVisualStyleBackColor = false;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(93)))), ((int)(((byte)(129)))));
+            this.btnCancel.ForeColor = System.Drawing.Color.White;
+            this.btnCancel.Location = new System.Drawing.Point(827, 71);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(1);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(129, 36);
+            this.btnCancel.TabIndex = 11;
+            this.btnCancel.Text = "Cancelar";
+            this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // frmFuncionario
             // 

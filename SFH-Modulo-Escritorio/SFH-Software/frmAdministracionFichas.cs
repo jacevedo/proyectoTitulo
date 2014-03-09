@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using NetClient;
 using ObjectsBeans;
+using System.Xml.Linq;
 namespace SFH_Software
 {
     public partial class frmAdministracionFichas : Form
@@ -18,7 +19,6 @@ namespace SFH_Software
         List<Fichadental> result = new List<Fichadental>();
         private int id_ficha_modificar;
         frmMenu menu;
-        
         #endregion
         
         #region Propiedades
@@ -35,8 +35,8 @@ namespace SFH_Software
             this.cmbxestado.Items.Clear();
             this.cmbxestado.Items.Insert(Convert.ToInt32(EstadoPersona.DESHABILITADO), "Deshabilitado");
             this.cmbxestado.Items.Insert(Convert.ToInt32(EstadoPersona.HABILITADO), "Habilitado");
-            this.cmbxestado.Items.Insert(2, "Seleccione tipo de estado");
-            this.cmbxestado.SelectedItem = "Seleccione tipo de estado";
+            //this.cmbxestado.Items.Insert(2, "Seleccione tipo de estado");
+            this.cmbxestado.SelectedItem = "Habilitado";
            
         
         }
@@ -65,7 +65,8 @@ namespace SFH_Software
             this.txtPaciente.Text = string.Empty;
             this.txtOdontologo.Text = string.Empty;
             this.txtAnamnesis.Text = string.Empty;
-            this.mcFechaIngreso.ResetText();
+            mcFechaIngreso.SelectionStart = DateTime.Today;
+            mcFechaIngreso.SelectionEnd = DateTime.Today;
             
         }
         #endregion
@@ -156,17 +157,29 @@ namespace SFH_Software
             //{"indice":1,"idPaciente":1,"idOdontologo":1,"fechaIngreso":"1991-12-12","anamnesis":"Penisilina","habilitada":0}
             if (btnNuevo.Text.ToString().Trim() == "Ingresar Ficha")
             {
-                Fichadental ficha = new Fichadental();
-                ficha.IdPaciente = Convert.ToInt32(cmbxPaciente.SelectedValue.ToString());
-                ficha.IdOdontologo = Convert.ToInt32(cmbxOdontologo.SelectedValue.ToString());
-                ficha.Anamnesis = txtAnamnesis.Text.ToString();
-                ficha.FechaIngreso = mcFechaIngreso.SelectionStart;
-                ficha.EstadoPaciente = 1;
-                this.client_fichas.InsertarFichaDental(ficha);
-                datagridFicha.DataSource = this.client_fichas.ListarFichas();
-                this.LimpiarControles();
-                MessageBox.Show("Ficha insertada satisfactoriamente", "SFH Administración de Clínica - Administración de Fichas Dentales", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                if (cmbxPaciente.SelectedValue.ToString() != "")
+                {
+                    //this.client_fichas.ListarFichas();
+                    List<Fichadental> list = this.client_fichas.ListarFichas();
+                    int patron = Convert.ToInt32(cmbxPaciente.SelectedValue.ToString());
+                    Fichadental result = list.Find(delegate(Fichadental fich){return fich.IdPaciente == patron;});
+                    if (result != null) {
+                        MessageBox.Show("El paciente " + result.NombrePaciente + " ya posee una ficha dentro del sistema", "SFH Administración de Clínica - Administración de Fichas Dentales", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        Fichadental ficha = new Fichadental();
+                        ficha.IdPaciente = Convert.ToInt32(cmbxPaciente.SelectedValue.ToString());
+                        ficha.IdOdontologo = Convert.ToInt32(cmbxOdontologo.SelectedValue.ToString());
+                        ficha.Anamnesis = txtAnamnesis.Text.ToString();
+                        ficha.FechaIngreso = mcFechaIngreso.SelectionStart;
+                        ficha.EstadoPaciente = 1;
+                        this.client_fichas.InsertarFichaDental(ficha);
+                        datagridFicha.DataSource = this.client_fichas.ListarFichas();
+                        this.LimpiarControles();
+                        MessageBox.Show("Ficha ingresada satisfactoriamente", "SFH Administración de Clínica - Administración de Fichas Dentales", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                 }
             }
             else if (btnNuevo.Text.ToString().Trim() == "Guardar Cambios")
             {
@@ -177,7 +190,7 @@ namespace SFH_Software
                 ficha.Anamnesis = txtAnamnesis.Text.ToString();
                 ficha.FechaIngreso = mcFechaIngreso.SelectionStart;
                 this.client_fichas.ModificarFichaDental(ficha);
-                if (this.cmbxestado.SelectedIndex != 3)
+                if (this.cmbxestado.SelectedIndex != 2)
                 {
                     ficha.EstadoPaciente = Convert.ToInt32(cmbxestado.SelectedIndex);
                     this.client_fichas.CambiarEstadoFicha(ficha);
@@ -218,6 +231,7 @@ namespace SFH_Software
             mcFechaIngreso.SelectionEnd = ficha.FechaIngreso;
             cmbxPaciente.SelectedValue =  ficha.IdPaciente;
             cmbxOdontologo.SelectedValue =  ficha.IdOdontologo;
+            cmbxestado.SelectedItem = ficha.Habilitada;
             btnNuevo.Text = "Guardar Cambios";
         }
 
@@ -236,6 +250,28 @@ namespace SFH_Software
             this.PoblarComboPacientes();
         }
 
-      
+        private void cmbxestado_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            String nombre = string.Empty;
+            if (cmbxestado.SelectedIndex == 0) {
+                if (txtPaciente.Text != "")
+                {
+                    nombre = txtPaciente.Text;
+                    if (MessageBox.Show("¿Desea deshabilitar al usuario " + nombre + " ?", "SFH Administración de Clínica - Administración de Ficha Dental.", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.No)
+                    {
+                        this.cmbxestado.SelectedItem = "Habilitado";
+                    }
+                }
+                else {
+
+                    if (MessageBox.Show("¿Desea deshabilitar al usuario que está creando?", "SFH Administración de Clínica - Administración de Ficha Dental.", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.No)
+                    {
+                        this.cmbxestado.SelectedItem = "Habilitado";
+                    }
+                
+                }
+            }
+        }
+       
     }
 }

@@ -131,20 +131,50 @@ namespace SFH_Software
 
             if (btnNuevo.Text.ToString().Trim() == "Ingresar Datos de Contacto")
             {
-                Datoscontacto datos = new Datoscontacto();
-                datos.IdPersona_dat = Convert.ToInt32(this.cmbxUsuario.SelectedValue);
-                datos.IdComuna = Convert.ToInt32(this.cmbxComuna.SelectedValue);
-                datos.FonoFijo = txtTelefono.Text;
-                datos.FonoCelular = txtCelular.Text;
-                datos.Mail = txtmail.Text;
-                datos.Direccion = txtdir.Text;
-                datos.FechaIngreso = mcfechaIngreso.SelectionStart;
-                client_datos.InsertarDatosdeContacto(datos);
-                this.LimpiarControles();
-                datagriPersona.DataSource = this.client_datos.ListarPersonasDatosDeContacto();
-                
-                MessageBox.Show("Usuario registrado satisfactoriamente", "SFH Administración de Clínica - Administración de Usuarios", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (cmbxUsuario.SelectedValue.ToString() != "")
+                {
+                    //datagriPersona.DataSource = 
+                    List<Datoscontacto> list = this.client_datos.ListarPersonasDatosDeContacto();
+                    int patron = Convert.ToInt32(cmbxUsuario.SelectedValue.ToString());
+                    Datoscontacto result = list.Find(delegate(Datoscontacto dat) { return dat.IdPersona == patron; });
+                    if (result != null)
+                    {
+                        if (MessageBox.Show("El paciente " + result.Nombre + " " + result.ApellidoPaterno + " tiene registrado sus datos de contacto dentro del sistema, ¿Desea reemplazarlos con los recién ingresados?", "SFH Administración de Clínica - Administración de Usuarios", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+                        {
+                            Datoscontacto datos = new Datoscontacto();
+                            datos.IdPersona_dat = Convert.ToInt32(this.cmbxUsuario.SelectedValue);
+                            datos.IdComuna = Convert.ToInt32(this.cmbxComuna.SelectedValue);
+                            datos.FonoFijo = txtTelefono.Text;
+                            datos.FonoCelular = txtCelular.Text;
+                            datos.Mail = txtmail.Text;
+                            datos.Direccion = txtdir.Text;
+                            datos.FechaIngreso = mcfechaIngreso.SelectionStart;
+                            client_datos.ModificarDatosdeContacto(datos);
+                            this.LimpiarControles();
+                            datagriPersona.DataSource = this.client_datos.ListarPersonasDatosDeContacto();
 
+                            MessageBox.Show("Datos de contacto modificado satisfactoriamente", "SFH Administración de Clínica - Administración de Usuarios", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                
+                        }
+  
+                    }
+                    else
+                    {
+                        Datoscontacto datos = new Datoscontacto();
+                        datos.IdPersona_dat = Convert.ToInt32(this.cmbxUsuario.SelectedValue);
+                        datos.IdComuna = Convert.ToInt32(this.cmbxComuna.SelectedValue);
+                        datos.FonoFijo = txtTelefono.Text;
+                        datos.FonoCelular = txtCelular.Text;
+                        datos.Mail = txtmail.Text;
+                        datos.Direccion = txtdir.Text;
+                        datos.FechaIngreso = mcfechaIngreso.SelectionStart;
+                        client_datos.InsertarDatosdeContacto(datos);
+                        this.LimpiarControles();
+                        datagriPersona.DataSource = this.client_datos.ListarPersonasDatosDeContacto();
+
+                        MessageBox.Show("Datos de contacto registrados satisfactoriamente", "SFH Administración de Clínica - Administración de Usuarios", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
             }
             else if (btnNuevo.Text.ToString().Trim() == "Guardar Cambios")
             {
