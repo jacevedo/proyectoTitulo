@@ -18,7 +18,7 @@ namespace NetClient
             List<Ordendelaboratorio> list = new List<Ordendelaboratorio>();
             try
             {
-                String result = netclient.NetPost("ws-admin-orden.php", "send={\"indice\":4}");
+                String result = netclient.NetPost("ws-admin-orden.php", "{\"indice\":4}");
                 var jobject = JObject.Parse(result);
                 var token = jobject.SelectToken("ListadoOrden").ToList();
                 foreach (var item in token)
@@ -59,7 +59,7 @@ namespace NetClient
         {
             string fechaCreacionEnviar = orden.FechaCreacion.Year + "-" + orden.FechaCreacion.Month + "-" + orden.FechaCreacion.Day;
             string fechaRecepcionEnviar = orden.FechaEntrega.Year + "-" + orden.FechaEntrega.Month + "-" + orden.FechaEntrega.Day;
-            string jsonAEnviar = "send={\"indice\":1,\"idOdontologo\":" + orden.IdOdontologo + ",\"idPaciente\":" + orden.IdPaciente + ",\"numOrden\":" + orden.NumeroOrden + ",\"clinica\":\"" + orden.Clinica + "\",\"bd\":\"" + orden.Bd + "\",\"bi\":\"" + orden.Bi + "\",\"pd\":\"" + orden.Pd + "\",\"pi\":\"" + orden.Pi + "\",\"fechaCreacion\":\"" + fechaCreacionEnviar + "\",\"fechaEntrega\":\"" + fechaRecepcionEnviar + "\",\"horaEntrega\":\"" + orden.HoraEntrega + "\",\"color\":\"" + orden.Color + "\",\"estado\":\"" + orden.Estadodeorden + "\"}";
+            string jsonAEnviar = "{\"indice\":1,\"idOdontologo\":" + orden.IdOdontologo + ",\"idPaciente\":" + orden.IdPaciente + ",\"numOrden\":" + orden.NumeroOrden + ",\"clinica\":\"" + orden.Clinica + "\",\"bd\":\"" + orden.Bd + "\",\"bi\":\"" + orden.Bi + "\",\"pd\":\"" + orden.Pd + "\",\"pi\":\"" + orden.Pi + "\",\"fechaCreacion\":\"" + fechaCreacionEnviar + "\",\"fechaEntrega\":\"" + fechaRecepcionEnviar + "\",\"horaEntrega\":\"" + orden.HoraEntrega + "\",\"color\":\"" + orden.Color + "\",\"estado\":\"" + orden.Estadodeorden + "\"}";
             try
             {
                 String result = netclient.NetPost("ws-admin-orden.php", jsonAEnviar);
@@ -79,7 +79,7 @@ namespace NetClient
             //"pd":"20","pi":"21","fechaCreacion":"2013-08-26","fechaEntrega":"2013-09-26","horaEntrega":"16:00","color":"Blanco","estado":"Recibida"}
             string fechaCreacionEnviar = orden.FechaCreacion.Year+"-"+orden.FechaCreacion.Month+"-"+orden.FechaCreacion.Day;
             string fechaRecepcionEnviar = orden.FechaEntrega.Year+"-"+orden.FechaEntrega.Month+"-"+orden.FechaEntrega.Day;
-            string jsonAEnviar = "send={\"indice\":2,\"idOrden\":" + orden.IdOrdenLaboratorio + ",\"idOdontologo\":" + orden.IdOdontologo + ",\"idPaciente\":" + orden.IdPaciente + ",\"numOrden\":" + orden.NumeroOrden + ",\"clinica\":\"" + orden.Clinica + "\",\"bd\":\"" + orden.Bd + "\",\"bi\":\"" + orden.Bi + "\",\"pd\":\"" + orden.Pd + "\",\"pi\":\"" + orden.Pi + "\",\"fechaCreacion\":\"" + fechaCreacionEnviar + "\",\"fechaEntrega\":\"" + fechaRecepcionEnviar + "\",\"horaEntrega\":\"10:00\",\"color\":\"" + orden.Color + "\",\"estado\":\"" + orden.Estadodeorden + "\"}";
+            string jsonAEnviar = "{\"indice\":2,\"idOrden\":" + orden.IdOrdenLaboratorio + ",\"idOdontologo\":" + orden.IdOdontologo + ",\"idPaciente\":" + orden.IdPaciente + ",\"numOrden\":" + orden.NumeroOrden + ",\"clinica\":\"" + orden.Clinica + "\",\"bd\":\"" + orden.Bd + "\",\"bi\":\"" + orden.Bi + "\",\"pd\":\"" + orden.Pd + "\",\"pi\":\"" + orden.Pi + "\",\"fechaCreacion\":\"" + fechaCreacionEnviar + "\",\"fechaEntrega\":\"" + fechaRecepcionEnviar + "\",\"horaEntrega\":\"10:00\",\"color\":\"" + orden.Color + "\",\"estado\":\"" + orden.Estadodeorden + "\"}";
                 //"{\"indice\":2,\"idOrden\":5,\"idOdontologo\":3,\"idPaciente\":2,\"numOrden\":1,\"clinica\":\"Santa\",\"bd\":\"10\",\"bi\":\"11\",\"pd\":\"20\",\"pi\":\"21\",\"fechaCreacion\":\"2013-08-26\",\"fechaEntrega\":\"2013-09-26\",\"horaEntrega\":\"16:00\",\"color\":\"Blanco\",\"estado\":\"Recibida\"}";
             //string jsonAEnviar = "{\"indice\":4}";
             try
@@ -98,7 +98,7 @@ namespace NetClient
             List<Persona>listaPersona = new List<Persona>();
             try
             {
-                String result = netclient.NetPost("ws-admin-usuario-sig.php", "send={\"indice\":9}");
+                String result = netclient.NetPost("ws-admin-usuario-sig.php", "{\"indice\":9}");
                 var jobject = JObject.Parse(result);
                 var token = jobject.SelectToken("listaPersonas").ToList();
                 foreach (var item in token)
@@ -120,7 +120,7 @@ namespace NetClient
             List<Persona> listaPersona = new List<Persona>();
             try
             {
-                String result = netclient.NetPost("ws-admin-usuario-sig.php", "send={\"indice\":10}");
+                String result = netclient.NetPost("ws-admin-usuario-sig.php", "{\"indice\":10}");
                 var jobject = JObject.Parse(result);
                 var token = jobject.SelectToken("listaPersonas").ToList();
                 foreach (var item in token)

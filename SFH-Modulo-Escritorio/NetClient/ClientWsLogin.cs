@@ -34,7 +34,7 @@ namespace NetClient
             String result;
             try {
                 
-                this.JsonParam = "send={\"indice\":3,\"usuario\":"+rut+",\"pass\":\""+pass+"\"}";
+                this.JsonParam = "{\"indice\":3,\"usuario\":"+rut+",\"pass\":\""+pass+"\"}";
                 result = netclient.NetPost("ws-login.php", this.JsonParam);
                 if (result!="{\"resultado\":\"\"}")
                 {
@@ -49,6 +49,7 @@ namespace NetClient
                        session.Habilitado = jobject.SelectToken("resultado").SelectToken("habilitado").ToString();
                        session.Rut = rut;
                        session.Secdat = true;
+                       SharedPreferences.preferences.Key = session.Key;
                    }
                    else
                    {
@@ -79,7 +80,7 @@ namespace NetClient
             Session session = new Session();
             try
             {
-                this.JsonParam = "send={\"indice\":2,\"usuario\":" + rut + ",\"pass\":\"" + pass + "\"}";
+                this.JsonParam = "{\"indice\":2,\"usuario\":" + rut + ",\"pass\":\"" + pass + "\"}";
                 String result = netclient.NetPost("ws-login.php", this.JsonParam);
                 if (result != "{\"resultado\":\"\"}")
                 {
@@ -92,6 +93,7 @@ namespace NetClient
                         session.Habilitado = jobject.SelectToken("resultado").SelectToken("habilitado").ToString();
                         session.Rut = rut;
                         session.Secdat = true;
+                        SharedPreferences.preferences.Key = session.Key;
                     }
                     else {
                         session.Secdat = true;
@@ -120,7 +122,7 @@ namespace NetClient
         {
             Persona persona = new Persona();
             try {
-                this.JsonParam = "send={\"indice\":2,\"rut\":"+rut+"}";
+                this.JsonParam = "{\"indice\":2,\"rut\":"+rut+"}";
                 String result = netclient.NetPost("ws-add-usuario.php", this.JsonParam);
                 if (result!="{\"code\":2}")
                 {

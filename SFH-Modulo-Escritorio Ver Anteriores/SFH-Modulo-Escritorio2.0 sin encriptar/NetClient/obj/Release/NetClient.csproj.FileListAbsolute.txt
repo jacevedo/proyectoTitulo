@@ -1,0 +1,10 @@
+C:\Users\Citt-David\Documents\GitHub\proyectoTitulo\SFH-Modulo-Escritorio\NetClient\bin\Release\NetClient.dll
+C:\Users\Citt-David\Documents\GitHub\proyectoTitulo\SFH-Modulo-Escritorio\NetClient\bin\Release\NetClient.pdb
+C:\Users\Citt-David\Documents\GitHub\proyectoTitulo\SFH-Modulo-Escritorio\NetClient\bin\Release\Newtonsoft.Json.dll
+C:\Users\Citt-David\Documents\GitHub\proyectoTitulo\SFH-Modulo-Escritorio\NetClient\bin\Release\ObjectsBeans.dll
+C:\Users\Citt-David\Documents\GitHub\proyectoTitulo\SFH-Modulo-Escritorio\NetClient\bin\Release\Newtonsoft.Json.pdb
+C:\Users\Citt-David\Documents\GitHub\proyectoTitulo\SFH-Modulo-Escritorio\NetClient\bin\Release\Newtonsoft.Json.xml
+C:\Users\Citt-David\Documents\GitHub\proyectoTitulo\SFH-Modulo-Escritorio\NetClient\bin\Release\ObjectsBeans.pdb
+C:\Users\Citt-David\Documents\GitHub\proyectoTitulo\SFH-Modulo-Escritorio\NetClient\obj\Release\NetClient.csprojResolveAssemblyReference.cache
+C:\Users\Citt-David\Documents\GitHub\proyectoTitulo\SFH-Modulo-Escritorio\NetClient\obj\Release\NetClient.dll
+C:\Users\Citt-David\Documents\GitHub\proyectoTitulo\SFH-Modulo-Escritorio\NetClient\obj\Release\NetClient.pdb

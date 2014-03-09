@@ -30,7 +30,7 @@ namespace NetClient
         {
             string areaInsumoInsertada = string.Empty;
             //{"indice":1,"nomArea":"Oficina","descripcion":"asd"}
-            this.JsonParam = "send={\"indice\":1,\"nomArea\":\""+area.NombreArea+"\",\"descripcion\":\""+area.DescripcionArea+"\"}";
+            this.JsonParam = "{\"indice\":1,\"nomArea\":\""+area.NombreArea+"\",\"descripcion\":\""+area.DescripcionArea+"\"}";
             try
             {
                 String result = netclient.NetPost("ws-area-insumo-listas.php", this.JsonParam);
@@ -46,14 +46,13 @@ namespace NetClient
         }
         #endregion
 
-
         #region ModificarAreaInsumo
         public string ModificarAreaInsumo(Areainsumo area)
         {
             string areaInsumoModificada = string.Empty;
             //{"indice":2,"idAreaInsumo":3,"nomArea":"Oficina","descripcion":"asd"}
 
-            this.JsonParam = "send={\"indice\":2,\"idAreaInsumo\":"+area.IdAreaInsumo+",\"nomArea\":\""+area.NombreArea+"\",\"descripcion\":\""+area.DescripcionArea+"\"}";
+            this.JsonParam = "{\"indice\":2,\"idAreaInsumo\":"+area.IdAreaInsumo+",\"nomArea\":\""+area.NombreArea+"\",\"descripcion\":\""+area.DescripcionArea+"\"}";
             try
             {
                 String result = netclient.NetPost("ws-area-insumo-listas.php", this.JsonParam);
@@ -74,7 +73,7 @@ namespace NetClient
         {
             string areaInsumoEliminado = string.Empty;
             //{"indice":3,"idAreaInsumo":3}
-            this.JsonParam = "send={\"indice\":3,\"idAreaInsumo\":" + idAreaInsumo + "}";
+            this.JsonParam = "{\"indice\":3,\"idAreaInsumo\":" + idAreaInsumo + "}";
             try
             {
                 String result = netclient.NetPost("ws-area-insumo-listas.php", this.JsonParam);
@@ -97,7 +96,7 @@ namespace NetClient
             List<Areainsumo> list = new List<Areainsumo>();
             try
             {
-                this.JsonParam = "send={\"indice\":4}";
+                this.JsonParam = "{\"indice\":4}";
                 String result = netclient.NetPost("ws-area-insumo-listas.php", this.JsonParam);
                 var jobject = JObject.Parse(result);
                 var token = jobject.SelectToken("ListaAreaInsumo").ToList();
@@ -128,7 +127,7 @@ namespace NetClient
             List<Areainsumo> list = new List<Areainsumo>();
             try
             {
-                this.JsonParam = "send={\"indice\":5}";
+                this.JsonParam = "{\"indice\":5}";
                 String result = netclient.NetPost("ws-area-insumo-listas.php", this.JsonParam);
                 var jobject = JObject.Parse(result);
                 var token = jobject.SelectToken("listaAreaInsuno").ToList();
@@ -158,7 +157,7 @@ namespace NetClient
             List<Gastos> list = new List<Gastos>();
             try
             {
-                this.JsonParam = "send={\"indice\":6}";
+                this.JsonParam = "{\"indice\":6}";
                 String result = netclient.NetPost("ws-area-insumo-listas.php", this.JsonParam);
                 var jobject = JObject.Parse(result);
                 var token = jobject.SelectToken("listaGastos").ToList();
@@ -187,7 +186,7 @@ namespace NetClient
             List<Insumos> list = new List<Insumos>();
             try
             {
-                this.JsonParam = "send={\"indice\":7}";
+                this.JsonParam = "{\"indice\":7}";
                 String result = netclient.NetPost("ws-area-insumo-listas.php", this.JsonParam);
                 var jobject = JObject.Parse(result);
                 var token = jobject.SelectToken("listaInsumos").ToList();

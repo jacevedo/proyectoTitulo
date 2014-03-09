@@ -32,7 +32,7 @@ namespace NetClient
             string pacienteInsertado = string.Empty;
             //{"indice":3,"idPersona":1,"fechaIngreso":"2013-04-12","habilitado":1}
             String fechaIngreso = paciente.FechaIngreso.Year + "-" + paciente.FechaIngreso.Month + "-" + paciente.FechaIngreso.Day;
-            this.JsonParam = "send={\"indice\":3,\"idPersona\":" + paciente.IdPersona + ",\"fechaIngreso\":\"" + fechaIngreso + "\",\"habilitado\":1}";
+            this.JsonParam = "{\"indice\":3,\"idPersona\":" + paciente.IdPersona + ",\"fechaIngreso\":\"" + fechaIngreso + "\",\"habilitado\":1}";
             try
             {
                 String result = netclient.NetPost("ws-admin-usuario.php", this.JsonParam);
@@ -54,7 +54,7 @@ namespace NetClient
             string pacienteModificado = string.Empty;
             //{"indice":7,"idPaciente":1,"idPersona":1,"fechaIngreso":"2013-04-12"}
             String fechaIngreso = paciente.FechaIngreso.Year + "-" + paciente.FechaIngreso.Month + "-" + paciente.FechaIngreso.Day;
-            this.JsonParam = "send={\"indice\":7,\"idPaciente\":" + paciente.IdPaciente + ",\"idPersona\":" + paciente.IdPersona + ",\"fechaIngreso\":\"" + fechaIngreso + "\"}";
+            this.JsonParam = "{\"indice\":7,\"idPaciente\":" + paciente.IdPaciente + ",\"idPersona\":" + paciente.IdPersona + ",\"fechaIngreso\":\"" + fechaIngreso + "\"}";
             try
             {
                 String result = netclient.NetPost("ws-admin-usuario.php", this.JsonParam);
@@ -78,7 +78,7 @@ namespace NetClient
             string pacienteModificado = string.Empty;
             //{"indice":9,"idPaciente":1,"habilitado":1}
             
-            this.JsonParam = "send={\"indice\":9,\"idPaciente\":" + id + ",\"habilitado\":" +  est + "}";
+            this.JsonParam = "{\"indice\":9,\"idPaciente\":" + id + ",\"habilitado\":" +  est + "}";
             try
             {
                 String result = netclient.NetPost("ws-admin-usuario.php", this.JsonParam);
@@ -99,7 +99,7 @@ namespace NetClient
         {
             string pacienteEliminado = string.Empty;
             //{"indice":12,"idOdontologo":1}
-            this.JsonParam = "send={\"indice\":14,\"idPaciente\":" + id_paciente + "}";
+            this.JsonParam = "{\"indice\":14,\"idPaciente\":" + id_paciente + "}";
             try
             {
                 String result = netclient.NetPost("ws-admin-usuario-sig.php", this.JsonParam);
@@ -121,7 +121,7 @@ namespace NetClient
             List<Paciente> list = new List<Paciente>();
             try
             {
-                this.JsonParam = "send={\"indice\":16}";
+                this.JsonParam = "{\"indice\":16}";
                 String result = netclient.NetPost("ws-admin-usuario.php", this.JsonParam);
                 var jobject = JObject.Parse(result);
                 var token = jobject.SelectToken("listaPacienteHerencia").ToList();
@@ -170,7 +170,7 @@ namespace NetClient
             List<Paciente> list = new List<Paciente>();
             try
             {
-                this.JsonParam = "send={\"indice\":5,\"rut\":" + rut + "}";
+                this.JsonParam = "{\"indice\":5,\"rut\":" + rut + "}";
                 String result = netclient.NetPost("ws-admin-usuario-sig.php", this.JsonParam);
                 var jobject = JObject.Parse(result);
                 var token = jobject.SelectToken("buscarPacienteRut").ToList();
@@ -235,7 +235,7 @@ namespace NetClient
             List<Paciente> list = new List<Paciente>();
             try
             {
-                this.JsonParam = "send={\"indice\":6,\"nombre\":\"" + nombre + "\",\"apellido\":\"" + apellido + "\"}";
+                this.JsonParam = "{\"indice\":6,\"nombre\":\"" + nombre + "\",\"apellido\":\"" + apellido + "\"}";
                 String result = netclient.NetPost("ws-admin-usuario-sig.php", this.JsonParam);
                 var jobject = JObject.Parse(result);
                 var token = jobject.SelectToken("buscarPacienteNombre").ToList();

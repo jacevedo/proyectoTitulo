@@ -199,3 +199,4 @@ C:\Users\David\Desktop\SFH-Modulo-Escritorio\SFH-Software\obj\x86\Debug\SFH_Soft
 C:\Users\David\Desktop\SFH-Modulo-Escritorio\SFH-Software\obj\x86\Debug\SFH-Software.csproj.GenerateResource.Cache
 C:\Users\David\Desktop\SFH-Modulo-Escritorio\SFH-Software\obj\x86\Debug\SFH-Software.exe
 C:\Users\David\Desktop\SFH-Modulo-Escritorio\SFH-Software\obj\x86\Debug\SFH-Software.pdb
+C:\Users\David\Desktop\SFH-Modulo-Escritorio\SFH-Software\obj\x86\Debug\SFH-Software.csprojResolveAssemblyReference.cache
