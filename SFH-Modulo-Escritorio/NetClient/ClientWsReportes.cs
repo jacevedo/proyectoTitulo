@@ -12,6 +12,8 @@ namespace NetClient
 {
     public class ClientWsReportes
     {
+
+
         #region Campos
         CoreNetClient netclient = new CoreNetClient();
         private string jsonParam;
@@ -38,7 +40,7 @@ namespace NetClient
             List<Reporte> list = new List<Reporte>();
             try
             {
-                this.JsonParam = "send={\"indice\":8}";
+                this.JsonParam = "{\"indice\":8}";
                 String result = netclient.NetPost("ws-reportes.php", this.JsonParam);
                 var jobject = JObject.Parse(result);
                 var token = jobject.SelectToken("reportes").ToList();
@@ -75,7 +77,7 @@ namespace NetClient
             {
                 string fechaSend = fecha1.Year + "-" + fecha1.Month + "-" + fecha1.Day;
                 string fechaSend2 = fecha2.Year + "-" + fecha2.Month + "-" + fecha2.Day;
-                this.JsonParam = "send={\"indice\":9,\"fechaInicio\":\"" + fechaSend + "\",\"fechaTermino\":\"" + fechaSend2 + "\"}";
+                this.JsonParam = "{\"indice\":9,\"fechaInicio\":\"" + fechaSend + "\",\"fechaTermino\":\"" + fechaSend2 + "\"}";
                 String result = netclient.NetPost("ws-reportes.php", this.JsonParam);
                 var jobject = JObject.Parse(result);
                 var token = jobject.SelectToken("reportes").ToList();
@@ -110,7 +112,7 @@ namespace NetClient
             List<Reporte> list = new List<Reporte>();
             try
             {
-                this.JsonParam = "send={\"indice\":10}";
+                this.JsonParam = "{\"indice\":10}";
                 String result = netclient.NetPost("ws-reportes.php", this.JsonParam);
                 var jobject = JObject.Parse(result);
                 var token = jobject.SelectToken("reportes").ToList();
@@ -139,7 +141,7 @@ namespace NetClient
             List<Reporte> list = new List<Reporte>();
             try
             {
-                this.JsonParam = "send={\"indice\":11}";
+                this.JsonParam = "{\"indice\":11}";
                 String result = netclient.NetPost("ws-reportes.php", this.JsonParam);
                 var jobject = JObject.Parse(result);
                 var token = jobject.SelectToken("reportes").ToList();

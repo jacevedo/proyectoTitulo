@@ -46,7 +46,7 @@ namespace NetClient
             try
             {
                 //{"indice":1,"rut":17897359,"dv":2}
-                this.JsonParam ="send={\"indice\":1,\"rut\":"+rut+",\"dv\":"+dv+"}";
+                this.JsonParam ="{\"indice\":1,\"rut\":"+rut+",\"dv\":"+dv+"}";
                 String result = netclient.NetPost("ws-admin-usuario-sig.php", this.JsonParam);
                 var jobject = JObject.Parse(result);
                 var token = jobject.SelectToken("listaPersonaRut").ToList();
@@ -96,7 +96,7 @@ namespace NetClient
 
             try
             {
-                String result = netclient.NetPost("ws-admin-usuario-sig.php", "send={\"indice\":2,\"nomPersona\":\""+nombre+"\",\"appPersona\":\""+apellido+"\"}");
+                String result = netclient.NetPost("ws-admin-usuario-sig.php", "{\"indice\":2,\"nomPersona\":\""+nombre+"\",\"appPersona\":\""+apellido+"\"}");
                 var jobject = JObject.Parse(result);
                 var token = jobject.SelectToken("busquedaPersonaNombre").ToList();
                 foreach (var item in token)
@@ -144,7 +144,7 @@ namespace NetClient
             List<Persona> list = new List<Persona>();
             try
             {
-                this.JsonParam = "send={\"indice\":3,\"rut\":"+rut+"}";
+                this.JsonParam = "{\"indice\":3,\"rut\":"+rut+"}";
                 String result = netclient.NetPost("ws-admin-usuario-sig.php", this.JsonParam);
                 var jobject = JObject.Parse(result);
                 var token = jobject.SelectToken("listaFuncionarioRut").ToList();
@@ -194,7 +194,7 @@ namespace NetClient
             List<Persona> list = new List<Persona>();
             try
             {
-                this.JsonParam = "send={\"indice\":4,\"nombre\":\""+nombre+"\",\"apellido\":\""+apellido+"\"}";
+                this.JsonParam = "{\"indice\":4,\"nombre\":\""+nombre+"\",\"apellido\":\""+apellido+"\"}";
                 String result = netclient.NetPost("ws-admin-usuario-sig.php", this.JsonParam);
                 var jobject = JObject.Parse(result);
                 var token = jobject.SelectToken("buscarFuncionarioNombre").ToList();
@@ -244,7 +244,7 @@ namespace NetClient
             List<Persona> list = new List<Persona>();
             try
             {
-                this.JsonParam = "send={\"indice\":5,\"rut\":"+rut+"}";
+                this.JsonParam = "{\"indice\":5,\"rut\":"+rut+"}";
                 String result = netclient.NetPost("ws-admin-usuario-sig.php", this.JsonParam);
                 var jobject = JObject.Parse(result);
                 var token = jobject.SelectToken("buscarPacienteRut").ToList();
@@ -295,7 +295,7 @@ namespace NetClient
             List<Persona> list = new List<Persona>();
             try
             {
-                this.JsonParam = "send={\"indice\":6,\"nombre\":\""+nombre+"\",\"apellido\":\""+apellido+"\"}";
+                this.JsonParam = "{\"indice\":6,\"nombre\":\""+nombre+"\",\"apellido\":\""+apellido+"\"}";
                 String result = netclient.NetPost("ws-admin-usuario-sig.php", this.JsonParam);
                 var jobject = JObject.Parse(result);
                 var token = jobject.SelectToken("buscarPacienteNombre").ToList();
@@ -345,7 +345,7 @@ namespace NetClient
             List<Persona> list = new List<Persona>();
             try
             {
-                this.JsonParam = "send={\"indice\":7,\"rut\":"+rut+"}";
+                this.JsonParam = "{\"indice\":7,\"rut\":"+rut+"}";
                 String result = netclient.NetPost("ws-admin-usuario-sig.php", this.JsonParam);
                 var jobject = JObject.Parse(result);
                 var token = jobject.SelectToken("buscarOdontologoRut").ToList();
@@ -396,7 +396,7 @@ namespace NetClient
             List<Persona> list = new List<Persona>();
             try
             {
-                this.JsonParam = "send={\"indice\":8,\"nombre\":\""+nombre+"\",\"apellido\":\""+apellido+"\"}";
+                this.JsonParam = "{\"indice\":8,\"nombre\":\""+nombre+"\",\"apellido\":\""+apellido+"\"}";
                 String result = netclient.NetPost("ws-admin-usuario-sig.php", this.JsonParam);
                 var jobject = JObject.Parse(result);
                 var token = jobject.SelectToken("buscarOdontologoNombre").ToList();

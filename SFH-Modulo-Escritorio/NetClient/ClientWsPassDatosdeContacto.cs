@@ -42,7 +42,7 @@ namespace NetClient
             string passInsertada = string.Empty;
             String fechaCaducidad = pass.FechaCaducidad.Year + "-" + pass.FechaCaducidad.Month + "-" + pass.FechaCaducidad.Day;
             //{"indice":1,"idPersona":3,"pass":"asdasd","fechaCaducidad":"2013-12-12"}
-            this.JsonParam = "send={\"indice\":1,\"idPersona\":" + pass.IdPersona + ",\"pass\":\"" + pass.Passtext + "\",\"fechaCaducidad\":\"" + fechaCaducidad + "\"}";
+            this.JsonParam = "{\"indice\":1,\"idPersona\":" + pass.IdPersona + ",\"pass\":\"" + pass.Passtext + "\",\"fechaCaducidad\":\"" + fechaCaducidad + "\"}";
             try
             {
                 String result = netclient.NetPost("ws-pass-datos.php", this.JsonParam);
@@ -64,7 +64,7 @@ namespace NetClient
             string passInsertada = string.Empty;
               String fechaCaducidad = pass.FechaCaducidad.Year + "-" + pass.FechaCaducidad.Month + "-" + pass.FechaCaducidad.Day;
             //{"indice":2,"idPersona":3,"pass":"asdasd","fechaCaducidad":"2013-12-12"}
-            this.JsonParam = "send={\"indice\":2,\"idPersona\":" + pass.IdPersona + ",\"pass\":\"" + pass.Passtext + "\",\"fechaCaducidad\":\"" + fechaCaducidad + "\"}";
+            this.JsonParam = "{\"indice\":2,\"idPersona\":" + pass.IdPersona + ",\"pass\":\"" + pass.Passtext + "\",\"fechaCaducidad\":\"" + fechaCaducidad + "\"}";
             try
             {
                 String result = netclient.NetPost("ws-pass-datos.php", this.JsonParam);
@@ -86,7 +86,7 @@ namespace NetClient
             string datosInsertado = string.Empty;
             String fechaIngreso = datos.FechaIngreso.Year + "-" + datos.FechaIngreso.Month + "-" + datos.FechaIngreso.Day;
             //{"indice":4,"idPersona":17,"idComuna":21,"fonoFijo":"+976509346","fonoCelular":"+56984678325","direccion":"San Martin","mail":"ada@gmail.com","fechaIngreso":"2013-10-09"}
-            this.JsonParam = "send={\"indice\":4,\"idPersona\":"+datos.IdPersona_dat + ",\"idComuna\":"+datos.IdComuna+",\"fonoFijo\":\""+datos.FonoFijo+"\",\"fonoCelular\":\""+datos.FonoCelular+"\",\"direccion\":\""+datos.Direccion+"\",\"mail\":\""+datos.Mail+"\",\"fechaIngreso\":\""+fechaIngreso+"\"}";
+            this.JsonParam = "{\"indice\":4,\"idPersona\":"+datos.IdPersona_dat + ",\"idComuna\":"+datos.IdComuna+",\"fonoFijo\":\""+datos.FonoFijo+"\",\"fonoCelular\":\""+datos.FonoCelular+"\",\"direccion\":\""+datos.Direccion+"\",\"mail\":\""+datos.Mail+"\",\"fechaIngreso\":\""+fechaIngreso+"\"}";
             try
             {
                 String result = netclient.NetPost("ws-pass-datos.php", this.JsonParam);
@@ -108,7 +108,7 @@ namespace NetClient
             string datosModificados = string.Empty;
             String fechaIngreso = datos.FechaIngreso.Year + "-" + datos.FechaIngreso.Month + "-" + datos.FechaIngreso.Day;
             //{"indice":5,"idPersona":17,"idComuna":21,"fonoFijo":"+976509346","fonoCelular":"+56984678325","direccion":"San Agustin","mail":"ada@hotmail.com","fechaIngreso":"2013-10-10"}
-            this.JsonParam = "send={\"indice\":5,\"idPersona\":" + datos.IdPersona_dat + ",\"idComuna\":" + datos.IdComuna + ",\"fonoFijo\":\"" + datos.FonoFijo + "\",\"fonoCelular\":\"" + datos.FonoCelular + "\",\"direccion\":\"" + datos.Direccion + "\",\"mail\":\"" + datos.Mail + "\",\"fechaIngreso\":\"" + fechaIngreso + "\"}";
+            this.JsonParam = "{\"indice\":5,\"idPersona\":" + datos.IdPersona_dat + ",\"idComuna\":" + datos.IdComuna + ",\"fonoFijo\":\"" + datos.FonoFijo + "\",\"fonoCelular\":\"" + datos.FonoCelular + "\",\"direccion\":\"" + datos.Direccion + "\",\"mail\":\"" + datos.Mail + "\",\"fechaIngreso\":\"" + fechaIngreso + "\"}";
             try
             {
                 String result = netclient.NetPost("ws-pass-datos.php", this.JsonParam);
@@ -131,7 +131,7 @@ namespace NetClient
             List<Datoscontacto> list = new List<Datoscontacto>();
             try
             {
-                this.JsonParam = "send={\"indice\":8}";
+                this.JsonParam = "{\"indice\":8}";
                 String result = netclient.NetPost("ws-pass-datos.php", this.JsonParam);
                 var jobject = JObject.Parse(result);
                 var token = jobject.SelectToken("Resultado").ToList();

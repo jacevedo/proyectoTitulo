@@ -44,7 +44,7 @@ namespace NetClient
             String fechaIngreso = datoscontacto.FechaIngreso.Year + "-" + datoscontacto.FechaIngreso.Month + "-" + datoscontacto.FechaIngreso.Day;
             String fechaCaducidad = pass.FechaCaducidad.Year + "-" + pass.FechaCaducidad.Month + "-" + pass.FechaCaducidad.Day;
             //{"indice":1,"idPerfil":4,"rut":17897359,"dv":2,"nombre":"ada","appPaterno":"wonk","appMaterno":"asturias","fechaNac":"1991-12-12",    "pass":"asdcasco","idComuna":2,"fonoFijo":"0227780184","celular":"+56976087240","Direccion":"antonio Varas 666","mail":"asd@asd.com","fechaIngreso":"2013-02-02"}
-            this.JsonParam = "send={\"indice\":1,\"idPerfil\":" + persona.IdPerfil + ",\"rut\":" + persona.Rut + ",\"dv\":" + persona.Dv + ",\"nombre\":\"" + persona.Nombre + "\",\"appPaterno\":\"" + persona.ApellidoPaterno + "\",\"appMaterno\":\"" + persona.ApellidoMaterno + "\",\"fechaNac\":\"" + fechaNacimiento + "\",\"pass\":\"" + pass.Passtext + "\",\"idComuna\":" + datoscontacto.IdComuna + ",\"fonoFijo\":\"" + datoscontacto.FonoFijo + "\",\"celular\":\"" + datoscontacto.FonoCelular + "\",\"Direccion\":\"" + datoscontacto.Direccion + "\",\"mail\":\"" + datoscontacto.Mail + "\",\"fechaIngreso\":\"" + fechaIngreso + "\",\"fechaCaducidad\":\""+fechaCaducidad+"\"}";
+            this.JsonParam = "{\"indice\":1,\"idPerfil\":" + persona.IdPerfil + ",\"rut\":" + persona.Rut + ",\"dv\":" + persona.Dv + ",\"nombre\":\"" + persona.Nombre + "\",\"appPaterno\":\"" + persona.ApellidoPaterno + "\",\"appMaterno\":\"" + persona.ApellidoMaterno + "\",\"fechaNac\":\"" + fechaNacimiento + "\",\"pass\":\"" + pass.Passtext + "\",\"idComuna\":" + datoscontacto.IdComuna + ",\"fonoFijo\":\"" + datoscontacto.FonoFijo + "\",\"celular\":\"" + datoscontacto.FonoCelular + "\",\"Direccion\":\"" + datoscontacto.Direccion + "\",\"mail\":\"" + datoscontacto.Mail + "\",\"fechaIngreso\":\"" + fechaIngreso + "\",\"fechaCaducidad\":\""+fechaCaducidad+"\"}";
             try
             {
                 String result = netclient.NetPost("ws-add-usuario.php", this.JsonParam);
@@ -66,7 +66,7 @@ namespace NetClient
             List<RegionContacto> list = new List<RegionContacto>();
             try
             {
-                this.JsonParam = "send={\"indice\":3}";
+                this.JsonParam = "{\"indice\":3}";
                 String result = netclient.NetPost("ws-add-usuario.php", this.JsonParam);
                 var jobject = JObject.Parse(result);
                 var token = jobject.SelectToken("listaRegiones").ToList();
@@ -95,7 +95,7 @@ namespace NetClient
             List<Comuna> list = new List<Comuna>();
             try
             {
-                this.JsonParam = "send={\"indice\":4,\"idRegion\":"+id_region+"}";
+                this.JsonParam = "{\"indice\":4,\"idRegion\":"+id_region+"}";
                 String result = netclient.NetPost("ws-add-usuario.php", this.JsonParam);
                 var jobject = JObject.Parse(result);
                 var token = jobject.SelectToken("listaComuna").ToList();
@@ -124,13 +124,11 @@ namespace NetClient
             string fechaNacimiento = persona.FechaNacimiento.Year + "-" + persona.FechaNacimiento.Month + "-" + persona.FechaNacimiento.Day;
             string fechaIngreso = datoscontacto.FechaIngreso.Year + "-" + datoscontacto.FechaIngreso.Month + "-" + datoscontacto.FechaIngreso.Day;
             string personaModificada = string.Empty;
-            // {"indice":5,"idPersona":1,"idPerfil":4,"rut":17897359,"dv":2,"nombre":"ada","appPaterno":"wonk","appMaterno":"asturias","fechaNac":"1991-12-12","idComuna":2,"fonoFijo":"0227780184","celular":"+56976087240","direccion":"antonio Varas 666","mail":"asd@asd.com","fechaIngreso":"2013-02-02"}
-            this.JsonParam = "send={\"indice\":5,\"idPersona\":" + persona.IdPersona + ",\"idPerfil\":" + persona.IdPerfil + ",\"rut\":" + persona.Rut + ",\"dv\":" + persona.Dv + ",\"nombre\":\"" + persona.Nombre + "\",\"appPaterno\":\"" + persona.ApellidoPaterno + "\",\"appMaterno\":\"" + persona.ApellidoMaterno + "\",\"fechaNac\":\"" + fechaNacimiento + "\",\"pass\":\"" + pass.Passtext + "\",\"idComuna\":" + datoscontacto.IdComuna + ",\"fonoFijo\":\"" + datoscontacto.FonoFijo + "\",\"celular\":\"" + datoscontacto.FonoCelular + "\",\"Direccion\":\"" + datoscontacto.Direccion + "\",\"mail\":\"" + datoscontacto.Mail + "\",\"fechaIngreso\":\"" + fechaIngreso + "\"}";
+            this.JsonParam = "{\"indice\":5,\"idPersona\":" + persona.IdPersona + ",\"idPerfil\":" + persona.IdPerfil + ",\"rut\":" + persona.Rut + ",\"dv\":" + persona.Dv + ",\"nombre\":\"" + persona.Nombre + "\",\"appPaterno\":\"" + persona.ApellidoPaterno + "\",\"appMaterno\":\"" + persona.ApellidoMaterno + "\",\"fechaNac\":\"" + fechaNacimiento + "\",\"pass\":\"" + pass.Passtext + "\",\"idComuna\":" + datoscontacto.IdComuna + ",\"fonoFijo\":\"" + datoscontacto.FonoFijo + "\",\"celular\":\"" + datoscontacto.FonoCelular + "\",\"Direccion\":\"" + datoscontacto.Direccion + "\",\"mail\":\"" + datoscontacto.Mail + "\",\"fechaIngreso\":\"" + fechaIngreso + "\"}";
             try
             {
                 String result = netclient.NetPost("ws-add-usuario.php", this.JsonParam);
-                var jobject = JObject.Parse(result);
-                //Retorna {"idPersonaInsertada":id};	
+                var jobject = JObject.Parse(result);	
                 personaModificada = jobject.SelectToken("resultadoPersona").ToString();
             }
             catch (Exception e)
@@ -147,7 +145,7 @@ namespace NetClient
             List<Datoscontacto> list = new List<Datoscontacto>();
             try
             {
-                this.JsonParam = "send={\"indice\":9,\"idPersona\":" + persona+ "}";
+                this.JsonParam = "{\"indice\":9,\"idPersona\":" + persona+ "}";
                 String result = netclient.NetPost("ws-add-usuario.php", this.JsonParam);
                 var jobject = JObject.Parse(result);
                 var token = jobject.SelectToken("resultado").ToList();

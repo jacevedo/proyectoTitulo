@@ -85,8 +85,7 @@ namespace SFH_Software
             this.cmbxestado.Items.Clear();
             this.cmbxestado.Items.Insert(Convert.ToInt32(EstadoPersona.DESHABILITADO), "Deshabilitado");
             this.cmbxestado.Items.Insert(Convert.ToInt32(EstadoPersona.HABILITADO), "Habilitado");
-            this.cmbxestado.Items.Insert(2, "Seleccione tipo de estado");
-            this.cmbxestado.SelectedItem = "Seleccione tipo de estado";
+            this.cmbxestado.SelectedItem = "Habilitado";
         }
 
         private void PoblarComboBusqueda()
@@ -244,13 +243,53 @@ namespace SFH_Software
         {
             if (btnNuevo.Text.ToString().Trim() == "Ingresar Funcionario")
             {
-                Funcionario funcionario = new Funcionario();
-                funcionario.IdPersona = Convert.ToInt32(cmbxUsuario.SelectedValue);
-                funcionario.PuestoTrabajo = txtPuesto.Text;
-                this.client_fun.InsertarFuncionario(funcionario);
-                this.LimpiarControles();
-                datagriPersona.DataSource = this.client_fun.ListarFuncionario();
-                MessageBox.Show("Paciente registrado satisfactoriamente", "SFH Administración de Clínica - Administración de Usuarios", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (cmbxUsuario.SelectedValue.ToString() != "")
+                {
+                    //datagriPersona.DataSource = 
+                    List<Funcionario> list = this.client_fun.ListarFuncionario();
+                    int patron = Convert.ToInt32(cmbxUsuario.SelectedValue.ToString());
+                    Funcionario result = list.Find(delegate(Funcionario fun) { return fun.IdPersona == patron; });
+                    if (result != null)
+                    {
+                        if (MessageBox.Show("El Funcionario " + result.Nombre + " " + result.ApellidoPaterno + " ya se encuentra registrado dentro del sistema, ¿Desea Modificar su información con la recién ingresada?", "SFH Administración de Clínica - Administración de Usuarios", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+                        {
+                            Funcionario funcionario = new Funcionario();
+                            funcionario.IdFuncionario = result.IdFuncionario;
+                            funcionario.IdPersona = Convert.ToInt32(cmbxUsuario.SelectedValue.ToString());
+                            funcionario.PuestoTrabajo = txtPuesto.Text.ToString();
+                            if (this.client_fun.ModificarFuncionario(funcionario) != "")
+                            {
+                                switch (cmbxestado.SelectedIndex)
+                                {
+                                    case 0:
+                                        this.client_fun.DesabilitarHabilitarFuncionario(this.Id_funcionario, 0);
+                                        break;
+
+                                    case 1:
+                                        this.client_fun.DesabilitarHabilitarFuncionario(this.Id_funcionario, 1);
+                                        break;
+                                }
+
+                            }
+
+                            this.LimpiarControles();
+                            datagriPersona.DataSource = this.client_fun.ListarFuncionario();
+                            MessageBox.Show("Paciente modificado satisfactoriamente", "SFH Administración de Clínica - Administración de Usuarios", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        }
+                    }
+                    else
+                    {
+                        Funcionario funcionario = new Funcionario();
+                        funcionario.IdPersona = Convert.ToInt32(cmbxUsuario.SelectedValue);
+                        funcionario.PuestoTrabajo = txtPuesto.Text;
+                        this.client_fun.InsertarFuncionario(funcionario);
+                        this.LimpiarControles();
+                        datagriPersona.DataSource = this.client_fun.ListarFuncionario();
+                        MessageBox.Show("Paciente registrado satisfactoriamente", "SFH Administración de Clínica - Administración de Usuarios", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+
 
             }
             else if (btnNuevo.Text.ToString().Trim() == "Guardar Cambios")
@@ -282,6 +321,26 @@ namespace SFH_Software
             }
         }
 
+        private void cmbxestado_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbxestado.SelectedIndex == 0)
+            {
+                if (cmbxUsuario.SelectedValue.ToString() != "")
+                {
+                    if (MessageBox.Show("¿Desea deshabilitar al usuario " + cmbxUsuario.SelectedText.ToString() + " ?", "SFH Administración de Clínica - Administración de Ficha Dental.", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.No)
+                    {
+                        this.cmbxestado.SelectedItem = "Habilitado";
+                    }
+                }
+                else
+                {
 
+                    if (MessageBox.Show("¿Desea deshabilitar al usuario que está creando?", "SFH Administración de Clínica - Administración de Ficha Dental.", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.No)
+                    {
+                        this.cmbxestado.SelectedItem = "Habilitado";
+                    }
+                }
+            }
+        }
     }
 }

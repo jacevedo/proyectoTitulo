@@ -18,32 +18,8 @@ namespace SFH_Software
         public frmAdministracionOrdenLab()
         {
             InitializeComponent();
-            this.Load += frmAdministracionOrdenLab_Load;
+           
         }
-
-        void frmAdministracionOrdenLab_Load(object sender, EventArgs e)
-        {
-            listaOrden = clienteOrden.ListarOrdenLaboratorio();
-            List<Persona> listaPaciente =  clienteOrden.listaPacientes();
-            List<Persona> listaOdontologo = clienteOrden.listaOdontologo();
-            cmbNomPaciente.DataSource = listaPaciente;
-            cmbNomOdontologo.DataSource = listaOdontologo;
-            cmbEstado.DataSource = Enum.GetValues(typeof(EstadoOrdenLaboratorio));
-            GrillaOrden.DataSource = listaOrden;
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            if (btnGuardar.Text == "Modificar")
-            {
-                modificarOrdenGuardar();
-            }
-            else if (btnGuardar.Text == "Guardar")
-            {
-                GuardarOrden();
-            }
-        }
-
         private void GuardarOrden()
         {
             Ordendelaboratorio orden = new Ordendelaboratorio();
@@ -63,12 +39,14 @@ namespace SFH_Software
             orden.IdOrdenLaboratorio = Convert.ToInt32(clienteOrden.insertarOrden(orden));
             if (orden.IdOrdenLaboratorio != 0)
             {
-
+                listaOrden = clienteOrden.ListarOrdenLaboratorio(); 
+                GrillaOrden.DataSource = listaOrden;
                 limpiarFormulario();
+                MessageBox.Show("Orden de laboratorio ingresada satisfactoriamente", "SFH Administración de Clínica - Administración de Orden de Laboratorio Dental", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                MessageBox.Show("hubo un error");
+                MessageBox.Show("Se ha producido un error vuelva a intentarlo nuevamente", "SFH Administración de Clínica - Administración de Orden de Laboratorio Dental", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -117,9 +95,11 @@ namespace SFH_Software
             }
             else
             {
-                MessageBox.Show("Hubo un error, no se pudo modificar el valor");
+                MessageBox.Show("Se ha producido un error vuelva a intentarlo nuevamente", "SFH Administración de Clínica - Administración de Orden de Laboratorio Dental", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            btnGuardar.Text = "Guardar";
+            MessageBox.Show("Orden de laboratorio modificada satisfactoriamente", "SFH Administración de Clínica - Administración de Orden de Laboratorio Dental", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            btnGuardar.Text = string.Empty;
+            btnGuardar.Text = "Ingresar Orden de Laboratorio";
         }
 
         private void limpiarFormulario()
@@ -135,6 +115,8 @@ namespace SFH_Software
             txtHoraEntrega.Text = "";
             txtColor.Text = "";
             //txtEstado.Text = "";
+            btnGuardar.Text = string.Empty;
+            btnGuardar.Text = "Ingresar Orden de Laboratorio";
             CalendarCreacion.SelectionStart = DateTime.Today;
             CalendarCreacion.SelectionEnd = DateTime.Today;
             calendarEntrega.SelectionStart = DateTime.Today;
@@ -168,8 +150,32 @@ namespace SFH_Software
             calendarEntrega.SelectionStart = orden.FechaEntrega;
             calendarEntrega.SelectionEnd = orden.FechaEntrega;
             lblIdOrden.Text = orden.IdOrdenLaboratorio.ToString();
-            btnGuardar.Text = "Modificar";
+            btnGuardar.Text = string.Empty;
+            btnGuardar.Text = "Guardar Cambios";
             
+        }
+
+        private void frmAdministracionOrdenLab_Load(object sender, EventArgs e)
+        {
+            listaOrden = clienteOrden.ListarOrdenLaboratorio();
+            List<Persona> listaPaciente = clienteOrden.listaPacientes();
+            List<Persona> listaOdontologo = clienteOrden.listaOdontologo();
+            cmbNomPaciente.DataSource = listaPaciente;
+            cmbNomOdontologo.DataSource = listaOdontologo;
+            cmbEstado.DataSource = Enum.GetValues(typeof(EstadoOrdenLaboratorio));
+            GrillaOrden.DataSource = listaOrden;
+        }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            if (btnGuardar.Text == "Guardar Cambios")
+            {
+                modificarOrdenGuardar();
+            }
+            else if (btnGuardar.Text == "Ingresar Orden de Laboratorio")
+            {
+                GuardarOrden();
+            }
         }
     }
 }

@@ -130,11 +130,11 @@ class ControladoraOrdenLaboratorio
 		try
 		{
 			$this->SqlQuery = '';
-			$this->SqlQuery = "SELECT orden.ID_ORDEN_LABORATORIO,orden.ID_ODONTOLOGO,orden.ID_PACIENTE,orden.N_FICHA_LABORATORIO,orden.CLINICA,orden.BD,orden.BI,orden.PD,orden.PI,orden.FECHA_CREACION,orden.FECHA_ENTREGA,orden.HORA_ENTREGA,orden.COLOR,orden.ESTADO, pa.ID_PERSONA as IDPERSONAPACIENTE, od.ID_PERSONA as IDPERSONAODONTOLOGO, (select nombre from persona where id_persona = IDPERSONAPACIENTE) as NOMPERSONAPACIENTE,(select APELLIDO_PATERNO from persona where id_persona = IDPERSONAPACIENTE) as AppPERSONAPACIENTE, (select nombre from persona where id_persona = IDPERSONAODONTOLOGO) as NOMPERSONAODONTOLOGO, (select APELLIDO_PATERNO from persona where id_persona = IDPERSONAODONTOLOGO) as AppPeRSONAODONTOLOGO FROM ordendelaboratorio orden, paciente pa, odontologo od WHERE orden.ID_PACIENTE = pa.ID_PACIENTE and orden.ID_ODONTOLOGO = od.ID_ODONTOLOGO";
+			$this->SqlQuery = "SELECT orden.ID_ORDEN_LABORATORIO,orden.ID_ODONTOLOGO as idOdontologo,orden.ID_PACIENTE as idPaciente,orden.N_FICHA_LABORATORIO,orden.CLINICA,orden.BD,orden.BI,orden.PD,orden.PI,orden.FECHA_CREACION,orden.FECHA_ENTREGA,orden.HORA_ENTREGA,orden.COLOR,orden.ESTADO, (select pe.nombre from persona pe, paciente pa where pe.ID_PERSONA=pa.ID_PERSONA and pa.ID_PACIENTE = idPaciente) as nombrePaciente,(select pe.APELLIDO_PATERNO from persona pe, paciente pa where pe.ID_PERSONA=pa.ID_PERSONA and pa.ID_PACIENTE = idPaciente) as apellidoPaciente,(select pe.nombre from persona pe, odontologo od where pe.ID_PERSONA=od.ID_PERSONA and od.ID_ODONTOLOGO = idOdontologo) as nombreOdontologo,(select pe.APELLIDO_PATERNO from persona pe, odontologo od where pe.ID_PERSONA=od.ID_PERSONA and od.ID_ODONTOLOGO = idOdontologo) as apellidoOdontologo from ordendelaboratorio orden";
 		   	$sentencia=$conexion->prepare($this->SqlQuery);
         	if($sentencia->execute())
         	{
-        		$sentencia->bind_result($idOrdenLaboratorio, $idOdontologo, $idPaciente,$numFicha, $clinica, $bd, $bi, $pd, $pi, $fechaCreacion, $fechaEntrega, $horaEntrega, $color, $estado, $idPersonaPaciente, $idPersonaOdontologo, $nomPersonaPaciente, $appPersonaPaciente , $nomPersonaOdontologo,$appPersonaOdontologo);					
+        		$sentencia->bind_result($idOrdenLaboratorio, $idOdontologo, $idPaciente,$numFicha, $clinica, $bd, $bi, $pd, $pi, $fechaCreacion, $fechaEntrega, $horaEntrega, $color, $estado,  $nomPersonaPaciente, $appPersonaPaciente , $nomPersonaOdontologo,$appPersonaOdontologo);					
 				$indice=0;     
 				while($sentencia->fetch())
 				{

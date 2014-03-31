@@ -31,7 +31,7 @@ namespace NetClient
 
             try
             {
-                String result = netclient.NetPost("ws-tratamiento-abono.php", "send={\"indice\":10,\"idFicha\":"+idFicha+"}");
+                String result = netclient.NetPost("ws-tratamiento-abono.php", "{\"indice\":10,\"idFicha\":"+idFicha+"}");
                 var jobject = JObject.Parse(result);
                 var token = jobject.SelectToken("listadoTratamiento").ToList();
                 foreach (var item in token)
@@ -68,7 +68,7 @@ namespace NetClient
             //{"indice":1,"idFicha":1,"fechaCreacion":"1991-12-12","tratamiento":"extraccion","fechaSeguimiento":"1991-12-12","valorTotal":100000}
             string fechaCreacionEnviar = tratamiento.FechaCreacion.Year + "-" + tratamiento.FechaCreacion.Month + "-" + tratamiento.FechaCreacion.Day;
             string fechaCreacionSeguimiento = tratamiento.FechaSeguimiento.Year + "-" + tratamiento.FechaSeguimiento.Month + "-" + tratamiento.FechaSeguimiento.Day;
-            string jsonAEnviar = "send={\"indice\":1,\"idFicha\":\"" + tratamiento.IdFicha + "\", \"fechaCreacion\":\""+fechaCreacionEnviar+"\",\"tratamiento\":\""+tratamiento.Tratamiento+"\",\"fechaSeguimiento\":\""+fechaCreacionSeguimiento+"\",\"valorTotal\":"+tratamiento.ValorTotal+"}";
+            string jsonAEnviar = "{\"indice\":1,\"idFicha\":\"" + tratamiento.IdFicha + "\", \"fechaCreacion\":\""+fechaCreacionEnviar+"\",\"tratamiento\":\""+tratamiento.Tratamiento+"\",\"fechaSeguimiento\":\""+fechaCreacionSeguimiento+"\",\"valorTotal\":"+tratamiento.ValorTotal+"}";
             try
             {
                 String result = netclient.NetPost("ws-tratamiento-abono.php", jsonAEnviar);
@@ -86,7 +86,7 @@ namespace NetClient
             //{"indice":2,"idTratamientoDental":10,"idFicha":1,"fechaCreacion":"1991-12-12","tratamiento":"extraccion","fechaSeguimiento":"1991-12-12","valorTotal":100000}
             string fechaCreacionEnviar = tratamiento.FechaCreacion.Year + "-" + tratamiento.FechaCreacion.Month + "-" + tratamiento.FechaCreacion.Day;
             string fechaCreacionSeguimiento = tratamiento.FechaSeguimiento.Year + "-" + tratamiento.FechaSeguimiento.Month + "-" + tratamiento.FechaSeguimiento.Day;
-            string jsonAEnviar = "send={\"indice\":2,\"idTratamientoDental\":" + tratamiento.IdTratamientoDental + ",\"idFicha\":" + tratamiento.IdFicha + ",\"fechaCreacion\":\"" + fechaCreacionEnviar + "\",\"tratamiento\":\"" + tratamiento.Tratamiento + "\",\"fechaSeguimiento\":\"" + fechaCreacionSeguimiento + "\",\"valorTotal\":" + tratamiento.ValorTotal + "}";
+            string jsonAEnviar = "{\"indice\":2,\"idTratamientoDental\":" + tratamiento.IdTratamientoDental + ",\"idFicha\":" + tratamiento.IdFicha + ",\"fechaCreacion\":\"" + fechaCreacionEnviar + "\",\"tratamiento\":\"" + tratamiento.Tratamiento + "\",\"fechaSeguimiento\":\"" + fechaCreacionSeguimiento + "\",\"valorTotal\":" + tratamiento.ValorTotal + "}";
             try
             {
                 String result = netclient.NetPost("ws-tratamiento-abono.php", jsonAEnviar);
@@ -103,7 +103,7 @@ namespace NetClient
         {
             List<Abono> list = new List<Abono>();
             //{"indice":1,"idFicha":1,"fechaCreacion":"1991-12-12","tratamiento":"extraccion","fechaSeguimiento":"1991-12-12","valorTotal":100000}
-            string jsonAEnviar = "send={\"indice\":8,\"idTratamiento\":"+idTratamiento+"}";
+            string jsonAEnviar = "{\"indice\":8,\"idTratamiento\":"+idTratamiento+"}";
             try
             {
                 String result = netclient.NetPost("ws-tratamiento-abono.php",jsonAEnviar);
@@ -131,7 +131,7 @@ namespace NetClient
         {
             //{"indice":5,"idTratamientoDental":3,"fechaAbono":"1991-12-12","monto":1000}
             string fechaAEnviar = abono.FechaAbono.Year + "-" + abono.FechaAbono.Month + "-" + abono.FechaAbono.Day;
-            string jsonAEnviar = "send={\"indice\":5,\"idTratamientoDental\":" + abono.IdTratamientoDental + ",\"fechaAbono\":\"" + fechaAEnviar + "\",\"monto\":" + abono.Monto + "}";
+            string jsonAEnviar = "{\"indice\":5,\"idTratamientoDental\":" + abono.IdTratamientoDental + ",\"fechaAbono\":\"" + fechaAEnviar + "\",\"monto\":" + abono.Monto + "}";
             try
             {
                 
@@ -149,7 +149,7 @@ namespace NetClient
         {
             //{"indice":6,"idAbono":1,"idTratamientoDental":3,"fechaAbono":"1991-12-12","monto":10000}
             string fechaAEnviar = abono.FechaAbono.Year + "-" + abono.FechaAbono.Month + "-" + abono.FechaAbono.Day;
-            string jsonAEnviar = "send={\"indice\":6,\"idAbono\":" + abono.IdAbono + ",\"idTratamientoDental\":" + abono.IdTratamientoDental + ",\"fechaAbono\":\"" + fechaAEnviar + "\",\"monto\":" + abono.Monto + "}";
+            string jsonAEnviar = "{\"indice\":6,\"idAbono\":" + abono.IdAbono + ",\"idTratamientoDental\":" + abono.IdTratamientoDental + ",\"fechaAbono\":\"" + fechaAEnviar + "\",\"monto\":" + abono.Monto + "}";
             try
             {
                 String result = netclient.NetPost("ws-tratamiento-abono.php", jsonAEnviar);
@@ -165,7 +165,7 @@ namespace NetClient
         public string EliminarAbono(Abono abono)
         {
             //{"indice":11,"idAbono":3}
-            string jsonAEnviar = "send={\"indice\":11,\"idAbono\":"+abono.IdAbono+"}";
+            string jsonAEnviar = "{\"indice\":11,\"idAbono\":"+abono.IdAbono+"}";
             try
             {
                 String result = netclient.NetPost("ws-tratamiento-abono.php", jsonAEnviar);

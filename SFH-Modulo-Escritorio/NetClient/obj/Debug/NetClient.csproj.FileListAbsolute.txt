@@ -45,6 +45,6 @@ C:\Users\David\Desktop\SFH-Modulo-Escritorio\NetClient\bin\Debug\ObjectsBeans.dl
 C:\Users\David\Desktop\SFH-Modulo-Escritorio\NetClient\bin\Debug\Newtonsoft.Json.pdb
 C:\Users\David\Desktop\SFH-Modulo-Escritorio\NetClient\bin\Debug\Newtonsoft.Json.xml
 C:\Users\David\Desktop\SFH-Modulo-Escritorio\NetClient\bin\Debug\ObjectsBeans.pdb
-C:\Users\David\Desktop\SFH-Modulo-Escritorio\NetClient\obj\Debug\NetClient.csprojResolveAssemblyReference.cache
 C:\Users\David\Desktop\SFH-Modulo-Escritorio\NetClient\obj\Debug\NetClient.dll
 C:\Users\David\Desktop\SFH-Modulo-Escritorio\NetClient\obj\Debug\NetClient.pdb
+C:\Users\David\Desktop\SFH-Modulo-Escritorio\NetClient\obj\Debug\NetClient.csprojResolveAssemblyReference.cache

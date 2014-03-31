@@ -465,28 +465,41 @@ namespace SFH_Software
         {
             if (btnNuevo.Text.ToString().Trim() == "Ingresar Usuarios")
             {
-                
-                Persona persona = new Persona();
-                persona.IdPerfil = Convert.ToInt32(this.cmbxPerfil.SelectedIndex);
-                persona.Rut = int.Parse(this.txtrut.Text);
-                persona.Dv = this.txtdv.Text;
-                persona.Nombre = this.txtnom.Text;
-                persona.ApellidoPaterno = this.txtapellpater.Text;
-                persona.ApellidoMaterno = this.txtApeMat.Text;
-                persona.FechaNacimiento = mcFechaNac.SelectionStart;
-                if(txtpass.ToString()==txtpass2.ToString()){
-                String id_per = client_usuario.InsertarPersona(persona);
-                Pass pass = new Pass();
-                pass.IdPersona = int.Parse(id_per);
-                pass.Passtext = txtpass.Text.ToString();
-                pass.FechaCaducidad = mcFechadeCaducidad.SelectionStart;
-                Datoscontacto contacto = this.DatosContactoDefault();
-                this.client_addUusario.insertarPersonaDatosdeContacto(persona,contacto, pass);
+                if (txtrut.Text != "")
+                {
+                    List<Persona> list = this.client_usuario.ListarDatosPersona();
+                    int patron = Convert.ToInt32(txtrut.Text.ToString());
+                    Persona result = list.Find(delegate(Persona per) { return per.Rut == patron; });
+                    if (result != null)
+                    {
+                        MessageBox.Show("El Usuario " + result.Nombre + " " + result.ApellidoPaterno + " ya posee una cuenta dentro del sistema", "SFH Administración de Clínica - Administración de Usuarios", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        Persona persona = new Persona();
+                        persona.IdPerfil = Convert.ToInt32(this.cmbxPerfil.SelectedIndex);
+                        persona.Rut = int.Parse(this.txtrut.Text);
+                        persona.Dv = this.txtdv.Text;
+                        persona.Nombre = this.txtnom.Text;
+                        persona.ApellidoPaterno = this.txtapellpater.Text;
+                        persona.ApellidoMaterno = this.txtApeMat.Text;
+                        persona.FechaNacimiento = mcFechaNac.SelectionStart;
+                        if (txtpass.ToString() == txtpass2.ToString())
+                        {
+                            String id_per = client_usuario.InsertarPersona(persona);
+                            Pass pass = new Pass();
+                            pass.IdPersona = int.Parse(id_per);
+                            pass.Passtext = txtpass.Text.ToString();
+                            pass.FechaCaducidad = mcFechadeCaducidad.SelectionStart;
+                            Datoscontacto contacto = this.DatosContactoDefault();
+                            this.client_pass_dat.InsertarDatosdeContacto(contacto);
+                            this.client_pass_dat.InsertarPass(pass);
+                        }
+                        datagriPersona.DataSource = this.client_usuario.ListarDatosPersona();
+                        this.LimpiarControles();
+                        MessageBox.Show("Usuario registrado satisfactoriamente", "SFH Administración de Clínica - Administración de Usuarios", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
-                datagriPersona.DataSource = this.client_usuario.ListarDatosPersona();
-                this.LimpiarControles();
-                MessageBox.Show("Usuario registrado satisfactoriamente", "SFH Administración de Clínica - Administración de Usuarios", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
             }
             else if (btnNuevo.Text.ToString().Trim() == "Guardar Cambios")
             {

@@ -32,7 +32,7 @@ namespace NetClient
             string fichaInsertada = string.Empty;
             string fechaAEnviar = gasto.FechaGastos.Year + "-" + gasto.FechaGastos.Month + "-" + gasto.FechaGastos.Day;
             //{"indice":1,"idPersona":1,"conceptoGasto":"Colacion","montoGasto":2000,"descuentoGasto":0,"fechaGasto":"2013-11-23"}
-            this.JsonParam = "send={\"indice\":1,\"idPersona\":"+gasto.IdPersona+",\"conceptoGasto\":\""+gasto.ConceptodeGastos+"\",\"montoGasto\":"+gasto.MontoGastos+",\"descuentoGasto\":"+gasto.DescuentoGastos+",\"fechaGasto\":\""+fechaAEnviar+"\"}";
+            this.JsonParam = "{\"indice\":1,\"idPersona\":"+gasto.IdPersona+",\"conceptoGasto\":\""+gasto.ConceptodeGastos+"\",\"montoGasto\":"+gasto.MontoGastos+",\"descuentoGasto\":"+gasto.DescuentoGastos+",\"fechaGasto\":\""+fechaAEnviar+"\"}";
             try
             {
                 String result = netclient.NetPost("ws-gastos.php", this.JsonParam);
@@ -55,7 +55,7 @@ namespace NetClient
             string fichaInsertada = string.Empty;
             string fechaAEnviar = gasto.FechaGastos.Year + "-" + gasto.FechaGastos.Month + "-" + gasto.FechaGastos.Day;
             //{"indice":1,"idPersona":1,"conceptoGasto":"Colacion","montoGasto":2000,"descuentoGasto":0,"fechaGasto":"2013-11-23"}
-            this.JsonParam = "send={\"indice\":2,\"idGasto\":" + gasto.IdGastos + ",\"idPersona\":" + gasto.IdPersona + ",\"conceptoGasto\":\"" + gasto.ConceptodeGastos + " \",\"montoGasto\":" + gasto.MontoGastos + ",\"descuentoGasto\":" + gasto.DescuentoGastos + ",\"fechaGasto\":\"" + fechaAEnviar + "\"}";
+            this.JsonParam = "{\"indice\":2,\"idGasto\":" + gasto.IdGastos + ",\"idPersona\":" + gasto.IdPersona + ",\"conceptoGasto\":\"" + gasto.ConceptodeGastos + " \",\"montoGasto\":" + gasto.MontoGastos + ",\"descuentoGasto\":" + gasto.DescuentoGastos + ",\"fechaGasto\":\"" + fechaAEnviar + "\"}";
             try
             {
                 String result = netclient.NetPost("ws-gastos.php", this.JsonParam);
@@ -78,7 +78,7 @@ namespace NetClient
             List<Gastos> list = new List<Gastos>();
             try
             {
-                this.JsonParam = "send={\"indice\":3}";
+                this.JsonParam = "{\"indice\":3}";
                 String result = netclient.NetPost("ws-gastos.php", this.JsonParam);
                 var jobject = JObject.Parse(result);
                 var token = jobject.SelectToken("listaGastos").ToList();
@@ -114,7 +114,7 @@ namespace NetClient
             List<Gastos> list = new List<Gastos>();
             try
             {
-                this.JsonParam = "send={\"indice\":4,\"idPersona\":"+id_persona+"}";
+                this.JsonParam = "{\"indice\":4,\"idPersona\":"+id_persona+"}";
                 String result = netclient.NetPost("ws-gastos.php", this.JsonParam);
                 var jobject = JObject.Parse(result);
                 var token = jobject.SelectToken("listaGastos").ToList();
@@ -147,7 +147,7 @@ namespace NetClient
         {
             string gastoEliminado = string.Empty;
             //{"indice":5,"idPrecio":12}
-            this.JsonParam = "send={\"indice\":5,\"idGasto\":" + idgasto + "}";
+            this.JsonParam = "{\"indice\":5,\"idGasto\":" + idgasto + "}";
             try
             {
                 String result = netclient.NetPost("ws-gastos.php", this.JsonParam);

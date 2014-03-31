@@ -1,4 +1,8 @@
+<<<<<<< HEAD:web/javascript/asistente/scriptReservarHora.js
 var direccionWeb = "";
+=======
+var direccionWeb = "http://sfh.crossline.cl/webServiceencriptado/";
+>>>>>>> FETCH_HEAD:web/asistente/javascript/scriptReservarHora.js
 var vacio = 0;
 $(document).ready(inicializarEventos);
 
@@ -117,12 +121,16 @@ function reservarHora()
 			var fecha = $("#txtFecha").val();
 			var hora = $("#selectHora").val();
 			var fechaIngresar = fecha;
+			var key = $("#keyPaciente").val();
 			//{"indice":1,"idPaciente":3,"idOdontologo":1,"fecha":"2013-10-10","horaInicio":"12:00:00","estado":0}
 			var url = direccionWeb+"ws-cita.php";
-			var data = {"send":"{\"indice\":1,\"idPaciente\":"+idPaciente+",\"idOdontologo\":"+idOdontologo+",\"fecha\":\""+fechaIngresar+"\",\"horaInicio\":\""+hora+"\",\"estado\":0}"}
+			var json = "{\"indice\":1,\"idPaciente\":"+idPaciente+",\"idOdontologo\":"+idOdontologo+",\"fecha\":\""+fechaIngresar+"\",\"horaInicio\":\""+hora+"\",\"estado\":0,\"key\":\""+key+"\"}";
+			var data = {"send":encriptar(json)};
 
-			$.post(url,data,function(datos)
-			{
+
+			$.post(url, data, function(jsonEncriptadoBase){
+				var datos = desencriptar(jsonEncriptadoBase);
+				//alert(datos);
 				var obj = $.parseJSON(datos);
 				var resultado = obj.resultado;
 				if(resultado!=-1)
@@ -152,10 +160,13 @@ function reservarHora()
 			var fecha = $("#txtFecha").val();
 			var hora = $("#selectHora").val();
 			var fechaIngresar = fecha;
+			var key = $("#keyPaciente").val();
 			var url = direccionWeb+"ws-cita.php";
-			var data = {"send":"{\"indice\":9,\"rut\":"+rut+",\"dv\":\""+dv+"\",\"nombre\":\""+nombre+"\",\"appPaterno\":\""+apellidoPaterno+"\",\"apellidoMaterno\":\""+apellidoMaterno+"\",\"fechaNacimiento\":\""+fechaNacimiento+"\",\"fechaReserva\":\""+fechaIngresar+"\",\"idOdontologo\":"+idOdontologo+",\"horaReserva\":\""+hora+"\",\"estado\":0}"};
-			$.post(url,data,function(datos)
-			{
+			var json = "{\"indice\":9,\"rut\":"+rut+",\"dv\":\""+dv+"\",\"nombre\":\""+nombre+"\",\"appPaterno\":\""+apellidoPaterno+"\",\"apellidoMaterno\":\""+apellidoMaterno+"\",\"fechaNacimiento\":\""+fechaNacimiento+"\",\"fechaReserva\":\""+fechaIngresar+"\",\"idOdontologo\":"+idOdontologo+",\"horaReserva\":\""+hora+"\",\"estado\":0,\"key\":\""+key+"\"}";
+			var data = {"send":encriptar(json)};
+
+			$.post(url, data, function(jsonEncriptadoBase){
+				var datos = desencriptar(jsonEncriptadoBase);
 				var objeto = $.parseJSON(datos);
 				var respuesta = objeto.resultado;
 				if(respuesta == "Hubo un error al insertar la persona")
@@ -231,9 +242,13 @@ function buscarPersona()
 		{
 			var rut = $("#txtRut").val();
 			var dv  = $("#txtDv").val();
-			var data = {"send":"{\"indice\":5,\"rut\":"+rut+",\"dv\":\""+dv+"\"}"};
-			$.post(url,data,function(datos)
+			var key = $("#keyPaciente").val();
+			var json = "{\"indice\":5,\"rut\":"+rut+",\"dv\":\""+dv+"\",\"key\":\""+key+"\"}";
+			var data = {"send":encriptar(json)};
+
+			$.post(url, data, function(jsonEncriptadoBase)
 			{
+				var datos = desencriptar(jsonEncriptadoBase);
 				var objeto = $.parseJSON(datos);
 				var datos = objeto.buscarPacienteRut;
 				if(datos!="")
@@ -281,10 +296,12 @@ function disponibilidad()
 {
 	var fecha = $("#txtFecha").val() + " 13:13:00";
 	var ingresar = direccionWeb+"ws-horario.php";
-	var data = {"send":"{\"indice\":1,\"fecha\":\""+fecha+"\"}"};
+	var key = $("#keyPaciente").val();
+	var json = "{\"indice\":1,\"fecha\":\""+fecha+"\",\"key\":\""+key+"\"}";
+	var data = {"send":encriptar(json)};
 
-	$.post(ingresar, data, function(datos)
-	{
+	$.post(ingresar, data, function(jsonEncriptadoBase){
+		var datos = desencriptar(jsonEncriptadoBase);
 		var obj = $.parseJSON(datos);
 		horarios = obj.listaHorarios;
 		

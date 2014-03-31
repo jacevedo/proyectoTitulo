@@ -44,7 +44,7 @@ namespace NetClient
             string personaInsertada = string.Empty;
             String fechaNacimiento = persona.FechaNacimiento.Year + "-" + persona.FechaNacimiento.Month + "-" + persona.FechaNacimiento.Day;
             //{"indice":1,"idPerfil":1,"rut":17897359,"dv":2,"nombre":"ada","appPaterno":"wonk","appMaterno":"asturias","fechaNac":"1991-12-12"}
-            this.JsonParam = "send={\"indice\":1,\"idPerfil\":"+persona.IdPerfil+",\"rut\":"+persona.Rut+",\"dv\":"+persona.Dv+",\"nombre\":\""+persona.Nombre+"\",\"appPaterno\":\""+persona.ApellidoPaterno+"\",\"appMaterno\":\""+persona.ApellidoMaterno+"\",\"fechaNac\":\""+fechaNacimiento+"\"}";
+            this.JsonParam = "{\"indice\":1,\"idPerfil\":"+persona.IdPerfil+",\"rut\":"+persona.Rut+",\"dv\":"+persona.Dv+",\"nombre\":\""+persona.Nombre+"\",\"appPaterno\":\""+persona.ApellidoPaterno+"\",\"appMaterno\":\""+persona.ApellidoMaterno+"\",\"fechaNac\":\""+fechaNacimiento+"\"}";
             try
             {
                 String result = netclient.NetPost("ws-admin-usuario.php", this.JsonParam);
@@ -66,7 +66,7 @@ namespace NetClient
             string personaModificado = string.Empty;
             String fechaNacimiento = persona.FechaNacimiento.Year + "-" + persona.FechaNacimiento.Month + "-" + persona.FechaNacimiento.Day;
             //{"indice":5,"idPersona":20,"idPerfil":1,"rut":11111111,"dv":2,"nombre":"ada","appPaterno":"wonk","appMaterno":"asturias","fechaNac":"1991-12-12"}
-            this.JsonParam = "send={\"indice\":5,\"idPersona\":"+persona.IdPersona+",\"idPerfil\":" + persona.IdPerfil + ",\"rut\":" + persona.Rut + ",\"dv\":" + persona.Dv + ",\"nombre\":\"" + persona.Nombre + "\",\"appPaterno\":\"" + persona.ApellidoPaterno + "\",\"appMaterno\":\"" + persona.ApellidoMaterno + "\",\"fechaNac\":\"" + fechaNacimiento + "\"}";
+            this.JsonParam = "{\"indice\":5,\"idPersona\":"+persona.IdPersona+",\"idPerfil\":" + persona.IdPerfil + ",\"rut\":" + persona.Rut + ",\"dv\":" + persona.Dv + ",\"nombre\":\"" + persona.Nombre + "\",\"appPaterno\":\"" + persona.ApellidoPaterno + "\",\"appMaterno\":\"" + persona.ApellidoMaterno + "\",\"fechaNac\":\"" + fechaNacimiento + "\"}";
             try
             {
                 String result = netclient.NetPost("ws-admin-usuario.php", this.JsonParam);
@@ -88,7 +88,7 @@ namespace NetClient
             List<Persona> list = new List<Persona>();
             try
             {
-                this.JsonParam = "send={\"indice\":10}";
+                this.JsonParam = "{\"indice\":10}";
                 String result = netclient.NetPost("ws-admin-usuario-sig.php", this.JsonParam);
                 var jobject = JObject.Parse(result);
                 var token = jobject.SelectToken("listaPersonas").ToList();
@@ -116,7 +116,7 @@ namespace NetClient
             List<Persona> list = new List<Persona>();
             try
             {
-                this.JsonParam = "send={\"indice\":12}";
+                this.JsonParam = "{\"indice\":12}";
                 String result = netclient.NetPost("ws-admin-usuario.php", this.JsonParam);
                 var jobject = JObject.Parse(result);
                 var token = jobject.SelectToken("listaPersonas").ToList();
@@ -144,7 +144,7 @@ namespace NetClient
             List<Persona> list = new List<Persona>();
             try
             {
-                this.JsonParam = "send={\"indice\":12}";
+                this.JsonParam = "{\"indice\":12}";
                 String result = netclient.NetPost("ws-admin-usuario.php", this.JsonParam);
                 var jobject = JObject.Parse(result);
                 var token = jobject.SelectToken("listaPersonas").ToList();
@@ -194,7 +194,7 @@ namespace NetClient
             List<Persona> list = new List<Persona>();
             try
             {
-                this.JsonParam = "send={\"indice\":9}";
+                this.JsonParam = "{\"indice\":9}";
                 String result = netclient.NetPost("ws-admin-usuario-sig.php", this.JsonParam);
                 var jobject = JObject.Parse(result);
                 var token = jobject.SelectToken("listaPersonas").ToList();

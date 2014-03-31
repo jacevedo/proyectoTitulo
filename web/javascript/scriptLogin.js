@@ -1,4 +1,8 @@
+<<<<<<< HEAD:web/javascript/scriptLogin.js
 var direccionWeb = "";
+=======
+var direccionWeb = "http://sfh.crossline.cl/webServiceencriptado/";
+>>>>>>> FETCH_HEAD:web/asistente/javascript/scriptLogin.js
 $(document).ready(inicializarEventos);
 
 function inicializarEventos()
@@ -48,11 +52,12 @@ function login()
 	{
 		var usuario = $("#txtUsuario").val();
 		var contrasena = $("#txtPass").val();
-
 		var ingresar = direccionWeb+"ws-login.php";
-		var data = {"send":"{\"indice\":2,\"usuario\":"+usuario+",\"pass\":\""+contrasena+"\"}"};
+		var json = "{\"indice\":2,\"usuario\":"+usuario+",\"pass\":\""+contrasena+"\"}";
+		var data = {"send":encriptar(json)};
 
-		$.post(ingresar, data, function(datos){
+		$.post(ingresar, data, function(jsonEncriptadoBase){
+			var datos = desencriptar(jsonEncriptadoBase);
 			var datosObjeto = $.parseJSON(datos);
 			var obj = datosObjeto.resultado;
 			var codigo = obj.codAcceso;

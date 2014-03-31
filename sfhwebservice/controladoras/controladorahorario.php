@@ -227,7 +227,7 @@ require_once '../pojos/cita.php';
 	}
 	public function horasTomadas($idOdontologo,$fecha)
 	{
-		$fechaString =  strlen($fecha);
+		$fechaString =  strlen($fecha+"");
 		$conexion = new MySqlCon();
 		$this->datos ='';
 

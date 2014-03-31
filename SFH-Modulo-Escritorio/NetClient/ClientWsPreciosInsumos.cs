@@ -33,7 +33,7 @@ namespace NetClient
             List<Listadeprecio> list = new List<Listadeprecio>();
             try
             {
-                this.JsonParam = "send={\"indice\":3}";
+                this.JsonParam = "{\"indice\":3}";
                 String result = netclient.NetPost("ws-precios-insumos.php", this.JsonParam);
                 var jobject = JObject.Parse(result);
                 var token = jobject.SelectToken("listaPrecios").ToList();
@@ -62,7 +62,7 @@ namespace NetClient
         {
             string precioInsertado = string.Empty;
             //{"indice":1,"Comentario":"Procedimiento","ValorNeto":12000}
-            this.JsonParam = "send={\"indice\":1,\"Comentario\":\"" + precio.Comentario + "\",\"ValorNeto\":" + precio.ValorNeto + "}";
+            this.JsonParam = "{\"indice\":1,\"Comentario\":\"" + precio.Comentario + "\",\"ValorNeto\":" + precio.ValorNeto + "}";
             try
             {
                 String result = netclient.NetPost("ws-precios-insumos.php", this.JsonParam);
@@ -83,7 +83,7 @@ namespace NetClient
         {
             string precioModificado = string.Empty;
             //{"indice":2,"idPrecio":2,"Comentario":"asd","ValorNeto":130}
-            this.JsonParam = "send={\"indice\":2,\"idPrecio\":" + precio.IdPrecios + ",\"Comentario\":\"" + precio.Comentario + "\",\"ValorNeto\":" + precio.ValorNeto + "}";
+            this.JsonParam = "{\"indice\":2,\"idPrecio\":" + precio.IdPrecios + ",\"Comentario\":\"" + precio.Comentario + "\",\"ValorNeto\":" + precio.ValorNeto + "}";
             try
             {
                 String result = netclient.NetPost("ws-precios-insumos.php", this.JsonParam);
@@ -106,7 +106,7 @@ namespace NetClient
             try
             {
                 //{"indice":4,"nombre":"Urgencia"}
-                this.JsonParam = "send={\"indice\":4,\"nombre\":\"" + nombre + "\"}";
+                this.JsonParam = "{\"indice\":4,\"nombre\":\"" + nombre + "\"}";
                 String result = netclient.NetPost("ws-precios-insumos.php", this.JsonParam);
                 var jobject = JObject.Parse(result);
                 var token = jobject.SelectToken("listaPrecios").ToList();
@@ -135,7 +135,7 @@ namespace NetClient
         {
             string precioEliminado= string.Empty;
             //{"indice":5,"idPrecio":12}
-            this.JsonParam = "send={\"indice\":5,\"idPrecio\":" + idprecio + "}";
+            this.JsonParam = "{\"indice\":5,\"idPrecio\":" + idprecio + "}";
             try
             {
                 String result = netclient.NetPost("ws-precios-insumos.php", this.JsonParam);
@@ -156,7 +156,7 @@ namespace NetClient
         {
             string precioInsertado = string.Empty;
             //{"indice":6,"idAreaInsumo":3,"idGasto":1,"nomInsumo":"Jeringas 10 ML", "Cantidad":10, "descInsumo": "Compra al por mayor","unidadMedida":10}
-            this.JsonParam = "send={\"indice\":6,\"idAreaInsumo\":" + insumo.IdAreaInsumo + ",\"idGasto\":" + insumo.IdGastos_insumo + ",\"nomInsumo\":\"" + insumo.NomInsumos + "\",\"Cantidad\":" + insumo.Cantidad + ",\"descInsumo\":\"" + insumo.DescripcionInsumo + "\",\"unidadMedida\":\"" + insumo.UnidadMedida + "\"}";
+            this.JsonParam = "{\"indice\":6,\"idAreaInsumo\":" + insumo.IdAreaInsumo + ",\"idGasto\":" + insumo.IdGastos_insumo + ",\"nomInsumo\":\"" + insumo.NomInsumos + "\",\"Cantidad\":" + insumo.Cantidad + ",\"descInsumo\":\"" + insumo.DescripcionInsumo + "\",\"unidadMedida\":\"" + insumo.UnidadMedida + "\"}";
             try
             {
                 String result = netclient.NetPost("ws-precios-insumos.php", this.JsonParam);
@@ -177,7 +177,7 @@ namespace NetClient
         {
             string precioModificado = string.Empty;
             //{"indice":7,"idInsumo":2,"idAreaInsumo":3,"idGasto":1,"nomInsumo":"Jeringas 15 ML", "Cantidad":10,"descInsumo": "Compra al por mayor", "unidadMedida":10}
-            this.JsonParam = "send={\"indice\":7,\"idInsumo\":"+insumo.IdInsumos+",\"idAreaInsumo\":" + insumo.IdAreaInsumo + ",\"idGasto\":" + insumo.IdGastos_insumo + ",\"nomInsumo\":\"" + insumo.NomInsumos + "\",\"Cantidad\":" + insumo.Cantidad + ",\"descInsumo\":\"" + insumo.DescripcionInsumo + "\",\"unidadMedida\":\"" + insumo.UnidadMedida + "\"}";
+            this.JsonParam = "{\"indice\":7,\"idInsumo\":"+insumo.IdInsumos+",\"idAreaInsumo\":" + insumo.IdAreaInsumo + ",\"idGasto\":" + insumo.IdGastos_insumo + ",\"nomInsumo\":\"" + insumo.NomInsumos + "\",\"Cantidad\":" + insumo.Cantidad + ",\"descInsumo\":\"" + insumo.DescripcionInsumo + "\",\"unidadMedida\":\"" + insumo.UnidadMedida + "\"}";
             try
             {
                 String result = netclient.NetPost("ws-precios-insumos.php", this.JsonParam);
@@ -200,7 +200,7 @@ namespace NetClient
             List<Insumos> list = new List<Insumos>();
             try
             {
-                this.JsonParam = "send={\"indice\":8}";
+                this.JsonParam = "{\"indice\":8}";
                 String result = netclient.NetPost("ws-precios-insumos.php", this.JsonParam);
                 var jobject = JObject.Parse(result);
                 var token = jobject.SelectToken("ListaInsumos").ToList();
@@ -236,7 +236,7 @@ namespace NetClient
             try
             {
                 //{"indice":9,"idAreaInsumo":3}
-                this.JsonParam = "send={\"indice\":9,\"idAreaInsumo\":"+idInsumo+"}";
+                this.JsonParam = "{\"indice\":9,\"idAreaInsumo\":"+idInsumo+"}";
                 String result = netclient.NetPost("ws-precios-insumos.php", this.JsonParam);
                 var jobject = JObject.Parse(result);
                 var token = jobject.SelectToken("ListaInsumos").ToList();
@@ -271,7 +271,7 @@ namespace NetClient
             try
             {
                 //{"indice":10,"idAreaInsumo":3}
-                this.JsonParam = "send={\"indice\":10,\"idAreaInsumo\":" + idAreaInsumos + "}";
+                this.JsonParam = "{\"indice\":10,\"idAreaInsumo\":" + idAreaInsumos + "}";
                 String result = netclient.NetPost("ws-precios-insumos.php", this.JsonParam);
                 var jobject = JObject.Parse(result);
                 var token = jobject.SelectToken("ListaInsumos").ToList();
@@ -306,7 +306,7 @@ namespace NetClient
             try
             {
                 //{"indice":10,"idAreaInsumo":3}
-                this.JsonParam = "send={\"indice\":11,\"idAreaInsumo\":\""+ nombre +"\"}";
+                this.JsonParam = "{\"indice\":11,\"idAreaInsumo\":\""+ nombre +"\"}";
                 String result = netclient.NetPost("ws-precios-insumos.php", this.JsonParam);
                 var jobject = JObject.Parse(result);
                 var token = jobject.SelectToken("ListaInsumos").ToList();
