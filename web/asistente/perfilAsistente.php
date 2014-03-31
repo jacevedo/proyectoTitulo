@@ -1,6 +1,6 @@
 <?php
-	require_once 'libsigma/Sigma.php';
-	$plantilla = new HTML_Template_Sigma('plantilla');
+	require_once '../libsigma/Sigma.php';
+	$plantilla = new HTML_Template_Sigma('../plantilla');
 	$plantilla->loadTemplateFile('principal.tlp.html');
 
 	session_start();
@@ -14,9 +14,9 @@
 
 	$titulo_pagina ='Perfil';
 
-	$estilo_css = '<link rel="stylesheet" href="estilos/css/estiloPerfil.css">';
+	$estilo_css = '<link rel="stylesheet" href="../estilos/css/estiloPerfil.css">';
 
-	$script_javascript = '<script type="text/javascript" src="javascript/scriptPerfil.js"></script>';
+	$script_javascript = '<script type="text/javascript" src="../javascript/asistente/scriptPerfil.js"></script>';
 	
 	$menu_activo = '
 	<li class="active"><a href="perfilAsistente.php">Perfil</a></li>
@@ -70,7 +70,8 @@
 	$valores_ocultos = '
 	<input type="hidden" value="'.$user.'" id="idPaciente">
 	<input type="hidden" value="'.$key.'" id="keyPaciente">
-	<input type="hidden" value="'.$paciente.'" id="pacientes">';
+	<input type="hidden" value="'.$paciente.'" id="pacientes">
+	<input type="hidden" value="'.$direccionWeb.'" id="direccionWeb">';
 
 	$contenido_cuerpo = '<div id="Contenido"></div>';
 

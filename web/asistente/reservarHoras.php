@@ -1,6 +1,6 @@
 <?php
-	require_once 'libsigma/Sigma.php';
-	$plantilla = new HTML_Template_Sigma('plantilla');
+	require_once '../libsigma/Sigma.php';
+	$plantilla = new HTML_Template_Sigma('../plantilla');
 	$plantilla->loadTemplateFile('principal.tlp.html');
 
 	session_start();
@@ -14,9 +14,9 @@
 
 	$titulo_pagina='Reservar Hora';
 
-	$estilo_css = '<link rel="stylesheet" href="estilos/css/estiloReservarHora.css">';
+	$estilo_css = '<link rel="stylesheet" href="../estilos/css/estiloReservarHora.css">';
 
-	$script_javascript = '<script type="text/javascript" src="javascript/scriptReservarHora.js"></script>';
+	$script_javascript = '<script type="text/javascript" src="../javascript/asistente/scriptReservarHora.js"></script>';
 	
 	$menu_activo = '
 	<li><a href="perfilAsistente.php">Perfil</a></li>
@@ -52,7 +52,8 @@
 	$valores_ocultos = '
 	<input type="hidden" value="'.$user.'" id="idPaciente">
 	<input type="hidden" value="'.$key.'" id="keyPaciente">
-	<input type="hidden" value="'.$paciente.'" id="pacientes">';
+	<input type="hidden" value="'.$paciente.'" id="pacientes">
+	<input type="hidden" value="'.$direccionWeb.'" id="direccionWeb">';
 
 	$contenido_cuerpo = '';
 

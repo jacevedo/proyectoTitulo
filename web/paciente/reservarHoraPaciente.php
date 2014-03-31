@@ -1,65 +1,58 @@
 <?php
-session_start();
+	require_once '../libsigma/Sigma.php';
+	$plantilla = new HTML_Template_Sigma('../plantilla');
+	$plantilla->loadTemplateFile('principal.tlp.html');
+
+	session_start();
+	$user = $_SESSION['user'];
+	$key = $_SESSION['key'];
+	$paciente = $_SESSION['paciente'];
+	$nombre = $_SESSION['nombre'];
+	$apellido = $_SESSION['appPaterno'];
+
+	$direccionWeb = "http://192.168.89.128/sfhwebservice/webService/";
+
+	$titulo_pagina ='Reservar Hora';
+
+	$estilo_css = '<link rel="stylesheet" href="../estilos/css/estiloHoras.css">';
+
+	$script_javascript = '<script type="text/javascript" src="../javascript/paciente/scriptReservarHoraPaciente.js"></script>';
+	
+	$menu_activo = '
+	<li><a href="perfil.php">Perfil</a></li>
+	<li class="active"><a href="verHoras.php">Horas Atenci&oacute;n</a></li>
+	<li><a href="listaPrecios.php">Lista Precios</a></li>';
+
+	$contenido_usuario='<p id="nomUsuario"> '.$nombre.' '.$apellido.'</p>';
+
+	$titulo_seccion = '<h1>Reservar Hora Atenci&oacute;n</h1>';
+
+	$contenido_pagina = '
+	<table id="tablaTomarHora" class="table">
+		<tr><td class="encabezado">Fecha</td><td><input type="date" id="txtFecha"/></td></tr>
+		<tr><td class="encabezado">Dentista</td><td><select id="selectDentista"></select></td></tr>
+		<tr><td class="encabezado">Hora</td><td><select id="selectHora"></select></td></tr>
+		<tr><td colspan=2><button id="btnReservarHoraPaciente" class="btn btn-lg btn-primary btn-block">Reservar Hora</button></td></tr>
+	</table>';
+
+	$valores_ocultos = '
+	<input type="hidden" value="'.$user.'" id="idPaciente">
+	<input type="hidden" value="'.$key.'" id="keyPaciente">
+	<input type="hidden" value="'.$paciente.'" id="pacientes">
+	<input type="hidden" value="'.$direccionWeb.'" id="direccionWeb">';
+
+	$contenido_cuerpo = '';
+
+	$plantilla->setVariable('titulo',$titulo_pagina);
+	$plantilla->setVariable('estilo_css',$estilo_css);
+	$plantilla->setVariable('script_javascript',$script_javascript);
+	$plantilla->setVariable('menu_activo',$menu_activo);
+	$plantilla->setVariable('contenido_usuario',$contenido_usuario);
+	$plantilla->setVariable('titulo_seccion',$titulo_seccion);
+	$plantilla->setVariable('contenido_pagina',$contenido_pagina);
+	$plantilla->setVariable('valores_ocultos',$valores_ocultos);
+	$plantilla->setVariable('contenido_cuerpo',$contenido_cuerpo);
+
+	$plantilla->parse();
+	$plantilla->show();
 ?>
-<!DOCTYPE HTML>
-<html>
-	<head>
-		<link rel="stylesheet" href="estilos/css/bootstrap.css">
-		<link rel="stylesheet" href="estilos/css/estiloHoras.css">
-		<script type="text/javascript" src="javascript/JQuery.js"></script>
-		<script type="text/javascript" src="javascript/scriptReservarHoraPaciente.js"></script>
-	</head>
-	<body>
-		<div class="container">
-			<div class="navbar navbar-default" role="navigation">
-		        <div class="navbar-header">
-		          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-		            <span class="sr-only">Toggle navigation</span>
-		            <span class="icon-bar"></span>
-		            <span class="icon-bar"></span>
-		            <span class="icon-bar"></span>
-		          </button>
-		          <a class="navbar-brand" href="#">SFH <img src="imagenes/logo.png" id="imagenCostado"></a>
-		        </div>
-		        <div class="navbar-collapse collapse">
-		          <ul class="nav navbar-nav">
-		            <li class="active"><a href="perfil.php">Perfil</a></li>
-		            <li><a href="verHoras.php">Hora Atencion</a></li>
-		            <li><a href="ListaPrecios.php">Lista Precios</a></li>
-		           
-		          </ul>
-		          <ul class="nav navbar-nav navbar-right">
-		            <li class="active"><a href="#"><p id="nomUsuario"> <?=$_SESSION['nombre'];?> <?=$_SESSION['apellido'];?> </p></a></li>
-		             <li><a href="logout.php">Logout</a></li>
-		          </ul>
-		        </div><!--/.nav-collapse -->
-		    </div>
-		    <div class="jumbotron">
-		    	<input type="hidden" value=<?=$_SESSION['user'];?> id="idPaciente">
-				<input type="hidden" value=<?=$_SESSION['key'];?> id="keyPaciente">
-				<input type="hidden" value=<?=$_SESSION['paciente'];?> id="pacientes">
-				<h1>Tomar Hora</h1>
-				<table id="tablaTomarHora" class="table">
-					<tr>
-						<td class="encabezado">Fecha</td>
-						<td><input type="date" id="txtFecha"/></td>
-										
-					</tr>
-					<tr>
-						<td class="encabezado">Dentista</td>
-						<td><select id="selectDentista"></select></td>
-					</tr>
-					<tr>
-						<td class="encabezado">Hora</td>
-						<td><select id="selectHora"></select></td>
-					</tr>
-					<tr>
-						<td colspan=2><button id="btnReservarHoraPaciente" class="btn btn-lg btn-primary btn-block">Reservar Hora</button></td>
-					</tr>
-				</table>
-		    </div>
-		  </div>
-		
-		</div>
-	</body>
-</html>
