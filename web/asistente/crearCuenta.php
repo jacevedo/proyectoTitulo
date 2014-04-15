@@ -3,22 +3,33 @@
 	$plantilla = new HTML_Template_Sigma('../plantilla');
 	$plantilla->loadTemplateFile('principal.tlp.html');
 
+	session_start();
+	$user = $_SESSION['user'];
+	$key = $_SESSION['key'];
+	$paciente = $_SESSION['paciente'];
+	$nombre = $_SESSION['nombre'];
+	$apellido = $_SESSION['appPaterno'];
+
 	$direccionWeb = "http://sfh.crossline.cl/webServiceencriptado/";
 
 	$titulo_pagina ='Crear Cuenta';
 
-	$estilo_css = '<link rel="stylesheet" href="../estilos/css/estiloCrearCuenta.css">';
+	$estilo_css = '<link rel="stylesheet" href="../estilos/css/estiloReservarHora.css">';
+	//'<link rel="stylesheet" href="../estilos/css/estiloCrearCuenta.css">';
 
-	$script_javascript = '<script type="text/javascript" src="../paciente/javascript/scriptCrearCuenta.js"></script>';
+	$script_javascript = '<script type="text/javascript" src="../asistente/javascript/scriptCrearCuenta.js"></script>';
 	
-	$menu_activo = '';
+	$menu_activo = '<li><a href="perfilAsistente.php">Perfil</a></li>
+	<li class="active"><a href="confirmarHoras.php">Horas Atenci&oacute;n</a></li>
+	<li><a href="listaPrecios.php">Lista Precios</a></li>
+	<li><a href="listaOdontologos.php">Horarios Odont&oacute;logo</a></li>';
 
-	$contenido_usuario='';
+	$contenido_usuario='<p id="nomUsuario"> '.$nombre.' '.$apellido.'</p>';
 
 	$titulo_seccion = '<h1>Crear Nueva Cuenta</h1>';
 
 	$contenido_pagina = '
-	<table class="table">
+	<table class="tab">
 		<tr><td>Nombre</td><td><input class="textosLargos" type="text" id="txtNombre" placeholder="Esteban"/><span id="errorNombre" class="error" ></span></td></tr>
 		
 		<tr><td>Apellido Paterno</td><td><input class="textosLargos" type="text" id="txtAppPaterno" placeholder="Apablaza"/><span id="errorAppPaterno" class="error"></span></td></tr>
@@ -42,9 +53,8 @@
 		<tr><td>Email</td><td><input  class="textosLargos"type="text" id="txtMail" placeholder="lala@lala.net"/><span id="errorMail" class="error"></span></td></tr>
 
 		<tr><td>Contrase&ntilde;a</td><td><input class="textosLargos" type="password" id="txtContrasena" placeholder="asdasdasd"/><span id="errorPass" class="error"></span></td></tr>
-
-		<tr><td colspan=2><button id="btnCrearCuenta">Crear Cuenta</button></td></tr>
-	</table>';
+	</table>
+	<button id="btnCrearCuenta" class="btn btn-lg btn-primary btn-block">Crear Cuenta</button>';
 
 	$valores_ocultos = '<input type="hidden" value="'.$direccionWeb.'" id="direccionWeb">';
 

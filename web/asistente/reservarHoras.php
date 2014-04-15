@@ -10,13 +10,13 @@
 	$nombre = $_SESSION['nombre'];
 	$apellido = $_SESSION['appPaterno'];
 
-	$direccionWeb = "http://192.168.89.128/sfhwebservice/webService/";
+	$direccionWeb = "http://sfh.crossline.cl/webServiceencriptado/";
 
 	$titulo_pagina='Reservar Hora';
 
 	$estilo_css = '<link rel="stylesheet" href="../estilos/css/estiloReservarHora.css">';
 
-	$script_javascript = '<script type="text/javascript" src="../javascript/asistente/scriptReservarHora.js"></script>';
+	$script_javascript = '<script type="text/javascript" src="../asistente/javascript/scriptReservarHora.js"></script>';
 	
 	$menu_activo = '
 	<li><a href="perfilAsistente.php">Perfil</a></li>
@@ -31,7 +31,7 @@
 	$contenido_pagina = '
 	<input type="hidden" id="idUsuario" value=""/>
 	<table id="tablaReservarHoraAsistente" class="tab">
-		<tr><td>Rut</td><td><input type="text" id="txtRut"/> - <input type="text" id="txtDv"/><span id="spanErrorRut" class="error"></span></td></tr>
+		<tr><td>Rut</td><td><input type="text" id="txtRut"/> - <input type="text" id="txtDv"/><span id="spanErrorRut" class="error"></span> <a href="../asistente/crearCuenta.php" id="crearCuenta">Crear Nueva Cuenta</a></td></tr>
 		
 		<tr><td>Nombre</td><td><input class="inputHora" type="text" id="txtNombre"/><span id="spanErrorNombre" class="error"></span></td></tr>
 

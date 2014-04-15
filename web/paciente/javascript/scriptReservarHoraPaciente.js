@@ -12,11 +12,14 @@ function inicializarEventos()
 function cargarDatosFecha()
 {
 	var fecha = $("#txtFecha").val() + " 13:13:00";
+	var key = $("#keyPaciente").val();
 	var ingresar = direccionWeb+"ws-horario.php";
-	var data = {"send":"{\"indice\":1,\"fecha\":\""+fecha+"\"}"};
+	var json = "{\"indice\":1,\"fecha\":\""+fecha+"\",\"key\":\""+key+"\"}";
+	var data = {"send":encriptar(json)};
 
-	$.post(ingresar, data, function(datos)
+	$.post(ingresar, data, function(jsonEncriptadoBase)
 	{
+		var datos = desencriptar(jsonEncriptadoBase);
 		var obj = $.parseJSON(datos);
 		horarios = obj.listaHorarios;
 		
@@ -72,12 +75,15 @@ function guardarHora()
 	var fechaSelect = $("#txtFecha").val();
 	var horaSelect = $("#selectHora").val();
 	var id = $("#pacientes").val();
+	var key = $("#keyPaciente").val();
 
 	var ingresar = direccionWeb+"ws-cita.php";
-	var data = {"send":"{\"indice\":1,\"idPaciente\":\""+id+"\",\"idOdontologo\":\""+idDentista+"\",\"fecha\":\""+fechaSelect+"\",\"horaInicio\":\""+horaSelect+"\",\"estado\":0}"};
+	var json = "{\"indice\":1,\"idPaciente\":\""+id+"\",\"idOdontologo\":\""+idDentista+"\",\"fecha\":\""+fechaSelect+"\",\"horaInicio\":\""+horaSelect+"\",\"estado\":0,\"key\":\""+key+"\"}";
+	var data = {"send":encriptar(json)};
 
-	$.post(ingresar, data, function(datos)
+	$.post(ingresar, data, function(jsonEncriptadoBase)
 	{
+		var datos = desencriptar(jsonEncriptadoBase);
 		var obj = $.parseJSON(datos);
 		var idInsertado = obj.resultado;
 		if(idInsertado != 0)

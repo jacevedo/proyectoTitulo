@@ -11,13 +11,13 @@
 	$apellido = $_SESSION['appPaterno'];
 	$odontologo = $_POST["idOdontologo"];
 
-	$direccionWeb = "http://192.168.89.128/sfhwebservice/webService/";
+	$direccionWeb = "http://sfh.crossline.cl/webServiceencriptado/";
 
 	$titulo_pagina ='Horarios Odont&oacute;logo';
 
 	$estilo_css = '<link rel="stylesheet" href="../estilos/css/estiloReservarHora.css">';
 
-	$script_javascript = '<script type="text/javascript" src="../javascript/asistente/scriptHorarioOdontologos.js"></script>';
+	$script_javascript = '<script type="text/javascript" src="../asistente/javascript/scriptHorarioOdontologos.js"></script>';
 	
 	$menu_activo = '
 	<li><a href="perfilAsistente.php">Perfil</a></li>

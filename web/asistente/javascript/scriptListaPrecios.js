@@ -1,8 +1,5 @@
-<<<<<<< HEAD:web/javascript/asistente/scriptListaPrecios.js
-var direccionWeb = ""
-=======
-var direccionWeb = "http://sfh.crossline.cl/webServiceencriptado/";
->>>>>>> FETCH_HEAD:web/asistente/javascript/scriptListaPrecios.js
+//var direccionWeb = "http://sfh.crossline.cl/webServiceencriptado/";
+var direccionWeb = "";
 $(document).ready(inicializarEventos);
 
 function inicializarEventos()
@@ -73,7 +70,7 @@ function crearPrecio()
 			var obj = $.parseJSON(datos);
 			if(obj.idPrecioInsertado!=-1)
 			{
-				alert("Procedimiento insertado correctamente.")
+				alert("Procedimiento guardado correctamente.")
 				var textoNuevo = "<tr><td>"+obj.idPrecioInsertado+"</td><td>"+nomProcedimiento+"</td><td>"+precioProcedimiento+"</td><td><button class=\"btnEditarPrecio btn btn-lg btn-primary btn-block\" type=\"submit\">Editar</button></td><td><button class=\"btnEliminarPrecio btn btn-lg btn-primary btn-block\" type=\"submit\">Eliminar</button></td></tr>";
 				$("#cuerpoTabla").prepend(textoNuevo);
 				$("#tablaListaPrecios").off("click",".btnEditarPrecio",modificarObjeto);

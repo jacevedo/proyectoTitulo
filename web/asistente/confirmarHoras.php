@@ -10,13 +10,13 @@
 	$nombre = $_SESSION['nombre'];
 	$apellido = $_SESSION['appPaterno'];
 
-	$direccionWeb = "http://192.168.89.128/sfhwebservice/webService/";
+	$direccionWeb = "http://sfh.crossline.cl/webServiceencriptado/";
 
 	$titulo_pagina='Horas Atenci&oacute;n';
 
 	$estilo_css = '<link rel="stylesheet" href="../estilos/css/estiloConfirmarHora.css">';
 
-	$script_javascript = '<script type="text/javascript" src="../javascript/asistente/scriptConfirmarHora.js"></script>';
+	$script_javascript = '<script type="text/javascript" src="../asistente/javascript/scriptConfirmarHora.js"></script>';
 	
 	$menu_activo = '
 	<li><a href="perfilAsistente.php">Perfil</a></li>
@@ -46,9 +46,10 @@
 		<table class="table" id="tablaConfirmarHora">
 			<thead>
 				<tr><td class="tdId">id</td><td class="tdNombre">Nombre Paciente</td>
-				<td class="tdTelefono">Tel&eacute;fono</td><td class="tdHora">Hora</td>
-				<td class="tdDentista">Dentista</td><td class="tdConfirmar">Confirmar</td>
-				<td class="tdConfirmar">Modificar</td><td class="tdConfirmar">Eliminar</td></tr>
+				<td class="tdTelefono">Tel&eacute;fono</td> <td class="tdFecha">Fecha</td>
+				<td class="tdHora">Hora</td><td class="tdDentista">Dentista</td>
+				<td class="tdConfirmar">Confirmar</td><td class="tdConfirmar">Modificar</td>
+				<td class="tdConfirmar">Eliminar</td></tr>
 			</thead>
 			<tbody id="cuerpoTabla"></tbody>
 		</table>

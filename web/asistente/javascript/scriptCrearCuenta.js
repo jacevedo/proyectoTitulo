@@ -172,10 +172,13 @@ function ValidarNombre()
 function cargarRegiones()
 {
 	var regiones = direccionWeb+"ws-add-usuario.php";
-	var data = {"send":"{\"indice\":3}"};
+	var key = $("#keyPaciente").val();
+	var stringJson = "{\"indice\":3,\"key\":\""+key+"\"}";
+	var data = {"send":encriptar(stringJson)};
 
-	$.post(regiones,data,function(datos)
+	$.post(regiones,data,function(jsonEncriptado)
 	{
+		var datos = desencriptar(jsonEncriptado);
 		var obj = $.parseJSON(datos);
 		var select = '';
 		select = select + "<option value='0'>Seleccione una Regi&oacute;n</option>";
@@ -190,12 +193,14 @@ function cargarRegiones()
 function cambiarComuna()
 {
 	var idRegion = document.getElementById("region").value;
-
+	var key = $("#keyPaciente").val();
 	var comunas = direccionWeb+"ws-add-usuario.php";
-	var data = {"send":"{\"indice\":4,\"idRegion\":\""+idRegion+"\"}"};
+	var stringJson = "{\"indice\":4,\"idRegion\":\""+idRegion+"\",\"key\":\""+key+"\"}";
+	var data = {"send":encriptar(stringJson)};
 
-	$.post(comunas,data,function(datos)
+	$.post(comunas,data,function(jsonEncriptado)
 	{
+		var datos = desencriptar(jsonEncriptado);
 		var obj = $.parseJSON(datos);
 		$("#comuna").find('option').remove().end();
 		
@@ -246,18 +251,21 @@ function guardarPersona()
 		//fechaCad = yyyy+'/'+mm+'/'+dd;
 		fechaCad = "2014"+'/'+mm+'/'+dd
 
+		var key = $("#keyPaciente").val();
 		var persona = direccionWeb+"ws-add-usuario.php";
-		var data = {"send":"{\"indice\":10,\"idPerfil\":4,\"rut\":\""+rut+"\",\"dv\":\""+dv+"\",\"nombre\":\""+nombre+"\",\"appPaterno\":\""+appPaterno+"\",\"appMaterno\":\""+appMaterno+"\",\"fechaNac\":\""+fechaNac+"\",\"pass\":\""+pass+"\",\"idComuna\":\""+comuna+"\",\"fonoFijo\":\""+fonoFijo+"\",\"celular\":\""+fonoCel+"\",\"direccion\":\""+direccion+"\",\"mail\":\""+mail+"\",\"fechaIngreso\":\""+fechaIng+"\"}"};
+		var stringJson = "{\"indice\":10,\"idPerfil\":4,\"rut\":\""+rut+"\",\"dv\":\""+dv+"\",\"nombre\":\""+nombre+"\",\"appPaterno\":\""+appPaterno+"\",\"appMaterno\":\""+appMaterno+"\",\"fechaNac\":\""+fechaNac+"\",\"pass\":\""+pass+"\",\"idComuna\":\""+comuna+"\",\"fonoFijo\":\""+fonoFijo+"\",\"celular\":\""+fonoCel+"\",\"direccion\":\""+direccion+"\",\"mail\":\""+mail+"\",\"fechaIngreso\":\""+fechaIng+"\",\"key\":\""+key+"\"}";
+		var data = {"send":encriptar(stringJson)};
 
-		$.post(persona,data,function(datos)
+		$.post(persona,data,function(jsonEncriptado)
 		{
+			var datos = desencriptar(jsonEncriptado);
 			var obj = $.parseJSON(datos);
 			var resultado = obj.resultado;
 			var result = resultado.resultado;
 			if(result == "Todos los datos fueron insertados")
 			{
 				alert("Cuenta creada correctamente.");
-				window.location.href = "../index.php";
+				window.location.href = "/web/asistente/reservarHoras.php";
 			}
 			else
 			{

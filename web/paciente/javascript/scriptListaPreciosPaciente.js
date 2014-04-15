@@ -11,12 +11,14 @@ function buscarPor()
 {
 	var concepto = $("#txtBuscaTratamiento").val();
 	var tabla = "";
-
+	var key = $("#keyPaciente").val();
 	var precios = direccionWeb+"ws-precios-insumos.php";
-	var data = {"send":"{\"indice\":4,\"nombre\":\""+concepto+"\"}"};
+	var stringJson = "{\"indice\":4,\"nombre\":\""+concepto+"\",\"key\":\""+key+"\"}";
+	var data = {"send":encriptar(stringJson)};
 
-	$.post(precios,data,function(datos)
+	$.post(precios,data,function(jsonEncriptado)
 	{
+		var datos = desencriptar(jsonEncriptado);
 		var obj = $.parseJSON(datos);
 		$.each(obj.listaPrecios,function()
 		{
@@ -29,12 +31,14 @@ function buscarPor()
 function cargarListaPrecios()
 {
 	var precios = direccionWeb+"ws-precios-insumos.php";
-	var data = {"send":"{\"indice\":3}"};
-
+	var key = $("#keyPaciente").val();
+	var stringJson = "{\"indice\":3,\"key\":\""+key+"\"}";
+	var data = {"send":encriptar(stringJson)};
 	var tabla = "";
 
-	$.post(precios,data,function(datos)
+	$.post(precios,data,function(jsonEncriptado)
 	{
+		var datos = desencriptar(jsonEncriptado);
 		var obj = $.parseJSON(datos);
 		$.each(obj.listaPrecios,function()
 		{

@@ -10,13 +10,13 @@
 	$nombre = $_SESSION['nombre'];
 	$apellido = $_SESSION['appPaterno'];
 
-	$direccionWeb = "http://192.168.89.128/sfhwebservice/webService/";
+	$direccionWeb = "http://sfh.crossline.cl/webServiceencriptado/";
 
 	$titulo_pagina ='Horas Atenci&oacute;n';
 
 	$estilo_css = '<link rel="stylesheet" href="../estilos/css/estiloHoras.css">';
 
-	$script_javascript = '<script type="text/javascript" src="../javascript/paciente/scriptVerHoraPaciente.js"></script>';
+	$script_javascript = '<script type="text/javascript" src="../paciente/javascript/scriptVerHoraPaciente.js"></script>';
 	
 	$menu_activo = '
 	<li><a href="perfil.php">Perfil</a></li>

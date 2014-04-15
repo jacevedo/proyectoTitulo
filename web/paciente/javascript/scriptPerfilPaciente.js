@@ -137,13 +137,13 @@ function validarNombre()
 	var nombre = $("#txtNombre").val();
 	if (/^([a-z ñáéíóú]{2,60})$/i.test(nombre))
 	{
-	      $("#errorNombre").html("");
-               return true;
+	    $("#errorNombre").html("");
+        return true;
 	}
 	else
 	{
        $("#errorNombre").html('Debe ingresar s&oacute;lo letras y a lo m&aacute;s, dos nombres');
-           return false;
+        return false;
     }
 }
 function cargarPerfil()
@@ -152,10 +152,12 @@ function cargarPerfil()
 	var key = $("#keyPaciente").val();
 
 	var ingresar = direccionWeb+"ws-add-usuario.php";
-	var data = {"send":"{\"indice\":2,\"rut\":"+id+"}"};
+	var json = "{\"indice\":2,\"rut\":"+id+",\"key\":\""+key+"\"}";
+	var data = {"send":encriptar(json)};
 
-	$.post(ingresar, data, function(datos)
+	$.post(ingresar, data, function(jsonEncriptadoBase)
 	{
+		var datos = desencriptar(jsonEncriptadoBase);
 		var obj = $.parseJSON(datos);
 		var persona = obj.datosPersona;
 		var contacto = obj.datosContacto;
@@ -349,10 +351,13 @@ function guardarModificacionCuenta()
 	}
 
 	var usuarioModificado = direccionWeb+"ws-add-usuario.php";
-	var data = {"send":"{\"indice\":5,\"idPersona\":\""+numero+"\",\"idPerfil\":\""+perfil+"\",\"rut\":\""+ruts+"\",\"dv\":\""+dv+"\",\"nombre\": \""+nombre+"\",\"appPaterno\":\""+apellidoPaterno+"\",\"appMaterno\": \""+apellidoMaterno+"\",\"fechaNac\": \""+fechaNac+"\",\"idComuna\":\""+comuna+"\",\"fonoFijo\":\""+fonoFijo+"\",\"celular\":\""+fonoCelu+"\",\"direccion\":\""+direccion+"\",\"mail\":\""+email+"\",\"fechaIngreso\":\""+fechaIng+"\"}"}
+	var key = $("#keyPaciente").val();
+	var json = "{\"indice\":5,\"idPersona\":"+numero+",\"idPerfil\":"+perfil+",\"rut\":"+ruts+",\"dv\":\""+dv+"\",\"nombre\": \""+nombre+"\",\"appPaterno\":\""+apellidoPaterno+"\",\"appMaterno\": \""+apellidoMaterno+"\",\"fechaNac\": \""+fechaNac+"\",\"idComuna\":"+comuna+",\"fonoFijo\":\""+fonoFijo+"\",\"celular\":\""+fonoCelu+"\",\"direccion\":\""+direccion+"\",\"mail\":\""+email+"\",\"fechaIngreso\":\""+fechaIng+"\",\"key\":\""+key+"\"}";
+	var data = {"send":encriptar(json)};
 
-	$.post(usuarioModificado,data,function(datos)
+	$.post(usuarioModificado,data,function(jsonEncriptadoBase)
 	{
+		var datos = desencriptar(jsonEncriptadoBase);
 		var obj = $.parseJSON(datos);
 		var persona = obj.resultadoPersona;
 		var contacto = obj.resultadoDatos;
@@ -381,10 +386,13 @@ function guardarModificacionCuenta()
 function cargarRegiones()
 {
 	var regiones = direccionWeb+"ws-add-usuario.php";
-	var data = {"send":"{\"indice\":3}"};
+	var key = $("#keyPaciente").val();
+	var json = "{\"indice\":3,\"key\":\""+key+"\"}";
+	var data = {"send":encriptar(json)};
 
-	$.post(regiones,data,function(datos)
+	$.post(regiones,data,function(jsonEncriptadoBase)
 	{
+		var datos = desencriptar(jsonEncriptadoBase);
 		var obj = $.parseJSON(datos);
 		var select = '';
 		select = select + "<option value='0'>Seleccione una Regi&oacute;n</option>";
@@ -400,10 +408,13 @@ function cargarRegiones()
 function cargarRegiones(RegionesID)
 {
 	var regiones = direccionWeb+"ws-add-usuario.php";
-	var data = {"send":"{\"indice\":3}"};
+	var key = $("#keyPaciente").val();
+	var json = "{\"indice\":3,\"key\":\""+key+"\"}";
+	var data = {"send":encriptar(json)};
 
-	$.post(regiones,data,function(datos)
+	$.post(regiones,data,function(jsonEncriptadoBase)
 	{
+		var datos = desencriptar(jsonEncriptadoBase);
 		var obj = $.parseJSON(datos);
 		var select = '';
 		select = select + "<option value='0'>Seleccione una Regi&oacute;n</option>";
@@ -426,10 +437,13 @@ function cargarRegiones(RegionesID)
 function cargarComunas(ComunasID, RegionesID)
 {
 	var comunas = direccionWeb+"ws-add-usuario.php";
-	var data = {"send":"{\"indice\":4,\"idRegion\":\""+RegionesID+"\"}"};
+	var key = $("#keyPaciente").val();
+	var json = "{\"indice\":4,\"idRegion\":\""+RegionesID+"\",\"key\":\""+key+"\"}";
+	var data = {"send":encriptar(json)};
 
-	$.post(comunas,data,function(datos)
+	$.post(comunas,data,function(jsonEncriptadoBase)
 	{
+		var datos = desencriptar(jsonEncriptadoBase);
 		var obj = $.parseJSON(datos);
 		var select = '';
 		select = select + "<option value='0'>Seleccione una Comuna</option>";
@@ -452,12 +466,15 @@ function cargarComunas(ComunasID, RegionesID)
 function cambiarComuna()
 {
 	var idRegion = document.getElementById("region").value;
+	var key = $("#keyPaciente").val();
 
 	var comunas = direccionWeb+"ws-add-usuario.php";
-	var data = {"send":"{\"indice\":4,\"idRegion\":\""+idRegion+"\"}"};
+	var json = "{\"indice\":4,\"idRegion\":\""+idRegion+"\",\"key\":\""+key+"\"}";
+	var data = {"send":encriptar(json)};
 
-	$.post(comunas,data,function(datos)
+	$.post(comunas,data,function(jsonEncriptadoBase)
 	{
+		var datos = desencriptar(jsonEncriptadoBase);
 		var obj = $.parseJSON(datos);
 		$("#comuna").find('option').remove().end();
 

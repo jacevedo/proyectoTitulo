@@ -10,13 +10,13 @@
 	$nombre = $_SESSION['nombre'];
 	$apellido = $_SESSION['appPaterno'];
 
-	$direccionWeb = "http://192.168.89.128/sfhwebservice/webService/";
+	$direccionWeb = "http://sfh.crossline.cl/webServiceencriptado/";
 
 	$titulo_pagina ='Perfil';
 
 	$estilo_css = '<link rel="stylesheet" href="../estilos/css/estiloPerfil.css">';
 
-	$script_javascript = '<script type="text/javascript" src="../javascript/asistente/scriptPerfil.js"></script>';
+	$script_javascript = '<script type="text/javascript" src="../asistente/javascript/scriptPerfil.js"></script>';
 	
 	$menu_activo = '
 	<li class="active"><a href="perfilAsistente.php">Perfil</a></li>

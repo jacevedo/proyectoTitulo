@@ -1,8 +1,5 @@
-<<<<<<< HEAD:web/javascript/asistente/scriptListaOdontologos.js
-var direccionWeb = ""
-=======
-var direccionWeb = "http://sfh.crossline.cl/webServiceencriptado/";
->>>>>>> FETCH_HEAD:web/asistente/javascript/scriptListaOdontologos.js
+//var direccionWeb = "http://sfh.crossline.cl/webServiceencriptado/";
+var direccionWeb = "";
 $(document).ready(inicializarEventos);
 
 function inicializarEventos()

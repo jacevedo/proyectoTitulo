@@ -12,19 +12,22 @@ function cargarHorasReservadas()
 {
 	var ingresar = direccionWeb+"ws-cita.php";
 	var idPaciente = $("#pacientes").val();
-	var data = {"send":"{\"indice\":2,\"idPaciente\":\""+idPaciente+"\"}"};
+	var key = $("#keyPaciente").val();
+	var json = "{\"indice\":2,\"idPaciente\":"+idPaciente+",\"key\":\""+key+"\"}";
+	var data = {"send":encriptar(json)};
 
-	$.post(ingresar, data, function(datos)
+	$.post(ingresar, data, function(jsonEncriptadoBase)
 	{
+		var datos = desencriptar(jsonEncriptadoBase);
 		var obj = $.parseJSON(datos);
 		var cantCitas = obj.resultado;
 		var tr;
 		$.each(obj.resultado,function(i,value)
 		{
-			var fecha = value.fecha.split(" ");
-			var odontologo = value.appPaternoOdontologo+" "+ value.nomOdontologo;
-			var horaInicio = value.horaInicio.split(" ");
-			tr= tr + "<tr><td>"+fecha[0]+"</td><td>"+odontologo+"</td><td>"+horaInicio[1]+"</td></tr>"
+			var fecha = value.cita.fecha;
+			var odontologo = value.cita.appPaternoOdontologo+" "+ value.cita.nomOdontologo;
+			var horaInicio = value.cita.horaInicio.split(" ");
+			tr= tr + "<tr><td>"+fecha+"</td><td>"+odontologo+"</td><td>"+horaInicio[1]+"</td></tr>"
 		});
 		$("#historialHorasTomadas").html(tr);
 	});

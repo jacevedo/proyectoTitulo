@@ -1,8 +1,6 @@
-<<<<<<< HEAD:web/javascript/asistente/scriptConfirmarHora.js
+//var direccionWeb = "http://sfh.crossline.cl/webServiceencriptado/";
 var direccionWeb = "";
-=======
-var direccionWeb = "http://sfh.crossline.cl/webServiceencriptado/";
->>>>>>> FETCH_HEAD:web/asistente/javascript/scriptConfirmarHora.js
+
 $(document).ready(inicializarElementos);
 var horaActual;
 var odontologoActual;
@@ -47,12 +45,12 @@ function modificarHora()
 		var fecha = $("#dateFecha").val()+" 13:13:00";
 		var url = direccionWeb+"ws-horario.php";
 		var key = $("#keyPaciente").val();
-		var jsonEnviar = "{\"indice\":1,\"fecha\":\""+fecha+"\",\"key\":\""+key+"\"}";
+		var jsonEnviar = "{\"indice\":1,\"fecha\":\""+fecha+"\",\"key\":\""+key+"\"}";alert(jsonEnviar);
 		var data = {"send":encriptar(jsonEnviar)};
 		$.post(url,data,function(datos)
 		{
 			var datosDesencriptado = desencriptar(datos);
-			ajaxCompleto(datosDesencriptado,control);	
+			ajaxCompleto(datosDesencriptado,control);
 
 		});
 		$(this).text("Guardar");
@@ -78,10 +76,9 @@ function modificarHora()
 		$.post(url,data,function(jsonEncriptado)
 		{
 			var datos = desencriptar(jsonEncriptado);
-			alert(datos);
 			var obj = $.parseJSON(datos);
 			var resultado = obj.resultado;
-			if(resultado=="se modifico correctamente")
+			if(resultado=="Datos modificados correctamente.")
 			{
 				boton.text("Modificar");
 				editando=0;
@@ -104,7 +101,7 @@ function modificarHora()
 	}	
 }
 function ajaxCompleto(source,control)
-{	
+{
 	$.each(source.listaHorarios,function()
 	{
 		arregloPersonas.push(this.nomOdontologo);
@@ -174,7 +171,7 @@ function eliminarHora()
  	var jsonEnviar = "{\"indice\":7,\"idCita\":"+id+",\"key\":\""+key+"\"}";
 	var data = {"send":encriptar(jsonEnviar)};
 	
-	if (confirm("¿Desea Eliminar La cita seleccionada?")) 
+	if (confirm("\u00BFDesea eliminar la cita seleccionada?")) 
 	{
 		$.post(url,data,function(jsonEncriptado)
 		{
@@ -206,18 +203,15 @@ function buscarFechas(fecha)
 	var data = {"send":encriptar(jsonEnviar)};
 	$.post(url,data,function(jsonEncriptado)
 	{
-<<<<<<< HEAD:web/javascript/asistente/scriptConfirmarHora.js
-=======
 		var datos = desencriptar(jsonEncriptado);
->>>>>>> FETCH_HEAD:web/asistente/javascript/scriptConfirmarHora.js
 		var obj = $.parseJSON(datos);
 
 		$.each(obj.resultado,function()
 		{
-
 			var cita = this.cita;
 			var nomPaciente = cita.nomPaciente+" " + cita.appPaternoPaciente+" "+ cita.appMaternoPaciente;
 			var hora = cita.horaInicio.split(" ");
+			var fechaHoraBuscarda = cita.fecha;
 			if(this.fonoFijo == null)
 			{
 				var fonoFijo = "--";
@@ -239,7 +233,7 @@ function buscarFechas(fecha)
 			var id = cita.idCita;
 			var estado = cita.estado;
 			var odontologo = cita.nomOdontologo+" "+cita.appPaternoOdontologo+" " + cita.appMaternoOdontologo;
-			var html = "<tr><td class='tdId'>"+id+" </td><td>"+nomPaciente+"</td><td>"+telefono+"</td><td>"+hora[1]+"</td><td>"+odontologo+"</td><td><input type='checkbox' name='check' class='checkActual'></td><td><Button class='btnModificar btn btn-lg btn-primary btn-block'>Modificar</Button></td><td><Button class='btnEliminar btn btn-lg btn-primary btn-block'>Eliminar</Button></td></tr>"
+			var html = "<tr><td class='tdId'>"+id+" </td><td>"+nomPaciente+"</td><td>"+telefono+"</td><td>"+fechaHoraBuscarda+"</td><td>"+hora[1]+"</td><td>"+odontologo+"</td><td><input type='checkbox' name='check' class='checkActual'></td><td><Button class='btnModificar btn btn-lg btn-primary btn-block'>Modificar</Button></td><td><Button class='btnEliminar btn btn-lg btn-primary btn-block'>Eliminar</Button></td></tr>"
 			
 			
 			$("#cuerpoTabla").append(html);
@@ -293,7 +287,7 @@ function confirmarHora()
 		var resultado = $.parseJSON(datos);
 		if(resultado.devolucion==true)
 		{
-			alert("Cita modificada correctamente.");
+			alert("Cita confirmada correctamente.");
 		}
 		else
 		{
@@ -420,17 +414,12 @@ function buscarCita(idPaciente)
 		var obj = $.parseJSON(datos);
 		$.each(obj.resultado,function(datosInterno)
 		{
-<<<<<<< HEAD:web/javascript/asistente/scriptConfirmarHora.js
 			//[{horaInicio":"2014-02-24 12:30:00","fecha":"2014-02-24"
-			var cita = obj.resultado;
+			var cita = this.cita;
 			var nomPaciente = cita.nomPaciente+ " " + cita.appPaternoPaciente+" "+ cita.appMaternoPaciente;
 			var horaI = cita.horaInicio;
 			var hora = horaI.split(' ');
-=======
-			var cita = this.cita;
-			var nomPaciente = cita.nomPaciente+" " + cita.appPaternoPaciente+" "+ cita.appMaternoPaciente;
-			var hora = cita.horaInicio.split(" ");
->>>>>>> FETCH_HEAD:web/asistente/javascript/scriptConfirmarHora.js
+			var fechaHoraBuscarda = cita.fecha;
 			if(this.fonoFijo == null)
 			{
 				var fonoFijo = "--";
@@ -452,7 +441,7 @@ function buscarCita(idPaciente)
 			var id = cita.idCita;
 			var estado = cita.estado;
 			var odontologo = cita.nomOdontologo+" "+cita.appPaternoOdontologo+" " + cita.appMaternoOdontologo;
-			var html = "<tr><td class='tdId'>"+id+" </td><td>"+nomPaciente+"</td><td>"+telefono+"</td><td>"+hora[1]+"</td><td>"+odontologo+"</td><td><input type='checkbox' name='check' class='checkActual'></td><td><Button class='btnModificar btn btn-lg btn-primary btn-block'>Modificar</Button></td><td><Button class='btnEliminar btn btn-lg btn-primary btn-block'>Eliminar</Button></td></tr>"
+			var html = "<tr><td class='tdId'>"+id+" </td><td>"+nomPaciente+"</td><td>"+telefono+"</td><td>"+fechaHoraBuscarda+"</td><td>"+hora[1]+"</td><td>"+odontologo+"</td><td><input type='checkbox' name='check' class='checkActual'></td><td><Button class='btnModificar btn btn-lg btn-primary btn-block'>Modificar</Button></td><td><Button class='btnEliminar btn btn-lg btn-primary btn-block'>Eliminar</Button></td></tr>"
 			
 			
 			$("#cuerpoTabla").append(html);
@@ -465,11 +454,8 @@ function buscarCita(idPaciente)
 			$(".checkActual").addClass("checkConf");
 			$(".checkConf").removeClass("checkActual");
 		});
-<<<<<<< HEAD:web/javascript/asistente/scriptConfirmarHora.js
-		$("#tablaConfirmarHora").on("click",".btnModificar",modificarHora);
-		$("#tablaConfirmarHora").on("click",".btnEliminar",eliminarHora);
-=======
->>>>>>> FETCH_HEAD:web/asistente/javascript/scriptConfirmarHora.js
+		//$("#tablaConfirmarHora").on("click",".btnModificar",modificarHora);
+		//$("#tablaConfirmarHora").on("click",".btnEliminar",eliminarHora);
 	});
 	$("#tablaConfirmarHora").on("click",".btnModificar",modificarHora);
 	$("#tablaConfirmarHora").on("click",".btnEliminar",eliminarHora);

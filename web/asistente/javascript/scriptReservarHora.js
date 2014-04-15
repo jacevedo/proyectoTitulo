@@ -1,8 +1,5 @@
-<<<<<<< HEAD:web/javascript/asistente/scriptReservarHora.js
+//var direccionWeb = "http://sfh.crossline.cl/webServiceencriptado/";
 var direccionWeb = "";
-=======
-var direccionWeb = "http://sfh.crossline.cl/webServiceencriptado/";
->>>>>>> FETCH_HEAD:web/asistente/javascript/scriptReservarHora.js
 var vacio = 0;
 $(document).ready(inicializarEventos);
 
@@ -130,7 +127,6 @@ function reservarHora()
 
 			$.post(url, data, function(jsonEncriptadoBase){
 				var datos = desencriptar(jsonEncriptadoBase);
-				//alert(datos);
 				var obj = $.parseJSON(datos);
 				var resultado = obj.resultado;
 				if(resultado!=-1)

@@ -10,19 +10,19 @@
 	$nombre = $_SESSION['nombre'];
 	$apellido = $_SESSION['appPaterno'];
 
-	$direccionWeb = "http://192.168.89.128/sfhwebservice/webService/";
+	$direccionWeb = "http://sfh.crossline.cl/webServiceencriptado/";
 
 	$titulo_pagina ='Odont&oacute;logos';
 
 	$estilo_css = '<link rel="stylesheet" href="../estilos/css/estiloListaPrecios.css">';
 
-	$script_javascript = '<script type="text/javascript" src="../javascript/asistente/scriptListaOdontologos.js"></script>';
+	$script_javascript = '<script type="text/javascript" src="../asistente/javascript/scriptListaOdontologos.js"></script>';
 	
 	$menu_activo = '
 	<li><a href="perfilAsistente.php">Perfil</a></li>
 	<li><a href="confirmarHoras.php">Horas Atenci&oacute;n</a></li>
 	<li><a href="listaPrecios.php">Lista Precios</a></li>
-	<li class="active"><a href="listaOdont&oacute;logos.php">Horarios Odontologo</a></li>';
+	<li class="active"><a href="listaOdontologos.php">Horarios Odont&oacute;logo</a></li>';
 
 	$contenido_usuario='<p id="nomUsuario"> '.$nombre.' '.$apellido.'</p>';
 

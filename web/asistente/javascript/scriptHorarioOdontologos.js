@@ -1,8 +1,5 @@
-<<<<<<< HEAD:web/javascript/asistente/scriptHorarioOdontologos.js
+//var direccionWeb = "http://sfh.crossline.cl/webServiceencriptado/";
 var direccionWeb = "";
-=======
-var direccionWeb = "http://sfh.crossline.cl/webServiceencriptado/";
->>>>>>> FETCH_HEAD:web/asistente/javascript/scriptHorarioOdontologos.js
 $(document).ready(inicializarEventos);
 var diasArreglo = new Array();
 var idHorarioArreglo = new Array();

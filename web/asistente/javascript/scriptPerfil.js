@@ -1,8 +1,5 @@
-<<<<<<< HEAD:web/javascript/asistente/scriptPerfil.js
+//var direccionWeb = "http://sfh.crossline.cl/webServiceencriptado/";
 var direccionWeb = "";
-=======
-var direccionWeb = "http://sfh.crossline.cl/webServiceencriptado/";
->>>>>>> FETCH_HEAD:web/asistente/javascript/scriptPerfil.js
 $(document).ready(inicializarEventos);
 
 function inicializarEventos()

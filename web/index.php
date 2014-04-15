@@ -5,7 +5,7 @@
 
 	session_start();
 
-	$direccionWeb = "http://192.168.89.128/sfhwebservice/webService/";
+	$direccionWeb = "http://sfh.crossline.cl/webServiceencriptado/";
 
 	$titulo_pagina='Login';
 
@@ -17,7 +17,7 @@
         <input type="password" id="txtPass" class="form-control" placeholder="Contrase&ntilde;a" required/>
         <span id="validacionContrasena"></span>
         <button id="btnIngresar" class="btn btn-lg btn-primary btn-block" type="submit">Ingresar</button>
-        <a href="../paciente/pagina/crearCuenta.php" id="crearCuenta">Crear una Cuenta</a>
+        <a href="../web/paciente/crearCuenta.php" id="crearCuenta">Crear una Cuenta</a>
     </div>';
 
 	$valores_ocultos = '<input type="hidden" value="'.$direccionWeb.'" id="direccionWeb">';
