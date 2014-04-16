@@ -31,7 +31,7 @@ public class JSONParser {
 	static InputStream is = null;
 	static JSONObject jObj = null;
 	static String json = "";
-	public String urlBusqueda = "http://172.16.28.138/sfhwebservice/webService/";
+	public String urlBusqueda = "http://sfh.crossline.cl/webServiceencriptado/";
 	Encoding encoding = new Encoding();
 
 	// constructor

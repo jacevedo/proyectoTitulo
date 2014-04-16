@@ -82,14 +82,31 @@ public class Encoding
 		String terceraSalt = salt.substring(4,6);
 		String cuartaSalt = salt.substring(6,8);
 		String quintaSalt = salt.substring(8);
+
+		Log.e("Grabar Salt", "primera: " +primera);
+		Log.e("Grabar Salt", "segunda: " +segunda);
+		Log.e("Grabar Salt", "tercera: " +tercera);
+		Log.e("Grabar Salt", "finalTexto: " +finalTexto);
+		Log.e("Grabar Salt", "primeraSalt: " +primeraSalt);
+		Log.e("Grabar Salt", "segundaSalt: " +segundaSalt);
+		Log.e("Grabar Salt", "terceraSalt: " +terceraSalt);
+		Log.e("Grabar Salt", "cuartaSalt: " +cuartaSalt);
+		Log.e("Grabar Salt", "quintaSalt: " +quintaSalt);
+		Log.e("Grabar Salt", "string: " +string);
+		Log.e("Grabar Salt", "salt: " +salt);
 		
 		
 		
 		String encriptacion = primeraSalt + primera + terceraSalt + segunda + cuartaSalt + tercera + quintaSalt + finalTexto + segundaSalt;
 		String primeraLargo = (largoJson+"").substring(0, 1);
 		String segundaLargo = (largoJson+"").substring( 1, 2);
+		Log.e("Grabar Salt", "largo: " + largoJson);
+		Log.e("Grabar Salt", "primer largo: " +primeraLargo);
+
+		Log.e("Grabar Salt", "segunda largo: " +segundaLargo);
 		
 		encriptacion = primeraLargo + encriptacion + segundaLargo;
+		Log.e("Ecriptado", encriptacion);
 		
 		return encriptacion;
 	}	
