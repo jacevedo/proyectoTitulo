@@ -1,0 +1,4 @@
+C:\Users\Citt-David\Documents\GitHub\proyectoTitulo\SFH-Modulo-Escritorio\ObjectsBeans\bin\Release\ObjectsBeans.dll
+C:\Users\Citt-David\Documents\GitHub\proyectoTitulo\SFH-Modulo-Escritorio\ObjectsBeans\bin\Release\ObjectsBeans.pdb
+C:\Users\Citt-David\Documents\GitHub\proyectoTitulo\SFH-Modulo-Escritorio\ObjectsBeans\obj\Release\ObjectsBeans.dll
+C:\Users\Citt-David\Documents\GitHub\proyectoTitulo\SFH-Modulo-Escritorio\ObjectsBeans\obj\Release\ObjectsBeans.pdb
