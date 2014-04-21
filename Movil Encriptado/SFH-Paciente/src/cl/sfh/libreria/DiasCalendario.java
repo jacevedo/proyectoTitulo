@@ -20,8 +20,6 @@ public class DiasCalendario
 		this.estado = estado;
 	}
 
-	
-
 	public long getId()
 	{
 		return id;

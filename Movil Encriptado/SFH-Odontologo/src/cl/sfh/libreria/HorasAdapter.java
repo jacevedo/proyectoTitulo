@@ -12,11 +12,7 @@ import java.util.ArrayList;
 
 import cl.sfh.Odontologo.R;
 import cl.sfh.entidades.Horario;
-import cl.sfh.entidades.Horas;
 
-/**
- * Created by jacevedo on 24-06-13.
- */
 public class HorasAdapter extends BaseAdapter
 {
     ArrayList<Horario> horas;
@@ -51,7 +47,8 @@ public class HorasAdapter extends BaseAdapter
     {
         View v = convertView;
 
-        if(convertView == null){
+        if(convertView == null)
+        {
             LayoutInflater inf = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             v = inf.inflate(R.layout.hora, null);
         }
@@ -60,10 +57,10 @@ public class HorasAdapter extends BaseAdapter
 
         //Rellenamos el nombre
         TextView txtFecha = (TextView) v.findViewById(R.id.txtHora);
-        txtFecha.setText(hora.getHora());
+        txtFecha.setText(hora.getFecha());
         
         TextView txtHora = (TextView) v.findViewById(R.id.txtHoraLista);
-        txtHora.setText(hora.getFecha());
+        txtHora.setText(hora.getHora());
 
         TextView txtNomPaciente = (TextView)v.findViewById(R.id.txtNomPaciente);
         txtNomPaciente.setText(hora.getPaciente());

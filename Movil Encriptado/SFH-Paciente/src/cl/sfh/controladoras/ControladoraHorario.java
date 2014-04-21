@@ -36,8 +36,7 @@ public class ControladoraHorario
 		JSONParser parser = new JSONParser();
 		List<NameValuePair> parametros = new ArrayList<NameValuePair>();
 		parametros.add(new BasicNameValuePair("send", mensajeEnviar));
-		JSONObject objetoJson = parser.makeHttpRequest("ws-horario.php",
-														"POST", parametros);
+		JSONObject objetoJson = parser.makeHttpRequest("ws-horario.php","POST", parametros);
 		try
 		{
 			JSONArray arregloJson = objetoJson.getJSONArray("listaHorarios");
@@ -76,8 +75,7 @@ public class ControladoraHorario
 		JSONParser parser = new JSONParser();
 		List<NameValuePair> parametros = new ArrayList<NameValuePair>();
 		parametros.add(new BasicNameValuePair("send", mensajeEnviar));
-		JSONObject objetoJson = parser.makeHttpRequest("ws-cita.php",
-				"POST", parametros);
+		JSONObject objetoJson = parser.makeHttpRequest("ws-cita.php","POST", parametros);
 		try
 		{
 			resultado = objetoJson.getString("resultado");
@@ -109,6 +107,52 @@ public class ControladoraHorario
 				Log.e("asd", "fecha: " + fecha);
 				Log.e("asd", "id Paciente: " + idPaciente);
 				Log.e("asd", "Resultado: " +objetoJson.toString());
+				for (int i = 0; i < arreglo.length(); i++)
+				{
+					JSONObject objetoFor = (JSONObject)arreglo.get(i);
+					String horaInicio = objetoFor.getString("horaInicio");
+					String fechaJson = objetoFor.getString("fecha");
+					String nombre = objetoFor.getString("nomOdontologo");
+					String apellidoPaterno = objetoFor.getString("appPaternoOdontologo");
+					String apellidoMaterno = objetoFor.getString("appMaternoOdontologo");
+					String nombreCompleto = nombre +" " + apellidoPaterno +" " +apellidoMaterno;
+					int idOdontologo = objetoFor.getInt("idOdontologo");
+					String[] horaFiltro = horaInicio.split(" ");
+					HorasTomadas horario = new HorasTomadas(nombreCompleto, idOdontologo, fechaJson, horaFiltro[1]);
+					listadoHoras.add(horario);
+				}
+			}
+		}
+		catch(JSONException ex)
+		{
+			ex.printStackTrace();
+		}
+		return listadoHoras;
+	}
+	
+	public ArrayList<HorasTomadas> listaHorasTomadasFecha(int idPaciente, String fechaBusqueda)
+	{
+		ArrayList<HorasTomadas> listadoHoras =  new ArrayList<HorasTomadas>();
+		Calendar calendarioo = GregorianCalendar.getInstance();
+		Log.e("fecha",fechaBusqueda);
+		String []fechas = fechaBusqueda.split("-");
+		String fecha = fechas[2]+"-"+fechas[1]+"-"+fechas[0];
+		//String fecha = calendarioo.get(Calendar.YEAR)+"-"+(calendarioo.get(Calendar.MONTH)+1)+"-"+calendarioo.get(Calendar.DAY_OF_MONTH);
+		mensajeEnviar = "{\"indice\":3,\"idPaciente\":"+idPaciente+",\"fecha\":\""+fecha+"\",\"key\":\""+key+"\"}";
+		Log.e("fecha",fecha.toString());
+		JSONParser parser = new JSONParser();
+		List<NameValuePair> parametros = new ArrayList<NameValuePair>();
+		parametros.add(new BasicNameValuePair("send", mensajeEnviar));
+		JSONObject objetoJson = parser.makeHttpRequest("ws-cita.php","POST", parametros);
+		
+		try
+		{
+			JSONArray arreglo = objetoJson.getJSONArray("resultado");
+			if(arreglo.length()>0)
+			{
+				Log.e("asd!", "fecha: " + fecha);
+				Log.e("asd!", "id Paciente: " + idPaciente);
+				Log.e("asd!", "Resultado: " +objetoJson.toString());
 				for (int i = 0; i < arreglo.length(); i++)
 				{
 					JSONObject objetoFor = (JSONObject)arreglo.get(i);

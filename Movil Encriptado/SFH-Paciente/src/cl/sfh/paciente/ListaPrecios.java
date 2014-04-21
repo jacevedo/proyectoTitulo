@@ -44,6 +44,7 @@ public class ListaPrecios extends Activity implements OnClickListener
 		
 		new Asincrono(listaMain).execute();
 	}
+	
 	@Override
 	public void onClick(View v)
 	{
@@ -56,16 +57,12 @@ public class ListaPrecios extends Activity implements OnClickListener
 		}
 	}
 	
-	class Asincrono extends
-			AsyncTask<String, String, ArrayList<ListaPreciosEntidad>>
+	class Asincrono extends AsyncTask<String, String, ArrayList<ListaPreciosEntidad>>
 	{
-		
 		ListView lista;
 		
 		public Asincrono(ListView lista)
 		{
-			
-			
 			this.lista = lista;
 		}
 		
@@ -80,8 +77,7 @@ public class ListaPrecios extends Activity implements OnClickListener
 		protected ArrayList<ListaPreciosEntidad> doInBackground(String... params)
 		{
 			ControladoraListaPrecios precios = new ControladoraListaPrecios(ListaPrecios.this);
-			ArrayList<ListaPreciosEntidad> listarPrecio = precios
-					.listarPrecios();
+			ArrayList<ListaPreciosEntidad> listarPrecio = precios.listarPrecios();
 			return listarPrecio;
 		}
 
@@ -94,12 +90,13 @@ public class ListaPrecios extends Activity implements OnClickListener
 			
 			super.onPostExecute(result);
 		}
-
 	}
+	
 	class BusquedaAsincrona extends AsyncTask<String, String, ArrayList<ListaPreciosEntidad>>
 	{
 		ListView lista;
 		EditText texto;
+		
 		public BusquedaAsincrona(ListView lista,EditText texto)
 		{
 			this.lista = lista;
@@ -110,8 +107,7 @@ public class ListaPrecios extends Activity implements OnClickListener
 		protected ArrayList<ListaPreciosEntidad> doInBackground(String... params)
 		{
 			ControladoraListaPrecios precios = new ControladoraListaPrecios(ListaPrecios.this);
-			ArrayList<ListaPreciosEntidad> listarPrecio = precios.listarPreciosNombres(
-																	texto.getText().toString());
+			ArrayList<ListaPreciosEntidad> listarPrecio = precios.listarPreciosNombres(texto.getText().toString());
 			return listarPrecio;
 		}
 
@@ -123,8 +119,5 @@ public class ListaPrecios extends Activity implements OnClickListener
 			lista.setAdapter(adapter);
 			super.onPostExecute(result);
 		}
-
 	}
-	
-
 }

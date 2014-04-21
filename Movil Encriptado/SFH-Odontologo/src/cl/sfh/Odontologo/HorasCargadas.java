@@ -7,19 +7,16 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.view.Menu;
 import android.widget.ListView;
-
 import java.util.ArrayList;
 
 import cl.sfh.controladoras.ControladoraHorario;
 import cl.sfh.entidades.Horario;
-import cl.sfh.entidades.Horas;
 import cl.sfh.libreria.*;
 
 public class HorasCargadas extends Activity
 {
     private ListView lstHorasCargadas;
     private int idOdontologo;
-    
     
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -35,13 +32,8 @@ public class HorasCargadas extends Activity
         SharedPreferences preferencias = getSharedPreferences("datos",Context.MODE_PRIVATE);
         idOdontologo = preferencias.getInt("idOdontologo", -1);
         
-        new busquedaHoras().execute(idOdontologo);
-        
-        
-        
-       
+        new busquedaHoras().execute(idOdontologo);   
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
@@ -49,9 +41,9 @@ public class HorasCargadas extends Activity
         // Inflate the menu; this adds items to the action bar if it is present.
         return true;
     }
+    
     class busquedaHoras extends AsyncTask<Integer, Void, ArrayList<Horario>>
     {
-
 		@Override
 		protected ArrayList<Horario> doInBackground(Integer... params)
 		{
@@ -68,8 +60,5 @@ public class HorasCargadas extends Activity
 	        lstHorasCargadas.setAdapter(adapter);
 			super.onPostExecute(result);
 		}
-		
-    	
-    }
-    
+    } 
 }

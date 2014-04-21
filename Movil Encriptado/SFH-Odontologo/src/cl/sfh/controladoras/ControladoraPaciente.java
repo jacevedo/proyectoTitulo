@@ -13,7 +13,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
-import cl.sfh.entidades.DatosContactoEditar;
+import android.widget.Toast;
 import cl.sfh.entidades.Pacientes;
 import cl.sfh.entidades.Tratamiento;
 import cl.sfh.libreria.JSONParser;
@@ -74,6 +74,7 @@ public class ControladoraPaciente
 		}		
 		return listaPacientes;
 	}
+	
 	public ArrayList<Pacientes> buscarListaFiltro(String nomPaciente)
 	{
 		mensajeEnviar = "{\"indice\":13,\"nomPaciente\":\""+nomPaciente+"\",\"key\":\""+key+"\"}";
@@ -86,6 +87,7 @@ public class ControladoraPaciente
 		{
 			JSONArray arregloObjetos = objetoJson.getJSONArray("lista");
 			ArrayList<Pacientes> arregloPacientes = new ArrayList<Pacientes>();
+			Log.e("OBJ",""+arregloObjetos.length());
 			for(int i=0;i<arregloObjetos.length();i++)
 			{
 				ArrayList<Tratamiento> arregloTratamiento = new ArrayList<Tratamiento>();

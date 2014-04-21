@@ -56,7 +56,7 @@
     <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Cerrar Sesion"
+            android:text="Cerrar Sesión"
             android:id="@+id/btnCerrarSesion"
             android:background="#375D81"
             android:textColor="#FFFFFF"

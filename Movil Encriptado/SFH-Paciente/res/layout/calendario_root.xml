@@ -22,13 +22,13 @@
             android:background="#375D81"
             android:enabled="false"
             android:gravity="center_vertical|center_horizontal"
-            android:text="Mes Anterior"
+            android:text="Anterior"
             android:textColor="#FFFFFF" />
 
         <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Mes Actual"
+                android:text="Actual"
                 android:id="@+id/btnMesActual"
                 android:gravity="center_vertical|center_horizontal"
                 android:layout_gravity="center_horizontal"
@@ -40,7 +40,7 @@
         <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Siguiente Mes"
+                android:text="Siguiente"
                 android:id="@+id/btnMesSiguiente"
                 android:gravity="center_vertical|center_horizontal"
                 android:layout_gravity="right"
@@ -49,6 +49,19 @@
                 android:textColor="#FFFFFF"
                 android:layout_marginRight="3dp"/>
     </LinearLayout>
+    <LinearLayout
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content">
+	        
+	    <TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:textAppearance="?android:attr/textAppearanceSmall"
+	        android:text=""
+	        android:id="@+id/txtNombreMes"
+	        android:layout_weight="1"
+	        android:gravity="center_vertical|center_horizontal"/>
+	</LinearLayout>
     <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content">

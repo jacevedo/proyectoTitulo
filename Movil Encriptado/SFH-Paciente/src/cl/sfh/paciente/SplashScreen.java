@@ -25,9 +25,9 @@ public class SplashScreen extends Activity {
         setContentView(R.layout.splash_activity);
         display = getWindowManager().getDefaultDisplay();
 
-
         inicializarElementos();
     }
+    
     private Bitmap redimensionarImagen(Bitmap bm)
     {
         int ancho = display.getWidth();  //Ancho Pantalla
@@ -35,6 +35,7 @@ public class SplashScreen extends Activity {
         bm = Bitmap.createScaledBitmap(bm, (ancho*40)/100, (alto*24)/100, true);
         return bm;
     }
+    
     private void inicializarElementos()
     {
         fotoLogo = BitmapFactory.decodeResource(getResources(),R.drawable.logo);
@@ -43,9 +44,9 @@ public class SplashScreen extends Activity {
         imgLogo.setImageBitmap(logo);
         new asincrono().execute();
     }
+    
     class asincrono extends AsyncTask<String, String, String>
     {
-
         @Override
         protected String doInBackground(String... params)
         {
@@ -68,8 +69,4 @@ public class SplashScreen extends Activity {
             finish();
         }
     }
-
-
-
-    
 }

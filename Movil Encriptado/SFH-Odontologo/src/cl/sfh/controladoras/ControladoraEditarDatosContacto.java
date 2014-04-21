@@ -70,7 +70,6 @@ public class ControladoraEditarDatosContacto
 				region = datoComuna.getInt("idRegion");		
 			}
 			
-			
 			DatosContactoEditar datosContacto = new DatosContactoEditar(idPersona,rut,perfil, dv, nombre, appPaterno,
 					apellidoMaterno, fechaNacimiento, fechaIngreso, fonoFijo, fonoCelular, direccion, comuna,
 					region, correo);
@@ -83,6 +82,7 @@ public class ControladoraEditarDatosContacto
 			return null;
 		}
 	}
+	
 	public ArrayList<Region> obtenerRegiones()
 	{
 		ArrayList<Region> listaRegiones = new ArrayList<Region>();
@@ -108,7 +108,6 @@ public class ControladoraEditarDatosContacto
 					String numRegionRomano = objetoJsonFor.getString("numeroRegionRomano");
 					Region region = new Region(idRegion, nomRegion, numRegionRomano);
 					listaRegiones.add(region);
-					
 				}
 			}
 			else
@@ -126,6 +125,7 @@ public class ControladoraEditarDatosContacto
 			return listaRegiones;
 		}
 	}
+	
 	public ArrayList<Comunas> obtenerComunas()
 	{
 		ArrayList<Comunas> listaComunas = new ArrayList<Comunas>();
@@ -135,7 +135,6 @@ public class ControladoraEditarDatosContacto
 		parametros.add(new BasicNameValuePair("send", mensajeEnviar));
 		JSONObject objetoJson = parser.makeHttpRequest("ws-add-usuario.php","POST", parametros);
 
-		
 		try
 		{
 			JSONArray arreglo = objetoJson.getJSONArray("datoComuna");
@@ -151,7 +150,6 @@ public class ControladoraEditarDatosContacto
 					String nomComuna = objetoJsonFor.getString("nombreComuna");
 					Comunas comuna  = new Comunas(idComuna, idRegion, nomComuna);
 					listaComunas.add(comuna);
-					
 				}
 			}
 			else
@@ -202,5 +200,4 @@ public class ControladoraEditarDatosContacto
 			return "error";
 		}
 	}
-	
 }

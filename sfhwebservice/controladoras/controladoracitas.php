@@ -277,15 +277,16 @@ require_once '../pojos/cita.php';
 		   	$sentencia->bind_param("is",$idPaciente,$fecha);
         	if($sentencia->execute())
         	{
-        		
-        		$sentencia->bind_result($idCita, $idOdontologo, $idPaciente, $horaInicio, $horaTermino, $fecha, $estado, $nomPaciente, $appPaternoPaciente, 
-								$appMaternoPaciente, $nomOdontologo, $appPaternoOdontologo, $appMaternoOdontologo);
+        		$sentencia->bind_result($idCita, $idOdontologo, $idPaciente, $horaInicio, $horaTermino, $fecha, $estado, 
+        			$nomOdontologo, $appPaternoOdontologo, $appMaternoOdontologo,
+        			$nomPaciente, $appPaternoPaciente, $appMaternoPaciente);
 				$indice=0;     
 				while($sentencia->fetch())
 				{
 					$cita = new Cita();
-					$cita->initClassDatosExtra($idCita, $idOdontologo, $idPaciente, $horaInicio, $horaTermino, $fecha, $estado, $nomPaciente, $appPaternoPaciente, 
-								$appMaternoPaciente, $nomOdontologo, $appPaternoOdontologo, $appMaternoOdontologo);
+					$cita->initClassDatosExtra($idCita, $idOdontologo, $idPaciente, $horaInicio, $fecha, $estado, 
+												$nomPaciente, $appPaternoPaciente, $appMaternoPaciente, 
+												$nomOdontologo, $appPaternoOdontologo, $appMaternoOdontologo);
 					if($estado!=3)
 					{
 						$this->datos[$indice] = $cita;	

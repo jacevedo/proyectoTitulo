@@ -7,7 +7,6 @@ import cl.sfh.libreria.*;
 import android.app.Activity;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -15,13 +14,14 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 import android.content.Intent;
 
 import java.util.ArrayList;
 
 public class ListaPaciente extends Activity implements AdapterView.OnItemClickListener, OnClickListener
 {
-	int numLista=1;
+	int numLista = 1;
     private ListView lstPaciente;
     private ArrayList<Pacientes> pacientes;
     private EditText edtFiltro;
@@ -50,7 +50,6 @@ public class ListaPaciente extends Activity implements AdapterView.OnItemClickLi
         new BuscarPacientes().execute(numLista);
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
@@ -63,11 +62,11 @@ public class ListaPaciente extends Activity implements AdapterView.OnItemClickLi
     public void onItemClick(AdapterView<?> parent, View view, int position, long id)
     {
            Intent i = new Intent("cl.sfh.Odontologo.Ficha");
-           i.putExtra("nombrePaciente",pacientes.get(position).getNombre());
+           i.putExtra("nombrePaciente", pacientes.get(position).getNombre());
            i.putExtra("apellidoPaterno",pacientes.get(position).getAppPaterno());
            i.putExtra("apellidoMaterno",pacientes.get(position).getAppMaterno());
-           i.putExtra("fechaNacimiento",pacientes.get(position).getFechaNacimiento());
-           i.putExtra("anamnesis",pacientes.get(position).getAnamnesis());
+           i.putExtra("fechaNacimiento", pacientes.get(position).getFechaNacimiento());
+           i.putExtra("anamnesis", pacientes.get(position).getAnamnesis());
            int contador = 0;
            if(pacientes.get(position).getListaTratamientos().size()!=0)
            {
@@ -84,6 +83,7 @@ public class ListaPaciente extends Activity implements AdapterView.OnItemClickLi
            }
            startActivity(i);
     }
+    
     class BuscarPacientes extends AsyncTask<Integer, Void, ArrayList<Pacientes>>
     {
 		@Override
@@ -103,8 +103,8 @@ public class ListaPaciente extends Activity implements AdapterView.OnItemClickLi
 		    lstPaciente.setOnItemClickListener(ListaPaciente.this);
 			super.onPostExecute(result);
 		}
-    	
     }
+    
     class BuscarPacientesFiltro extends AsyncTask<String, Void, ArrayList<Pacientes>>
     {
 		@Override
@@ -122,10 +122,14 @@ public class ListaPaciente extends Activity implements AdapterView.OnItemClickLi
 			PacientesAdapter adapterPaciente = new PacientesAdapter(pacientes,ListaPaciente.this);
 		    lstPaciente.setAdapter(adapterPaciente);
 		    lstPaciente.setOnItemClickListener(ListaPaciente.this);
+		    if(result.size() == 0)
+		    {
+		    	Toast.makeText(ListaPaciente.this, "No se encontr— el paciente", Toast.LENGTH_LONG).show();
+		    }
 			super.onPostExecute(result);
 		}
-    	
     }
+    
 	@Override
 	public void onClick(View v)
 	{
@@ -150,7 +154,5 @@ public class ListaPaciente extends Activity implements AdapterView.OnItemClickLi
 				  }
 				break;
 		}
-		
-		
 	}
 }

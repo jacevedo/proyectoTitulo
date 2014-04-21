@@ -1,6 +1,5 @@
 package cl.sfh.paciente;
 
-
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -48,7 +47,7 @@ public class MainActivity extends Activity implements OnClickListener, OnFocusCh
         btnEntrar = (Button)findViewById(R.id.btnEntrar);
         btnNuevaCuenta = (Button)findViewById(R.id.btnNuevaCuenta);
         dialogo = new ProgressDialog(MainActivity.this);
-		dialogo.setMessage("Cargando Lista Precio");
+		dialogo.setMessage("Iniciando sesión...");
 		dialogo.setTitle("Cargando");
         btnEntrar.setOnClickListener(this);
         btnNuevaCuenta.setOnClickListener(this);
@@ -63,19 +62,18 @@ public class MainActivity extends Activity implements OnClickListener, OnFocusCh
 			String texto = txtUsuario.getText().toString();
 			validarUsuario(texto);
 		}
-		 
 	}
+    
     private boolean validarUsuario(String user)
     {
-    	
-		
 		if(!Pattern.matches("\\d{7}|\\d{8}", user))
 		{
-		    Toast.makeText(this, "debe ingresar su rut sin guion ni digito verificador", Toast.LENGTH_SHORT).show();
+		    Toast.makeText(this, "Debe ingresar rut sin guión ni dígito verificador", Toast.LENGTH_SHORT).show();
 		    return false;
 		}
 		return true;
     }
+    
     @Override
     public void onClick(View v)
     {
@@ -93,7 +91,7 @@ public class MainActivity extends Activity implements OnClickListener, OnFocusCh
             	}
             	else
             	{
-            		Toast.makeText(this, "debe ingresar una contraseña", Toast.LENGTH_SHORT).show();
+            		Toast.makeText(this, "Debe ingresar una contraseña", Toast.LENGTH_SHORT).show();
             	}
                 break;
             case R.id.btnNuevaCuenta:
@@ -104,7 +102,6 @@ public class MainActivity extends Activity implements OnClickListener, OnFocusCh
     }
 	class Asincrono extends	AsyncTask<String, Login,Login>
 	{
-			
 		@Override
 		protected void onPreExecute()
 		{
@@ -126,7 +123,6 @@ public class MainActivity extends Activity implements OnClickListener, OnFocusCh
 			dialogo.dismiss();
 			if(result.getIdPaciente()!=-1)
 			{
-				
 				SharedPreferences preferencias = getSharedPreferences("datos",Context.MODE_PRIVATE);
 				Editor editor=preferencias.edit();
 		        editor.putInt("idPaciente", result.getIdPaciente());
@@ -143,15 +139,14 @@ public class MainActivity extends Activity implements OnClickListener, OnFocusCh
 				}
 				else
 				{
-					Toast.makeText(MainActivity.this, "Usuario y/o Contraseña Incorrecto", Toast.LENGTH_SHORT).show();	 
+					Toast.makeText(MainActivity.this, "Usuario y/o contraseña incorrecto", Toast.LENGTH_SHORT).show();	 
 				}
 			}
 			else
 			{
-				Toast.makeText(MainActivity.this, "Usuario y/o Contraseña Incorrecto", Toast.LENGTH_SHORT).show();	 
+				Toast.makeText(MainActivity.this, "Usuario y/o contraseña incorrecto", Toast.LENGTH_SHORT).show();	 
 			}
 			super.onPostExecute(result);
-		}	
+		}
 	}
-	
 }

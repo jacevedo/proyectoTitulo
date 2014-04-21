@@ -22,7 +22,7 @@
         android:id="@+id/textView2"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Usuario (rut sin guion ni digito)"
+        android:text="Usuario (Rut sin guión ni dígito)"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <LinearLayout

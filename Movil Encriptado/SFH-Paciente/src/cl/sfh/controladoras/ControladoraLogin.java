@@ -26,7 +26,6 @@ public class ControladoraLogin
 		
 		try
 		{
-			
 			if(objetoJson.getString("resultado").compareToIgnoreCase("")!=0)
 			{
 				JSONObject objetoResultado = objetoJson.getJSONObject("resultado");

@@ -23,8 +23,6 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
-
-
 public class JSONParser {
 
 	static InputStream is = null;
@@ -34,23 +32,23 @@ public class JSONParser {
 	Encoding encoding = new Encoding();
 
 	// constructor
-	public JSONParser() {
+	public JSONParser() 
+	{
 
 	}
 
 	// function get json from url
 	// by making HTTP POST or GET mehtod
-	public JSONObject makeHttpRequest(String pagina, String method,
-			List<NameValuePair> params)
+	public JSONObject makeHttpRequest(String pagina, String method,List<NameValuePair> params)
     {
 		List<NameValuePair> parametros = new ArrayList<NameValuePair>();
 		String json = encoding.encriptar(params.get(0).getValue());
 		parametros.add(new BasicNameValuePair("send", json));
 		// Making HTTP request
-		try {
-			
+		try
+		{
 			// check for request method
-			if(method.compareTo("POST")==0)
+			if(method.compareTo("POST") == 0)
             {
 				// request method is POST
 				// defaultHttpClient
@@ -62,9 +60,8 @@ public class JSONParser {
 				HttpResponse httpResponse = httpClient.execute(httpPost);
 				HttpEntity httpEntity = httpResponse.getEntity();
 				is = httpEntity.getContent();
-				
 			}
-			else if(method.compareTo("GET")==0)
+			else if(method.compareTo("GET") == 0)
             {
 				// request method is GET
 				DefaultHttpClient httpClient = new DefaultHttpClient();
@@ -77,8 +74,6 @@ public class JSONParser {
 				is = httpEntity.getContent();
 			}
             Log.e("JSON","Sali Post");
-			
-
 		}
         catch (UnsupportedEncodingException e)
         {
@@ -95,11 +90,11 @@ public class JSONParser {
 
 		try
         {
-			BufferedReader reader = new BufferedReader(new InputStreamReader(
-					is, "iso-8859-1"), 8);
+			BufferedReader reader = new BufferedReader(new InputStreamReader(is, "iso-8859-1"), 8);
 			StringBuilder sb = new StringBuilder();
 			String line = null;
-			while ((line = reader.readLine()) != null) {
+			while ((line = reader.readLine()) != null)
+			{
 				sb.append(line + "\n");
 			}
 			is.close();
@@ -120,9 +115,7 @@ public class JSONParser {
         {
 			Log.e("JSON Parser", "Error parsing data " + e.toString());
 		}
-
 		// return JSON String
 		return jObj;
-
 	}
 }

@@ -25,7 +25,6 @@ public class ItemAdapterHorario extends BaseAdapter
 	{
 		this.actividad = actividad;
 		this.item = item;
-
 	}
 
 	@Override
@@ -53,8 +52,7 @@ public class ItemAdapterHorario extends BaseAdapter
 		// Asociamos el layout de la lista que hemos creado
 		if (convertView == null)
 		{
-			LayoutInflater inf = (LayoutInflater) actividad
-					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+			LayoutInflater inf = (LayoutInflater) actividad.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 			v = inf.inflate(R.layout.item_horario, null);
 		}
 		// Creamos un objeto directivo

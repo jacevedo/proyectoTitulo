@@ -107,7 +107,6 @@ public class ControladoraEditarDatosContacto
 					String numRegionRomano = objetoJsonFor.getString("numeroRegionRomano");
 					Region region = new Region(idRegion, nomRegion, numRegionRomano);
 					listaRegiones.add(region);
-					
 				}
 			}
 			else
@@ -134,7 +133,6 @@ public class ControladoraEditarDatosContacto
 		parametros.add(new BasicNameValuePair("send", mensajeEnviar));
 		JSONObject objetoJson = parser.makeHttpRequest("ws-add-usuario.php","POST", parametros);
 
-		
 		try
 		{
 			JSONArray arreglo = objetoJson.getJSONArray("datoComuna");
@@ -150,7 +148,6 @@ public class ControladoraEditarDatosContacto
 					String nomComuna = objetoJsonFor.getString("nombreComuna");
 					Comunas comuna  = new Comunas(idComuna, idRegion, nomComuna);
 					listaComunas.add(comuna);
-					
 				}
 			}
 			else

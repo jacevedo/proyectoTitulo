@@ -14,8 +14,8 @@ import org.json.JSONObject;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 import cl.sfh.entidades.Horario;
-import cl.sfh.entidades.Login;
 import cl.sfh.libreria.JSONParser;
 
 public class ControladoraHorario
@@ -27,6 +27,7 @@ public class ControladoraHorario
 		SharedPreferences preferencias = actividad.getSharedPreferences("datos",Context.MODE_PRIVATE);
 		key = preferencias.getString("key", "");
 	}
+	
 	public ArrayList<Horario> obtenerHorarioIdOdontologo(int idOdontologo)
 	{
 		ArrayList<Horario> listaHorarios = new ArrayList<Horario>();
@@ -39,7 +40,6 @@ public class ControladoraHorario
 		JSONObject objetoJson = parser.makeHttpRequest("ws-cita.php","POST", parametros);
 		try
 		{
-			
 			if(objetoJson.getString("resultado").compareToIgnoreCase("")!=0)
 			{
 				JSONArray objetoResultado = objetoJson.getJSONArray("resultado");
@@ -63,6 +63,7 @@ public class ControladoraHorario
 			else
 			{
 				//return new Login("", -1,-1);
+				Log.e("DEPURO!", objetoJson.getString("resultado"));
 			}
 		}
 		catch (JSONException e)

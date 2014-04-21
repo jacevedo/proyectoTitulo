@@ -344,9 +344,7 @@ class ControladoraPaciente
 		try
 		{
 			$this->SqlQuery = '';
-			$this->SqlQuery = "SELECT pe.ID_PERSONA, pe.ID_PERFIL, pa.ID_PACIENTE, pe.RUT, pe.DV, pe.NOMBRE, pe.APELLIDO_PATERNO,".
-								" pe.APELLIDO_MATERNO, pe.FECHA_NAC, pa.FECHA_INGRESO, pa.HABILITADO_PACIENTE FROM paciente pa, persona pe ".
-								" WHERE pa.ID_PERSONA = pe.ID_PERSONA AND pe.NOMBRE LIKE ? OR pe.APELLIDO_PATERNO LIKE ?";
+			$this->SqlQuery = "SELECT pe.ID_PERSONA, pe.ID_PERFIL, pa.ID_PACIENTE, pe.RUT, pe.DV, pe.NOMBRE, pe.APELLIDO_PATERNO, pe.APELLIDO_MATERNO, pe.FECHA_NAC, pa.FECHA_INGRESO, pa.HABILITADO_PACIENTE FROM paciente pa, persona pe WHERE pe.NOMBRE LIKE ? OR pe.APELLIDO_PATERNO LIKE ? AND pe.ID_PERSONA = pa.ID_PERSONA";
 		   	$sentencia=$conexion->prepare($this->SqlQuery);
 		   	$sentencia->bind_param("ss",$nomPersonaBusqueda,$nomPersonaBusqueda);
         	if($sentencia->execute())
@@ -421,43 +419,49 @@ class ControladoraPaciente
  		$personas = $this->personasConPresupestoLista($nomPersona);
  		$devolucion = array();
  		$contadorObjetos = 0;
- 		foreach ($personas as $value)
+ 		if($personas != "")
  		{
- 			$conexion = new MySqlCon();
-			
- 			try
-			{
-				$idPaciente = $value->idPaciente;
-				$arregloTratamientos = array();
-				$this->SqlQuery = '';
-				$this->SqlQuery = "SELECT ta.*, fi.ANAMNESIS FROM tratamientodental ta, fichadental fi WHERE ta.ID_FICHA = fi.ID_FICHA AND fi.ID_PACIENTE = ? Limit 0 , 3";
-			   	$sentencia=$conexion->prepare($this->SqlQuery);
-			   	$sentencia->bind_param("i",$idPaciente);
-	        	if($sentencia->execute())
-	        	{
-	        		$sentencia->bind_result($idTrataMiento, $idFicha, $fechaCreacion, $tratamientoDental, $fechaSeguimiento, $valorTotalConsulta,$amamnesis);				
-					$indice=0;     
-					while($sentencia->fetch())
-					{
-						$tratamiento = new TratamientoDental();
-						$tratamiento->initClass($idTrataMiento, $idFicha, $fechaCreacion,$tratamientoDental,$fechaSeguimiento, $valorTotalConsulta);
-	        			$arregloTratamientos[$indice] = $tratamiento;
-	        			$indice++;
-					}
-					$arregloTemporal = array();
-					$arregloTemporal["persona"] = $value;
-					$arregloTemporal["tratamiento"] = $arregloTratamientos;
-					$arregloTemporal["amamnesis"] = $amamnesis;
-					$devolucion[$contadorObjetos] = $arregloTemporal;
-					$contadorObjetos++;
-	      		}
+ 			foreach ($personas as $value)
+	 		{
+	 			$conexion = new MySqlCon();
+				
+	 			try
+				{
+					$idPaciente = $value->idPaciente;
+					$arregloTratamientos = array();
+					$this->SqlQuery = '';
+					$this->SqlQuery = "SELECT ta.*, fi.ANAMNESIS FROM tratamientodental ta, fichadental fi WHERE ta.ID_FICHA = fi.ID_FICHA AND fi.ID_PACIENTE = ? Limit 0 , 3";
+				   	$sentencia=$conexion->prepare($this->SqlQuery);
+				   	$sentencia->bind_param("i",$idPaciente);
+		        	if($sentencia->execute())
+		        	{
+		        		$sentencia->bind_result($idTrataMiento, $idFicha, $fechaCreacion, $tratamientoDental, $fechaSeguimiento, $valorTotalConsulta,$amamnesis);				
+						$indice=0;     
+						while($sentencia->fetch())
+						{
+							$tratamiento = new TratamientoDental();
+							$tratamiento->initClass($idTrataMiento, $idFicha, $fechaCreacion,$tratamientoDental,$fechaSeguimiento, $valorTotalConsulta);
+		        			$arregloTratamientos[$indice] = $tratamiento;
+		        			$indice++;
+						}
+						$arregloTemporal = array();
+						$arregloTemporal["persona"] = $value;
+						$arregloTemporal["tratamiento"] = $arregloTratamientos;
+						$arregloTemporal["amamnesis"] = $amamnesis;
+						$devolucion[$contadorObjetos] = $arregloTemporal;
+						$contadorObjetos++;
+		      		}
 
-	       		$conexion->close();
-       		}
-	    	catch(Exception $e)
-	    	{
-	        	throw new $e("Error al listar pacientes");
-	        }
+		       		$conexion->close();
+	       		}
+		    	catch(Exception $e)
+		    	{
+		        	throw new $e("Error al listar pacientes");
+		        }
+	 		}
+ 		}
+ 		else
+ 		{
  		}
  		return $devolucion;
 			

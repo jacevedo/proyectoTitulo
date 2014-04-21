@@ -1,8 +1,5 @@
 package cl.sfh.Odontologo;
 
-import java.util.ArrayList;
-
-import cl.sfh.entidades.Tratamiento;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
@@ -16,7 +13,6 @@ public class Ficha extends Activity
     private TextView txtFechaNacimiento;
     private TextView txtAnamnesis;
     private TextView txtUltimoProcedimiento;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -43,14 +39,13 @@ public class Ficha extends Activity
         txtFechaNacimiento.setText(bundle.getString("fechaNacimiento"));
         int contador = bundle.getInt("cantTratamientos");
         String tratamientos="";
+        
         for(int i=0;i!=contador;i++)
         {
         	tratamientos = tratamientos+ bundle.getString("tratamiento"+i)+"\n";
         }
         
         txtUltimoProcedimiento.setText(tratamientos);
-        
-       
     }
 
 
@@ -60,5 +55,4 @@ public class Ficha extends Activity
         // Inflate the menu; this adds items to the action bar if it is present.
         return true;
     }
-    
 }

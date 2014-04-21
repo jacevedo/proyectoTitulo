@@ -16,11 +16,13 @@ public class Encoding
 		String salt = generarSalt(453);
 		return grabarSalt(resultado,salt,largoJson);
 	}
+	
 	public String desencriptar(String base64)
 	{
 		String realBase = quitarSalt(base64);
 		return new String(Base64.decode(realBase, Base64.DEFAULT));
 	}
+	
 	private String quitarSalt(String base64)
 	{
 		String primeraBase = base64.substring(3, 7);
@@ -31,6 +33,7 @@ public class Encoding
 		String [] cuartaBaseArreglo = cuartaBase.split("=");
 		return primeraBase + segundaBase + terceraBase + cuartaBase;
 	}
+	
 	private String generarSalt(int largo)
 	{
 		String largoString = largo +"";
@@ -67,10 +70,10 @@ public class Encoding
  			{
  				salt  = salt + dicc.charAt(datos[i]);
  			}
-			
 		}
 		return salt;
 	}
+	
 	private String grabarSalt(String string, String salt,int largoJson)
 	{
 		String primera = string.substring(0,4);
@@ -94,9 +97,7 @@ public class Encoding
 		Log.e("Grabar Salt", "quintaSalt: " +quintaSalt);
 		Log.e("Grabar Salt", "string: " +string);
 		Log.e("Grabar Salt", "salt: " +salt);
-		
-		
-		
+				
 		String encriptacion = primeraSalt + primera + terceraSalt + segunda + cuartaSalt + tercera + quintaSalt + finalTexto + segundaSalt;
 		String primeraLargo = (largoJson+"").substring(0, 1);
 		String segundaLargo = (largoJson+"").substring( 1, 2);

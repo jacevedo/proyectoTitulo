@@ -17,6 +17,7 @@ public class Menu extends Activity implements OnClickListener
     private Button btnTomarHora;
     private Button btnVerHorasTomadas;
     private Button btnCerrarSesion;
+    
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -39,7 +40,6 @@ public class Menu extends Activity implements OnClickListener
         btnTomarHora.setOnClickListener(this);
         btnVerHorasTomadas.setOnClickListener(this);
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(android.view.Menu menu)

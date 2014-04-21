@@ -13,7 +13,6 @@ import java.util.ArrayList;
 
 import cl.sfh.paciente.R;
 
-
 /**
  * Created by jacevedo on 24-06-13.
  */

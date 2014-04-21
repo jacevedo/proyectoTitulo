@@ -11,34 +11,37 @@ public class Validaciones
 	{
 		if(!Pattern.matches("\\d{7}|\\d{8}", texto))
 		{
-		    Toast.makeText(actividad, "debe ingresar su rut sin guion ni digito verificador", Toast.LENGTH_SHORT).show();
+		    Toast.makeText(actividad, "Debe ingresar rut sin guión ni dígito verificador", Toast.LENGTH_SHORT).show();
 		    return false;
 		}
 		return true;
 	}
+	
 	public static boolean apellidos(Activity actividad, String texto)
 	{
 		if(!Pattern.matches("^[a-zA-ZñÑ]*", texto)||texto.length()==0)
 		{
-		    Toast.makeText(actividad, "Debe ingresar Su apellido", Toast.LENGTH_SHORT).show();
+		    Toast.makeText(actividad, "Debe ingresar su apellido", Toast.LENGTH_SHORT).show();
 		    return false;
 		}
 		return true;
 	}
+	
 	public static boolean nombres(Activity actividad, String texto)
 	{
 		if(!Pattern.matches("(\\p{L}+)(([ ])(\\p{L}+))?", texto)||texto.length()==0)
 		{
-		    Toast.makeText(actividad, "Debe ingresar solo Texto y maximo 2 nombres", Toast.LENGTH_SHORT).show();
+		    Toast.makeText(actividad, "Debe ingresar sólo texto y máximo 2 nombres", Toast.LENGTH_SHORT).show();
 		    return false;
 		}
 		return true;
 	}
+	
 	public static boolean soloTexto(Activity actividad, String texto)
 	{
 		if(!Pattern.matches("^[a-zA-ZñÑ]*$", texto))
 		{
-		    Toast.makeText(actividad, "Debe ingresar solo Texto", Toast.LENGTH_SHORT).show();
+		    Toast.makeText(actividad, "Debe ingresar sólo texto", Toast.LENGTH_SHORT).show();
 		    return false;
 		}
 		return true;
@@ -48,20 +51,22 @@ public class Validaciones
 	{
 		if(!Pattern.matches("^[a-zA-Z0-9._%+-]+@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,4}$", texto))
 		{
-		    Toast.makeText(actividad, "Debe ingresar un mail valido", Toast.LENGTH_SHORT).show();
+		    Toast.makeText(actividad, "Debe ingresar un email válido", Toast.LENGTH_SHORT).show();
 		    return false;
 		}
 		return true;
 	}
+	
 	public static boolean rut(Activity actividad, String texto)
 	{
 		if(!Pattern.matches("\\b\\d{7,8}\\-[K|k|0-9]", texto))
 		{
-		    Toast.makeText(actividad, "Debe ingresar un rut valido", Toast.LENGTH_SHORT).show();
+		    Toast.makeText(actividad, "Debe ingresar un rut válido", Toast.LENGTH_SHORT).show();
 		    return false;
 		}
 		return true&&validarRut(actividad,texto);
 	}
+	
 	private static boolean validarRut(Activity actividad, String texto)
 	{
 		String[]rutArreglo = texto.split("-");
@@ -76,32 +81,35 @@ public class Validaciones
        {
     	   return true;
        }
-       Toast.makeText(actividad, "Debe ingresar un rut valido", Toast.LENGTH_SHORT).show();
+       Toast.makeText(actividad, "Debe ingresar un rut válido", Toast.LENGTH_SHORT).show();
        return false;
 	}
+	
 	public static boolean fecha(Activity actividad, String texto)
 	{
 		if(!Pattern.matches("\\d{2}\\-\\d{2}\\-\\d{4}", texto))
 		{
-		    Toast.makeText(actividad, "Debe ingresar dia-mes-año (01-01-1991)", Toast.LENGTH_SHORT).show();
+		    Toast.makeText(actividad, "Debe ingresar día-mes-año (01-01-1991)", Toast.LENGTH_SHORT).show();
 		    return false;
 		}
 		return true;
 	}
+	
 	public static boolean telefono(Activity actividad, String texto)
 	{
 		if(!Pattern.matches("0{0,2}([\\+]?[\\d]{1,3} ?)?([\\(]([\\d]{2,3})[)] ?)?[0-9][0-9 \\-]{6,}( ?([xX]|([eE]xt[\\.]?)) ?([\\d]{1,5}))?", texto))
 		{
-		    Toast.makeText(actividad, "Debe ingresar un Telefono valido", Toast.LENGTH_SHORT).show();
+		    Toast.makeText(actividad, "Debe ingresar un teléfono válido", Toast.LENGTH_SHORT).show();
 		    return false;
 		}
 		return true;
 	}
+	
 	public static boolean direccion(Activity actividad, String texto)
 	{
 		if(!Pattern.matches("0{0,2}([\\+]?[\\d]{1,3} ?)?([\\(]([\\d]{2,3})[)] ?)?[0-9][0-9 \\-]{6,}( ?([xX]|([eE]xt[\\.]?)) ?([\\d]{1,5}))?", texto))
 		{
-		    Toast.makeText(actividad, "Debe ingresar un mail valido", Toast.LENGTH_SHORT).show();
+		    Toast.makeText(actividad, "Debe ingresar un email válido", Toast.LENGTH_SHORT).show();
 		    return false;
 		}
 		return true;

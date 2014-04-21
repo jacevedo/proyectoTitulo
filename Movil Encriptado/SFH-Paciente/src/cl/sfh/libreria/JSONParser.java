@@ -24,8 +24,6 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
-
-
 public class JSONParser {
 
 	static InputStream is = null;
@@ -47,8 +45,8 @@ public class JSONParser {
 		String json = encoding.encriptar(params.get(0).getValue());
 		parametros.add(new BasicNameValuePair("send", json));
         // Making HTTP request
-		try {
-			
+		try
+		{
 			// check for request method
 			if(method.compareTo("POST")==0)
             {
@@ -62,7 +60,6 @@ public class JSONParser {
 				HttpResponse httpResponse = httpClient.execute(httpPost);
 				HttpEntity httpEntity = httpResponse.getEntity();
 				is = httpEntity.getContent();
-				
 			}
 			else if(method.compareTo("GET")==0)
             {
@@ -118,9 +115,7 @@ public class JSONParser {
         {
         	Log.e("exception", e.getMessage());
 		}
-
 		// return JSON String
 		return jObj;
-
 	}
 }

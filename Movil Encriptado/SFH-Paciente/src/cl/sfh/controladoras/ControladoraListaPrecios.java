@@ -31,8 +31,7 @@ public class ControladoraListaPrecios
 		JSONParser parser = new JSONParser();
 		List<NameValuePair> parametros = new ArrayList<NameValuePair>();
 		parametros.add(new BasicNameValuePair("send", mensajeEnviar));
-		JSONObject objetoJson = parser.makeHttpRequest("ws-precios-insumos.php",
-														"POST", parametros);
+		JSONObject objetoJson = parser.makeHttpRequest("ws-precios-insumos.php","POST", parametros);
 		
 		try
 		{
@@ -64,8 +63,7 @@ public class ControladoraListaPrecios
 		JSONParser parser = new JSONParser();
 		List<NameValuePair> parametros = new ArrayList<NameValuePair>();
 		parametros.add(new BasicNameValuePair("send", mensajeEnviar));
-		JSONObject objetoJson = parser.makeHttpRequest("ws-precios-insumos.php",
-														"POST", parametros);
+		JSONObject objetoJson = parser.makeHttpRequest("ws-precios-insumos.php","POST", parametros);
 		try
 		{
 			JSONArray arregloJson = objetoJson.getJSONArray("listaPrecios");
@@ -78,7 +76,6 @@ public class ControladoraListaPrecios
 						objetoJsonFor.getInt("valorNeto"), objetoJsonFor.getInt("valorIva"),
 						objetoJsonFor.getInt("valorTotal"));
 				listaPrecios.add(entidad);
-				
 			}
 		} 
 		catch (JSONException e)

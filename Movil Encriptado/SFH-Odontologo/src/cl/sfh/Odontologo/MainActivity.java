@@ -1,6 +1,5 @@
 package cl.sfh.Odontologo;
 
-
 import java.util.regex.Pattern;
 
 import cl.sfh.controladoras.ControladoraLogin;
@@ -27,7 +26,6 @@ public class MainActivity extends Activity implements OnClickListener, OnFocusCh
     private EditText txtUsuario;
     private EditText txtPass;
     private ProgressDialog dialogo;
-
     
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -39,17 +37,15 @@ public class MainActivity extends Activity implements OnClickListener, OnFocusCh
 
     private void inicializarElementos()
     {
-        btnEntrar =(Button)findViewById(R.id.btnEntrar);
+        btnEntrar = (Button)findViewById(R.id.btnEntrar);
         txtUsuario = (EditText)findViewById(R.id.txtUsuario);
     	txtPass = (EditText)findViewById(R.id.txtContrasena);
     	dialogo = new ProgressDialog(MainActivity.this);
-		dialogo.setMessage("Iniciando Sesion...");
+		dialogo.setMessage("Iniciando sesión...");
 		dialogo.setTitle("Cargando");
         btnEntrar.setOnClickListener(this);
         txtUsuario.setOnFocusChangeListener(this);
-
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
@@ -76,20 +72,19 @@ public class MainActivity extends Activity implements OnClickListener, OnFocusCh
                 break;
         }
     }
+    
     private boolean validarUsuario(String user)
     {
-    	
-		
 		if(!Pattern.matches("\\d{7}|\\d{8}", user))
 		{
-		    Toast.makeText(this, "debe ingresar su rut sin guion ni digito verificador", Toast.LENGTH_SHORT).show();
+		    Toast.makeText(this, "Debe ingresar rut sin guión ni dígito verificador", Toast.LENGTH_SHORT).show();
 		    return false;
 		}
 		return true;
     }
+    
     class Asincrono extends	AsyncTask<String, Login,Login>
-	{
-			
+	{	
 		@Override
 		protected void onPreExecute()
 		{
@@ -108,7 +103,6 @@ public class MainActivity extends Activity implements OnClickListener, OnFocusCh
 		@Override
 		protected void onPostExecute(Login result)
 		{
-			
 			dialogo.dismiss();
 			SharedPreferences preferencias = getSharedPreferences("datos",Context.MODE_PRIVATE);
 			Editor editor=preferencias.edit();
@@ -126,11 +120,12 @@ public class MainActivity extends Activity implements OnClickListener, OnFocusCh
 			}
 			else
 			{
-				Toast.makeText(MainActivity.this, "Usuario y/o Contraseña Incorrecto", Toast.LENGTH_SHORT).show();
+				Toast.makeText(MainActivity.this, "Usuario y/o contraseña incorrecto", Toast.LENGTH_SHORT).show();
 			}
 			super.onPostExecute(result);
 		}	
 	}
+    
 	@Override
 	public void onFocusChange(View v, boolean hasFocus)
 	{

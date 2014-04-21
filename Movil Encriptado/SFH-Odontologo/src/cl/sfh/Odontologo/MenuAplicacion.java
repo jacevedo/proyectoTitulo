@@ -13,6 +13,7 @@ public class MenuAplicacion extends Activity implements OnClickListener
     private Button btnVerFicha;
     private Button btnCerrarSesion;
     private Button btnEditarCuenta;
+    
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -33,7 +34,6 @@ public class MenuAplicacion extends Activity implements OnClickListener
         btnVerFicha.setOnClickListener(this);
         btnCerrarSesion.setOnClickListener(this);
     }
-
 
     @Override
     public void onClick(View v)

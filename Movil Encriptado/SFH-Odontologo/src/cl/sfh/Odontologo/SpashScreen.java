@@ -10,12 +10,9 @@ import android.view.Display;
 import android.view.Menu;
 import android.view.Window;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 
-import java.util.jar.JarEntry;
-
-public class SpashScreen extends Activity {
-
+public class SpashScreen extends Activity 
+{
     ImageView imgLogo;
     Display display;
     Bitmap fotoLogo;
@@ -32,13 +29,13 @@ public class SpashScreen extends Activity {
 
     private void inicializarElementos()
     {
- 
         fotoLogo = BitmapFactory.decodeResource(getResources(), R.drawable.logo);
         Bitmap logo = redimensionarImagen(fotoLogo);
         imgLogo = (ImageView)findViewById(R.id.imgLogo);
         imgLogo.setImageBitmap(logo);
         new asincrono().execute();
     }
+    
     private Bitmap redimensionarImagen(Bitmap bm)
     {
         int ancho = display.getWidth();  //Ancho Pantalla
@@ -48,13 +45,14 @@ public class SpashScreen extends Activity {
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
         // Inflate the menu; this adds items to the action bar if it is present.
         return true;
     }
+    
     class asincrono extends AsyncTask<String, String, String>
     {
-
         @Override
         protected String doInBackground(String... params)
         {
@@ -77,5 +75,4 @@ public class SpashScreen extends Activity {
             finish();
         }
     }
-    
 }

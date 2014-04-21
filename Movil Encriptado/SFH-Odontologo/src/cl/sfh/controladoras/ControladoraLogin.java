@@ -23,7 +23,6 @@ public class ControladoraLogin
 		JSONObject objetoJson = parser.makeHttpRequest("ws-login.php","POST", parametros);
 		try
 		{
-			
 			if(objetoJson.getString("resultado").compareToIgnoreCase("")!=0)
 			{
 				JSONObject objetoResultado = objetoJson.getJSONObject("resultado");
@@ -52,6 +51,5 @@ public class ControladoraLogin
 			e.printStackTrace();
 			return new Login("", -1,-1,-1);
 		}
-		
 	}
 }

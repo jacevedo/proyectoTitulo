@@ -8,7 +8,6 @@ import cl.sfh.controladoras.ControladoraEditarDatosContacto;
 import cl.sfh.entidades.Comunas;
 import cl.sfh.entidades.DatosContactoEditar;
 import cl.sfh.entidades.Region;
-import android.R.integer;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -63,19 +62,14 @@ public class EditarCuenta extends Activity implements OnClickListener, OnItemSel
     	tabs.setup();
     	TabHost.TabSpec spec=tabs.newTabSpec("mitab1");
     	spec.setContent(R.id.tab1);
-    	spec.setIndicator("Datos Personales",
-    	    res.getDrawable(android.R.drawable.ic_btn_speak_now));
+    	spec.setIndicator("Datos Personales",res.getDrawable(android.R.drawable.ic_btn_speak_now));
     	tabs.addTab(spec);
     	 
     	spec=tabs.newTabSpec("mitab2");
     	spec.setContent(R.id.tab2);
-    	spec.setIndicator("Datos de Contacto",
-    	    res.getDrawable(android.R.drawable.ic_dialog_map));
+    	spec.setIndicator("Datos de Contacto",res.getDrawable(android.R.drawable.ic_dialog_map));
     	tabs.addTab(spec);
-    	 
     	tabs.setCurrentTab(0);
-    	
-    	
     	
     	edtNombre = (EditText)findViewById(R.id.edtNombre);
     	edtApellidoPaterno = (EditText)findViewById(R.id.edtAppPaterno);
@@ -92,7 +86,7 @@ public class EditarCuenta extends Activity implements OnClickListener, OnItemSel
     	btnGuardarDatosContacto.setOnClickListener(this);
     	SharedPreferences preferencias = getSharedPreferences("datos",Context.MODE_PRIVATE);
         rut = preferencias.getInt("rutPersona", -1);
-      
+        
         edtNombre.setOnFocusChangeListener(this);
     	edtApellidoPaterno.setOnFocusChangeListener(this);
     	edtApellidoMaterno.setOnFocusChangeListener(this);
@@ -102,9 +96,7 @@ public class EditarCuenta extends Activity implements OnClickListener, OnItemSel
     	edtCorreo.setOnFocusChangeListener(this);
         
         new obtenerInformacion().execute(rut);
-       
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
@@ -131,7 +123,6 @@ public class EditarCuenta extends Activity implements OnClickListener, OnItemSel
 			break;
 			case R.id.btnDatosContacto:
 				//{"indice":8,"idPersona":1,"idComuna":2,"fonoFijo":"0227780184","celular":"+56976087240","direccion":"antonio Varas 666","mail":"asd@asd.com","fechaIngreso":"2013-02-02"}
-				
 				String fonoFijo = edtFonoFijo.getText().toString();
 				String fonoCelular = edtFonoCelular.getText().toString();
 				String direccion = edtDireccion.getText().toString();
@@ -147,15 +138,14 @@ public class EditarCuenta extends Activity implements OnClickListener, OnItemSel
 							break;
 						}
 					}
-					
 					new guardarDatosContacto().execute(datosEditar.getIdPersona()+"",idComuna+"",fonoFijo,fonoCelular,direccion,correoElectronico,datosEditar.getFechaIngreso());
 				}
 			break;
 		}
     }
+    
     @Override
-	public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2,
-			long arg3)
+	public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2,long arg3)
 	{
     	Spinner spiner = (Spinner)arg0;
 		if(spiner.getTag().toString().compareToIgnoreCase("region")==0&&arg2!=0)
@@ -165,18 +155,14 @@ public class EditarCuenta extends Activity implements OnClickListener, OnItemSel
 			{
 				if(region.getNomRegion().compareToIgnoreCase(spiner.getItemAtPosition(arg2).toString())==0)
 				{
-					
 					idRegion = region.getIdRegion();
-					break;
-					
+					break;	
 				}
-				
 			}
 			ArrayList<Comunas> comunasForSpinner = new ArrayList<Comunas>();
 			Log.e("asd", idRegion+"");
 			for (Comunas comunas : comunasGlobal)
 			{
-				
 				if(comunas.getIdRegion()==idRegion)
 				{
 					comunasForSpinner.add(comunas);
@@ -186,18 +172,16 @@ public class EditarCuenta extends Activity implements OnClickListener, OnItemSel
 			listaEpinnerComunas.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 			spComuna.setAdapter(listaEpinnerComunas);
 		}
-		
 	}
 
 	@Override
 	public void onNothingSelected(AdapterView<?> arg0)
 	{
 		// TODO Auto-generated method stub
-		
 	}
+	
     class guardarDatosPersona extends AsyncTask<String, Void, String>
     {
-
 		@Override
 		protected String doInBackground(String... params)
 		{
@@ -221,11 +205,10 @@ public class EditarCuenta extends Activity implements OnClickListener, OnItemSel
 			Toast.makeText(EditarCuenta.this,result, Toast.LENGTH_SHORT).show();
 			super.onPostExecute(result);
 		}
-    	
     }
+    
     class guardarDatosContacto extends AsyncTask<String, Void, String>
     {
-
 		@Override
 		protected String doInBackground(String... params)
 		{
@@ -251,7 +234,6 @@ public class EditarCuenta extends Activity implements OnClickListener, OnItemSel
     }
     class obtenerComunas extends AsyncTask<Integer, Void, ArrayList<Object>>
     {
-
 		@Override
 		protected ArrayList<Object> doInBackground(Integer... params)
 		{
@@ -291,17 +273,14 @@ public class EditarCuenta extends Activity implements OnClickListener, OnItemSel
 					spComuna.setSelection(i);
 					break;
 				}
-		
 			}
 			spRegion.setOnItemSelectedListener(EditarCuenta.this);
 			super.onPostExecute(result);
 		}
-		
-    	
     }
+    
     class obtenerRegiones extends AsyncTask<Integer, Void, ArrayList<Object>>
     {
-
 		@Override
 		protected ArrayList<Object> doInBackground(Integer... params)
 		{
@@ -329,14 +308,13 @@ public class EditarCuenta extends Activity implements OnClickListener, OnItemSel
 					spRegion.setSelection(i);
 					break;
 				}
-		
 			}
 			Log.e("asd", result.get(1)+"");
 			new obtenerComunas().execute((Integer)result.get(1),(Integer)result.get(2));
 			super.onPostExecute(result);
 		}
-    	
     }
+    
     class obtenerInformacion extends AsyncTask<Integer, Void, DatosContactoEditar>
     {
     	@Override
@@ -345,6 +323,7 @@ public class EditarCuenta extends Activity implements OnClickListener, OnItemSel
 			// TODO Auto-generated method stub
 			super.onPreExecute();
 		}
+    	
 		@Override
 		protected DatosContactoEditar doInBackground(Integer... params)
 		{
@@ -375,7 +354,6 @@ public class EditarCuenta extends Activity implements OnClickListener, OnItemSel
 				edtFonoFijo.setText(result.getFonoFijo());
 				edtApellidoMaterno.setText(result.getApellidoMaterno());
 				new obtenerRegiones().execute(result.getRegion(),result.getComuna());
-				
 			}
 			else
 			{
@@ -383,10 +361,8 @@ public class EditarCuenta extends Activity implements OnClickListener, OnItemSel
 			}
 			super.onPostExecute(result);
 		}
-
-		
-		
     }
+    
 	@Override
 	public void onFocusChange(View v, boolean hasFocus)
 	{
@@ -415,7 +391,5 @@ public class EditarCuenta extends Activity implements OnClickListener, OnItemSel
 					break;
 			}
 		}
-		
 	}
-	
 }

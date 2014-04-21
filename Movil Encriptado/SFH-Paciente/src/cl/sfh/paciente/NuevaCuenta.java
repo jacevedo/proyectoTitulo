@@ -88,7 +88,6 @@ public class NuevaCuenta extends Activity implements OnClickListener, OnItemSele
     	txtConfirmarContrasena.setOnFocusChangeListener(this);
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
@@ -103,7 +102,6 @@ public class NuevaCuenta extends Activity implements OnClickListener, OnItemSele
     	switch (v.getId())
 		{
 			case R.id.btnCrearCuenta:
-				
 				String mail = txtEmail.getText().toString();
 				String nombre = txtNombre.getText().toString();
 				String appPaterno = txtAppMaterno.getText().toString();
@@ -135,13 +133,11 @@ public class NuevaCuenta extends Activity implements OnClickListener, OnItemSele
 					Pass contrasena = new Pass(0, txtConfirmarContrasena.getText().toString(), "2014-12-12");
 					new InsertarUsuario().execute(per,datoContacto,contrasena);
 				}
-				
 			break;
 		}
     }
     class BusquedaComunas extends AsyncTask<Void, Void, Void>
     {
-
 		@Override
 		protected Void doInBackground(Void... params)
 		{
@@ -170,13 +166,14 @@ public class NuevaCuenta extends Activity implements OnClickListener, OnItemSele
 			// TODO Auto-generated method stub
 			return resultado;
 		}
+		
 		@Override
 		protected void onPostExecute(String result)
 		{
 			// TODO Auto-generated method stu
 			if(result.compareToIgnoreCase("Todos los datos fueron insertados")==0)
 			{
-				Toast.makeText(NuevaCuenta.this,"Datos insertado Correctamente", Toast.LENGTH_SHORT).show();
+				Toast.makeText(NuevaCuenta.this,"Datos insertado correctamente", Toast.LENGTH_SHORT).show();
 				finish();
 			}
 			else
@@ -185,12 +182,10 @@ public class NuevaCuenta extends Activity implements OnClickListener, OnItemSele
 			}
 			super.onPostExecute(result);
 		}
-
-		
     }
+    
 	@Override
-	public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2,
-			long arg3)
+	public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long arg3)
 	{
 		Spinner spiner = (Spinner)arg0;
 		if(spiner.getTag().toString().compareToIgnoreCase("region")==0&&arg2!=0)
@@ -200,23 +195,21 @@ public class NuevaCuenta extends Activity implements OnClickListener, OnItemSele
 			{
 				if(region.getNomRegion().compareToIgnoreCase(spiner.getItemAtPosition(arg2).toString())==0)
 				{
-					
 					idRegion = region.getIdRegion();
 					break;
-					
 				}
-				
 			}
+			
 			ArrayList<Comunas> comunasForSpinner = new ArrayList<Comunas>();
 			Log.e("asd", idRegion+"");
 			for (Comunas comunas : comunasGlobal)
 			{
-				
 				if(comunas.getIdRegion()==idRegion)
 				{
 					comunasForSpinner.add(comunas);
 				}
 			}
+			
 			ArrayAdapter<Comunas> listaEpinnerComunas = new ArrayAdapter<Comunas>(NuevaCuenta.this, android.R.layout.simple_spinner_item, comunasForSpinner);
 			listaEpinnerComunas.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 			spComuna.setAdapter(listaEpinnerComunas);
@@ -227,12 +220,10 @@ public class NuevaCuenta extends Activity implements OnClickListener, OnItemSele
 	public void onNothingSelected(AdapterView<?> arg0)
 	{
 		// TODO Auto-generated method stub
-		
 	}
 	
 	class obtenerComunas extends AsyncTask<Integer, Void, ArrayList<Object>>
     {
-
 		@Override
 		protected ArrayList<Object> doInBackground(Integer... params)
 		{
@@ -277,12 +268,10 @@ public class NuevaCuenta extends Activity implements OnClickListener, OnItemSele
 			spRegion.setOnItemSelectedListener(NuevaCuenta.this);
 			super.onPostExecute(result);
 		}
-		
-    	
     }
+	
     class obtenerRegiones extends AsyncTask<Integer, Void, ArrayList<Object>>
     {
-
 		@Override
 		protected ArrayList<Object> doInBackground(Integer... params)
 		{
@@ -310,14 +299,13 @@ public class NuevaCuenta extends Activity implements OnClickListener, OnItemSele
 					spRegion.setSelection(i);
 					break;
 				}
-		
 			}
 			Log.e("asd", result.get(1)+"");
 			new obtenerComunas().execute((Integer)result.get(1),(Integer)result.get(2));
 			super.onPostExecute(result);
 		}
-    	
     }
+    
 	@Override
 	public void onFocusChange(View v, boolean hasFocus)
 	{
@@ -350,10 +338,7 @@ public class NuevaCuenta extends Activity implements OnClickListener, OnItemSele
 				case R.id.txtCelular:
 					telefono(this,texto);
 					break;
-				
 			}
 		}
-		
 	}
-    
 }

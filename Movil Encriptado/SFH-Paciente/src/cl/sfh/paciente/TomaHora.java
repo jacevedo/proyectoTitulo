@@ -20,7 +20,6 @@ import java.util.ArrayList;
 import cl.sfh.controladoras.ControladoraHorario;
 import cl.sfh.entidades.Horario;
 
-
 public class TomaHora extends Activity implements OnClickListener, OnItemSelectedListener
 {
     private Spinner spnHoras;
@@ -51,14 +50,13 @@ public class TomaHora extends Activity implements OnClickListener, OnItemSelecte
         spnHoras = (Spinner)findViewById(R.id.spnHorasDisponibles);
         spnDoctores = (Spinner)findViewById(R.id.spnDoctores);
         btnGuardar = (Button)findViewById(R.id.btnGuardarHora);
-        btnGuardar.setOnClickListener(this);
-        spnDoctores.setOnItemSelectedListener(this);
         
-
+        btnGuardar.setOnClickListener(this);
+        spnDoctores.setOnItemSelectedListener(this);     
     }
+    
     @Override
-	public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2,
-			long arg3)
+	public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long arg3)
 	{
     	Spinner spiner = (Spinner)arg0;
 		if(arg2!=0)
@@ -74,22 +72,18 @@ public class TomaHora extends Activity implements OnClickListener, OnItemSelecte
 				}
 			}
 		}
-		
 	}
 
 	@Override
 	public void onNothingSelected(AdapterView<?> arg0)
 	{
 		
-		
 	}
-
 
     private void llenarHoras(ArrayList<String> horas)
     {
         ArrayAdapter<CharSequence> adapter = null;
-
-        adapter =new ArrayAdapter <CharSequence> (this, android.R.layout.simple_spinner_item );
+        adapter = new ArrayAdapter <CharSequence> (this, android.R.layout.simple_spinner_item );
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         for (String hora : horas)
 		{
@@ -105,14 +99,15 @@ public class TomaHora extends Activity implements OnClickListener, OnItemSelecte
         {
             case R.id.btnGuardarHora:
               	tomarHora();
-                break;
+            break;
         }
     }
+    
     private void tomarHora()
 	{
 		int idPacienteInterno = idPaciente;
 		int idOdontologoInterno = idOdontologo;
-		String horaInterna =(String) spnHoras.getSelectedItem();
+		String horaInterna = (String) spnHoras.getSelectedItem();
 		String fechaInterna = fecha;
 		int estado = 0;
 		if(idPacienteInterno!=-1)
@@ -121,12 +116,11 @@ public class TomaHora extends Activity implements OnClickListener, OnItemSelecte
 		}
 		else
 		{
-			Toast.makeText(this, "Inicie Sesion Nuevamente", Toast.LENGTH_SHORT).show();
+			Toast.makeText(this, "Inicie sesi—n nuevamente", Toast.LENGTH_SHORT).show();
 		}
 	}
 	class ReservarHora extends AsyncTask<String, Void, String>
     {
-
 		@Override
 		protected void onPreExecute()
 		{
@@ -146,24 +140,25 @@ public class TomaHora extends Activity implements OnClickListener, OnItemSelecte
 			String resultado  = control.tomarHora(idPaciente, idOdontologo, fecha, hora, estado);
 			return resultado;
 		}
+		
 		@Override
 		protected void onPostExecute(String result)
 		{
 			if(result.compareToIgnoreCase("Ya existe la Cita")==0)
 			{
-				Toast.makeText(TomaHora.this, result, Toast.LENGTH_SHORT).show();
+				Toast.makeText(TomaHora.this, "Hora no disponible", Toast.LENGTH_SHORT).show();
 			}
 			else
 			{
-				Toast.makeText(TomaHora.this,"Tu hora a sido Tomada",Toast.LENGTH_SHORT).show();
+				Toast.makeText(TomaHora.this,"Tu hora a sido tomada",Toast.LENGTH_SHORT).show();
                 Intent i = new Intent("cl.sfh.paciente.Menu");
                 i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(i);
 			}
 			super.onPostExecute(result);
 		}
-    	
     }
+	
     class obtenerHorarioYDoctores extends AsyncTask<String, Void, ArrayList<Horario>>
     {
     	@Override
@@ -186,12 +181,12 @@ public class TomaHora extends Activity implements OnClickListener, OnItemSelecte
 		@Override
 		protected void onPostExecute(ArrayList<Horario> result)
 		{
-			horarios=result;
+			horarios = result;
 			ArrayAdapter<CharSequence> adapter = null;
 
 	        adapter = new ArrayAdapter <CharSequence> (TomaHora.this, android.R.layout.simple_spinner_item );
 	        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-	        adapter.add("Seleccione Odontologo");
+	        adapter.add("Seleccione Odont—logo");
 	        for (Horario horario : result)
 			{
 				adapter.add(horario.getNomOdontologo()+" id: "+horario.getIdOdontologo());
