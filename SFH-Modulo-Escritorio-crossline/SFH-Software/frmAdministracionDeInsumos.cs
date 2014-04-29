@@ -31,12 +31,11 @@ namespace SFH_Software
         #region Metodos 
         private void PoblarComboBusqueda()
         {
-
             this.cmbxBuscar.Items.Clear();
             this.cmbxBuscar.Items.Insert(0, "Seleccione tipo de búsqueda");
-            this.cmbxBuscar.Items.Insert(1, "Numero de insumo");
+            this.cmbxBuscar.Items.Insert(1, "Número de insumo");
             this.cmbxBuscar.Items.Insert(2, "Nombre insumo");
-            this.cmbxBuscar.Items.Insert(3, "Area Insumo");
+            this.cmbxBuscar.Items.Insert(3, "Área Insumo");
             this.cmbxBuscar.SelectedItem = "Seleccione tipo de búsqueda";
         }
 
@@ -103,40 +102,59 @@ namespace SFH_Software
                     break;
                 case 1:
                     MessageBox.Show("El sistema sfh está realizando su búsqueda", "SFH Administración de Clínica -  Administración de Insumos", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.result = this.client_precio.ListarInsumosPorId(int.Parse(txtBuscar.Text.ToString()));
-
-                    if (result.Count.Equals(0))
+                    try
                     {
-                        MessageBox.Show("Esta búsqueda no ha arrojado resultados", "SFH Administración de Clínica -  Administración de Insumos", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        this.result = this.client_precio.ListarInsumosPorId(int.Parse(txtBuscar.Text.ToString()));
+                        if (result.Count.Equals(0))
+                        {
+                            MessageBox.Show("Esta búsqueda no ha arrojado resultados", "SFH Administración de Clínica -  Administración de Insumos", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        }
+                        else
+                        {
+                            this.dataGridInsumos.DataSource = this.result;
+                        }
                     }
-                    else
+                    catch
                     {
-                        this.dataGridInsumos.DataSource = this.result;
+                        MessageBox.Show("Se produjo un error, vuelva a intentarlo.", "SFH Administración de Clínica - Administración de Insumos", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     break;
                 case 2:
                     MessageBox.Show("El sistema sfh está realizando su búsqueda", "SFH Administración de Clínica - Administración de Insumos", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.result = this.client_precio.ListarInsumosPorNombre(txtBuscar.Text.ToString());
-
-                    if (result.Count.Equals(0))
+                    try
                     {
-                        MessageBox.Show("Esta búsqueda no ha arrojado resultados", "SFH Administración de Clínica - Administración de Fichas Dentales", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        this.result = this.client_precio.ListarInsumosPorNombre(txtBuscar.Text.ToString());
+                        if (result.Count.Equals(0))
+                        {
+                            MessageBox.Show("Esta búsqueda no ha arrojado resultados", "SFH Administración de Clínica - Administración de Insumos", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        }
+                        else
+                        {
+                            this.dataGridInsumos.DataSource = this.result;
+                        }
                     }
-                    else
+                    catch
                     {
-                        this.dataGridInsumos.DataSource = this.result;
+                        MessageBox.Show("Se produjo un error, vuelva a intentarlo.", "SFH Administración de Clínica - Administración de Insumos", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     break;
                 case 3:
                     MessageBox.Show("El sistema sfh está realizando su búsqueda", "SFH Administración de Clínica - Administración de Insumos", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.result = this.client_precio.ListarInsumosPorIdareaInsumos(Convert.ToInt32(cmbxAreaInsumos.SelectedValue));
-                    if (result.Count.Equals(0))
+                    try
                     {
-                        MessageBox.Show("Esta búsqueda no ha arrojado resultados", "SFH Administración de Clínica - Administración de Insumos", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        this.result = this.client_precio.ListarInsumosPorIdareaInsumos(Convert.ToInt32(cmbxAreaInsumos.SelectedValue));
+                        if (result.Count.Equals(0))
+                        {
+                            MessageBox.Show("Esta búsqueda no ha arrojado resultados", "SFH Administración de Clínica - Administración de Insumos", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        }
+                        else
+                        {
+                            this.dataGridInsumos.DataSource = this.result;
+                        }
                     }
-                    else
+                    catch
                     {
-                        this.dataGridInsumos.DataSource = this.result;
+                        MessageBox.Show("Se produjo un error, vuelva a intentarlo.", "SFH Administración de Clínica - Administración de Insumos", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     break;
             }
@@ -150,13 +168,13 @@ namespace SFH_Software
                     this.ModificarInsumos(e);
                     break;
                 case 1:
-                  /*  if (MessageBox.Show("¿Desea eliminar este registro de gasto?", "SFH Administración de Clínica - Administración de Gastos", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+                    if (MessageBox.Show("¿Desea eliminar el insumo seleccionado?", "SFH Administración de Clínica - Administración de Insumos", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
                     {
                         Insumos insumo = dataGridInsumos.Rows[e.RowIndex].DataBoundItem as Insumos;
-                        this.client_precio.(insumo.IdInsumos);
-                        this.dataGridGastos.DataSource = this.client_gastos.ListarGastos();
-                        MessageBox.Show("Gasto eliminado del sistema", "SFH Administración de Clínica - Administración de  Gastos", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }*/
+                        this.client_precio.EliminarPrecio(insumo.IdInsumos);
+                        this.dataGridInsumos.DataSource = this.client_gastos.ListarGastos();
+                        MessageBox.Show("Insumo eliminado correctamente.", "SFH Administración de Clínica - Administración de Insumos", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                     break;
             }
         }
@@ -165,34 +183,62 @@ namespace SFH_Software
         {
             if (btnNuevo.Text.ToString().Trim() == "Ingresar Insumos")
             {
-                Insumos insumo = new Insumos();
-                insumo.IdAreaInsumo = Convert.ToInt32(this.cmbxAreaInsumo.SelectedValue);
-                insumo.IdGastos_insumo =  Convert.ToInt32(this.cmbxGastos.SelectedValue);
-                insumo.NomInsumos = this.txtnom.Text;
-                insumo.Cantidad = int.Parse(this.txtcantidad.Text.ToString());
-                insumo.UnidadMedida = this.txtunidadmedida.Text.ToString();
-                insumo.DescripcionInsumo = this.txtDescripcion.Text.ToString();
-                this.client_precio.InsertarInsumo(insumo);
-                this.dataGridInsumos.DataSource = this.client_precio.ListarInsumos();
-                this.LimpiarControles();
-                MessageBox.Show("Insumo registrado satisfactoriamente", "SFH Administración de Clínica - Administración de Área insumos", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                try
+                {
+                    String resultadoI = string.Empty;
+                    Insumos insumo = new Insumos();
+                    insumo.IdAreaInsumo = Convert.ToInt32(this.cmbxAreaInsumo.SelectedValue);
+                    insumo.IdGastos_insumo = Convert.ToInt32(this.cmbxGastos.SelectedValue);
+                    insumo.NomInsumos = this.txtnom.Text;
+                    insumo.Cantidad = int.Parse(this.txtcantidad.Text.ToString());
+                    insumo.UnidadMedida = this.txtunidadmedida.Text.ToString();
+                    insumo.DescripcionInsumo = this.txtDescripcion.Text.ToString();
+                    resultadoI = this.client_precio.InsertarInsumo(insumo);
+                    if (resultadoI != string.Empty)
+                    {
+                        this.dataGridInsumos.DataSource = this.client_precio.ListarInsumos();
+                        this.LimpiarControles();
+                        MessageBox.Show("Insumo ingresado correctamente.", "SFH Administración de Clínica - Administración de Insumos", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Se produjo un error, vuelva a intentarlo.", "SFH Administración de Clínica - Administración de Insumos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show("Se produjo un error, vuelva a intentarlo.", "SFH Administración de Clínica - Administración de Insumos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             else if (btnNuevo.Text.ToString().Trim() == "Guardar Cambios")
             {
-                Insumos insumo = new Insumos();
-                insumo.IdInsumos = this.Idinsumo;
-                insumo.IdAreaInsumo = Convert.ToInt32(this.cmbxAreaInsumo.SelectedValue);
-                insumo.IdGastos_insumo = Convert.ToInt32(this.cmbxGastos.SelectedValue);
-                insumo.NomInsumos = this.txtnom.Text;
-                insumo.Cantidad = int.Parse(this.txtcantidad.Text.ToString());
-                insumo.UnidadMedida = this.txtunidadmedida.Text.ToString();
-                insumo.DescripcionInsumo = this.txtDescripcion.Text.ToString();
-                this.client_precio.ModificarInsumo(insumo);
-                this.dataGridInsumos.DataSource = this.client_precio.ListarInsumos();
-                this.LimpiarControles();
-                MessageBox.Show("Insumo modificado satisfactoriamente", "SFH Administración de Clínica - Administración de Área insumos", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                try
+                {
+                    String resultadoM = string.Empty;
+                    Insumos insumo = new Insumos();
+                    insumo.IdInsumos = this.Idinsumo;
+                    insumo.IdAreaInsumo = Convert.ToInt32(this.cmbxAreaInsumo.SelectedValue);
+                    insumo.IdGastos_insumo = Convert.ToInt32(this.cmbxGastos.SelectedValue);
+                    insumo.NomInsumos = this.txtnom.Text;
+                    insumo.Cantidad = int.Parse(this.txtcantidad.Text.ToString());
+                    insumo.UnidadMedida = this.txtunidadmedida.Text.ToString();
+                    insumo.DescripcionInsumo = this.txtDescripcion.Text.ToString();
+                    resultadoM = this.client_precio.ModificarInsumo(insumo);
+                    if (resultadoM != string.Empty)
+                    {
+                        this.dataGridInsumos.DataSource = this.client_precio.ListarInsumos();
+                        this.LimpiarControles();
+                        MessageBox.Show("Insumo modificado correctamente.", "SFH Administración de Clínica - Administración de Insumos", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Se produjo un error, vuelva a intentarlo.", "SFH Administración de Clínica - Administración de Insumos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show("Se produjo un error, vuelva a intentarlo.", "SFH Administración de Clínica - Administración de Insumos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 

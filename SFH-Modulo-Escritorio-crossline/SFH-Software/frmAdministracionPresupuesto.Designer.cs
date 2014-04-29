@@ -30,10 +30,17 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAdministracionPresupuesto));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.grillaPresupuesto = new System.Windows.Forms.DataGridView();
+            this.idPresupuestoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idPacienteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.valorTotalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idFichaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fechaPresupuestoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.editar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.presupuestoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnCancelar = new System.Windows.Forms.Button();
@@ -48,12 +55,6 @@
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.idPresupuestoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idPacienteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.valorTotalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idFichaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fechaPresupuestoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.editar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grillaPresupuesto)).BeginInit();
@@ -73,7 +74,7 @@
             this.groupBox1.Size = new System.Drawing.Size(1247, 644);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Administración de presupuesto dental";
+            this.groupBox1.Text = "Administración de Presupuesto Dental";
             // 
             // groupBox3
             // 
@@ -84,7 +85,7 @@
             this.groupBox3.Size = new System.Drawing.Size(1210, 404);
             this.groupBox3.TabIndex = 15;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Listado de presupuesto";
+            this.groupBox3.Text = "Listado de Presupuesto";
             // 
             // grillaPresupuesto
             // 
@@ -103,7 +104,7 @@
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.WhiteSmoke;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
@@ -111,9 +112,55 @@
             this.grillaPresupuesto.Location = new System.Drawing.Point(189, 57);
             this.grillaPresupuesto.Name = "grillaPresupuesto";
             this.grillaPresupuesto.ReadOnly = true;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            this.grillaPresupuesto.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.grillaPresupuesto.Size = new System.Drawing.Size(746, 328);
             this.grillaPresupuesto.TabIndex = 0;
             this.grillaPresupuesto.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // idPresupuestoDataGridViewTextBoxColumn
+            // 
+            this.idPresupuestoDataGridViewTextBoxColumn.DataPropertyName = "IdPresupuesto";
+            this.idPresupuestoDataGridViewTextBoxColumn.HeaderText = "IdPresupuesto";
+            this.idPresupuestoDataGridViewTextBoxColumn.Name = "idPresupuestoDataGridViewTextBoxColumn";
+            this.idPresupuestoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // idPacienteDataGridViewTextBoxColumn
+            // 
+            this.idPacienteDataGridViewTextBoxColumn.DataPropertyName = "IdPaciente";
+            this.idPacienteDataGridViewTextBoxColumn.HeaderText = "IdPaciente";
+            this.idPacienteDataGridViewTextBoxColumn.Name = "idPacienteDataGridViewTextBoxColumn";
+            this.idPacienteDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idPacienteDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // valorTotalDataGridViewTextBoxColumn
+            // 
+            this.valorTotalDataGridViewTextBoxColumn.DataPropertyName = "ValorTotal";
+            this.valorTotalDataGridViewTextBoxColumn.HeaderText = "ValorTotal";
+            this.valorTotalDataGridViewTextBoxColumn.Name = "valorTotalDataGridViewTextBoxColumn";
+            this.valorTotalDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // idFichaDataGridViewTextBoxColumn
+            // 
+            this.idFichaDataGridViewTextBoxColumn.DataPropertyName = "IdFicha";
+            this.idFichaDataGridViewTextBoxColumn.HeaderText = "IdFicha";
+            this.idFichaDataGridViewTextBoxColumn.Name = "idFichaDataGridViewTextBoxColumn";
+            this.idFichaDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // fechaPresupuestoDataGridViewTextBoxColumn
+            // 
+            this.fechaPresupuestoDataGridViewTextBoxColumn.DataPropertyName = "FechaPresupuesto";
+            this.fechaPresupuestoDataGridViewTextBoxColumn.HeaderText = "FechaPresupuesto";
+            this.fechaPresupuestoDataGridViewTextBoxColumn.Name = "fechaPresupuestoDataGridViewTextBoxColumn";
+            this.fechaPresupuestoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // editar
+            // 
+            this.editar.HeaderText = "Editar Presupuestos";
+            this.editar.Name = "editar";
+            this.editar.ReadOnly = true;
+            this.editar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.editar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // presupuestoBindingSource
             // 
@@ -136,7 +183,7 @@
             this.groupBox2.Size = new System.Drawing.Size(1210, 204);
             this.groupBox2.TabIndex = 14;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Crear presupuesto";
+            this.groupBox2.Text = "Crear Presupuesto";
             // 
             // btnCancelar
             // 
@@ -253,53 +300,9 @@
             this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(479, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(327, 24);
+            this.label3.Size = new System.Drawing.Size(330, 24);
             this.label3.TabIndex = 6;
-            this.label3.Text = "Administración de presupuesto dental";
-            // 
-            // idPresupuestoDataGridViewTextBoxColumn
-            // 
-            this.idPresupuestoDataGridViewTextBoxColumn.DataPropertyName = "IdPresupuesto";
-            this.idPresupuestoDataGridViewTextBoxColumn.HeaderText = "IdPresupuesto";
-            this.idPresupuestoDataGridViewTextBoxColumn.Name = "idPresupuestoDataGridViewTextBoxColumn";
-            this.idPresupuestoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // idPacienteDataGridViewTextBoxColumn
-            // 
-            this.idPacienteDataGridViewTextBoxColumn.DataPropertyName = "IdPaciente";
-            this.idPacienteDataGridViewTextBoxColumn.HeaderText = "IdPaciente";
-            this.idPacienteDataGridViewTextBoxColumn.Name = "idPacienteDataGridViewTextBoxColumn";
-            this.idPacienteDataGridViewTextBoxColumn.ReadOnly = true;
-            this.idPacienteDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // valorTotalDataGridViewTextBoxColumn
-            // 
-            this.valorTotalDataGridViewTextBoxColumn.DataPropertyName = "ValorTotal";
-            this.valorTotalDataGridViewTextBoxColumn.HeaderText = "ValorTotal";
-            this.valorTotalDataGridViewTextBoxColumn.Name = "valorTotalDataGridViewTextBoxColumn";
-            this.valorTotalDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // idFichaDataGridViewTextBoxColumn
-            // 
-            this.idFichaDataGridViewTextBoxColumn.DataPropertyName = "IdFicha";
-            this.idFichaDataGridViewTextBoxColumn.HeaderText = "IdFicha";
-            this.idFichaDataGridViewTextBoxColumn.Name = "idFichaDataGridViewTextBoxColumn";
-            this.idFichaDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // fechaPresupuestoDataGridViewTextBoxColumn
-            // 
-            this.fechaPresupuestoDataGridViewTextBoxColumn.DataPropertyName = "FechaPresupuesto";
-            this.fechaPresupuestoDataGridViewTextBoxColumn.HeaderText = "FechaPresupuesto";
-            this.fechaPresupuestoDataGridViewTextBoxColumn.Name = "fechaPresupuestoDataGridViewTextBoxColumn";
-            this.fechaPresupuestoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // editar
-            // 
-            this.editar.HeaderText = "Editar Presupuestos";
-            this.editar.Name = "editar";
-            this.editar.ReadOnly = true;
-            this.editar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.editar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.label3.Text = "Administración de Presupuesto Dental";
             // 
             // frmAdministracionPresupuesto
             // 
@@ -311,7 +314,7 @@
             this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmAdministracionPresupuesto";
-            this.Text = "AdministracionPresupuesto";
+            this.Text = "SFH - Administración de Presupuestos";
             this.Load += new System.EventHandler(this.frmAdministracionPresupuesto_Load_1);
             this.groupBox1.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);

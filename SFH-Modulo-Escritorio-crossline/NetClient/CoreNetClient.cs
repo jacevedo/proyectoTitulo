@@ -12,16 +12,18 @@ namespace NetClient
     {
         ClientEncoding en = new ClientEncoding();
         SharedPreferences preferences = SharedPreferences.preferences;
-        public String NetPost(String nom_page,String paramdata) {
+        public String NetPost(String nom_page,String paramdata)
+        {
             String request_post = string.Empty;
 
             /*Segmento de prueba 
             String url = "http://192.168.106.134/sfhwebservice/webService/" + nom_page;
             String url = "http://192.168.106.134/sfhwebservice/webServiceencriptado/" + nom_page;*/
             /*Segmento de produccion*/
-           String url = "http://sfh.crossline.cl/webServiceencriptado/" + nom_page;
+            String url = "http://sfh.crossline.cl/webServiceencriptado/" + nom_page;
            
-            try {
+            try 
+            {
                 String paramdataKey = string.Empty;
                 WebRequest request = WebRequest.Create(url);
                 request.Method = "POST";

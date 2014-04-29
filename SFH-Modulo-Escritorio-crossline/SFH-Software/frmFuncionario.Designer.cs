@@ -30,6 +30,7 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmFuncionario));
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -79,9 +80,9 @@
             this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(455, 9);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(288, 23);
+            this.label3.Size = new System.Drawing.Size(296, 23);
             this.label3.TabIndex = 8;
-            this.label3.Text = "Administración de datos de funcionarios";
+            this.label3.Text = "Administración de Datos de Funcionarios";
             // 
             // groupBox1
             // 
@@ -93,7 +94,7 @@
             this.groupBox1.Size = new System.Drawing.Size(1269, 684);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Administración de datos de funcionarios";
+            this.groupBox1.Text = "Administración de Datos de Funcionarios";
             // 
             // groupBox3
             // 
@@ -105,7 +106,7 @@
             this.groupBox3.Size = new System.Drawing.Size(1259, 527);
             this.groupBox3.TabIndex = 18;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Listado de funcionario";
+            this.groupBox3.Text = "Listado de Funcionarios";
             // 
             // groupBox7
             // 
@@ -121,7 +122,7 @@
             this.groupBox7.Size = new System.Drawing.Size(715, 66);
             this.groupBox7.TabIndex = 8;
             this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "Búsqueda de funcionario";
+            this.groupBox7.Text = "Búsqueda de Funcionario";
             // 
             // lblguion
             // 
@@ -212,6 +213,8 @@
             this.datagriPersona.DefaultCellStyle = dataGridViewCellStyle2;
             this.datagriPersona.Location = new System.Drawing.Point(6, 82);
             this.datagriPersona.Name = "datagriPersona";
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            this.datagriPersona.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.datagriPersona.Size = new System.Drawing.Size(1247, 439);
             this.datagriPersona.TabIndex = 0;
             this.datagriPersona.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datagriPersona_CellContentClick);
@@ -315,7 +318,7 @@
             this.groupBox2.Size = new System.Drawing.Size(1257, 126);
             this.groupBox2.TabIndex = 16;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Ingreso odontólogos";
+            this.groupBox2.Text = "Ingreso Funcionarios";
             // 
             // label1
             // 
@@ -357,9 +360,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(385, 39);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(90, 13);
+            this.label2.Size = new System.Drawing.Size(94, 13);
             this.label2.TabIndex = 17;
-            this.label2.Text = "Puesto de trabajo";
+            this.label2.Text = "Puesto de Trabajo";
             // 
             // txtPuesto
             // 
@@ -405,7 +408,7 @@
             this.Controls.Add(this.label3);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmFuncionario";
-            this.Text = "frmFuncionario";
+            this.Text = "SFH - Funcionario";
             this.Load += new System.EventHandler(this.frmFuncionario_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);

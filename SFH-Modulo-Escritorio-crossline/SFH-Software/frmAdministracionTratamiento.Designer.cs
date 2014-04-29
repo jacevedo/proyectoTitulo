@@ -30,6 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAdministracionTratamiento));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -50,6 +52,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.GridTratamiento = new System.Windows.Forms.DataGridView();
+            this.tratamientodentalBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.label3 = new System.Windows.Forms.Label();
             this.idTratamientoDentalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idFichaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fechaCreacionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,8 +63,6 @@
             this.totalAbonoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.editar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Abonos = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.tratamientodentalBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.label3 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -81,7 +83,7 @@
             this.groupBox1.Size = new System.Drawing.Size(1100, 606);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Administración de tratamiento dental";
+            this.groupBox1.Text = "Administración de Tratamiento Dental";
             // 
             // groupBox2
             // 
@@ -103,7 +105,7 @@
             this.groupBox2.Size = new System.Drawing.Size(1086, 196);
             this.groupBox2.TabIndex = 21;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Crear presupuesto";
+            this.groupBox2.Text = "Crear Presupuesto";
             // 
             // lblAbono
             // 
@@ -183,7 +185,7 @@
             this.groupBox6.Size = new System.Drawing.Size(238, 180);
             this.groupBox6.TabIndex = 26;
             this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Descripción de Tratamineto";
+            this.groupBox6.Text = "Descripción del Tratamineto";
             // 
             // txtDescTratamiento
             // 
@@ -257,6 +259,14 @@
             // GridTratamiento
             // 
             this.GridTratamiento.AutoGenerateColumns = false;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.GridTratamiento.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.GridTratamiento.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.GridTratamiento.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idTratamientoDentalDataGridViewTextBoxColumn,
@@ -269,76 +279,22 @@
             this.editar,
             this.Abonos});
             this.GridTratamiento.DataSource = this.tratamientodentalBindingSource;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.GridTratamiento.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.GridTratamiento.DefaultCellStyle = dataGridViewCellStyle2;
             this.GridTratamiento.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.GridTratamiento.Location = new System.Drawing.Point(6, 19);
             this.GridTratamiento.Name = "GridTratamiento";
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            this.GridTratamiento.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.GridTratamiento.Size = new System.Drawing.Size(1074, 345);
             this.GridTratamiento.TabIndex = 11;
             this.GridTratamiento.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridTratamiento_CellContentClick);
-            // 
-            // idTratamientoDentalDataGridViewTextBoxColumn
-            // 
-            this.idTratamientoDentalDataGridViewTextBoxColumn.DataPropertyName = "IdTratamientoDental";
-            this.idTratamientoDentalDataGridViewTextBoxColumn.HeaderText = "IdTratamientoDental";
-            this.idTratamientoDentalDataGridViewTextBoxColumn.Name = "idTratamientoDentalDataGridViewTextBoxColumn";
-            // 
-            // idFichaDataGridViewTextBoxColumn
-            // 
-            this.idFichaDataGridViewTextBoxColumn.DataPropertyName = "IdFicha";
-            this.idFichaDataGridViewTextBoxColumn.HeaderText = "IdFicha";
-            this.idFichaDataGridViewTextBoxColumn.Name = "idFichaDataGridViewTextBoxColumn";
-            // 
-            // fechaCreacionDataGridViewTextBoxColumn
-            // 
-            this.fechaCreacionDataGridViewTextBoxColumn.DataPropertyName = "FechaCreacion";
-            this.fechaCreacionDataGridViewTextBoxColumn.HeaderText = "FechaCreacion";
-            this.fechaCreacionDataGridViewTextBoxColumn.Name = "fechaCreacionDataGridViewTextBoxColumn";
-            // 
-            // tratamientoDataGridViewTextBoxColumn
-            // 
-            this.tratamientoDataGridViewTextBoxColumn.DataPropertyName = "Tratamiento";
-            this.tratamientoDataGridViewTextBoxColumn.HeaderText = "Tratamiento";
-            this.tratamientoDataGridViewTextBoxColumn.Name = "tratamientoDataGridViewTextBoxColumn";
-            // 
-            // fechaSeguimientoDataGridViewTextBoxColumn
-            // 
-            this.fechaSeguimientoDataGridViewTextBoxColumn.DataPropertyName = "FechaSeguimiento";
-            this.fechaSeguimientoDataGridViewTextBoxColumn.HeaderText = "FechaSeguimiento";
-            this.fechaSeguimientoDataGridViewTextBoxColumn.Name = "fechaSeguimientoDataGridViewTextBoxColumn";
-            // 
-            // valorTotalDataGridViewTextBoxColumn
-            // 
-            this.valorTotalDataGridViewTextBoxColumn.DataPropertyName = "ValorTotal";
-            this.valorTotalDataGridViewTextBoxColumn.HeaderText = "ValorTotal";
-            this.valorTotalDataGridViewTextBoxColumn.Name = "valorTotalDataGridViewTextBoxColumn";
-            // 
-            // totalAbonoDataGridViewTextBoxColumn
-            // 
-            this.totalAbonoDataGridViewTextBoxColumn.DataPropertyName = "TotalAbono";
-            this.totalAbonoDataGridViewTextBoxColumn.HeaderText = "TotalAbono";
-            this.totalAbonoDataGridViewTextBoxColumn.Name = "totalAbonoDataGridViewTextBoxColumn";
-            // 
-            // editar
-            // 
-            this.editar.HeaderText = "Editar tratamiento";
-            this.editar.Name = "editar";
-            this.editar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.editar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.editar.Text = "Editar Tratamiento";
-            // 
-            // Abonos
-            // 
-            this.Abonos.HeaderText = "Editar Abonos";
-            this.Abonos.Name = "Abonos";
-            this.Abonos.Text = "Editar Abono";
             // 
             // tratamientodentalBindingSource
             // 
@@ -351,9 +307,65 @@
             this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(430, 9);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(313, 24);
+            this.label3.Size = new System.Drawing.Size(323, 24);
             this.label3.TabIndex = 5;
-            this.label3.Text = "Administración de tratamiento dental";
+            this.label3.Text = "Administración de Tratamiento Dental";
+            // 
+            // idTratamientoDentalDataGridViewTextBoxColumn
+            // 
+            this.idTratamientoDentalDataGridViewTextBoxColumn.DataPropertyName = "IdTratamientoDental";
+            this.idTratamientoDentalDataGridViewTextBoxColumn.HeaderText = "Id Tratamiento";
+            this.idTratamientoDentalDataGridViewTextBoxColumn.Name = "idTratamientoDentalDataGridViewTextBoxColumn";
+            // 
+            // idFichaDataGridViewTextBoxColumn
+            // 
+            this.idFichaDataGridViewTextBoxColumn.DataPropertyName = "IdFicha";
+            this.idFichaDataGridViewTextBoxColumn.HeaderText = "Id Ficha";
+            this.idFichaDataGridViewTextBoxColumn.Name = "idFichaDataGridViewTextBoxColumn";
+            // 
+            // fechaCreacionDataGridViewTextBoxColumn
+            // 
+            this.fechaCreacionDataGridViewTextBoxColumn.DataPropertyName = "FechaCreacion";
+            this.fechaCreacionDataGridViewTextBoxColumn.HeaderText = "Fecha Creación";
+            this.fechaCreacionDataGridViewTextBoxColumn.Name = "fechaCreacionDataGridViewTextBoxColumn";
+            // 
+            // tratamientoDataGridViewTextBoxColumn
+            // 
+            this.tratamientoDataGridViewTextBoxColumn.DataPropertyName = "Tratamiento";
+            this.tratamientoDataGridViewTextBoxColumn.HeaderText = "Tratamiento";
+            this.tratamientoDataGridViewTextBoxColumn.Name = "tratamientoDataGridViewTextBoxColumn";
+            // 
+            // fechaSeguimientoDataGridViewTextBoxColumn
+            // 
+            this.fechaSeguimientoDataGridViewTextBoxColumn.DataPropertyName = "FechaSeguimiento";
+            this.fechaSeguimientoDataGridViewTextBoxColumn.HeaderText = "Fecha Seguimiento";
+            this.fechaSeguimientoDataGridViewTextBoxColumn.Name = "fechaSeguimientoDataGridViewTextBoxColumn";
+            // 
+            // valorTotalDataGridViewTextBoxColumn
+            // 
+            this.valorTotalDataGridViewTextBoxColumn.DataPropertyName = "ValorTotal";
+            this.valorTotalDataGridViewTextBoxColumn.HeaderText = "Valor Total";
+            this.valorTotalDataGridViewTextBoxColumn.Name = "valorTotalDataGridViewTextBoxColumn";
+            // 
+            // totalAbonoDataGridViewTextBoxColumn
+            // 
+            this.totalAbonoDataGridViewTextBoxColumn.DataPropertyName = "TotalAbono";
+            this.totalAbonoDataGridViewTextBoxColumn.HeaderText = "Total Abono";
+            this.totalAbonoDataGridViewTextBoxColumn.Name = "totalAbonoDataGridViewTextBoxColumn";
+            // 
+            // editar
+            // 
+            this.editar.HeaderText = "Editar Tratamiento";
+            this.editar.Name = "editar";
+            this.editar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.editar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.editar.Text = "Editar Tratamiento";
+            // 
+            // Abonos
+            // 
+            this.Abonos.HeaderText = "Ver Abonos";
+            this.Abonos.Name = "Abonos";
+            this.Abonos.Text = "Editar Abono";
             // 
             // frmAdministracionTratamiento
             // 
@@ -365,7 +377,7 @@
             this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmAdministracionTratamiento";
-            this.Text = "AdministracionTratamiento";
+            this.Text = "SFH - Administración de Tratamientos";
             this.Load += new System.EventHandler(this.frmAdministracionTratamiento_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);

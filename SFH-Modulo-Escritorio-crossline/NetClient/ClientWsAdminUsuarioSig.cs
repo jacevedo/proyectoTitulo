@@ -441,6 +441,38 @@ namespace NetClient
         }
         #endregion
 
+        #region ListarPersonasFuncionario
+        public List<Persona> ListarPersonasFuncionario()
+        {
+            List<Persona> list = new List<Persona>();
+            try
+            {
+                this.JsonParam = "{\"indice\":15}";
+                String result = netclient.NetPost("ws-admin-usuario-sig.php", this.JsonParam);
+                var jobject = JObject.Parse(result);
+                var token = jobject.SelectToken("resultado").ToList();
+                foreach (var item in token)
+                {
+                    Persona persona = new Persona();
+                    //$idPersona, $idPerfil, $rut, $dv, $nombre, $apellidoPaterno, $apellidoMaterno, $fechaNacimiento
+                    persona.IdPersona = Convert.ToInt32(item.SelectToken("idPersona").ToString());
+                    persona.IdPerfil = Convert.ToInt32(item.SelectToken("idPerfil").ToString());
+                    persona.Rut = Convert.ToInt32(item.SelectToken("rut").ToString());
+                    persona.Dv = item.SelectToken("dv").ToString();
+                    persona.Nombre = item.SelectToken("nombre").ToString() + " " + item.SelectToken("apellidoPaterno").ToString();
+                    persona.ApellidoPaterno = item.SelectToken("apellidoPaterno").ToString();
+                    persona.ApellidoMaterno = item.SelectToken("apellidoMaterno").ToString();
+                    persona.FechaNacimiento = Convert.ToDateTime(item.SelectToken("fechaNacimiento").ToString());
+                    list.Add(persona);
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e + "| Error al Listar Personas Funcionarios");
+            }
+            return list;
+        }
+        #endregion
         #endregion
     }
 }

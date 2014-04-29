@@ -107,7 +107,7 @@
             this.groupBox1.Size = new System.Drawing.Size(1010, 720);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Administración de orden de laboratorio";
+            this.groupBox1.Text = "Administración de Orden de Laboratorio";
             // 
             // groupBox3
             // 
@@ -157,7 +157,7 @@
             this.GrillaOrden.Location = new System.Drawing.Point(16, 25);
             this.GrillaOrden.Name = "GrillaOrden";
             this.GrillaOrden.ReadOnly = true;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(200)))), ((int)(((byte)(226)))));
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
             this.GrillaOrden.RowsDefaultCellStyle = dataGridViewCellStyle2;
@@ -168,7 +168,7 @@
             // numeroOrdenDataGridViewTextBoxColumn
             // 
             this.numeroOrdenDataGridViewTextBoxColumn.DataPropertyName = "NumeroOrden";
-            this.numeroOrdenDataGridViewTextBoxColumn.HeaderText = "Numero Orden";
+            this.numeroOrdenDataGridViewTextBoxColumn.HeaderText = "No Orden";
             this.numeroOrdenDataGridViewTextBoxColumn.Name = "numeroOrdenDataGridViewTextBoxColumn";
             this.numeroOrdenDataGridViewTextBoxColumn.ReadOnly = true;
             // 
@@ -182,7 +182,7 @@
             // nomOdontologoDataGridViewTextBoxColumn
             // 
             this.nomOdontologoDataGridViewTextBoxColumn.DataPropertyName = "NomOdontologo";
-            this.nomOdontologoDataGridViewTextBoxColumn.HeaderText = "Nombre Odontologo";
+            this.nomOdontologoDataGridViewTextBoxColumn.HeaderText = "Nombre Odontólogo";
             this.nomOdontologoDataGridViewTextBoxColumn.Name = "nomOdontologoDataGridViewTextBoxColumn";
             this.nomOdontologoDataGridViewTextBoxColumn.ReadOnly = true;
             // 
@@ -213,7 +213,7 @@
             // fechaCreacionDataGridViewTextBoxColumn
             // 
             this.fechaCreacionDataGridViewTextBoxColumn.DataPropertyName = "FechaCreacion";
-            this.fechaCreacionDataGridViewTextBoxColumn.HeaderText = "Fecha Creacion";
+            this.fechaCreacionDataGridViewTextBoxColumn.HeaderText = "Fecha Creación";
             this.fechaCreacionDataGridViewTextBoxColumn.Name = "fechaCreacionDataGridViewTextBoxColumn";
             this.fechaCreacionDataGridViewTextBoxColumn.ReadOnly = true;
             // 
@@ -276,7 +276,7 @@
             // estadodeordenDataGridViewTextBoxColumn
             // 
             this.estadodeordenDataGridViewTextBoxColumn.DataPropertyName = "Estadodeorden";
-            this.estadodeordenDataGridViewTextBoxColumn.HeaderText = "Estado orden";
+            this.estadodeordenDataGridViewTextBoxColumn.HeaderText = "Estado Orden";
             this.estadodeordenDataGridViewTextBoxColumn.Name = "estadodeordenDataGridViewTextBoxColumn";
             this.estadodeordenDataGridViewTextBoxColumn.ReadOnly = true;
             // 
@@ -346,6 +346,7 @@
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.calendarEntrega);
+            this.groupBox5.ForeColor = System.Drawing.Color.White;
             this.groupBox5.Location = new System.Drawing.Point(407, 143);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(274, 202);
@@ -362,12 +363,13 @@
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.CalendarCreacion);
+            this.groupBox4.ForeColor = System.Drawing.Color.White;
             this.groupBox4.Location = new System.Drawing.Point(105, 143);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(270, 202);
             this.groupBox4.TabIndex = 35;
             this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Fecha Creacion";
+            this.groupBox4.Text = "Fecha Creación";
             // 
             // CalendarCreacion
             // 
@@ -540,7 +542,7 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(102, 13);
             this.label4.TabIndex = 16;
-            this.label4.Text = "Nombre Odontologo";
+            this.label4.Text = "Nombre Odontólogo";
             // 
             // label2
             // 
@@ -558,7 +560,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(76, 13);
             this.label1.TabIndex = 14;
-            this.label1.Text = "Numero Orden";
+            this.label1.Text = "Número Orden";
             // 
             // btnGuardar
             // 
@@ -570,7 +572,7 @@
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(127, 36);
             this.btnGuardar.TabIndex = 13;
-            this.btnGuardar.Text = "Ingresar Orden de Laboratorio";
+            this.btnGuardar.Text = "Ingresar Orden";
             this.btnGuardar.UseVisualStyleBackColor = false;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
@@ -586,6 +588,7 @@
             this.btnAdminCli.TabIndex = 11;
             this.btnAdminCli.Text = "Cancelar";
             this.btnAdminCli.UseVisualStyleBackColor = false;
+            this.btnAdminCli.Click += new System.EventHandler(this.btnAdminCli_Click);
             // 
             // label3
             // 
@@ -594,9 +597,9 @@
             this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(332, 1);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(336, 24);
+            this.label3.Size = new System.Drawing.Size(346, 24);
             this.label3.TabIndex = 4;
-            this.label3.Text = "Administración de orden de laboratorio";
+            this.label3.Text = "Administración de Orden de Laboratorio";
             // 
             // frmAdministracionOrdenLab
             // 
@@ -608,7 +611,7 @@
             this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmAdministracionOrdenLab";
-            this.Text = "AdministracionOrdenLab";
+            this.Text = "SFH - Administración Orden de Laboratorio";
             this.Load += new System.EventHandler(this.frmAdministracionOrdenLab_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);

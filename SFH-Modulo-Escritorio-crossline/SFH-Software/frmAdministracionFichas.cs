@@ -37,15 +37,13 @@ namespace SFH_Software
             this.cmbxestado.Items.Insert(Convert.ToInt32(EstadoPersona.HABILITADO), "Habilitado");
             //this.cmbxestado.Items.Insert(2, "Seleccione tipo de estado");
             this.cmbxestado.SelectedItem = "Habilitado";
-           
-        
         }
         private void PoblarComboBusqueda() {
            
             this.cmbxBuscar.Items.Clear();
             this.cmbxBuscar.Items.Insert(0, "Seleccione tipo de búsqueda");
-            this.cmbxBuscar.Items.Insert(1, "Numero de ficha");
-            this.cmbxBuscar.Items.Insert(2, "Numero de Persona");
+            this.cmbxBuscar.Items.Insert(1, "Número de ficha");
+            this.cmbxBuscar.Items.Insert(2, "Número de Persona");
             this.cmbxBuscar.SelectedItem = "Seleccione tipo de búsqueda";
         }
         private void PoblarComboPacientes() {
@@ -67,7 +65,6 @@ namespace SFH_Software
             this.txtAnamnesis.Text = string.Empty;
             mcFechaIngreso.SelectionStart = DateTime.Today;
             mcFechaIngreso.SelectionEnd = DateTime.Today;
-            
         }
         #endregion
 
@@ -88,15 +85,9 @@ namespace SFH_Software
            //Cargar Grillas 
             datagridFicha.DataSource = this.client_fichas.ListarFichas();
             btnNuevo.Text = "Ingresar Ficha";
-
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
@@ -107,33 +98,47 @@ namespace SFH_Software
             switch (this.cmbxBuscar.SelectedIndex)
             {
                 case 0:
-                    MessageBox.Show("Debes seleccionar una opción de búsqueda", "SFH Administración de Clínica - Administración de Fichas Dentales", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Debe seleccionar una opción de búsqueda", "SFH Administración de Clínica - Administración de Fichas Dentales", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     datagridFicha.DataSource = this.client_fichas.ListarFichas();
                     break;
                 case 1:
                     MessageBox.Show("El sistema sfh está realizando su búsqueda", "SFH Administración de Clínica - Administración de Fichas Dentales", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.result = this.client_fichas.BuscarFichasPorId(int.Parse(txtBuscar.Text.ToString()));
-                  
-                    if (result.Count.Equals(0))
+                    try
                     {
-                        MessageBox.Show("Esta búsqueda no ha arrojado resultados", "SFH Administración de Clínica - Administración de Fichas Dentales", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        this.result = this.client_fichas.BuscarFichasPorId(int.Parse(txtBuscar.Text.ToString()));
+
+                        if (result.Count.Equals(0))
+                        {
+                            MessageBox.Show("Esta búsqueda no ha arrojado resultados", "SFH Administración de Clínica - Administración de Fichas Dentales", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        }
+                        else
+                        {
+                            datagridFicha.DataSource = this.result;
+                        }
                     }
-                    else
+                    catch
                     {
-                        datagridFicha.DataSource = this.result;
+                        MessageBox.Show("Se produjo un error, vuelva a intentarlo.", "SFH Administración de Clínica - Administración de Fichas Dentales", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     break;
                 case 2:
                     MessageBox.Show("El sistema sfh está realizando su búsqueda", "SFH Administración de Clínica - Administración de Fichas Dentales", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.result = this.client_fichas.BuscarFichasPorIdPersona(int.Parse(txtBuscar.Text.ToString()));
-                  
-                    if (result.Count.Equals(0))
+                    try
                     {
-                        MessageBox.Show("Esta búsqueda no ha arrojado resultados", "SFH Administración de Clínica - Administración de Fichas Dentales", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        this.result = this.client_fichas.BuscarFichasPorIdPersona(int.Parse(txtBuscar.Text.ToString()));
+
+                        if (result.Count.Equals(0))
+                        {
+                            MessageBox.Show("Esta búsqueda no ha arrojado resultados", "SFH Administración de Clínica - Administración de Fichas Dentales", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        }
+                        else
+                        {
+                            datagridFicha.DataSource = this.result;
+                        }
                     }
-                    else
+                    catch
                     {
-                        datagridFicha.DataSource = this.result;
+                        MessageBox.Show("Se produjo un error, vuelva a intentarlo.", "SFH Administración de Clínica - Administración de Fichas Dentales", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     break;
             }
@@ -177,7 +182,7 @@ namespace SFH_Software
                         this.client_fichas.InsertarFichaDental(ficha);
                         datagridFicha.DataSource = this.client_fichas.ListarFichas();
                         this.LimpiarControles();
-                        MessageBox.Show("Ficha ingresada satisfactoriamente", "SFH Administración de Clínica - Administración de Fichas Dentales", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Ficha ingresada correctamente.", "SFH Administración de Clínica - Administración de Fichas Dentales", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                  }
             }
@@ -198,7 +203,7 @@ namespace SFH_Software
                 datagridFicha.DataSource = this.client_fichas.ListarFichas();
                 this.LimpiarControles();
                 btnNuevo.Text = "Ingresar Ficha";
-                MessageBox.Show("Ficha modificada satisfactoriamente", "SFH Administración de Clínica - Administración de Fichas Dentales", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Ficha modificada correctamente.", "SFH Administración de Clínica - Administración de Fichas Dentales", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -210,13 +215,13 @@ namespace SFH_Software
                     break;
                 case 1:
                    Fichadental ficha = datagridFicha.Rows[e.RowIndex].DataBoundItem as Fichadental;
-                    menu.MostrarForm("Administración de presupuesto dental",  new frmAdministracionPresupuesto(ficha.IdFicha,ficha.NombrePaciente));
+                    menu.MostrarForm("Administración Presupuesto Dental",  new frmAdministracionPresupuesto(ficha.IdFicha,ficha.NombrePaciente));
                     break;
                 case 2:
-                    menu.MostrarForm("Administración de orden de laboratorio", new frmAdministracionOrdenLab());
+                    menu.MostrarForm("Administración Orden de Laboratorio", new frmAdministracionOrdenLab());
                     break;
                 case 3:
-                    menu.MostrarForm("Administración de tratamiento dental", new frmAdministracionTratamiento(menu));
+                    menu.MostrarForm("Administración Tratamiento Dental", new frmAdministracionTratamiento(menu));
                     break;
             
             }
@@ -264,7 +269,7 @@ namespace SFH_Software
                 }
                 else {
 
-                    if (MessageBox.Show("¿Desea deshabilitar al usuario que está creando?", "SFH Administración de Clínica - Administración de Ficha Dental.", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.No)
+                    if (MessageBox.Show("¿Desea deshabilitar al usuario seleccionado?", "SFH Administración de Clínica - Administración de Ficha Dental.", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.No)
                     {
                         this.cmbxestado.SelectedItem = "Habilitado";
                     }

@@ -43,42 +43,42 @@ namespace SFH_Software
                                 frmMenu men = new frmMenu(this.session);
                                 men.ShowDialog();
                             }
-
-                            else {
-                                MessageBox.Show("No se ha podido iniciar la sesión. Este usuario se encuentra inhabilitado para acceder al sistema.", "SFH Administración de Clínica - Inicio de Sesión", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            else
+                            {
+                                MessageBox.Show("No se ha podido iniciar sesión. Este usuario se encuentra inhabilitado para acceder al sistema.", "SFH Administración de Clínica - Inicio de Sesión", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                                 txtuser.Focus();
                                 Refresh();
                             }
                         }
-                        else {
-                            MessageBox.Show("No se ha podido iniciar la sesión. No se han proporcionado credenciales de autentificación válidas.", "SFH Administración de Clínica - Inicio de Sesión", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        else
+                        {
+                            MessageBox.Show("No se ha podido iniciar sesión. No se han proporcionado credenciales de autentificación válidas.", "SFH Administración de Clínica - Inicio de Sesión", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                             txtuser.Focus();
                             Refresh();
                         }
                     }
-
-
                     else
                     {
-                        MessageBox.Show("No se ha podido iniciar la sesión.Para ingresar al sistema debe digitar su contraseña.", "SFH Administración de Clínica - Inicio de Sesión", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        MessageBox.Show("No se ha podido iniciar sesión. Para ingresar al sistema debe digitar su contraseña.", "SFH Administración de Clínica - Inicio de Sesión", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         txtuser.Focus();
                         Refresh();
                     }
                 }
-                else {
-                    MessageBox.Show("No se ha podido iniciar la sesión.Debe ingresar su digito verificador.", "SFH Administración de Clínica - Inicio de Sesión", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                else
+                {
+                    MessageBox.Show("No se ha podido iniciar sesión. Debe ingresar su dígito verificador.", "SFH Administración de Clínica - Inicio de Sesión", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     txtdv.Focus();
                     Refresh();
                 }
             }
             else
             {
-                MessageBox.Show("No se ha podido iniciar la sesión. Para ingresar al sistema debe digitar su run.", "SFH Administración de Clínica - Inicio de Sesión", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("No se ha podido iniciar sesión. Para ingresar al sistema debe digitar su run.", "SFH Administración de Clínica - Inicio de Sesión", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 txtuser.Focus();
                 Refresh();
             }
+
             this.lblinicio.Visible = false;
-       
             this.btningresar.Enabled = true;
             this.btnCancelar.Enabled = true;
             this.Refresh();

@@ -20,9 +20,9 @@ namespace SFH_Software
         #endregion
 
         #region Propiedades
-        private void PoblarGrilla() {
+        private void PoblarGrilla()
+        {
             datagridhistorial.DataSource = client_repo.ListarReportes();
-            
         }
         private void CargarComboDesde()
         {
@@ -36,12 +36,12 @@ namespace SFH_Software
             this.cmbxHastaFecha.ValueMember = "IdReporte";
             this.cmbxHastaFecha.DisplayMember = "FechaCreacion";
         }
-        private void LimpiarControles() {
+        private void LimpiarControles()
+        {
             this.cmbxDesdeFecha.ResetText();
             this.cmbxHastaFecha.ResetText();
             this.CargarComboDesde();
             this.CargarComboHasta();
-        
         }
         #endregion
        
@@ -63,13 +63,13 @@ namespace SFH_Software
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("El sistema sfh está realizando su búsqueda", "SFH Administración de Clínica - Historial de Reportes", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("El sistema sfh está realizando su búsqueda", "SFH Administración de Reportes y Estadísticas - Historial de Reportes", MessageBoxButtons.OK, MessageBoxIcon.Information);
             DateTime fecha_desde = Convert.ToDateTime(this.cmbxDesdeFecha.Text.ToString());
             DateTime fecha_hasta = Convert.ToDateTime(this.cmbxHastaFecha.Text.ToString());
             this.list_repo = this.client_repo.ListarReportesFechas(fecha_desde,fecha_hasta);
             if (this.list_repo.Count.Equals(0))
             {
-                MessageBox.Show("Esta búsqueda no ha arrojado resultados", "SFH Administración de Clínica - Historial de Reportes", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("Esta búsqueda no ha arrojado resultados", "SFH Administración de Reportes y Estadísticas - Historial de Reportes", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else
             {

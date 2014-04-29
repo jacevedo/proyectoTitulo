@@ -25,3 +25,7 @@ C:\Users\David\Desktop\SFH-Modulo-Escritorio\ObjectsBeans\bin\Debug\ObjectsBeans
 C:\Users\David\Desktop\SFH-Modulo-Escritorio\ObjectsBeans\bin\Debug\ObjectsBeans.pdb
 C:\Users\David\Desktop\SFH-Modulo-Escritorio\ObjectsBeans\obj\Debug\ObjectsBeans.dll
 C:\Users\David\Desktop\SFH-Modulo-Escritorio\ObjectsBeans\obj\Debug\ObjectsBeans.pdb
+C:\Users\Viviana\Desktop\proyectoTitulo-master\proyectoTitulo-master\SFH-Modulo-Escritorio-crossline\ObjectsBeans\bin\Debug\ObjectsBeans.dll
+C:\Users\Viviana\Desktop\proyectoTitulo-master\proyectoTitulo-master\SFH-Modulo-Escritorio-crossline\ObjectsBeans\bin\Debug\ObjectsBeans.pdb
+C:\Users\Viviana\Desktop\proyectoTitulo-master\proyectoTitulo-master\SFH-Modulo-Escritorio-crossline\ObjectsBeans\obj\Debug\ObjectsBeans.dll
+C:\Users\Viviana\Desktop\proyectoTitulo-master\proyectoTitulo-master\SFH-Modulo-Escritorio-crossline\ObjectsBeans\obj\Debug\ObjectsBeans.pdb

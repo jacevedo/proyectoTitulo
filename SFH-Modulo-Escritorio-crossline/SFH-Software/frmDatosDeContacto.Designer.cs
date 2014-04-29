@@ -30,30 +30,14 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDatosDeContacto));
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.datagriPersona = new System.Windows.Forms.DataGridView();
-            this.IdPersona = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IdPerfil = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nomperfil = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Rut = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Dv = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ApellidoPaterno = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ApellidoMaterno = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FechaNacimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Idcomuna1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IdPersona_dat = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FonoFijo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FonoCelular = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Mail = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Direccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IdComuna = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NomComuna = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FechaIngreso = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.mcfechaIngreso = new System.Windows.Forms.MonthCalendar();
             this.lblusuario = new System.Windows.Forms.Label();
             this.cmbxUsuario = new System.Windows.Forms.ComboBox();
@@ -71,7 +55,24 @@
             this.cmbxComuna = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.IdPersona = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IdPerfil = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nomperfil = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Rut = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Dv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ApellidoPaterno = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ApellidoMaterno = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FechaNacimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Idcomuna1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IdPersona_dat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FonoFijo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FonoCelular = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Mail = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Direccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NomComuna = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IdComuna = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FechaIngreso = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.datagriPersona)).BeginInit();
@@ -86,9 +87,9 @@
             this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(520, 9);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(263, 23);
+            this.label3.Size = new System.Drawing.Size(268, 23);
             this.label3.TabIndex = 7;
-            this.label3.Text = "Administración de datos de contacto";
+            this.label3.Text = "Administración de Datos de Contacto";
             // 
             // groupBox1
             // 
@@ -100,7 +101,7 @@
             this.groupBox1.Size = new System.Drawing.Size(1266, 679);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Administración de datos de contacto";
+            this.groupBox1.Text = "Administración de Datos de Contacto";
             // 
             // groupBox2
             // 
@@ -143,13 +144,13 @@
             this.FonoCelular,
             this.Mail,
             this.Direccion,
-            this.IdComuna,
             this.NomComuna,
+            this.IdComuna,
             this.FechaIngreso});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
@@ -157,9 +158,198 @@
             this.datagriPersona.Location = new System.Drawing.Point(6, 19);
             this.datagriPersona.Name = "datagriPersona";
             this.datagriPersona.ReadOnly = true;
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            this.datagriPersona.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.datagriPersona.Size = new System.Drawing.Size(1238, 403);
             this.datagriPersona.TabIndex = 0;
             this.datagriPersona.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datagriPersona_CellContentClick);
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.label1);
+            this.groupBox5.Controls.Add(this.mcfechaIngreso);
+            this.groupBox5.Controls.Add(this.lblusuario);
+            this.groupBox5.Controls.Add(this.cmbxUsuario);
+            this.groupBox5.Controls.Add(this.txtdir);
+            this.groupBox5.Controls.Add(this.label5);
+            this.groupBox5.Controls.Add(this.btnNuevo);
+            this.groupBox5.Controls.Add(this.btnCancelar);
+            this.groupBox5.Controls.Add(this.txtmail);
+            this.groupBox5.Controls.Add(this.label8);
+            this.groupBox5.Controls.Add(this.txtTelefono);
+            this.groupBox5.Controls.Add(this.label4);
+            this.groupBox5.Controls.Add(this.txtCelular);
+            this.groupBox5.Controls.Add(this.cmbxRegion);
+            this.groupBox5.Controls.Add(this.label9);
+            this.groupBox5.Controls.Add(this.cmbxComuna);
+            this.groupBox5.Controls.Add(this.label10);
+            this.groupBox5.Controls.Add(this.label11);
+            this.groupBox5.ForeColor = System.Drawing.Color.White;
+            this.groupBox5.Location = new System.Drawing.Point(151, 19);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(965, 217);
+            this.groupBox5.TabIndex = 71;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Datos de Contatcto";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(631, 26);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(90, 13);
+            this.label1.TabIndex = 63;
+            this.label1.Text = "Fecha de Ingreso";
+            // 
+            // mcfechaIngreso
+            // 
+            this.mcfechaIngreso.Location = new System.Drawing.Point(726, 26);
+            this.mcfechaIngreso.Name = "mcfechaIngreso";
+            this.mcfechaIngreso.TabIndex = 62;
+            // 
+            // lblusuario
+            // 
+            this.lblusuario.AutoSize = true;
+            this.lblusuario.Location = new System.Drawing.Point(44, 29);
+            this.lblusuario.Name = "lblusuario";
+            this.lblusuario.Size = new System.Drawing.Size(43, 13);
+            this.lblusuario.TabIndex = 61;
+            this.lblusuario.Text = "Usuario";
+            // 
+            // cmbxUsuario
+            // 
+            this.cmbxUsuario.FormattingEnabled = true;
+            this.cmbxUsuario.Location = new System.Drawing.Point(116, 26);
+            this.cmbxUsuario.Name = "cmbxUsuario";
+            this.cmbxUsuario.Size = new System.Drawing.Size(203, 21);
+            this.cmbxUsuario.TabIndex = 60;
+            this.cmbxUsuario.SelectedIndexChanged += new System.EventHandler(this.cmbxUsuario_SelectedIndexChanged);
+            // 
+            // txtdir
+            // 
+            this.txtdir.Location = new System.Drawing.Point(432, 60);
+            this.txtdir.Name = "txtdir";
+            this.txtdir.Size = new System.Drawing.Size(181, 20);
+            this.txtdir.TabIndex = 58;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(374, 63);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(52, 13);
+            this.label5.TabIndex = 59;
+            this.label5.Text = "Dirección";
+            // 
+            // btnNuevo
+            // 
+            this.btnNuevo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnNuevo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(93)))), ((int)(((byte)(129)))));
+            this.btnNuevo.ForeColor = System.Drawing.Color.White;
+            this.btnNuevo.Location = new System.Drawing.Point(495, 166);
+            this.btnNuevo.Margin = new System.Windows.Forms.Padding(1);
+            this.btnNuevo.Name = "btnNuevo";
+            this.btnNuevo.Size = new System.Drawing.Size(127, 36);
+            this.btnNuevo.TabIndex = 13;
+            this.btnNuevo.UseVisualStyleBackColor = false;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(93)))), ((int)(((byte)(129)))));
+            this.btnCancelar.ForeColor = System.Drawing.Color.White;
+            this.btnCancelar.Location = new System.Drawing.Point(352, 166);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(1);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(129, 36);
+            this.btnCancelar.TabIndex = 11;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
+            // txtmail
+            // 
+            this.txtmail.Location = new System.Drawing.Point(432, 97);
+            this.txtmail.Name = "txtmail";
+            this.txtmail.Size = new System.Drawing.Size(181, 20);
+            this.txtmail.TabIndex = 44;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(374, 100);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(32, 13);
+            this.label8.TabIndex = 52;
+            this.label8.Text = "Email";
+            // 
+            // txtTelefono
+            // 
+            this.txtTelefono.Location = new System.Drawing.Point(119, 138);
+            this.txtTelefono.Name = "txtTelefono";
+            this.txtTelefono.Size = new System.Drawing.Size(200, 20);
+            this.txtTelefono.TabIndex = 42;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(44, 63);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(41, 13);
+            this.label4.TabIndex = 57;
+            this.label4.Text = "Región";
+            // 
+            // txtCelular
+            // 
+            this.txtCelular.Location = new System.Drawing.Point(432, 26);
+            this.txtCelular.Name = "txtCelular";
+            this.txtCelular.Size = new System.Drawing.Size(181, 20);
+            this.txtCelular.TabIndex = 43;
+            // 
+            // cmbxRegion
+            // 
+            this.cmbxRegion.FormattingEnabled = true;
+            this.cmbxRegion.Location = new System.Drawing.Point(116, 60);
+            this.cmbxRegion.Name = "cmbxRegion";
+            this.cmbxRegion.Size = new System.Drawing.Size(203, 21);
+            this.cmbxRegion.TabIndex = 56;
+            this.cmbxRegion.SelectedIndexChanged += new System.EventHandler(this.cmbxRegion_SelectedIndexChanged);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(45, 100);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(46, 13);
+            this.label9.TabIndex = 55;
+            this.label9.Text = "Comuna";
+            // 
+            // cmbxComuna
+            // 
+            this.cmbxComuna.FormattingEnabled = true;
+            this.cmbxComuna.Location = new System.Drawing.Point(117, 97);
+            this.cmbxComuna.Name = "cmbxComuna";
+            this.cmbxComuna.Size = new System.Drawing.Size(202, 21);
+            this.cmbxComuna.TabIndex = 53;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(28, 141);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(68, 13);
+            this.label10.TabIndex = 56;
+            this.label10.Text = "Teléfono Fijo";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(339, 29);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(84, 13);
+            this.label11.TabIndex = 57;
+            this.label11.Text = "Teléfono Celular";
             // 
             // IdPersona
             // 
@@ -272,6 +462,13 @@
             this.Direccion.Name = "Direccion";
             this.Direccion.ReadOnly = true;
             // 
+            // NomComuna
+            // 
+            this.NomComuna.DataPropertyName = "NomComuna";
+            this.NomComuna.HeaderText = "NomComuna";
+            this.NomComuna.Name = "NomComuna";
+            this.NomComuna.ReadOnly = true;
+            // 
             // IdComuna
             // 
             this.IdComuna.DataPropertyName = "IdComuna";
@@ -280,206 +477,12 @@
             this.IdComuna.ReadOnly = true;
             this.IdComuna.Visible = false;
             // 
-            // NomComuna
-            // 
-            this.NomComuna.DataPropertyName = "NomComuna";
-            this.NomComuna.HeaderText = "NomComuna";
-            this.NomComuna.Name = "NomComuna";
-            this.NomComuna.ReadOnly = true;
-            // 
             // FechaIngreso
             // 
             this.FechaIngreso.DataPropertyName = "FechaIngreso";
             this.FechaIngreso.HeaderText = "FechaIngreso";
             this.FechaIngreso.Name = "FechaIngreso";
             this.FechaIngreso.ReadOnly = true;
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.label1);
-            this.groupBox5.Controls.Add(this.mcfechaIngreso);
-            this.groupBox5.Controls.Add(this.lblusuario);
-            this.groupBox5.Controls.Add(this.cmbxUsuario);
-            this.groupBox5.Controls.Add(this.txtdir);
-            this.groupBox5.Controls.Add(this.label5);
-            this.groupBox5.Controls.Add(this.btnNuevo);
-            this.groupBox5.Controls.Add(this.btnCancelar);
-            this.groupBox5.Controls.Add(this.txtmail);
-            this.groupBox5.Controls.Add(this.label8);
-            this.groupBox5.Controls.Add(this.txtTelefono);
-            this.groupBox5.Controls.Add(this.label4);
-            this.groupBox5.Controls.Add(this.txtCelular);
-            this.groupBox5.Controls.Add(this.cmbxRegion);
-            this.groupBox5.Controls.Add(this.label9);
-            this.groupBox5.Controls.Add(this.cmbxComuna);
-            this.groupBox5.Controls.Add(this.label10);
-            this.groupBox5.Controls.Add(this.label11);
-            this.groupBox5.ForeColor = System.Drawing.Color.White;
-            this.groupBox5.Location = new System.Drawing.Point(151, 19);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(965, 217);
-            this.groupBox5.TabIndex = 71;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Datos de contatcto";
-            // 
-            // mcfechaIngreso
-            // 
-            this.mcfechaIngreso.Location = new System.Drawing.Point(726, 26);
-            this.mcfechaIngreso.Name = "mcfechaIngreso";
-            this.mcfechaIngreso.TabIndex = 62;
-            // 
-            // lblusuario
-            // 
-            this.lblusuario.AutoSize = true;
-            this.lblusuario.Location = new System.Drawing.Point(44, 29);
-            this.lblusuario.Name = "lblusuario";
-            this.lblusuario.Size = new System.Drawing.Size(43, 13);
-            this.lblusuario.TabIndex = 61;
-            this.lblusuario.Text = "Usuario";
-            // 
-            // cmbxUsuario
-            // 
-            this.cmbxUsuario.FormattingEnabled = true;
-            this.cmbxUsuario.Location = new System.Drawing.Point(116, 26);
-            this.cmbxUsuario.Name = "cmbxUsuario";
-            this.cmbxUsuario.Size = new System.Drawing.Size(203, 21);
-            this.cmbxUsuario.TabIndex = 60;
-            this.cmbxUsuario.SelectedIndexChanged += new System.EventHandler(this.cmbxUsuario_SelectedIndexChanged);
-            // 
-            // txtdir
-            // 
-            this.txtdir.Location = new System.Drawing.Point(432, 60);
-            this.txtdir.Name = "txtdir";
-            this.txtdir.Size = new System.Drawing.Size(181, 20);
-            this.txtdir.TabIndex = 58;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(374, 63);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(52, 13);
-            this.label5.TabIndex = 59;
-            this.label5.Text = "Dirección";
-            // 
-            // btnNuevo
-            // 
-            this.btnNuevo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnNuevo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(93)))), ((int)(((byte)(129)))));
-            this.btnNuevo.ForeColor = System.Drawing.Color.White;
-            this.btnNuevo.Location = new System.Drawing.Point(495, 166);
-            this.btnNuevo.Margin = new System.Windows.Forms.Padding(1);
-            this.btnNuevo.Name = "btnNuevo";
-            this.btnNuevo.Size = new System.Drawing.Size(127, 36);
-            this.btnNuevo.TabIndex = 13;
-            this.btnNuevo.UseVisualStyleBackColor = false;
-            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
-            // 
-            // btnCancelar
-            // 
-            this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(93)))), ((int)(((byte)(129)))));
-            this.btnCancelar.ForeColor = System.Drawing.Color.White;
-            this.btnCancelar.Location = new System.Drawing.Point(352, 166);
-            this.btnCancelar.Margin = new System.Windows.Forms.Padding(1);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(129, 36);
-            this.btnCancelar.TabIndex = 11;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = false;
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
-            // 
-            // txtmail
-            // 
-            this.txtmail.Location = new System.Drawing.Point(432, 97);
-            this.txtmail.Name = "txtmail";
-            this.txtmail.Size = new System.Drawing.Size(181, 20);
-            this.txtmail.TabIndex = 44;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(374, 100);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(32, 13);
-            this.label8.TabIndex = 52;
-            this.label8.Text = "Email";
-            // 
-            // txtTelefono
-            // 
-            this.txtTelefono.Location = new System.Drawing.Point(119, 138);
-            this.txtTelefono.Name = "txtTelefono";
-            this.txtTelefono.Size = new System.Drawing.Size(200, 20);
-            this.txtTelefono.TabIndex = 42;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(44, 63);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(41, 13);
-            this.label4.TabIndex = 57;
-            this.label4.Text = "Region";
-            // 
-            // txtCelular
-            // 
-            this.txtCelular.Location = new System.Drawing.Point(432, 26);
-            this.txtCelular.Name = "txtCelular";
-            this.txtCelular.Size = new System.Drawing.Size(181, 20);
-            this.txtCelular.TabIndex = 43;
-            // 
-            // cmbxRegion
-            // 
-            this.cmbxRegion.FormattingEnabled = true;
-            this.cmbxRegion.Location = new System.Drawing.Point(116, 60);
-            this.cmbxRegion.Name = "cmbxRegion";
-            this.cmbxRegion.Size = new System.Drawing.Size(203, 21);
-            this.cmbxRegion.TabIndex = 56;
-            this.cmbxRegion.SelectedIndexChanged += new System.EventHandler(this.cmbxRegion_SelectedIndexChanged);
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(45, 100);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(46, 13);
-            this.label9.TabIndex = 55;
-            this.label9.Text = "Comuna";
-            // 
-            // cmbxComuna
-            // 
-            this.cmbxComuna.FormattingEnabled = true;
-            this.cmbxComuna.Location = new System.Drawing.Point(117, 97);
-            this.cmbxComuna.Name = "cmbxComuna";
-            this.cmbxComuna.Size = new System.Drawing.Size(202, 21);
-            this.cmbxComuna.TabIndex = 53;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(28, 141);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(65, 13);
-            this.label10.TabIndex = 56;
-            this.label10.Text = "Teléfono fijo";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(339, 29);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(83, 13);
-            this.label11.TabIndex = 57;
-            this.label11.Text = "Teléfono celular";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(631, 26);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(89, 13);
-            this.label1.TabIndex = 63;
-            this.label1.Text = "Fecha de ingreso";
             // 
             // frmDatosDeContacto
             // 
@@ -492,7 +495,7 @@
             this.Controls.Add(this.label3);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmDatosDeContacto";
-            this.Text = "frmDatosDeContacto";
+            this.Text = "SFH - Datos de Contacto";
             this.Load += new System.EventHandler(this.frmDatosDeContacto_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
@@ -528,6 +531,7 @@
         private System.Windows.Forms.ComboBox cmbxUsuario;
         private System.Windows.Forms.MonthCalendar mcfechaIngreso;
         private System.Windows.Forms.DataGridView datagriPersona;
+        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdPersona;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdPerfil;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nomperfil;
@@ -543,9 +547,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn FonoCelular;
         private System.Windows.Forms.DataGridViewTextBoxColumn Mail;
         private System.Windows.Forms.DataGridViewTextBoxColumn Direccion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IdComuna;
         private System.Windows.Forms.DataGridViewTextBoxColumn NomComuna;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdComuna;
         private System.Windows.Forms.DataGridViewTextBoxColumn FechaIngreso;
-        private System.Windows.Forms.Label label1;
     }
 }

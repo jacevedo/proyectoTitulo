@@ -61,9 +61,9 @@
             this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(573, 9);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(233, 23);
+            this.label3.Size = new System.Drawing.Size(213, 23);
             this.label3.TabIndex = 5;
-            this.label3.Text = "Administración de área insumos";
+            this.label3.Text = "Administración Área Insumos";
             // 
             // groupBox1
             // 
@@ -75,7 +75,7 @@
             this.groupBox1.Size = new System.Drawing.Size(1289, 691);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Administración de área insumo";
+            this.groupBox1.Text = "Administración de Área Insumo";
             // 
             // groupBox3
             // 
@@ -86,7 +86,7 @@
             this.groupBox3.Size = new System.Drawing.Size(1254, 432);
             this.groupBox3.TabIndex = 15;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Lista área de insumo";
+            this.groupBox3.Text = "Lista Área Insumo";
             // 
             // dataGridAreaInsumo
             // 
@@ -148,18 +148,18 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(402, 59);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(102, 13);
+            this.label2.Size = new System.Drawing.Size(63, 13);
             this.label2.TabIndex = 17;
-            this.label2.Text = "Descripción de área";
+            this.label2.Text = "Descripción";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(402, 25);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(86, 13);
+            this.label1.Size = new System.Drawing.Size(84, 13);
             this.label1.TabIndex = 16;
-            this.label1.Text = "Nombre de  área";
+            this.label1.Text = "Nombre de Área";
             // 
             // txtNom
             // 
@@ -201,29 +201,29 @@
             // 
             this.nombreAreaInsumo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.nombreAreaInsumo.DataPropertyName = "NombreArea";
-            this.nombreAreaInsumo.HeaderText = "Nombre de  área";
+            this.nombreAreaInsumo.HeaderText = "Nombre Área";
             this.nombreAreaInsumo.Name = "nombreAreaInsumo";
             // 
             // descripciondearea
             // 
             this.descripciondearea.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.descripciondearea.DataPropertyName = "DescripcionArea";
-            this.descripciondearea.HeaderText = "Descripcion de  área";
+            this.descripciondearea.HeaderText = "Descripción";
             this.descripciondearea.Name = "descripciondearea";
             // 
             // Editar
             // 
-            this.Editar.HeaderText = "Editar área de insumos";
+            this.Editar.HeaderText = "Editar Área Insumos";
             this.Editar.Name = "Editar";
             // 
             // Eliminar
             // 
-            this.Eliminar.HeaderText = "Eliminar área de insumos";
+            this.Eliminar.HeaderText = "Eliminar Área Insumos";
             this.Eliminar.Name = "Eliminar";
             // 
             // Vergastos
             // 
-            this.Vergastos.HeaderText = "Ver gastos";
+            this.Vergastos.HeaderText = "Ver Gastos";
             this.Vergastos.Name = "Vergastos";
             this.Vergastos.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Vergastos.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
@@ -233,12 +233,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(200)))), ((int)(((byte)(226)))));
-            this.ClientSize = new System.Drawing.Size(1313, 730);
+            this.ClientSize = new System.Drawing.Size(1284, 730);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmAdministracionAreaInsumos";
-            this.Text = "frmAdministracionAreaInsumos";
+            this.Text = "SFH - Administración Área Insumos";
             this.Load += new System.EventHandler(this.frmAdministracionAreaInsumos_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);

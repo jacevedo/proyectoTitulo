@@ -68,9 +68,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 57);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(84, 13);
+            this.label1.Size = new System.Drawing.Size(87, 13);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Run (sin puntos)";
+            this.label1.Text = "Run (Sin Puntos)";
             // 
             // label2
             // 
@@ -102,15 +102,15 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(110, 11);
+            this.label3.Location = new System.Drawing.Point(80, 10);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(141, 25);
             this.label3.TabIndex = 6;
-            this.label3.Text = "Iniciar Sesion";
+            this.label3.Text = "Iniciar Sesión";
             // 
             // txtdv
             // 
-            this.txtdv.Location = new System.Drawing.Point(257, 57);
+            this.txtdv.Location = new System.Drawing.Point(255, 57);
             this.txtdv.MaxLength = 1;
             this.txtdv.Name = "txtdv";
             this.txtdv.Size = new System.Drawing.Size(29, 20);
@@ -135,7 +135,7 @@
             this.lblinicio.Name = "lblinicio";
             this.lblinicio.Size = new System.Drawing.Size(113, 16);
             this.lblinicio.TabIndex = 10;
-            this.lblinicio.Text = "Iniciando Sesion..";
+            this.lblinicio.Text = "Iniciando Sesión..";
             this.lblinicio.Visible = false;
             // 
             // frmLogin
@@ -159,7 +159,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SFH-Login";
+            this.Text = "SFH - Login";
             this.ResumeLayout(false);
             this.PerformLayout();
 

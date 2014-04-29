@@ -179,7 +179,7 @@ namespace NetClient
                    funcionario.IdFuncionario = Convert.ToInt32(item.SelectToken("idFuncionario").ToString());
                    funcionario.IdPersona = Convert.ToInt32(item.SelectToken("idPersona").ToString());
                    funcionario.PuestoTrabajo = item.SelectToken("puestoTrabajo").ToString();
-                   int estado = Convert.ToInt32(item.SelectToken("habilitadoPaciente").ToString());
+                   int estado = Convert.ToInt32(item.SelectToken("funcionarioHabilitado").ToString());
                    funcionario.IdPerfil = Convert.ToInt32(item.SelectToken("idPerfil").ToString());
                    int num_perfil = funcionario.IdPerfil;
                    switch (num_perfil)
@@ -242,10 +242,10 @@ namespace NetClient
                    //{"idFuncionario":2,"idPersona":3,"puestoTrabajo":"Asistente Dental",
                    //"funcionarioHabilitado":null,"idPerfil":3,"rut":"9878987","dv":"4","nombre":"Nicolas","apellidoPaterno":"Palma",
                    //"apellidoMaterno":"Silva","fechaNacimiento":"1987-05-27"}
-                   funcionario.IdFuncionario = Convert.ToInt32(item.SelectToken("idPaciente").ToString());
+                   funcionario.IdFuncionario = Convert.ToInt32(item.SelectToken("idFuncionario").ToString());
                    funcionario.IdPersona = Convert.ToInt32(item.SelectToken("idPersona").ToString());
-                   funcionario.PuestoTrabajo = item.SelectToken("fechaIngreso").ToString();
-                   int estado = Convert.ToInt32(item.SelectToken("habilitadoPaciente").ToString());
+                   funcionario.PuestoTrabajo = item.SelectToken("puestoTrabajo").ToString();
+                   int estado = Convert.ToInt32(item.SelectToken("funcionarioHabilitado").ToString());
                    funcionario.IdPerfil = Convert.ToInt32(item.SelectToken("idPerfil").ToString());
                    int num_perfil = funcionario.IdPerfil;
                    switch (num_perfil)

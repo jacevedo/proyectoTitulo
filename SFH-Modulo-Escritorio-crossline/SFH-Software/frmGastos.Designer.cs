@@ -38,6 +38,8 @@
             this.cmbxPersonaBusqueda = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.MntCalendarGastos = new System.Windows.Forms.MonthCalendar();
             this.label4 = new System.Windows.Forms.Label();
             this.cmbxpersona = new System.Windows.Forms.ComboBox();
             this.txtConcept = new System.Windows.Forms.TextBox();
@@ -49,8 +51,6 @@
             this.btnNuevo = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.MntCalendarGastos = new System.Windows.Forms.MonthCalendar();
-            this.label1 = new System.Windows.Forms.Label();
             this.idgastos = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idpersona = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.monto = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -127,7 +127,7 @@
             this.groupBox4.Size = new System.Drawing.Size(610, 66);
             this.groupBox4.TabIndex = 3;
             this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Búsqueda de insumos";
+            this.groupBox4.Text = "Búsqueda de Gastos";
             // 
             // btnBuscar
             // 
@@ -180,16 +180,31 @@
             this.groupBox2.Size = new System.Drawing.Size(1228, 278);
             this.groupBox2.TabIndex = 14;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Ingresar gastos";
+            this.groupBox2.Text = "Ingresar Gasto";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(807, 40);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(37, 13);
+            this.label1.TabIndex = 42;
+            this.label1.Text = "Fecha";
+            // 
+            // MntCalendarGastos
+            // 
+            this.MntCalendarGastos.Location = new System.Drawing.Point(900, 40);
+            this.MntCalendarGastos.Name = "MntCalendarGastos";
+            this.MntCalendarGastos.TabIndex = 41;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(49, 90);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(97, 13);
+            this.label4.Size = new System.Drawing.Size(99, 13);
             this.label4.TabIndex = 40;
-            this.label4.Text = "Concepto de gasto";
+            this.label4.Text = "Concepto de Gasto";
             // 
             // cmbxpersona
             // 
@@ -238,9 +253,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(433, 40);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(104, 13);
+            this.label2.Size = new System.Drawing.Size(106, 13);
             this.label2.TabIndex = 17;
-            this.label2.Text = "Monto del gasto     $";
+            this.label2.Text = "Monto del Gasto     $";
             // 
             // txtMonto
             // 
@@ -283,24 +298,9 @@
             this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(539, 16);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(185, 23);
+            this.label3.Size = new System.Drawing.Size(188, 23);
             this.label3.TabIndex = 8;
-            this.label3.Text = "Administración de gastos";
-            // 
-            // MntCalendarGastos
-            // 
-            this.MntCalendarGastos.Location = new System.Drawing.Point(900, 40);
-            this.MntCalendarGastos.Name = "MntCalendarGastos";
-            this.MntCalendarGastos.TabIndex = 41;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(807, 40);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(81, 13);
-            this.label1.TabIndex = 42;
-            this.label1.Text = "Fecha de gasto";
+            this.label3.Text = "Administración de Gastos";
             // 
             // idgastos
             // 
@@ -318,20 +318,20 @@
             // monto
             // 
             this.monto.DataPropertyName = "MontoGastos";
-            this.monto.HeaderText = "Monto gasto";
+            this.monto.HeaderText = "Monto";
             this.monto.Name = "monto";
             // 
             // descuentogasto
             // 
             this.descuentogasto.DataPropertyName = "DescuentoGastos";
-            this.descuentogasto.HeaderText = "Descuento Gasto";
+            this.descuentogasto.HeaderText = "Descuento";
             this.descuentogasto.Name = "descuentogasto";
             // 
             // conceptogasto
             // 
             this.conceptogasto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.conceptogasto.DataPropertyName = "ConceptodeGastos";
-            this.conceptogasto.HeaderText = "Concepto gasto";
+            this.conceptogasto.HeaderText = "Concepto Gasto";
             this.conceptogasto.Name = "conceptogasto";
             // 
             // nombre
@@ -349,22 +349,22 @@
             // FechasGastos
             // 
             this.FechasGastos.DataPropertyName = "FechaGastos";
-            this.FechasGastos.HeaderText = "Fechas de Gastos";
+            this.FechasGastos.HeaderText = "Fecha";
             this.FechasGastos.Name = "FechasGastos";
             // 
             // editar
             // 
-            this.editar.HeaderText = "Editar gastos";
+            this.editar.HeaderText = "Editar Gasto";
             this.editar.Name = "editar";
             // 
             // eliminar
             // 
-            this.eliminar.HeaderText = "Eliminar gasto";
+            this.eliminar.HeaderText = "Eliminar Gasto";
             this.eliminar.Name = "eliminar";
             // 
             // verinsumos
             // 
-            this.verinsumos.HeaderText = "Ver insumos";
+            this.verinsumos.HeaderText = "Ver Insumos";
             this.verinsumos.Name = "verinsumos";
             this.verinsumos.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.verinsumos.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
@@ -374,12 +374,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(200)))), ((int)(((byte)(226)))));
-            this.ClientSize = new System.Drawing.Size(1293, 874);
+            this.ClientSize = new System.Drawing.Size(1284, 781);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmGastos";
-            this.Text = "frmGastos";
+            this.Text = "SFH - Administración de Gastos";
             this.Load += new System.EventHandler(this.frmGastos_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);

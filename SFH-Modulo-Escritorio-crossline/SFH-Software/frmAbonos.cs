@@ -43,19 +43,35 @@ namespace SFH_Software
         {
             if (btnGuardarAbono.Text.ToString() == "Guardar")
             {
-                Abono abono = new Abono();
-                abono.IdTratamientoDental = idTratamientoDental;
-                abono.Monto = Convert.ToInt32(txtMonto.Text.ToString());
-                abono.FechaAbono = calendarAbono.SelectionStart;
-                abono.IdAbono = wsAbono.InsertarAbono(abono);
-                listaAbono.Add(abono);
+                try
+                {
+                    Abono abono = new Abono();
+                    abono.IdTratamientoDental = idTratamientoDental;
+                    abono.Monto = Convert.ToInt32(txtMonto.Text.ToString());
+                    abono.FechaAbono = calendarAbono.SelectionStart;
+                    abono.IdAbono = wsAbono.InsertarAbono(abono);
+                    if (abono.IdAbono != 0)
+                    {
+                        listaAbono.Add(abono);
 
-                GrillaAbonos.DataSource = null;
-                GrillaAbonos.DataSource = listaAbono;
+                        GrillaAbonos.DataSource = null;
+                        GrillaAbonos.DataSource = listaAbono;
+                        MessageBox.Show("Abono ingresado correctamente.", "SFH Administración de Clínica - Administración de Abonos", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Se produjo un error, vuelva a intentarlo.", "SFH Administración de Clínica - Administración de Abonos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show("Se produjo un error, vuelva a intentarlo.", "SFH Administración de Clínica - Administración de Abonos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             else if (btnGuardarAbono.Text.ToString() == "Modificar")
             {
-                
+                try
+                {
                     Abono abono = new Abono();
                     abono.IdTratamientoDental = Convert.ToInt32(lblIdTratamiento.Text.ToString());
                     abono.Monto = Convert.ToInt32(txtMonto.Text.ToString());
@@ -75,12 +91,18 @@ namespace SFH_Software
                         }
                         GrillaAbonos.DataSource = null;
                         GrillaAbonos.DataSource = listaAbono;
+                        btnGuardarAbono.Text = "Guardar";
+                        MessageBox.Show("Abono modificado correctamente.", "SFH Administración de Clínica - Administración de Abonos", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
-                        MessageBox.Show("hubo un error al modificar el Abono, intente mas tarde");
+                        MessageBox.Show("Se produjo un error, vuelva a intentarlo.", "SFH Administración de Clínica - Administración de Abonos", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                    btnGuardarAbono.Text = "Guardar";
+                }
+                catch
+                {
+                    MessageBox.Show("Se produjo un error, vuelva a intentarlo.", "SFH Administración de Clínica - Administración de Abonos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -93,11 +115,11 @@ namespace SFH_Software
             else if (e.ColumnIndex == 5)
             {
                 Abono abono = GrillaAbonos.Rows[e.RowIndex].DataBoundItem as Abono;
-                if (MessageBox.Show("¿Deseas eliminar este abono?", "Eliminar Abono", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show("¿Deseas eliminar el abono seleccionado?", "SFH Administración de Clínica - Administración de Abonos", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     if (wsAbono.EliminarAbono(abono) != "Eliminado")
                     {
-                        MessageBox.Show("Hubo un error");
+                        MessageBox.Show("Se produjo un error, vuelva a intentarlo.", "SFH Administración de Clínica - Administración de Abonos", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     else
                     {
@@ -131,5 +153,18 @@ namespace SFH_Software
             btnGuardarAbono.Text = "Modificar";
         }
 
+        private void btnAdminCli_Click(object sender, EventArgs e)
+        {
+            this.Limpiar();
+        }
+
+        public void Limpiar()
+        {
+            txtMonto.Text = "";
+            btnGuardarAbono.Text = string.Empty;
+            btnGuardarAbono.Text = "Modificar";
+            calendarAbono.SelectionStart = DateTime.Today;
+            calendarAbono.SelectionEnd = DateTime.Today;
+        }
     }
 }

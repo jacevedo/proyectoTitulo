@@ -54,9 +54,9 @@
             this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(574, 9);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(201, 23);
+            this.label3.Size = new System.Drawing.Size(209, 23);
             this.label3.TabIndex = 5;
-            this.label3.Text = "Generar Reporte Pacientes";
+            this.label3.Text = "Generar Reportes Pacientes";
             // 
             // groupBox1
             // 
@@ -106,7 +106,7 @@
             this.groupBox4.TabIndex = 4;
             this.groupBox4.TabStop = false;
             this.groupBox4.Tag = "v";
-            this.groupBox4.Text = "Herramienta de reporte";
+            this.groupBox4.Text = "Herramienta de Reportes";
             // 
             // btnCancelar
             // 
@@ -180,7 +180,7 @@
             this.Controls.Add(this.label3);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmGenerarReportesPacientes";
-            this.Text = "AdministracionDeReporteria";
+            this.Text = "SFH - Administracion de Reportería";
             this.Load += new System.EventHandler(this.frmAdministracionDeReporteria_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);

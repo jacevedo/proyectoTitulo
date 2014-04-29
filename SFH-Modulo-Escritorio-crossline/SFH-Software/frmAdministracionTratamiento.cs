@@ -49,55 +49,76 @@ namespace SFH_Software
         {
             if (btnGuardarTratamiento.Text.Trim() == "Ingresar Tratamiento")
             {
-                Tratamientodental tratamiento = new Tratamientodental();
-                tratamiento.FechaCreacion = calendarCreacion.SelectionStart;
-                tratamiento.Tratamiento = txtDescTratamiento.Text.ToString();
-                tratamiento.ValorTotal = Convert.ToInt32(txtValorTotal.Text.ToString());
-                tratamiento.FechaSeguimiento = CalendarSeguimiento.SelectionStart;
-                tratamiento.IdFicha = Convert.ToInt32(cmbFicha.SelectedValue.ToString());
-                tratamiento.IdTratamientoDental = clienteTratamiento.InsertarTratamiento(tratamiento);
-                listaTratamiento.Add(tratamiento);
-                listaTratamiento = clienteTratamiento.ListarTratamientoIdFicha(Convert.ToInt32(cmbFicha.SelectedValue.ToString()));
-                GridTratamiento.DataSource = null;
-                GridTratamiento.DataSource = listaTratamiento;
-                MessageBox.Show("Tratamiento ingresado satisfactoriamente", "SFH Administración de Clínica - : Administración de Tratamiento Dental", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                try
+                {
+                    Tratamientodental tratamiento = new Tratamientodental();
+                    tratamiento.FechaCreacion = calendarCreacion.SelectionStart;
+                    tratamiento.Tratamiento = txtDescTratamiento.Text.ToString();
+                    tratamiento.ValorTotal = Convert.ToInt32(txtValorTotal.Text.ToString());
+                    tratamiento.FechaSeguimiento = CalendarSeguimiento.SelectionStart;
+                    tratamiento.IdFicha = Convert.ToInt32(cmbFicha.SelectedValue.ToString());
+                    tratamiento.IdTratamientoDental = clienteTratamiento.InsertarTratamiento(tratamiento);
+                    if (tratamiento.IdTratamientoDental != 0)
+                    {
+                        listaTratamiento.Add(tratamiento);
+                        listaTratamiento = clienteTratamiento.ListarTratamientoIdFicha(Convert.ToInt32(cmbFicha.SelectedValue.ToString()));
+                        GridTratamiento.DataSource = null;
+                        GridTratamiento.DataSource = listaTratamiento;
+                        MessageBox.Show("Tratamiento ingresado correctamente.", "SFH Administración de Clínica - Administración de Tratamiento Dental", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Se produjo un error, vuelva a intentarlo.", "SFH Administración de Clínica - Administración de Tratamiento Dental", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show("Se produjo un error, vuelva a intentarlo.", "SFH Administración de Clínica - Administración de Tratamiento Dental", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             else if (btnGuardarTratamiento.Text.Trim() == "Guardar Cambios")
             {
-                Tratamientodental tratamiento = new Tratamientodental();
-                tratamiento.FechaCreacion = calendarCreacion.SelectionStart;
-                tratamiento.Tratamiento = txtDescTratamiento.Text.ToString();
-                tratamiento.ValorTotal = Convert.ToInt32(txtValorTotal.Text.ToString());
-                tratamiento.FechaSeguimiento = CalendarSeguimiento.SelectionStart;
-                tratamiento.IdFicha = Convert.ToInt32(cmbFicha.SelectedValue.ToString());
-                tratamiento.TotalAbono = Convert.ToInt32(lblAbono.Text.ToString());
-                tratamiento.IdTratamientoDental = Convert.ToInt32(lblIdTratamiento.Text.ToString());
-                if (clienteTratamiento.ModificarTratamiento(tratamiento) == "Modificado")
+                try
                 {
-                    txtDescTratamiento.Text = "";
-                    txtValorTotal.Text = "";
-                    lblIdTratamiento.Text = "";
-                   btnGuardarTratamiento.Text = string.Empty;
-            btnGuardarTratamiento.Text = "Ingresar Tratamiento";
-                    MessageBox.Show("Tratamiento modificado satisfactoriamente", "SFH Administración de Clínica - : Administración de Tratamiento Dental", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    for (int i = 0; i < listaTratamiento.Count;i++ )
+                    Tratamientodental tratamiento = new Tratamientodental();
+                    tratamiento.FechaCreacion = calendarCreacion.SelectionStart;
+                    tratamiento.Tratamiento = txtDescTratamiento.Text.ToString();
+                    tratamiento.ValorTotal = Convert.ToInt32(txtValorTotal.Text.ToString());
+                    tratamiento.FechaSeguimiento = CalendarSeguimiento.SelectionStart;
+                    tratamiento.IdFicha = Convert.ToInt32(cmbFicha.SelectedValue.ToString());
+                    tratamiento.TotalAbono = Convert.ToInt32(lblAbono.Text.ToString());
+                    tratamiento.IdTratamientoDental = Convert.ToInt32(lblIdTratamiento.Text.ToString());
+
+                    if (clienteTratamiento.ModificarTratamiento(tratamiento) == "Modificado")
                     {
-                        if (listaTratamiento.ElementAt(i).IdTratamientoDental == tratamiento.IdTratamientoDental)
+                        txtDescTratamiento.Text = "";
+                        txtValorTotal.Text = "";
+                        lblIdTratamiento.Text = "";
+                        btnGuardarTratamiento.Text = string.Empty;
+                        btnGuardarTratamiento.Text = "Ingresar Tratamiento";
+                        MessageBox.Show("Tratamiento modificado correctamente.", "SFH Administración de Clínica - Administración de Tratamiento Dental", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        for (int i = 0; i < listaTratamiento.Count; i++)
                         {
-                            listaTratamiento.RemoveAt(i);
-                            listaTratamiento.Insert(i,tratamiento);
-                            break;
+                            if (listaTratamiento.ElementAt(i).IdTratamientoDental == tratamiento.IdTratamientoDental)
+                            {
+                                listaTratamiento.RemoveAt(i);
+                                listaTratamiento.Insert(i, tratamiento);
+                                break;
+                            }
                         }
+                        listaTratamiento = clienteTratamiento.ListarTratamientoIdFicha(Convert.ToInt32(cmbFicha.SelectedValue.ToString()));
+                        GridTratamiento.DataSource = null;
+                        GridTratamiento.DataSource = listaTratamiento;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Se produjo un error, vuelva a intentarlo.", "SFH Administración de Clínica - Administración de Tratamiento Dental", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-                else
+                catch
                 {
-                    MessageBox.Show("Se ha producido un error vuelva a intentarlo nuevamente", "SFH Administración de Clínica - : Administración de Tratamiento Dental", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Se produjo un error, vuelva a intentarlo.", "SFH Administración de Clínica - Administración de Tratamiento Dental", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-
-                listaTratamiento = clienteTratamiento.ListarTratamientoIdFicha(Convert.ToInt32(cmbFicha.SelectedValue.ToString()));
-                GridTratamiento.DataSource = null;
-                GridTratamiento.DataSource = listaTratamiento;
             }
 
         }
@@ -112,7 +133,7 @@ namespace SFH_Software
             if (e.ColumnIndex == 8)
             {
                 Tratamientodental tratamiento = GridTratamiento.Rows[e.RowIndex].DataBoundItem as Tratamientodental;
-                menu.MostrarForm("Administración de abonos monetarios", new frmAbonos(tratamiento.IdTratamientoDental));
+                menu.MostrarForm("Administración Abonos", new frmAbonos(tratamiento.IdTratamientoDental));
             }
         }
 
@@ -144,7 +165,5 @@ namespace SFH_Software
         {
             this.Limpiar();
         }
-
-      
     }
 }

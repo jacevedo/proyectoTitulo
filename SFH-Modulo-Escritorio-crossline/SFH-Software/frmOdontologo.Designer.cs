@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmOdontologo));
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -78,9 +79,9 @@
             this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(483, 9);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(291, 23);
+            this.label3.Size = new System.Drawing.Size(296, 23);
             this.label3.TabIndex = 8;
-            this.label3.Text = "Administración de datos de odontólogos";
+            this.label3.Text = "Administración de Datos de Odontólogos";
             // 
             // groupBox1
             // 
@@ -92,7 +93,7 @@
             this.groupBox1.Size = new System.Drawing.Size(1249, 684);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Administración de datos de odontólogos";
+            this.groupBox1.Text = "Administración de Datos de Odontólogos";
             // 
             // groupBox3
             // 
@@ -104,7 +105,7 @@
             this.groupBox3.Size = new System.Drawing.Size(1237, 490);
             this.groupBox3.TabIndex = 16;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Listado de odontólogos";
+            this.groupBox3.Text = "Listado de Odontólogos";
             // 
             // datagriPersona
             // 
@@ -136,6 +137,8 @@
             this.datagriPersona.Location = new System.Drawing.Point(6, 82);
             this.datagriPersona.Name = "datagriPersona";
             this.datagriPersona.ReadOnly = true;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            this.datagriPersona.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.datagriPersona.Size = new System.Drawing.Size(1225, 402);
             this.datagriPersona.TabIndex = 0;
             this.datagriPersona.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datagriPersona_CellContentClick);
@@ -250,7 +253,7 @@
             this.groupBox7.Size = new System.Drawing.Size(715, 66);
             this.groupBox7.TabIndex = 8;
             this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "Búsqueda de odontólogos";
+            this.groupBox7.Text = "Búsqueda de Odontólogos";
             // 
             // lblguion
             // 
@@ -328,7 +331,7 @@
             this.groupBox2.Size = new System.Drawing.Size(1237, 163);
             this.groupBox2.TabIndex = 15;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Ingreso odontólogos";
+            this.groupBox2.Text = "Ingreso Odontólogos";
             // 
             // label1
             // 
@@ -418,7 +421,7 @@
             this.Controls.Add(this.label3);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmOdontologo";
-            this.Text = "frmOdontologo";
+            this.Text = "SFH - Odontólogo";
             this.Load += new System.EventHandler(this.frmOdontologo_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);

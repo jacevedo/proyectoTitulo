@@ -33,17 +33,6 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dataGridInsumos = new System.Windows.Forms.DataGridView();
-            this.idinsumos = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idAreaInsumo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idgastosinsumos = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nominsumos = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.unidaddemedidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.concepto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombreareainsumo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.editar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label6 = new System.Windows.Forms.Label();
             this.cmbxAreaInsumos = new System.Windows.Forms.ComboBox();
@@ -67,6 +56,17 @@
             this.btnNuevo = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.idinsumos = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nominsumos = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unidaddemedidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.concepto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombreareainsumo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idAreaInsumo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idgastosinsumos = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.editar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridInsumos)).BeginInit();
@@ -103,14 +103,14 @@
             this.dataGridInsumos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridInsumos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idinsumos,
-            this.idAreaInsumo,
-            this.idgastosinsumos,
             this.nominsumos,
             this.cantidad,
-            this.Descripcion,
             this.unidaddemedidad,
+            this.Descripcion,
             this.concepto,
             this.nombreareainsumo,
+            this.idAreaInsumo,
+            this.idgastosinsumos,
             this.editar,
             this.eliminar});
             this.dataGridInsumos.Location = new System.Drawing.Point(17, 86);
@@ -120,71 +120,6 @@
             this.dataGridInsumos.Size = new System.Drawing.Size(1205, 393);
             this.dataGridInsumos.TabIndex = 4;
             this.dataGridInsumos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridInsumos_CellContentClick);
-            // 
-            // idinsumos
-            // 
-            this.idinsumos.DataPropertyName = "IdInsumos";
-            this.idinsumos.HeaderText = "Id Insumos";
-            this.idinsumos.Name = "idinsumos";
-            // 
-            // idAreaInsumo
-            // 
-            this.idAreaInsumo.DataPropertyName = "IdAreaInsumo";
-            this.idAreaInsumo.HeaderText = "Id area insumo";
-            this.idAreaInsumo.Name = "idAreaInsumo";
-            // 
-            // idgastosinsumos
-            // 
-            this.idgastosinsumos.DataPropertyName = "IdGastos_insumo";
-            this.idgastosinsumos.HeaderText = "IdGastosInsumos";
-            this.idgastosinsumos.Name = "idgastosinsumos";
-            // 
-            // nominsumos
-            // 
-            this.nominsumos.DataPropertyName = "NomInsumos";
-            this.nominsumos.HeaderText = "Nombre Insumos";
-            this.nominsumos.Name = "nominsumos";
-            // 
-            // cantidad
-            // 
-            this.cantidad.DataPropertyName = "Cantidad";
-            this.cantidad.HeaderText = "Cantidad";
-            this.cantidad.Name = "cantidad";
-            // 
-            // Descripcion
-            // 
-            this.Descripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Descripcion.DataPropertyName = "DescripcionInsumo";
-            this.Descripcion.HeaderText = "Descripcion insumos";
-            this.Descripcion.Name = "Descripcion";
-            // 
-            // unidaddemedidad
-            // 
-            this.unidaddemedidad.DataPropertyName = "UnidadMedida";
-            this.unidaddemedidad.HeaderText = "Unidad de medida";
-            this.unidaddemedidad.Name = "unidaddemedidad";
-            // 
-            // concepto
-            // 
-            this.concepto.DataPropertyName = "ConceptoGasto";
-            this.concepto.HeaderText = "Concepto Gastos";
-            this.concepto.Name = "concepto";
-            // 
-            // nombreareainsumo
-            // 
-            this.nombreareainsumo.DataPropertyName = "NomAreaInsumo";
-            this.nombreareainsumo.HeaderText = "Nombre Area Insumo";
-            this.nombreareainsumo.Name = "nombreareainsumo";
-            // 
-            // editar
-            // 
-            this.editar.HeaderText = "Editar Insumo";
-            this.editar.Name = "editar";
-            // 
-            // eliminar
-            // 
-            this.eliminar.HeaderText = "Eliminar insumo";
-            this.eliminar.Name = "eliminar";
             // 
             // groupBox4
             // 
@@ -294,9 +229,9 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(47, 92);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(92, 13);
+            this.label4.Size = new System.Drawing.Size(99, 13);
             this.label4.TabIndex = 40;
-            this.label4.Text = "Gatos de Insumos";
+            this.label4.Text = "Concepto de Gasto";
             // 
             // cmbxAreaInsumo
             // 
@@ -329,18 +264,18 @@
             this.label12.AutoSize = true;
             this.label12.Location = new System.Drawing.Point(433, 37);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(93, 13);
+            this.label12.Size = new System.Drawing.Size(94, 13);
             this.label12.TabIndex = 36;
-            this.label12.Text = "Unidad de medida";
+            this.label12.Text = "Unidad de Medida";
             // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(47, 37);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(82, 13);
+            this.label11.Size = new System.Drawing.Size(83, 13);
             this.label11.TabIndex = 35;
-            this.label11.Text = "Área del insumo";
+            this.label11.Text = "Área del Insumo";
             // 
             // txtunidadmedida
             // 
@@ -370,9 +305,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(47, 151);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(97, 13);
+            this.label2.Size = new System.Drawing.Size(98, 13);
             this.label2.TabIndex = 17;
-            this.label2.Text = "Nombre del insumo";
+            this.label2.Text = "Nombre del Insumo";
             // 
             // txtnom
             // 
@@ -419,17 +354,86 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "Administración de Insumos";
             // 
+            // idinsumos
+            // 
+            this.idinsumos.DataPropertyName = "IdInsumos";
+            this.idinsumos.HeaderText = "Id Insumos";
+            this.idinsumos.Name = "idinsumos";
+            // 
+            // nominsumos
+            // 
+            this.nominsumos.DataPropertyName = "NomInsumos";
+            this.nominsumos.HeaderText = "Nombre Insumo";
+            this.nominsumos.Name = "nominsumos";
+            // 
+            // cantidad
+            // 
+            this.cantidad.DataPropertyName = "Cantidad";
+            this.cantidad.HeaderText = "Cantidad";
+            this.cantidad.Name = "cantidad";
+            // 
+            // unidaddemedidad
+            // 
+            this.unidaddemedidad.DataPropertyName = "UnidadMedida";
+            this.unidaddemedidad.HeaderText = "Unidad de Medida";
+            this.unidaddemedidad.Name = "unidaddemedidad";
+            // 
+            // Descripcion
+            // 
+            this.Descripcion.DataPropertyName = "DescripcionInsumo";
+            this.Descripcion.HeaderText = "Descripción";
+            this.Descripcion.Name = "Descripcion";
+            this.Descripcion.Width = 187;
+            // 
+            // concepto
+            // 
+            this.concepto.DataPropertyName = "ConceptoGasto";
+            this.concepto.HeaderText = "Concepto Gastos";
+            this.concepto.Name = "concepto";
+            this.concepto.Width = 188;
+            // 
+            // nombreareainsumo
+            // 
+            this.nombreareainsumo.DataPropertyName = "NomAreaInsumo";
+            this.nombreareainsumo.HeaderText = "Nombre Area Insumo";
+            this.nombreareainsumo.Name = "nombreareainsumo";
+            this.nombreareainsumo.Width = 187;
+            // 
+            // idAreaInsumo
+            // 
+            this.idAreaInsumo.DataPropertyName = "IdAreaInsumo";
+            this.idAreaInsumo.HeaderText = "Id Área Insumo";
+            this.idAreaInsumo.Name = "idAreaInsumo";
+            this.idAreaInsumo.Visible = false;
+            // 
+            // idgastosinsumos
+            // 
+            this.idgastosinsumos.DataPropertyName = "IdGastos_insumo";
+            this.idgastosinsumos.HeaderText = "Id Gastos Insumos";
+            this.idgastosinsumos.Name = "idgastosinsumos";
+            this.idgastosinsumos.Visible = false;
+            // 
+            // editar
+            // 
+            this.editar.HeaderText = "Editar Insumo";
+            this.editar.Name = "editar";
+            // 
+            // eliminar
+            // 
+            this.eliminar.HeaderText = "Eliminar Insumo";
+            this.eliminar.Name = "eliminar";
+            // 
             // frmAdministracionDeInsumos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(200)))), ((int)(((byte)(226)))));
-            this.ClientSize = new System.Drawing.Size(1279, 871);
+            this.ClientSize = new System.Drawing.Size(1279, 781);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmAdministracionDeInsumos";
-            this.Text = "AdministracionDeInsumos";
+            this.Text = "SFH - Administración de Insumos";
             this.TransparencyKey = System.Drawing.Color.White;
             this.Load += new System.EventHandler(this.frmAdministracionDeInsumos_Load);
             this.groupBox1.ResumeLayout(false);
@@ -470,18 +474,18 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtBuscar;
         private System.Windows.Forms.DataGridView dataGridInsumos;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idinsumos;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idAreaInsumo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idgastosinsumos;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nominsumos;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cantidad;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn unidaddemedidad;
-        private System.Windows.Forms.DataGridViewTextBoxColumn concepto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nombreareainsumo;
-        private System.Windows.Forms.DataGridViewButtonColumn editar;
-        private System.Windows.Forms.DataGridViewButtonColumn eliminar;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox cmbxAreaInsumos;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idinsumos;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nominsumos;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cantidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn unidaddemedidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn concepto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nombreareainsumo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idAreaInsumo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idgastosinsumos;
+        private System.Windows.Forms.DataGridViewButtonColumn editar;
+        private System.Windows.Forms.DataGridViewButtonColumn eliminar;
     }
 }

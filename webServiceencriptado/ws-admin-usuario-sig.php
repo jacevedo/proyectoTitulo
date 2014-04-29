@@ -28,6 +28,8 @@ require_once '../controladoras/encript.php';
 * 12.- Eliminar odontologo id
 * 13.- Eliminar Funcionario id
 * 14.- Eliminar paciente id
+* 15.- Listar Paciente Funcionarios
+* 16.- Listar Persona Paciente
 */
 
 
@@ -200,12 +202,20 @@ switch ($opcion)
 		$jsonEncriptado = $enript->encriptar($arreglo);
 		echo($jsonEncriptado);
 	break;
-	case 14:
-		//json Eliminar paciente con id {"indice":12,"idPaciente":1}
-		$idPaciente = $data->{"idPaciente"};
-		$controladoraPaciente = new ControladoraPaciente();
-		$arreglo["code"] = 14;
-		$arreglo["resultado"] = $controladoraPaciente->eliminarPaciente($idPaciente);
+	case 15:
+		//json Listar Paciente Funcionarios {"indice":15}
+		$controladoraPersona = new ControladoraPersonaRegionComuna();
+		$arreglo["code"] = 15;
+		$arreglo["resultado"] = $controladoraPersona->listarPersonasFuncionarios();
+		$enript = new Encript();
+		$jsonEncriptado = $enript->encriptar($arreglo);
+		echo($jsonEncriptado);
+	break;
+	case 16:
+		//json Listar Persona Paciente {"indice":16}
+		$controladoraPersona = new ControladoraPersonaRegionComuna();
+		$arreglo["code"] = 16;
+		$arreglo["resultado"] = $controladoraPersona->listarPersonaPorPerfil(4);
 		$enript = new Encript();
 		$jsonEncriptado = $enript->encriptar($arreglo);
 		echo($jsonEncriptado);

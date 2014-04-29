@@ -66,8 +66,8 @@ namespace NetClient
             
             catch (Exception e){
                 session.Secdat = false;
-               
-                throw new Exception("Error al intentar iniciar session :( ... Vuelva a intentarlo "+e);
+
+                throw new Exception("Se produjo un error, vuelva a intentarlo." + e);
             }
             
              return session;

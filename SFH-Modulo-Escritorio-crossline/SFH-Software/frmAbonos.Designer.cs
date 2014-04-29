@@ -30,16 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAbonos));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.GrillaAbonos = new System.Windows.Forms.DataGridView();
-            this.idAbonoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idTratamientoDentalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fechaAbonoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.montoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnEditar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.btnEliminar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.abonoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lblIdTratamiento = new System.Windows.Forms.Label();
@@ -53,6 +48,12 @@
             this.lblNumTratamiento = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.idAbonoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idTratamientoDentalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fechaAbonoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.montoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnEditar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.btnEliminar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GrillaAbonos)).BeginInit();
@@ -71,7 +72,7 @@
             this.groupBox1.Size = new System.Drawing.Size(1136, 477);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Administracion Abonos";
+            this.groupBox1.Text = "Administración Abonos";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // groupBox3
@@ -100,7 +101,7 @@
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.WhiteSmoke;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
@@ -108,50 +109,11 @@
             this.GrillaAbonos.Location = new System.Drawing.Point(6, 19);
             this.GrillaAbonos.Name = "GrillaAbonos";
             this.GrillaAbonos.ReadOnly = true;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            this.GrillaAbonos.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.GrillaAbonos.Size = new System.Drawing.Size(671, 181);
             this.GrillaAbonos.TabIndex = 0;
             this.GrillaAbonos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GrillaAbonos_CellContentClick);
-            // 
-            // idAbonoDataGridViewTextBoxColumn
-            // 
-            this.idAbonoDataGridViewTextBoxColumn.DataPropertyName = "IdAbono";
-            this.idAbonoDataGridViewTextBoxColumn.HeaderText = "Abono";
-            this.idAbonoDataGridViewTextBoxColumn.Name = "idAbonoDataGridViewTextBoxColumn";
-            this.idAbonoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // idTratamientoDentalDataGridViewTextBoxColumn
-            // 
-            this.idTratamientoDentalDataGridViewTextBoxColumn.DataPropertyName = "IdTratamientoDental";
-            this.idTratamientoDentalDataGridViewTextBoxColumn.HeaderText = "Tratamiento";
-            this.idTratamientoDentalDataGridViewTextBoxColumn.Name = "idTratamientoDentalDataGridViewTextBoxColumn";
-            this.idTratamientoDentalDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // fechaAbonoDataGridViewTextBoxColumn
-            // 
-            this.fechaAbonoDataGridViewTextBoxColumn.DataPropertyName = "FechaAbono";
-            this.fechaAbonoDataGridViewTextBoxColumn.FillWeight = 120F;
-            this.fechaAbonoDataGridViewTextBoxColumn.HeaderText = "Fecha Abono";
-            this.fechaAbonoDataGridViewTextBoxColumn.Name = "fechaAbonoDataGridViewTextBoxColumn";
-            this.fechaAbonoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // montoDataGridViewTextBoxColumn
-            // 
-            this.montoDataGridViewTextBoxColumn.DataPropertyName = "Monto";
-            this.montoDataGridViewTextBoxColumn.HeaderText = "Monto";
-            this.montoDataGridViewTextBoxColumn.Name = "montoDataGridViewTextBoxColumn";
-            this.montoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // btnEditar
-            // 
-            this.btnEditar.HeaderText = "Editar";
-            this.btnEditar.Name = "btnEditar";
-            this.btnEditar.ReadOnly = true;
-            // 
-            // btnEliminar
-            // 
-            this.btnEliminar.HeaderText = "Eliminar";
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.ReadOnly = true;
             // 
             // abonoBindingSource
             // 
@@ -203,7 +165,7 @@
             this.groupBox4.Size = new System.Drawing.Size(276, 203);
             this.groupBox4.TabIndex = 16;
             this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Fecha de Abono";
+            this.groupBox4.Text = "Fecha";
             // 
             // calendarAbono
             // 
@@ -237,6 +199,7 @@
             this.btnAdminCli.TabIndex = 14;
             this.btnAdminCli.Text = "Cancelar";
             this.btnAdminCli.UseVisualStyleBackColor = false;
+            this.btnAdminCli.Click += new System.EventHandler(this.btnAdminCli_Click);
             // 
             // txtMonto
             // 
@@ -282,6 +245,47 @@
             this.label3.TabIndex = 7;
             this.label3.Text = "Administración de Abonos Monetarios";
             // 
+            // idAbonoDataGridViewTextBoxColumn
+            // 
+            this.idAbonoDataGridViewTextBoxColumn.DataPropertyName = "IdAbono";
+            this.idAbonoDataGridViewTextBoxColumn.HeaderText = "Abono";
+            this.idAbonoDataGridViewTextBoxColumn.Name = "idAbonoDataGridViewTextBoxColumn";
+            this.idAbonoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // idTratamientoDentalDataGridViewTextBoxColumn
+            // 
+            this.idTratamientoDentalDataGridViewTextBoxColumn.DataPropertyName = "IdTratamientoDental";
+            this.idTratamientoDentalDataGridViewTextBoxColumn.HeaderText = "Tratamiento";
+            this.idTratamientoDentalDataGridViewTextBoxColumn.Name = "idTratamientoDentalDataGridViewTextBoxColumn";
+            this.idTratamientoDentalDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // fechaAbonoDataGridViewTextBoxColumn
+            // 
+            this.fechaAbonoDataGridViewTextBoxColumn.DataPropertyName = "FechaAbono";
+            this.fechaAbonoDataGridViewTextBoxColumn.FillWeight = 120F;
+            this.fechaAbonoDataGridViewTextBoxColumn.HeaderText = "Fecha";
+            this.fechaAbonoDataGridViewTextBoxColumn.Name = "fechaAbonoDataGridViewTextBoxColumn";
+            this.fechaAbonoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // montoDataGridViewTextBoxColumn
+            // 
+            this.montoDataGridViewTextBoxColumn.DataPropertyName = "Monto";
+            this.montoDataGridViewTextBoxColumn.HeaderText = "Monto";
+            this.montoDataGridViewTextBoxColumn.Name = "montoDataGridViewTextBoxColumn";
+            this.montoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // btnEditar
+            // 
+            this.btnEditar.HeaderText = "Editar";
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.ReadOnly = true;
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.HeaderText = "Eliminar";
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.ReadOnly = true;
+            // 
             // frmAbonos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -293,7 +297,7 @@
             this.ForeColor = System.Drawing.Color.White;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmAbonos";
-            this.Text = "frmAbonos";
+            this.Text = "SFH - Abonos";
             this.groupBox1.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.GrillaAbonos)).EndInit();
@@ -320,15 +324,15 @@
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Button btnGuardarAbono;
         private System.Windows.Forms.Button btnAdminCli;
+        private System.Windows.Forms.Label lblIdTratamiento;
+        private System.Windows.Forms.Label lblIdAbono;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridViewTextBoxColumn idAbonoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn idTratamientoDentalDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn fechaAbonoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn montoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewButtonColumn btnEditar;
         private System.Windows.Forms.DataGridViewButtonColumn btnEliminar;
-        private System.Windows.Forms.Label lblIdTratamiento;
-        private System.Windows.Forms.Label lblIdAbono;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label3;
     }
 }

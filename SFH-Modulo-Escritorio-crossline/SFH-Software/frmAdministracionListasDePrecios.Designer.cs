@@ -34,13 +34,6 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dataGridPrecio = new System.Windows.Forms.DataGridView();
-            this.idPrecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.valorneto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.valoriva = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.editar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.eliminarprecio = new System.Windows.Forms.DataGridViewButtonColumn();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
@@ -53,6 +46,13 @@
             this.txtvalorneto = new System.Windows.Forms.TextBox();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.valorneto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.valoriva = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.editar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.eliminarprecio = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.idPrecios = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridPrecio)).BeginInit();
@@ -70,7 +70,7 @@
             this.groupBox1.Size = new System.Drawing.Size(1168, 632);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Listado de precios";
+            this.groupBox1.Text = "Listado de Precios";
             // 
             // groupBox3
             // 
@@ -82,7 +82,7 @@
             this.groupBox3.Size = new System.Drawing.Size(1128, 475);
             this.groupBox3.TabIndex = 15;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Lista de precios";
+            this.groupBox3.Text = "Lista de Precios";
             // 
             // dataGridPrecio
             // 
@@ -92,13 +92,13 @@
             this.dataGridPrecio.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridPrecio.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridPrecio.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idPrecio,
             this.nombre,
             this.valorneto,
             this.valoriva,
             this.precio,
             this.editar,
-            this.eliminarprecio});
+            this.eliminarprecio,
+            this.idPrecios});
             this.dataGridPrecio.Location = new System.Drawing.Point(6, 82);
             this.dataGridPrecio.Name = "dataGridPrecio";
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
@@ -106,50 +106,6 @@
             this.dataGridPrecio.Size = new System.Drawing.Size(1116, 387);
             this.dataGridPrecio.TabIndex = 4;
             this.dataGridPrecio.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridPrecio_CellContentClick);
-            // 
-            // idPrecio
-            // 
-            this.idPrecio.DataPropertyName = "IdPrecios";
-            this.idPrecio.HeaderText = "IdPrecio";
-            this.idPrecio.Name = "idPrecio";
-            // 
-            // nombre
-            // 
-            this.nombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.nombre.DataPropertyName = "Comentario";
-            this.nombre.HeaderText = "Nombre";
-            this.nombre.Name = "nombre";
-            // 
-            // valorneto
-            // 
-            this.valorneto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.valorneto.DataPropertyName = "ValorNeto";
-            this.valorneto.HeaderText = "Valor Neto";
-            this.valorneto.Name = "valorneto";
-            // 
-            // valoriva
-            // 
-            this.valoriva.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.valoriva.DataPropertyName = "ValorIva";
-            this.valoriva.HeaderText = "Valor Iva";
-            this.valoriva.Name = "valoriva";
-            // 
-            // precio
-            // 
-            this.precio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.precio.DataPropertyName = "Valortotal";
-            this.precio.HeaderText = "Precio       $";
-            this.precio.Name = "precio";
-            // 
-            // editar
-            // 
-            this.editar.HeaderText = "Editar Precio";
-            this.editar.Name = "editar";
-            // 
-            // eliminarprecio
-            // 
-            this.eliminarprecio.HeaderText = "Eliminar Precio";
-            this.eliminarprecio.Name = "eliminarprecio";
             // 
             // groupBox4
             // 
@@ -162,7 +118,7 @@
             this.groupBox4.Size = new System.Drawing.Size(528, 66);
             this.groupBox4.TabIndex = 3;
             this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Búsqueda de precios";
+            this.groupBox4.Text = "Búsqueda de Precios";
             // 
             // btnBuscar
             // 
@@ -276,9 +232,54 @@
             this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(477, 15);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(360, 23);
+            this.label3.Size = new System.Drawing.Size(286, 23);
             this.label3.TabIndex = 3;
-            this.label3.Text = "Administración de listas de precios por tratamiento";
+            this.label3.Text = "Administración de Precios Tratamientos";
+            // 
+            // nombre
+            // 
+            this.nombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.nombre.DataPropertyName = "Comentario";
+            this.nombre.HeaderText = "Nombre";
+            this.nombre.Name = "nombre";
+            // 
+            // valorneto
+            // 
+            this.valorneto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.valorneto.DataPropertyName = "ValorNeto";
+            this.valorneto.HeaderText = "Valor Neto";
+            this.valorneto.Name = "valorneto";
+            // 
+            // valoriva
+            // 
+            this.valoriva.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.valoriva.DataPropertyName = "ValorIva";
+            this.valoriva.HeaderText = "Valor Iva";
+            this.valoriva.Name = "valoriva";
+            // 
+            // precio
+            // 
+            this.precio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.precio.DataPropertyName = "Valortotal";
+            this.precio.HeaderText = "Precio";
+            this.precio.Name = "precio";
+            // 
+            // editar
+            // 
+            this.editar.HeaderText = "Editar Precio";
+            this.editar.Name = "editar";
+            // 
+            // eliminarprecio
+            // 
+            this.eliminarprecio.HeaderText = "Eliminar Precio";
+            this.eliminarprecio.Name = "eliminarprecio";
+            // 
+            // idPrecios
+            // 
+            this.idPrecios.DataPropertyName = "IdPrecios";
+            this.idPrecios.HeaderText = "ID";
+            this.idPrecios.Name = "idPrecios";
+            this.idPrecios.Visible = false;
             // 
             // frmAdministracionListasDePrecios
             // 
@@ -290,7 +291,7 @@
             this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmAdministracionListasDePrecios";
-            this.Text = "AdministracionListasDePrecios";
+            this.Text = "SFH - Administración Precios";
             this.Load += new System.EventHandler(this.frmAdministracionListasDePrecios_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
@@ -321,12 +322,12 @@
         private System.Windows.Forms.TextBox txtBuscar;
         private System.Windows.Forms.Button btnNuevo;
         private System.Windows.Forms.DataGridView dataGridPrecio;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idPrecio;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn valorneto;
         private System.Windows.Forms.DataGridViewTextBoxColumn valoriva;
         private System.Windows.Forms.DataGridViewTextBoxColumn precio;
         private System.Windows.Forms.DataGridViewButtonColumn editar;
         private System.Windows.Forms.DataGridViewButtonColumn eliminarprecio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idPrecios;
     }
 }

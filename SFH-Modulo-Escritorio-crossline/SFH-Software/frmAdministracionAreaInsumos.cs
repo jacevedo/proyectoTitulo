@@ -29,7 +29,7 @@ namespace SFH_Software
         private void LimpiarControles() {
             this.txtNom.Text = string.Empty;
             this.txtdes.Text = string.Empty;
-            this.btnNuevo.Text = "Ingresar Área insumos";
+            this.btnNuevo.Text = "Ingresar Área Insumos";
         }
         #endregion
         public frmAdministracionAreaInsumos(frmMenu menu)
@@ -42,7 +42,7 @@ namespace SFH_Software
         {
             //Cargar Grillas 
             this.dataGridAreaInsumo.DataSource = this.client_areainsumo.ListarAreaInsumos();
-            btnNuevo.Text = "Ingresar Área insumos";
+            btnNuevo.Text = "Ingresar Área Insumos";
         }
 
 
@@ -55,17 +55,17 @@ namespace SFH_Software
                     break;
                 case 1:
                     Areainsumo areainsumo = dataGridAreaInsumo.Rows[e.RowIndex].DataBoundItem as Areainsumo;
-                    if (MessageBox.Show("¿Desea eliminar esta Área de insumos?", "SFH Administración de Clínica - Administración de Área insumos", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+                    if (MessageBox.Show("¿Desea eliminar el área seleccionada?", "SFH Administración de Clínica - Administración de Área Insumos", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
                     {
                         
                         this.client_areainsumo.EliminarAreaInsumo(areainsumo.IdAreaInsumo);
                         this.dataGridAreaInsumo.DataSource = this.client_areainsumo.ListarAreaInsumos();
-                        MessageBox.Show("Área insumos eliminada del sistema", "SFH Administración de Clínica - Administración de Área insumos", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Área eliminada correctamente.", "SFH Administración de Clínica - Administración de Área Insumos", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     break;
                 case 2:
                        frmGastos gastos = new frmGastos(this.menu);
-                       this.menu.MostrarForm("Administración de gastos", gastos);
+                       this.menu.MostrarForm("Administración de Gastos", gastos);
                     break;
             }
         }
@@ -80,29 +80,64 @@ namespace SFH_Software
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            if (btnNuevo.Text.ToString().Trim() == "Ingresar Área insumos")
+            if (btnNuevo.Text.ToString().Trim() == "Ingresar Área Insumos")
             {
-                Areainsumo areainsumo = new Areainsumo();
-                areainsumo.NombreArea = txtNom.Text.ToString();
-                areainsumo.DescripcionArea = txtdes.Text.ToString();
-                this.client_areainsumo.InsertarAreaInsumos(areainsumo);
-                this.dataGridAreaInsumo.DataSource = this.client_areainsumo.ListarAreaInsumos();
-                this.LimpiarControles();
-                MessageBox.Show("Área insumos insertada satisfactoriamente", "SFH Administración de Clínica - Administración de Área insumos", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                try
+                {
+                    String resultadoI = string.Empty;
+                    Areainsumo areainsumo = new Areainsumo();
+                    areainsumo.NombreArea = txtNom.Text.ToString();
+                    areainsumo.DescripcionArea = txtdes.Text.ToString();
+                    if (areainsumo.NombreArea == string.Empty || areainsumo.DescripcionArea == string.Empty)
+                    {
+                        MessageBox.Show("Debe ingresar todos campos.", "SFH Administración de Clínica - Administración de Área Insumos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        resultadoI = this.client_areainsumo.InsertarAreaInsumos(areainsumo);
+                        if (resultadoI != string.Empty)
+                        {
+                            this.dataGridAreaInsumo.DataSource = this.client_areainsumo.ListarAreaInsumos();
+                            this.LimpiarControles();
+                            MessageBox.Show("Área insumos insertada correctamente.", "SFH Administración de Clínica - Administración de Área Insumos", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Se produjo un error, vuelva a intentarlo.", "SFH Administración de Clínica - Administración de Área Insumos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show("Se produjo un error, vuelva a intentarlo.", "SFH Administración de Clínica - Administración de Área Insumos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             else if (btnNuevo.Text.ToString().Trim() == "Guardar Cambios")
             {
-                Areainsumo areainsumo = new Areainsumo();
-                areainsumo.IdAreaInsumo = this.Id_area_insumo;
-                areainsumo.NombreArea = txtNom.Text.ToString();
-                areainsumo.DescripcionArea = txtdes.Text.ToString();
-                this.client_areainsumo.ModificarAreaInsumo(areainsumo);
-                this.dataGridAreaInsumo.DataSource = this.client_areainsumo.ListarAreaInsumos();
-                this.LimpiarControles();
-                btnNuevo.Text = "Ingresar Área insumos";
-                MessageBox.Show("Área insumos modificada satisfactoriamente", "SFH Administración de Clínica - Administración de Área insumos", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                try
+                {
+                    String resultadoM = string.Empty;
+                    Areainsumo areainsumo = new Areainsumo();
+                    areainsumo.IdAreaInsumo = this.Id_area_insumo;
+                    areainsumo.NombreArea = txtNom.Text.ToString();
+                    areainsumo.DescripcionArea = txtdes.Text.ToString();
+                    resultadoM = this.client_areainsumo.ModificarAreaInsumo(areainsumo);
+                    if (resultadoM != string.Empty)
+                    {
+                        this.dataGridAreaInsumo.DataSource = this.client_areainsumo.ListarAreaInsumos();
+                        this.LimpiarControles();
+                        btnNuevo.Text = "Ingresar Área insumos";
+                        MessageBox.Show("Área insumos modificada correctamente.", "SFH Administración de Clínica - Administración de Área Insumos", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Se produjo un error, vuelva a intentarlo.", "SFH Administración de Clínica - Administración de Área Insumos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show("Se produjo un error, vuelva a intentarlo.", "SFH Administración de Clínica - Administración de Área Insumos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -110,7 +145,5 @@ namespace SFH_Software
         {
             this.LimpiarControles();
         }
-
-
     }
 }

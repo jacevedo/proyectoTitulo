@@ -33,14 +33,6 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.datagridhistorial = new System.Windows.Forms.DataGridView();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.cmbxHastaFecha = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnBuscar = new System.Windows.Forms.Button();
-            this.cmbxDesdeFecha = new System.Windows.Forms.ComboBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.IdPersona = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IdPerfil = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nomperfil = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -53,6 +45,14 @@
             this.TipoReporte = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FechaCreacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FechaNacimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.cmbxHastaFecha = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnBuscar = new System.Windows.Forms.Button();
+            this.cmbxDesdeFecha = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.datagridhistorial)).BeginInit();
@@ -105,6 +105,83 @@
             this.datagridhistorial.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.datagridhistorial.Size = new System.Drawing.Size(1236, 519);
             this.datagridhistorial.TabIndex = 0;
+            // 
+            // IdPersona
+            // 
+            this.IdPersona.DataPropertyName = "IdPersona";
+            this.IdPersona.HeaderText = "IdPersona";
+            this.IdPersona.Name = "IdPersona";
+            this.IdPersona.Visible = false;
+            // 
+            // IdPerfil
+            // 
+            this.IdPerfil.DataPropertyName = "IdPerfil";
+            this.IdPerfil.HeaderText = "IdPerfil";
+            this.IdPerfil.Name = "IdPerfil";
+            this.IdPerfil.Visible = false;
+            // 
+            // Nomperfil
+            // 
+            this.Nomperfil.DataPropertyName = "Nomperfil";
+            this.Nomperfil.HeaderText = "Nomperfil";
+            this.Nomperfil.Name = "Nomperfil";
+            this.Nomperfil.Visible = false;
+            // 
+            // IdReporte
+            // 
+            this.IdReporte.DataPropertyName = "IdReporte";
+            this.IdReporte.HeaderText = "IdReporte";
+            this.IdReporte.Name = "IdReporte";
+            this.IdReporte.Visible = false;
+            // 
+            // Rut
+            // 
+            this.Rut.DataPropertyName = "Rut";
+            this.Rut.HeaderText = "Rut";
+            this.Rut.Name = "Rut";
+            // 
+            // Dv
+            // 
+            this.Dv.DataPropertyName = "Dv";
+            this.Dv.HeaderText = "Dv";
+            this.Dv.Name = "Dv";
+            // 
+            // Nombre
+            // 
+            this.Nombre.DataPropertyName = "Nombre";
+            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.Name = "Nombre";
+            // 
+            // ApellidoPaterno
+            // 
+            this.ApellidoPaterno.DataPropertyName = "ApellidoPaterno";
+            this.ApellidoPaterno.HeaderText = "ApellidoPaterno";
+            this.ApellidoPaterno.Name = "ApellidoPaterno";
+            // 
+            // ApellidoMaterno
+            // 
+            this.ApellidoMaterno.DataPropertyName = "ApellidoMaterno";
+            this.ApellidoMaterno.HeaderText = "ApellidoMaterno";
+            this.ApellidoMaterno.Name = "ApellidoMaterno";
+            // 
+            // TipoReporte
+            // 
+            this.TipoReporte.DataPropertyName = "TipoReporte";
+            this.TipoReporte.HeaderText = "TipoReporte";
+            this.TipoReporte.Name = "TipoReporte";
+            // 
+            // FechaCreacion
+            // 
+            this.FechaCreacion.DataPropertyName = "FechaCreacion";
+            this.FechaCreacion.HeaderText = "FechaCreacion";
+            this.FechaCreacion.Name = "FechaCreacion";
+            // 
+            // FechaNacimiento
+            // 
+            this.FechaNacimiento.DataPropertyName = "FechaNacimiento";
+            this.FechaNacimiento.HeaderText = "FechaNacimiento";
+            this.FechaNacimiento.Name = "FechaNacimiento";
+            this.FechaNacimiento.Visible = false;
             // 
             // groupBox4
             // 
@@ -196,83 +273,6 @@
             this.label3.TabIndex = 7;
             this.label3.Text = "Listar Historial de Reportes";
             // 
-            // IdPersona
-            // 
-            this.IdPersona.DataPropertyName = "IdPersona";
-            this.IdPersona.HeaderText = "IdPersona";
-            this.IdPersona.Name = "IdPersona";
-            this.IdPersona.Visible = false;
-            // 
-            // IdPerfil
-            // 
-            this.IdPerfil.DataPropertyName = "IdPerfil";
-            this.IdPerfil.HeaderText = "IdPerfil";
-            this.IdPerfil.Name = "IdPerfil";
-            this.IdPerfil.Visible = false;
-            // 
-            // Nomperfil
-            // 
-            this.Nomperfil.DataPropertyName = "Nomperfil";
-            this.Nomperfil.HeaderText = "Nomperfil";
-            this.Nomperfil.Name = "Nomperfil";
-            this.Nomperfil.Visible = false;
-            // 
-            // IdReporte
-            // 
-            this.IdReporte.DataPropertyName = "IdReporte";
-            this.IdReporte.HeaderText = "IdReporte";
-            this.IdReporte.Name = "IdReporte";
-            this.IdReporte.Visible = false;
-            // 
-            // Rut
-            // 
-            this.Rut.DataPropertyName = "Rut";
-            this.Rut.HeaderText = "Rut";
-            this.Rut.Name = "Rut";
-            // 
-            // Dv
-            // 
-            this.Dv.DataPropertyName = "Dv";
-            this.Dv.HeaderText = "Dv";
-            this.Dv.Name = "Dv";
-            // 
-            // Nombre
-            // 
-            this.Nombre.DataPropertyName = "Nombre";
-            this.Nombre.HeaderText = "Nombre";
-            this.Nombre.Name = "Nombre";
-            // 
-            // ApellidoPaterno
-            // 
-            this.ApellidoPaterno.DataPropertyName = "ApellidoPaterno";
-            this.ApellidoPaterno.HeaderText = "ApellidoPaterno";
-            this.ApellidoPaterno.Name = "ApellidoPaterno";
-            // 
-            // ApellidoMaterno
-            // 
-            this.ApellidoMaterno.DataPropertyName = "ApellidoMaterno";
-            this.ApellidoMaterno.HeaderText = "ApellidoMaterno";
-            this.ApellidoMaterno.Name = "ApellidoMaterno";
-            // 
-            // TipoReporte
-            // 
-            this.TipoReporte.DataPropertyName = "TipoReporte";
-            this.TipoReporte.HeaderText = "TipoReporte";
-            this.TipoReporte.Name = "TipoReporte";
-            // 
-            // FechaCreacion
-            // 
-            this.FechaCreacion.DataPropertyName = "FechaCreacion";
-            this.FechaCreacion.HeaderText = "FechaCreacion";
-            this.FechaCreacion.Name = "FechaCreacion";
-            // 
-            // FechaNacimiento
-            // 
-            this.FechaNacimiento.DataPropertyName = "FechaNacimiento";
-            this.FechaNacimiento.HeaderText = "FechaNacimiento";
-            this.FechaNacimiento.Name = "FechaNacimiento";
-            this.FechaNacimiento.Visible = false;
-            // 
             // frmListarHistorialdeReportes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -283,7 +283,7 @@
             this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmListarHistorialdeReportes";
-            this.Text = "ListarHistorialdeReportes";
+            this.Text = "SFH - Listar Historial de Reportes";
             this.Load += new System.EventHandler(this.frmListarHistorialdeReportes_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);

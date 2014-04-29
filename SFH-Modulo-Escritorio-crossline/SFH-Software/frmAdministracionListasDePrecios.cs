@@ -29,6 +29,7 @@ namespace SFH_Software
         {
             InitializeComponent();
         }
+
         private void LimpiarControles() {
             this.txtNom.Text = string.Empty;
             this.txtvalorneto.Text = string.Empty;
@@ -43,16 +44,23 @@ namespace SFH_Software
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("El sistema sfh está realizando su búsqueda", "SFH Administración de Clínica - Administración de Fichas Dentales", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            this.result = this.client_precio.BuscarPreciosPorNombre(txtBuscar.Text.ToString());
+            MessageBox.Show("El sistema sfh está realizando su búsqueda", "SFH Administración de Clínica - Administración de Precios", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            try
+            {
+                this.result = this.client_precio.BuscarPreciosPorNombre(txtBuscar.Text.ToString());
 
-            if (result.Count.Equals(0))
-            {
-                MessageBox.Show("Esta búsqueda no ha arrojado resultados", "SFH Administración de Clínica - Administración de Precios", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                if (result.Count.Equals(0))
+                {
+                    MessageBox.Show("Esta búsqueda no ha arrojado resultados", "SFH Administración de Clínica - Administración de Precios", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+                else
+                {
+                    dataGridPrecio.DataSource = this.result;
+                }
             }
-            else
+            catch
             {
-                dataGridPrecio.DataSource = this.result;
+                MessageBox.Show("Se produjo un error, vuelva a intentarlo.", "SFH Administración de Clínica - Administración de Precios", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -65,11 +73,11 @@ namespace SFH_Software
                     break;
                 case 1:
                     Listadeprecio listaprecio = dataGridPrecio.Rows[e.RowIndex].DataBoundItem as Listadeprecio;
-                    if (MessageBox.Show("¿Desea eliminar este precio?", "SFH Administración de Clínica - Administración de Precios", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+                    if (MessageBox.Show("¿Desea eliminar el precio seleccionado?", "SFH Administración de Clínica - Administración de Precios", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
                     {
                         client_precio.EliminarPrecio(listaprecio.IdPrecios);
                         this.dataGridPrecio.DataSource = this.client_precio.ListarPrecios();
-                        MessageBox.Show("Precio eliminado del sistema", "SFH Administración de Clínica - Administración de Precios", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Precio eliminado correctamente.", "SFH Administración de Clínica - Administración de Precios", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     break;
             }
@@ -85,39 +93,64 @@ namespace SFH_Software
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            
+            this.LimpiarControles();
         }
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
             if (btnNuevo.Text.ToString().Trim() == "Ingresar Precio")
             {
-                Listadeprecio precio = new Listadeprecio();
-                precio.Comentario = txtNom.Text.ToString();
-                precio.ValorNeto = txtvalorneto.Text.ToString();
-                client_precio.InsertarPrecio(precio);
-                dataGridPrecio.DataSource = client_precio.ListarPrecios();
-                this.LimpiarControles();
-                MessageBox.Show("Precio insertado satisfactoriamente", "SFH Administración de Clínica - Administración de Fichas Dentales", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                try
+                {
+                    String resultadoI = string.Empty;
+                    Listadeprecio precio = new Listadeprecio();
+                    precio.Comentario = txtNom.Text.ToString();
+                    precio.ValorNeto = txtvalorneto.Text.ToString();
+                    
+                    resultadoI = client_precio.InsertarPrecio(precio);
+                    if (resultadoI != string.Empty)
+                    {
+                        dataGridPrecio.DataSource = client_precio.ListarPrecios();
+                        this.LimpiarControles();
+                        MessageBox.Show("Precio insertado correctamente.", "SFH Administración de Clínica - Administración de Precios", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Se produjo un error, vuelva a intentarlo.", "SFH Administración de Clínica - Administración de Precios", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show("Se produjo un error, vuelva a intentarlo.", "SFH Administración de Clínica - Administración de Precios", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             else if (btnNuevo.Text.ToString().Trim() == "Guardar Cambios")
             {
-                Listadeprecio precio = new Listadeprecio();
-                precio.IdPrecios = this.Idprecio;
-                precio.Comentario = txtNom.Text.ToString();
-                precio.ValorNeto = txtvalorneto.Text.ToString();
-                client_precio.ModificarPrecio(precio);
-                dataGridPrecio.DataSource = client_precio.ListarPrecios();
-                this.LimpiarControles();
-                btnNuevo.Text = "Ingresar Ficha";
-                MessageBox.Show("Precio modificado satisfactoriamente", "SFH Administración de Clínica - Administración de Fichas Dentales", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            
+                try
+                {
+                    string resultadoM = string.Empty;
+                    Listadeprecio precio = new Listadeprecio();
+                    precio.IdPrecios = this.Idprecio;
+                    precio.Comentario = txtNom.Text.ToString();
+                    precio.ValorNeto = txtvalorneto.Text.ToString();
+                    resultadoM = client_precio.ModificarPrecio(precio);
+                    if (resultadoM != string.Empty)
+                    {
+                        dataGridPrecio.DataSource = client_precio.ListarPrecios();
+                        this.LimpiarControles();
+                        btnNuevo.Text = "Ingresar Ficha";
+                        MessageBox.Show("Precio modificado correctamente.", "SFH Administración de Clínica - Administración de Precios", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Se produjo un error, vuelva a intentarlo.", "SFH Administración de Clínica - Administración de Precios", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show("Se produjo un error, vuelva a intentarlo.", "SFH Administración de Clínica - Administración de Precios", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
              }
         }
-
-        
-       
-
     }
 }

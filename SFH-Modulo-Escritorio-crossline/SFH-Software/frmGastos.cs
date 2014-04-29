@@ -27,12 +27,6 @@ namespace SFH_Software
         }
         #endregion
 
-        public frmGastos(frmMenu frmMenu)
-        {
-            InitializeComponent();
-            this.frmMenu = frmMenu;
-        }
-
         #region Metodos 
         private void PoblarCombosPersona()
         {
@@ -65,6 +59,12 @@ namespace SFH_Software
         }
         #endregion
 
+        public frmGastos(frmMenu frmMenu)
+        {
+            InitializeComponent();
+            this.frmMenu = frmMenu;
+        }
+
         private void frmGastos_Load(object sender, EventArgs e)
         {
             //Cargar Grillas 
@@ -76,18 +76,17 @@ namespace SFH_Software
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             int param = Convert.ToInt32(this.cmbxPersonaBusqueda.SelectedValue);
-            MessageBox.Show("El sistema sfh está realizando su búsqueda", "SFH Administración de Clínica - Administración de Fichas Dentales", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("El sistema sfh está realizando su búsqueda", "SFH Administración de Clínica - Administración de Gastos", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.result = this.client_gastos.ListarGastosporIdpersona(param);
 
             if (result.Count.Equals(0))
             {
-                MessageBox.Show("Esta búsqueda no ha arrojado resultados", "SFH Administración de Clínica - Administración de Precios", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("Esta búsqueda no ha arrojado resultados", "SFH Administración de Clínica - Administración de Gastos", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else
             {
                 this.dataGridGastos.DataSource = this.result;
             }
-            
         }
 
         private void dataGridGastos_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -98,19 +97,18 @@ namespace SFH_Software
                     this.ModificarGastos(e);
                     break;
                 case 1:
-                    if (MessageBox.Show("¿Desea eliminar este registro de gasto?", "SFH Administración de Clínica - Administración de Gastos", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+                    if (MessageBox.Show("¿Desea eliminar el gasto seleccionado?", "SFH Administración de Clínica - Administración de Gastos", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
                     {
                         Gastos gasto = dataGridGastos.Rows[e.RowIndex].DataBoundItem as Gastos;
                         this.client_gastos.EliminarGastos(gasto.IdGastos);
                         this.dataGridGastos.DataSource = this.client_gastos.ListarGastos();
-                        MessageBox.Show("Gasto eliminado del sistema", "SFH Administración de Clínica - Administración de  Gastos", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Gasto eliminado correctamente.", "SFH Administración de Clínica - Administración de Gastos", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     break;
             case 2:
                    frmAdministracionDeInsumos insumo = new frmAdministracionDeInsumos(frmMenu);
-                    this.frmMenu.MostrarForm("Administración de reportes e insumos", insumo);
+                    this.frmMenu.MostrarForm("Administración de Insumos", insumo);
                     break;
-
             }
         }
 
@@ -118,32 +116,60 @@ namespace SFH_Software
         {
             if (btnNuevo.Text.ToString().Trim() == "Ingresar Gastos")
             {
-                Gastos gasto = new Gastos();
-                gasto.IdPersona = Convert.ToInt32(cmbxpersona.SelectedValue);
-                gasto.ConceptodeGastos = txtConcept.Text.ToString();
-                gasto.MontoGastos = int.Parse(txtMonto.Text.ToString());
-                gasto.DescuentoGastos = int.Parse(txtDescuento.Text.ToString());
-                gasto.FechaGastos = MntCalendarGastos.SelectionStart;
-                this.client_gastos.InsertarGatos(gasto);
-                this.dataGridGastos.DataSource = this.client_gastos.ListarGastos();
-                this.LimpiarControles();
-                MessageBox.Show("Gasto registrado satisfactoriamente", "SFH Administración de Clínica - Administración de Área insumos", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                try
+                {
+                    String resultadoI = string.Empty;
+                    Gastos gasto = new Gastos();
+                    gasto.IdPersona = Convert.ToInt32(cmbxpersona.SelectedValue);
+                    gasto.ConceptodeGastos = txtConcept.Text.ToString();
+                    gasto.MontoGastos = int.Parse(txtMonto.Text.ToString());
+                    gasto.DescuentoGastos = int.Parse(txtDescuento.Text.ToString());
+                    gasto.FechaGastos = MntCalendarGastos.SelectionStart;
+                    resultadoI = this.client_gastos.InsertarGatos(gasto);
+                    if (resultadoI != string.Empty)
+                    {
+                        this.dataGridGastos.DataSource = this.client_gastos.ListarGastos();
+                        this.LimpiarControles();
+                        MessageBox.Show("Gasto ingresado correctamente.", "SFH Administración de Clínica - Administración de Gastos", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Se produjo un error, vuelva a intentarlo.", "SFH Administración de Clínica - Administración de Gastos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show("Se produjo un error, vuelva a intentarlo.", "SFH Administración de Clínica - Administración de Gastos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             else if (btnNuevo.Text.ToString().Trim() == "Guardar Cambios")
             {
-                Gastos gasto = new Gastos();
-                gasto.IdGastos = this.Id_gastos;
-                gasto.IdPersona = Convert.ToInt32(cmbxpersona.SelectedValue);
-                gasto.ConceptodeGastos = txtConcept.Text.ToString();
-                gasto.MontoGastos = int.Parse(txtMonto.Text.ToString());
-                gasto.DescuentoGastos = int.Parse(txtDescuento.Text.ToString());
-                gasto.FechaGastos = MntCalendarGastos.SelectionStart;
-                this.client_gastos.ModificarGastos(gasto);
-                this.dataGridGastos.DataSource = this.client_gastos.ListarGastos();
-                this.LimpiarControles();
-                MessageBox.Show("Gasto modificado satisfactoriamente", "SFH Administración de Clínica - Administración de Área insumos", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                try
+                {
+                    String resultadoM = string.Empty;
+                    Gastos gasto = new Gastos();
+                    gasto.IdGastos = this.Id_gastos;
+                    gasto.IdPersona = Convert.ToInt32(cmbxpersona.SelectedValue);
+                    gasto.ConceptodeGastos = txtConcept.Text.ToString();
+                    gasto.MontoGastos = int.Parse(txtMonto.Text.ToString());
+                    gasto.DescuentoGastos = int.Parse(txtDescuento.Text.ToString());
+                    gasto.FechaGastos = MntCalendarGastos.SelectionStart;
+                    resultadoM = this.client_gastos.ModificarGastos(gasto);
+                    if (resultadoM != string.Empty)
+                    {
+                        this.dataGridGastos.DataSource = this.client_gastos.ListarGastos();
+                        this.LimpiarControles();
+                        MessageBox.Show("Gasto modificado correctamente.", "SFH Administración de Clínica - Administración de Gastos", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Se produjo un error, vuelva a intentarlo.", "SFH Administración de Clínica - Administración de Gastos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show("Se produjo un error, vuelva a intentarlo.", "SFH Administración de Clínica - Administración de Gastos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -151,11 +177,5 @@ namespace SFH_Software
         {
             this.LimpiarControles();
         }
-
-       
-
-       
-
-
     }
 }

@@ -141,7 +141,7 @@ class ControladoraDatosContacto
 							  " FROM datosdecontacto da, persona pe, comuna co ".
 							  " WHERE da.ID_PERSONA = pe.ID_PERSONA AND co.ID_COMUNA = da.ID_COMUNA";
 		   	$sentencia=$conexion->prepare($this->SqlQuery);
-			$sentencia->bind_param("i",$idPersonaViene);
+			//$sentencia->bind_param("i",$idPersonaViene);
 			if($sentencia->execute())
 			{
 				$sentencia->bind_result($nombre, $appPaterno, $appMaterno, $rut, $dv, $idPersona, $idComuna, $fonoFijo, $fonoCelular,

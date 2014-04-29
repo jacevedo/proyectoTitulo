@@ -18,35 +18,42 @@ namespace SFH_Software
         public frmAdministracionOrdenLab()
         {
             InitializeComponent();
-           
         }
+
         private void GuardarOrden()
         {
-            Ordendelaboratorio orden = new Ordendelaboratorio();
-            orden.IdOdontologo = Convert.ToInt32(cmbNomOdontologo.SelectedValue);
-            orden.IdPaciente = Convert.ToInt32(cmbNomPaciente.SelectedValue);
-            orden.NumeroOrden = Convert.ToInt32(txtNumOrden.Text);
-            orden.Clinica = txtLaboratorio.Text;
-            orden.Bd = txtBD.Text;
-            orden.Bi = txtBI.Text;
-            orden.Pd = txtPD.Text;
-            orden.Pi = txtPI.Text;
-            orden.HoraEntrega = txtHoraEntrega.Text;
-            orden.Color = txtColor.Text;
-            orden.Estadodeorden = obtenerEstado();
-            orden.FechaCreacion = CalendarCreacion.SelectionStart;
-            orden.FechaEntrega = calendarEntrega.SelectionStart;
-            orden.IdOrdenLaboratorio = Convert.ToInt32(clienteOrden.insertarOrden(orden));
-            if (orden.IdOrdenLaboratorio != 0)
+            try
             {
-                listaOrden = clienteOrden.ListarOrdenLaboratorio(); 
-                GrillaOrden.DataSource = listaOrden;
-                limpiarFormulario();
-                MessageBox.Show("Orden de laboratorio ingresada satisfactoriamente", "SFH Administración de Clínica - Administración de Orden de Laboratorio Dental", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Ordendelaboratorio orden = new Ordendelaboratorio();
+                orden.IdOdontologo = Convert.ToInt32(cmbNomOdontologo.SelectedValue);
+                orden.IdPaciente = Convert.ToInt32(cmbNomPaciente.SelectedValue);
+                orden.NumeroOrden = Convert.ToInt32(txtNumOrden.Text);
+                orden.Clinica = txtLaboratorio.Text;
+                orden.Bd = txtBD.Text;
+                orden.Bi = txtBI.Text;
+                orden.Pd = txtPD.Text;
+                orden.Pi = txtPI.Text;
+                orden.HoraEntrega = txtHoraEntrega.Text;
+                orden.Color = txtColor.Text;
+                orden.Estadodeorden = obtenerEstado();
+                orden.FechaCreacion = CalendarCreacion.SelectionStart;
+                orden.FechaEntrega = calendarEntrega.SelectionStart;
+                orden.IdOrdenLaboratorio = Convert.ToInt32(clienteOrden.insertarOrden(orden));
+                if (orden.IdOrdenLaboratorio != 0)
+                {
+                    listaOrden = clienteOrden.ListarOrdenLaboratorio();
+                    GrillaOrden.DataSource = listaOrden;
+                    limpiarFormulario();
+                    MessageBox.Show("Orden de laboratorio ingresada correctamente.", "SFH Administración de Clínica - Administración de Orden de Laboratorio Dental", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Se produjo un error, vuelva a intentarlo.", "SFH Administración de Clínica - Administración de Orden de Laboratorio Dental", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            else
+            catch
             {
-                MessageBox.Show("Se ha producido un error vuelva a intentarlo nuevamente", "SFH Administración de Clínica - Administración de Orden de Laboratorio Dental", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Se produjo un error, vuelva a intentarlo.", "SFH Administración de Clínica - Administración de Orden de Laboratorio Dental", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -54,52 +61,57 @@ namespace SFH_Software
         {
             EstadoOrdenLaboratorio status;
             Enum.TryParse<EstadoOrdenLaboratorio>(cmbEstado.SelectedValue.ToString(), out status);
-           
             return status;
-            
         }
 
         private void modificarOrdenGuardar()
         {
-            Ordendelaboratorio orden = new Ordendelaboratorio();
-            orden.IdOrdenLaboratorio = Convert.ToInt32(lblIdOrden.Text.ToString());
-            orden.IdOdontologo = Convert.ToInt32(cmbNomOdontologo.SelectedValue);
-            orden.IdPaciente = Convert.ToInt32(cmbNomPaciente.SelectedValue);
-            orden.NumeroOrden = Convert.ToInt32(txtNumOrden.Text);
-            orden.Clinica = txtLaboratorio.Text;
-            orden.Bd = txtBD.Text;
-            orden.Bi = txtBI.Text;
-            orden.Pd = txtPD.Text;
-            orden.Pi = txtPI.Text;
-            orden.HoraEntrega = txtHoraEntrega.Text;
-            orden.Color = txtColor.Text;
-            orden.Estadodeorden = obtenerEstado();
-            orden.FechaCreacion = CalendarCreacion.SelectionStart;
-            orden.FechaEntrega = calendarEntrega.SelectionStart;
-            orden.NomOdontologo = (cmbNomOdontologo.SelectedItem as Persona).Nombre;
-            orden.NomPaciente = (cmbNomPaciente.SelectedItem as Persona).Nombre;
-            if (clienteOrden.modificarOrden(orden) == "Ok")
+            try
             {
-                for (int i = 0; i < listaOrden.Count; i++)
+                Ordendelaboratorio orden = new Ordendelaboratorio();
+                orden.IdOrdenLaboratorio = Convert.ToInt32(lblIdOrden.Text.ToString());
+                orden.IdOdontologo = Convert.ToInt32(cmbNomOdontologo.SelectedValue);
+                orden.IdPaciente = Convert.ToInt32(cmbNomPaciente.SelectedValue);
+                orden.NumeroOrden = Convert.ToInt32(txtNumOrden.Text);
+                orden.Clinica = txtLaboratorio.Text;
+                orden.Bd = txtBD.Text;
+                orden.Bi = txtBI.Text;
+                orden.Pd = txtPD.Text;
+                orden.Pi = txtPI.Text;
+                orden.HoraEntrega = txtHoraEntrega.Text;
+                orden.Color = txtColor.Text;
+                orden.Estadodeorden = obtenerEstado();
+                orden.FechaCreacion = CalendarCreacion.SelectionStart;
+                orden.FechaEntrega = calendarEntrega.SelectionStart;
+                orden.NomOdontologo = (cmbNomOdontologo.SelectedItem as Persona).Nombre;
+                orden.NomPaciente = (cmbNomPaciente.SelectedItem as Persona).Nombre;
+                if (clienteOrden.modificarOrden(orden) == "Ok")
                 {
-                    if (listaOrden.ElementAt(i).IdOrdenLaboratorio == orden.IdOrdenLaboratorio)
+                    for (int i = 0; i < listaOrden.Count; i++)
                     {
-                        listaOrden.RemoveAt(i);
-                        listaOrden.Insert(i, orden);
-                        GrillaOrden.DataSource = null;
-                        GrillaOrden.DataSource = listaOrden;
-                        limpiarFormulario();
-                        break;
+                        if (listaOrden.ElementAt(i).IdOrdenLaboratorio == orden.IdOrdenLaboratorio)
+                        {
+                            listaOrden.RemoveAt(i);
+                            listaOrden.Insert(i, orden);
+                            GrillaOrden.DataSource = null;
+                            GrillaOrden.DataSource = listaOrden;
+                            limpiarFormulario();
+                            MessageBox.Show("Orden de Laboratorio modificada correctamente.", "SFH Administración de Clínica - Administración de Orden de Laboratorio Dental", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            btnGuardar.Text = string.Empty;
+                            btnGuardar.Text = "Ingresar Orden";
+                            break;
+                        }
                     }
                 }
+                else
+                {
+                    MessageBox.Show("Se produjo un error, vuelva a intentarlo.", "SFH Administración de Clínica - Administración de Orden de Laboratorio Dental", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            else
+            catch
             {
-                MessageBox.Show("Se ha producido un error vuelva a intentarlo nuevamente", "SFH Administración de Clínica - Administración de Orden de Laboratorio Dental", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Se produjo un error, vuelva a intentarlo.", "SFH Administración de Clínica - Administración de Orden de Laboratorio Dental", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            MessageBox.Show("Orden de laboratorio modificada satisfactoriamente", "SFH Administración de Clínica - Administración de Orden de Laboratorio Dental", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            btnGuardar.Text = string.Empty;
-            btnGuardar.Text = "Ingresar Orden de Laboratorio";
         }
 
         private void limpiarFormulario()
@@ -116,7 +128,7 @@ namespace SFH_Software
             txtColor.Text = "";
             //txtEstado.Text = "";
             btnGuardar.Text = string.Empty;
-            btnGuardar.Text = "Ingresar Orden de Laboratorio";
+            btnGuardar.Text = "Ingresar Orden";
             CalendarCreacion.SelectionStart = DateTime.Today;
             CalendarCreacion.SelectionEnd = DateTime.Today;
             calendarEntrega.SelectionStart = DateTime.Today;
@@ -172,10 +184,15 @@ namespace SFH_Software
             {
                 modificarOrdenGuardar();
             }
-            else if (btnGuardar.Text == "Ingresar Orden de Laboratorio")
+            else if (btnGuardar.Text == "Ingresar Orden")
             {
                 GuardarOrden();
             }
+        }
+
+        private void btnAdminCli_Click(object sender, EventArgs e)
+        {
+            this.limpiarFormulario();
         }
     }
 }
