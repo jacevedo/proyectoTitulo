@@ -129,14 +129,21 @@ function reservarHora()
 				var datos = desencriptar(jsonEncriptadoBase);
 				var obj = $.parseJSON(datos);
 				var resultado = obj.resultado;
-				if(resultado!=-1)
+				if(resultado == "Ya existe la Cita")
 				{
-					alert("Cita ingresada correctamente.");
-					limpiarCampos();
+					alert("Cita no disponible.");
 				}
 				else
 				{
-					alert("Se produjo un error, vuelva a intentarlo.");
+					if(resultado!=-1)
+					{
+						alert("Cita ingresada correctamente.");
+						limpiarCampos();
+					}
+					else
+					{
+						alert("Se produjo un error, vuelva a intentarlo.");
+					}
 				}
 			});
 		}

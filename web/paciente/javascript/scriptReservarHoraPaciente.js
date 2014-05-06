@@ -86,14 +86,21 @@ function guardarHora()
 		var datos = desencriptar(jsonEncriptadoBase);
 		var obj = $.parseJSON(datos);
 		var idInsertado = obj.resultado;
-		if(idInsertado != 0)
+		if(idInsertado == "Ya existe la Cita")
 		{
-			alert("Cita insertada correctamente.");
-			location.href="verHoras.php";
+			alert("Cita no disponible.");
 		}
 		else
 		{
-			alert("Se produjo un error, vuelva a intentarlo.");
+			if(idInsertado != 0)
+			{
+				alert("Cita insertada correctamente.");
+				location.href="verHoras.php";
+			}
+			else
+			{
+				alert("Se produjo un error, vuelva a intentarlo.");
+			}
 		}
 	});
 }
