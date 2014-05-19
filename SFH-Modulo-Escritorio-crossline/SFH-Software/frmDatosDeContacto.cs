@@ -106,9 +106,11 @@ namespace SFH_Software
             this.cmbxComuna.ValueMember = "IdComuna";
             this.cmbxComuna.DisplayMember = "NombreComuna";
         }
+
         private void PoblarBotonesGrilla()
         {
-            this.Editar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            
+            this.Editar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Editar.HeaderText = "Editar";
             this.Editar.Name = "Editar";
             this.datagriPersona.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -118,14 +120,14 @@ namespace SFH_Software
         private void PoblarGrillaDatosDeContacto()
         {
             datagriPersona.DataSource = this.client_datos.ListarPersonasDatosDeContacto();
-            this.PoblarBotonesGrilla();
+            
         }
        
         
         public frmDatosDeContacto()
         {
             InitializeComponent();
-            this.Editar = new System.Windows.Forms.DataGridViewButtonColumn();      
+            this.Editar = new System.Windows.Forms.DataGridViewButtonColumn();
         }
 
         public frmDatosDeContacto(int id)
@@ -146,6 +148,7 @@ namespace SFH_Software
             {
                 this.CargarDatosUsuario(id_persona);
             }
+            
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -294,10 +297,24 @@ namespace SFH_Software
         {
             switch (e.ColumnIndex)
             {
-                case 0:
+              
+                case 18:
                     this.ModificarUsuarios(e.RowIndex);
                     break;
             }
+           
         }
+
+        private void datagriPersona_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        {
+
+            if (!this.Editar.Name.Equals("Editar"))
+            {
+                this.PoblarBotonesGrilla();
+            }
+        }
+
+      
+     
     }
 }

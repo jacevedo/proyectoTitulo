@@ -34,6 +34,13 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dataGridPrecio = new System.Windows.Forms.DataGridView();
+            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.valorneto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.valoriva = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.editar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.eliminarprecio = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.idPrecios = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
@@ -46,13 +53,6 @@
             this.txtvalorneto = new System.Windows.Forms.TextBox();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.valorneto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.valoriva = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.editar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.eliminarprecio = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.idPrecios = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridPrecio)).BeginInit();
@@ -106,6 +106,51 @@
             this.dataGridPrecio.Size = new System.Drawing.Size(1116, 387);
             this.dataGridPrecio.TabIndex = 4;
             this.dataGridPrecio.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridPrecio_CellContentClick);
+            // 
+            // nombre
+            // 
+            this.nombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.nombre.DataPropertyName = "Comentario";
+            this.nombre.HeaderText = "Nombre";
+            this.nombre.Name = "nombre";
+            // 
+            // valorneto
+            // 
+            this.valorneto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.valorneto.DataPropertyName = "ValorNeto";
+            this.valorneto.HeaderText = "Valor Neto";
+            this.valorneto.Name = "valorneto";
+            // 
+            // valoriva
+            // 
+            this.valoriva.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.valoriva.DataPropertyName = "ValorIva";
+            this.valoriva.HeaderText = "Valor Iva";
+            this.valoriva.Name = "valoriva";
+            // 
+            // precio
+            // 
+            this.precio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.precio.DataPropertyName = "Valortotal";
+            this.precio.HeaderText = "Precio";
+            this.precio.Name = "precio";
+            // 
+            // editar
+            // 
+            this.editar.HeaderText = "Editar Precio";
+            this.editar.Name = "editar";
+            // 
+            // eliminarprecio
+            // 
+            this.eliminarprecio.HeaderText = "Eliminar Precio";
+            this.eliminarprecio.Name = "eliminarprecio";
+            // 
+            // idPrecios
+            // 
+            this.idPrecios.DataPropertyName = "IdPrecios";
+            this.idPrecios.HeaderText = "ID";
+            this.idPrecios.Name = "idPrecios";
+            this.idPrecios.Visible = false;
             // 
             // groupBox4
             // 
@@ -200,6 +245,7 @@
             // txtNom
             // 
             this.txtNom.Location = new System.Drawing.Point(217, 23);
+            this.txtNom.MaxLength = 250;
             this.txtNom.Name = "txtNom";
             this.txtNom.Size = new System.Drawing.Size(201, 20);
             this.txtNom.TabIndex = 15;
@@ -207,6 +253,7 @@
             // txtvalorneto
             // 
             this.txtvalorneto.Location = new System.Drawing.Point(217, 57);
+            this.txtvalorneto.MaxLength = 11;
             this.txtvalorneto.Name = "txtvalorneto";
             this.txtvalorneto.Size = new System.Drawing.Size(201, 20);
             this.txtvalorneto.TabIndex = 14;
@@ -235,51 +282,6 @@
             this.label3.Size = new System.Drawing.Size(286, 23);
             this.label3.TabIndex = 3;
             this.label3.Text = "Administración de Precios Tratamientos";
-            // 
-            // nombre
-            // 
-            this.nombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.nombre.DataPropertyName = "Comentario";
-            this.nombre.HeaderText = "Nombre";
-            this.nombre.Name = "nombre";
-            // 
-            // valorneto
-            // 
-            this.valorneto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.valorneto.DataPropertyName = "ValorNeto";
-            this.valorneto.HeaderText = "Valor Neto";
-            this.valorneto.Name = "valorneto";
-            // 
-            // valoriva
-            // 
-            this.valoriva.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.valoriva.DataPropertyName = "ValorIva";
-            this.valoriva.HeaderText = "Valor Iva";
-            this.valoriva.Name = "valoriva";
-            // 
-            // precio
-            // 
-            this.precio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.precio.DataPropertyName = "Valortotal";
-            this.precio.HeaderText = "Precio";
-            this.precio.Name = "precio";
-            // 
-            // editar
-            // 
-            this.editar.HeaderText = "Editar Precio";
-            this.editar.Name = "editar";
-            // 
-            // eliminarprecio
-            // 
-            this.eliminarprecio.HeaderText = "Eliminar Precio";
-            this.eliminarprecio.Name = "eliminarprecio";
-            // 
-            // idPrecios
-            // 
-            this.idPrecios.DataPropertyName = "IdPrecios";
-            this.idPrecios.HeaderText = "ID";
-            this.idPrecios.Name = "idPrecios";
-            this.idPrecios.Visible = false;
             // 
             // frmAdministracionListasDePrecios
             // 

@@ -228,6 +228,7 @@
             // txtValorTotal
             // 
             this.txtValorTotal.Location = new System.Drawing.Point(389, 80);
+            this.txtValorTotal.MaxLength = 11;
             this.txtValorTotal.Name = "txtValorTotal";
             this.txtValorTotal.Size = new System.Drawing.Size(201, 20);
             this.txtValorTotal.TabIndex = 23;

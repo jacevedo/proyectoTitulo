@@ -142,6 +142,7 @@
             this.datagriPersona.Size = new System.Drawing.Size(1225, 402);
             this.datagriPersona.TabIndex = 0;
             this.datagriPersona.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datagriPersona_CellContentClick);
+            this.datagriPersona.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.datagriPersona_CellMouseEnter);
             // 
             // IdOdontologo
             // 

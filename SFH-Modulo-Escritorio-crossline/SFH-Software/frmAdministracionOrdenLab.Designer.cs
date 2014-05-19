@@ -389,6 +389,7 @@
             // txtColor
             // 
             this.txtColor.Location = new System.Drawing.Point(705, 45);
+            this.txtColor.MaxLength = 46;
             this.txtColor.Name = "txtColor";
             this.txtColor.Size = new System.Drawing.Size(148, 20);
             this.txtColor.TabIndex = 31;
@@ -421,6 +422,7 @@
             // txtPI
             // 
             this.txtPI.Location = new System.Drawing.Point(459, 108);
+            this.txtPI.MaxLength = 50;
             this.txtPI.Name = "txtPI";
             this.txtPI.Size = new System.Drawing.Size(148, 20);
             this.txtPI.TabIndex = 27;
@@ -437,6 +439,7 @@
             // txtPD
             // 
             this.txtPD.Location = new System.Drawing.Point(459, 76);
+            this.txtPD.MaxLength = 50;
             this.txtPD.Name = "txtPD";
             this.txtPD.Size = new System.Drawing.Size(148, 20);
             this.txtPD.TabIndex = 25;
@@ -453,6 +456,7 @@
             // txtBI
             // 
             this.txtBI.Location = new System.Drawing.Point(459, 45);
+            this.txtBI.MaxLength = 50;
             this.txtBI.Name = "txtBI";
             this.txtBI.Size = new System.Drawing.Size(148, 20);
             this.txtBI.TabIndex = 23;
@@ -469,6 +473,7 @@
             // txtBD
             // 
             this.txtBD.Location = new System.Drawing.Point(459, 16);
+            this.txtBD.MaxLength = 50;
             this.txtBD.Name = "txtBD";
             this.txtBD.Size = new System.Drawing.Size(148, 20);
             this.txtBD.TabIndex = 21;
@@ -515,6 +520,7 @@
             // txtLaboratorio
             // 
             this.txtLaboratorio.Location = new System.Drawing.Point(260, 108);
+            this.txtLaboratorio.MaxLength = 80;
             this.txtLaboratorio.Name = "txtLaboratorio";
             this.txtLaboratorio.Size = new System.Drawing.Size(148, 20);
             this.txtLaboratorio.TabIndex = 18;
@@ -522,6 +528,7 @@
             // txtNumOrden
             // 
             this.txtNumOrden.Location = new System.Drawing.Point(260, 13);
+            this.txtNumOrden.MaxLength = 11;
             this.txtNumOrden.Name = "txtNumOrden";
             this.txtNumOrden.Size = new System.Drawing.Size(148, 20);
             this.txtNumOrden.TabIndex = 13;
@@ -606,7 +613,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(200)))), ((int)(((byte)(226)))));
-            this.ClientSize = new System.Drawing.Size(1031, 750);
+            this.ClientSize = new System.Drawing.Size(1031, 742);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

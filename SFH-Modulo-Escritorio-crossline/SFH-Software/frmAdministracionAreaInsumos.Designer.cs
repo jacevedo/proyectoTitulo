@@ -35,6 +35,12 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dataGridAreaInsumo = new System.Windows.Forms.DataGridView();
+            this.IdAreaInsumos = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombreAreaInsumo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descripciondearea = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Editar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Vergastos = new System.Windows.Forms.DataGridViewButtonColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnNuevo = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -42,12 +48,6 @@
             this.txtNom = new System.Windows.Forms.TextBox();
             this.txtdes = new System.Windows.Forms.TextBox();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.IdAreaInsumos = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombreAreaInsumo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descripciondearea = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Editar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Vergastos = new System.Windows.Forms.DataGridViewButtonColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridAreaInsumo)).BeginInit();
@@ -114,6 +114,43 @@
             this.dataGridAreaInsumo.TabIndex = 4;
             this.dataGridAreaInsumo.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridAreaInsumo_CellContentClick);
             // 
+            // IdAreaInsumos
+            // 
+            this.IdAreaInsumos.DataPropertyName = "IdAreaInsumo";
+            this.IdAreaInsumos.HeaderText = "Id Area Insumo";
+            this.IdAreaInsumos.Name = "IdAreaInsumos";
+            // 
+            // nombreAreaInsumo
+            // 
+            this.nombreAreaInsumo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.nombreAreaInsumo.DataPropertyName = "NombreArea";
+            this.nombreAreaInsumo.HeaderText = "Nombre Área";
+            this.nombreAreaInsumo.Name = "nombreAreaInsumo";
+            // 
+            // descripciondearea
+            // 
+            this.descripciondearea.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.descripciondearea.DataPropertyName = "DescripcionArea";
+            this.descripciondearea.HeaderText = "Descripción";
+            this.descripciondearea.Name = "descripciondearea";
+            // 
+            // Editar
+            // 
+            this.Editar.HeaderText = "Editar Área Insumos";
+            this.Editar.Name = "Editar";
+            // 
+            // Eliminar
+            // 
+            this.Eliminar.HeaderText = "Eliminar Área Insumos";
+            this.Eliminar.Name = "Eliminar";
+            // 
+            // Vergastos
+            // 
+            this.Vergastos.HeaderText = "Ver Gastos";
+            this.Vergastos.Name = "Vergastos";
+            this.Vergastos.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Vergastos.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.btnNuevo);
@@ -163,9 +200,10 @@
             // 
             // txtNom
             // 
-            this.txtNom.Location = new System.Drawing.Point(522, 22);
+            this.txtNom.Location = new System.Drawing.Point(519, 22);
+            this.txtNom.MaxLength = 50;
             this.txtNom.Name = "txtNom";
-            this.txtNom.Size = new System.Drawing.Size(270, 20);
+            this.txtNom.Size = new System.Drawing.Size(273, 20);
             this.txtNom.TabIndex = 15;
             // 
             // txtdes
@@ -190,43 +228,6 @@
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
-            // 
-            // IdAreaInsumos
-            // 
-            this.IdAreaInsumos.DataPropertyName = "IdAreaInsumo";
-            this.IdAreaInsumos.HeaderText = "Id Area Insumo";
-            this.IdAreaInsumos.Name = "IdAreaInsumos";
-            // 
-            // nombreAreaInsumo
-            // 
-            this.nombreAreaInsumo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.nombreAreaInsumo.DataPropertyName = "NombreArea";
-            this.nombreAreaInsumo.HeaderText = "Nombre Área";
-            this.nombreAreaInsumo.Name = "nombreAreaInsumo";
-            // 
-            // descripciondearea
-            // 
-            this.descripciondearea.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.descripciondearea.DataPropertyName = "DescripcionArea";
-            this.descripciondearea.HeaderText = "Descripción";
-            this.descripciondearea.Name = "descripciondearea";
-            // 
-            // Editar
-            // 
-            this.Editar.HeaderText = "Editar Área Insumos";
-            this.Editar.Name = "Editar";
-            // 
-            // Eliminar
-            // 
-            this.Eliminar.HeaderText = "Eliminar Área Insumos";
-            this.Eliminar.Name = "Eliminar";
-            // 
-            // Vergastos
-            // 
-            this.Vergastos.HeaderText = "Ver Gastos";
-            this.Vergastos.Name = "Vergastos";
-            this.Vergastos.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Vergastos.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // frmAdministracionAreaInsumos
             // 
@@ -263,7 +264,6 @@
         private System.Windows.Forms.TextBox txtdes;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.DataGridView dataGridAreaInsumo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idareainsumo;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdAreaInsumos;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombreAreaInsumo;
         private System.Windows.Forms.DataGridViewTextBoxColumn descripciondearea;

@@ -33,6 +33,17 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dataGridGastos = new System.Windows.Forms.DataGridView();
+            this.idgastos = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idpersona = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.monto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descuentogasto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.conceptogasto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FechasGastos = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.editar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.verinsumos = new System.Windows.Forms.DataGridViewButtonColumn();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.cmbxPersonaBusqueda = new System.Windows.Forms.ComboBox();
@@ -51,17 +62,6 @@
             this.btnNuevo = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.idgastos = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idpersona = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.monto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descuentogasto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.conceptogasto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FechasGastos = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.editar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.verinsumos = new System.Windows.Forms.DataGridViewButtonColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridGastos)).BeginInit();
@@ -115,6 +115,73 @@
             this.dataGridGastos.Size = new System.Drawing.Size(1190, 426);
             this.dataGridGastos.TabIndex = 4;
             this.dataGridGastos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridGastos_CellContentClick);
+            // 
+            // idgastos
+            // 
+            this.idgastos.DataPropertyName = "IdGastos";
+            this.idgastos.HeaderText = "Id Gastos";
+            this.idgastos.Name = "idgastos";
+            // 
+            // idpersona
+            // 
+            this.idpersona.DataPropertyName = "IdPersona";
+            this.idpersona.HeaderText = "Id Persona";
+            this.idpersona.Name = "idpersona";
+            this.idpersona.Visible = false;
+            // 
+            // monto
+            // 
+            this.monto.DataPropertyName = "MontoGastos";
+            this.monto.HeaderText = "Monto";
+            this.monto.Name = "monto";
+            // 
+            // descuentogasto
+            // 
+            this.descuentogasto.DataPropertyName = "DescuentoGastos";
+            this.descuentogasto.HeaderText = "Descuento";
+            this.descuentogasto.Name = "descuentogasto";
+            // 
+            // conceptogasto
+            // 
+            this.conceptogasto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.conceptogasto.DataPropertyName = "ConceptodeGastos";
+            this.conceptogasto.HeaderText = "Concepto Gasto";
+            this.conceptogasto.Name = "conceptogasto";
+            // 
+            // nombre
+            // 
+            this.nombre.DataPropertyName = "Nombre";
+            this.nombre.HeaderText = "Nombre";
+            this.nombre.Name = "nombre";
+            // 
+            // apellido
+            // 
+            this.apellido.DataPropertyName = "Apellido";
+            this.apellido.HeaderText = "Apellido";
+            this.apellido.Name = "apellido";
+            // 
+            // FechasGastos
+            // 
+            this.FechasGastos.DataPropertyName = "FechaGastos";
+            this.FechasGastos.HeaderText = "Fecha";
+            this.FechasGastos.Name = "FechasGastos";
+            // 
+            // editar
+            // 
+            this.editar.HeaderText = "Editar Gasto";
+            this.editar.Name = "editar";
+            // 
+            // eliminar
+            // 
+            this.eliminar.HeaderText = "Eliminar Gasto";
+            this.eliminar.Name = "eliminar";
+            // 
+            // verinsumos
+            // 
+            this.verinsumos.HeaderText = "Ver Insumos";
+            this.verinsumos.Name = "verinsumos";
+            this.verinsumos.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.verinsumos.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // groupBox4
             // 
@@ -217,6 +284,7 @@
             // txtConcept
             // 
             this.txtConcept.Location = new System.Drawing.Point(178, 79);
+            this.txtConcept.MaxLength = 250;
             this.txtConcept.Multiline = true;
             this.txtConcept.Name = "txtConcept";
             this.txtConcept.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -244,6 +312,7 @@
             // txtDescuento
             // 
             this.txtDescuento.Location = new System.Drawing.Point(562, 76);
+            this.txtDescuento.MaxLength = 11;
             this.txtDescuento.Name = "txtDescuento";
             this.txtDescuento.Size = new System.Drawing.Size(215, 20);
             this.txtDescuento.TabIndex = 22;
@@ -260,6 +329,7 @@
             // txtMonto
             // 
             this.txtMonto.Location = new System.Drawing.Point(562, 37);
+            this.txtMonto.MaxLength = 11;
             this.txtMonto.Name = "txtMonto";
             this.txtMonto.Size = new System.Drawing.Size(215, 20);
             this.txtMonto.TabIndex = 14;
@@ -302,79 +372,12 @@
             this.label3.TabIndex = 8;
             this.label3.Text = "Administración de Gastos";
             // 
-            // idgastos
-            // 
-            this.idgastos.DataPropertyName = "IdGastos";
-            this.idgastos.HeaderText = "Id Gastos";
-            this.idgastos.Name = "idgastos";
-            // 
-            // idpersona
-            // 
-            this.idpersona.DataPropertyName = "IdPersona";
-            this.idpersona.HeaderText = "Id Persona";
-            this.idpersona.Name = "idpersona";
-            this.idpersona.Visible = false;
-            // 
-            // monto
-            // 
-            this.monto.DataPropertyName = "MontoGastos";
-            this.monto.HeaderText = "Monto";
-            this.monto.Name = "monto";
-            // 
-            // descuentogasto
-            // 
-            this.descuentogasto.DataPropertyName = "DescuentoGastos";
-            this.descuentogasto.HeaderText = "Descuento";
-            this.descuentogasto.Name = "descuentogasto";
-            // 
-            // conceptogasto
-            // 
-            this.conceptogasto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.conceptogasto.DataPropertyName = "ConceptodeGastos";
-            this.conceptogasto.HeaderText = "Concepto Gasto";
-            this.conceptogasto.Name = "conceptogasto";
-            // 
-            // nombre
-            // 
-            this.nombre.DataPropertyName = "Nombre";
-            this.nombre.HeaderText = "Nombre";
-            this.nombre.Name = "nombre";
-            // 
-            // apellido
-            // 
-            this.apellido.DataPropertyName = "Apellido";
-            this.apellido.HeaderText = "Apellido";
-            this.apellido.Name = "apellido";
-            // 
-            // FechasGastos
-            // 
-            this.FechasGastos.DataPropertyName = "FechaGastos";
-            this.FechasGastos.HeaderText = "Fecha";
-            this.FechasGastos.Name = "FechasGastos";
-            // 
-            // editar
-            // 
-            this.editar.HeaderText = "Editar Gasto";
-            this.editar.Name = "editar";
-            // 
-            // eliminar
-            // 
-            this.eliminar.HeaderText = "Eliminar Gasto";
-            this.eliminar.Name = "eliminar";
-            // 
-            // verinsumos
-            // 
-            this.verinsumos.HeaderText = "Ver Insumos";
-            this.verinsumos.Name = "verinsumos";
-            this.verinsumos.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.verinsumos.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
             // frmGastos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(200)))), ((int)(((byte)(226)))));
-            this.ClientSize = new System.Drawing.Size(1284, 781);
+            this.ClientSize = new System.Drawing.Size(1284, 742);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

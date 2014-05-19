@@ -52,8 +52,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.GridTratamiento = new System.Windows.Forms.DataGridView();
-            this.tratamientodentalBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.label3 = new System.Windows.Forms.Label();
             this.idTratamientoDentalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idFichaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fechaCreacionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,6 +61,8 @@
             this.totalAbonoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.editar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Abonos = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.tratamientodentalBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.label3 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -215,6 +215,7 @@
             // txtValorTotal
             // 
             this.txtValorTotal.Location = new System.Drawing.Point(141, 57);
+            this.txtValorTotal.MaxLength = 11;
             this.txtValorTotal.Name = "txtValorTotal";
             this.txtValorTotal.Size = new System.Drawing.Size(181, 20);
             this.txtValorTotal.TabIndex = 23;
@@ -296,21 +297,6 @@
             this.GridTratamiento.TabIndex = 11;
             this.GridTratamiento.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridTratamiento_CellContentClick);
             // 
-            // tratamientodentalBindingSource
-            // 
-            this.tratamientodentalBindingSource.DataSource = typeof(ObjectsBeans.Tratamientodental);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(430, 9);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(323, 24);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Administración de Tratamiento Dental";
-            // 
             // idTratamientoDentalDataGridViewTextBoxColumn
             // 
             this.idTratamientoDentalDataGridViewTextBoxColumn.DataPropertyName = "IdTratamientoDental";
@@ -366,6 +352,21 @@
             this.Abonos.HeaderText = "Ver Abonos";
             this.Abonos.Name = "Abonos";
             this.Abonos.Text = "Editar Abono";
+            // 
+            // tratamientodentalBindingSource
+            // 
+            this.tratamientodentalBindingSource.DataSource = typeof(ObjectsBeans.Tratamientodental);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(430, 9);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(323, 24);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Administración de Tratamiento Dental";
             // 
             // frmAdministracionTratamiento
             // 

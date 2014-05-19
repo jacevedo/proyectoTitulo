@@ -475,6 +475,7 @@
             // txtAnamnesis
             // 
             this.txtAnamnesis.Location = new System.Drawing.Point(8, 25);
+            this.txtAnamnesis.MaxLength = 100;
             this.txtAnamnesis.Multiline = true;
             this.txtAnamnesis.Name = "txtAnamnesis";
             this.txtAnamnesis.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;

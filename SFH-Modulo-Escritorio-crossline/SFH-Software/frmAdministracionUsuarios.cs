@@ -297,7 +297,15 @@ namespace SFH_Software
                         }
                         else
                         {
-                            MessageBox.Show("Debe ingresar nombre y apellido para realizar la búsqueda.", "SFH Administración de Usuarios del Sistema - Administración de Usuarios", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            this.list_persona = this.client_busqueda.BuscarPersonaPorNombre(txtBuscar.Text.ToString(), " ");
+                            if (list_persona.Count.Equals(0))
+                            {
+                                MessageBox.Show("Esta búsqueda no ha arrojado resultados", "SFH Administración de Usuarios del Sistema - Administración de Usuarios", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            }
+                            else
+                            {
+                                datagriPersona.DataSource = this.list_persona;
+                            }
                         }
                     }
                     catch
@@ -344,7 +352,15 @@ namespace SFH_Software
                         }
                         else
                         {
-                            MessageBox.Show("Esta búsqueda no ha arrojado resultados", "SFH Administración de Usuarios del Sistema - Administración de Usuarios", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            this.list_persona = this.client_busqueda.BuscarFuncionarioPorNombreApellido(txtBuscar.Text.ToString(), " ");
+                            if (list_persona.Count.Equals(0))
+                            {
+                                MessageBox.Show("Esta búsqueda no ha arrojado resultados", "SFH Administración de Usuarios del Sistema - Administración de Usuarios", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            }
+                            else
+                            {
+                                datagriPersona.DataSource = this.list_persona;
+                            }
                         }
                     }
                     catch
@@ -391,7 +407,15 @@ namespace SFH_Software
                         }
                         else
                         {
-                            MessageBox.Show("Esta búsqueda no ha arrojado resultados", "SFH Administración de Usuarios del Sistema - Administración de Usuarios", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            this.list_persona = this.client_busqueda.BuscarPacientePorNombreApellido(txtBuscar.Text.ToString(), " ");
+                            if (list_persona.Count.Equals(0))
+                            {
+                                MessageBox.Show("Esta búsqueda no ha arrojado resultados", "SFH Administración de Usuarios del Sistema - Administración de Usuarios", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            }
+                            else
+                            {
+                                datagriPersona.DataSource = this.list_persona;
+                            }
                         }
                     }
                     catch
@@ -427,18 +451,26 @@ namespace SFH_Software
                         if (nombreapellido_Odontologo.Length == 2)
                         {
                             this.list_persona = this.client_busqueda.BuscarOdontologoPorNombreApellido(nombreapellido_Odontologo[0].ToString(), nombreapellido_Odontologo[1].ToString());
+                            if (list_persona.Count.Equals(0))
+                            {
+                                MessageBox.Show("Esta búsqueda no ha arrojado resultados", "SFH Administración de Usuarios del Sistema - Administración de Usuarios", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            }
+                            else
+                            {
+                                datagriPersona.DataSource = this.list_persona;
+                            }
                         }
-                        else
-                        {
-                            this.list_persona = this.client_busqueda.BuscarOdontologoPorNombreApellido(nombreapellido_Odontologo[0].ToString(), "");
-                        }
-                        if (list_persona.Count.Equals(0))
-                        {
-                            MessageBox.Show("Esta búsqueda no ha arrojado resultados", "SFH Administración de Usuarios del Sistema - Administración de Usuarios", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        }
-                        else
-                        {
-                            datagriPersona.DataSource = this.list_persona;
+                        else {
+
+                            this.list_persona = this.client_busqueda.BuscarOdontologoPorNombreApellido(txtBuscar.Text.ToString(), " ");
+                            if (list_persona.Count.Equals(0))
+                            {
+                                MessageBox.Show("Esta búsqueda no ha arrojado resultados", "SFH Administración de Usuarios del Sistema - Administración de Usuarios", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            }
+                            else
+                            {
+                                datagriPersona.DataSource = this.list_persona;
+                            }
                         }
                     }
                     catch

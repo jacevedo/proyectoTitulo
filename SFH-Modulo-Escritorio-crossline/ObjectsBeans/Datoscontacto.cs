@@ -67,12 +67,6 @@ namespace ObjectsBeans
             set { mail = value; }
         }
 
-        public DateTime FechaIngreso
-        {
-            get { return fechaIngreso; }
-            set { fechaIngreso = value; }
-        }
-
         public string NomComuna
         {
             get { return nomComuna; }
@@ -83,6 +77,12 @@ namespace ObjectsBeans
         {
             get { return idcomuna; }
             set { idcomuna = value; }
+        }
+
+        public DateTime FechaIngreso
+        {
+            get { return fechaIngreso; }
+            set { fechaIngreso = value; }
         }
         #endregion
     }

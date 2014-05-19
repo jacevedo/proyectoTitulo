@@ -21,19 +21,20 @@ namespace NetClient
             String url = "http://192.168.106.134/sfhwebservice/webServiceencriptado/" + nom_page;*/
             /*Segmento de produccion*/
             String url = "http://sfh.crossline.cl/webServiceencriptado/" + nom_page;
-           
+            //String url = "http://192.168.112.129/sfhwebservice/webServiceencriptado/" + nom_page;
             try 
             {
                 String paramdataKey = string.Empty;
                 WebRequest request = WebRequest.Create(url);
                 request.Method = "POST";
-                if (preferences.Key != "")
+               if (preferences.Key != "")
                 {
                     // ",\"nombre\":\""
                     paramdataKey = paramdata.Substring(0,paramdata.Length-1)+",\"key\":\""+preferences.Key+" \"}";
                     paramdata = string.Empty;
                     paramdata = paramdataKey;
                 }
+               
                 String param_encript =  en.Encriptar(paramdata);
                 string postData = "send=" + param_encript;
                 byte[] byteArray = Encoding.UTF8.GetBytes(postData);
@@ -51,6 +52,8 @@ namespace NetClient
                 reader.Close();
                 dataStream.Close();
                 response.Close();
+
+                //usuario 15898805 4 | asdcasco
             }
             catch(Exception e)
             {               

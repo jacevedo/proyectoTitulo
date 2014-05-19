@@ -26,13 +26,10 @@ namespace ObjectsBeans
         private int idInsumos;
         private int idAreaInsumo;
         private int idGastos_insumo;
-
-
         private string nomInsumos;
         private int cantidad;
         private string descripcionInsumo;
-       
-       private string unidadMedida;
+        private string unidadMedida;
         private string conceptoGasto;
         private string nomAreaInsumo;
         #endregion

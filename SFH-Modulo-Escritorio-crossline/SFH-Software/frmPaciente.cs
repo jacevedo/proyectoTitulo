@@ -99,7 +99,7 @@ namespace SFH_Software
         public void PoblarGrilla()
         {
             this.datagriPersona.DataSource = this.clients_paciente.ListarPacientes();
-            this.PoblarBotonesGrilla();
+            
         }
 
         private void PoblarComboPersona()
@@ -135,10 +135,11 @@ namespace SFH_Software
         {
             switch (e.ColumnIndex)
             {
-                case 0:
+                case 13:
                     this.ModificarUsuarios(e);
                     break;
             }
+           
         }
 
         private void btnNuevo_Click(object sender, EventArgs e)
@@ -313,7 +314,15 @@ namespace SFH_Software
                         }
                         else
                         {
-                            MessageBox.Show("Debe ingresar nombre y apellido para realizar la búsqueda.", "SFH Administración de Usuarios del Sistema - Administración de Pacientes", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            this.list_persona = this.clients_paciente.BuscarPacientePorNombreApellido(txtBuscar.Text.ToString(), " ");
+                            if (list_persona.Count.Equals(0))
+                            {
+                                MessageBox.Show("Esta búsqueda no ha arrojado resultados", "SFH Administración de Usuarios del Sistema - Administración de Usuarios", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            }
+                            else
+                            {
+                                datagriPersona.DataSource = this.list_persona;
+                            }
                         }
                     }
                     catch
@@ -378,6 +387,14 @@ namespace SFH_Software
                         this.cmbxestado.SelectedItem = "Habilitado";
                     }
                 }
+            }
+        }
+
+        private void datagriPersona_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (!this.Editar.Name.Equals("Editar"))
+            {
+                this.PoblarBotonesGrilla();
             }
         }
     }
