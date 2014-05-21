@@ -268,3 +268,4 @@ C:\Users\David\Desktop\SFH-Modulo-Escritorio-crossline\SFH-Software\obj\x86\Debu
 C:\Users\David\Desktop\SFH-Modulo-Escritorio-crossline\SFH-Software\obj\x86\Debug\SFH-Software.csproj.GenerateResource.Cache
 C:\Users\David\Desktop\SFH-Modulo-Escritorio-crossline\SFH-Software\obj\x86\Debug\SFH-Software.exe
 C:\Users\David\Desktop\SFH-Modulo-Escritorio-crossline\SFH-Software\obj\x86\Debug\SFH-Software.pdb
+C:\Users\David\Desktop\SFH-Modulo-Escritorio-crossline\SFH-Software\obj\x86\Debug\SFH-Software.csprojResolveAssemblyReference.cache
