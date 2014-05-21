@@ -97,6 +97,7 @@
             this.txtuser.Name = "txtuser";
             this.txtuser.Size = new System.Drawing.Size(130, 20);
             this.txtuser.TabIndex = 0;
+            this.txtuser.Text = "16607230";
             // 
             // label3
             // 

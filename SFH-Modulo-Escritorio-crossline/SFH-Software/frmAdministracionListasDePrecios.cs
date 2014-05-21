@@ -17,14 +17,26 @@ namespace SFH_Software
         ClientWsPreciosInsumos client_precio = new ClientWsPreciosInsumos();
         List<Listadeprecio> result = new List<Listadeprecio>();
         private int idprecio;
-
+        Validaciones validaciones = new Validaciones();
         public int Idprecio
         {
             get { return idprecio; }
             set { idprecio = value; }
         }
         #endregion
+        #region Metodos
+        private bool validarformulario()
+        {
 
+            if (validaciones.EsSoloafanumerico(txtNom) == true & validaciones.EsNumero(txtvalorneto) == true){
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        #endregion
         public frmAdministracionListasDePrecios()
         {
             InitializeComponent();
@@ -44,23 +56,26 @@ namespace SFH_Software
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("El sistema sfh está realizando su búsqueda", "SFH Administración de Clínica - Administración de Precios", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            try
+            if (this.validaciones.EsSoloafanumerico(txtBuscar) == true)
             {
-                this.result = this.client_precio.BuscarPreciosPorNombre(txtBuscar.Text.ToString());
+                MessageBox.Show("El sistema sfh está realizando su búsqueda", "SFH Administración de Clínica - Administración de Precios", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                try
+                {
+                    this.result = this.client_precio.BuscarPreciosPorNombre(txtBuscar.Text.ToString());
 
-                if (result.Count.Equals(0))
-                {
-                    MessageBox.Show("Esta búsqueda no ha arrojado resultados", "SFH Administración de Clínica - Administración de Precios", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    if (result.Count.Equals(0))
+                    {
+                        MessageBox.Show("Esta búsqueda no ha arrojado resultados", "SFH Administración de Clínica - Administración de Precios", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
+                    else
+                    {
+                        dataGridPrecio.DataSource = this.result;
+                    }
                 }
-                else
+                catch
                 {
-                    dataGridPrecio.DataSource = this.result;
+                    MessageBox.Show("Se produjo un error, vuelva a intentarlo.", "SFH Administración de Clínica - Administración de Precios", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-            }
-            catch
-            {
-                MessageBox.Show("Se produjo un error, vuelva a intentarlo.", "SFH Administración de Clínica - Administración de Precios", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -102,21 +117,24 @@ namespace SFH_Software
             {
                 try
                 {
-                    String resultadoI = string.Empty;
-                    Listadeprecio precio = new Listadeprecio();
-                    precio.Comentario = txtNom.Text.ToString();
-                    precio.ValorNeto = txtvalorneto.Text.ToString();
-                    
-                    resultadoI = client_precio.InsertarPrecio(precio);
-                    if (resultadoI != string.Empty)
+                    if (this.validarformulario())
                     {
-                        dataGridPrecio.DataSource = client_precio.ListarPrecios();
-                        this.LimpiarControles();
-                        MessageBox.Show("Precio insertado correctamente.", "SFH Administración de Clínica - Administración de Precios", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Se produjo un error, vuelva a intentarlo.", "SFH Administración de Clínica - Administración de Precios", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        String resultadoI = string.Empty;
+                        Listadeprecio precio = new Listadeprecio();
+                        precio.Comentario = txtNom.Text.ToString();
+                        precio.ValorNeto = txtvalorneto.Text.ToString();
+
+                        resultadoI = client_precio.InsertarPrecio(precio);
+                        if (resultadoI != string.Empty)
+                        {
+                            dataGridPrecio.DataSource = client_precio.ListarPrecios();
+                            this.LimpiarControles();
+                            MessageBox.Show("Precio insertado correctamente.", "SFH Administración de Clínica - Administración de Precios", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Se produjo un error, vuelva a intentarlo.", "SFH Administración de Clínica - Administración de Precios", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                 }
                 catch
@@ -128,22 +146,25 @@ namespace SFH_Software
             {
                 try
                 {
-                    string resultadoM = string.Empty;
-                    Listadeprecio precio = new Listadeprecio();
-                    precio.IdPrecios = this.Idprecio;
-                    precio.Comentario = txtNom.Text.ToString();
-                    precio.ValorNeto = txtvalorneto.Text.ToString();
-                    resultadoM = client_precio.ModificarPrecio(precio);
-                    if (resultadoM != string.Empty)
+                    if (this.validarformulario())
                     {
-                        dataGridPrecio.DataSource = client_precio.ListarPrecios();
-                        this.LimpiarControles();
-                        btnNuevo.Text = "Ingresar Ficha";
-                        MessageBox.Show("Precio modificado correctamente.", "SFH Administración de Clínica - Administración de Precios", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Se produjo un error, vuelva a intentarlo.", "SFH Administración de Clínica - Administración de Precios", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        string resultadoM = string.Empty;
+                        Listadeprecio precio = new Listadeprecio();
+                        precio.IdPrecios = this.Idprecio;
+                        precio.Comentario = txtNom.Text.ToString();
+                        precio.ValorNeto = txtvalorneto.Text.ToString();
+                        resultadoM = client_precio.ModificarPrecio(precio);
+                        if (resultadoM != string.Empty)
+                        {
+                            dataGridPrecio.DataSource = client_precio.ListarPrecios();
+                            this.LimpiarControles();
+                            btnNuevo.Text = "Ingresar Ficha";
+                            MessageBox.Show("Precio modificado correctamente.", "SFH Administración de Clínica - Administración de Precios", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Se produjo un error, vuelva a intentarlo.", "SFH Administración de Clínica - Administración de Precios", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                 }
                 catch
@@ -151,6 +172,48 @@ namespace SFH_Software
                     MessageBox.Show("Se produjo un error, vuelva a intentarlo.", "SFH Administración de Clínica - Administración de Precios", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
              }
+        }
+
+        private void txtNom_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (validaciones.EsSoloafanumerico(txtNom))
+            {
+                errorProvider1.SetError(txtNom, String.Empty);
+                txtNom.BackColor = Color.Honeydew;
+            }
+            else
+            {
+                errorProvider1.SetError(txtNom, "El contenido debe ser alfa numérico");
+                txtNom.BackColor = Color.MistyRose;
+            }
+        }
+
+        private void txtvalorneto_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (validaciones.EsNumero(txtvalorneto))
+            {
+                errorProvider1.SetError(txtvalorneto, String.Empty);
+                txtvalorneto.BackColor = Color.Honeydew;
+            }
+            else
+            {
+                errorProvider1.SetError(txtvalorneto, "Debe ingresar un número entero");
+                txtvalorneto.BackColor = Color.MistyRose;
+            }
+        }
+
+        private void txtBuscar_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (validaciones.EsSoloafanumerico(txtBuscar))
+            {
+                errorProvider1.SetError(txtBuscar, String.Empty);
+                txtBuscar.BackColor = Color.Honeydew;
+            }
+            else
+            {
+                errorProvider1.SetError(txtBuscar, "El contenido debe ser alfa numérico");
+                txtBuscar.BackColor = Color.MistyRose;
+            }
         }
     }
 }

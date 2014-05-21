@@ -18,6 +18,7 @@ namespace SFH_Software
         List<Areainsumo> result = new List<Areainsumo>();
         private int id_area_insumo;
         frmMenu menu;
+        Validaciones validaciones = new Validaciones();
         public int Id_area_insumo
         {
             get { return id_area_insumo; }
@@ -84,26 +85,29 @@ namespace SFH_Software
             {
                 try
                 {
-                    String resultadoI = string.Empty;
-                    Areainsumo areainsumo = new Areainsumo();
-                    areainsumo.NombreArea = txtNom.Text.ToString();
-                    areainsumo.DescripcionArea = txtdes.Text.ToString();
-                    if (areainsumo.NombreArea == string.Empty || areainsumo.DescripcionArea == string.Empty)
+                    if (this.validaciones.EsSoloTexto(txtNom) == true)
                     {
-                        MessageBox.Show("Debe ingresar todos campos.", "SFH Administración de Clínica - Administración de Área Insumos", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    else
-                    {
-                        resultadoI = this.client_areainsumo.InsertarAreaInsumos(areainsumo);
-                        if (resultadoI != string.Empty)
+                        String resultadoI = string.Empty;
+                        Areainsumo areainsumo = new Areainsumo();
+                        areainsumo.NombreArea = txtNom.Text.ToString();
+                        areainsumo.DescripcionArea = txtdes.Text.ToString();
+                        if (areainsumo.NombreArea == string.Empty || areainsumo.DescripcionArea == string.Empty)
                         {
-                            this.dataGridAreaInsumo.DataSource = this.client_areainsumo.ListarAreaInsumos();
-                            this.LimpiarControles();
-                            MessageBox.Show("Área insumos insertada correctamente.", "SFH Administración de Clínica - Administración de Área Insumos", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Debe ingresar todos campos.", "SFH Administración de Clínica - Administración de Área Insumos", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                         else
                         {
-                            MessageBox.Show("Se produjo un error, vuelva a intentarlo.", "SFH Administración de Clínica - Administración de Área Insumos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            resultadoI = this.client_areainsumo.InsertarAreaInsumos(areainsumo);
+                            if (resultadoI != string.Empty)
+                            {
+                                this.dataGridAreaInsumo.DataSource = this.client_areainsumo.ListarAreaInsumos();
+                                this.LimpiarControles();
+                                MessageBox.Show("Área insumos insertada correctamente.", "SFH Administración de Clínica - Administración de Área Insumos", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Se produjo un error, vuelva a intentarlo.", "SFH Administración de Clínica - Administración de Área Insumos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                         }
                     }
                 }
@@ -116,22 +120,25 @@ namespace SFH_Software
             {
                 try
                 {
-                    String resultadoM = string.Empty;
-                    Areainsumo areainsumo = new Areainsumo();
-                    areainsumo.IdAreaInsumo = this.Id_area_insumo;
-                    areainsumo.NombreArea = txtNom.Text.ToString();
-                    areainsumo.DescripcionArea = txtdes.Text.ToString();
-                    resultadoM = this.client_areainsumo.ModificarAreaInsumo(areainsumo);
-                    if (resultadoM != string.Empty)
+                    if (this.validaciones.EsSoloTexto(txtNom))
                     {
-                        this.dataGridAreaInsumo.DataSource = this.client_areainsumo.ListarAreaInsumos();
-                        this.LimpiarControles();
-                        btnNuevo.Text = "Ingresar Área insumos";
-                        MessageBox.Show("Área insumos modificada correctamente.", "SFH Administración de Clínica - Administración de Área Insumos", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Se produjo un error, vuelva a intentarlo.", "SFH Administración de Clínica - Administración de Área Insumos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        String resultadoM = string.Empty;
+                        Areainsumo areainsumo = new Areainsumo();
+                        areainsumo.IdAreaInsumo = this.Id_area_insumo;
+                        areainsumo.NombreArea = txtNom.Text.ToString();
+                        areainsumo.DescripcionArea = txtdes.Text.ToString();
+                        resultadoM = this.client_areainsumo.ModificarAreaInsumo(areainsumo);
+                        if (resultadoM != string.Empty)
+                        {
+                            this.dataGridAreaInsumo.DataSource = this.client_areainsumo.ListarAreaInsumos();
+                            this.LimpiarControles();
+                            btnNuevo.Text = "Ingresar Área insumos";
+                            MessageBox.Show("Área insumos modificada correctamente.", "SFH Administración de Clínica - Administración de Área Insumos", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Se produjo un error, vuelva a intentarlo.", "SFH Administración de Clínica - Administración de Área Insumos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                 }
                 catch
@@ -144,6 +151,20 @@ namespace SFH_Software
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.LimpiarControles();
+        }
+
+        private void txtNom_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (validaciones.EsSoloTexto(txtNom))
+            {
+                errorProvider1.SetError(txtNom, String.Empty);
+                txtNom.BackColor = Color.Honeydew;
+            }
+            else
+            {
+                errorProvider1.SetError(txtNom, "El nombre no puede contener números y caracteres especiales");
+                txtNom.BackColor = Color.MistyRose;
+            }
         }
     }
 }

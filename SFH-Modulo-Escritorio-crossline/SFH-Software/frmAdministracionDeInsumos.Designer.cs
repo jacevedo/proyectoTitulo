@@ -28,10 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAdministracionDeInsumos));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.dataGridInsumos = new System.Windows.Forms.DataGridView();
+            this.IdInsumos = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IdAreaInsumo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IdGastos_insumo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NomInsumos = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DescripcionInsumo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UnidadMedida = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ConceptoGasto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NomAreaInsumo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btneditar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.btneliminar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label6 = new System.Windows.Forms.Label();
             this.cmbxAreaInsumos = new System.Windows.Forms.ComboBox();
@@ -55,23 +68,13 @@
             this.btnNuevo = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.dataGridInsumos = new System.Windows.Forms.DataGridView();
-            this.IdInsumos = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IdAreaInsumo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IdGastos_insumo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NomInsumos = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DescripcionInsumo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UnidadMedida = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ConceptoGasto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NomAreaInsumo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btneditar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.btneliminar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridInsumos)).BeginInit();
             this.groupBox4.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridInsumos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -97,6 +100,105 @@
             this.groupBox3.TabIndex = 15;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Listado de insumos";
+            // 
+            // dataGridInsumos
+            // 
+            this.dataGridInsumos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridInsumos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.IdInsumos,
+            this.IdAreaInsumo,
+            this.IdGastos_insumo,
+            this.NomInsumos,
+            this.Cantidad,
+            this.DescripcionInsumo,
+            this.UnidadMedida,
+            this.ConceptoGasto,
+            this.NomAreaInsumo,
+            this.btneditar,
+            this.btneliminar});
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridInsumos.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridInsumos.Location = new System.Drawing.Point(17, 86);
+            this.dataGridInsumos.Name = "dataGridInsumos";
+            this.dataGridInsumos.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
+            this.dataGridInsumos.Size = new System.Drawing.Size(1208, 260);
+            this.dataGridInsumos.TabIndex = 4;
+            // 
+            // IdInsumos
+            // 
+            this.IdInsumos.DataPropertyName = "IdInsumos";
+            this.IdInsumos.HeaderText = "Id Insumos";
+            this.IdInsumos.Name = "IdInsumos";
+            // 
+            // IdAreaInsumo
+            // 
+            this.IdAreaInsumo.DataPropertyName = "IdAreaInsumo";
+            this.IdAreaInsumo.HeaderText = "Idarea Insumo";
+            this.IdAreaInsumo.Name = "IdAreaInsumo";
+            this.IdAreaInsumo.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.IdAreaInsumo.Visible = false;
+            // 
+            // IdGastos_insumo
+            // 
+            this.IdGastos_insumo.DataPropertyName = "IdGastos_insumo";
+            this.IdGastos_insumo.HeaderText = "IdGastos Insumos";
+            this.IdGastos_insumo.Name = "IdGastos_insumo";
+            this.IdGastos_insumo.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.IdGastos_insumo.Visible = false;
+            // 
+            // NomInsumos
+            // 
+            this.NomInsumos.DataPropertyName = "NomInsumos";
+            this.NomInsumos.HeaderText = "Nombre Insumo";
+            this.NomInsumos.Name = "NomInsumos";
+            // 
+            // Cantidad
+            // 
+            this.Cantidad.DataPropertyName = "Cantidad";
+            this.Cantidad.HeaderText = "Cantidad";
+            this.Cantidad.Name = "Cantidad";
+            // 
+            // DescripcionInsumo
+            // 
+            this.DescripcionInsumo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.DescripcionInsumo.DataPropertyName = "DescripcionInsumo";
+            this.DescripcionInsumo.HeaderText = "Descripción";
+            this.DescripcionInsumo.Name = "DescripcionInsumo";
+            // 
+            // UnidadMedida
+            // 
+            this.UnidadMedida.DataPropertyName = "UnidadMedida";
+            this.UnidadMedida.HeaderText = "Unidad de Medida";
+            this.UnidadMedida.Name = "UnidadMedida";
+            // 
+            // ConceptoGasto
+            // 
+            this.ConceptoGasto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ConceptoGasto.DataPropertyName = "ConceptoGasto";
+            this.ConceptoGasto.HeaderText = "Concepto Gastos";
+            this.ConceptoGasto.Name = "ConceptoGasto";
+            // 
+            // NomAreaInsumo
+            // 
+            this.NomAreaInsumo.DataPropertyName = "NomAreaInsumo";
+            this.NomAreaInsumo.HeaderText = "Nombre Area Insumo";
+            this.NomAreaInsumo.Name = "NomAreaInsumo";
+            // 
+            // btneditar
+            // 
+            this.btneditar.HeaderText = "Editar";
+            this.btneditar.Name = "btneditar";
+            // 
+            // btneliminar
+            // 
+            this.btneliminar.HeaderText = "Eliminar";
+            this.btneliminar.Name = "btneliminar";
             // 
             // groupBox4
             // 
@@ -261,6 +363,7 @@
             this.txtunidadmedida.Name = "txtunidadmedida";
             this.txtunidadmedida.Size = new System.Drawing.Size(215, 20);
             this.txtunidadmedida.TabIndex = 32;
+            this.txtunidadmedida.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtunidadmedida_KeyUp);
             // 
             // label8
             // 
@@ -277,6 +380,8 @@
             this.txtcantidad.Name = "txtcantidad";
             this.txtcantidad.Size = new System.Drawing.Size(215, 20);
             this.txtcantidad.TabIndex = 22;
+            this.txtcantidad.TextChanged += new System.EventHandler(this.txtcantidad_TextChanged);
+            this.txtcantidad.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtcantidad_KeyUp);
             // 
             // label2
             // 
@@ -294,6 +399,7 @@
             this.txtnom.Name = "txtnom";
             this.txtnom.Size = new System.Drawing.Size(215, 20);
             this.txtnom.TabIndex = 14;
+            this.txtnom.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtnom_KeyUp);
             // 
             // btnNuevo
             // 
@@ -333,104 +439,9 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "Administración de Insumos";
             // 
-            // dataGridInsumos
+            // errorProvider1
             // 
-            this.dataGridInsumos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridInsumos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.IdInsumos,
-            this.IdAreaInsumo,
-            this.IdGastos_insumo,
-            this.NomInsumos,
-            this.Cantidad,
-            this.DescripcionInsumo,
-            this.UnidadMedida,
-            this.ConceptoGasto,
-            this.NomAreaInsumo,
-            this.btneditar,
-            this.btneliminar});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridInsumos.DefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridInsumos.Location = new System.Drawing.Point(17, 86);
-            this.dataGridInsumos.Name = "dataGridInsumos";
-            this.dataGridInsumos.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
-            this.dataGridInsumos.Size = new System.Drawing.Size(1208, 260);
-            this.dataGridInsumos.TabIndex = 4;
-            // 
-            // IdInsumos
-            // 
-            this.IdInsumos.DataPropertyName = "IdInsumos";
-            this.IdInsumos.HeaderText = "Id Insumos";
-            this.IdInsumos.Name = "IdInsumos";
-            // 
-            // IdAreaInsumo
-            // 
-            this.IdAreaInsumo.DataPropertyName = "IdAreaInsumo";
-            this.IdAreaInsumo.HeaderText = "Idarea Insumo";
-            this.IdAreaInsumo.Name = "IdAreaInsumo";
-            this.IdAreaInsumo.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.IdAreaInsumo.Visible = false;
-            // 
-            // IdGastos_insumo
-            // 
-            this.IdGastos_insumo.DataPropertyName = "IdGastos_insumo";
-            this.IdGastos_insumo.HeaderText = "IdGastos Insumos";
-            this.IdGastos_insumo.Name = "IdGastos_insumo";
-            this.IdGastos_insumo.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.IdGastos_insumo.Visible = false;
-            // 
-            // NomInsumos
-            // 
-            this.NomInsumos.DataPropertyName = "NomInsumos";
-            this.NomInsumos.HeaderText = "Nombre Insumo";
-            this.NomInsumos.Name = "NomInsumos";
-            // 
-            // Cantidad
-            // 
-            this.Cantidad.DataPropertyName = "Cantidad";
-            this.Cantidad.HeaderText = "Cantidad";
-            this.Cantidad.Name = "Cantidad";
-            // 
-            // DescripcionInsumo
-            // 
-            this.DescripcionInsumo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.DescripcionInsumo.DataPropertyName = "DescripcionInsumo";
-            this.DescripcionInsumo.HeaderText = "Descripción";
-            this.DescripcionInsumo.Name = "DescripcionInsumo";
-            // 
-            // UnidadMedida
-            // 
-            this.UnidadMedida.DataPropertyName = "UnidadMedida";
-            this.UnidadMedida.HeaderText = "Unidad de Medida";
-            this.UnidadMedida.Name = "UnidadMedida";
-            // 
-            // ConceptoGasto
-            // 
-            this.ConceptoGasto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ConceptoGasto.DataPropertyName = "ConceptoGasto";
-            this.ConceptoGasto.HeaderText = "Concepto Gastos";
-            this.ConceptoGasto.Name = "ConceptoGasto";
-            // 
-            // NomAreaInsumo
-            // 
-            this.NomAreaInsumo.DataPropertyName = "NomAreaInsumo";
-            this.NomAreaInsumo.HeaderText = "Nombre Area Insumo";
-            this.NomAreaInsumo.Name = "NomAreaInsumo";
-            // 
-            // btneditar
-            // 
-            this.btneditar.HeaderText = "Editar";
-            this.btneditar.Name = "btneditar";
-            // 
-            // btneliminar
-            // 
-            this.btneliminar.HeaderText = "Eliminar";
-            this.btneliminar.Name = "btneliminar";
+            this.errorProvider1.ContainerControl = this;
             // 
             // frmAdministracionDeInsumos
             // 
@@ -447,11 +458,12 @@
             this.Load += new System.EventHandler(this.frmAdministracionDeInsumos_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridInsumos)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridInsumos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -496,5 +508,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NomAreaInsumo;
         private System.Windows.Forms.DataGridViewButtonColumn btneditar;
         private System.Windows.Forms.DataGridViewButtonColumn btneliminar;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

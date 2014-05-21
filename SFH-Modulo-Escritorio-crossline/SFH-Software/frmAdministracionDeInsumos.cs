@@ -20,7 +20,8 @@ namespace SFH_Software
         List<Insumos> result = new List<Insumos>();
         frmMenu menu;
         private int id_insumo;
-
+        Validaciones validaciones = new Validaciones();
+       
         public int Idinsumo
         {
             get { return id_insumo; }
@@ -29,6 +30,19 @@ namespace SFH_Software
         #endregion
 
         #region Metodos 
+        private bool validarformulario()
+        {
+
+            if (validaciones.EsSoloafanumerico(txtnom) == true & validaciones.EsNumero(txtcantidad) == true
+                & validaciones.EsSoloafanumerico(txtunidadmedida) == true)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
         private void PoblarComboBusqueda()
         {
             this.cmbxBuscar.Items.Clear();
@@ -185,24 +199,27 @@ namespace SFH_Software
             {
                 try
                 {
-                    String resultadoI = string.Empty;
-                    Insumos insumo = new Insumos();
-                    insumo.IdAreaInsumo = Convert.ToInt32(this.cmbxAreaInsumo.SelectedValue);
-                    insumo.IdGastos_insumo = Convert.ToInt32(this.cmbxGastos.SelectedValue);
-                    insumo.NomInsumos = this.txtnom.Text;
-                    insumo.Cantidad = int.Parse(this.txtcantidad.Text.ToString());
-                    insumo.UnidadMedida = this.txtunidadmedida.Text.ToString();
-                    insumo.DescripcionInsumo = this.txtDescripcion.Text.ToString();
-                    resultadoI = this.client_precio.InsertarInsumo(insumo);
-                    if (resultadoI != string.Empty)
+                    if (this.validarformulario())
                     {
-                        this.dataGridInsumos.DataSource = this.client_precio.ListarInsumos();
-                        this.LimpiarControles();
-                        MessageBox.Show("Insumo ingresado correctamente.", "SFH Administración de Clínica - Administración de Insumos", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Se produjo un error, vuelva a intentarlo.", "SFH Administración de Clínica - Administración de Insumos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        String resultadoI = string.Empty;
+                        Insumos insumo = new Insumos();
+                        insumo.IdAreaInsumo = Convert.ToInt32(this.cmbxAreaInsumo.SelectedValue);
+                        insumo.IdGastos_insumo = Convert.ToInt32(this.cmbxGastos.SelectedValue);
+                        insumo.NomInsumos = this.txtnom.Text;
+                        insumo.Cantidad = int.Parse(this.txtcantidad.Text.ToString());
+                        insumo.UnidadMedida = this.txtunidadmedida.Text.ToString();
+                        insumo.DescripcionInsumo = this.txtDescripcion.Text.ToString();
+                        resultadoI = this.client_precio.InsertarInsumo(insumo);
+                        if (resultadoI != string.Empty)
+                        {
+                            this.dataGridInsumos.DataSource = this.client_precio.ListarInsumos();
+                            this.LimpiarControles();
+                            MessageBox.Show("Insumo ingresado correctamente.", "SFH Administración de Clínica - Administración de Insumos", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Se produjo un error, vuelva a intentarlo.", "SFH Administración de Clínica - Administración de Insumos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                 }
                 catch
@@ -214,25 +231,28 @@ namespace SFH_Software
             {
                 try
                 {
-                    String resultadoM = string.Empty;
-                    Insumos insumo = new Insumos();
-                    insumo.IdInsumos = this.Idinsumo;
-                    insumo.IdAreaInsumo = Convert.ToInt32(this.cmbxAreaInsumo.SelectedValue);
-                    insumo.IdGastos_insumo = Convert.ToInt32(this.cmbxGastos.SelectedValue);
-                    insumo.NomInsumos = this.txtnom.Text;
-                    insumo.Cantidad = int.Parse(this.txtcantidad.Text.ToString());
-                    insumo.UnidadMedida = this.txtunidadmedida.Text.ToString();
-                    insumo.DescripcionInsumo = this.txtDescripcion.Text.ToString();
-                    resultadoM = this.client_precio.ModificarInsumo(insumo);
-                    if (resultadoM != string.Empty)
+                    if (this.validarformulario())
                     {
-                        this.dataGridInsumos.DataSource = this.client_precio.ListarInsumos();
-                        this.LimpiarControles();
-                        MessageBox.Show("Insumo modificado correctamente.", "SFH Administración de Clínica - Administración de Insumos", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Se produjo un error, vuelva a intentarlo.", "SFH Administración de Clínica - Administración de Insumos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        String resultadoM = string.Empty;
+                        Insumos insumo = new Insumos();
+                        insumo.IdInsumos = this.Idinsumo;
+                        insumo.IdAreaInsumo = Convert.ToInt32(this.cmbxAreaInsumo.SelectedValue);
+                        insumo.IdGastos_insumo = Convert.ToInt32(this.cmbxGastos.SelectedValue);
+                        insumo.NomInsumos = this.txtnom.Text;
+                        insumo.Cantidad = int.Parse(this.txtcantidad.Text.ToString());
+                        insumo.UnidadMedida = this.txtunidadmedida.Text.ToString();
+                        insumo.DescripcionInsumo = this.txtDescripcion.Text.ToString();
+                        resultadoM = this.client_precio.ModificarInsumo(insumo);
+                        if (resultadoM != string.Empty)
+                        {
+                            this.dataGridInsumos.DataSource = this.client_precio.ListarInsumos();
+                            this.LimpiarControles();
+                            MessageBox.Show("Insumo modificado correctamente.", "SFH Administración de Clínica - Administración de Insumos", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Se produjo un error, vuelva a intentarlo.", "SFH Administración de Clínica - Administración de Insumos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                 }
                 catch
@@ -245,6 +265,53 @@ namespace SFH_Software
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.LimpiarControles();
+        }
+
+        private void txtnom_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (validaciones.EsSoloafanumerico(txtnom))
+            {
+                errorProvider1.SetError(txtnom, String.Empty);
+                txtnom.BackColor = Color.Honeydew;
+            }
+            else
+            {
+                errorProvider1.SetError(txtnom, "El contenido ingresado debe ser alfa numérico");
+                txtnom.BackColor = Color.MistyRose;
+            }
+        }
+
+        private void txtcantidad_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (validaciones.EsNumero(txtcantidad))
+            {
+                errorProvider1.SetError(txtcantidad, String.Empty);
+                txtcantidad.BackColor = Color.Honeydew;
+            }
+            else
+            {
+                errorProvider1.SetError(txtcantidad, "Debe ingresar un número decimal o entero");
+                txtcantidad.BackColor = Color.MistyRose;
+            }
+        }
+
+        private void txtunidadmedida_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (validaciones.EsSoloafanumerico(txtunidadmedida))
+            {
+                errorProvider1.SetError(txtunidadmedida, String.Empty);
+                txtunidadmedida.BackColor = Color.Honeydew;
+            }
+            else
+            {
+                errorProvider1.SetError(txtunidadmedida, "El contenido ingresado debe ser alfa numérico");
+                txtunidadmedida.BackColor = Color.MistyRose;
+            }
+        }
+
+        private void txtcantidad_TextChanged(object sender, EventArgs e)
+        {
+
         }
        
     }

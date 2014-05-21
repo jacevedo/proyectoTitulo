@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAdministracionListasDePrecios));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -53,11 +54,13 @@
             this.txtvalorneto = new System.Windows.Forms.TextBox();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridPrecio)).BeginInit();
             this.groupBox4.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -86,10 +89,10 @@
             // 
             // dataGridPrecio
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
-            this.dataGridPrecio.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
+            this.dataGridPrecio.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridPrecio.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridPrecio.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.nombre,
@@ -101,8 +104,8 @@
             this.idPrecios});
             this.dataGridPrecio.Location = new System.Drawing.Point(6, 82);
             this.dataGridPrecio.Name = "dataGridPrecio";
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            this.dataGridPrecio.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            this.dataGridPrecio.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridPrecio.Size = new System.Drawing.Size(1116, 387);
             this.dataGridPrecio.TabIndex = 4;
             this.dataGridPrecio.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridPrecio_CellContentClick);
@@ -194,6 +197,7 @@
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(170, 20);
             this.txtBuscar.TabIndex = 2;
+            this.txtBuscar.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtBuscar_KeyUp);
             // 
             // groupBox2
             // 
@@ -249,6 +253,7 @@
             this.txtNom.Name = "txtNom";
             this.txtNom.Size = new System.Drawing.Size(201, 20);
             this.txtNom.TabIndex = 15;
+            this.txtNom.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtNom_KeyUp);
             // 
             // txtvalorneto
             // 
@@ -257,6 +262,7 @@
             this.txtvalorneto.Name = "txtvalorneto";
             this.txtvalorneto.Size = new System.Drawing.Size(201, 20);
             this.txtvalorneto.TabIndex = 14;
+            this.txtvalorneto.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtvalorneto_KeyUp);
             // 
             // btnCancelar
             // 
@@ -283,6 +289,10 @@
             this.label3.TabIndex = 3;
             this.label3.Text = "Administración de Precios Tratamientos";
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // frmAdministracionListasDePrecios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -302,6 +312,7 @@
             this.groupBox4.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -331,5 +342,6 @@
         private System.Windows.Forms.DataGridViewButtonColumn editar;
         private System.Windows.Forms.DataGridViewButtonColumn eliminarprecio;
         private System.Windows.Forms.DataGridViewTextBoxColumn idPrecios;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

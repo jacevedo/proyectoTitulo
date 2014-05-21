@@ -17,6 +17,7 @@ namespace SFH_Software
         ClientWsOdontologo client_odontologo = new ClientWsOdontologo();
         List<Odontologo> list_persona = new List<Odontologo>();
         private System.Windows.Forms.DataGridViewButtonColumn Editar;
+        Validaciones validaciones = new Validaciones();
         private int id_odontologo;
         public int Id_odontologo
         {
@@ -265,34 +266,37 @@ namespace SFH_Software
                         {
                             try
                             {
-                                Odontologo odontologo = new Odontologo();
-                                odontologo.IdOdontologo = result.IdOdontologo;
-                                odontologo.IdPersona = Convert.ToInt32(cmbxUsuario.SelectedValue);
-                                odontologo.Especialidad = txtesp.Text;
-                                if (this.client_odontologo.ModificarOdontologo(odontologo) != "")
+                                if (validaciones.EsSoloTexto(txtesp))
                                 {
-                                    String deshab = string.Empty;
-                                    switch (cmbxestado.SelectedIndex)
+                                    Odontologo odontologo = new Odontologo();
+                                    odontologo.IdOdontologo = result.IdOdontologo;
+                                    odontologo.IdPersona = Convert.ToInt32(cmbxUsuario.SelectedValue);
+                                    odontologo.Especialidad = txtesp.Text;
+                                    if (this.client_odontologo.ModificarOdontologo(odontologo) != "")
                                     {
-                                        case 0:
-                                            deshab = this.client_odontologo.DesabilitarHabilitarOdontologo(this.Id_odontologo, 0);
-                                            break;
+                                        String deshab = string.Empty;
+                                        switch (cmbxestado.SelectedIndex)
+                                        {
+                                            case 0:
+                                                deshab = this.client_odontologo.DesabilitarHabilitarOdontologo(this.Id_odontologo, 0);
+                                                break;
 
-                                        case 1:
-                                            deshab = this.client_odontologo.DesabilitarHabilitarOdontologo(this.Id_odontologo, 1);
-                                            break;
+                                            case 1:
+                                                deshab = this.client_odontologo.DesabilitarHabilitarOdontologo(this.Id_odontologo, 1);
+                                                break;
+                                        }
+                                        this.LimpiarControles();
+                                        datagriPersona.DataSource = this.client_odontologo.ListarOdontologo();
+                                        MessageBox.Show("Odontólogo modificado correctamente.", "SFH Administración de Usuarios del Sistema - Administración de Odontólogos", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        if (deshab == string.Empty)
+                                        {
+                                            MessageBox.Show("Estado del odontólogo NO fue modificado.", "SFH Administración de Usuarios del Sistema - Administración de Odontólogos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        }
                                     }
-                                    this.LimpiarControles();
-                                    datagriPersona.DataSource = this.client_odontologo.ListarOdontologo();
-                                    MessageBox.Show("Odontólogo modificado correctamente.", "SFH Administración de Usuarios del Sistema - Administración de Odontólogos", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    if (deshab == string.Empty)
+                                    else
                                     {
-                                        MessageBox.Show("Estado del odontólogo NO fue modificado.", "SFH Administración de Usuarios del Sistema - Administración de Odontólogos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        MessageBox.Show("Se produjo un error, vuelva a intentarlo.", "SFH Administración de Usuarios del Sistema - Administración de Odontólogos", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     }
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Se produjo un error, vuelva a intentarlo.", "SFH Administración de Usuarios del Sistema - Administración de Odontólogos", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 }
                             }
                             catch
@@ -305,19 +309,22 @@ namespace SFH_Software
                     {
                         try
                         {
-                            Odontologo odontologo = new Odontologo();
-                            odontologo.IdPersona = Convert.ToInt32(cmbxUsuario.SelectedValue);
-                            odontologo.Especialidad = txtesp.Text;
-                            String insert_odonto = this.client_odontologo.InsertarOdontologo(odontologo);
-                            if (insert_odonto != string.Empty)
+                            if (validaciones.EsSoloTexto(txtesp))
                             {
-                                this.LimpiarControles();
-                                datagriPersona.DataSource = this.client_odontologo.ListarOdontologo();
-                                MessageBox.Show("Odontologo ingresado correctamente.", "SFH Administración de Usuarios del Sistema - Administración de Odontólogos", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
-                            else
-                            {
-                                MessageBox.Show("Se produjo un error, vuelva a intentarlo.", "SFH Administración de Usuarios del Sistema - Administración de Odontólogos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                Odontologo odontologo = new Odontologo();
+                                odontologo.IdPersona = Convert.ToInt32(cmbxUsuario.SelectedValue);
+                                odontologo.Especialidad = txtesp.Text;
+                                String insert_odonto = this.client_odontologo.InsertarOdontologo(odontologo);
+                                if (insert_odonto != string.Empty)
+                                {
+                                    this.LimpiarControles();
+                                    datagriPersona.DataSource = this.client_odontologo.ListarOdontologo();
+                                    MessageBox.Show("Odontologo ingresado correctamente.", "SFH Administración de Usuarios del Sistema - Administración de Odontólogos", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Se produjo un error, vuelva a intentarlo.", "SFH Administración de Usuarios del Sistema - Administración de Odontólogos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
                             }
                         }
                         catch
@@ -332,35 +339,38 @@ namespace SFH_Software
             {
                 try
                 {
-                    Odontologo odontologo = new Odontologo();
-                    odontologo.IdOdontologo = this.Id_odontologo;
-                    odontologo.IdPersona = Convert.ToInt32(cmbxUsuario.SelectedValue);
-                    odontologo.Especialidad = txtesp.Text;
-                    if (this.client_odontologo.ModificarOdontologo(odontologo) != "")
+                    if (validaciones.EsSoloTexto(txtesp))
                     {
-                        String deshab_odonto = string.Empty;
-                        switch (cmbxestado.SelectedIndex)
+                        Odontologo odontologo = new Odontologo();
+                        odontologo.IdOdontologo = this.Id_odontologo;
+                        odontologo.IdPersona = Convert.ToInt32(cmbxUsuario.SelectedValue);
+                        odontologo.Especialidad = txtesp.Text;
+                        if (this.client_odontologo.ModificarOdontologo(odontologo) != "")
                         {
-                            case 0:
-                                deshab_odonto = this.client_odontologo.DesabilitarHabilitarOdontologo(this.Id_odontologo, 0);
-                                break;
+                            String deshab_odonto = string.Empty;
+                            switch (cmbxestado.SelectedIndex)
+                            {
+                                case 0:
+                                    deshab_odonto = this.client_odontologo.DesabilitarHabilitarOdontologo(this.Id_odontologo, 0);
+                                    break;
 
-                            case 1:
-                                deshab_odonto = this.client_odontologo.DesabilitarHabilitarOdontologo(this.Id_odontologo, 1);
-                                break;
+                                case 1:
+                                    deshab_odonto = this.client_odontologo.DesabilitarHabilitarOdontologo(this.Id_odontologo, 1);
+                                    break;
+                            }
+                            this.LimpiarControles();
+                            datagriPersona.DataSource = this.client_odontologo.ListarOdontologo();
+                            MessageBox.Show("Odontologo modificado satisfactoriamente", "SFH Administración de Usuarios del Sistema - Administración de Odontólogos", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            if (deshab_odonto == string.Empty)
+                            {
+                                MessageBox.Show("Estado del odontólogo NO fue modificado.", "SFH Administración de Usuarios del Sistema - Administración de Odontólogos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                         }
-                        this.LimpiarControles();
-                        datagriPersona.DataSource = this.client_odontologo.ListarOdontologo();
-                        MessageBox.Show("Odontologo modificado satisfactoriamente", "SFH Administración de Usuarios del Sistema - Administración de Odontólogos", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        if (deshab_odonto == string.Empty)
+                        else
                         {
-                            MessageBox.Show("Estado del odontólogo NO fue modificado.", "SFH Administración de Usuarios del Sistema - Administración de Odontólogos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Se produjo un error, vuelva a intentarlo.", "SFH Administración de Usuarios del Sistema - Administración de Odontólogos", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
-                    else
-                    {
-                        MessageBox.Show("Se produjo un error, vuelva a intentarlo.", "SFH Administración de Usuarios del Sistema - Administración de Odontólogos", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }                    
                 }
                 catch
                 {
@@ -396,6 +406,20 @@ namespace SFH_Software
             if (!this.Editar.Name.Equals("Editar"))
             {
                 this.PoblarBotonesGrilla();
+            }
+        }
+
+        private void txtesp_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (validaciones.EsSoloTexto(txtesp))
+            {
+                errorProvider1.SetError(txtesp, String.Empty);
+                txtesp.BackColor = Color.Honeydew;
+            }
+            else
+            {
+                errorProvider1.SetError(txtesp, "Solo se aceptan cadenas alfabéticas");
+                txtesp.BackColor = Color.MistyRose;
             }
         }
 

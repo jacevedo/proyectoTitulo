@@ -19,6 +19,7 @@ namespace SFH_Software
         List<Funcionario> list_persona = new List<Funcionario>();
         List<Persona> list_persona_funcionario = new List<Persona>();
         private System.Windows.Forms.DataGridViewButtonColumn Editar;
+        Validaciones validaciones = new Validaciones();
         private int id_funcionario;
 
         public int Id_funcionario
@@ -257,6 +258,7 @@ namespace SFH_Software
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
+
             if (btnNuevo.Text.ToString().Trim() == "Ingresar Funcionario")
             {
                 if (cmbxUsuario.SelectedValue.ToString() != "")
@@ -270,35 +272,37 @@ namespace SFH_Software
                         {
                             try
                             {
-                                Funcionario funcionario = new Funcionario();
-                                funcionario.IdFuncionario = result.IdFuncionario;
-                                funcionario.IdPersona = Convert.ToInt32(cmbxUsuario.SelectedValue.ToString());
-                                funcionario.PuestoTrabajo = txtPuesto.Text.ToString();
-                                if (this.client_fun.ModificarFuncionario(funcionario) != "")
-                                {
-                                    String deshab = string.Empty;
-                                    switch (cmbxestado.SelectedIndex)
+                                if (validaciones.EsSoloTexto(txtPuesto)) {
+                                    Funcionario funcionario = new Funcionario();
+                                    funcionario.IdFuncionario = result.IdFuncionario;
+                                    funcionario.IdPersona = Convert.ToInt32(cmbxUsuario.SelectedValue.ToString());
+                                    funcionario.PuestoTrabajo = txtPuesto.Text.ToString();
+                                    if (this.client_fun.ModificarFuncionario(funcionario) != "")
                                     {
-                                        case 0:
-                                            deshab = this.client_fun.DesabilitarHabilitarFuncionario(this.Id_funcionario, 0);
-                                            break;
+                                        String deshab = string.Empty;
+                                        switch (cmbxestado.SelectedIndex)
+                                        {
+                                            case 0:
+                                                deshab = this.client_fun.DesabilitarHabilitarFuncionario(this.Id_funcionario, 0);
+                                                break;
 
-                                        case 1:
-                                            deshab = this.client_fun.DesabilitarHabilitarFuncionario(this.Id_funcionario, 1);
-                                            break;
+                                            case 1:
+                                                deshab = this.client_fun.DesabilitarHabilitarFuncionario(this.Id_funcionario, 1);
+                                                break;
+                                        }
+                                        this.LimpiarControles();
+                                        datagriPersona.DataSource = this.client_fun.ListarFuncionario();
+                                        MessageBox.Show("Funcionario modificado correctamente.", "SFH Administración de Usuarios del Sistema - Administración de Funcionarios", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                                        if (deshab == string.Empty)
+                                        {
+                                            MessageBox.Show("Estado del funcionario NO fue modificado.", "SFH Administración de Usuarios del Sistema - Administración de Funcionarios", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        }
                                     }
-                                    this.LimpiarControles();
-                                    datagriPersona.DataSource = this.client_fun.ListarFuncionario();
-                                    MessageBox.Show("Funcionario modificado correctamente.", "SFH Administración de Usuarios del Sistema - Administración de Funcionarios", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    
-                                    if (deshab == string.Empty)
+                                    else
                                     {
-                                        MessageBox.Show("Estado del funcionario NO fue modificado.", "SFH Administración de Usuarios del Sistema - Administración de Funcionarios", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        MessageBox.Show("Se produjo un error, vuelva a intentarlo.", "SFH Administración de Usuarios del Sistema - Administración de Funcionarios", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     }
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Se produjo un error, vuelva a intentarlo.", "SFH Administración de Usuarios del Sistema - Administración de Funcionarios", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 }
                             }
                             catch
@@ -311,19 +315,22 @@ namespace SFH_Software
                     {
                         try
                         {
-                            Funcionario funcionario = new Funcionario();
-                            funcionario.IdPersona = Convert.ToInt32(cmbxUsuario.SelectedValue);
-                            funcionario.PuestoTrabajo = txtPuesto.Text;
-                            String id_func = this.client_fun.InsertarFuncionario(funcionario);
-                            if (id_func != string.Empty)
+                            if (validaciones.EsSoloTexto(txtPuesto))
                             {
-                                this.LimpiarControles();
-                                datagriPersona.DataSource = this.client_fun.ListarFuncionario();
-                                MessageBox.Show("Funcionario ingresado correctamente.", "SFH Administración de Usuarios del Sistema - Administración de Funcionarios", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
-                            else
-                            {
-                                MessageBox.Show("Se produjo un error, vuelva a intentarlo.", "SFH Administración de Usuarios del Sistema - Administración de Funcionarios", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                Funcionario funcionario = new Funcionario();
+                                funcionario.IdPersona = Convert.ToInt32(cmbxUsuario.SelectedValue);
+                                funcionario.PuestoTrabajo = txtPuesto.Text;
+                                String id_func = this.client_fun.InsertarFuncionario(funcionario);
+                                if (id_func != string.Empty)
+                                {
+                                    this.LimpiarControles();
+                                    datagriPersona.DataSource = this.client_fun.ListarFuncionario();
+                                    MessageBox.Show("Funcionario ingresado correctamente.", "SFH Administración de Usuarios del Sistema - Administración de Funcionarios", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Se produjo un error, vuelva a intentarlo.", "SFH Administración de Usuarios del Sistema - Administración de Funcionarios", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
                             }
                         }
                         catch
@@ -337,36 +344,39 @@ namespace SFH_Software
             {
                 try
                 {
-                    Funcionario funcionario = new Funcionario();
-                    funcionario.IdFuncionario = this.Id_funcionario;
-                    funcionario.IdPersona = Convert.ToInt32(cmbxUsuario.SelectedValue);
-                    funcionario.PuestoTrabajo = txtPuesto.Text;
-                    String resultadoM = this.client_fun.ModificarFuncionario(funcionario);
-                    if (resultadoM != "")
+                    if (validaciones.EsSoloTexto(txtPuesto))
                     {
-                        String deshab = string.Empty;
-                        switch (cmbxestado.SelectedIndex)
+                        Funcionario funcionario = new Funcionario();
+                        funcionario.IdFuncionario = this.Id_funcionario;
+                        funcionario.IdPersona = Convert.ToInt32(cmbxUsuario.SelectedValue);
+                        funcionario.PuestoTrabajo = txtPuesto.Text;
+                        String resultadoM = this.client_fun.ModificarFuncionario(funcionario);
+                        if (resultadoM != "")
                         {
-                            case 0:
-                                deshab = this.client_fun.DesabilitarHabilitarFuncionario(this.Id_funcionario, 0);
-                                break;
+                            String deshab = string.Empty;
+                            switch (cmbxestado.SelectedIndex)
+                            {
+                                case 0:
+                                    deshab = this.client_fun.DesabilitarHabilitarFuncionario(this.Id_funcionario, 0);
+                                    break;
 
-                            case 1:
-                                deshab = this.client_fun.DesabilitarHabilitarFuncionario(this.Id_funcionario, 1);
-                                break;
+                                case 1:
+                                    deshab = this.client_fun.DesabilitarHabilitarFuncionario(this.Id_funcionario, 1);
+                                    break;
+                            }
+                            this.LimpiarControles();
+                            datagriPersona.DataSource = this.client_fun.ListarFuncionario();
+                            MessageBox.Show("Funcionario modificado correctamente.", "SFH Administración de Usuarios del Sistema - Administración de Funcionarios", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                            if (deshab == string.Empty)
+                            {
+                                MessageBox.Show("Estado del funcionario NO fue modificado.", "SFH Administración de Usuarios del Sistema - Administración de Funcionarios", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                         }
-                        this.LimpiarControles();
-                        datagriPersona.DataSource = this.client_fun.ListarFuncionario();
-                        MessageBox.Show("Funcionario modificado correctamente.", "SFH Administración de Usuarios del Sistema - Administración de Funcionarios", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                        if (deshab == string.Empty)
+                        else
                         {
-                            MessageBox.Show("Estado del funcionario NO fue modificado.", "SFH Administración de Usuarios del Sistema - Administración de Funcionarios", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Se produjo un error, vuelva a intentarlo.", "SFH Administración de Usuarios del Sistema - Administración de Funcionarios", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Se produjo un error, vuelva a intentarlo.", "SFH Administración de Usuarios del Sistema - Administración de Funcionarios", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 catch
@@ -402,6 +412,20 @@ namespace SFH_Software
             if (!this.Editar.Name.Equals("Editar"))
             {
                 this.PoblarBotonesGrilla();
+            }
+        }
+
+        private void txtPuesto_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (validaciones.EsSoloTexto(txtPuesto))
+            {
+                errorProvider1.SetError(txtPuesto, String.Empty);
+                txtPuesto.BackColor = Color.Honeydew;
+            }
+            else
+            {
+                errorProvider1.SetError(txtPuesto, "Solo se aceptan cadenas alfabéticas");
+                txtPuesto.BackColor = Color.MistyRose;
             }
         }
     }

@@ -25,7 +25,7 @@ namespace SFH_Software
         ClientWsPaciente cliente_paciente = new ClientWsPaciente();
         
         List<Persona> list_persona = new List<Persona>();
-    
+        Validaciones validaciones = new Validaciones();
         private int id_persona;
         private int id_perfil_nat;
 
@@ -45,6 +45,22 @@ namespace SFH_Software
         #endregion
 
         #region Metodos 
+        
+        private bool validarformulario()
+        {
+            if (validaciones.RutValido(txtrut.Text.ToString(), txtdv.Text.ToString()) == true
+                & validaciones.EsSoloTexto(txtnom) == true & validaciones.EsSoloTexto(txtapellpater) == true
+                & validaciones.EsSoloTexto(txtApeMat) == true & validaciones.ValidarClave(txtpass) == true
+                & validaciones.ValidarClaves(txtpass, txtpass2) == true)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         private string EliminarPerfiles(int indxPerfil, int param_idPersona)
         {
             string res = string.Empty;
@@ -128,8 +144,8 @@ namespace SFH_Software
             this.txtApeMat.Text = persona.ApellidoMaterno;
             this.mcFechaNac.SelectionStart = persona.FechaNacimiento;
             this.mcFechaNac.SelectionEnd = persona.FechaNacimiento;
-            this.txtpass.Text = "1234";
-            this.txtpass2.Text = "1234";
+            this.txtpass.Text = "asdcasco";
+            this.txtpass2.Text = "asdcasco";
             btnNuevo.Text = "Guardar Cambios";
         }
 
@@ -537,52 +553,54 @@ namespace SFH_Software
                     {
                         try
                         {
-                            Persona persona = new Persona();
-                            persona.IdPerfil = Convert.ToInt32(this.cmbxPerfil.SelectedIndex);
-                            persona.Rut = int.Parse(this.txtrut.Text);
-                            persona.Dv = this.txtdv.Text;
-                            persona.Nombre = this.txtnom.Text;
-                            persona.ApellidoPaterno = this.txtapellpater.Text;
-                            persona.ApellidoMaterno = this.txtApeMat.Text;
-                            persona.FechaNacimiento = mcFechaNac.SelectionStart;
-                            if (txtpass.ToString() == txtpass2.ToString())
-                            {
-                                String id_per = client_usuario.InsertarPersona(persona);
-                                if (id_per != string.Empty)
+                            if (this.validarformulario()) {
+                                Persona persona = new Persona();
+                                persona.IdPerfil = Convert.ToInt32(this.cmbxPerfil.SelectedIndex);
+                                persona.Rut = int.Parse(this.txtrut.Text);
+                                persona.Dv = this.txtdv.Text;
+                                persona.Nombre = this.txtnom.Text;
+                                persona.ApellidoPaterno = this.txtapellpater.Text;
+                                persona.ApellidoMaterno = this.txtApeMat.Text;
+                                persona.FechaNacimiento = mcFechaNac.SelectionStart;
+                                if (txtpass.ToString() == txtpass2.ToString())
                                 {
-                                    Pass pass = new Pass();
-                                    pass.IdPersona = int.Parse(id_per);
-                                    pass.Passtext = txtpass.Text.ToString();
-                                    pass.FechaCaducidad = mcFechadeCaducidad.SelectionStart;
-                                    Datoscontacto contacto = this.DatosContactoDefault();
-                                    String id_dat = this.client_pass_dat.InsertarDatosdeContacto(contacto);
-                                    if (id_dat != string.Empty)
+                                    String id_per = client_usuario.InsertarPersona(persona);
+                                    if (id_per != string.Empty)
                                     {
-                                        String id_pass = this.client_pass_dat.InsertarPass(pass);
-                                        if (id_pass != string.Empty)
+                                        Pass pass = new Pass();
+                                        pass.IdPersona = int.Parse(id_per);
+                                        pass.Passtext = txtpass.Text.ToString();
+                                        pass.FechaCaducidad = mcFechadeCaducidad.SelectionStart;
+                                        Datoscontacto contacto = this.DatosContactoDefault();
+                                        String id_dat = this.client_pass_dat.InsertarDatosdeContacto(contacto);
+                                        if (id_dat != string.Empty)
                                         {
-                                            datagriPersona.DataSource = this.client_usuario.ListarDatosPersona();
-                                            this.LimpiarControles();
-                                            MessageBox.Show("Usuario registrado correctamente.", "SFH Administración de Usuarios del Sistema - Administración de Usuarios", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                            String id_pass = this.client_pass_dat.InsertarPass(pass);
+                                            if (id_pass != string.Empty)
+                                            {
+                                                datagriPersona.DataSource = this.client_usuario.ListarDatosPersona();
+                                                this.LimpiarControles();
+                                                MessageBox.Show("Usuario registrado correctamente.", "SFH Administración de Usuarios del Sistema - Administración de Usuarios", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                            }
+                                            else
+                                            {
+                                                MessageBox.Show("Contraseña NO fue ingresada.", "SFH Administración de Usuarios del Sistema - Administración de Usuarios", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                            }
                                         }
                                         else
                                         {
-                                            MessageBox.Show("Contraseña NO fue ingresada.", "SFH Administración de Usuarios del Sistema - Administración de Usuarios", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                            MessageBox.Show("Datos de Contacto NO fueron ingresados.", "SFH Administración de Usuarios del Sistema - Administración de Usuarios", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                         }
                                     }
                                     else
                                     {
-                                        MessageBox.Show("Datos de Contacto NO fueron ingresados.", "SFH Administración de Usuarios del Sistema - Administración de Usuarios", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        MessageBox.Show("Persona NO fue ingresada.", "SFH Administración de Usuarios del Sistema - Administración de Usuarios", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     }
                                 }
                                 else
                                 {
-                                    MessageBox.Show("Persona NO fue ingresada.", "SFH Administración de Usuarios del Sistema - Administración de Usuarios", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    MessageBox.Show("Contraseñas ingresadas no coinciden.", "SFH Administración de Usuarios del Sistema - Administración de Usuarios", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 }
-                            }
-                            else
-                            {
-                                MessageBox.Show("Contraseñas ingresadas no coinciden.", "SFH Administración de Usuarios del Sistema - Administración de Usuarios", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
                         catch
@@ -596,6 +614,7 @@ namespace SFH_Software
             {
                 try
                 {
+                    if (this.validarformulario()) {
                     Persona persona = new Persona();
                     persona.IdPersona = this.Id_persona;
                     persona.IdPerfil = Convert.ToInt32(this.cmbxPerfil.SelectedIndex);
@@ -647,6 +666,7 @@ namespace SFH_Software
                     {
                         MessageBox.Show("Contraseñas ingresadas no coinciden.", "SFH Administración de Usuarios del Sistema - Administración de Usuarios", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
+                        }
                 }
                 catch
                 {
@@ -668,5 +688,89 @@ namespace SFH_Software
                     break;
             }
         }
+
+        private void txtdv_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (validaciones.RutValido(txtrut.Text.ToString(),txtdv.Text.ToString()))
+            {
+                errorProvider1.SetError(txtdv, String.Empty);
+                txtdv.BackColor = Color.Honeydew;
+            }
+            else
+            {
+                errorProvider1.SetError(txtdv, "El nombre no puede contener números y caracteres especiales");
+                txtdv.BackColor = Color.MistyRose;
+            }
+        }
+
+        private void txtnom_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (validaciones.EsSoloTexto(txtnom))
+            {
+                errorProvider1.SetError(txtnom, String.Empty);
+                txtnom.BackColor = Color.Honeydew;
+            }
+            else
+            {
+                errorProvider1.SetError(txtnom, "El nombre no puede contener números y caracteres especiales");
+                txtnom.BackColor = Color.MistyRose;
+            }
+        }
+
+        private void txtapellpater_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (validaciones.EsSoloTexto(txtapellpater))
+            {
+                errorProvider1.SetError(txtapellpater, String.Empty);
+                txtapellpater.BackColor = Color.Honeydew;
+            }
+            else
+            {
+                errorProvider1.SetError(txtapellpater, "El apellido paterno no puede contener números y caracteres especiales");
+                txtapellpater.BackColor = Color.MistyRose;
+            }
+        }
+
+        private void txtApeMat_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (validaciones.EsSoloTexto(txtApeMat))
+            {
+                errorProvider1.SetError(txtApeMat, String.Empty);
+                txtApeMat.BackColor = Color.Honeydew;
+            }
+            else
+            {
+                errorProvider1.SetError(txtApeMat, "El apellido materno no puede contener números y caracteres especiales");
+                txtApeMat.BackColor = Color.MistyRose;
+            }
+        }
+
+        private void txtpass_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (validaciones.ValidarClave(txtpass))
+            {
+                errorProvider1.SetError(txtpass, String.Empty);
+                txtpass.BackColor = Color.Honeydew;
+            }
+            else
+            {
+                errorProvider1.SetError(txtpass, "La contraseña debe contener a lo menos 7 caracteres");
+                txtpass.BackColor = Color.MistyRose;
+            }
+        }
+
+        private void txtpass2_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (validaciones.ValidarClaves(txtpass,txtpass2)) {
+                errorProvider1.SetError(txtpass2, String.Empty);
+                txtpass2.BackColor = Color.Honeydew;
+            }
+            else
+            {
+                errorProvider1.SetError(txtpass2, "La contraseñas debe coincidir entre si");
+                txtpass2.BackColor = Color.MistyRose;
+            }
+        }
+       
     }
 }

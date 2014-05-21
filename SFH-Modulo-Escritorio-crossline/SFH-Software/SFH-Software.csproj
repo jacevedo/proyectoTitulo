@@ -194,6 +194,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Validaciones.cs" />
     <EmbeddedResource Include="frmAbonos.resx">
       <DependentUpon>frmAbonos.cs</DependentUpon>
     </EmbeddedResource>

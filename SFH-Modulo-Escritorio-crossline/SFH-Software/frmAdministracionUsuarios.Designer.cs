@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAdministracionUsuarios));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -65,6 +66,7 @@
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.mcFechaNac = new System.Windows.Forms.MonthCalendar();
             this.label3 = new System.Windows.Forms.Label();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox7.SuspendLayout();
@@ -73,6 +75,7 @@
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -240,11 +243,12 @@
             this.txtpass2.Size = new System.Drawing.Size(145, 20);
             this.txtpass2.TabIndex = 64;
             this.txtpass2.UseSystemPasswordChar = true;
+            this.txtpass2.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtpass2_KeyUp);
             // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(295, 132);
+            this.label16.Location = new System.Drawing.Point(288, 132);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(51, 13);
             this.label16.TabIndex = 63;
@@ -258,6 +262,7 @@
             this.txtpass.Size = new System.Drawing.Size(145, 20);
             this.txtpass.TabIndex = 62;
             this.txtpass.UseSystemPasswordChar = true;
+            this.txtpass.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtpass_KeyUp);
             // 
             // btnNuevo
             // 
@@ -309,9 +314,9 @@
             this.groupBox4.Controls.Add(this.label2);
             this.groupBox4.Controls.Add(this.txtApeMat);
             this.groupBox4.ForeColor = System.Drawing.Color.White;
-            this.groupBox4.Location = new System.Drawing.Point(38, 10);
+            this.groupBox4.Location = new System.Drawing.Point(6, 10);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(336, 236);
+            this.groupBox4.Size = new System.Drawing.Size(368, 236);
             this.groupBox4.TabIndex = 69;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Datos de Usuario";
@@ -319,7 +324,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(26, 19);
+            this.label14.Location = new System.Drawing.Point(23, 19);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(30, 13);
             this.label14.TabIndex = 60;
@@ -327,15 +332,17 @@
             // 
             // txtnom
             // 
-            this.txtnom.Location = new System.Drawing.Point(128, 97);
+            this.txtnom.Location = new System.Drawing.Point(125, 97);
+            this.txtnom.MaxLength = 50;
             this.txtnom.Name = "txtnom";
             this.txtnom.Size = new System.Drawing.Size(180, 20);
             this.txtnom.TabIndex = 15;
+            this.txtnom.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtnom_KeyUp);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(26, 97);
+            this.label1.Location = new System.Drawing.Point(23, 97);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(44, 13);
             this.label1.TabIndex = 16;
@@ -344,7 +351,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(28, 138);
+            this.label12.Location = new System.Drawing.Point(25, 138);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(84, 13);
             this.label12.TabIndex = 68;
@@ -352,7 +359,8 @@
             // 
             // txtrut
             // 
-            this.txtrut.Location = new System.Drawing.Point(129, 59);
+            this.txtrut.Location = new System.Drawing.Point(126, 59);
+            this.txtrut.MaxLength = 8;
             this.txtrut.Name = "txtrut";
             this.txtrut.Size = new System.Drawing.Size(128, 20);
             this.txtrut.TabIndex = 38;
@@ -360,7 +368,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(28, 56);
+            this.label13.Location = new System.Drawing.Point(25, 56);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(24, 13);
             this.label13.TabIndex = 39;
@@ -368,22 +376,26 @@
             // 
             // txtapellpater
             // 
-            this.txtapellpater.Location = new System.Drawing.Point(130, 138);
+            this.txtapellpater.Location = new System.Drawing.Point(127, 138);
+            this.txtapellpater.MaxLength = 50;
             this.txtapellpater.Name = "txtapellpater";
             this.txtapellpater.Size = new System.Drawing.Size(180, 20);
             this.txtapellpater.TabIndex = 67;
+            this.txtapellpater.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtapellpater_KeyUp);
             // 
             // txtdv
             // 
-            this.txtdv.Location = new System.Drawing.Point(277, 59);
+            this.txtdv.Location = new System.Drawing.Point(274, 59);
+            this.txtdv.MaxLength = 1;
             this.txtdv.Name = "txtdv";
             this.txtdv.Size = new System.Drawing.Size(33, 20);
             this.txtdv.TabIndex = 41;
+            this.txtdv.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtdv_KeyUp);
             // 
             // cmbxPerfil
             // 
             this.cmbxPerfil.FormattingEnabled = true;
-            this.cmbxPerfil.Location = new System.Drawing.Point(129, 16);
+            this.cmbxPerfil.Location = new System.Drawing.Point(126, 16);
             this.cmbxPerfil.Name = "cmbxPerfil";
             this.cmbxPerfil.Size = new System.Drawing.Size(179, 21);
             this.cmbxPerfil.TabIndex = 59;
@@ -391,7 +403,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(26, 184);
+            this.label2.Location = new System.Drawing.Point(23, 184);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(86, 13);
             this.label2.TabIndex = 66;
@@ -399,10 +411,12 @@
             // 
             // txtApeMat
             // 
-            this.txtApeMat.Location = new System.Drawing.Point(128, 181);
+            this.txtApeMat.Location = new System.Drawing.Point(125, 181);
+            this.txtApeMat.MaxLength = 50;
             this.txtApeMat.Name = "txtApeMat";
             this.txtApeMat.Size = new System.Drawing.Size(180, 20);
             this.txtApeMat.TabIndex = 65;
+            this.txtApeMat.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtApeMat_KeyUp);
             // 
             // groupBox6
             // 
@@ -433,12 +447,16 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "Administración de Cuentas de Usuario ";
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // frmAdministracionUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(200)))), ((int)(((byte)(226)))));
-            this.ClientSize = new System.Drawing.Size(1257, 781);
+            this.ClientSize = new System.Drawing.Size(1257, 742);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -456,6 +474,7 @@
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -498,6 +517,7 @@
         private System.Windows.Forms.TextBox txtdvbusqueda;
         private System.Windows.Forms.MonthCalendar mcFechadeCaducidad;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
         
     }
 }

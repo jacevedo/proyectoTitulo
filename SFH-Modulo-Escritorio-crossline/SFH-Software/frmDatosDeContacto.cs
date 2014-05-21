@@ -20,8 +20,8 @@ namespace SFH_Software
         List<RegionContacto> list_region = new List<RegionContacto>();
         List<Comuna> list_comuna = new List<Comuna>();
         private System.Windows.Forms.DataGridViewButtonColumn Editar;
-        
-      
+        Validaciones validaciones = new Validaciones();
+       
         public int Id_persona
         {
             get { return id_persona; }
@@ -41,7 +41,22 @@ namespace SFH_Software
             this.mcfechaIngreso.SelectionEnd = contacto.FechaIngreso;
             btnNuevo.Text = "Guardar Cambios";
         }
+        #region Metodos
+        private bool validarformulario()
+        {
+            if (validaciones.EsNumero(txtTelefono) == true & validaciones.EsNumero(txtCelular) == true
+              & validaciones.EsSoloafanumerico(txtdir) == true & validaciones.ValidaCorreo(txtmail) == true)
+            {
+                return true;
 
+            }
+            else
+            {
+
+                return false;
+            }
+        }
+        #endregion
         private void CargarDatosUsuario(int e)
         {
             List<Datoscontacto> list = this.client_datos.ListarPersonasDatosDeContacto();
@@ -164,33 +179,71 @@ namespace SFH_Software
                 if (cmbxUsuario.SelectedValue.ToString() != "")
                 {
                     //datagriPersona.DataSource = 
-                    List<Datoscontacto> list = this.client_datos.ListarPersonasDatosDeContacto();
-                    int patron = Convert.ToInt32(cmbxUsuario.SelectedValue.ToString());
-                    Datoscontacto result = list.Find(delegate(Datoscontacto dat) { return dat.IdPersona == patron; });
-                    if (result != null)
-                    {
-                        if (MessageBox.Show("El paciente " + result.Nombre + " " + result.ApellidoPaterno + " tiene registrado sus datos de contacto dentro del sistema, ¿Desea reemplazarlos con los recién ingresados?", "SFH Administración de Usuarios del Sistema - Administración de Usuarios", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+                   
+                        List<Datoscontacto> list = this.client_datos.ListarPersonasDatosDeContacto();
+                        int patron = Convert.ToInt32(cmbxUsuario.SelectedValue.ToString());
+                        Datoscontacto result = list.Find(delegate(Datoscontacto dat) { return dat.IdPersona == patron; });
+                        if (result != null)
+                        {
+                            if (MessageBox.Show("El paciente " + result.Nombre + " " + result.ApellidoPaterno + " tiene registrado sus datos de contacto dentro del sistema, ¿Desea reemplazarlos con los recién ingresados?", "SFH Administración de Usuarios del Sistema - Administración de Usuarios", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+                            {
+                                try
+                                {
+                                    if (validarformulario())
+                                    {
+                                        Datoscontacto datos = new Datoscontacto();
+                                        datos.IdPersona_dat = Convert.ToInt32(this.cmbxUsuario.SelectedValue);
+                                        datos.IdComuna = Convert.ToInt32(this.cmbxComuna.SelectedValue);
+                                        datos.FonoFijo = txtTelefono.Text;
+                                        datos.FonoCelular = txtCelular.Text;
+                                        datos.Mail = txtmail.Text;
+                                        datos.Direccion = txtdir.Text;
+                                        datos.FechaIngreso = mcfechaIngreso.SelectionStart;
+                                        String id_datos_m = client_datos.ModificarDatosdeContacto(datos);
+                                        if (id_datos_m != string.Empty)
+                                        {
+                                            this.LimpiarControles();
+                                            datagriPersona.DataSource = this.client_datos.ListarPersonasDatosDeContacto();
+                                            MessageBox.Show("Datos de contacto modificado satisfactoriamente", "SFH Administración de Usuarios del Sistema - Administración de Usuarios", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        }
+                                        else
+                                        {
+                                            MessageBox.Show("Se produjo un error, vuelva a intentarlo.", "SFH Administración de Usuarios del Sistema - Administración de Usuarios", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        }
+                                    }
+                                }
+                                catch
+                                {
+                                    MessageBox.Show("Se produjo un error, vuelva a intentarlo.", "SFH Administración de Usuarios del Sistema - Administración de Usuarios", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
+                            }
+
+                        }
+                        else
                         {
                             try
                             {
-                                Datoscontacto datos = new Datoscontacto();
-                                datos.IdPersona_dat = Convert.ToInt32(this.cmbxUsuario.SelectedValue);
-                                datos.IdComuna = Convert.ToInt32(this.cmbxComuna.SelectedValue);
-                                datos.FonoFijo = txtTelefono.Text;
-                                datos.FonoCelular = txtCelular.Text;
-                                datos.Mail = txtmail.Text;
-                                datos.Direccion = txtdir.Text;
-                                datos.FechaIngreso = mcfechaIngreso.SelectionStart;
-                                String id_datos_m = client_datos.ModificarDatosdeContacto(datos);
-                                if (id_datos_m != string.Empty)
+                                if (validarformulario())
                                 {
-                                    this.LimpiarControles();
-                                    datagriPersona.DataSource = this.client_datos.ListarPersonasDatosDeContacto();
-                                    MessageBox.Show("Datos de contacto modificado satisfactoriamente", "SFH Administración de Usuarios del Sistema - Administración de Usuarios", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Se produjo un error, vuelva a intentarlo.", "SFH Administración de Usuarios del Sistema - Administración de Usuarios", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    Datoscontacto datos = new Datoscontacto();
+                                    datos.IdPersona_dat = Convert.ToInt32(this.cmbxUsuario.SelectedValue);
+                                    datos.IdComuna = Convert.ToInt32(this.cmbxComuna.SelectedValue);
+                                    datos.FonoFijo = txtTelefono.Text;
+                                    datos.FonoCelular = txtCelular.Text;
+                                    datos.Mail = txtmail.Text;
+                                    datos.Direccion = txtdir.Text;
+                                    datos.FechaIngreso = mcfechaIngreso.SelectionStart;
+                                    String id_datos_i = client_datos.InsertarDatosdeContacto(datos);
+                                    if (id_datos_i != string.Empty)
+                                    {
+                                        this.LimpiarControles();
+                                        datagriPersona.DataSource = this.client_datos.ListarPersonasDatosDeContacto();
+                                        MessageBox.Show("Datos de contacto registrados satisfactoriamente", "SFH Administración de Usuarios del Sistema - Administración de Usuarios", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("Se produjo un error, vuelva a intentarlo.", "SFH Administración de Usuarios del Sistema - Administración de Usuarios", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    }
                                 }
                             }
                             catch
@@ -198,11 +251,13 @@ namespace SFH_Software
                                 MessageBox.Show("Se produjo un error, vuelva a intentarlo.", "SFH Administración de Usuarios del Sistema - Administración de Usuarios", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
-  
                     }
-                    else
+                }
+                else if (btnNuevo.Text.ToString().Trim() == "Guardar Cambios")
+                {
+                    try
                     {
-                        try
+                        if (validarformulario())
                         {
                             Datoscontacto datos = new Datoscontacto();
                             datos.IdPersona_dat = Convert.ToInt32(this.cmbxUsuario.SelectedValue);
@@ -212,54 +267,24 @@ namespace SFH_Software
                             datos.Mail = txtmail.Text;
                             datos.Direccion = txtdir.Text;
                             datos.FechaIngreso = mcfechaIngreso.SelectionStart;
-                            String id_datos_i = client_datos.InsertarDatosdeContacto(datos);
-                            if (id_datos_i != string.Empty)
+                            String datos_mod = client_datos.ModificarDatosdeContacto(datos);
+                            if (datos_mod != string.Empty)
                             {
                                 this.LimpiarControles();
                                 datagriPersona.DataSource = this.client_datos.ListarPersonasDatosDeContacto();
-                                MessageBox.Show("Datos de contacto registrados satisfactoriamente", "SFH Administración de Usuarios del Sistema - Administración de Usuarios", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                                MessageBox.Show("Usuario modificado satisfactoriamente", "SFH Administración de Usuarios del Sistema - Administración de Usuarios", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
                             else
                             {
                                 MessageBox.Show("Se produjo un error, vuelva a intentarlo.", "SFH Administración de Usuarios del Sistema - Administración de Usuarios", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
-                        catch
-                        {
-                            MessageBox.Show("Se produjo un error, vuelva a intentarlo.", "SFH Administración de Usuarios del Sistema - Administración de Usuarios", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
                     }
-                }
-            }
-            else if (btnNuevo.Text.ToString().Trim() == "Guardar Cambios")
-            {
-                try
-                {
-                    Datoscontacto datos = new Datoscontacto();
-                    datos.IdPersona_dat = Convert.ToInt32(this.cmbxUsuario.SelectedValue);
-                    datos.IdComuna = Convert.ToInt32(this.cmbxComuna.SelectedValue);
-                    datos.FonoFijo = txtTelefono.Text;
-                    datos.FonoCelular = txtCelular.Text;
-                    datos.Mail = txtmail.Text;
-                    datos.Direccion = txtdir.Text;
-                    datos.FechaIngreso = mcfechaIngreso.SelectionStart;
-                    String datos_mod = client_datos.ModificarDatosdeContacto(datos);
-                    if (datos_mod != string.Empty)
-                    {
-                        this.LimpiarControles();
-                        datagriPersona.DataSource = this.client_datos.ListarPersonasDatosDeContacto();
-
-                        MessageBox.Show("Usuario modificado satisfactoriamente", "SFH Administración de Usuarios del Sistema - Administración de Usuarios", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
+                    catch
                     {
                         MessageBox.Show("Se produjo un error, vuelva a intentarlo.", "SFH Administración de Usuarios del Sistema - Administración de Usuarios", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                }
-                catch
-                {
-                    MessageBox.Show("Se produjo un error, vuelva a intentarlo.", "SFH Administración de Usuarios del Sistema - Administración de Usuarios", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
             }
         }
 
@@ -311,6 +336,62 @@ namespace SFH_Software
             if (!this.Editar.Name.Equals("Editar"))
             {
                 this.PoblarBotonesGrilla();
+            }
+        }
+
+        private void txtTelefono_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (validaciones.EsNumero(txtTelefono))
+            {
+                errorProvider1.SetError(txtTelefono, String.Empty);
+                txtTelefono.BackColor = Color.Honeydew;
+            }
+            else
+            {
+                errorProvider1.SetError(txtTelefono, "El Formato del número telefónico debe ser 298183665");
+                txtTelefono.BackColor = Color.MistyRose;
+            }
+        }
+
+        private void txtCelular_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (validaciones.EsNumero(txtCelular))
+            {
+                errorProvider1.SetError(txtCelular, String.Empty);
+                txtCelular.BackColor = Color.Honeydew;
+            }
+            else
+            {
+                errorProvider1.SetError(txtCelular, "El Formato del número telefónico debe ser 951173615");
+                txtCelular.BackColor = Color.MistyRose;
+            }
+        }
+
+        private void txtdir_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (validaciones.EsSoloafanumerico(txtdir))
+            {
+                errorProvider1.SetError(txtdir, String.Empty);
+                txtdir.BackColor = Color.Honeydew;
+            }
+            else
+            {
+                errorProvider1.SetError(txtdir, "El contenido ingresado debe ser alfa numérico");
+                txtdir.BackColor = Color.MistyRose;
+            }
+        }
+
+        private void txtmail_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (validaciones.ValidaCorreo(txtmail))
+            {
+                errorProvider1.SetError(txtmail, String.Empty);
+                txtmail.BackColor = Color.Honeydew;
+            }
+            else
+            {
+                errorProvider1.SetError(txtmail, "El Formato del correo electrónico debe ser ejemplo@sitio.com");
+                txtmail.BackColor = Color.MistyRose;
             }
         }
 

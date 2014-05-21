@@ -86,6 +86,7 @@
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnAdminCli = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GrillaOrden)).BeginInit();
@@ -95,6 +96,7 @@
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.personaBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.personaBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -329,7 +331,7 @@
             // cmbEstado
             // 
             this.cmbEstado.FormattingEnabled = true;
-            this.cmbEstado.Location = new System.Drawing.Point(705, 76);
+            this.cmbEstado.Location = new System.Drawing.Point(761, 76);
             this.cmbEstado.Name = "cmbEstado";
             this.cmbEstado.Size = new System.Drawing.Size(148, 21);
             this.cmbEstado.TabIndex = 38;
@@ -380,7 +382,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(626, 79);
+            this.label12.Location = new System.Drawing.Point(682, 79);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(40, 13);
             this.label12.TabIndex = 34;
@@ -388,16 +390,17 @@
             // 
             // txtColor
             // 
-            this.txtColor.Location = new System.Drawing.Point(705, 45);
+            this.txtColor.Location = new System.Drawing.Point(761, 45);
             this.txtColor.MaxLength = 46;
             this.txtColor.Name = "txtColor";
             this.txtColor.Size = new System.Drawing.Size(148, 20);
             this.txtColor.TabIndex = 31;
+            this.txtColor.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtColor_KeyUp);
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(625, 48);
+            this.label13.Location = new System.Drawing.Point(681, 48);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(31, 13);
             this.label13.TabIndex = 32;
@@ -405,15 +408,17 @@
             // 
             // txtHoraEntrega
             // 
-            this.txtHoraEntrega.Location = new System.Drawing.Point(705, 16);
+            this.txtHoraEntrega.Location = new System.Drawing.Point(761, 16);
+            this.txtHoraEntrega.MaxLength = 5;
             this.txtHoraEntrega.Name = "txtHoraEntrega";
             this.txtHoraEntrega.Size = new System.Drawing.Size(148, 20);
             this.txtHoraEntrega.TabIndex = 29;
+            this.txtHoraEntrega.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtHoraEntrega_KeyUp);
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(622, 19);
+            this.label14.Location = new System.Drawing.Point(678, 19);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(70, 13);
             this.label14.TabIndex = 30;
@@ -421,16 +426,17 @@
             // 
             // txtPI
             // 
-            this.txtPI.Location = new System.Drawing.Point(459, 108);
+            this.txtPI.Location = new System.Drawing.Point(485, 108);
             this.txtPI.MaxLength = 50;
             this.txtPI.Name = "txtPI";
             this.txtPI.Size = new System.Drawing.Size(148, 20);
             this.txtPI.TabIndex = 27;
+            this.txtPI.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtPI_KeyUp);
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(417, 111);
+            this.label9.Location = new System.Drawing.Point(443, 111);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(17, 13);
             this.label9.TabIndex = 28;
@@ -438,16 +444,17 @@
             // 
             // txtPD
             // 
-            this.txtPD.Location = new System.Drawing.Point(459, 76);
+            this.txtPD.Location = new System.Drawing.Point(485, 76);
             this.txtPD.MaxLength = 50;
             this.txtPD.Name = "txtPD";
             this.txtPD.Size = new System.Drawing.Size(148, 20);
             this.txtPD.TabIndex = 25;
+            this.txtPD.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtPD_KeyUp);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(417, 79);
+            this.label8.Location = new System.Drawing.Point(443, 79);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(22, 13);
             this.label8.TabIndex = 26;
@@ -455,16 +462,17 @@
             // 
             // txtBI
             // 
-            this.txtBI.Location = new System.Drawing.Point(459, 45);
+            this.txtBI.Location = new System.Drawing.Point(485, 45);
             this.txtBI.MaxLength = 50;
             this.txtBI.Name = "txtBI";
             this.txtBI.Size = new System.Drawing.Size(148, 20);
             this.txtBI.TabIndex = 23;
+            this.txtBI.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtBI_KeyUp);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(417, 48);
+            this.label7.Location = new System.Drawing.Point(443, 48);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(17, 13);
             this.label7.TabIndex = 24;
@@ -472,16 +480,17 @@
             // 
             // txtBD
             // 
-            this.txtBD.Location = new System.Drawing.Point(459, 16);
+            this.txtBD.Location = new System.Drawing.Point(485, 16);
             this.txtBD.MaxLength = 50;
             this.txtBD.Name = "txtBD";
             this.txtBD.Size = new System.Drawing.Size(148, 20);
             this.txtBD.TabIndex = 21;
+            this.txtBD.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtBD_KeyUp);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(417, 19);
+            this.label6.Location = new System.Drawing.Point(443, 19);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(22, 13);
             this.label6.TabIndex = 22;
@@ -492,7 +501,7 @@
             this.cmbNomOdontologo.DataSource = this.personaBindingSource1;
             this.cmbNomOdontologo.DisplayMember = "Nombre";
             this.cmbNomOdontologo.FormattingEnabled = true;
-            this.cmbNomOdontologo.Location = new System.Drawing.Point(260, 76);
+            this.cmbNomOdontologo.Location = new System.Drawing.Point(228, 76);
             this.cmbNomOdontologo.Name = "cmbNomOdontologo";
             this.cmbNomOdontologo.Size = new System.Drawing.Size(148, 21);
             this.cmbNomOdontologo.TabIndex = 20;
@@ -507,7 +516,7 @@
             this.cmbNomPaciente.DataSource = this.personaBindingSource;
             this.cmbNomPaciente.DisplayMember = "Nombre";
             this.cmbNomPaciente.FormattingEnabled = true;
-            this.cmbNomPaciente.Location = new System.Drawing.Point(260, 43);
+            this.cmbNomPaciente.Location = new System.Drawing.Point(228, 43);
             this.cmbNomPaciente.Name = "cmbNomPaciente";
             this.cmbNomPaciente.Size = new System.Drawing.Size(148, 21);
             this.cmbNomPaciente.TabIndex = 19;
@@ -519,24 +528,26 @@
             // 
             // txtLaboratorio
             // 
-            this.txtLaboratorio.Location = new System.Drawing.Point(260, 108);
+            this.txtLaboratorio.Location = new System.Drawing.Point(228, 108);
             this.txtLaboratorio.MaxLength = 80;
             this.txtLaboratorio.Name = "txtLaboratorio";
             this.txtLaboratorio.Size = new System.Drawing.Size(148, 20);
             this.txtLaboratorio.TabIndex = 18;
+            this.txtLaboratorio.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtLaboratorio_KeyUp);
             // 
             // txtNumOrden
             // 
-            this.txtNumOrden.Location = new System.Drawing.Point(260, 13);
+            this.txtNumOrden.Location = new System.Drawing.Point(228, 13);
             this.txtNumOrden.MaxLength = 11;
             this.txtNumOrden.Name = "txtNumOrden";
             this.txtNumOrden.Size = new System.Drawing.Size(148, 20);
             this.txtNumOrden.TabIndex = 13;
+            this.txtNumOrden.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtNumOrden_KeyUp);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(135, 111);
+            this.label5.Location = new System.Drawing.Point(103, 111);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(60, 13);
             this.label5.TabIndex = 17;
@@ -545,7 +556,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(135, 79);
+            this.label4.Location = new System.Drawing.Point(103, 79);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(102, 13);
             this.label4.TabIndex = 16;
@@ -554,7 +565,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(135, 46);
+            this.label2.Location = new System.Drawing.Point(103, 46);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(89, 13);
             this.label2.TabIndex = 15;
@@ -563,7 +574,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(135, 16);
+            this.label1.Location = new System.Drawing.Point(103, 16);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(76, 13);
             this.label1.TabIndex = 14;
@@ -608,6 +619,10 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "Administración de Orden de Laboratorio";
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // frmAdministracionOrdenLab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -630,6 +645,7 @@
             this.groupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.personaBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.personaBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -691,5 +707,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colorDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn estadodeordenDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewButtonColumn btnEditarCarrera;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }
