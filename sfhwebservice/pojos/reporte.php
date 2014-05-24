@@ -7,6 +7,7 @@ class Reporte
 	public $tipoReporte;
 	public $nomPersona;
 	public $appPersona;
+    public $sqlReporte;
 
 	function initClass($idReporte, $idPersona, $fechaCreacion, $tipoReporte)
 	{

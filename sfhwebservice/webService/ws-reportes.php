@@ -110,4 +110,30 @@ switch ($opcion)
 		$arreglo["reportes"] = $controladoraReporte->listarReportesFechaDesordenada();
 		echo (json_encode($arreglo));
 	break;
+	case 12:
+	//$idPersona = $reporte->idPersona;
+		//$fechaCreacion = $reporte->fechaCreacion;
+		//$tipoReporte = $reporte->tipoReporte;
+		//$consultaReporte = $reporte->sqlReporte;
+		//JSON Insertar Reporte {"indice":12,"idPersona":2,"fechaCreacion":"12-12-2012","tipoReporte":"monetario","consultaReporte":"select * from abono"}
+		$idPersona = $data->{"idPersona"};
+		$fechaCreacion = $data->{"fechaCreacion"};
+		$tipoReporte = $data->{"tipoReporte"};
+		$consultaReporte = $data->{"consultaReporte"};
+		$controladoraReporte = new ControladoraReportes();
+		$reporte = new Reporte();
+		$reporte->initClass(0, $idPersona , $fechaCreacion , $tipoReporte );
+		$reporte->sqlReporte = $consultaReporte;
+		$arreglo["code"] = 12;
+		$arreglo["reporteID"] = $controladoraReporte->insertarReportes($reporte);
+		echo(json_encode($arreglo));
+	break;
+	case 13:
+		//JSON obtenerReporteID {"indice":13,"IdReporte":1}
+		$idReporte = $data->{"IdReporte"};
+		$controladoraReporte = new ControladoraReportes();
+		$arreglo["code"] = 13;
+		$arreglo["reportes"] = $controladoraReporte->obtenerConsultaReporte($idReporte);
+		echo(json_encode($arreglo));
+	break;
 }

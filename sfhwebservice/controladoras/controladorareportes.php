@@ -354,30 +354,60 @@ re.ID_REPORTE,re.F_CREACION, re.TIPO_REPORTE FROM persona per,reporte re WHERE
 		$idPersona = $reporte->idPersona;
 		$fechaCreacion = $reporte->fechaCreacion;
 		$tipoReporte = $reporte->tipoReporte;
+		$consultaReporte = $reporte->sqlReporte;
+
 		
 		try 
 	   	{ 	 
 	        $this->SqlQuery='';
-	        $this->SqlQuery='INSERT INTO reporte(ID_REPORTE, ID_PERSONA, F_CREACION, TIPO_REPORTE)VALUES(NULL, ?, ?, ?)';
+	        $this->SqlQuery='INSERT INTO reporte (ID_REPORTE, ID_PERSONA, F_CREACION, TIPO_REPORTE, CONSULTA_REPORTE)VALUES(NULL, ?, ?, ?, ?)';
 	        $sentencia=$conexion->prepare($this->SqlQuery);
-	        $sentencia->bind_param('iss',$idPersona, $fechaCreacion, $tipoReporte);
+	        $sentencia->bind_param("isss",$idPersona, $fechaCreacion, $tipoReporte, $consultaReporte); 
 	      	if($sentencia->execute())
-	      	{
-	      		//$id = ;
-	        	$conexion->close();
+			{
+				$conexion->close();
+				echo("hola");
 				return $sentencia->insert_id;
 			}
 			else
 			{
 				$conexion->close();
-	        	return "-1";
-	        }
+				return false;
+			}
         }
     	catch(Exception $e)
     	{
-         return false;
-         throw new $e("Error al Registrar el Reporte");
+	         return false;
+	         throw new $e("Error al Registrar el Reporte");
         }	
+	}
+	function obtenerConsultaReporte($idReporte)
+	{
+		$conexion = new MySqlCon();
+		$this->datos ='';
+		try
+		{
+		$this->SqlQuery = '';
+		$this->SqlQuery = "SELECT CONSULTA_REPORTE FROM reporte WHERE ID_REPORTE = ?;";
+	   	$sentencia=$conexion->prepare($this->SqlQuery);
+	   	$sentencia->bind_param('i',$idReporte);
+	   	if($sentencia->execute())
+        	{
+        		$sentencia->bind_result($ConsultaReporte);
+			$indice=0;     
+			if($sentencia->fetch())
+			{
+				$this->datos[$indice]=$ConsultaReporte;
+				$indice++;
+			}
+      		}
+       		$conexion->close();
+	    	}
+	    	catch(Exception $e)
+	    	{
+	        	throw new $e("Error al listar pacientes");
+	        }
+	        return $this->datos;
 	}
 }
 ?>
