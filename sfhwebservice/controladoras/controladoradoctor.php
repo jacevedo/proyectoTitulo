@@ -226,7 +226,7 @@ require_once '../pojos/persona.php';
 		try
 		{
 			$this->SqlQuery = '';
-			$this->SqlQuery = "SELECT id_persona, nombre, APELLIDO_PATERNO FROM persona WHERE id_perfil = 2";
+			$this->SqlQuery = "SELECT odo.id_odontologo, per.nombre, per.APELLIDO_PATERNO FROM odontologo odo, persona per WHERE odo.id_persona = per.id_persona";
 			$sentencia=$conexion->prepare($this->SqlQuery);
         	if($sentencia->execute())
         	{
