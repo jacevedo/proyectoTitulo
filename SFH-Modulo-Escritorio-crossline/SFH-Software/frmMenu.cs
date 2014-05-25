@@ -223,11 +223,11 @@ namespace SFH_Software
                     this.MostrarForm(e.Node.Text.ToString(), funcionario);
                     break;
                 case "Generar Reporte Pacientes":
-                    frmGenerarReportesPacientes report = new frmGenerarReportesPacientes();
+                    frmGenerarReportesPacientes report = new frmGenerarReportesPacientes(this.session.Id_persona);
                     this.MostrarForm(e.Node.Text.ToString(), report);
                     break;
                 case "Generar Reportes Monetarios":
-                    frmGenerarReportesMonetarios reportMon = new frmGenerarReportesMonetarios();
+                    frmGenerarReportesMonetarios reportMon = new frmGenerarReportesMonetarios(this.session.Id_persona);
                     this.MostrarForm(e.Node.Text.ToString(), reportMon);
                     break;
                 case "Listar Historial de Reportes":
@@ -346,13 +346,13 @@ namespace SFH_Software
 
         private void generarReportePacientesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmGenerarReportesPacientes reportPaciente = new frmGenerarReportesPacientes();
+            frmGenerarReportesPacientes reportPaciente = new frmGenerarReportesPacientes(this.session.Id_persona);
             this.MostrarForm("Generar Reporte Pacientes ", reportPaciente);
         }
 
         private void generarReportesMonetariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmGenerarReportesMonetarios reportMonetario = new frmGenerarReportesMonetarios();
+            frmGenerarReportesMonetarios reportMonetario = new frmGenerarReportesMonetarios(this.session.Id_persona);
             this.MostrarForm("Generar Reportes Monetarios ", reportMonetario);
         }
 

@@ -30,7 +30,27 @@ namespace NetClient
         #region Metodos 
        
         #region Ingresar Reporte
-
+       
+        public string IngresarReporte(Reporte repo)
+        {
+            ////report.Query = fecha_inicio+","+fecha_termino;
+            string reporteInsertado;
+            string fechacreacion = repo.FechaCreacion.Year + "-" + repo.FechaCreacion.Month + "-" + repo.FechaCreacion.Day;
+            repo.Query = repo.Fecha_inicio.Year + "-" + repo.Fecha_inicio.Month + "-" + repo.Fecha_inicio.Day + "," + repo.Fecha_termino.Year + "-" + repo.Fecha_termino.Month + "-" + repo.Fecha_termino.Day;
+             //{"indice":11,"idPersona":2,"fechaCreacion":"12-12-2012","tipoReporte":"monetario","consultaReporte":"select * from abono"}
+            this.JsonParam = "{\"indice\":12,\"idPersona\":" + repo.IdPersona + ",\"fechaCreacion\":\"" + fechacreacion + "\",\"tipoReporte\":\"" + repo.TipoReporte + "\",\"consultaReporte\":\"" + repo.Query + "\"}";
+            try
+            {
+                String result = netclient.NetPost("ws-reportes.php", this.JsonParam);
+                var jobject = JObject.Parse(result);
+                reporteInsertado = jobject.SelectToken("reporteID").ToString();
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e + "| Error al insertar Gastos");
+            }
+           return reporteInsertado;
+        }
 
         #endregion 
 

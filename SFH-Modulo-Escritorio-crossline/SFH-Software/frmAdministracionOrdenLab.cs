@@ -41,35 +41,37 @@ namespace SFH_Software
         {
             try
             {
-                if(this.validarformulario()){
-                Ordendelaboratorio orden = new Ordendelaboratorio();
-                orden.IdOdontologo = Convert.ToInt32(cmbNomOdontologo.SelectedValue);
-                orden.IdPaciente = Convert.ToInt32(cmbNomPaciente.SelectedValue);
-                orden.NumeroOrden = Convert.ToInt32(txtNumOrden.Text);
-                orden.Clinica = txtLaboratorio.Text;
-                orden.Bd = txtBD.Text;
-                orden.Bi = txtBI.Text;
-                orden.Pd = txtPD.Text;
-                orden.Pi = txtPI.Text;
-                orden.HoraEntrega = txtHoraEntrega.Text;
-                orden.Color = txtColor.Text;
-                orden.Estadodeorden = obtenerEstado();
-                orden.FechaCreacion = CalendarCreacion.SelectionStart;
-                orden.FechaEntrega = calendarEntrega.SelectionStart;
-                orden.IdOrdenLaboratorio = Convert.ToInt32(clienteOrden.insertarOrden(orden));
-                if (orden.IdOrdenLaboratorio > 0)
+                if (this.validarformulario())
                 {
-                    this.listaOrden = clienteOrden.ListarOrdenLaboratorio();
-                    GrillaOrden.DataSource = listaOrden;
-                    limpiarFormulario();
-                    MessageBox.Show("Orden de laboratorio ingresada correctamente.", "SFH Administración de Clínica - Administración de Orden de Laboratorio Dental", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    MessageBox.Show("Se produjo un error, vuelva a intentarlo.", "SFH Administración de Clínica - Administración de Orden de Laboratorio Dental", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }      
+                    Ordendelaboratorio orden = new Ordendelaboratorio();
+                    orden.IdOdontologo = Convert.ToInt32(cmbNomOdontologo.SelectedValue);
+                    orden.IdPaciente = Convert.ToInt32(cmbNomPaciente.SelectedValue);
+                    orden.NumeroOrden = Convert.ToInt32(txtNumOrden.Text);
+                    orden.Clinica = txtLaboratorio.Text;
+                    orden.Bd = txtBD.Text;
+                    orden.Bi = txtBI.Text;
+                    orden.Pd = txtPD.Text;
+                    orden.Pi = txtPI.Text;
+                    orden.HoraEntrega = txtHoraEntrega.Text;
+                    orden.Color = txtColor.Text;
+                    orden.Estadodeorden = obtenerEstado();
+                    orden.FechaCreacion = CalendarCreacion.SelectionStart;
+                    orden.FechaEntrega = calendarEntrega.SelectionStart;
+                    orden.IdOrdenLaboratorio = Convert.ToInt32(clienteOrden.insertarOrden(orden));
+                    if (orden.IdOrdenLaboratorio > 0)
+                    {
+                        this.listaOrden = clienteOrden.ListarOrdenLaboratorio();
+                        GrillaOrden.DataSource = listaOrden;
+                        limpiarFormulario();
+                        MessageBox.Show("Orden de laboratorio ingresada correctamente.", "SFH Administración de Clínica - Administración de Orden de Laboratorio Dental", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Se produjo un error, vuelva a intentarlo.", "SFH Administración de Clínica - Administración de Orden de Laboratorio Dental", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                  }
               }
-            }
+            
             catch
             {
                 MessageBox.Show("Se produjo un error, vuelva a intentarlo.", "SFH Administración de Clínica - Administración de Orden de Laboratorio Dental", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -302,7 +304,7 @@ namespace SFH_Software
         }
 
         private void txtHoraEntrega_KeyUp(object sender, KeyEventArgs e)
-        {
+      {
             if (validaciones.EsHora(txtHoraEntrega))
             {
                 errorProvider1.SetError(txtHoraEntrega, String.Empty);

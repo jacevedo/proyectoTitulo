@@ -31,7 +31,7 @@ namespace SFH_Software
         }
         public bool EsHora(Control textbox)
         {
-            Regex regex = new Regex(@"^([0-1][0-9]|[2][0-3]):([0-5][0-9])$");
+            Regex regex = new Regex(@"^(([0-1]?[0-9])|([2][0-3])):([0-5]?[0-9])(:([0-5]?[0-9]))?$");
             return regex.IsMatch(textbox.Text);
         }
         public bool ValidaTelefono(Control textbox)

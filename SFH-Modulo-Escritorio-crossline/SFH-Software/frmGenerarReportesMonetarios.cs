@@ -18,7 +18,7 @@ namespace SFH_Software
         ClientWsReportes client_repo = new ClientWsReportes();
         List<Abono> list_abns = new List<Abono>();
         List<Gastos> list_gastos = new List<Gastos>();
-
+        private int id_usuario;
         #endregion
 
         #region Propiedades
@@ -78,15 +78,17 @@ namespace SFH_Software
         #endregion
 
 
-        public frmGenerarReportesMonetarios()
+        public frmGenerarReportesMonetarios(int id_usuario)
         {
             InitializeComponent();
+            this.id_usuario = id_usuario;
         }
 
         private void frmGenerarReportesMonetarios_Load(object sender, EventArgs e)
         {
             this.CargarComboDesde();
             this.CargarComboHasta();
+            
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -108,9 +110,19 @@ namespace SFH_Software
             else
             {
                 this.list_gastos = this.client_data.ListarGastosporFechas(fecha_inicio, fecha_termino);
-                if (list_gastos.Count > 0)
+                Reporte report = new Reporte();
+                report.IdPersona = this.id_usuario;
+                report.FechaCreacion = DateTime.Now;
+                report.TipoReporte = "Reporte Monetario";
+                report.Fecha_inicio = fecha_inicio;
+                report.Fecha_termino = fecha_termino;
+                
+                if (this.client_repo.IngresarReporte(report) != "")
                 {
-                    this.GenerarReporte(list_abns, list_gastos, fecha_inicio, fecha_termino);
+                    if (list_gastos.Count > 0)
+                    {
+                        this.GenerarReporte(list_abns, list_gastos, fecha_inicio, fecha_termino);
+                    }
                 }
             }
             this.LimpiarControles();

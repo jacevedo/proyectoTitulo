@@ -60,7 +60,24 @@ namespace SFH_Software
             this.CargarComboDesde();
             this.CargarComboHasta();
         }
+        /*
+          public string Query
+        {
+            get { return query; }
+            set { query = value; }
+        }
+        public DateTime Fecha_inicio
+        {
+            get { return fecha_inicio; }
+            set { fecha_inicio = value; }
+        }
 
+        public DateTime Fecha_termino
+        {
+            get { return fecha_termino; }
+            set { fecha_termino = value; }
+        }
+         */
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             MessageBox.Show("El sistema sfh está realizando su búsqueda", "SFH Administración de Reportes y Estadísticas - Historial de Reportes", MessageBoxButtons.OK, MessageBoxIcon.Information);

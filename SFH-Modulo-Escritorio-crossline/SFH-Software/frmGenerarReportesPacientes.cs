@@ -19,6 +19,8 @@ namespace SFH_Software
         ClientWsReportes client_repo = new ClientWsReportes();
         List<DateTime> list_fechas = new List<DateTime>();
         List<Cita> list_citas = new List<Cita>();
+        private int id_usuario;
+        Reporte reporte;
         #endregion 
 
         #region Propiedades
@@ -98,11 +100,17 @@ namespace SFH_Software
 
         #endregion
 
-        public frmGenerarReportesPacientes()
+        public frmGenerarReportesPacientes(int id_usuario)
         {
             InitializeComponent();
+            this.id_usuario = id_usuario;
         }
 
+        public frmGenerarReportesPacientes(Reporte reporte)
+        {
+            InitializeComponent();
+            this.reporte = reporte;
+        }
         private void frmAdministracionDeReporteria_Load(object sender, EventArgs e)
         {
             //Carga ComboBox 
@@ -128,7 +136,17 @@ namespace SFH_Software
             }
             else
             {
-                this.GenerarReporte(list_citas,fecha_inicio,fecha_termino);
+                Reporte report = new Reporte();
+                report.IdPersona = this.id_usuario;
+                report.FechaCreacion = DateTime.Now;
+                report.TipoReporte = "Reporte Pacientes";
+                report.Fecha_inicio = fecha_inicio;
+                report.Fecha_termino = fecha_termino;
+                
+                if (this.client_repo.IngresarReporte(report) != "")
+                {
+                    this.GenerarReporte(list_citas, fecha_inicio, fecha_termino);
+                }
             }
 
             this.LimpiarControles();

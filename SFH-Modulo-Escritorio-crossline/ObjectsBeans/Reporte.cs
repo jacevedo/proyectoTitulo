@@ -12,6 +12,10 @@ namespace ObjectsBeans
         private int idPersona;
         private DateTime fechaCreacion;
         private string tipoReporte;
+        private string query;
+        private DateTime fecha_inicio;
+        private DateTime fecha_termino;
+
         #endregion
 
         #region Constructor
@@ -42,6 +46,24 @@ namespace ObjectsBeans
             get { return tipoReporte; }
             set { tipoReporte = value; }
         }
+        public string Query
+        {
+            get { return query; }
+            set { query = value; }
+        }
+        public DateTime Fecha_inicio
+        {
+            get { return fecha_inicio; }
+            set { fecha_inicio = value; }
+        }
+
+        public DateTime Fecha_termino
+        {
+            get { return fecha_termino; }
+            set { fecha_termino = value; }
+        }
+
+        
         #endregion
     }
 }

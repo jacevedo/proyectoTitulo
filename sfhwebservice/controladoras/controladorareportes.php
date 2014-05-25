@@ -366,7 +366,6 @@ re.ID_REPORTE,re.F_CREACION, re.TIPO_REPORTE FROM persona per,reporte re WHERE
 	      	if($sentencia->execute())
 			{
 				$conexion->close();
-				echo("hola");
 				return $sentencia->insert_id;
 			}
 			else

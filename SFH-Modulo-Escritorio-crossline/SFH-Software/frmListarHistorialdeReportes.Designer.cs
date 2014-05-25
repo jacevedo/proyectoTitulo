@@ -53,6 +53,9 @@
             this.FechaCreacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TipoReporte = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FechaNacimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.query = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fechainicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fechatermino = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.datagridhistorial)).BeginInit();
@@ -98,7 +101,10 @@
             this.ApellidoMaterno,
             this.FechaCreacion,
             this.TipoReporte,
-            this.FechaNacimiento});
+            this.FechaNacimiento,
+            this.query,
+            this.fechainicio,
+            this.fechatermino});
             this.datagridhistorial.Location = new System.Drawing.Point(73, 19);
             this.datagridhistorial.Name = "datagridhistorial";
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
@@ -274,6 +280,27 @@
             this.FechaNacimiento.Name = "FechaNacimiento";
             this.FechaNacimiento.Visible = false;
             // 
+            // query
+            // 
+            this.query.DataPropertyName = "Query";
+            this.query.HeaderText = "query";
+            this.query.Name = "query";
+            this.query.Visible = false;
+            // 
+            // fechainicio
+            // 
+            this.fechainicio.DataPropertyName = "Fecha_inicio";
+            this.fechainicio.HeaderText = "fechainicio";
+            this.fechainicio.Name = "fechainicio";
+            this.fechainicio.Visible = false;
+            // 
+            // fechatermino
+            // 
+            this.fechatermino.DataPropertyName = "Fecha_termino";
+            this.fechatermino.HeaderText = "fechatermino";
+            this.fechatermino.Name = "fechatermino";
+            this.fechatermino.Visible = false;
+            // 
             // frmListarHistorialdeReportes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -321,5 +348,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn FechaCreacion;
         private System.Windows.Forms.DataGridViewTextBoxColumn TipoReporte;
         private System.Windows.Forms.DataGridViewTextBoxColumn FechaNacimiento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn query;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fechainicio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fechatermino;
     }
 }

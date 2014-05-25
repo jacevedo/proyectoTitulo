@@ -46,9 +46,6 @@
     <Reference Include="MdiTabControl">
       <HintPath>Tabcontrol\MdiTabControl.dll</HintPath>
     </Reference>
-    <Reference Include="NetClient">
-      <HintPath>..\NetClient\bin\Debug\NetClient.dll</HintPath>
-    </Reference>
     <Reference Include="ObjectsBeans">
       <HintPath>..\ObjectsBeans\bin\Debug\ObjectsBeans.dll</HintPath>
     </Reference>
@@ -281,6 +278,12 @@
     <Content Include="imagenes\ico_diente.jpg" />
     <Content Include="imagenes\logo.png" />
     <Content Include="imagenes\logo.png.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NetClient\NetClient.csproj">
+      <Project>{c6f9d09a-eaf2-44a9-9c95-c158ef526954}</Project>
+      <Name>NetClient</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

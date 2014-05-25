@@ -409,7 +409,7 @@
             // txtHoraEntrega
             // 
             this.txtHoraEntrega.Location = new System.Drawing.Point(761, 16);
-            this.txtHoraEntrega.MaxLength = 5;
+            this.txtHoraEntrega.MaxLength = 8;
             this.txtHoraEntrega.Name = "txtHoraEntrega";
             this.txtHoraEntrega.Size = new System.Drawing.Size(148, 20);
             this.txtHoraEntrega.TabIndex = 29;

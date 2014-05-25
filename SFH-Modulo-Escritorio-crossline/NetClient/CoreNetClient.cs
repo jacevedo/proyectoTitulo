@@ -20,8 +20,8 @@ namespace NetClient
             String url = "http://192.168.106.134/sfhwebservice/webService/" + nom_page;
             String url = "http://192.168.106.134/sfhwebservice/webServiceencriptado/" + nom_page;*/
             /*Segmento de produccion*/
-            String url = "http://sfh.crossline.cl/webServiceencriptado/" + nom_page;
-            //String url = "http://192.168.112.129/sfhwebservice/webServiceencriptado/" + nom_page;
+            //String url = "http://sfh.crossline.cl/webServiceencriptado/" + nom_page;
+            String url = "http://192.168.112.129/webServiceencriptado/" + nom_page;
             try 
             {
                 String paramdataKey = string.Empty;
