@@ -48,11 +48,11 @@
 		
 		<tr><td>Tel&eacute;fono Fijo</td><td><input class="textosLargos" type="text" id="txtFono" placeholder="027780182"/><span id="errorFonoFijo" class="error"></span></td></tr>
 
-		<tr><td>Celular</td><td><input  class="textosLargos"type="text" id="txtCelular" placeholder="555555555"/> <span id="errorFonoCell" class="error"></span></td></tr>
+		<tr><td>Celular</td><td><input  class="textosLargos"type="text" id="txtCelular" placeholder="+56972773654"/> <span id="errorFonoCell" class="error"></span></td></tr>
 
-		<tr><td>Email</td><td><input  class="textosLargos"type="text" id="txtMail" placeholder="lala@lala.net"/><span id="errorMail" class="error"></span></td></tr>
+		<tr><td>Email</td><td><input  class="textosLargos"type="text" id="txtMail" placeholder="example@example.com"/><span id="errorMail" class="error"></span></td></tr>
 
-		<tr><td>Contrase&ntilde;a</td><td><input class="textosLargos" type="password" id="txtContrasena" placeholder="asdasdasd"/><span id="errorPass" class="error"></span></td></tr>
+		<tr><td>Contrase&ntilde;a</td><td><input class="textosLargos" type="password" id="txtContrasena" placeholder="password"/><span id="errorPass" class="error"></span></td></tr>
 	</table>
 	<button id="btnCrearCuenta" class="btn btn-lg btn-primary btn-block">Crear Cuenta</button>';
 
